@@ -4,3 +4,5 @@ dbio/dbconfig.php
 # Exclude the portraits/icoms
 portraits/*
 icons/*
+
+'Thumbs up.jpg'
