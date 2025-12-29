@@ -1,0 +1,50 @@
+<?php
+
+require_once __DIR__ . '/env.php';
+require_once __DIR__ . '/validateCredentials.php';
+$pdo = require_once __DIR__ . '/dbio/DBConnection.php';
+
+validateSessionCredentials($pdo);
+
+require_once 'RestHeaderHelper.php';
+require_once 'characterAttributes.php';
+require_once 'playerName.php';
+require_once 'characterName.php';
+require_once 'requiredParameter.php';
+require_once 'optionalParameter.php';
+
+$input = [];
+$log = [];
+$errors = [];
+
+// Filter and sanitize IDs
+getPlayerName($errors, $input);
+getCharacterName($errors, $input);
+getRequiredIntegerParameter($errors, $input, __FILE__, 'weaponProficiencyId');
+getRequiredStringParameter($errors, $input, __FILE__, 'isPreferred');
+$is_preferred = $input['isPreferred'] == 'preferred' ? true : false;
+
+$log[] = "SUCCESS|";
+addWeaponTalent($pdo, $input['playerName'], $input[CHARACTER_NAME], $input['weaponProficiencyId'], $is_preferred, $errors);
+
+RestHeaderHelper::emitRestHeaders();
+if (count($errors) > 0) {
+	echo json_encode($errors);
+} else {
+	echo json_encode($log);
+}
+
+function addWeaponTalent(\PDO $pdo, $player_name, $character_name, $weapon_proficiency_id, $is_preferred, &$errors) {
+	$sql_exec = "CALL addWeaponTalentToPlayerCharacter(:playerName, :characterName, :weaponProficiencyId, :isPreferred)";
+
+	$statement = $pdo->prepare($sql_exec);
+	$statement->bindParam(':playerName', $player_name, PDO::PARAM_STR);
+	$statement->bindParam(':characterName', $character_name, PDO::PARAM_STR);
+	$statement->bindParam(':weaponProficiencyId', $weapon_proficiency_id, PDO::PARAM_INT);
+	$statement->bindParam(':isPreferred', $is_preferred, PDO::PARAM_BOOL);
+	try {
+		$statement->execute();
+	} catch(Exception $e) {
+		$errors[] = "Exception in addWeaponTalent : " . $e->getMessage();
+	}
+}

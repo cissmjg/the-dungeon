@@ -1,0 +1,12 @@
+<?php
+require_once 'requiredParameter.php';
+require_once 'optionalParameter.php';
+require_once 'WebParameterHelper.php';
+
+function getPlayerCharacterWeaponSkillId(&$errors, &$input, $default_value) {
+	getRequiredIntegerParameter($errors, $input, __FILE__, 'playerCharacterWeaponSkillId');
+}
+
+function getOptionalPlayerCharacterWeaponSkillId(&$errors, &$input, $default_value) {
+	getOptionalIntegerParameter($errors, $input, __FILE__, 'playerCharacterWeaponSkillId', OPTIONAL_INTEGER_PARAMETER);
+}

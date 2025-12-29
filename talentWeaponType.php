@@ -1,0 +1,5 @@
+<?php
+const WEAPON_TYPE_TALENT_NAME = "[TALENT]";
+const WEAPON_TYPE_TALENT_ID = 18;
+const TALENT_WEAPON_SLOT_ID = 1;
+?>

@@ -1,0 +1,7 @@
+<?php
+const GM_ESP_SPELL_CATALOG_ID = 1756;
+const GM_LEVITATE_SPELL_CATALOG_ID = 1757;
+
+const GM_ESP_SPELL_NAME = "ESP";
+const GM_LEVITATE_SPELL_NAME = "Levitate";
+?>

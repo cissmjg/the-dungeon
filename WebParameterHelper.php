@@ -1,0 +1,6 @@
+<?php
+
+const OPTIONAL_STRING_PARAMETER = '-';
+const OPTIONAL_INTEGER_PARAMETER = 0;
+
+?>

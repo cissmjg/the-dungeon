@@ -1,0 +1,84 @@
+.character_sheet_container {
+	display: flex;
+}
+
+.character_sheet_column {
+	flex: 50%;
+}
+
+.tableLayout {
+	border:1pt solid;
+	border-collapse: collapse;
+	font-family: sans-serif;
+	width: 100%
+}
+
+.tableHeader {
+	padding:0.0000pt 5.4pt 0.0000pt 5.4pt;
+	border:1pt solid;
+	text-align:center;
+	font-weight: bold;
+	background-color: lightgray;
+}
+
+.titleAttributeLiteral {
+	width:25%;
+	border:1pt solid;
+	text-align:center;
+	font-weight: bold;
+	background-color: lightgray;
+}
+
+.titleAttributeValue {
+	width:25%;
+	padding:0.0000pt 5.4pt 0.0000pt 5.4pt;
+	border:1pt solid;
+	border-collapse: collapse;
+	text-align:center;
+	font-weight: bold;
+	background-color: white;
+}
+
+.combatSummaryHeader {
+	font-weight: bold;
+	border-right:1pt solid;
+	padding-left: 3px;		
+}
+
+.combatSummaryValue {
+	border-top:1pt solid;
+	border-right:1pt solid;
+	padding-left: 3px;		
+	text-align:center;
+}
+
+.weaponValue {
+	border-top:1pt solid;
+	border-right:1pt solid;
+	padding-left: 3px;		
+	text-align:left;
+}
+
+.attributeLabel {
+	border-top:1pt solid;
+	border-right:1pt solid;
+	padding-left: 3px;		
+	text-align:left;
+}
+
+.attributeValue {
+	border-top:1pt solid;
+	border-right:1pt solid;
+	text-align:center;
+}
+
+.rmEntryDefaultDesc {
+	text-align: left;
+}
+
+.rmEntryDefaultData {
+	text-align: center;
+}
+.rmRowDefault {
+	background-color: lightgray;
+}

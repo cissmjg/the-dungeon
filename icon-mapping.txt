@@ -1,0 +1,179 @@
+Anti-Paladin
+	Anti-Paladin1
+	Anti-Paladin2
+	Anti-Paladin3
+	Anti-Paladin4
+Archer
+	Archer1
+	Archer2
+	Archer3
+	Archer4	
+Archer-Ranger
+	Ranger2
+	Archer1
+	Archer2
+	Archer3
+	Archer4	
+Assassin
+	Assassin1
+	Assassin2
+	Assassin3
+Bandit
+	Thief1
+	Thief3
+Barbarian
+	Barbarian1
+	Barbarian2
+	Barbarian3
+	Barbarian4
+	Barbarian5	
+Bard
+	Bard1
+	Bard2
+	Bard3
+Berserker
+	Barbarian1
+	Barbarian2
+	Barbarian3
+	Barbarian4
+	Barbarian5	
+Bushi
+	Fighter1
+	Fighter2
+	Fighter3
+	Fighter4
+	Fighter5
+	Fighter6
+Cavalier
+	Cavalier1
+	Cavalier2
+Cleric
+	Cleric1
+	Cleric2
+	Cleric3
+Druid
+	Druid1
+	Druid2
+	Druid3
+	Druid4
+Duelist
+	Fighter5
+	Fighter6
+Escrima
+	Monk1
+	Monk2
+	Monk3
+Fighter
+	Fighter1
+	Fighter2
+	Fighter3
+	Fighter4
+	Fighter5
+	Fighter6
+Greater Mage
+	GreaterMage1
+	GreaterMage2
+	GreaterMage3
+Healer
+	Healer1
+	Healer2
+	Healer3
+Illusionist
+	Illusionist1
+	Illusionist2
+	Illusionist3
+Kensai
+	Fighter2
+	Fighter5
+	Fighter6
+Magic-User
+	Magic-User1
+	Magic-User2
+	Magic-User3
+	Magic-User4
+Mariner
+	Fighter3
+	Fighter6
+Merchant
+	
+Monk
+	Monk1
+	Monk2
+	Monk3
+New Bard
+	Bard1
+	Bard2
+	Bard3
+New Monk
+	Monk1
+	Monk2
+	Monk3
+Ninja
+	Thief1
+	Thief3
+OA Monk
+	Monk1
+	Monk2
+	Monk3
+Oriental Barbarian
+	Barbarian1
+	Barbarian2
+	Barbarian3
+	Barbarian4
+	Barbarian5	
+Paladin
+	Paladin1
+	Paladin2
+	Paladin3
+	Paladin4
+Piao Shih
+	Monk1
+	Monk2
+	Monk3
+Ranger
+	Ranger1
+	Ranger2
+	Ranger3
+Samurai
+	
+Sentinal
+	Fighter1
+	Fighter2
+	Fighter3
+	Fighter4
+	Fighter5
+	Fighter6
+Shukenja
+	Cleric1
+	Cleric2
+	Cleric3
+Smith
+Sohei
+	Paladin1
+	Paladin2
+	Paladin3
+	Paladin4
+Sumotori
+	Monk1
+	Monk2
+	Monk3
+Thief
+	Thief1
+	Thief2
+	Thief3
+	Thief4
+Thief-Acrobat
+	Thief1
+	Thief2
+	Thief3
+	Thief4
+Wu Jen
+	Magic-User1
+	Magic-User2
+	Magic-User3
+	Magic-User4
+Yakuza
+	Thief1
+	Thief2
+	Thief3
+	Thief4
