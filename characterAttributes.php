@@ -1,5 +1,4 @@
 <?php
-    const CHARACTER_NAME = 'characterName';
     const CHARACTER_STRENGTH = 'characterStrength';
     const CHARACTER_STRENGTH_RAW = 'characterStrengthRaw';
     const CHARACTER_SUPER_STRENGTH = 'characterSuperStrength';

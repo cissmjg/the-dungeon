@@ -1,7 +1,8 @@
 <?php
 declare(strict_types=1);
 require_once 'optionalParameter.php';
-require_once 'characterAttributes.php';
+require_once 'characterName.php';
+require_once 'characterAtributes.php';
 require_once 'raceId.php';
 
 function getCharacterAttributes(&$errors, &$input, $calling_module) {

@@ -24,7 +24,7 @@ if (count($errors) > 0) {
 }
 
 $character_skills = new CharacterSkills();
-$character_skills->init($pdo, $input['playerName'], $input['characterName'], $errors, $log);
+$character_skills->init($pdo, $input['playerName'], $input[CHARACTER_NAME], $errors, $log);
 
 RestHeaderHelper::emitRestHeaders();
 if (count($errors) > 0) {

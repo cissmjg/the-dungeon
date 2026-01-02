@@ -16,7 +16,7 @@ require_once 'characterName.php';
 getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 
-deletePlayerCharacter($pdo, $input['playerName'], $input['characterName'], $errors);
+deletePlayerCharacter($pdo, $input['playerName'], $input[CHARACTER_NAME], $errors);
 
 RestHeaderHelper::emitRestHeaders();
 if(count($errors) > 0) {
@@ -25,7 +25,7 @@ if(count($errors) > 0) {
     $log[] = "SUCCESS|";
     $log[] = "Character Delete|";
     $log[] = "playerName: " . $input['playerName'];
-    $log[] = "chracterName: " . $input['characterName'];
+    $log[] = "chracterName: " . $input[CHARACTER_NAME];
     echo json_encode($log);
 }
 

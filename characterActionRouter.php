@@ -13,7 +13,6 @@ require_once 'textInput.php';
 
 require_once 'playerName.php';
 require_once 'characterName.php';
-require_once 'characterAttributes.php';
 require_once 'characterClassName.php';
 require_once 'characterLevel.php';
 require_once 'guid.php';

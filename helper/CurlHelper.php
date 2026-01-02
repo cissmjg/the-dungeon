@@ -53,7 +53,7 @@ class CurlHelper {
 		$redirect_url = CurlHelper::buildUrl('characterActionRouter');
 		$redirect_url = CurlHelper::addParameter($redirect_url, 'characterAction', $navigation_action);
 		$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $player_name);
-		$redirect_url = CurlHelper::addParameter($redirect_url, 'characterName', $character_name);
+		$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $character_name);
 
 		return $redirect_url;
 	}
@@ -62,7 +62,7 @@ class CurlHelper {
 		$redirect_url = CurlHelper::buildUrl('characterActionRouter');
 		$redirect_url = CurlHelper::addParameter($redirect_url, 'characterAction', $navigation_action);
 		$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $player_name);
-		$redirect_url = CurlHelper::addParameter($redirect_url, 'characterName', $character_name);
+		$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $character_name);
 
 		return 'Location:' . CurlHelper::buildCharacterCRUDUrl($player_name, $character_name, $navigation_action);
 	}

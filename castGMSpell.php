@@ -39,7 +39,7 @@ getSpellDuration($errors, $input);
 getSpellCastingTime($errors, $input);
 
 $player_name = $input['playerName'];
-$character_name = $input['characterName'];
+$character_name = $input[CHARACTER_NAME];
 $spell_catalog_id = $input['spellCatalogId'];
 $spell_level = $input['spellLevel'];
 $spell_duration = $input['spellDuration'];

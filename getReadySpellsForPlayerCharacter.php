@@ -19,7 +19,7 @@ require_once 'timeUnitOfMeasure.php';
 getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 
-$all_spells = getAllSpells($pdo, $input['playerName'], $input['characterName'], $errors);
+$all_spells = getAllSpells($pdo, $input['playerName'], $input[CHARACTER_NAME], $errors);
 
 RestHeaderHelper::emitRestHeaders();
 if (count($errors) > 0) {

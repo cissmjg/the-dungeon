@@ -29,7 +29,7 @@ require_once 'faReclaimCantripIcon.php';
 require_once 'faStopSpellIcon.php';
 require_once 'faRunSpellIcon.php';
 
-require_once 'characterAttributes.php';
+require_once 'characterName.php';
 require_once 'characterSummary.php';
 require_once 'characterSummaryRenderer.php';
 

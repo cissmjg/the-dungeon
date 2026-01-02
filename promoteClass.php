@@ -15,7 +15,7 @@ require_once 'characterName.php';
 require_once 'characterClassName.php';
 require_once 'characterIds.php';
 require_once 'characterSummary.php';
-require_once 'characterAttributes.php';
+require_once 'characterName.php';
 require_once 'characterSpellInfo.php';
 
 require_once 'spellTypes.php';

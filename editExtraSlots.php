@@ -21,7 +21,7 @@ require_once 'faAddIcon.php';
 require_once 'faCancelIcon.php';
 require_once 'spellTypes.php';
 
-require_once 'characterAttributes.php';
+require_once 'characterName.php';
 require_once 'characterSummary.php';
 require_once 'characterSummaryRenderer.php';
 require_once 'characterClasses.php';
@@ -204,7 +204,7 @@ function buildAddExtraSlotIcon($form_id, $character_action_id) {
 function buildAddExtraSlotForm($form_id, $player_name, $character_name, $character_action_id, $player_character_class_id, $extra_slot_spell_type, $extra_slot_max_level, $nf) {
     $form_html  = PHP_EOL . '<form id="' . $form_id . '" name="' . $form_id . '" method="POST" action="' .  CurlHelper::buildUrl('characterActionRouter') . '">' . PHP_EOL;
     $form_html .= buildHiddenTag('playerName', $player_name) . PHP_EOL;
-    $form_html .= buildHiddenTag('characterName', $character_name) . PHP_EOL;
+    $form_html .= buildHiddenTag(CHARACTER_NAME, $character_name) . PHP_EOL;
     $form_html .= buildHiddenTag('playerCharacterClassId', $player_character_class_id) . PHP_EOL;
     $form_html .= buildHiddenTag('spellTypeId', $extra_slot_spell_type) . PHP_EOL;
     $form_html .= buildHiddenTagWithId('characterAction', $character_action_id, ALLOCATE_CHARACTER_ACTION) . PHP_EOL;

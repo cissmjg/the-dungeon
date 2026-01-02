@@ -40,7 +40,7 @@ getPageAction($errors, $input);
 
 $params = [];
 $params['playerName'] = $input['playerName'];
-$params['characterName'] = $input['characterName'];
+$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 $params['characterClassName'] = $input['characterClassName'];
 $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
@@ -57,15 +57,15 @@ $occupied_slots = [];
 $spell_pool_entries_by_level = [];
 
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input['playerName'], $input['characterName']);
+$character_summary->init($pdo, $input['playerName'], $input[CHARACTER_NAME]);
 
-$character_summary_renderer = new CharacterSummaryRenderer($input['characterName']);
+$character_summary_renderer = new CharacterSummaryRenderer($input[CHARACTER_NAME]);
 $character_summary_stats = $character_summary_renderer->render($character_summary);
 
 foreach($spell_pool_entries AS $spell_pool_entry) {
     if (!array_key_exists($spell_pool_entry->spell_level, $available_spells_by_level)) {
         $spell_pool_slot_url = CurlHelper::buildUrl('getUnallocatedSpellsForSpellBook');
-        $spell_pool_slot_params = buildUnallocatedSpellsParams($input['playerName'], $input['characterName'], $input['characterClassName'], $spell_pool_entry->spell_level);
+        $spell_pool_slot_params = buildUnallocatedSpellsParams($input['playerName'], $input[CHARACTER_NAME], $input['characterClassName'], $spell_pool_entry->spell_level);
         $mu_spells = json_decode(CurlHelper::performGetRequest($spell_pool_slot_url, $spell_pool_slot_params));
         $available_spells_by_level[$spell_pool_entry->spell_level] = $mu_spells;
 
@@ -97,7 +97,7 @@ foreach($spell_pool_entries AS $spell_pool_entry) {
 </head>
 <body>
 <?php
-$action_bar = buildActionBar($input['playerName'], $input['characterName'], $input['characterClassName'], $edit_page);
+$action_bar = buildActionBar($input['playerName'], $input[CHARACTER_NAME], $input['characterClassName'], $edit_page);
 echo '<div style="width: 100%;"><span class="character_summary">' . $character_summary_stats . '</span><span class="action_bar">' . $action_bar . '</span></div>';
 if (count($spell_pool_entries) == 0) {
     echo '<h3>No spells available</h3>';
@@ -120,7 +120,7 @@ if (count($spell_pool_entries) == 0) {
             $form_character_action_id = buildCharacterActionId($spell_pool_entry->spell_pool_id);
             $form_id_name = buildFormId($spell_pool_entry->spell_level);
             if ($edit_page) {
-                $form_html = buildFormHtml($spell_pool_entry->spell_level, $available_mu_spells, $next_available_slot_id[$spell_pool_entry->spell_level], $input['playerName'], $input['characterName'], $input['characterClassName'], $submit_icon_id, $spell_pool_form_id);
+                $form_html = buildFormHtml($spell_pool_entry->spell_level, $available_mu_spells, $next_available_slot_id[$spell_pool_entry->spell_level], $input['playerName'], $input[CHARACTER_NAME], $input['characterClassName'], $submit_icon_id, $spell_pool_form_id);
                 echo '<tr><td colspan="4">' . $form_html . '</td></tr>' . PHP_EOL;
             }
             $column_counter = 1;
@@ -177,7 +177,7 @@ if (count($spell_pool_entries) == 0) {
 function buildUnallocatedSpellsParams($player_name, $character_name, $character_class_name, $spell_level) {
     $params = [];
     $params['playerName'] = $player_name;
-    $params['characterName'] = $character_name;
+    $params[CHARACTER_NAME] = $character_name;
     $params['characterClassName'] = $character_class_name;
     $params['spellLevel'] = $spell_level;
     $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
@@ -203,7 +203,7 @@ function buildFormStart($form_id_name, $character_action_id, $spell_pool_id, $pl
     $router_action_url = CurlHelper::buildUrl('characterActionRouter');
     $form_start_tag .= 'action="' . $router_action_url . '">';
     $player_name_tag = buildHiddenTag('playerName', $player_name);
-    $character_name_tag = buildHiddenTag('characterName', $character_name);
+    $character_name_tag = buildHiddenTag(CHARACTER_NAME, $character_name);
     $character_class_name = buildHiddenTag('characterClassName', $character_class_name);
     $router_action_tag = buildHiddenTagWithId('characterAction', $character_action_id, '');
     $spell_pool_id_tag = buildHiddenTagWithId('spellPoolSlotId', $spell_pool_form_id, $spell_pool_id);

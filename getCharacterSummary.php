@@ -25,6 +25,6 @@ if (count($errors) > 0) {
 
 RestHeaderHelper::emitRestHeaders();
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input['playerName'], $input['characterName']);
+$character_summary->init($pdo, $input['playerName'], $input[CHARACTER_NAME]);
 
 echo json_encode($character_summary);

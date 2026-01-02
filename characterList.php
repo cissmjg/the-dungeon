@@ -129,7 +129,7 @@ $account_character_summaries = json_decode($raw_results);
 
 	function buildViewCharacterUrl($player_name, $character_name) {
 		$url = CurlHelper::buildCharacterActionRouterUrl($player_name, 'viewCharacter');
-		$url = CurlHelper::addParameter($url, 'characterName', $character_name);
+		$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
 
 		return $url;
 	}

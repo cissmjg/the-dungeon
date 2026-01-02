@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/helper/CurlHelper.php';
-require_once 'characterAttributes.php';
+require_once 'characterName.php';
 
 class ActionBarHelper {
 

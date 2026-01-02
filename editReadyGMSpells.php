@@ -21,7 +21,7 @@ require_once 'faCastSpellIcon.php';
 require_once 'faSleepIcon.php';
 require_once 'spellSlotTypes.php';
 
-require_once 'characterAttributes.php';
+require_once 'characterName.php';
 require_once 'characterSummary.php';
 require_once 'characterSummaryRenderer.php';
 require_once 'faRunSpellIcon.php';

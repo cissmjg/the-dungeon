@@ -13,7 +13,7 @@ require_once 'playerCharacterWeapon.php';
 require_once 'playerCharacterWeaponId.php';
 require_once 'playerName.php';
 require_once 'characterName.php';
-require_once 'characterAttributes.php';
+require_once 'characterName.php';
 require_once 'weaponProficiencyId.php';
 require_once 'weaponDetail.php';
 
