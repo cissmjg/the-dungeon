@@ -6,8 +6,8 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once 'RestHeaderHelper.php';
-require_once 'CurlHelper.php';
+require_once __DIR__ . '/helper/RestHeaderHelper.php';
+require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once 'characterAttributes.php';
 require_once 'characterClasses.php';

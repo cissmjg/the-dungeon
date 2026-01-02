@@ -4,7 +4,7 @@ $errors = [];
 $input = [];
 
 $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
-require_once 'RestHeaderHelper.php';
+require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once 'playerName.php';
 
 getPlayerName($errors, $input);

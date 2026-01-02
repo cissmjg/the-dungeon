@@ -2,7 +2,7 @@
 $errors = [];
 
 $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
-require_once 'CurlHelper.php';
+require_once __DIR__ . '/helper/CurlHelper.php';
 
 $players = getPlayerList($pdo, $errors);
 

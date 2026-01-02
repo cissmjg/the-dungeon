@@ -5,7 +5,7 @@ $input = [];
 
 $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 
-require_once 'RestHeaderHelper.php';
+require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once 'characterClassName.php';
 
 getCharacterClassName($errors, $input);

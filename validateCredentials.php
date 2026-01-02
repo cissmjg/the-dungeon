@@ -1,7 +1,7 @@
 <?php
 
-require_once 'CurlHelper.php';
-require_once 'RestHeaderHelper.php';
+require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/env.php';
 
 require_once 'playerName.php';

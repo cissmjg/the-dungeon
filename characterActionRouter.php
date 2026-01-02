@@ -6,9 +6,9 @@ $log = [];
 
 require_once __DIR__ . '/env.php';
 $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
-require_once 'CurlHelper.php';
-require_once 'RestHeaderHelper.php';
-require_once 'WebParameterHelper.php';
+require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/helper/RestHeaderHelper.php';
+require_once __DIR__ . '/helper/WebParameterHelper.php';
 require_once 'textInput.php';
 
 require_once 'playerName.php';

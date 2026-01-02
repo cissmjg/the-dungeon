@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-require_once 'RestHeaderHelper.php';
+require_once __DIR__ . '/helper/RestHeaderHelper.php';
 
 function getOptionalStringParameter(&$errors, &$input, $calling_module, $parameter_name, $default_value) {
 	// Get required parameter

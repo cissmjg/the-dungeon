@@ -1,6 +1,6 @@
 <?php
 
-require_once 'CurlHelper.php';
+require_once __DIR__ . '/helper/CurlHelper.php';
 require_once 'characterAttributes.php';
 
 class ActionBarHelper {

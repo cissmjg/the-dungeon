@@ -7,7 +7,7 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once 'RestHeaderHelper.php';
+require_once __DIR__ . '/helper/RestHeaderHelper.php';
 
 $player_name = filter_input(INPUT_GET, 'playerName', FILTER_SANITIZE_STRING);
 if ($player_name == NULL ) {
