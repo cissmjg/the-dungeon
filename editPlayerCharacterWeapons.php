@@ -24,7 +24,7 @@ require_once 'playerWeaponProficiencyId.php';
 require_once 'weaponDescription.php';
 require_once 'weaponLocation.php';
 require_once 'isReady.php';
-require_once 'craftStatus.php';
+require_once __DIR__ . '/webio/craftStatus.php';
 require_once 'hitBonus.php';
 require_once 'hitBonusSpec1.php';
 require_once 'hitBonusSpec2.php';

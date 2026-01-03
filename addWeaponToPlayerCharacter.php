@@ -18,7 +18,7 @@ require_once 'weaponLocation.php';
 require_once 'isProficient.php';
 require_once 'isReady.php';
 require_once 'isPreferred.php';
-require_once 'craftStatus.php';
+require_once __DIR__ . '/webio/craftStatus.php';
 require_once 'strengthBonusAvailable.php';
 require_once 'playerNote1.php';
 require_once 'playerNote2.php';
