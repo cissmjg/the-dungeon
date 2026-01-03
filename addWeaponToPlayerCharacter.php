@@ -241,7 +241,7 @@ function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
 
         $statement->bindParam(MELEE_HIT_BONUS, $null_value, PDO::PARAM_NULL);
 
-        $statement->bindParam('meleeDamageBonus', $null_value, PDO::PARAM_NULL);
+        $statement->bindParam(MELEE_DAMAGE_BONUS, $null_value, PDO::PARAM_NULL);
 
         $statement->bindParam('meleeSpec1HitBonus', $null_value, PDO::PARAM_NULL);
 
@@ -285,10 +285,10 @@ function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
             $statement->bindParam(':meleeHitBonus',  $input[MELEE_HIT_BONUS], PDO::PARAM_INT);
         }
 
-        if ($input['meleeDamageBonus'] == OPTIONAL_INTEGER_PARAMETER) {
+        if ($input[MELEE_DAMAGE_BONUS] == OPTIONAL_INTEGER_PARAMETER) {
             $statement->bindParam(':meleeDamageBonus', $null_value, PDO::PARAM_NULL);
         } else {
-            $statement->bindParam(':meleeDamageBonus',  $input['meleeDamageBonus'], PDO::PARAM_INT);
+            $statement->bindParam(':meleeDamageBonus',  $input[MELEE_DAMAGE_BONUS], PDO::PARAM_INT);
         }
 
         if ($input['meleeSpec1HitBonus'] == OPTIONAL_INTEGER_PARAMETER) {
