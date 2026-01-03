@@ -11,7 +11,7 @@ validateSessionCredentials($pdo);
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once 'playerCharacterWeapon.php';
 require_once 'playerCharacterWeaponId.php';
-require_once 'playerName.php';
+require_once __DIR__ . '/webio/playerName.php';
 require_once 'characterName.php';
 require_once 'characterName.php';
 require_once 'weaponProficiencyId.php';

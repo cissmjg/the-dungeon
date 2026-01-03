@@ -8,7 +8,7 @@ validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
-require_once 'playerName.php';
+require_once __DIR__ . '/webio/playerName.php';
 require_once 'pageAction.php';
 require_once 'requiredParameter.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';

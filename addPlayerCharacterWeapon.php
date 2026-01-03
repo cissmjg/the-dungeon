@@ -23,7 +23,7 @@ require_once 'weaponSubtype.php';
 require_once 'characterClasses.php';
 require_once __DIR__ . '/helper/WebParameterHelper.php';
 
-require_once 'playerName.php';
+require_once __DIR__ . '/webio/playerName.php';
 require_once 'characterName.php';
 require_once 'weaponProficiencyId.php';
 

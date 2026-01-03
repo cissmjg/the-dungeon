@@ -18,7 +18,7 @@ require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once 'craftStatus.php';
 require_once 'faDeleteIcon.php';
 
-require_once 'playerName.php';
+require_once __DIR__ . '/webio/playerName.php';
 require_once 'characterName.php';
 
 // Populate player and character names in $input

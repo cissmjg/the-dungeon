@@ -14,7 +14,7 @@ require_once 'characterClasses.php';
 require_once 'characterSummary.php';
 require_once 'characterSummaryRenderer.php';
 
-require_once 'playerName.php';
+require_once __DIR__ . '/webio/playerName.php';
 require_once 'characterName.php';
 
 $input = [];

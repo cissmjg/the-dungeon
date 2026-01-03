@@ -11,7 +11,7 @@ require_once 'characterName.php';
 require_once __DIR__ . '/helper/WebParameterHelper.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
 
-require_once 'playerName.php';
+require_once __DIR__ . '/webio/playerName.php';
 require_once 'characterName.php';
 require_once 'weaponProficiencyId.php';
 require_once 'weaponDescription.php';

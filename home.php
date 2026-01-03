@@ -5,7 +5,7 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once 'playerName.php';
+require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
 
 $errors = [];
