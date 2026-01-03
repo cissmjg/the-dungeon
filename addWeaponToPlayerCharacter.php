@@ -28,7 +28,7 @@ require_once __DIR__ . '/webio/mastercraftDamageDescription.php';
 require_once __DIR__ . '/webio/meleeWeaponType.php';
 require_once __DIR__ . '/webio/meleeWeaponSubtype.php';
 require_once __DIR__ . '/webio/meleeWeaponSpeed.php';
-require_once 'meleeWeaponDamage.php';
+require_once __DIR__ . '/webio/meleeWeaponDamage.php';
 require_once 'meleeAttacksPerRound.php';
 require_once 'meleeNumberOfHands.php';
 require_once 'meleeAdditionalText.php';
