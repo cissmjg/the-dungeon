@@ -149,7 +149,7 @@ $craft_status_magic_selected = "";
             <input type="hidden" name="weaponProficiencyId" value="<?= $playerCharacterWeapon->getWeaponProficiencyId() ?>">
             <h3><?= $playerCharacterWeapon->getWeaponDescription(); ?></h3>
             <div class="inputRow"><label for="weaponDescription">Weapon Name: </label><input type="text" name="weaponDescription" id="weaponDescription" maxlength="32" value="<?= $playerCharacterWeapon->getWeaponDescription(); ?>"></div>
-            <div class="inputRow"><label for="weaponLocation">Weapon Location: </label><input type="text" name="weaponLocation" id="weaponLocation" maxlength="32" value="<?= $playerCharacterWeapon->getWeaponLocation() ?>"> <select id="weaponLocationHints" onchange="populateWeaponLocation('weaponLocationHints', 'weaponLocation');">
+            <div class="inputRow"><label for="weaponLocation">Weapon Location: </label><input type="text" name="weaponLocation" id="weaponLocation" maxlength="32" value="<?= $playerCharacterWeapon->getWeaponLocation() ?>"> <select id="weaponLocationHints" onchange="populateWeaponLocation('weaponLocationHints', WEAPON_LOCATION);">
                 <option value=""></option>
                 <option value="Lower Left Leg">Lower Left Leg</option>
                 <option value="Upper Left Leg">Upper Left Leg</option>

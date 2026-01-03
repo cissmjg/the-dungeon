@@ -156,13 +156,13 @@ function updateWeaponForPlayerCharacter(\PDO $pdo, $input, &$errors, &$log) {
     $statement->bindParam(':weaponDescription', $input[WEAPON_DESCRIPTION], PDO::PARAM_STR);
     $log[] = 'weaponDescription: ' . $input[WEAPON_DESCRIPTION];
 
-    if ($input['weaponLocation'] == OPTIONAL_STRING_PARAMETER) {
+    if ($input[WEAPON_LOCATION] == OPTIONAL_STRING_PARAMETER) {
         $statement->bindParam(':weaponLocation', $null_value, PDO::PARAM_NULL);
         $log[] = 'weaponLocation: NULL';
     }
     else {
-        $statement->bindParam(':weaponLocation', $input['weaponLocation'], PDO::PARAM_STR);
-        $log[] = 'weaponLocation: ' . $input['weaponLocation'];
+        $statement->bindParam(':weaponLocation', $input[WEAPON_LOCATION], PDO::PARAM_STR);
+        $log[] = 'weaponLocation: ' . $input[WEAPON_LOCATION];
     }
 
     if (strcasecmp($input['isReady'], 'YES') == 0) {

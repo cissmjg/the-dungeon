@@ -161,11 +161,11 @@ function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
 
     $statement->bindParam(':weaponDescription', $input[WEAPON_DESCRIPTION], PDO::PARAM_STR);
 
-    if ($input['weaponLocation'] == OPTIONAL_STRING_PARAMETER) {
+    if ($input[WEAPON_LOCATION] == OPTIONAL_STRING_PARAMETER) {
         $statement->bindParam(':weaponLocation', $null_value, PDO::PARAM_NULL);
     }
     else {
-        $statement->bindParam(':weaponLocation', $input['weaponLocation'], PDO::PARAM_STR);
+        $statement->bindParam(':weaponLocation', $input[WEAPON_LOCATION], PDO::PARAM_STR);
     }
 
     if (strcasecmp($input['isProficient'], 'YES') == 0) {
