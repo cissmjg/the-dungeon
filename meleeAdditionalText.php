@@ -1,7 +1,9 @@
 <?php
 require_once __DIR__ . '/webio/requiredParameter.php';
+require_once __DIR__ . '/webio/optionalParameter.php';
 require_once __DIR__ . '/helper/WebParameterHelper.php';
+const MELEE_ADDITIONAL_TEXT = 'meleeAdditionalText';
 
 function getMeleeAdditionalText(&$errors, &$input) {
-	getOptionalStringParameter($errors, $input, __FILE__, 'meleeAdditionalText', OPTIONAL_STRING_PARAMETER);
+	getOptionalStringParameter($errors, $input, __FILE__, MELEE_ADDITIONAL_TEXT, OPTIONAL_STRING_PARAMETER);
 }

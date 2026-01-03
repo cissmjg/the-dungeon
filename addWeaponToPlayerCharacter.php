@@ -273,10 +273,10 @@ function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
         $statement->bindParam(':meleeAttacksPerRound', $input[MELEE_ATTACKS_PER_ROUND], PDO::PARAM_STR);
 
         $statement->bindParam(':meleeNumberOfHands', $input[MELEE_NUMBER_OF_HANDS], PDO::PARAM_STR);
-        if ($input['meleeAdditionalText'] == OPTIONAL_STRING_PARAMETER) {
+        if ($input[MELEE_ADDITIONAL_TEXT] == OPTIONAL_STRING_PARAMETER) {
             $statement->bindParam(':meleeAdditionalText', $null_value, PDO::PARAM_NULL);
         } else {
-            $statement->bindParam(':meleeAdditionalText', $input['meleeAdditionalText'], PDO::PARAM_STR);
+            $statement->bindParam(':meleeAdditionalText', $input[MELEE_ADDITIONAL_TEXT], PDO::PARAM_STR);
         }
 
         if ($input['meleeHitBonus'] == OPTIONAL_INTEGER_PARAMETER) {
