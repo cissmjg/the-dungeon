@@ -174,7 +174,7 @@ function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
         $statement->bindParam(':isProficient', $false_value, PDO::PARAM_BOOL);
     }
 
-    if (strcasecmp($input['isReady'], 'YES') == 0) {
+    if (strcasecmp($input[IS_READY], 'YES') == 0) {
         $statement->bindParam(':isReady', $true_value, PDO::PARAM_BOOL);
     } else {
         $statement->bindParam(':isReady', $false_value, PDO::PARAM_BOOL);
