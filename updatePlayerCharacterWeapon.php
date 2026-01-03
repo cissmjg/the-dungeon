@@ -27,7 +27,7 @@ require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once 'playerCharacterWeaponId.php';
 require_once 'playerCharacterWeaponSkillId.php';
-require_once 'weaponDescription.php';
+require_once __DIR__ . '/webio/weaponDescription.php';
 require_once 'weaponLocation.php';
 require_once 'isProficient.php';
 require_once 'isReady.php';
