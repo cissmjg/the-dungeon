@@ -31,7 +31,7 @@ require_once __DIR__ . '/webio/meleeAttacksPerRound.php';
 require_once __DIR__ . '/webio/meleeNumberOfHands.php';
 require_once __DIR__ . '/webio/meleeAdditionalText.php';
 require_once __DIR__ . '/webio/meleeHitBonus.php';
-require_once 'meleeDamageBonus.php';
+require_once __DIR__ . '/webio/meleeDamageBonus.php';
 require_once 'meleeSpec1HitBonus.php';
 require_once 'meleeSpec1DamageBonus.php';
 require_once 'meleeSpec1Description.php';
