@@ -568,12 +568,12 @@ function updateWeaponForPlayerCharacter(\PDO $pdo, $input, &$errors, &$log) {
             $log[] = 'missileLongRange: ' . $input['missileLongRange'];
         }
 
-        if ($input['missileAdditionalText'] == OPTIONAL_STRING_PARAMETER) {
+        if ($input[MISSILE_ADDITIONAL_TEXT] == OPTIONAL_STRING_PARAMETER) {
             $statement->bindParam(':missileAdditionalText', $null_value, PDO::PARAM_NULL);
             $log[] = 'missileAdditionalText: NULL';
         } else {
-            $statement->bindParam(':missileAdditionalText', $input['missileAdditionalText'], PDO::PARAM_STR);
-            $log[] = 'missileAdditionalText: ' . $input['missileAdditionalText'];
+            $statement->bindParam(':missileAdditionalText', $input[MISSILE_ADDITIONAL_TEXT], PDO::PARAM_STR);
+            $log[] = 'missileAdditionalText: ' . $input[MISSILE_ADDITIONAL_TEXT];
         }
     }
 
