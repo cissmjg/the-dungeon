@@ -291,8 +291,8 @@ function updateWeaponForPlayerCharacter(\PDO $pdo, $input, &$errors, &$log) {
         $statement->bindParam(':meleeAttacksPerRound', $input[MELEE_ATTACKS_PER_ROUND], PDO::PARAM_STR);
         $log[] = 'meleeWeaponDamage: ' . $input[MELEE_WEAPON_DAMAGE];
 
-        $statement->bindParam(':meleeNumberOfHands', $input['meleeNumberOfHands'], PDO::PARAM_STR);
-        $log[] = 'meleeNumberOfHands: ' . $input['meleeNumberOfHands'];
+        $statement->bindParam(':meleeNumberOfHands', $input[MELEE_NUMBER_OF_HANDS], PDO::PARAM_STR);
+        $log[] = 'meleeNumberOfHands: ' . $input[MELEE_NUMBER_OF_HANDS];
 
         if ($input['meleeAdditionalText'] == OPTIONAL_STRING_PARAMETER) {
             $statement->bindParam(':meleeAdditionalText', $null_value, PDO::PARAM_NULL);
