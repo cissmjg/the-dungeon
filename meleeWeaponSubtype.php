@@ -2,7 +2,8 @@
 require_once __DIR__ . '/webio/requiredParameter.php';
 require_once __DIR__ . '/webio/optionalParameter.php';
 require_once __DIR__ . '/helper/WebParameterHelper.php';
+const MELEE_WEAPON_SUBTYPE = 'meleeWeaponSubtype';
 
 function getMeleeWeaponSubtype(&$errors, &$input) {
-	getOptionalIntegerParameter($errors, $input, __FILE__, 'meleeWeaponSubtype', OPTIONAL_INTEGER_PARAMETER);
+	getOptionalIntegerParameter($errors, $input, __FILE__, MELEE_WEAPON_SUBTYPE, OPTIONAL_INTEGER_PARAMETER);
 }
