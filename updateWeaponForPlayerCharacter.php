@@ -21,7 +21,7 @@ require_once __DIR__ . '/webio/craftStatus.php';
 require_once __DIR__ . '/webio/strengthBonusAvailable.php';
 require_once __DIR__ . '/webio/playerNote1.php';
 require_once __DIR__ . '/webio/playerNote2.php';
-require_once 'playerNote3.php';
+require_once __DIR__ . '/webio/playerNote3.php';
 require_once 'mastercraftHitDescription.php';
 require_once 'mastercraftDamageDescription.php';
 require_once 'meleeWeaponType.php';
