@@ -47,7 +47,7 @@ require_once 'missileWeaponType.php';
 require_once 'missileWeaponSpeed.php';
 require_once 'missileWeaponDamage.php';
 require_once 'missileAttacksPerRound.php';
-require_once 'missileAdditionalText.php';
+require_once __DIR__ . '/webio/missileAdditionalText.php';
 require_once 'missileShortRange.php';
 require_once 'missileMediumRange.php';
 require_once 'missileLongRange.php';
