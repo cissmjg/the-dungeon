@@ -346,7 +346,7 @@ function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
         }
     }
 
-    if ($input['missileWeaponType'] == OPTIONAL_INTEGER_PARAMETER) {
+    if ($input[MISSILE_WEAPON_TYPE] == OPTIONAL_INTEGER_PARAMETER) {
         $statement->bindParam(':missileWeaponType', $zero_value, PDO::PARAM_INT);
 
         $statement->bindParam(':missileWeaponSubtype', $zero_value, PDO::PARAM_INT);
@@ -388,7 +388,7 @@ function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
         $statement->bindParam(':missileLongRange', $null_value, PDO::PARAM_NULL);
     }
     else {
-        $statement->bindParam(':missileWeaponType', $input['missileWeaponType'], PDO::PARAM_INT);
+        $statement->bindParam(':missileWeaponType', $input[MISSILE_WEAPON_TYPE], PDO::PARAM_INT);
         $statement->bindParam(':missileWeaponSubtype', $input['missileWeaponSubtype'], PDO::PARAM_INT);
         $statement->bindParam(':missileWeaponSpeed', $input['missileWeaponSpeed'], PDO::PARAM_STR);
         $statement->bindParam(':missileWeaponDamage', $input['missileWeaponDamage'], PDO::PARAM_STR);

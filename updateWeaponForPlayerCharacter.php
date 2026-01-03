@@ -391,7 +391,7 @@ function updateWeaponForPlayerCharacter(\PDO $pdo, $input, &$errors, &$log) {
         }
     }
 
-    if ($input['missileWeaponType'] == OPTIONAL_INTEGER_PARAMETER) {
+    if ($input[MISSILE_WEAPON_TYPE] == OPTIONAL_INTEGER_PARAMETER) {
         $statement->bindParam(':missileWeaponSpeed', $optional_string_parameter, PDO::PARAM_STR);
         $log[] = 'missileWeaponSpeed: ' . $optional_string_parameter;
 
