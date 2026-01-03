@@ -25,7 +25,7 @@ require_once 'spellPoolSlotId.php';
 require_once 'spellDuration.php';
 require_once 'spellCastingTime.php';
 require_once __DIR__ . '/webio/requiredParameter.php';
-require_once 'optionalParameter.php';
+require_once __DIR__ . '/webio/optionalParameter.php';
 require_once 'cantripSpellSlot.php';
 require_once 'playerCharacterClassId.php';
 require_once 'playerCharacterWeaponId.php';
