@@ -31,7 +31,7 @@ require_once __DIR__ . '/webio/weaponDescription.php';
 require_once __DIR__ . '/webio/weaponLocation.php';
 require_once __DIR__ . '/webio/isProficient.php';
 require_once __DIR__ . '/webio/isReady.php';
-require_once 'isPreferred.php';
+require_once __DIR__ . '/webio/isPreferred.php';
 require_once __DIR__ . '/webio/craftStatus.php';
 require_once 'strengthBonusAvailable.php';
 require_once 'playerNote1.php';
