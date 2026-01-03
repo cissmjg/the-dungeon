@@ -11,7 +11,7 @@ validateSessionCredentials($pdo);
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
-require_once 'weaponProficiencyId.php';
+require_once __DIR__ . '/webio/weaponProficiencyId.php';
 require_once 'weaponDetail.php';
 
 // Filter and sanitize names

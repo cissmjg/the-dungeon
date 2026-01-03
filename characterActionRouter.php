@@ -33,7 +33,7 @@ require_once 'spellSlotLevel.php';
 require_once 'spellTypeId.php';
 require_once 'hoursOfSleep.php';
 
-require_once 'weaponProficiencyId.php';
+require_once __DIR__ . '/webio/weaponProficiencyId.php';
 require_once 'weaponDescription.php';
 require_once 'weaponLocation.php';
 require_once 'isProficient.php';
