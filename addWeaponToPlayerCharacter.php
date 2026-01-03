@@ -389,7 +389,7 @@ function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
     }
     else {
         $statement->bindParam(':missileWeaponType', $input[MISSILE_WEAPON_TYPE], PDO::PARAM_INT);
-        $statement->bindParam(':missileWeaponSubtype', $input['missileWeaponSubtype'], PDO::PARAM_INT);
+        $statement->bindParam(':missileWeaponSubtype', $input[MISSILE_WEAPON_SUBTYPE], PDO::PARAM_INT);
         $statement->bindParam(':missileWeaponSpeed', $input['missileWeaponSpeed'], PDO::PARAM_STR);
         $statement->bindParam(':missileWeaponDamage', $input['missileWeaponDamage'], PDO::PARAM_STR);
         $statement->bindParam(':missileAttacksPerRound', $input['missileAttacksPerRound'], PDO::PARAM_STR);
