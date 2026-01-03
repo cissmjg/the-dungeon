@@ -173,12 +173,12 @@ function updateWeaponForPlayerCharacter(\PDO $pdo, $input, &$errors, &$log) {
         $log[] = 'isReady: ' . $input[IS_READY];
     }
 
-    if (strcasecmp($input['isPreferred'], 'YES') == 0) {
+    if (strcasecmp($input[IS_PREFERRED], 'YES') == 0) {
         $statement->bindParam(':isPreferred', $true_value, PDO::PARAM_BOOL);
-        $log[] = 'isPreferred: ' . $input['isPreferred'];
+        $log[] = 'isPreferred: ' . $input[IS_PREFERRED];
     } else {
         $statement->bindParam(':isPreferred', $false_value, PDO::PARAM_BOOL);
-        $log[] = 'isPreferred: ' . $input['isPreferred'];
+        $log[] = 'isPreferred: ' . $input[IS_PREFERRED];
     }
 
     $statement->bindParam(':craftStatus', $input['craftStatus'], PDO::PARAM_INT);

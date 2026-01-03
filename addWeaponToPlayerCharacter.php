@@ -180,7 +180,7 @@ function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
         $statement->bindParam(':isReady', $false_value, PDO::PARAM_BOOL);
     }
 
-    if (strcasecmp($input['isPreferred'], 'YES') == 0) {
+    if (strcasecmp($input[IS_PREFERRED], 'YES') == 0) {
         $statement->bindParam(':isPreferred', $true_value, PDO::PARAM_BOOL);
     } else {
         $statement->bindParam(':isPreferred', $false_value, PDO::PARAM_BOOL);

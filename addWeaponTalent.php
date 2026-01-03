@@ -20,8 +20,8 @@ $errors = [];
 getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 getRequiredIntegerParameter($errors, $input, __FILE__, WEAPON_PROFICIENCY_ID);
-getRequiredStringParameter($errors, $input, __FILE__, 'isPreferred');
-$is_preferred = $input['isPreferred'] == 'preferred' ? true : false;
+getRequiredStringParameter($errors, $input, __FILE__, IS_PREFERRED);
+$is_preferred = $input[IS_PREFERRED] == 'preferred' ? true : false;
 
 $log[] = "SUCCESS|";
 addWeaponTalent($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input[WEAPON_PROFICIENCY_ID], $is_preferred, $errors);

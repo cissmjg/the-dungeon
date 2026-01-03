@@ -282,7 +282,7 @@ switch($character_action) {
 		getRequiredIntegerParameter($errors, $input, __FILE__, WEAPON_PROFICIENCY_ID);
 
 		// Preferred weapon (Cavalier)
-		getOptionalStringParameter($errors, $input, __FILE__, 'isPreferred', 'not preferred');
+		getOptionalStringParameter($errors, $input, __FILE__, IS_PREFERRED, 'not preferred');
 
 		$url_add_weapon_talent = CurlHelper::buildUrl('addWeaponTalent');
 		$params_add_weapon_talent = buildAddWeaponTalentParams($input);
@@ -1289,7 +1289,7 @@ function buildAddWeaponTalentParams($input) {
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 	$params[WEAPON_PROFICIENCY_ID] = $input[WEAPON_PROFICIENCY_ID];
-	$params['isPreferred'] = $input['isPreferred'];
+	$params[IS_PREFERRED] = $input[IS_PREFERRED];
 	
 	return $params;
 }
