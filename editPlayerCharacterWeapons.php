@@ -41,7 +41,7 @@ require_once 'damageBonusSpec3.php';
 require_once 'attacksPerRound.php';
 require_once __DIR__ . '/webio/strengthBonusAvailable.php';
 require_once __DIR__ . '/webio/playerNote1.php';
-require_once 'playerNote2.php';
+require_once __DIR__ . '/webio/playerNote2.php';
 require_once 'playerNote3.php';
 
 // Populate player and character names in $input
