@@ -194,10 +194,10 @@ function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
         $statement->bindParam(':strengthBonusAvailable', $false_value, PDO::PARAM_BOOL);
     }
 
-    if ($input['playerNote1'] == OPTIONAL_STRING_PARAMETER) {
+    if ($input[PLAYER_NOTE1] == OPTIONAL_STRING_PARAMETER) {
         $statement->bindParam(':playerNote1', $null_value, PDO::PARAM_NULL);
     } else {
-        $statement->bindParam(':playerNote1', $input['playerNote1'], PDO::PARAM_STR);
+        $statement->bindParam(':playerNote1', $input[PLAYER_NOTE1], PDO::PARAM_STR);
     }
 
     if ($input['playerNote2'] == OPTIONAL_STRING_PARAMETER) {
