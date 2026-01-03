@@ -42,7 +42,7 @@ require_once __DIR__ . '/webio/meleeWeaponSpeed.php';
 require_once __DIR__ . '/webio/meleeWeaponDamage.php';
 require_once __DIR__ . '/webio/meleeAttacksPerRound.php';
 require_once __DIR__ . '/webio/meleeNumberOfHands.php';
-require_once 'meleeAdditionalText.php';
+require_once __DIR__ . '/webio/meleeAdditionalText.php';
 require_once 'missileWeaponType.php';
 require_once 'missileWeaponSpeed.php';
 require_once 'missileWeaponDamage.php';
