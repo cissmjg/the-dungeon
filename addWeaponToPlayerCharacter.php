@@ -268,7 +268,7 @@ function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
 
         $statement->bindParam(':meleeWeaponSpeed', $input[MELEE_WEAPON_SPEED], PDO::PARAM_STR);
 
-        $statement->bindParam(':meleeWeaponDamage', $input['meleeWeaponDamage'], PDO::PARAM_STR);
+        $statement->bindParam(':meleeWeaponDamage', $input[MELEE_WEAPON_DAMAGE], PDO::PARAM_STR);
 
         $statement->bindParam(':meleeAttacksPerRound', $input['meleeAttacksPerRound'], PDO::PARAM_STR);
 
