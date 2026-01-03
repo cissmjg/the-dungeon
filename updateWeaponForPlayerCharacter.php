@@ -153,8 +153,8 @@ function updateWeaponForPlayerCharacter(\PDO $pdo, $input, &$errors, &$log) {
     $statement->bindParam(':weaponId', $input['playerCharacterWeaponId'], PDO::PARAM_INT);
     $log[] = 'weaponId: ' . $input['playerCharacterWeaponId'];
 
-    $statement->bindParam(':weaponDescription', $input['weaponDescription'], PDO::PARAM_STR);
-    $log[] = 'weaponDescription: ' . $input['weaponDescription'];
+    $statement->bindParam(':weaponDescription', $input[WEAPON_DESCRIPTION], PDO::PARAM_STR);
+    $log[] = 'weaponDescription: ' . $input[WEAPON_DESCRIPTION];
 
     if ($input['weaponLocation'] == OPTIONAL_STRING_PARAMETER) {
         $statement->bindParam(':weaponLocation', $null_value, PDO::PARAM_NULL);
