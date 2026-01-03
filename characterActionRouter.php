@@ -279,7 +279,7 @@ switch($character_action) {
 		getCharacterName($errors, $input);
 
 		// Weapon Proficiency (Talent) ID
-		getRequiredIntegerParameter($errors, $input, __FILE__, 'weaponProficiencyId');
+		getRequiredIntegerParameter($errors, $input, __FILE__, WEAPON_PROFICIENCY_ID);
 
 		// Preferred weapon (Cavalier)
 		getOptionalStringParameter($errors, $input, __FILE__, 'isPreferred', 'not preferred');
@@ -310,7 +310,7 @@ switch($character_action) {
 		getCharacterName($errors, $input);
 
 		// Weapon Proficiency (Talent) ID
-		getRequiredIntegerParameter($errors, $input, __FILE__, 'weaponProficiencyId');
+		getRequiredIntegerParameter($errors, $input, __FILE__, WEAPON_PROFICIENCY_ID);
 
 		$url_delete_weapon_talent = CurlHelper::buildUrl('deleteWeaponTalent');
 		$params_delete_weapon_talent = buildDeleteWeaponTalentParams($input);
@@ -1288,7 +1288,7 @@ function buildAddWeaponTalentParams($input) {
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
-	$params['weaponProficiencyId'] = $input['weaponProficiencyId'];
+	$params[WEAPON_PROFICIENCY_ID] = $input[WEAPON_PROFICIENCY_ID];
 	$params['isPreferred'] = $input['isPreferred'];
 	
 	return $params;
@@ -1299,7 +1299,7 @@ function buildDeleteWeaponTalentParams($input) {
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
-	$params['weaponProficiencyId'] = $input['weaponProficiencyId'];
+	$params[WEAPON_PROFICIENCY_ID] = $input[WEAPON_PROFICIENCY_ID];
 	
 	return $params;
 }

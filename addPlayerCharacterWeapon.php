@@ -31,7 +31,7 @@ getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 getWeaponProficiencyId($errors, $input);
 
-$weaponDetail = getWeaponDetail($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input['weaponProficiencyId'], $errors);
+$weaponDetail = getWeaponDetail($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input[WEAPON_PROFICIENCY_ID], $errors);
 
 if(!empty($errors)) {
     die($errors);
@@ -119,7 +119,7 @@ $craft_status_magic_selected = "";
         <form name="addPlayerCharacterWeapon" id="addPlayerCharacterWeapon" method="POST" action="<?= CurlHelper::buildUrl('addWeaponToPlayerCharacter'); ?>">
             <input type="hidden" name="playerName" value="<?= $input[PLAYER_NAME] ?>">
             <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
-            <input type="hidden" name="weaponProficiencyId" value="<?= $input['weaponProficiencyId'] ?>">
+            <input type="hidden" name="weaponProficiencyId" value="<?= $input[WEAPON_PROFICIENCY_ID] ?>">
             <input type="hidden" name="playerCharacterWeaponSkillId" value="<?php  $weaponDetail->getPlayerCharacterWeaponSkillId() ?? '0'?>">
             <h3><?= $weaponDetail->getWeaponName(); ?></h3>
             <div class="inputRow"><label for="weaponDescription">Weapon Name: </label><input type="text" name="weaponDescription" id="weaponDescription" maxlength="32" value="<?= $weaponDetail->getWeaponName(); ?>"></div>

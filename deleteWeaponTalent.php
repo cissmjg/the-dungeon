@@ -13,9 +13,9 @@ require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once 'requiredParameter.php';
 
 // Weapon Proficiency (Talent) ID
-getRequiredIntegerParameter($errors, $input, __FILE__, 'weaponProficiencyId');
+getRequiredIntegerParameter($errors, $input, __FILE__, WEAPON_PROFICIENCY_ID);
 
-deleteWeaponTalent($pdo, $input['weaponProficiencyId'], $errors);
+deleteWeaponTalent($pdo, $input[WEAPON_PROFICIENCY_ID], $errors);
 
 RestHeaderHelper::emitRestHeaders();
 if(count($errors) > 0) {
@@ -23,7 +23,7 @@ if(count($errors) > 0) {
 } else {
     $log[] = "SUCCESS|";
     $log[] = "Character Weapon Proficiency Delete|";
-    $log[] = "weaponProficiencyId: " . $input['weaponProficiencyId'];
+    $log[] = "weaponProficiencyId: " . $input[WEAPON_PROFICIENCY_ID];
     echo json_encode($log);
 }
 

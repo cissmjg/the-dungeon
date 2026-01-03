@@ -149,7 +149,7 @@ function buildDeleteWeaponTalentUrl($player_name, $character_name, $player_weapo
 	$url = CurlHelper::addParameter($url, 'characterAction', 'deleteWeaponTalent');
 	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
-	$url = CurlHelper::addParameter($url, 'weaponProficiencyId', $player_weapon_talent_id);
+	$url = CurlHelper::addParameter($url, WEAPON_PROFICIENCY_ID, $player_weapon_talent_id);
 
 	return $url;
 }

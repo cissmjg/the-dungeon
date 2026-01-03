@@ -84,8 +84,8 @@ $weapon_list = getWeaponSummaryForPlayerCharacter($pdo, $input[PLAYER_NAME], $in
                     <label for="weaponNamePattern">Weapon Name</label><br>
                     <input type="hidden" name="playerName" value="<?= $input[PLAYER_NAME] ?>">
                     <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
-                    <input type="text" id="weaponNamePattern" maxlength="32"><button type="button" onclick="populateWeaponList('weaponProficiencyId', 'weaponNamePattern');"><span class="fa-solid fa-magnifying-glass"></span></button><br>
-                    <select name="weaponProficiencyId" id="weaponProficiencyId" onchange="weaponListChanged('selectWeaponButton', 'weaponProficiencyId');" hidden>
+                    <input type="text" id="weaponNamePattern" maxlength="32"><button type="button" onclick="populateWeaponList(WEAPON_PROFICIENCY_ID, 'weaponNamePattern');"><span class="fa-solid fa-magnifying-glass"></span></button><br>
+                    <select name="weaponProficiencyId" id="weaponProficiencyId" onchange="weaponListChanged('selectWeaponButton', WEAPON_PROFICIENCY_ID);" hidden>
                     </select>
                     <br><br>
                     <button id="selectWeaponButton" type="submit" hidden>Weapon Details &gt; &gt;</button>
