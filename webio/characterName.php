@@ -1,5 +1,5 @@
 <?php
-require_once 'requiredParameter.php';
+require_once __DIR__ . '/webio/requiredParameter.php';
 const CHARACTER_NAME = 'characterName';
 
 function getCharacterName(&$errors, &$input) {
