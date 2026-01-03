@@ -62,7 +62,7 @@ require_once __DIR__ . '/webio/meleeSpec2DamageBonus.php';
 require_once __DIR__ . '/webio/meleeSpec2Description.php';
 require_once __DIR__ . '/webio/meleeSpec3HitBonus.php';
 require_once __DIR__ . '/webio/meleeSpec3DamageBonus.php';
-require_once 'meleeSpec3Description.php';
+require_once __DIR__ . '/webio/meleeSpec3Description.php';
 require_once 'missileWeaponType.php';
 require_once 'missileWeaponSpeed.php';
 require_once 'missileWeaponDamage.php';
