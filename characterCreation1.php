@@ -37,7 +37,7 @@ getPageAction($errors, $input);
 
 $page_action = $input['pageAction'];
 
-$data_entered = !empty($_POST['playerName']);
+$data_entered = !empty($_POST[PLAYER_NAME]);
 if ($data_entered) {
 	getCharacterAttributes($errors, $input, __FILE__);
 	adjustCharacterAttributes($errors, $input, __FILE__);
@@ -77,7 +77,7 @@ if ($input['pageAction'] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent
     <div style="border: solid 1px; border-color: blue; border-radius: 10px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; width: auto; display: table;">
     <table style="margin-top: 5px;">
     <form id="characterCreation1" action="characterCreation1.php" method="post">
-	<input type="hidden" id="playerName" name="playerName" value="<?= $input['playerName'] ?>">
+	<input type="hidden" id="playerName" name="playerName" value="<?= $input[PLAYER_NAME] ?>">
 	<tr>
 		<td colspan="4">
 			<div style="background-color: Aquamarine; text-align:center; border-radius: 10px;">Character Creation Stage 1</div>

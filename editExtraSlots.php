@@ -35,20 +35,20 @@ getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 
 $params = [];
-$params['playerName'] = $input['playerName'];
+$params[PLAYER_NAME] = $input[PLAYER_NAME];
 $params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
-$action_bar = ActionBarHelper::buildActionBar($input['playerName'], $input[CHARACTER_NAME]);
+$action_bar = ActionBarHelper::buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input['playerName'], $input[CHARACTER_NAME]);
+$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $character_summary_renderer = new CharacterSummaryRenderer($input[CHARACTER_NAME]);
 $character_summary_stats = $character_summary_renderer->render($character_summary);
 
 $extra_slot_pc_id_by_type = [];
-$extra_slot_max_for_types = getExtraSlotMaxForTypes($pdo, $input['playerName'], $input[CHARACTER_NAME], $character_summary->getCharacterClasses(), $extra_slot_pc_id_by_type, $errors);
+$extra_slot_max_for_types = getExtraSlotMaxForTypes($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $character_summary->getCharacterClasses(), $extra_slot_pc_id_by_type, $errors);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,7 +64,7 @@ $extra_slot_max_for_types = getExtraSlotMaxForTypes($pdo, $input['playerName'], 
 </head>
 <body>
     <form name="xsDeallocate" id="xsDeallocate" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter')?>">
-        <input type="hidden" name="playerName" id="playerName" value="<?= $input['playerName'] ?>">
+        <input type="hidden" name="playerName" id="playerName" value="<?= $input[PLAYER_NAME] ?>">
         <input type="hidden" name="characterName" id="characterName" value="<?= $input[CHARACTER_NAME] ?>">
         <input type="hidden" name="characterAction" id="<?= DEALLOCATE_CHARACTER_ACTION_ID ?>" value="<?= DEALLOCATE_CHARACTER_ACTION?>">
         <input type="hidden" name="spellSlotId" id="spellSlotId" value="">
@@ -82,7 +82,7 @@ $extra_slot_max_for_types = getExtraSlotMaxForTypes($pdo, $input['playerName'], 
             $spell_type_desc = getSpellTypeDesc($extra_slot_type);
             $max_for_spell_type = $extra_slot_max_for_types[$extra_slot_type];
             $player_character_class_id = $extra_slot_pc_id_by_type[$extra_slot_type];
-            $existing_spells_for_extra_slots = getSpellsForExtraSlotsBySpellType($pdo, $input['playerName'], $input[CHARACTER_NAME], $extra_slot_type, $errors);
+            $existing_spells_for_extra_slots = getSpellsForExtraSlotsBySpellType($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $extra_slot_type, $errors);
             echo '<table>' . PHP_EOL;
             $character_classes = (object) $character_summary->getCharacterClasses();
             $character_class_name_id = 0;
@@ -114,7 +114,7 @@ $extra_slot_max_for_types = getExtraSlotMaxForTypes($pdo, $input['playerName'], 
             $form_id = buildFormId($extra_slot_type);
             $character_action_id = buildCharacterActionId($extra_slot_type);
             $add_extra_slot_icon = buildAddExtraSlotIcon($form_id, $character_action_id);
-            $add_extra_slot_form =  buildAddExtraSlotForm($form_id, $input['playerName'], $input[CHARACTER_NAME], $character_action_id, $player_character_class_id, $extra_slot_type, $max_for_spell_type, $nf);
+            $add_extra_slot_form =  buildAddExtraSlotForm($form_id, $input[PLAYER_NAME], $input[CHARACTER_NAME], $character_action_id, $player_character_class_id, $extra_slot_type, $max_for_spell_type, $nf);
             echo '<tr><td>' . $add_extra_slot_icon . '</td><td colspan="'. $colspan .'">' . $add_extra_slot_form . '</td></tr>' . PHP_EOL;
             echo '</table>' . PHP_EOL;
         }
@@ -203,7 +203,7 @@ function buildAddExtraSlotIcon($form_id, $character_action_id) {
 
 function buildAddExtraSlotForm($form_id, $player_name, $character_name, $character_action_id, $player_character_class_id, $extra_slot_spell_type, $extra_slot_max_level, $nf) {
     $form_html  = PHP_EOL . '<form id="' . $form_id . '" name="' . $form_id . '" method="POST" action="' .  CurlHelper::buildUrl('characterActionRouter') . '">' . PHP_EOL;
-    $form_html .= buildHiddenTag('playerName', $player_name) . PHP_EOL;
+    $form_html .= buildHiddenTag(PLAYER_NAME, $player_name) . PHP_EOL;
     $form_html .= buildHiddenTag(CHARACTER_NAME, $character_name) . PHP_EOL;
     $form_html .= buildHiddenTag('playerCharacterClassId', $player_character_class_id) . PHP_EOL;
     $form_html .= buildHiddenTag('spellTypeId', $extra_slot_spell_type) . PHP_EOL;

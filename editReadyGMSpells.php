@@ -36,7 +36,7 @@ getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 
 $params = [];
-$params['playerName'] = $input['playerName'];
+$params[PLAYER_NAME] = $input[PLAYER_NAME];
 $params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
@@ -58,7 +58,7 @@ if (!empty($allRunningSpells)) {
 }
 
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input['playerName'], $input[CHARACTER_NAME]);
+$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $character_summary_renderer = new CharacterSummaryRenderer($input[CHARACTER_NAME]);
 $character_summary_stats = $character_summary_renderer->render($character_summary);
@@ -67,7 +67,7 @@ $prev_spell_level = -1;
 
 $locale = 'en_US';
 $nf = new NumberFormatter($locale, NumberFormatter::ORDINAL);
-$action_bar = buildActionBar($input['playerName'], $input[CHARACTER_NAME]);
+$action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $character_level = getCharacterLevel($character_summary->getCharacterClasses());
 $cantrip_select_html = '<select id="available_cantrip" name="available_cantrip" onchange="showCantrip()" style="font-size: 14pt;">' . PHP_EOL;
@@ -144,7 +144,7 @@ $cantrip_select_html = '<select id="available_cantrip" name="available_cantrip" 
 </head>
 <body>
     <form name="slot-action-form" id="slot-action-form" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter') ?>">
-        <input type="hidden" name="playerName" id="playerName" value="<?= $input['playerName'] ?>">
+        <input type="hidden" name="playerName" id="playerName" value="<?= $input[PLAYER_NAME] ?>">
         <input type="hidden" name="characterName" id="characterName" value="<?= $input[CHARACTER_NAME] ?>">
         <input type="hidden" name="characterAction" id="castGMSpellCharacterAction" value="">
         <input type="hidden" name="spellPoolId" id="spellPoolId" value="">
@@ -154,14 +154,14 @@ $cantrip_select_html = '<select id="available_cantrip" name="available_cantrip" 
         <input type="hidden" name="spellCastingTime" id ="spellCastingTime" value="">
     </form>
     <form name="recover-spell-points" id="recover-spell-points" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter') ?>">
-        <input type="hidden" name="playerName" id="playerName" value="<?= $input['playerName'] ?>">
+        <input type="hidden" name="playerName" id="playerName" value="<?= $input[PLAYER_NAME] ?>">
         <input type="hidden" name="characterName" id="characterName" value="<?= $input[CHARACTER_NAME] ?>">
         <input type="hidden" name="characterAction" id="recoverSpellPointsCharacterAction" value="">
         <input type="hidden" name="characterLevel" id="characterLevel" value="<?= $character_level ?>">
         <input type="hidden" name="hoursOfSleep" id="hoursOfSleep" value="">
     </form>
     <form name="stop-action-form" id="stop-action-form" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter') ?>">
-        <input type="hidden" name="playerName" id="playerName" value="<?= $input['playerName'] ?>">
+        <input type="hidden" name="playerName" id="playerName" value="<?= $input[PLAYER_NAME] ?>">
         <input type="hidden" name="characterName" id="characterName" value="<?= $input[CHARACTER_NAME] ?>">
         <input type="hidden" name="characterAction" id="stopGMSpellCharacterAction" value="">
         <input type="hidden" name="spellSlotId" id="spellSlotId" value="">
@@ -199,7 +199,7 @@ $cantrip_select_html = '<select id="available_cantrip" name="available_cantrip" 
             }
 
             if ($character_summary->getSpellPoints() >= $availableSpell->spell_level) {
-                $slotAction_html = buildCastSlotForm($input['playerName'], $input[CHARACTER_NAME], $availableSpell);
+                $slotAction_html = buildCastSlotForm($input[PLAYER_NAME], $input[CHARACTER_NAME], $availableSpell);
                 $backgroundColor = $rowCounter % 2 == 0 ? "white" : "lightgray";
                 $hidden_row = $availableSpell->spell_level == 0 ? ' hidden' : '';
                 $slot_action_row_id = buildActionSlotRowId($availableSpell);

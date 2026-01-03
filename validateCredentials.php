@@ -43,7 +43,7 @@ function validateSessionTicket(\PDO $pdo, $session_ticket) {
     $cred_validate_errors = [];
     getPlayerName($cred_validate_errors, $cred_validate_input);
 
-    $player_name = $cred_validate_input['playerName'];
+    $player_name = $cred_validate_input[PLAYER_NAME];
     $cred_query = getSessionTicketTimestamp($pdo, $player_name, $session_ticket, $cred_validate_errors);
     if (count($cred_validate_errors) > 0) {
         RestHeaderHelper::emitRestHeaders();

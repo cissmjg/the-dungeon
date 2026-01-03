@@ -105,8 +105,8 @@ switch($character_action) {
 			break;
 			exit;
 		}
-		initiateSession($pdo, $input['playerName'], $errors);
-		$player_permissions = getPlayerPermissions($pdo, $input['playerName'], $errors);
+		initiateSession($pdo, $input[PLAYER_NAME], $errors);
+		$player_permissions = getPlayerPermissions($pdo, $input[PLAYER_NAME], $errors);
 		$redirect_url = '';
 		if(!empty($player_permissions['is_dm']) && $player_permissions['is_dm'] == TRUE) {
 			$redirect_url = buildDmDashboardRedirect($input);
@@ -1000,20 +1000,20 @@ function getPlayerPermissions(\PDO $pdo, $player_name, &$errors) {
 
 function buildCharacterListRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('characterList');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	return 'Location:' . $redirect_url;
 }
 
 function buildDmDashboardRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('dmDashboard');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 
 	return 'Location:' . $redirect_url;
 }
 
 function buildEditSpellBookRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('editSpellBook');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, 'characterClassName', $input['characterClassName']);
 	$redirect_url = CurlHelper::addParameter($redirect_url, 'pageAction',  $input['pageAction']);
@@ -1023,7 +1023,7 @@ function buildEditSpellBookRedirect($input) {
 
 function buildEditReadySpellsRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('editReadySpells');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
 	return 'Location:' . $redirect_url;
@@ -1031,7 +1031,7 @@ function buildEditReadySpellsRedirect($input) {
 
 function buildEditGMSpellsRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('editReadyGMSpells');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
 	return 'Location:' . $redirect_url;
@@ -1039,7 +1039,7 @@ function buildEditGMSpellsRedirect($input) {
 
 function buildEditExtraSlotsRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('editExtraSlots');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
 	return 'Location:' . $redirect_url;
@@ -1047,7 +1047,7 @@ function buildEditExtraSlotsRedirect($input) {
 
 function buildHomeRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('home');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 
 	return 'Location:' . $redirect_url;
 }
@@ -1058,7 +1058,7 @@ function buildCreateCharacterRedirect($input) {
 
 function buildViewCharacterRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('dcs');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
 	return 'Location:' . $redirect_url;
@@ -1075,7 +1075,7 @@ function buildLoginRedirect() {
 
 function buildCRUDCharacterRedirect($input, $crud_action) {
 	$redirect_url = CurlHelper::buildUrl('crudCharacter');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	if (isset($input[CHARACTER_NAME])) {
 		$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 	}
@@ -1086,7 +1086,7 @@ function buildCRUDCharacterRedirect($input, $crud_action) {
 
 function buildEditWeaponTalentsRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('editWeaponTalents');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
 	return 'Location:' . $redirect_url;
@@ -1094,7 +1094,7 @@ function buildEditWeaponTalentsRedirect($input) {
 
 function buildEditSkillsRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('editSkills');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
 	return 'Location:' . $redirect_url;
@@ -1102,7 +1102,7 @@ function buildEditSkillsRedirect($input) {
 
 function buildDeleteWeaponTalentRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('editWeaponTalents');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
 	return 'Location:' . $redirect_url;
@@ -1110,7 +1110,7 @@ function buildDeleteWeaponTalentRedirect($input) {
 
 function buildEditCharacterWeaponsRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('editPlayerCharacterWeapons');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
 	return 'Location:' . $redirect_url;
@@ -1118,7 +1118,7 @@ function buildEditCharacterWeaponsRedirect($input) {
 
 function buildPlayerCharacterWeaponMainRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('playerCharacterWeaponMain');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
 	return 'Location:' . $redirect_url;
@@ -1126,7 +1126,7 @@ function buildPlayerCharacterWeaponMainRedirect($input) {
 
 function buildPlayerCharacterWeaponUpdateRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('updatePlayerCharacterWeapon');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerCharacterWeaponId', $input['playerCharacterWeaponId']);
 
@@ -1135,7 +1135,7 @@ function buildPlayerCharacterWeaponUpdateRedirect($input) {
 
 function buildUpdateSpellPoolParams($input) {
 	$parmas = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params['spellCatalogId'] = $input['spellCatalogId'];
 	$params['spellPoolSlotId'] = $input['spellPoolSlotId'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
@@ -1145,7 +1145,7 @@ function buildUpdateSpellPoolParams($input) {
 
 function buildUpdateReadySlotParams($input) {
 	$parmas = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params['spellCatalogId'] = $input['spellCatalogId'];
 	$params['spellSlotId'] = $input['spellSlotId'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
@@ -1155,7 +1155,7 @@ function buildUpdateReadySlotParams($input) {
 
 function buildAllocateCantripsParams($input) {
 	$parmas = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params['spellSlotId'] = $input['spellSlotId'];
 	$params['spellLevel'] = $input['spellLevel'];
@@ -1167,7 +1167,7 @@ function buildAllocateCantripsParams($input) {
 
 function buildCastSlotParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params['spellSlotId'] = $input['spellSlotId'];
 	$params['castStatus'] = True;
 	$params['spellDuration'] = $input['spellDuration'];
@@ -1179,7 +1179,7 @@ function buildCastSlotParams($input) {
 
 function buildResetSlotParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params['spellSlotId'] = $input['spellSlotId'];
 	$params['castStatus'] = false;
 	$params['spellDuration'] = $input['spellDuration'];
@@ -1191,7 +1191,7 @@ function buildResetSlotParams($input) {
 
 function buildStopCastingSlotParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params['spellSlotId'] = $input['spellSlotId'];
 	$params['spellDuration'] = $input['spellDuration'];
 	$params['spellCastingTime'] = $input['spellCastingTime'];
@@ -1212,7 +1212,7 @@ function buildStopRunningSlotParams($input) {
 
 function buildReallocateCantripsParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params['spellSlotId'] = $input['spellSlotId'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
@@ -1221,7 +1221,7 @@ function buildReallocateCantripsParams($input) {
 
 function buildAllocateExtraSlotParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params['playerCharacterClassId'] = $input['playerCharacterClassId'];
 	$params['slotLevel'] = $input['slotLevel'];
 	$params['spellTypeId'] = $input['spellTypeId'];
@@ -1232,7 +1232,7 @@ function buildAllocateExtraSlotParams($input) {
 
 function buildDeallocateExtraSlotParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params['spellSlotId'] = $input['spellSlotId'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
@@ -1241,7 +1241,7 @@ function buildDeallocateExtraSlotParams($input) {
 
 function buildDeleteCharacterParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
@@ -1250,7 +1250,7 @@ function buildDeleteCharacterParams($input) {
 
 function buildDailyResetParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
@@ -1259,7 +1259,7 @@ function buildDailyResetParams($input) {
 
 function buildPromoteClassParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params['characterClassName'] = $input['characterClassName'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
@@ -1269,14 +1269,14 @@ function buildPromoteClassParams($input) {
 
 function buildGetPasswordParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 
 	return $params;
 }
 
 function buildEditWeaponTalentsParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
@@ -1285,7 +1285,7 @@ function buildEditWeaponTalentsParams($input) {
 
 function buildAddWeaponTalentParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 	$params['weaponProficiencyId'] = $input['weaponProficiencyId'];
@@ -1296,7 +1296,7 @@ function buildAddWeaponTalentParams($input) {
 
 function buildDeleteWeaponTalentParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 	$params['weaponProficiencyId'] = $input['weaponProficiencyId'];
@@ -1306,7 +1306,7 @@ function buildDeleteWeaponTalentParams($input) {
 
 function buildEditSkillsParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 	
@@ -1315,7 +1315,7 @@ function buildEditSkillsParams($input) {
 
 function buildDeleteCharacterSkillsParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params['playerCharacterSkillId'] = $input['playerCharacterSkillId'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 	
@@ -1324,7 +1324,7 @@ function buildDeleteCharacterSkillsParams($input) {
 
 function buildAdjustSpellPointsParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params['spellLevel'] = $input['spellLevel'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
@@ -1334,7 +1334,7 @@ function buildAdjustSpellPointsParams($input) {
 
 function buildRecoverSpellPointsParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params['characterLevel'] = $input['characterLevel'];
 	$params['hoursOfSleep'] = $input['hoursOfSleep'];
@@ -1345,7 +1345,7 @@ function buildRecoverSpellPointsParams($input) {
 
 function buildCastGMSpellParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params['spellCatalogId'] = $input['spellCatalogId'];
 	$params['spellLevel'] = $input['spellLevel'];
@@ -1358,7 +1358,7 @@ function buildCastGMSpellParams($input) {
 
 function buildEditCharacterWeaponsParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
@@ -1367,7 +1367,7 @@ function buildEditCharacterWeaponsParams($input) {
 
 function buildDeleteWeaponParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params['playerCharacterWeaponId'] = $input['playerCharacterWeaponId'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 

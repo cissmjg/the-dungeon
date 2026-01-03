@@ -26,16 +26,16 @@ require_once 'characterWeaponTalent.php';
 getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 
-$weapon_talents= getWeaponTalents($pdo, $input['playerName'], $input[CHARACTER_NAME]);
-$available_weapon_talents = getWeaponTalentsAvailableForPlayerCharacter($pdo, $input['playerName'], $input[CHARACTER_NAME]);
+$weapon_talents= getWeaponTalents($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
+$available_weapon_talents = getWeaponTalentsAvailableForPlayerCharacter($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input['playerName'], $input[CHARACTER_NAME]);
+$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $character_summary_renderer = new CharacterSummaryRenderer($input[CHARACTER_NAME]);
 $character_summary_stats = $character_summary_renderer->render($character_summary);
 
-$action_bar = buildActionBar($input['playerName'], $input[CHARACTER_NAME]);
+$action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $add_weapon_url = CurlHelper::buildUrl('characterActionRouter');
 
@@ -59,7 +59,7 @@ $add_weapon_url = CurlHelper::buildUrl('characterActionRouter');
 	<?php
 
 		foreach($weapon_talents AS $weapon_talent) {
-			$delete_weapon_icon = buildDeleteWeaponTalentIcon($input['playerName'], $input[CHARACTER_NAME], $weapon_talent->getPlayerWeaponId());
+			$delete_weapon_icon = buildDeleteWeaponTalentIcon($input[PLAYER_NAME], $input[CHARACTER_NAME], $weapon_talent->getPlayerWeaponId());
 			$weapon_proficiency_display = '<tr>';
 			$weapon_proficiency_display .= '<td style="text-align: center;">' . $delete_weapon_icon . '</td>';
 			$preferred_text = $weapon_talent->isPreferred() ? ' (preferred)' : '';
@@ -79,7 +79,7 @@ $add_weapon_url = CurlHelper::buildUrl('characterActionRouter');
 <hr/>
 <h3>Available weapons for <?= $input[CHARACTER_NAME] ?></h3>
 <form id="addWeapon" name="addWeapon" method="POST" action="<?= $add_weapon_url ?>">
-	<input type="hidden" id="playerName" name="playerName" value="<?= $input['playerName']?>">
+	<input type="hidden" id="playerName" name="playerName" value="<?= $input[PLAYER_NAME]?>">
 	<input type="hidden" id="characterName" name="characterName" value="<?= $input[CHARACTER_NAME]?>">
 	<input type="hidden" id="characterAction" name="characterAction" value="addWeaponTalent">
 	<?php if(isCharacterCavalier($character_summary)): ?>
@@ -147,7 +147,7 @@ function buildDeleteWeaponTalentIcon($player_name, $character_name, $player_weap
 function buildDeleteWeaponTalentUrl($player_name, $character_name, $player_weapon_talent_id) {
 	$url = CurlHelper::buildUrl('characterActionRouter');
 	$url = CurlHelper::addParameter($url, 'characterAction', 'deleteWeaponTalent');
-	$url = CurlHelper::addParameter($url, 'playerName', $player_name);
+	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
 	$url = CurlHelper::addParameter($url, 'weaponProficiencyId', $player_weapon_talent_id);
 

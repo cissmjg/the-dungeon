@@ -22,14 +22,14 @@ if (count($errors) > 0) {
 	die(json_encode($errors));
 }
 
-$character_classes = getCharacterClasses($pdo, $input['playerName'], $input[CHARACTER_NAME]);
+$character_classes = getCharacterClasses($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
 foreach($character_classes AS $character_class) {
-	resetSlots($pdo, $input['playerName'], $input[CHARACTER_NAME], $character_class['class_name'], $errors);
+	resetSlots($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $character_class['class_name'], $errors);
 }
 
 $log[] = "SUCCESS|";
 $log[] = "Action: Daily Reset";
-$log[] = "Player Name: " . $input['playerName'];
+$log[] = "Player Name: " . $input[PLAYER_NAME];
 $log[] = "Character Name : " . $input[CHARACTER_NAME];
 
 RestHeaderHelper::emitRestHeaders();

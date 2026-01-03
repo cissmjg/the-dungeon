@@ -137,7 +137,7 @@ if (count($errors) > 0) {
     exit;
 }
 
-$url = CurlHelper::buildCharacterActionRouterUrl($input['playerName'], 'playerCharacterWeaponMain');
+$url = CurlHelper::buildCharacterActionRouterUrl($input[PLAYER_NAME], 'playerCharacterWeaponMain');
 $url = CurlHelper::addParameter($url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
 $location_header = 'Location:' . $url;
@@ -154,7 +154,7 @@ function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
 
 	$statement = $pdo->prepare($sql_exec);
 
-    $statement->bindParam(':playerName', $input['playerName'], PDO::PARAM_STR);
+    $statement->bindParam(':playerName', $input[PLAYER_NAME], PDO::PARAM_STR);
 
     $statement->bindParam(':characterName', $input[CHARACTER_NAME], PDO::PARAM_STR);
 

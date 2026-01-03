@@ -22,7 +22,7 @@ getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 getSpellLevel($errors, $input);
 
-$player_name = $input['playerName'];
+$player_name = $input[PLAYER_NAME];
 $character_name = $input[CHARACTER_NAME];
 $spell_level = $input['spellLevel'];
 

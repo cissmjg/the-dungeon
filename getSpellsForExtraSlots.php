@@ -23,7 +23,7 @@ if (count($errors) > 0) {
 	die(json_encode($errors));
 }
 
-$player_name = $input['playerName'];
+$player_name = $input[PLAYER_NAME];
 $character_name = $input[CHARACTER_NAME];
 
 $result = getSpellsForExtraSlots($pdo, $player_name, $character_name, $errors);

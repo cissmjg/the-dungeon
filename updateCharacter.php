@@ -83,7 +83,7 @@ if (count($errors) > 0) {
 }
 
 $url_crudCharacter = CurlHelper::buildUrl('crudCharacter');
-$url_crudCharacter = CurlHelper::addParameter($url_crudCharacter, 'playerName', $input['playerName']);
+$url_crudCharacter = CurlHelper::addParameter($url_crudCharacter, PLAYER_NAME, $input[PLAYER_NAME]);
 $url_crudCharacter = CurlHelper::addParameter($url_crudCharacter, CHARACTER_NAME, $input[CHARACTER_NAME]);
 $url_crudCharacter = CurlHelper::addParameter($url_crudCharacter, 'pageAction', 'update');
 $url_crudCharacter = CurlHelper::addParameter($url_crudCharacter, 'updateTimestamp', mktime(null));
@@ -98,7 +98,7 @@ function updateBaseCharacter(\PDO $pdo, $input, &$errors) {
 	$sql_exec = "CALL updateBaseCharacter(:playerName, :characterName, :characterStrength, :characterSuperStrength, :characterIntelligence, :characterSuperIntelligence, :characterWisdom, :characterSuperWisdom, :characterDexterity, :characterSuperDexterity, :characterConstitution, :characterSuperConstitution, :characterCharisma, :characterComeliness, :raceId, :armorClass, :hitPoints, :genderIn)";
 
 	$statement = $pdo->prepare($sql_exec);
-	$statement->bindParam(':playerName', $input['playerName'], PDO::PARAM_STR);
+	$statement->bindParam(':playerName', $input[PLAYER_NAME], PDO::PARAM_STR);
 	$statement->bindParam(':characterName', $input[CHARACTER_NAME], PDO::PARAM_STR);
 	$statement->bindParam(':characterStrength', $input[CHARACTER_STRENGTH], PDO::PARAM_INT);
 	if (!empty($input[CHARACTER_SUPER_STRENGTH])) {
@@ -148,15 +148,15 @@ function updateBaseCharacter(\PDO $pdo, $input, &$errors) {
 
 function updateCharacterClasses(\PDO $pdo, $input, &$errors) {
 	if (isset($input['characterClass1Name'])) {
-		updateCharacterClass($pdo, $input['playerName'], $input[CHARACTER_NAME], $input['characterClass1Name'], $input['characterClass1XP'], $errors);
+		updateCharacterClass($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input['characterClass1Name'], $input['characterClass1XP'], $errors);
 	}
 	
 	if (isset($input['characterClass2Name'])) {
-		updateCharacterClass($pdo, $input['playerName'], $input[CHARACTER_NAME], $input['characterClass2Name'], $input['characterClass2XP'], $errors);
+		updateCharacterClass($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input['characterClass2Name'], $input['characterClass2XP'], $errors);
 	}
 	
 	if (isset($input['characterClass3Name'])) {
-		updateCharacterClass($pdo, $input['playerName'], $input[CHARACTER_NAME], $input['characterClass3Name'], $input['characterClass3XP'], $errors);
+		updateCharacterClass($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input['characterClass3Name'], $input['characterClass3XP'], $errors);
 	}
 }
 
@@ -182,7 +182,7 @@ function updateOptionalCharacterData(\PDO $pdo, $input, &$errors) {
 	$sql_exec = "CALL updateOptionalCharacterData(:playerName, :characterName, :movementIn, :alignmentIn, :religionIn, :deityIn, :hometownIn, :hit_dieIn, :ageIn, :apparent_ageIn, :unnatural_ageIn, :social_classIn, :heightIn, :weightIn, :hairIn, :eyesIn, :siblingsIn)";
 
 	$statement = $pdo->prepare($sql_exec);
-	$statement->bindParam(':playerName', $input['playerName'], PDO::PARAM_STR);
+	$statement->bindParam(':playerName', $input[PLAYER_NAME], PDO::PARAM_STR);
 	$statement->bindParam(':characterName', $input[CHARACTER_NAME], PDO::PARAM_STR);
 
 	if (!empty($input[CHARACTER_MOVEMENT])) {
@@ -283,7 +283,7 @@ function updateOptionalCharacterData(\PDO $pdo, $input, &$errors) {
 }
 
 function filterAndSantizePlayerName(&$input, &$errors) {
-	filterAndSantizeStringFormField($input, $errors, 'playerName');
+	filterAndSantizeStringFormField($input, $errors, PLAYER_NAME);
 }
 
 function filterAndSantizeCharacterName(&$input, &$errors) {

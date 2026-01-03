@@ -149,7 +149,7 @@ class AvailableCharacterSkills implements JsonSerializable {
     
     function getExistingCharacter($player_name, $character_name) {
         $params = [];
-        $params['playerName'] = $player_name;
+        $params[PLAYER_NAME] = $player_name;
         $params[CHARACTER_NAME] = $character_name;
         $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
         

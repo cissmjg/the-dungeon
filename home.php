@@ -42,13 +42,13 @@ function getAllSpellCastingClasses(\PDO $pdo, $errors) {
     <ol>
     <?php
         $character_list_url = CurlHelper::buildUrl('characterList');
-        $character_list_url = CurlHelper::addParameter($character_list_url, 'playerName', $input['playerName']);
-        echo '<li><div><a href="' . $character_list_url . '">Character List for ' . $input['playerName'] . '</a></div></li>'. PHP_EOL;
+        $character_list_url = CurlHelper::addParameter($character_list_url, PLAYER_NAME, $input[PLAYER_NAME]);
+        echo '<li><div><a href="' . $character_list_url . '">Character List for ' . $input[PLAYER_NAME] . '</a></div></li>'. PHP_EOL;
         $spell_count_url = CurlHelper::buildUrl('characterClassSpellCount');
     ?>
     <li><div>Character spell count by character class and level<br/>
     <form id="spell-count" name="spell-count" action="<?php echo $spell_count_url ?>" method="post">
-    <input type="hidden" id="playerName" name="playerName" value="<?php echo $input['playerName'] ?>">
+    <input type="hidden" id="playerName" name="playerName" value="<?php echo $input[PLAYER_NAME] ?>">
     <select id="characterClassName" name="characterClassName">
     <?php
         foreach($spell_casting_classes AS $spell_casting_class) {

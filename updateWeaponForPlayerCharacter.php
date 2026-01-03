@@ -134,7 +134,7 @@ if (count($errors) > 0) {
     exit;
 }
 
-$url = CurlHelper::buildCharacterActionRouterUrl($input['playerName'], 'playerCharacterWeaponMain');
+$url = CurlHelper::buildCharacterActionRouterUrl($input[PLAYER_NAME], 'playerCharacterWeaponMain');
 $url = CurlHelper::addParameter($url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
 $location_header = 'Location:' . $url;

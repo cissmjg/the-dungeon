@@ -25,7 +25,7 @@ getRequiredStringParameter($errors, $input, __FILE__, 'isPreferred');
 $is_preferred = $input['isPreferred'] == 'preferred' ? true : false;
 
 $log[] = "SUCCESS|";
-addWeaponTalent($pdo, $input['playerName'], $input[CHARACTER_NAME], $input['weaponProficiencyId'], $is_preferred, $errors);
+addWeaponTalent($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input['weaponProficiencyId'], $is_preferred, $errors);
 
 RestHeaderHelper::emitRestHeaders();
 if (count($errors) > 0) {

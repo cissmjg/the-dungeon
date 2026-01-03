@@ -56,7 +56,7 @@ if ($input['weaponCatalogId'] != OPTIONAL_INTEGER_PARAMETER) {
 } 
 
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input['playerName'], $input[CHARACTER_NAME]);
+$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 ?>
 <!DOCTYPE html>
@@ -100,7 +100,7 @@ $character_summary->init($pdo, $input['playerName'], $input[CHARACTER_NAME]);
         <div class="characterSheetFeatureContent">
             <form name="selectWeapon" id="selectWeapon" method="POST" action="<?= STARTING_URL . basename($_SERVER['PHP_SELF']) ?>">
                 <label for="weaponNamePattern">Weapon Name</label><br>
-                <input type="hidden" name="playerName" value="<?= $input['playerName'] ?>">
+                <input type="hidden" name="playerName" value="<?= $input[PLAYER_NAME] ?>">
                 <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
                 <input type="text" id="weaponNamePattern" maxlength="32"><button type="button" onclick="populateWeaponList('weaponCatalogId', 'weaponNamePattern');">Go</button><br>
                 <select name="weaponCatalogId" id="weaponCatalogId" onchange="getWeaponDetail('selectWeapon', 'weaponCatalogId');" hidden>
@@ -110,7 +110,7 @@ $character_summary->init($pdo, $input['playerName'], $input[CHARACTER_NAME]);
     </div>
     <div>
         <form name="addPlayerCharacterWeapon" id="addPlayerCharacterWeapon" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter'); ?>">
-            <input type="hidden" name="playerName" value="<?= $input['playerName'] ?>">
+            <input type="hidden" name="playerName" value="<?= $input[PLAYER_NAME] ?>">
             <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
             <input type="hidden" name="weaponCatalogId" value="<?= $input['weaponCatalogId'] ?>">
             <input type="hidden" name="playerWeaponProficiencyId" value="0">

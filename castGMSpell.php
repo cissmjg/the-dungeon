@@ -38,7 +38,7 @@ getSpellDuration($errors, $input);
 // Get the Spell Casting time of the spell being cast
 getSpellCastingTime($errors, $input);
 
-$player_name = $input['playerName'];
+$player_name = $input[PLAYER_NAME];
 $character_name = $input[CHARACTER_NAME];
 $spell_catalog_id = $input['spellCatalogId'];
 $spell_level = $input['spellLevel'];

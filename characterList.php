@@ -14,10 +14,10 @@ const PORTRAIT_DIR = "portraits/";
 const UNKNOWN_PORTRAIT = "Unknown.jpg";
 
 getPlayerName($errors, $input);
-$player_name = $input['playerName'];
+$player_name = $input[PLAYER_NAME];
 
 $params = [];
-$params['playerName'] = $player_name;
+$params[PLAYER_NAME] = $player_name;
 
 $url = CurlHelper::buildUrl('getAccountSummary');
 $raw_results = CurlHelper::performGetRequest($url, $params);
@@ -85,7 +85,7 @@ $account_character_summaries = json_decode($raw_results);
 
 	function buildNewCharacterPortraitAnchor($img_tag, $player_name) {
 		$create_character_url = CurlHelper::buildUrl('characterCreation1');
-		$create_character_url = CurlHelper:: addParameter($create_character_url, 'playerName', $player_name);
+		$create_character_url = CurlHelper:: addParameter($create_character_url, PLAYER_NAME, $player_name);
 		$create_character_url = CurlHelper:: addParameter($create_character_url, 'pageAction', 'validate');
 	
 		$output_html = '<a href="' . $create_character_url . '" target="_blank">';

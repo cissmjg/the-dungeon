@@ -38,7 +38,7 @@ function getUnallocatedSpellsForSpellBook(\PDO $pdo, $input, &$errors) {
 	$sql_exec = "CALL getUnallocatedSpellsForSpellBook(:playerName, :characterName, :characterClassName, :spellLevel)";
 
 	$statement = $pdo->prepare($sql_exec);
-	$statement->bindParam(':playerName', $input['playerName'], PDO::PARAM_STR);
+	$statement->bindParam(':playerName', $input[PLAYER_NAME], PDO::PARAM_STR);
 	$statement->bindParam(':characterName', $input[CHARACTER_NAME], PDO::PARAM_STR);
 	$statement->bindParam(':characterClassName', $input['characterClassName'], PDO::PARAM_STR);
 	$statement->bindParam(':spellLevel', $input['spellLevel'], PDO::PARAM_INT);

@@ -26,7 +26,7 @@ getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 
 $params = [];
-$params['playerName'] = $input['playerName'];
+$params[PLAYER_NAME] = $input[PLAYER_NAME];
 $params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
@@ -36,7 +36,7 @@ $raw_results = CurlHelper::performGetRequest($url, $params);
 $character_skills = json_decode($raw_results);
 
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input['playerName'], $input[CHARACTER_NAME]);
+$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $character_summary_renderer = new CharacterSummaryRenderer($input[CHARACTER_NAME]);
 $character_summary_stats = $character_summary_renderer->render($character_summary);
@@ -57,7 +57,7 @@ $skill_catalog = getAllSkills($pdo, $errors);
 </head>
 <body>
 <?php
-    $action_bar = buildActionBar($input['playerName'], $input[CHARACTER_NAME]);
+    $action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
     echo '<div style="width: 100%;"><span class="character_summary">' . $character_summary_stats . '</span><span class="action_bar">' . $action_bar . '</span></div>' . PHP_EOL;
 ?>
     <table>
@@ -65,7 +65,7 @@ $skill_catalog = getAllSkills($pdo, $errors);
 <?php
     $row_count = 0;
     foreach($character_skills AS $character_skill) {
-        $delete_skill_icon = buildDeletDeleteIcon($input['playerName'], $input[CHARACTER_NAME], $character_skill->player_character_skill_id);
+        $delete_skill_icon = buildDeletDeleteIcon($input[PLAYER_NAME], $input[CHARACTER_NAME], $character_skill->player_character_skill_id);
         if ($row_count % 2 == 0) {
             if ($row_count > 0) {
                 echo '</tr>' . PHP_EOL;
@@ -115,7 +115,7 @@ function buildDeletDeleteIcon($player_name, $character_name, $character_skill_id
 function buildDeleteSkillUrl($player_name, $character_name, $character_skill_id) {
     $url = CurlHelper::buildUrl('characterActionRouter');
 	$url = CurlHelper::addParameter($url, 'characterAction', 'deleteCharacterSkill');
-	$url = CurlHelper::addParameter($url, 'playerName', $player_name);
+	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
 	$url = CurlHelper::addParameter($url, 'playerCharacterSkillId', $character_skill_id);
 

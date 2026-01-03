@@ -23,9 +23,9 @@ getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input['playerName'], $input[CHARACTER_NAME]);
+$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
-$all_spells_in_spellbook = getSpellBookForGreaterMage($pdo, $input['playerName'], $input[CHARACTER_NAME], $errors);
+$all_spells_in_spellbook = getSpellBookForGreaterMage($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
 
 $character_classes = $character_summary->getCharacterClasses();
 $character_level = $character_classes[0]['character_level'];

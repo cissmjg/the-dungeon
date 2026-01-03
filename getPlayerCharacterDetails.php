@@ -23,7 +23,7 @@ if (count($errors) > 0) {
 }
 
 $character_details = new CharacterDetails();
-$character_details->init($pdo, $input['playerName'], $input[CHARACTER_NAME], $errors);
+$character_details->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
 
 RestHeaderHelper::emitRestHeaders();
 if (count($errors) > 0) {

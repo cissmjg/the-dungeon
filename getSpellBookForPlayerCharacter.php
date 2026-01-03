@@ -39,7 +39,7 @@ function getSpellBookForPlayerCharacter(\PDO $pdo, $input, &$errors) {
 	$sql_exec = "CALL getSpellBookForPlayerCharacter(:playerName, :characterName, :characterClassName)";
 
 	$statement = $pdo->prepare($sql_exec);
-	$statement->bindParam(':playerName', $input['playerName'], PDO::PARAM_STR);
+	$statement->bindParam(':playerName', $input[PLAYER_NAME], PDO::PARAM_STR);
 	$statement->bindParam(':characterName', $input[CHARACTER_NAME], PDO::PARAM_STR);
 	$statement->bindParam(':characterClassName', $input['characterClassName'], PDO::PARAM_STR);
 	try {

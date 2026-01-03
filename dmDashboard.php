@@ -24,7 +24,7 @@ const REFRESHSPELLLIST = "RefreshSpellList";
 // Populate player and character names in $input
 getPlayerName($errors, $input);
 
-$player_permissions = getPlayerPermissions($pdo, $input['playerName'], $errors);
+$player_permissions = getPlayerPermissions($pdo, $input[PLAYER_NAME], $errors);
 
 ?>
 <!DOCTYPE html>
@@ -70,7 +70,7 @@ $player_permissions = getPlayerPermissions($pdo, $input['playerName'], $errors);
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <?php
             echo buildHiddenTag(CURRENTCOMBATROUND, $current_combat_round) . PHP_EOL;
-            echo buildHiddenTag('playerName', $input['playerName']) . PHP_EOL;
+            echo buildHiddenTag(PLAYER_NAME, $input[PLAYER_NAME]) . PHP_EOL;
         ?>
 
         <table>

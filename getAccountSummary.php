@@ -14,7 +14,7 @@ require_once __DIR__ . '/classes/accountCharacterSummary.php';
 const PORTRAIT_DIR = "portraits/";
 const UNKNOWN_PORTRAIT = "Unknown.jpg";
 
-$player_name = filter_input(INPUT_GET, 'playerName', FILTER_SANITIZE_STRING);
+$player_name = filter_input(INPUT_GET, PLAYER_NAME, FILTER_SANITIZE_STRING);
 if ($player_name == NULL ) {
 	$errors[] = "Input Error|";
 	$errors[] = __FILE__ . "|";

@@ -24,7 +24,7 @@ getCharacterName($errors, $input);
 getCharacterLevel($errors, $input);
 getHoursOfSleep($errors, $input);
 
-$player_name = $input['playerName'];
+$player_name = $input[PLAYER_NAME];
 $character_name = $input[CHARACTER_NAME];
 $character_level = $input['characterLevel'];
 $hours_of_sleep = $input['hoursOfSleep'];

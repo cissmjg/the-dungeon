@@ -30,13 +30,13 @@ if (count($errors) > 0) {
 	die(json_encode($errors));
 }
 
-$character_ids = getCharacterIds($pdo, $input['playerName'], $input[CHARACTER_NAME], $input['characterClassName']);
+$character_ids = getCharacterIds($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input['characterClassName']);
 
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input['playerName'], $input[CHARACTER_NAME]);
+$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $log[] = "SUCCESS|";
-$log[] = "Input: " . $input['playerName'] . ", " . $input[CHARACTER_NAME] . ", " . $input['characterClassName'];
+$log[] = "Input: " . $input[PLAYER_NAME] . ", " . $input[CHARACTER_NAME] . ", " . $input['characterClassName'];
 $input['spell_type_id_1'] = $character_ids['spell_type_id_1'];
 $input['spell_type_id_2'] = $character_ids['spell_type_id_2'];
 
@@ -134,7 +134,7 @@ function promoteCharacterClass(\PDO $pdo, $input, &$errors) {
 	$sql_exec = "CALL promoteCharacterClass(:playerName, :characterName, :characterClassName)";
 
 	$statement = $pdo->prepare($sql_exec);
-	$statement->bindParam(':playerName', $input['playerName'], PDO::PARAM_STR);
+	$statement->bindParam(':playerName', $input[PLAYER_NAME], PDO::PARAM_STR);
 	$statement->bindParam(':characterName', $input[CHARACTER_NAME], PDO::PARAM_STR);
 	$statement->bindParam(':characterClassName', $input['characterClassName'], PDO::PARAM_STR);
 	try {
@@ -150,7 +150,7 @@ function getNewSpellLevelForCharacter(\PDO $pdo, $input, &$errors) {
 	$sql_exec = "CALL getNewSpellLevelForCharacter(:playerName, :characterName, :characterClassName)";
 
 	$statement = $pdo->prepare($sql_exec);
-	$statement->bindParam(':playerName', $input['playerName'], PDO::PARAM_STR);
+	$statement->bindParam(':playerName', $input[PLAYER_NAME], PDO::PARAM_STR);
 	$statement->bindParam(':characterName', $input[CHARACTER_NAME], PDO::PARAM_STR);
 	$statement->bindParam(':characterClassName', $input['characterClassName'], PDO::PARAM_STR);
 	try {
@@ -247,7 +247,7 @@ function getNumberMUSpellSlots($intelligence, $super_intelligence) {
 }
 
 function getCharacterSpellInfo(\PDO $pdo, $input, &$error, &$log) {
-	$character_spell_info = new CharacterSpellInfo($input['playerName'], $input[CHARACTER_NAME], $input['characterClassName'], $input['spell_type_id_1'], $input['spell_type_id_2']);
+	$character_spell_info = new CharacterSpellInfo($input[PLAYER_NAME], $input[CHARACTER_NAME], $input['characterClassName'], $input['spell_type_id_1'], $input['spell_type_id_2']);
 	$character_spell_info->init($pdo, $error, $log);
 
 	return $character_spell_info;

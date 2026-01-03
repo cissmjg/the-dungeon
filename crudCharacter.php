@@ -88,12 +88,12 @@ $action_bar = '';
 $character_details = null;
 
 getCharacterName($errors, $input);
-$character_details = getExistingCharacter($input['playerName'], $input[CHARACTER_NAME]);
+$character_details = getExistingCharacter($input[PLAYER_NAME], $input[CHARACTER_NAME]);
 foreach ($character_details AS $attribute_name => $attribute_value) {
 	$input[$attribute_name] = $attribute_value;
 }
 
-$action_bar = buildActionBar($page_action, $input['playerName'], $input[CHARACTER_NAME]);
+$action_bar = buildActionBar($page_action, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $input_class='valid';
 $read_only = '';
@@ -152,7 +152,7 @@ if ($tertiary_class_available) {
 <span id="statusBar" style="font-weight: bold;"><?= $last_update_message ?></span>
 <table>
 <form action="<?php echo $character_action ?>" method="POST">
-	<input type="hidden" id = "playerName" name="playerName" value="<?= $input['playerName'] ?>">
+	<input type="hidden" id = "playerName" name="playerName" value="<?= $input[PLAYER_NAME] ?>">
 	<tr>
 		<td class="character_detail_header" colspan="3"><?php echo $input[CHARACTER_NAME] ?? ''; ?>
 			<input type="hidden" id="<?= CHARACTER_NAME ?>" name="<?= CHARACTER_NAME ?>" value="<?php echo $input[CHARACTER_NAME] ?? ''; ?>">
@@ -749,13 +749,13 @@ if ($tertiary_class_available) {
 
 	<?php
 			echo '<tr style="background-color: lightgray;"><td>Class</td><td style="text-align: center;">Level</td><td>XP</td></tr>' . PHP_EOL;
-			echo formatClassesForEdit($input[CHARACTER_CLASSES]->characterClass1, CHARACTER_PRIMARY_CLASS, $read_only, $input['playerName'], $input[CHARACTER_NAME], $input_class, $page_action, $classes_that_know_spells);
+			echo formatClassesForEdit($input[CHARACTER_CLASSES]->characterClass1, CHARACTER_PRIMARY_CLASS, $read_only, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input_class, $page_action, $classes_that_know_spells);
 			if (!empty($input[CHARACTER_CLASSES]->characterClass2)) {
-				echo formatClassesForEdit($input[CHARACTER_CLASSES]->characterClass2, CHARACTER_SECONDARY_CLASS, $read_only, $input['playerName'], $input[CHARACTER_NAME], $input_class, $page_action, $classes_that_know_spells);
+				echo formatClassesForEdit($input[CHARACTER_CLASSES]->characterClass2, CHARACTER_SECONDARY_CLASS, $read_only, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input_class, $page_action, $classes_that_know_spells);
 			}
 
 			if (!empty($input[CHARACTER_CLASSES]->characterClass3)) {
-				echo formatClassesForEdit($input[CHARACTER_CLASSES]->characterClass3, CHARACTER_TERTIARY_CLASS, $read_only, $input['playerName'], $input[CHARACTER_NAME], $input_class, $page_action, $classes_that_know_spells);
+				echo formatClassesForEdit($input[CHARACTER_CLASSES]->characterClass3, CHARACTER_TERTIARY_CLASS, $read_only, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input_class, $page_action, $classes_that_know_spells);
 			}
 
 			if ($page_action == PAGE_UPDATE) {
@@ -956,7 +956,7 @@ function doesSuperConstitutionApply($input, $character_super_stats) {
 function buildEditReadySpellsUrl($player_name, $character_name) {
 	$url = CurlHelper::buildUrl('characterActionRouter');
 	$url = CurlHelper::addParameter($url, 'characterAction', 'editReadySpells');
-	$url = CurlHelper::addParameter($url, 'playerName', $player_name);
+	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
 
 	return $url;
@@ -965,7 +965,7 @@ function buildEditReadySpellsUrl($player_name, $character_name) {
 function buildEditGMSpellsUrl($player_name, $character_name) {
 	$url = CurlHelper::buildUrl('characterActionRouter');
 	$url = CurlHelper::addParameter($url, 'characterAction', 'editGMSpells');
-	$url = CurlHelper::addParameter($url, 'playerName', $player_name);
+	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
 
 	return $url;
@@ -974,7 +974,7 @@ function buildEditGMSpellsUrl($player_name, $character_name) {
 function buildEditExtraSlotUrl($player_name, $character_name) {
 	$url = CurlHelper::buildUrl('characterActionRouter');
 	$url = CurlHelper::addParameter($url, 'characterAction', 'editExtraSlots');
-	$url = CurlHelper::addParameter($url, 'playerName', $player_name);
+	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
 
 	return $url;
@@ -995,7 +995,7 @@ function buildSpellBookIcon($character_class, $classes_that_know_spells, $player
 function buildPromoteUrl($player_name, $character_name, $character_class_name) {
 	$url = CurlHelper::buildUrl('characterActionRouter');
 	$url = CurlHelper::addParameter($url, 'characterAction', 'promote');
-	$url = CurlHelper::addParameter($url, 'playerName', $player_name);
+	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
 	$url = CurlHelper::addParameter($url, 'characterClassName', $character_class_name);
 	
@@ -1030,7 +1030,7 @@ function getRaceList(\PDO $pdo, &$errors) {
 
 function getExistingCharacter($player_name, $character_name) {
     $params = [];
-    $params['playerName'] = $player_name;
+    $params[PLAYER_NAME] = $player_name;
     $params[CHARACTER_NAME] = $character_name;
     $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
     

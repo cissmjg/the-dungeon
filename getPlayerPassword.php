@@ -9,7 +9,7 @@ require_once 'playerName.php';
 
 getPlayerName($errors, $input);
 
-$result = getPlayerPassword($pdo, $input['playerName'], $errors);
+$result = getPlayerPassword($pdo, $input[PLAYER_NAME], $errors);
 
 RestHeaderHelper::emitRestHeaders();
 echo json_encode($result);

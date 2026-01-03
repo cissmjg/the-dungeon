@@ -24,7 +24,7 @@ if (count($errors) > 0) {
 	die(json_encode($errors));
 }
 
-$existing_character_skills = getExistingCharacterSkills($pdo, $input['playerName'], $input[CHARACTER_NAME]);
+$existing_character_skills = getExistingCharacterSkills($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 if(count($errors) > 0) {
 	RestHeaderHelper::emitRestHeaders();
@@ -32,7 +32,7 @@ if(count($errors) > 0) {
 }
 
 $available_skills = new AvailableCharacterSkills();
-$available_skills->init($pdo, $input['playerName'], $input[CHARACTER_NAME], $existing_character_skills, $errors, $log);
+$available_skills->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $existing_character_skills, $errors, $log);
 
 RestHeaderHelper::emitRestHeaders();
 if (count($errors) > 0) {

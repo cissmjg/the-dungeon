@@ -149,7 +149,7 @@ $errors_exist = errorsExist($errors);
     <div style="border: solid 1px; border-color: blue; border-radius: 10px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; width: auto; display: table;">
     <table style="margin-top: 5px;">
     <form id="characterCreation2" action="characterCreation2.php" method="post">
-	<input type="hidden" id="playerName" name="playerName" value="<?= $input['playerName'] ?>">
+	<input type="hidden" id="playerName" name="playerName" value="<?= $input[PLAYER_NAME] ?>">
 	<tr>
 		<td colspan="4">
 			<div style="background-color: Aquamarine; text-align:center; border-radius: 10px;">Character Creation Stage 2</div>

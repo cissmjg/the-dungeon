@@ -27,18 +27,18 @@ getCharacterName($errors, $input);
 $page_title = $input[CHARACTER_NAME];
 $character_details = null;
 
-$character_details = getExistingCharacter($input['playerName'], $input[CHARACTER_NAME]);
+$character_details = getExistingCharacter($input[PLAYER_NAME], $input[CHARACTER_NAME]);
 foreach ($character_details AS $attribute_name => $attribute_value) {
 	$input[$attribute_name] = $attribute_value;
 }
 
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input['playerName'], $input[CHARACTER_NAME]);
+$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $character_summary_renderer = new CharacterSummaryRenderer($input[CHARACTER_NAME]);
 $character_summary_stats = $character_summary_renderer->render($character_summary);
 
-$action_bar = buildActionBar($input['playerName'], $input[CHARACTER_NAME], $character_summary);
+$action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME], $character_summary);
 
 $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 
@@ -276,7 +276,7 @@ $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 
 function getExistingCharacter($player_name, $character_name) {
     $params = [];
-    $params['playerName'] = $player_name;
+    $params[PLAYER_NAME] = $player_name;
     $params[CHARACTER_NAME] = $character_name;
     $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
     

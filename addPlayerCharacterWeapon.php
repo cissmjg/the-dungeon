@@ -32,19 +32,19 @@ getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 getWeaponProficiencyId($errors, $input);
 
-$weaponDetail = getWeaponDetail($pdo, $input['playerName'], $input[CHARACTER_NAME], $input['weaponProficiencyId'], $errors);
+$weaponDetail = getWeaponDetail($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input['weaponProficiencyId'], $errors);
 
 if(!empty($errors)) {
     die($errors);
 }
 
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input['playerName'], $input[CHARACTER_NAME]);
+$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $character_summary_renderer = new CharacterSummaryRenderer($input[CHARACTER_NAME]);
 $character_summary_stats = $character_summary_renderer->render($character_summary);
 
-$action_bar = buildActionBar($input['playerName'], $input[CHARACTER_NAME]);
+$action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $mastercraft_hidden = " hidden";
 $magic_hidden = " hidden";
@@ -118,7 +118,7 @@ $craft_status_magic_selected = "";
     <?php if ($weaponDetail != null): ?>
     <div id="addPlayerCharacterWeaponContainer">
         <form name="addPlayerCharacterWeapon" id="addPlayerCharacterWeapon" method="POST" action="<?= CurlHelper::buildUrl('addWeaponToPlayerCharacter'); ?>">
-            <input type="hidden" name="playerName" value="<?= $input['playerName'] ?>">
+            <input type="hidden" name="playerName" value="<?= $input[PLAYER_NAME] ?>">
             <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
             <input type="hidden" name="weaponProficiencyId" value="<?= $input['weaponProficiencyId'] ?>">
             <input type="hidden" name="playerCharacterWeaponSkillId" value="<?php  $weaponDetail->getPlayerCharacterWeaponSkillId() ?? '0'?>">

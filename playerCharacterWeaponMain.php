@@ -26,14 +26,14 @@ getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input['playerName'], $input[CHARACTER_NAME]);
+$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $character_summary_renderer = new CharacterSummaryRenderer($input[CHARACTER_NAME]);
 $character_summary_stats = $character_summary_renderer->render($character_summary);
 
-$action_bar = ActionBarHelper::buildActionBar($input['playerName'], $input[CHARACTER_NAME]);
+$action_bar = ActionBarHelper::buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
-$weapon_list = getWeaponSummaryForPlayerCharacter($pdo, $input['playerName'], $input[CHARACTER_NAME], $errors);
+$weapon_list = getWeaponSummaryForPlayerCharacter($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +69,7 @@ $weapon_list = getWeaponSummaryForPlayerCharacter($pdo, $input['playerName'], $i
 <body>
     <form name="deleteWeapon" id="deleteWeapon" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter') ?>">
         <input type="hidden" name="characterAction" value="deletePlayerCharacterWeapon">
-        <input type="hidden" name="playerName" value="<?= $input['playerName'] ?>">
+        <input type="hidden" name="playerName" value="<?= $input[PLAYER_NAME] ?>">
         <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
         <input type="hidden" name="playerCharacterWeaponId" id="playerCharacterWeaponId" value="">
     </form>
@@ -83,7 +83,7 @@ $weapon_list = getWeaponSummaryForPlayerCharacter($pdo, $input['playerName'], $i
             <div style="text-align: center;">
                 <form name="selectWeapon" id="selectWeapon" method="POST" action="<?= CurlHelper::buildUrl('addPlayerCharacterWeapon') ?>">
                     <label for="weaponNamePattern">Weapon Name</label><br>
-                    <input type="hidden" name="playerName" value="<?= $input['playerName'] ?>">
+                    <input type="hidden" name="playerName" value="<?= $input[PLAYER_NAME] ?>">
                     <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
                     <input type="text" id="weaponNamePattern" maxlength="32"><button type="button" onclick="populateWeaponList('weaponProficiencyId', 'weaponNamePattern');"><span class="fa-solid fa-magnifying-glass"></span></button><br>
                     <select name="weaponProficiencyId" id="weaponProficiencyId" onchange="weaponListChanged('selectWeaponButton', 'weaponProficiencyId');" hidden>
@@ -104,7 +104,7 @@ $weapon_list = getWeaponSummaryForPlayerCharacter($pdo, $input['playerName'], $i
                 foreach($weapon_list AS $weapon) {
                     $output_row  = '<tr>';
                     $output_row .= '<td>' . buildDeletePlayerCharacterWeaponIcon($weapon['weapon_description'], $weapon['player_character_weapon_id']) . '</td>';
-                    $output_row .= '<td>' . buildWeaponNameCell($input['playerName'], $input[CHARACTER_NAME], $weapon) . '</td>';
+                    $output_row .= '<td>' . buildWeaponNameCell($input[PLAYER_NAME], $input[CHARACTER_NAME], $weapon) . '</td>';
                     $output_row .= '<td>' . $weapon['weapon_location'] . '</td>';
                     $output_row .= '<td>' . getCraftStatusDescription($weapon['weapon_craft_status']) . '</td>';
                     $output_row .= '</tr>' . PHP_EOL;

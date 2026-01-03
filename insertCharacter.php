@@ -49,7 +49,7 @@ insertCharacterClasses($pdo, $input, $errors);
 
 // Update Optional info using $input[playerCharacterId]
 
-$location_header = CurlHelper::buildCharacterCRUDRedirect($input['playerName'], $input[CHARACTER_NAME],'viewCharacter');
+$location_header = CurlHelper::buildCharacterCRUDRedirect($input[PLAYER_NAME], $input[CHARACTER_NAME],'viewCharacter');
 header($location_header);
 exit;
 
@@ -59,7 +59,7 @@ function insertBaseCharacter(\PDO $pdo, $input, &$errors) {
 	$sql_exec = "CALL createBaseCharacter(:playerName, :characterName, :characterStrength, :characterSuperStrength, :characterIntelligence, :characterSuperIntelligence, :characterWisdom, :characterSuperWisdom, :characterDexterity, :characterSuperDexterity, :characterConstitution, :characterSuperConstitution, :characterCharisma, :characterComeliness, :raceId, :armorClass, :hitPoints, :genderIn)";
 
 	$statement = $pdo->prepare($sql_exec);
-	$statement->bindParam(':playerName', $input['playerName'], PDO::PARAM_STR);
+	$statement->bindParam(':playerName', $input[PLAYER_NAME], PDO::PARAM_STR);
 	$statement->bindParam(':characterName', $input[CHARACTER_NAME], PDO::PARAM_STR);
 	$statement->bindParam(':characterStrength', $input[CHARACTER_STRENGTH], PDO::PARAM_INT);
 	$statement->bindParam(':characterSuperStrength', $null_value, PDO::PARAM_NULL);
@@ -117,7 +117,7 @@ function insertCharacterClass(\PDO $pdo, $player_character_id, $character_class_
 }
 
 function filterAndSantizePlayerName(&$input, &$errors) {
-	filterAndSantizeStringFormField($input, $errors, 'playerName');
+	filterAndSantizeStringFormField($input, $errors, PLAYER_NAME);
 }
 
 function filterAndSantizeCharacterName(&$input, &$errors) {

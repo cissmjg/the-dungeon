@@ -9,7 +9,7 @@ validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 
-$player_name = filter_input(INPUT_GET, 'playerName', FILTER_SANITIZE_STRING);
+$player_name = filter_input(INPUT_GET, PLAYER_NAME, FILTER_SANITIZE_STRING);
 if ($player_name == NULL ) {
 	$errors['errorPlayerName'] = 'Player name is missing';
 	RestHeaderHelper::emitRestHeaders();
