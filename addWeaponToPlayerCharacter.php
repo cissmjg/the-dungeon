@@ -218,10 +218,10 @@ function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
         $statement->bindParam(':mastercraftHitDescription', $input[MASTERCRAFT_HIT_DESCRIPTION], PDO::PARAM_STR);
     }
 
-    if ($input['mastercraftDamageDescription'] == OPTIONAL_STRING_PARAMETER) {
+    if ($input[MASTERCRAFT_DAMAGE_DESCRIPTION] == OPTIONAL_STRING_PARAMETER) {
         $statement->bindParam(':mastercraftDamageDescription', $null_value, PDO::PARAM_NULL);
     } else {
-        $statement->bindParam(':mastercraftDamageDescription', $input['mastercraftDamageDescription'], PDO::PARAM_STR);
+        $statement->bindParam(':mastercraftDamageDescription', $input[MASTERCRAFT_DAMAGE_DESCRIPTION], PDO::PARAM_STR);
     }
 
     if ($input['meleeWeaponType'] == OPTIONAL_INTEGER_PARAMETER) {

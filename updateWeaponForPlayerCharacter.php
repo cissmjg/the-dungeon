@@ -224,12 +224,12 @@ function updateWeaponForPlayerCharacter(\PDO $pdo, $input, &$errors, &$log) {
         $log[] = 'mastercraftHitDescription: ' . $input[MASTERCRAFT_HIT_DESCRIPTION];
     }
 
-    if ($input['mastercraftDamageDescription'] == OPTIONAL_STRING_PARAMETER) {
+    if ($input[MASTERCRAFT_DAMAGE_DESCRIPTION] == OPTIONAL_STRING_PARAMETER) {
         $statement->bindParam(':mastercraftDamageDescription', $null_value, PDO::PARAM_NULL);
         $log[] = 'mastercraftDamageDescription: NULL';
     } else {
-        $statement->bindParam(':mastercraftDamageDescription', $input['mastercraftDamageDescription'], PDO::PARAM_STR);
-        $log[] = 'mastercraftDamageDescription: ' . $input['mastercraftDamageDescription'];
+        $statement->bindParam(':mastercraftDamageDescription', $input[MASTERCRAFT_DAMAGE_DESCRIPTION], PDO::PARAM_STR);
+        $log[] = 'mastercraftDamageDescription: ' . $input[MASTERCRAFT_DAMAGE_DESCRIPTION];
     }
 
     if ($input['meleeWeaponType'] == OPTIONAL_INTEGER_PARAMETER) {

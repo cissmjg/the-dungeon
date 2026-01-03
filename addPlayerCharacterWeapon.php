@@ -209,7 +209,7 @@ $craft_status_magic_selected = "";
                     <option value="Balanced">Balanced</option>
                 </select></div>
                 <?php if (isMasterCraftDamageEligible($weaponDetail->getMeleeWeaponSubtype())): ?>
-                <div class="inputRow"><label for="mastercraftDamageDescription">Mastercraft Damage: </label><select id="mastercraftDamageDescription" name="mastercraftDamageDescription" onchange="updateDamageBonus('mastercraftDamageDescription', 'meleeDamageBonus', 'missileDamageBonus');">
+                <div class="inputRow"><label for="mastercraftDamageDescription">Mastercraft Damage: </label><select id="mastercraftDamageDescription" name="mastercraftDamageDescription" onchange="updateDamageBonus(MASTERCRAFT_DAMAGE_DESCRIPTION, 'meleeDamageBonus', 'missileDamageBonus');">
                     <option value="None">None</option>
                     <option value="Sharp/Heavy">Sharp/Heavy</option>
                     <option value="Extra-Sharp/Extra-Heavy">Extra-Sharp/Extra-Heavy</option>
