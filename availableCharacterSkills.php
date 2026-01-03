@@ -1,6 +1,6 @@
 <?php
 
-require_once 'characterName.php';
+require_once __DIR__ . '/webio/characterName.php';
 require_once 'characterClasses.php';
 require_once 'characterRaces.php';
 require_once 'skillReserveIds.php';

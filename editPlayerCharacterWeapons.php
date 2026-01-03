@@ -11,7 +11,6 @@ validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
-require_once 'characterName.php';
 require_once 'characterSummary.php';
 require_once 'weaponDetail.php';
 require_once 'weaponType.php';
@@ -19,7 +18,7 @@ require_once 'weaponSubtype.php';
 require_once 'characterClasses.php';
 
 require_once __DIR__ . '/webio/playerName.php';
-require_once 'characterName.php';
+require_once __DIR__ . '/webio/characterName.php';
 require_once 'weaponCatalogId.php';
 require_once 'playerWeaponProficiencyId.php';
 require_once 'weaponDescription.php';

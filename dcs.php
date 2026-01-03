@@ -15,7 +15,7 @@ require_once 'characterSummary.php';
 require_once 'characterSummaryRenderer.php';
 
 require_once __DIR__ . '/webio/playerName.php';
-require_once 'characterName.php';
+require_once __DIR__ . '/webio/characterName.php';
 
 $input = [];
 $log = [];

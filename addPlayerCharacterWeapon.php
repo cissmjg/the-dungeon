@@ -11,7 +11,6 @@ validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
-require_once 'characterName.php';
 require_once 'characterSummary.php';
 require_once 'characterSummaryRenderer.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
@@ -24,7 +23,7 @@ require_once 'characterClasses.php';
 require_once __DIR__ . '/helper/WebParameterHelper.php';
 
 require_once __DIR__ . '/webio/playerName.php';
-require_once 'characterName.php';
+require_once __DIR__ . '/webio/characterName.php';
 require_once 'weaponProficiencyId.php';
 
 // Populate player and character names in $input

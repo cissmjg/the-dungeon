@@ -12,7 +12,7 @@ validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/webio/playerName.php';
-require_once 'characterName.php';
+require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once 'hiddenTag.php';
@@ -29,7 +29,6 @@ require_once 'faReclaimCantripIcon.php';
 require_once 'faStopSpellIcon.php';
 require_once 'faRunSpellIcon.php';
 
-require_once 'characterName.php';
 require_once 'characterSummary.php';
 require_once 'characterSummaryRenderer.php';
 

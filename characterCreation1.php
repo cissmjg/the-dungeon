@@ -14,7 +14,7 @@ require_once 'requiredParameter.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once 'hiddenTag.php';
 
-require_once 'characterName.php';
+require_once __DIR__ . '/webio/characterName.php';
 require_once 'characterAtributes.php';
 require_once 'adjustCharacterRacialAttributes.php';
 require_once 'getCharacterCreationAttributes.php';

@@ -12,7 +12,7 @@ require_once __DIR__ . '/helper/WebParameterHelper.php';
 require_once 'textInput.php';
 
 require_once __DIR__ . '/webio/playerName.php';
-require_once 'characterName.php';
+require_once __DIR__ . '/webio/characterName.php';
 require_once 'characterClassName.php';
 require_once 'characterLevel.php';
 require_once 'guid.php';

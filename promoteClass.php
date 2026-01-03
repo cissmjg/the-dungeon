@@ -11,11 +11,10 @@ validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/webio/playerName.php';
-require_once 'characterName.php';
+require_once __DIR__ . '/webio/characterName.php';
 require_once 'characterClassName.php';
 require_once 'characterIds.php';
 require_once 'characterSummary.php';
-require_once 'characterName.php';
 require_once 'characterSpellInfo.php';
 
 require_once 'spellTypes.php';

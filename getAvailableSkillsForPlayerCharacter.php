@@ -11,8 +11,7 @@ validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/webio/playerName.php';
-require_once 'characterName.php';
-require_once 'characterName.php';
+require_once __DIR__ . '/webio/characterName.php';
 require_once 'availableCharacterSkills.php';
 
 // Filter and sanitize names
