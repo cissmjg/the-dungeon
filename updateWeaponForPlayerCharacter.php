@@ -254,7 +254,7 @@ function updateWeaponForPlayerCharacter(\PDO $pdo, $input, &$errors, &$log) {
         $statement->bindParam(MELEE_DAMAGE_BONUS, $null_value, PDO::PARAM_NULL);
         $log[] = 'meleeDamageBonus: NULL';
 
-        $statement->bindParam('meleeSpec1HitBonus', $null_value, PDO::PARAM_NULL);
+        $statement->bindParam(MELEE_SPEC1_HIT_BONUS, $null_value, PDO::PARAM_NULL);
         $log[] = 'meleeSpec1HitBonus: NULL';
 
         $statement->bindParam(MELEE_SPEC1_DAMAGE_BONUS, $null_value, PDO::PARAM_NULL);
@@ -318,12 +318,12 @@ function updateWeaponForPlayerCharacter(\PDO $pdo, $input, &$errors, &$log) {
             $log[] = 'meleeDamageBonus: ' . $input[MELEE_DAMAGE_BONUS];
         }
 
-        if ($input['meleeSpec1HitBonus'] == OPTIONAL_INTEGER_PARAMETER) {
+        if ($input[MELEE_SPEC1_HIT_BONUS] == OPTIONAL_INTEGER_PARAMETER) {
             $statement->bindParam(':meleeSpec1HitBonus', $null_value, PDO::PARAM_NULL);
             $log[] = 'meleeSpec1HitBonus: NULL';
         } else {
-            $statement->bindParam(':meleeSpec1HitBonus',  $input['meleeSpec1HitBonus'], PDO::PARAM_INT);
-            $log[] = 'meleeSpec1HitBonus: ' . $input['meleeSpec1HitBonus'];
+            $statement->bindParam(':meleeSpec1HitBonus',  $input[MELEE_SPEC1_HIT_BONUS], PDO::PARAM_INT);
+            $log[] = 'meleeSpec1HitBonus: ' . $input[MELEE_SPEC1_HIT_BONUS];
         }
 
         if ($input[MELEE_SPEC1_DAMAGE_BONUS] == OPTIONAL_INTEGER_PARAMETER) {
