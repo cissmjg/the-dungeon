@@ -282,8 +282,8 @@ function updateWeaponForPlayerCharacter(\PDO $pdo, $input, &$errors, &$log) {
         $log[] = 'meleeSpec3Description: NULL';
     }
     else {
-        $statement->bindParam(':meleeWeaponSpeed', $input['meleeWeaponSpeed'], PDO::PARAM_STR);
-        $log[] = 'meleeWeaponSpeed: ' . $input['meleeWeaponSpeed'];
+        $statement->bindParam(':meleeWeaponSpeed', $input[MELEE_WEAPON_SPEED], PDO::PARAM_STR);
+        $log[] = 'meleeWeaponSpeed: ' . $input[MELEE_WEAPON_SPEED];
 
         $statement->bindParam(':meleeWeaponDamage', $input['meleeWeaponDamage'], PDO::PARAM_STR);
         $log[] = 'meleeWeaponDamage: ' . $input['meleeWeaponDamage'];
