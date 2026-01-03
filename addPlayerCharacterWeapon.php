@@ -204,7 +204,7 @@ $craft_status_magic_selected = "";
                         <option value="5">+5</option>
             </select></div>
             <div id="masterCraftSection" class="masterCraftSection"<?= $mastercraft_hidden ?>>
-                <div class="inputRow"><label for="mastercraftHitDescription">Mastercraft Hit: </label><select id="mastercraftHitDescription" name="mastercraftHitDescription" onchange="updateHitBonus('mastercraftHitDescription', 'meleeHitBonus', 'missileHitBonus');">
+                <div class="inputRow"><label for="mastercraftHitDescription">Mastercraft Hit: </label><select id="mastercraftHitDescription" name="mastercraftHitDescription" onchange="updateHitBonus(MASTERCRAFT_HIT_DESCRIPTION, 'meleeHitBonus', 'missileHitBonus');">
                     <option value="None">None</option>
                     <option value="Balanced">Balanced</option>
                 </select></div>

@@ -216,12 +216,12 @@ function updateWeaponForPlayerCharacter(\PDO $pdo, $input, &$errors, &$log) {
         $log[] = 'playerNote3: ' . $input[PLAYER_NOTE3];
     }
 
-    if ($input['mastercraftHitDescription'] == OPTIONAL_STRING_PARAMETER) {
+    if ($input[MASTERCRAFT_HIT_DESCRIPTION] == OPTIONAL_STRING_PARAMETER) {
         $statement->bindParam(':mastercraftHitDescription', $null_value, PDO::PARAM_NULL);
         $log[] = 'mastercraftHitDescription: NULL';
     } else {
-        $statement->bindParam(':mastercraftHitDescription', $input['mastercraftHitDescription'], PDO::PARAM_STR);
-        $log[] = 'mastercraftHitDescription: ' . $input['mastercraftHitDescription'];
+        $statement->bindParam(':mastercraftHitDescription', $input[MASTERCRAFT_HIT_DESCRIPTION], PDO::PARAM_STR);
+        $log[] = 'mastercraftHitDescription: ' . $input[MASTERCRAFT_HIT_DESCRIPTION];
     }
 
     if ($input['mastercraftDamageDescription'] == OPTIONAL_STRING_PARAMETER) {

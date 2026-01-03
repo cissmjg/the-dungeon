@@ -212,10 +212,10 @@ function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
         $statement->bindParam(':playerNote3', $input[PLAYER_NOTE3], PDO::PARAM_STR);
     }
 
-    if ($input['mastercraftHitDescription'] == OPTIONAL_STRING_PARAMETER) {
+    if ($input[MASTERCRAFT_HIT_DESCRIPTION] == OPTIONAL_STRING_PARAMETER) {
         $statement->bindParam(':mastercraftHitDescription', $null_value, PDO::PARAM_NULL);
     } else {
-        $statement->bindParam(':mastercraftHitDescription', $input['mastercraftHitDescription'], PDO::PARAM_STR);
+        $statement->bindParam(':mastercraftHitDescription', $input[MASTERCRAFT_HIT_DESCRIPTION], PDO::PARAM_STR);
     }
 
     if ($input['mastercraftDamageDescription'] == OPTIONAL_STRING_PARAMETER) {

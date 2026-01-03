@@ -288,7 +288,7 @@ $craft_status_magic_selected = "";
                             $mc_damage_desc_ex_sharp_heavy = " selected";
                         }
                     ?>
-                <div class="inputRow"><label for="mastercraftHitDescription">Mastercraft Hit: </label><select id="mastercraftHitDescription" name="mastercraftHitDescription" onchange="updateHitBonus('mastercraftHitDescription', 'meleeHitBonus', 'missileHitBonus');">
+                <div class="inputRow"><label for="mastercraftHitDescription">Mastercraft Hit: </label><select id="mastercraftHitDescription" name="mastercraftHitDescription" onchange="updateHitBonus(MASTERCRAFT_HIT_DESCRIPTION, 'meleeHitBonus', 'missileHitBonus');">
                     <option value="None"<?= $mc_hit_desc_none?>>None</option>
                     <option value="Balanced"<?= $mc_hit_desc_balanced?>>Balanced</option>
                 </select></div>
