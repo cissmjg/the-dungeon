@@ -259,7 +259,7 @@ function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
 
         $statement->bindParam(MELEE_SPEC3_DAMAGE_BONUS, $null_value, PDO::PARAM_NULL);
 
-        $statement->bindParam('meleeSpec3Description', $null_value, PDO::PARAM_NULL);
+        $statement->bindParam(MELEE_SPEC3_DESCRIPTION, $null_value, PDO::PARAM_NULL);
     }
     else {
         $statement->bindParam(':meleeWeaponType', $input[MELEE_WEAPON_TYPE], PDO::PARAM_INT);
@@ -339,10 +339,10 @@ function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
             $statement->bindParam(':meleeSpec3DamageBonus',  $input[MELEE_SPEC3_DAMAGE_BONUS], PDO::PARAM_INT);
         }
 
-        if ($input['meleeSpec3Description'] == OPTIONAL_STRING_PARAMETER) {
+        if ($input[MELEE_SPEC3_DESCRIPTION] == OPTIONAL_STRING_PARAMETER) {
             $statement->bindParam(':meleeSpec3Description', $null_value, PDO::PARAM_NULL);
         } else {
-            $statement->bindParam(':meleeSpec3Description', $input['meleeSpec3Description'], PDO::PARAM_STR);
+            $statement->bindParam(':meleeSpec3Description', $input[MELEE_SPEC3_DESCRIPTION], PDO::PARAM_STR);
         }
     }
 

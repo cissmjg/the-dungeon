@@ -2,7 +2,8 @@
 require_once __DIR__ . '/webio/requiredParameter.php';
 require_once __DIR__ . '/webio/optionalParameter.php';
 require_once __DIR__ . '/helper/WebParameterHelper.php';
+const MELEE_SPEC3_DESCRIPTION = 'meleeSpec3Description';
 
 function getMeleeSpec3Description(&$errors, &$input) {
-	getOptionalStringParameter($errors, $input, __FILE__, 'meleeSpec3Description', OPTIONAL_STRING_PARAMETER);
+	getOptionalStringParameter($errors, $input, __FILE__, MELEE_SPEC3_DESCRIPTION, OPTIONAL_STRING_PARAMETER);
 }
