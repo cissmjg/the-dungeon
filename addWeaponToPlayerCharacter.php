@@ -168,7 +168,7 @@ function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
         $statement->bindParam(':weaponLocation', $input[WEAPON_LOCATION], PDO::PARAM_STR);
     }
 
-    if (strcasecmp($input['isProficient'], 'YES') == 0) {
+    if (strcasecmp($input[IS_PROFICIENT], 'YES') == 0) {
         $statement->bindParam(':isProficient', $true_value, PDO::PARAM_BOOL);
     } else {
         $statement->bindParam(':isProficient', $false_value, PDO::PARAM_BOOL);
