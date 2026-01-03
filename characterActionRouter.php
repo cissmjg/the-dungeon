@@ -46,7 +46,7 @@ require_once __DIR__ . '/webio/playerNote2.php';
 require_once __DIR__ . '/webio/playerNote3.php';
 require_once __DIR__ . '/webio/mastercraftHitDescription.php';
 require_once __DIR__ . '/webio/mastercraftDamageDescription.php';
-require_once 'meleeWeaponType.php';
+require_once __DIR__ . '/webio/meleeWeaponType.php';
 require_once 'meleeWeaponSpeed.php';
 require_once 'meleeWeaponDamage.php';
 require_once 'meleeAttacksPerRound.php';
