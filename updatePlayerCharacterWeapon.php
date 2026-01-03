@@ -38,7 +38,7 @@ require_once __DIR__ . '/webio/playerNote1.php';
 require_once __DIR__ . '/webio/playerNote2.php';
 require_once __DIR__ . '/webio/playerNote3.php';
 require_once __DIR__ . '/webio/meleeWeaponType.php';
-require_once 'meleeWeaponSpeed.php';
+require_once __DIR__ . '/webio/meleeWeaponSpeed.php';
 require_once 'meleeWeaponDamage.php';
 require_once 'meleeAttacksPerRound.php';
 require_once 'meleeNumberOfHands.php';
