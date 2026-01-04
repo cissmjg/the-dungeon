@@ -30,7 +30,7 @@ require_once __DIR__ . '/webio/playerCharacterClassId.php';
 require_once __DIR__ . '/webio/playerCharacterWeaponId.php';
 require_once __DIR__ . '/webio/spellSlotLevel.php';
 require_once __DIR__ . '/webio/spellTypeId.php';
-require_once 'hoursOfSleep.php';
+require_once __DIR__ . '/webio/hoursOfSleep.php';
 
 require_once __DIR__ . '/webio/weaponProficiencyId.php';
 require_once __DIR__ . '/webio/weaponDescription.php';
