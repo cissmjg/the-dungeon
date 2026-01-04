@@ -27,7 +27,7 @@ require_once 'spellCastingTime.php';
 require_once __DIR__ . '/webio/requiredParameter.php';
 require_once __DIR__ . '/webio/optionalParameter.php';
 require_once 'cantripSpellSlot.php';
-require_once 'playerCharacterClassId.php';
+require_once __DIR__ . '/webio/playerCharacterClassId.php';
 require_once 'playerCharacterWeaponId.php';
 require_once 'spellSlotLevel.php';
 require_once 'spellTypeId.php';
