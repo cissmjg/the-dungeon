@@ -19,26 +19,12 @@ require_once 'characterClasses.php';
 
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
-require_once 'weaponCatalogId.php';
+require_once __DIR__ . '/webio/weaponCatalogId.php';
 require_once 'playerWeaponProficiencyId.php';
 require_once __DIR__ . '/webio/weaponDescription.php';
 require_once __DIR__ . '/webio/weaponLocation.php';
 require_once __DIR__ . '/webio/isReady.php';
 require_once __DIR__ . '/webio/craftStatus.php';
-require_once 'hitBonus.php';
-require_once 'hitBonusSpec1.php';
-require_once 'hitBonusSpec2.php';
-require_once 'hitBonusSpec3.php';
-require_once 'damageBonus.php';
-require_once 'weaponSpeed.php';
-require_once 'weaponShortRange.php';
-require_once 'weaponMediumRange.php';
-require_once 'weaponLongRange.php';
-require_once 'weaponDamage.php';
-require_once 'damageBonusSpec1.php';
-require_once 'damageBonusSpec2.php';
-require_once 'damageBonusSpec3.php';
-require_once 'attacksPerRound.php';
 require_once __DIR__ . '/webio/strengthBonusAvailable.php';
 require_once __DIR__ . '/webio/playerNote1.php';
 require_once __DIR__ . '/webio/playerNote2.php';
@@ -50,8 +36,8 @@ getCharacterName($errors, $input);
 getOptionalWeaponCatalogId($errors, $input);
 
 $weaponDetail = null;
-if ($input['weaponCatalogId'] != OPTIONAL_INTEGER_PARAMETER) {
-    $weaponDetail = getWeaponDetail($pdo, $input['weaponCatalogId'], $errors);
+if ($input[WEAPON_CATALOG_ID] != OPTIONAL_INTEGER_PARAMETER) {
+    $weaponDetail = getWeaponDetail($pdo, $input[WEAPON_CATALOG_ID], $errors);
 } 
 
 $character_summary = new CharacterSummary();
@@ -101,8 +87,8 @@ $character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
                 <label for="weaponNamePattern">Weapon Name</label><br>
                 <input type="hidden" name="playerName" value="<?= $input[PLAYER_NAME] ?>">
                 <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
-                <input type="text" id="weaponNamePattern" maxlength="32"><button type="button" onclick="populateWeaponList('weaponCatalogId', 'weaponNamePattern');">Go</button><br>
-                <select name="weaponCatalogId" id="weaponCatalogId" onchange="getWeaponDetail('selectWeapon', 'weaponCatalogId');" hidden>
+                <input type="text" id="weaponNamePattern" maxlength="32"><button type="button" onclick="populateWeaponList(WEAPON_CATALOG_ID, 'weaponNamePattern');">Go</button><br>
+                <select name="weaponCatalogId" id="weaponCatalogId" onchange="getWeaponDetail('selectWeapon', WEAPON_CATALOG_ID);" hidden>
                 </select>
             </form>
         </div>
@@ -111,7 +97,7 @@ $character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
         <form name="addPlayerCharacterWeapon" id="addPlayerCharacterWeapon" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter'); ?>">
             <input type="hidden" name="playerName" value="<?= $input[PLAYER_NAME] ?>">
             <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
-            <input type="hidden" name="weaponCatalogId" value="<?= $input['weaponCatalogId'] ?>">
+            <input type="hidden" name="weaponCatalogId" value="<?= $input[WEAPON_CATALOG_ID] ?>">
             <input type="hidden" name="playerWeaponProficiencyId" value="0">
             <label><?= $weaponDetail->getWeaponName(); ?></label><br>
             <label for="weaponDescription">Weapon Name</label><br>
