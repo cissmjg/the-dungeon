@@ -8,7 +8,7 @@ validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/webio/playerCharacterClassId.php';
-require_once 'spellSlotLevel.php';
+require_once __DIR__ . '/webio/spellSlotLevel.php';
 require_once 'spellTypeId.php';
 
 $log = [];
