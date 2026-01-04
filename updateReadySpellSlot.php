@@ -7,7 +7,7 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
-require_once 'spellCatalogId.php';
+require_once __DIR__ . '/webio/spellCatalogId.php';
 require_once 'spellSlotId.php';
 
 $log = [];

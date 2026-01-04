@@ -17,7 +17,7 @@ require_once __DIR__ . '/webio/characterClassName.php';
 require_once 'characterLevel.php';
 require_once 'guid.php';
 require_once 'pageAction.php';
-require_once 'spellCatalogId.php';
+require_once __DIR__ . '/webio/spellCatalogId.php';
 require_once 'spellSlotId.php';
 require_once 'spellLevel.php';
 require_once 'spellPoolId.php';
