@@ -12,7 +12,7 @@ validateSessionCredentials($pdo);
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
-require_once 'characterClassName.php';
+require_once __DIR__ . '/webio/characterClassName.php';
 require_once 'spellLevel.php';
 require_once __DIR__ . '/webio/optionalParameter.php';
 require_once 'emptySpellSlot.php';

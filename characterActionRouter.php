@@ -13,7 +13,7 @@ require_once 'textInput.php';
 
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
-require_once 'characterClassName.php';
+require_once __DIR__ . '/webio/characterClassName.php';
 require_once 'characterLevel.php';
 require_once 'guid.php';
 require_once 'pageAction.php';
