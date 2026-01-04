@@ -46,7 +46,7 @@ require_once __DIR__ . '/webio/meleeAdditionalText.php';
 require_once __DIR__ . '/webio/missileWeaponType.php';
 require_once __DIR__ . '/webio/missileWeaponSpeed.php';
 require_once __DIR__ . '/webio/missileWeaponDamage.php';
-require_once 'missileAttacksPerRound.php';
+require_once __DIR__ . '/webio/missileAttacksPerRound.php';
 require_once __DIR__ . '/webio/missileAdditionalText.php';
 require_once 'missileShortRange.php';
 require_once 'missileMediumRange.php';
