@@ -14,7 +14,7 @@ require_once __DIR__ . '/webio/textInput.php';
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/characterClassName.php';
-require_once 'characterLevel.php';
+require_once __DIR__ . '/webio/characterLevel.php';
 require_once 'guid.php';
 require_once 'pageAction.php';
 require_once __DIR__ . '/webio/spellCatalogId.php';
@@ -1336,7 +1336,7 @@ function buildRecoverSpellPointsParams($input) {
 	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
-	$params['characterLevel'] = $input['characterLevel'];
+	$params[CHARACTER_LEVEL] = $input[CHARACTER_LEVEL];
 	$params['hoursOfSleep'] = $input['hoursOfSleep'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 

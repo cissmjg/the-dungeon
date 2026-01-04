@@ -9,7 +9,7 @@ validateSessionCredentials($pdo);
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
-require_once 'characterLevel.php';
+require_once __DIR__ . '/webio/characterLevel.php';
 require_once 'hoursOfSleep.php';
 
 // This module decreases available spell points for a spell level being cast
@@ -25,7 +25,7 @@ getHoursOfSleep($errors, $input);
 
 $player_name = $input[PLAYER_NAME];
 $character_name = $input[CHARACTER_NAME];
-$character_level = $input['characterLevel'];
+$character_level = $input[CHARACTER_LEVEL];
 $hours_of_sleep = $input['hoursOfSleep'];
 
 $log[] = "SUCCESS|";
