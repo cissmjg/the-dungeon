@@ -448,10 +448,10 @@ function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
             $statement->bindParam(':missileSpec3HitBonus', $input[MISSILE_SPEC3_HIT_BONUS], PDO::PARAM_INT);
         }
 
-        if ($input['missileSpec3DamageBonus'] == OPTIONAL_INTEGER_PARAMETER) {
+        if ($input[MISSILE_SPEC3_DAMAGE_BONUS] == OPTIONAL_INTEGER_PARAMETER) {
             $statement->bindParam(':missileSpec3DamageBonus', $null_value, PDO::PARAM_NULL);
         } else {
-            $statement->bindParam(':missileSpec3DamageBonus', $input['missileSpec3DamageBonus'], PDO::PARAM_INT);
+            $statement->bindParam(':missileSpec3DamageBonus', $input[MISSILE_SPEC3_DAMAGE_BONUS], PDO::PARAM_INT);
         }
 
         if ($input['missileSpec3Description'] == OPTIONAL_STRING_PARAMETER) {
