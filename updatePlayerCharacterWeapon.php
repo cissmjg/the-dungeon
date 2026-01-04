@@ -50,7 +50,7 @@ require_once __DIR__ . '/webio/missileAttacksPerRound.php';
 require_once __DIR__ . '/webio/missileAdditionalText.php';
 require_once __DIR__ . '/webio/missileShortRange.php';
 require_once __DIR__ . '/webio/missileMediumRange.php';
-require_once 'missileLongRange.php';
+require_once __DIR__ . '/webio/missileLongRange.php';
 
 // Populate player and character names in $input
 getPlayerName($errors, $input);
