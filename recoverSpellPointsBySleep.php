@@ -26,7 +26,7 @@ getHoursOfSleep($errors, $input);
 $player_name = $input[PLAYER_NAME];
 $character_name = $input[CHARACTER_NAME];
 $character_level = $input[CHARACTER_LEVEL];
-$hours_of_sleep = $input['hoursOfSleep'];
+$hours_of_sleep = $input[HOURS_OF_SLEEP];
 
 $log[] = "SUCCESS|";
 

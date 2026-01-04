@@ -1336,7 +1336,7 @@ function buildRecoverSpellPointsParams($input) {
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[CHARACTER_LEVEL] = $input[CHARACTER_LEVEL];
-	$params['hoursOfSleep'] = $input['hoursOfSleep'];
+	$params[HOURS_OF_SLEEP] = $input[HOURS_OF_SLEEP];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;

@@ -41,9 +41,9 @@ function recoverSpellPoints() {
         return false;
     }
 
-    let theHoursOfSleepFormTag = document.getElementById('hoursOfSleep');
+    let theHoursOfSleepFormTag = document.getElementById(HOURS_OF_SLEEP);
     if (theHoursOfSleepFormTag == null) {
-        alert("Hours of Sleep form tag: 'hoursOfSleep' not found");
+        alert("Hours of Sleep form tag: HOURS_OF_SLEEP not found");
         return false;
     }
 
