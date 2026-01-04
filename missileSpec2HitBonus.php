@@ -2,7 +2,8 @@
 require_once __DIR__ . '/webio/requiredParameter.php';
 require_once __DIR__ . '/webio/optionalParameter.php';
 require_once __DIR__ . '/helper/WebParameterHelper.php';
+const MISSILE_SPEC2_HIT_BONUS = 'missileSpec2HitBonus';
 
 function getMissileSpec2HitBonus(&$errors, &$input) {
-	getOptionalStringParameter($errors, $input, __FILE__, 'missileSpec2HitBonus', OPTIONAL_STRING_PARAMETER);
+	getOptionalStringParameter($errors, $input, __FILE__, MISSILE_SPEC2_HIT_BONUS, OPTIONAL_STRING_PARAMETER);
 }
