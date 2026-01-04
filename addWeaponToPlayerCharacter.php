@@ -53,7 +53,7 @@ require_once __DIR__ . '/webio/missileSpec1HitBonus.php';
 require_once __DIR__ . '/webio/missileSpec1DamageBonus.php';
 require_once __DIR__ . '/webio/missileSpec1Description.php';
 require_once __DIR__ . '/webio/missileSpec2HitBonus.php';
-require_once 'missileSpec2DamageBonus.php';
+require_once __DIR__ . '/webio/missileSpec2DamageBonus.php';
 require_once 'missileSpec2Description.php';
 require_once 'missileSpec3HitBonus.php';
 require_once 'missileSpec3DamageBonus.php';
