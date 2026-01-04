@@ -19,7 +19,7 @@ getSpellSlotLevel($errors, $input);
 getSpellTypeId($errors, $input);
 
 $log[] = "SUCCESS|";
-allocateExtraSlot($pdo, $input[PLAYER_CHARACTER_CLASS_ID], $input['slotLevel'], $input['spellTypeId'], $errors);
+allocateExtraSlot($pdo, $input[PLAYER_CHARACTER_CLASS_ID], $input[SPELL_SLOT_LEVEL], $input['spellTypeId'], $errors);
 
 RestHeaderHelper::emitRestHeaders();
 
