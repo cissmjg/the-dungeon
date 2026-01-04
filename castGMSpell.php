@@ -10,7 +10,7 @@ require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/spellCatalogId.php';
-require_once 'spellLevel.php';
+require_once __DIR__ . '/webio/spellLevel.php';
 require_once 'spellDuration.php';
 require_once 'spellCastingTime.php';
 require_once 'characterSummary.php';
