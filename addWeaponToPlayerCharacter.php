@@ -472,10 +472,10 @@ function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
             $statement->bindParam(':missileMediumRange', $input[MISSILE_MEDIUM_RANGE], PDO::PARAM_STR);
         }
 
-        if ($input['missileLongRange'] == OPTIONAL_STRING_PARAMETER) {
+        if ($input[MISSILE_LONG_RANGE] == OPTIONAL_STRING_PARAMETER) {
             $statement->bindParam(':missileLongRange', $null_value, PDO::PARAM_NULL);
         } else {
-            $statement->bindParam(':missileLongRange', $input['missileLongRange'], PDO::PARAM_STR);
+            $statement->bindParam(':missileLongRange', $input[MISSILE_LONG_RANGE], PDO::PARAM_STR);
         }
 
         if ($input[MISSILE_ADDITIONAL_TEXT] == OPTIONAL_STRING_PARAMETER) {
