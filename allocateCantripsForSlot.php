@@ -27,7 +27,7 @@ $log[] = "SUCCESS|";
 
 $number_of_cantrips = $input['spellLevel'] * 4;
 for ($i = 0; $i < $number_of_cantrips; $i++) {
-	allocateCantripForSlot($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input[CHARACTER_CLASS_NAME], $input['spellSlotId'], $errors);
+	allocateCantripForSlot($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input[CHARACTER_CLASS_NAME], $input[SPELL_SLOT_ID], $errors);
 }
 
 RestHeaderHelper::emitRestHeaders();

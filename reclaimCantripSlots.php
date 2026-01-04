@@ -15,7 +15,7 @@ $errors = [];
 getSpellSlotId($errors, $input);
 
 $log[] = "SUCCESS|";
-reclaimCantripSlots($pdo, $input['spellSlotId'], $errors);
+reclaimCantripSlots($pdo, $input[SPELL_SLOT_ID], $errors);
 
 RestHeaderHelper::emitRestHeaders();
 

@@ -24,7 +24,7 @@ getSpellCastingTime($errors, $input);
 // Spell Casting Time
 getSpellDuration($errors, $input);
 
-$spell_slot_id = $input['spellSlotId'];
+$spell_slot_id = $input[SPELL_SLOT_ID];
 $spell_casting_time = $input['spellCastingTime'];
 $spell_duration = $input['spellDuration'];
 

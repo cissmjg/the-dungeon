@@ -15,7 +15,7 @@ $errors = [];
 getSpellSlotId($errors, $input);
 
 $log[] = "SUCCESS|";
-deallocateExtraSlot($pdo, $input['spellSlotId'], $errors);
+deallocateExtraSlot($pdo, $input[SPELL_SLOT_ID], $errors);
 
 RestHeaderHelper::emitRestHeaders();
 

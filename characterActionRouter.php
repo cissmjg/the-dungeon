@@ -1147,7 +1147,7 @@ function buildUpdateReadySlotParams($input) {
 	$parmas = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[SPELL_CATALOG_ID] = $input[SPELL_CATALOG_ID];
-	$params['spellSlotId'] = $input['spellSlotId'];
+	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;
@@ -1157,7 +1157,7 @@ function buildAllocateCantripsParams($input) {
 	$parmas = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
-	$params['spellSlotId'] = $input['spellSlotId'];
+	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
 	$params['spellLevel'] = $input['spellLevel'];
 	$params[CHARACTER_CLASS_NAME] = $input[CHARACTER_CLASS_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
@@ -1168,7 +1168,7 @@ function buildAllocateCantripsParams($input) {
 function buildCastSlotParams($input) {
 	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
-	$params['spellSlotId'] = $input['spellSlotId'];
+	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
 	$params['castStatus'] = True;
 	$params['spellDuration'] = $input['spellDuration'];
 	$params['spellCastingTime'] = $input['spellCastingTime'];
@@ -1180,7 +1180,7 @@ function buildCastSlotParams($input) {
 function buildResetSlotParams($input) {
 	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
-	$params['spellSlotId'] = $input['spellSlotId'];
+	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
 	$params['castStatus'] = false;
 	$params['spellDuration'] = $input['spellDuration'];
 	$params['spellCastingTime'] = $input['spellCastingTime'];
@@ -1192,7 +1192,7 @@ function buildResetSlotParams($input) {
 function buildStopCastingSlotParams($input) {
 	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
-	$params['spellSlotId'] = $input['spellSlotId'];
+	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
 	$params['spellDuration'] = $input['spellDuration'];
 	$params['spellCastingTime'] = $input['spellCastingTime'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
@@ -1202,7 +1202,7 @@ function buildStopCastingSlotParams($input) {
 
 function buildStopRunningSlotParams($input) {
 	$params = [];
-	$params['spellSlotId'] = $input['spellSlotId'];
+	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
 	$params['spellDuration'] = $input['spellDuration'];
 	$params['spellCastingTime'] = $input['spellCastingTime'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
@@ -1213,7 +1213,7 @@ function buildStopRunningSlotParams($input) {
 function buildReallocateCantripsParams($input) {
 	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
-	$params['spellSlotId'] = $input['spellSlotId'];
+	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;
@@ -1233,7 +1233,7 @@ function buildAllocateExtraSlotParams($input) {
 function buildDeallocateExtraSlotParams($input) {
 	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
-	$params['spellSlotId'] = $input['spellSlotId'];
+	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;

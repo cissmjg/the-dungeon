@@ -17,7 +17,7 @@ getSpellSlotId($errors, $input);
 getSpellCatalogId($errors, $input);
 
 $log[] = "SUCCESS|";
-updateReadySpellSlot($pdo, $input[SPELL_CATALOG_ID], $input['spellSlotId'], $errors);
+updateReadySpellSlot($pdo, $input[SPELL_CATALOG_ID], $input[SPELL_SLOT_ID], $errors);
 
 RestHeaderHelper::emitRestHeaders();
 

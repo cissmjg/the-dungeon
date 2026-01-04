@@ -416,7 +416,7 @@ function buildSlotActionFormStart($formId, $spellSlotId, $playerName, $character
     $formStartTag .= 'method="POST">';
     $playerNameTag = buildHiddenTag(PLAYER_NAME, $playerName);
     $characterNameTag = buildHiddenTag(CHARACTER_NAME, $characterName);
-    $spellSlotIdTag = buildHiddenTag('spellSlotId', $spellSlotId);
+    $spellSlotIdTag = buildHiddenTag(SPELL_SLOT_ID, $spellSlotId);
     $characterActionTag = buildHiddenTagWithId('characterAction', $characterActionId, '');
     return $formStartTag . $playerNameTag . $characterNameTag . $spellSlotIdTag . $characterActionTag;
 }
