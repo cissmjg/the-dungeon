@@ -17,6 +17,7 @@ require_once 'hiddenTag.php';
 require_once 'faEditIcon.php';
 
 require_once __DIR__ . '/webio/characterName.php';
+require_once __DIR__ . '/webio/raceId.php';
 require_once 'characterAtributes.php';
 require_once 'characterRaces.php';
 require_once 'adjustCharacterRacialAttributes.php';
@@ -114,7 +115,7 @@ $page_title = 'New Character';
                 $selectedRace = $input[CHARACTER_RACE_ID];
                 $race_display_name = '';
                 foreach($race_list AS $race) {
-                    if ($race['race_id'] == $selectedRace) {
+                    if ($race[RACE_ID] == $selectedRace) {
                         $race_display_name = $race['race_name'];
                         break;
                     }

@@ -3,7 +3,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/webio/optionalParameter.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once 'characterAtributes.php';
-require_once 'raceId.php';
+require_once __DIR__ . '/webio/raceId.php';
 
 function getCharacterAttributes(&$errors, &$input, $calling_module) {
     getOptionalRaceId($errors, $input, $calling_module);

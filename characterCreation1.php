@@ -11,6 +11,7 @@ require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/pageAction.php';
 require_once __DIR__ . '/webio/requiredParameter.php';
+require_once __DIR__ . '/webio/raceId.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once 'hiddenTag.php';
 
@@ -109,8 +110,8 @@ if ($input[PAGE_ACTION] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent(
 				<?php
 					$selectedRace = $input[CHARACTER_RACE_ID] ?? '';
 					foreach($race_list AS $race) {
-						$selected = $race['race_id'] == $selectedRace ? " selected" : '';
-						echo '<option value="' . $race['race_id'] . '"' . $selected . '>' . $race['race_name'] . '</option>' . PHP_EOL;
+						$selected = $race[RACE_ID] == $selectedRace ? " selected" : '';
+						echo '<option value="' . $race[RACE_ID] . '"' . $selected . '>' . $race['race_name'] . '</option>' . PHP_EOL;
 					}
 				?>
 	        </select>

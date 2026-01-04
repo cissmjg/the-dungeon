@@ -166,7 +166,7 @@ $errors_exist = errorsExist($errors);
                 $selectedRace = $input[CHARACTER_RACE_ID];
                 $race_display_name = '';
                 foreach($race_list AS $race) {
-                    if ($race['race_id'] == $selectedRace) {
+                    if ($race[RACE_ID] == $selectedRace) {
                         $race_display_name = $race['race_name'];
                         break;
                     }

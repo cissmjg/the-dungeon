@@ -10,6 +10,7 @@ require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
+require_once __DIR__ . '/webio/raceId.php';
 require_once 'characterAttributes.php';
 require_once __DIR__ . '/webio/pageAction.php';
 require_once __DIR__ . '/webio/characterAction.php';
@@ -169,7 +170,7 @@ if ($tertiary_class_available) {
 				for($i = 0; $i < count($race_list); $i++) {
 					$race = $race_list[$i];
 					$selected = $race['race_name'] == $selectedRace ? " selected" : '';
-					echo '<option value="' . $race['race_id'] . '"' . $selected . '>' . $race['race_name'] . '</option>' . PHP_EOL;
+					echo '<option value="' . $race[RACE_ID] . '"' . $selected . '>' . $race['race_name'] . '</option>' . PHP_EOL;
 				}
 				echo '</select>' . PHP_EOL;
 			} else {
