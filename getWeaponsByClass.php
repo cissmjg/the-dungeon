@@ -10,12 +10,12 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
-require_once 'characterClassId.php';
+require_once __dir__ . '/webio/characterClassId.php';
 
 // Character Class ID
 getCharacterClassId($errors, $input);
 
-$weapons = getWeaponsByClass($pdo, $input['characterClassId'], $errors);
+$weapons = getWeaponsByClass($pdo, $input[CHARACTER_CLASS_ID], $errors);
 
 RestHeaderHelper::emitRestHeaders();
 if (count($errors) > 0) {

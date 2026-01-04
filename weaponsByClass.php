@@ -5,20 +5,20 @@ $errors = [];
 $input = [];
 
 $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
-require_once 'characterClassId.php';
+require_once __dir__ . '/webio/characterClassId.php';
 require_once 'characterClasses.php';
 
 $all_classes = getAllCharacterClasses($pdo);
 
 $character_class = '';
 $weapons = [];
-if (!empty($_GET['characterClassId'])) {
+if (!empty($_GET[CHARACTER_CLASS_ID])) {
     getCharacterClassId($errors, $input);    
 } else {
-	$input['characterClassId'] = CLERIC;
+	$input[CHARACTER_CLASS_ID] = CLERIC;
 }
 
-$weapons = getWeaponsByClass($pdo, $input['characterClassId'], $errors);
+$weapons = getWeaponsByClass($pdo, $input[CHARACTER_CLASS_ID], $errors);
 ?>
 
 <!DOCTYPE html>
@@ -34,10 +34,10 @@ $weapons = getWeaponsByClass($pdo, $input['characterClassId'], $errors);
 <h3>Weapons by Character Class</h3>
 <form action="<?php STARTING_URL . htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="get">
 	<label for="characterClassId">Class</label>
-	<select name='characterClassId' id='characterClassId'>
+	<select name=CHARACTER_CLASS_ID id=CHARACTER_CLASS_ID>
 		<?php
 			foreach($all_classes AS $character_class) {
-				$selected = $character_class['character_class_id'] == $input['characterClassId'] ? ' selected' : '';
+				$selected = $character_class['character_class_id'] == $input[CHARACTER_CLASS_ID] ? ' selected' : '';
 				echo '<option value="' . $character_class['character_class_id'] . '"' . $selected . '>' . $character_class['character_class_name'] . '</option>'; 
 			}
 		?>
