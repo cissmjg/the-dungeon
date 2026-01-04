@@ -11,7 +11,7 @@ require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/characterClassName.php';
 require_once __DIR__ . '/webio/spellCatalogId.php';
-require_once 'spellSlotId.php';
+require_once __DIR__ . '/webio/spellSlotId.php';
 require_once 'spellLevel.php';
 
 $log = [];
