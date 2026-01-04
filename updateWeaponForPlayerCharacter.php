@@ -447,8 +447,8 @@ function updateWeaponForPlayerCharacter(\PDO $pdo, $input, &$errors, &$log) {
         $log[] = 'missileLongRange: NULL';
     }
     else {
-        $statement->bindParam(':missileWeaponSpeed', $input['missileWeaponSpeed'], PDO::PARAM_STR);
-        $log[] = 'missileWeaponSpeed: ' . $input['missileWeaponSpeed'];
+        $statement->bindParam(':missileWeaponSpeed', $input[MISSILE_WEAPON_SPEED], PDO::PARAM_STR);
+        $log[] = 'missileWeaponSpeed: ' . $input[MISSILE_WEAPON_SPEED];
 
         $statement->bindParam(':missileWeaponDamage', $input['missileWeaponDamage'], PDO::PARAM_STR);
         $log[] = 'missileWeaponDamage: ' . $input['missileWeaponDamage'];
