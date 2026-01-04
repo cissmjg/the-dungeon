@@ -12,7 +12,7 @@ require_once __DIR__ . '/helper/CurlHelper.php';
 
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
-require_once 'playerCharacterWeaponId.php';
+require_once __DIR__ . '/webio/playerCharacterWeaponId.php';
 require_once __DIR__ . '/webio/weaponDescription.php';
 require_once __DIR__ . '/webio/weaponLocation.php';
 require_once __DIR__ . '/webio/isReady.php';

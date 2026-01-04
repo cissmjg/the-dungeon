@@ -10,7 +10,7 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
-require_once 'playerCharacterWeaponId.php';
+require_once __DIR__ . '/webio/playerCharacterWeaponId.php';
 
 getPlayerCharacterWeaponId($errors, $input);
 
