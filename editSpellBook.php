@@ -179,7 +179,7 @@ function buildUnallocatedSpellsParams($player_name, $character_name, $character_
     $params[PLAYER_NAME] = $player_name;
     $params[CHARACTER_NAME] = $character_name;
     $params[CHARACTER_CLASS_NAME] = $character_class_name;
-    $params['spellLevel'] = $spell_level;
+    $params[SPELL_LEVEL] = $spell_level;
     $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
     return $params;

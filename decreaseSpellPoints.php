@@ -23,7 +23,7 @@ getSpellLevel($errors, $input);
 
 $player_name = $input[PLAYER_NAME];
 $character_name = $input[CHARACTER_NAME];
-$spell_level = $input['spellLevel'];
+$spell_level = $input[SPELL_LEVEL];
 
 $log[] = "SUCCESS|";
 

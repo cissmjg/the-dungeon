@@ -1158,7 +1158,7 @@ function buildAllocateCantripsParams($input) {
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
-	$params['spellLevel'] = $input['spellLevel'];
+	$params[SPELL_LEVEL] = $input[SPELL_LEVEL];
 	$params[CHARACTER_CLASS_NAME] = $input[CHARACTER_CLASS_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
@@ -1326,7 +1326,7 @@ function buildAdjustSpellPointsParams($input) {
 	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
-	$params['spellLevel'] = $input['spellLevel'];
+	$params[SPELL_LEVEL] = $input[SPELL_LEVEL];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 	
 	return $params;
@@ -1348,7 +1348,7 @@ function buildCastGMSpellParams($input) {
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SPELL_CATALOG_ID] = $input[SPELL_CATALOG_ID];
-	$params['spellLevel'] = $input['spellLevel'];
+	$params[SPELL_LEVEL] = $input[SPELL_LEVEL];
 	$params['spellDuration'] = $input['spellDuration'];
 	$params['spellCastingTime'] = $input['spellCastingTime'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];

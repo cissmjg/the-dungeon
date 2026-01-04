@@ -7,11 +7,11 @@ function castGMSpell(spellCatalogIdValue, spellLevelValue, spellDurationValue, s
         return false;
     }
 
-    let theSpellLevelTag =  document.getElementById('spellLevel');
+    let theSpellLevelTag =  document.getElementById(SPELL_LEVEL);
     if (theSpellLevelTag != null) {
         theSpellLevelTag.value = spellLevelValue;
     } else {
-        alert("Spell Level tag: 'spellLevel' not found");
+        alert("Spell Level tag: SPELL_LEVEL not found");
         return false;
     }
 

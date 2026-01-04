@@ -31,7 +31,7 @@ if (count($errors) > 0) {
 $player_name = $input[PLAYER_NAME];
 $character_name = $input[CHARACTER_NAME];
 $character_class_name = $input[CHARACTER_CLASS_NAME];
-$spell_level = $input['spellLevel'];
+$spell_level = $input[SPELL_LEVEL];
 if ($spell_level == -1) {
 	$spell_level = 0;
 }

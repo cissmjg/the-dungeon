@@ -209,7 +209,7 @@ function buildSlotChangeForm($playerName, $characterName, $characterClassName, $
     $characterActionId = buildSlotChangeCharacterActionId($spellSlotId);
     $formStartHtml = buildSlotActionFormStart($formId, $spellSlotId, $playerName, $characterName, $characterActionId);  // player, character, slot, action
     $characterClassNameTag = buildHiddenTag(CHARACTER_CLASS_NAME, $characterClassName);
-    $spellLevelTag = buildHiddenTag('spellLevel', $spellLevel);
+    $spellLevelTag = buildHiddenTag(SPELL_LEVEL, $spellLevel);
 
     $spellNameTag = '<span>' . $spellName . '</span>&nbsp;';
     $leftArrowHtml = buildLeftArrowHtml() . '&nbsp;';
@@ -268,7 +268,7 @@ function getSpellPoolForLevelAndType($input, $characterClassName, $playerSlotLev
     $params[PLAYER_NAME] = $input[PLAYER_NAME];
     $params[CHARACTER_NAME] = $input[CHARACTER_NAME];
     $params[CHARACTER_CLASS_NAME] = $characterClassName;
-    $params['spellLevel'] = $playerSlotLevel;
+    $params[SPELL_LEVEL] = $playerSlotLevel;
     $params['removeEmpty'] = true;
     $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
