@@ -640,7 +640,7 @@ switch($character_action) {
 		$raw_result = CurlHelper::performGetRequest($url_adjust_spell_points, $params_adjust_spell_points);
 		$result = json_decode($raw_result);
 		if (str_starts_with($result[0],  "SUCCESS|")) {
-			if($input['spellDuration'] > 0 || $input['spellCastingTime'] > 0) {
+			if($input[SPELL_DURATION] > 0 || $input['spellCastingTime'] > 0) {
 				$url_cast_gm_spell = CurlHelper::buildUrl('castGMSpell');
 				$params_cast_gm_spell = buildCastGMSpellParams($input);
 				$raw_result = CurlHelper::performGetRequest($url_cast_gm_spell, $params_cast_gm_spell);
@@ -1170,7 +1170,7 @@ function buildCastSlotParams($input) {
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
 	$params['castStatus'] = True;
-	$params['spellDuration'] = $input['spellDuration'];
+	$params[SPELL_DURATION] = $input[SPELL_DURATION];
 	$params['spellCastingTime'] = $input['spellCastingTime'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
@@ -1182,7 +1182,7 @@ function buildResetSlotParams($input) {
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
 	$params['castStatus'] = false;
-	$params['spellDuration'] = $input['spellDuration'];
+	$params[SPELL_DURATION] = $input[SPELL_DURATION];
 	$params['spellCastingTime'] = $input['spellCastingTime'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
@@ -1193,7 +1193,7 @@ function buildStopCastingSlotParams($input) {
 	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
-	$params['spellDuration'] = $input['spellDuration'];
+	$params[SPELL_DURATION] = $input[SPELL_DURATION];
 	$params['spellCastingTime'] = $input['spellCastingTime'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
@@ -1203,7 +1203,7 @@ function buildStopCastingSlotParams($input) {
 function buildStopRunningSlotParams($input) {
 	$params = [];
 	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
-	$params['spellDuration'] = $input['spellDuration'];
+	$params[SPELL_DURATION] = $input[SPELL_DURATION];
 	$params['spellCastingTime'] = $input['spellCastingTime'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
@@ -1349,7 +1349,7 @@ function buildCastGMSpellParams($input) {
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SPELL_CATALOG_ID] = $input[SPELL_CATALOG_ID];
 	$params[SPELL_LEVEL] = $input[SPELL_LEVEL];
-	$params['spellDuration'] = $input['spellDuration'];
+	$params[SPELL_DURATION] = $input[SPELL_DURATION];
 	$params['spellCastingTime'] = $input['spellCastingTime'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 

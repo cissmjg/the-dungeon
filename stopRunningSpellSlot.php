@@ -26,7 +26,7 @@ getSpellDuration($errors, $input);
 
 $spell_slot_id = $input[SPELL_SLOT_ID];
 $spell_casting_time = $input['spellCastingTime'];
-$spell_duration = $input['spellDuration'];
+$spell_duration = $input[SPELL_DURATION];
 
 $log[] = "SUCCESS|";
 $log[] = "Slot ID: " . $spell_slot_id;

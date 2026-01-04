@@ -42,7 +42,7 @@ $player_name = $input[PLAYER_NAME];
 $character_name = $input[CHARACTER_NAME];
 $spell_catalog_id = $input[SPELL_CATALOG_ID];
 $spell_level = $input[SPELL_LEVEL];
-$spell_duration = $input['spellDuration'];
+$spell_duration = $input[SPELL_DURATION];
 $spell_casting_time = $input['spellCastingTime'];
 
 $character_summary = new CharacterSummary();

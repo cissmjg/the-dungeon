@@ -15,11 +15,11 @@ function castGMSpell(spellCatalogIdValue, spellLevelValue, spellDurationValue, s
         return false;
     }
 
-    let theSpellDurationTag =  document.getElementById('spellDuration');
+    let theSpellDurationTag =  document.getElementById(SPELL_DURATION);
     if (theSpellDurationTag != null) {
         theSpellDurationTag.value = spellDurationValue;
     } else {
-        alert("Spell Duration tag: 'spellDuration' not found");
+        alert("Spell Duration tag: SPELL_DURATION not found");
         return false;
     }
 
