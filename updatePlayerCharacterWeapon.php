@@ -249,11 +249,11 @@ $craft_status_magic_selected = "";
                     $magic_bonus_plus_5 = " selected";
                 }
             ?>
-            <div class="inputRow"><label for="craftStatus">Craft Status: </label><select name="craftStatus" id="craftStatus" onchange="craftStatusChanged('craftStatus', 'masterCraftSection', 'magicSection', '<?= $playerCharacterWeapon->getMeleeWeaponType() ?>', '<?= $playerCharacterWeapon->getMissileWeaponType() ?>','magicBonus', MELEE_HIT_BONUS, MELEE_DAMAGE_BONUS, MELEE_SPEC1_HIT_BONUS, MELEE_SPEC2_HIT_BONUS, MELEE_SPEC3_HIT_BONUS, MELEE_SPEC1_DAMAGE_BONUS, MELEE_SPEC2_DAMAGE_BONUS, MELEE_SPEC3_DAMAGE_BONUS, MISSILE_HIT_BONUS, 'missileDamageBonus', MISSILE_SPEC1_HIT_BONUS, MISSILE_SPEC2_HIT_BONUS, MISSILE_SPEC3_HIT_BONUS, MISSILE_SPEC1_DAMAGE_BONUS, MISSILE_SPEC2_DAMAGE_BONUS, MISSILE_SPEC3_DAMAGE_BONUS);">
+            <div class="inputRow"><label for="craftStatus">Craft Status: </label><select name="craftStatus" id="craftStatus" onchange="craftStatusChanged('craftStatus', 'masterCraftSection', 'magicSection', '<?= $playerCharacterWeapon->getMeleeWeaponType() ?>', '<?= $playerCharacterWeapon->getMissileWeaponType() ?>','magicBonus', MELEE_HIT_BONUS, MELEE_DAMAGE_BONUS, MELEE_SPEC1_HIT_BONUS, MELEE_SPEC2_HIT_BONUS, MELEE_SPEC3_HIT_BONUS, MELEE_SPEC1_DAMAGE_BONUS, MELEE_SPEC2_DAMAGE_BONUS, MELEE_SPEC3_DAMAGE_BONUS, MISSILE_HIT_BONUS, MISSILE_DAMAGE_BONUS, MISSILE_SPEC1_HIT_BONUS, MISSILE_SPEC2_HIT_BONUS, MISSILE_SPEC3_HIT_BONUS, MISSILE_SPEC1_DAMAGE_BONUS, MISSILE_SPEC2_DAMAGE_BONUS, MISSILE_SPEC3_DAMAGE_BONUS);">
                 <option value="<?= CRAFT_STATUS_ARTISAN ?>"<?= $craft_status_artisan_selected ?>>Artisan</option>
                 <option value="<?= CRAFT_STATUS_MASTERCRAFT ?>"<?= $craft_status_mastercraft_selected ?>>MasterCraft</option>
                 <option value="<?= CRAFT_STATUS_MAGIC ?>"<?= $craft_status_magic_selected ?>>Magic</option>
-            </select> <select id="magicBonus" onchange="populateDefaultHitDamageBonuses('magicBonus', MELEE_HIT_BONUS, MELEE_DAMAGE_BONUS, MISSILE_HIT_BONUS, 'missileDamageBonus');"<?= $magic_hidden ?>>
+            </select> <select id="magicBonus" onchange="populateDefaultHitDamageBonuses('magicBonus', MELEE_HIT_BONUS, MELEE_DAMAGE_BONUS, MISSILE_HIT_BONUS, MISSILE_DAMAGE_BONUS);"<?= $magic_hidden ?>>
                         <option value="0">None</option>
                         <option value="1"<?= $magic_bonus_plus_1 ?>>+1</option>
                         <option value="2"<?= $magic_bonus_plus_2 ?>>+2</option>
@@ -293,7 +293,7 @@ $craft_status_magic_selected = "";
                     <option value="Balanced"<?= $mc_hit_desc_balanced?>>Balanced</option>
                 </select></div>
                 <?php if (isMasterCraftDamageEligible($playerCharacterWeapon->getMeleeWeaponSubtype())): ?>
-                <div class="inputRow"><label for="mastercraftDamageDescription">Mastercraft Damage: </label><select id="mastercraftDamageDescription" name="mastercraftDamageDescription" onchange="updateDamageBonus(MASTERCRAFT_DAMAGE_DESCRIPTION, MELEE_DAMAGE_BONUS, 'missileDamageBonus');">
+                <div class="inputRow"><label for="mastercraftDamageDescription">Mastercraft Damage: </label><select id="mastercraftDamageDescription" name="mastercraftDamageDescription" onchange="updateDamageBonus(MASTERCRAFT_DAMAGE_DESCRIPTION, MELEE_DAMAGE_BONUS, MISSILE_DAMAGE_BONUS);">
                     <option value="None"<?= $mc_damage_desc_none ?>>None</option>
                     <option value="Sharp/Heavy"<?= $mc_damage_desc_sharp_heavy ?>>Sharp/Heavy</option>
                     <option value="Extra-Sharp/Extra-Heavy"<?= $mc_damage_desc_ex_sharp_heavy ?>>Extra-Sharp/Extra-Heavy</option>
