@@ -20,7 +20,6 @@ require_once __DIR__ . '/webio/pageAction.php';
 require_once __DIR__ . '/webio/spellCatalogId.php';
 require_once __DIR__ . '/webio/spellSlotId.php';
 require_once __DIR__ . '/webio/spellLevel.php';
-require_once 'spellPoolId.php';
 require_once 'spellPoolSlotId.php';
 require_once __DIR__ . '/webio/spellDuration.php';
 require_once __DIR__ . '/webio/spellCastingTime.php';
