@@ -465,7 +465,7 @@ function buildReclaimCantripIcon($formId, $characterActionId) {
 function buildCandidateOptionsForTypeAndLevel($spellListByLevel, $spellType, $spellLevel, $nf) {
     $spellCatalogFormId = buildUpdateSpellCatalogId($spellType, $spellLevel);
 
-    $tagName = 'spellCatalogId';
+    $tagName = SPELL_CATALOG_ID;
     $selectTag = '<select id="' . $spellCatalogFormId . '" name="' .  $tagName . '" ' . ' style="font-size: 18px;">' . PHP_EOL;
     $optionList = buildOptionsForSpellList($spellListByLevel, $spellLevel, $nf);
 

@@ -1,9 +1,9 @@
 function castGMSpell(spellCatalogIdValue, spellLevelValue, spellDurationValue, spellCastingTimeValue) {
-    let theSpellCatalogIdTag =  document.getElementById('spellCatalogId');
+    let theSpellCatalogIdTag =  document.getElementById(SPELL_CATALOG_ID);
     if (theSpellCatalogIdTag != null) {
         theSpellCatalogIdTag.value = spellCatalogIdValue;
     } else {
-        alert("Spell Catalog ID tag: 'spellCatalogId' not found");
+        alert("Spell Catalog ID tag: SPELL_CATALOG_ID not found");
         return false;
     }
 

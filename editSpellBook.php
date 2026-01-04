@@ -217,7 +217,7 @@ function buildLabelForSelect() {
 }
 
 function buildCandidateOptionsForSlot($mu_spells, $spell_slot_id) {
-    $tag_name_id = 'spellCatalogId';
+    $tag_name_id = SPELL_CATALOG_ID;
     $data_spell_pool_id = 'data-spell-pool-id="' . $spell_slot_id;
     $select_tag = '<select id="' . $tag_name_id . '" name="' .  $tag_name_id . '" ' . $data_spell_pool_id . '" style="font-size: 18px;">' . PHP_EOL;
     $option_list = '';

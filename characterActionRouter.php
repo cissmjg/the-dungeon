@@ -393,7 +393,7 @@ switch($character_action) {
 		getSpellCatalogId($errors, $input);
 
 		$raw_result = '';
-		if ($input['spellCatalogId'] == CANTRIP_SLOT_SPELL_CATALOG_ID) {
+		if ($input[SPELL_CATALOG_ID] == CANTRIP_SLOT_SPELL_CATALOG_ID) {
 			// Get character class name	
 			getCharacterClassName($errors, $input);
 
@@ -1136,7 +1136,7 @@ function buildPlayerCharacterWeaponUpdateRedirect($input) {
 function buildUpdateSpellPoolParams($input) {
 	$parmas = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
-	$params['spellCatalogId'] = $input['spellCatalogId'];
+	$params[SPELL_CATALOG_ID] = $input[SPELL_CATALOG_ID];
 	$params['spellPoolSlotId'] = $input['spellPoolSlotId'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
@@ -1146,7 +1146,7 @@ function buildUpdateSpellPoolParams($input) {
 function buildUpdateReadySlotParams($input) {
 	$parmas = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
-	$params['spellCatalogId'] = $input['spellCatalogId'];
+	$params[SPELL_CATALOG_ID] = $input[SPELL_CATALOG_ID];
 	$params['spellSlotId'] = $input['spellSlotId'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
@@ -1347,7 +1347,7 @@ function buildCastGMSpellParams($input) {
 	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
-	$params['spellCatalogId'] = $input['spellCatalogId'];
+	$params[SPELL_CATALOG_ID] = $input[SPELL_CATALOG_ID];
 	$params['spellLevel'] = $input['spellLevel'];
 	$params['spellDuration'] = $input['spellDuration'];
 	$params['spellCastingTime'] = $input['spellCastingTime'];
