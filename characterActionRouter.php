@@ -1222,7 +1222,7 @@ function buildReallocateCantripsParams($input) {
 function buildAllocateExtraSlotParams($input) {
 	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
-	$params['playerCharacterClassId'] = $input['playerCharacterClassId'];
+	$params[PLAYER_CHARACTER_CLASS_ID] = $input[PLAYER_CHARACTER_CLASS_ID];
 	$params['slotLevel'] = $input['slotLevel'];
 	$params['spellTypeId'] = $input['spellTypeId'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];

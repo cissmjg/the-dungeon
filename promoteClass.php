@@ -44,7 +44,7 @@ $log[] = "IDs: " . $character_ids['player_character_race_id'] . ", " . $characte
 // Is spell processing necessary
 if ($input['spell_type_id_1'] == NULL && $input['spell_type_id_2'] == NULL) {
 	$new_class = promoteCharacterClass($pdo, $input, $errors);
-	$log[] = "Promotion: " . $new_class[CHARACTER_NAME] . ", " . $new_class['playerCharacterClassId'] . ", " . $new_class[CHARACTER_CLASS_NAME] . ", " . $new_class['character_level'];
+	$log[] = "Promotion: " . $new_class[CHARACTER_NAME] . ", " . $new_class[PLAYER_CHARACTER_CLASS_ID] . ", " . $new_class[CHARACTER_CLASS_NAME] . ", " . $new_class['character_level'];
 
 	emitOutput($errors, $log);
 	exit;
@@ -55,8 +55,8 @@ $before_character_spell_info = getCharacterSpellInfo($pdo, $input, $error, $log)
 
 // Add 1 to character level
 $new_class = promoteCharacterClass($pdo, $input, $errors);
-$log[] = "Promotion: " . $new_class[CHARACTER_NAME] . ", " . $new_class['playerCharacterClassId'] . ", " . $new_class[CHARACTER_CLASS_NAME] . ", " . $new_class['character_level'];
-$player_character_class_id = $new_class['playerCharacterClassId'];
+$log[] = "Promotion: " . $new_class[CHARACTER_NAME] . ", " . $new_class[PLAYER_CHARACTER_CLASS_ID] . ", " . $new_class[CHARACTER_CLASS_NAME] . ", " . $new_class['character_level'];
+$player_character_class_id = $new_class[PLAYER_CHARACTER_CLASS_ID];
 
 // Base spell slots for new (promoted) level
 $after_character_spell_info = getCharacterSpellInfo($pdo, $input, $error, $log);
