@@ -13,7 +13,7 @@ require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/webio/spellSlotId.php';
 require_once __DIR__ . '/webio/requiredParameter.php';
 require_once __DIR__ . '/webio/spellDuration.php';
-require_once 'spellCastingTime.php';
+require_once __DIR__ . '/webio/spellCastingTime.php';
 
 // Get Spell Slot ID
 getSpellSlotId($errors, $input);

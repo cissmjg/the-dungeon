@@ -23,7 +23,7 @@ require_once __DIR__ . '/webio/spellLevel.php';
 require_once 'spellPoolId.php';
 require_once 'spellPoolSlotId.php';
 require_once __DIR__ . '/webio/spellDuration.php';
-require_once 'spellCastingTime.php';
+require_once __DIR__ . '/webio/spellCastingTime.php';
 require_once __DIR__ . '/webio/requiredParameter.php';
 require_once __DIR__ . '/webio/optionalParameter.php';
 require_once 'cantripSpellSlot.php';

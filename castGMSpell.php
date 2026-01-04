@@ -12,7 +12,7 @@ require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/spellCatalogId.php';
 require_once __DIR__ . '/webio/spellLevel.php';
 require_once __DIR__ . '/webio/spellDuration.php';
-require_once 'spellCastingTime.php';
+require_once __DIR__ . '/webio/spellCastingTime.php';
 require_once 'characterSummary.php';
 
 require_once 'spellSlotTypes.php';
