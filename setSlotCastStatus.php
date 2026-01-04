@@ -29,7 +29,7 @@ getSpellDuration($errors, $input);
 
 $spell_slot_id = $input[SPELL_SLOT_ID];
 $cast_status = $input['castStatus'];
-$spell_casting_time = $input['spellCastingTime'];
+$spell_casting_time = $input[SPELL_CASTING_TIME];
 $spell_duration = $input[SPELL_DURATION];
 
 $log[] = "SUCCESS|";

@@ -23,11 +23,11 @@ function castGMSpell(spellCatalogIdValue, spellLevelValue, spellDurationValue, s
         return false;
     }
 
-    let theSpellCastingTag =  document.getElementById('spellCastingTime');
+    let theSpellCastingTag =  document.getElementById(SPELL_CASTING_TIME);
     if (theSpellCastingTag != null) {
         theSpellCastingTag.value = spellCastingTimeValue;
     } else {
-        alert("Spell Casting tag: 'spellCastingTime' not found");
+        alert("Spell Casting tag: SPELL_CASTING_TIME not found");
         return false;
     }
 

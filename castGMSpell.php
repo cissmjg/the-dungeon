@@ -43,7 +43,7 @@ $character_name = $input[CHARACTER_NAME];
 $spell_catalog_id = $input[SPELL_CATALOG_ID];
 $spell_level = $input[SPELL_LEVEL];
 $spell_duration = $input[SPELL_DURATION];
-$spell_casting_time = $input['spellCastingTime'];
+$spell_casting_time = $input[SPELL_CASTING_TIME];
 
 $character_summary = new CharacterSummary();
 $character_summary->init($pdo, $player_name, $character_name);
