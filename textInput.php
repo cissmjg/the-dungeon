@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/webio/requiredParameter.php';
+const TEXT_INPUT = 'textInput';
 
 function getTextInput(&$errors, &$input) {
-	getRequiredStringParameter($errors, $input, __FILE__, 'textInput');
+	getRequiredStringParameter($errors, $input, __FILE__, TEXT_INPUT);
 }

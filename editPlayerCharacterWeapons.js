@@ -4,7 +4,7 @@ export function populateWeaponList(weaponListName, weaponSearchTextboxName) {
     const weaponQueryPattern = '#' + weaponSearchTextboxName;
     const weaponList = "#" + weaponListName;
     let weaponQueryAPI = buildURL('getWeaponProficiencyByPattern');
-    weaponQueryAPI = addParameter(weaponQueryAPI, 'textInput', $(weaponQueryPattern).val());
+    weaponQueryAPI = addParameter(weaponQueryAPI, TEXT_INPUT, $(weaponQueryPattern).val());
     $(weaponList).empty();
     $.getJSON(weaponQueryAPI,
         function(data, textStatus, jqXHR) {

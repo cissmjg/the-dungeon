@@ -34,7 +34,7 @@ $sql_verbs[] = "SELECT";
 getTextInput($errors, $input);
 
 // Filter out SQL verbs
-$filtered_text = str_replace($sql_verbs, "", $input['textInput']);
+$filtered_text = str_replace($sql_verbs, "", $input[TEXT_INPUT]);
 
 // Get Weapons matching the pattern
 $weapons = getWeaponProficiencyByPattern($pdo, $filtered_text, $errors);
