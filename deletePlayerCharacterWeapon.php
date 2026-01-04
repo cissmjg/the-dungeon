@@ -14,7 +14,7 @@ require_once 'playerCharacterWeaponId.php';
 
 getPlayerCharacterWeaponId($errors, $input);
 
-deleteWeaponForPlayerCharacter($pdo, $input['playerCharacterWeaponId'], $errors);
+deleteWeaponForPlayerCharacter($pdo, $input[PLAYER_CHARACTER_WEAPON_ID], $errors);
 
 RestHeaderHelper::emitRestHeaders();
 if(count($errors) > 0) {
@@ -22,7 +22,7 @@ if(count($errors) > 0) {
 } else {
     $log[] = "SUCCESS|";
     $log[] = "Character Weapon Delete|";
-    $log[] = "playerCharacterWeaponId: " . $input['playerCharacterWeaponId'];
+    $log[] = "playerCharacterWeaponId: " . $input[PLAYER_CHARACTER_WEAPON_ID];
 
     echo json_encode($log);
 }

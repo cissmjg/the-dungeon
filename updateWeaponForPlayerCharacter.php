@@ -150,8 +150,8 @@ function updateWeaponForPlayerCharacter(\PDO $pdo, $input, &$errors, &$log) {
 
 	$statement = $pdo->prepare($sql_exec);
 
-    $statement->bindParam(':weaponId', $input['playerCharacterWeaponId'], PDO::PARAM_INT);
-    $log[] = 'weaponId: ' . $input['playerCharacterWeaponId'];
+    $statement->bindParam(':weaponId', $input[PLAYER_CHARACTER_WEAPON_ID], PDO::PARAM_INT);
+    $log[] = 'weaponId: ' . $input[PLAYER_CHARACTER_WEAPON_ID];
 
     $statement->bindParam(':weaponDescription', $input[WEAPON_DESCRIPTION], PDO::PARAM_STR);
     $log[] = 'weaponDescription: ' . $input[WEAPON_DESCRIPTION];

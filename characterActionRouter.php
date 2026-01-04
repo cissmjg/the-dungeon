@@ -1127,7 +1127,7 @@ function buildPlayerCharacterWeaponUpdateRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('updatePlayerCharacterWeapon');
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerCharacterWeaponId', $input['playerCharacterWeaponId']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_CHARACTER_WEAPON_ID, $input[PLAYER_CHARACTER_WEAPON_ID]);
 
 	return 'Location:' . $redirect_url;
 }
@@ -1367,7 +1367,7 @@ function buildEditCharacterWeaponsParams($input) {
 function buildDeleteWeaponParams($input) {
 	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
-	$params['playerCharacterWeaponId'] = $input['playerCharacterWeaponId'];
+	$params[PLAYER_CHARACTER_WEAPON_ID] = $input[PLAYER_CHARACTER_WEAPON_ID];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;

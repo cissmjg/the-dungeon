@@ -146,7 +146,7 @@ function buildDeletePlayerCharacterWeaponIcon($weapon_desc, $player_character_we
     $delete_icon = new FaDeleteIcon();
     $delete_icon->setOnClickJsFunction('confirmPlayerCharacterWeaponDelete');
     $delete_icon->addOnclickJsParameter('deleteWeapon');
-    $delete_icon->addOnclickJsParameter('playerCharacterWeaponId');
+    $delete_icon->addOnclickJsParameter(PLAYER_CHARACTER_WEAPON_ID);
     $delete_icon->addOnclickJsParameter($player_character_weapon_id);
     $delete_icon->addOnclickJsParameter($weapon_desc);
     $delete_icon->setHoverText('Delete ' . $weapon_desc);

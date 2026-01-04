@@ -27,7 +27,7 @@ if (count($errors) > 0) {
 }
 
 $weapon_detail = new PlayerCharacterWeapon();
-$weapon_detail->init($pdo, $input['playerCharacterWeaponId'], $errors);
+$weapon_detail->init($pdo, $input[PLAYER_CHARACTER_WEAPON_ID], $errors);
 
 RestHeaderHelper::emitRestHeaders();
 if (count($errors) > 0) {

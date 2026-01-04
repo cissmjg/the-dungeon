@@ -57,7 +57,7 @@ getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 getPlayerCharacterWeaponId($errors, $input);
 
-$playerCharacterWeapon = getPlayerCharacterWeapon($pdo, $input['playerCharacterWeaponId'], $errors);
+$playerCharacterWeapon = getPlayerCharacterWeapon($pdo, $input[PLAYER_CHARACTER_WEAPON_ID], $errors);
 
 if(!empty($errors)) {
     die($errors);

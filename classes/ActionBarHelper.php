@@ -172,7 +172,7 @@ class ActionBarHelper {
         $url = CurlHelper::addParameter($url, 'characterAction', 'updatePlayerCharacterWeapon');
         $url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
         $url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
-        $url = CurlHelper::addParameter($url, 'playerCharacterWeaponId', $player_character_weapon_id);
+        $url = CurlHelper::addParameter($url, PLAYER_CHARACTER_WEAPON_ID, $player_character_weapon_id);
 
         return $url;
     }
