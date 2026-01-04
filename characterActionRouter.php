@@ -80,7 +80,7 @@ require_once __DIR__ . '/webio/missileSpec3Description.php';
 require_once __DIR__ . '/webio/missileShortRange.php';
 require_once __DIR__ . '/webio/missileMediumRange.php';
 require_once __DIR__ . '/webio/missileLongRange.php';
-require_once 'missileHitBonus.php';
+require_once __DIR__ . '/webio/missileHitBonus.php';
 require_once 'missileDamageBonus.php';
 
 getRequiredStringParameter($errors, $input, __FILE__, 'characterAction');
