@@ -19,6 +19,7 @@ require_once 'faDeleteIcon.php';
 
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
+require_once __DIR__ . '/webio/playerCharacterWeaponId.php';
 
 // Populate player and character names in $input
 getPlayerName($errors, $input);
