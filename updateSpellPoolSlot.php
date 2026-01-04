@@ -18,7 +18,7 @@ getSpellCatalogId($errors, $input);
 getSpellPoolSlotId($errors, $input);
 
 $spell_catalog_id = $input[SPELL_CATALOG_ID];
-$spell_pool_slot_id = $input['spellPoolSlotId'];
+$spell_pool_slot_id = $input[SPELL_POOL_SLOT_ID];
 
 $log[] = "SUCCESS|";
 updateSpellPoolSlot($pdo, $spell_catalog_id, $spell_pool_slot_id, $errors);

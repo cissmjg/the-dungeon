@@ -206,7 +206,7 @@ function buildFormStart($form_id_name, $character_action_id, $spell_pool_id, $pl
     $character_name_tag = buildHiddenTag(CHARACTER_NAME, $character_name);
     $character_class_name = buildHiddenTag(CHARACTER_CLASS_NAME, $character_class_name);
     $router_action_tag = buildHiddenTagWithId('characterAction', $character_action_id, '');
-    $spell_pool_id_tag = buildHiddenTagWithId('spellPoolSlotId', $spell_pool_form_id, $spell_pool_id);
+    $spell_pool_id_tag = buildHiddenTagWithId(SPELL_POOL_SLOT_ID, $spell_pool_form_id, $spell_pool_id);
     $page_action_tag = buildHiddenTag(PAGE_ACTION, 'edit');
 
     return $form_start_tag . $player_name_tag . $character_name_tag . $character_class_name . $router_action_tag . $spell_pool_id_tag . $page_action_tag . PHP_EOL;

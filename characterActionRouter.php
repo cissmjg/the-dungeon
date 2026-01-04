@@ -1136,7 +1136,7 @@ function buildUpdateSpellPoolParams($input) {
 	$parmas = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[SPELL_CATALOG_ID] = $input[SPELL_CATALOG_ID];
-	$params['spellPoolSlotId'] = $input['spellPoolSlotId'];
+	$params[SPELL_POOL_SLOT_ID] = $input[SPELL_POOL_SLOT_ID];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;
