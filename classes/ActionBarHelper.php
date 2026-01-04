@@ -80,7 +80,7 @@ class ActionBarHelper {
         $url = CurlHelper::addParameter($url, 'characterAction', 'editSpellBook');
         $url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
         $url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
-        $url = CurlHelper::addParameter($url, 'characterClassName', $character_class);
+        $url = CurlHelper::addParameter($url, CHARACTER_CLASS_NAME, $character_class);
         $url = CurlHelper::addParameter($url, 'pageAction', $page_action);
 
         return $url;
@@ -207,7 +207,7 @@ class ActionBarHelper {
         $url = CurlHelper::addParameter($url, 'characterAction', 'promote');
         $url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
         $url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
-        $url = CurlHelper::addParameter($url, 'characterClassName', $character_class_name);
+        $url = CurlHelper::addParameter($url, CHARACTER_CLASS_NAME, $character_class_name);
         
         return $url;
     }

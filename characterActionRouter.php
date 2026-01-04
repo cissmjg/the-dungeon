@@ -1015,7 +1015,7 @@ function buildEditSpellBookRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('editSpellBook');
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'characterClassName', $input['characterClassName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_CLASS_NAME, $input[CHARACTER_CLASS_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, 'pageAction',  $input['pageAction']);
 
 	return 'Location:' . $redirect_url;
@@ -1159,7 +1159,7 @@ function buildAllocateCantripsParams($input) {
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params['spellSlotId'] = $input['spellSlotId'];
 	$params['spellLevel'] = $input['spellLevel'];
-	$params['characterClassName'] = $input['characterClassName'];
+	$params[CHARACTER_CLASS_NAME] = $input[CHARACTER_CLASS_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;
@@ -1261,7 +1261,7 @@ function buildPromoteClassParams($input) {
 	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
-	$params['characterClassName'] = $input['characterClassName'];
+	$params[CHARACTER_CLASS_NAME] = $input[CHARACTER_CLASS_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;

@@ -10,7 +10,7 @@ require_once 'characterClassName.php';
 
 getCharacterClassName($errors, $input);
 
-$result = getCharacterClassSpellCount($pdo, $input['characterClassName'], $errors);
+$result = getCharacterClassSpellCount($pdo, $input[CHARACTER_CLASS_NAME], $errors);
 
 RestHeaderHelper::emitRestHeaders();
 echo json_encode($result);

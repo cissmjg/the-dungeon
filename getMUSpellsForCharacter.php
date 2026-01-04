@@ -36,7 +36,7 @@ function getMUSpellsForCharacter(\PDO $pdo, $input, &$errors) {
 	$statement = $pdo->prepare($sql_exec);
 	$statement->bindParam(':playerName', $input[PLAYER_NAME], PDO::PARAM_STR);
 	$statement->bindParam(':characterName', $input[CHARACTER_NAME], PDO::PARAM_STR);
-	$statement->bindParam(':characterClassName', $input['characterClassName'], PDO::PARAM_STR);
+	$statement->bindParam(':characterClassName', $input[CHARACTER_CLASS_NAME], PDO::PARAM_STR);
 	$statement->bindParam(':spellLevel', $input['spellLevel'], PDO::PARAM_INT);
 	try {
 		$statement->execute();

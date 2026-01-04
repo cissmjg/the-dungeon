@@ -15,10 +15,10 @@ $spell_casting_classes = getAllSpellCastingClasses($pdo, $errors);
 
 $character_class_name = '';
 $spell_count_for_classes = null;
-if (isset($_POST['characterClassName']))
+if (isset($_POST[CHARACTER_CLASS_NAME]))
 {
     getCharacterClassName($errors, $input);
-    $character_class_name = $input['characterClassName'];
+    $character_class_name = $input[CHARACTER_CLASS_NAME];
     $url = CurlHelper::buildUrl('getCharacterClassSpellCount');
     $raw_results = CurlHelper::performGetRequest($url, $input);
     
@@ -115,7 +115,7 @@ if ($spell_count_for_classes != null) {
     <?php
         foreach($spell_casting_classes AS $spell_casting_class) {
             $selected_text = '';
-            if ($spell_casting_class['character_class_name'] == $input['characterClassName']) {
+            if ($spell_casting_class['character_class_name'] == $input[CHARACTER_CLASS_NAME]) {
                 $selected_text = " selected";
             }
             echo '<option value="' . $spell_casting_class['character_class_name'] . '"' . $selected_text . '>' . $spell_casting_class['character_class_name'] . '</option>' . PHP_EOL;
