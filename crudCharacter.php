@@ -12,6 +12,7 @@ require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once 'characterAttributes.php';
 require_once __DIR__ . '/webio/pageAction.php';
+require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/requiredParameter.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once 'hiddenTag.php';
@@ -764,7 +765,7 @@ if ($tertiary_class_available) {
 
 			if ($page_action == PAGE_DELETE) {
 				$character_description = "'" . $input[CHARACTER_NAME] . "'";
-				echo buildHiddenTag('characterAction', 'deleteCharacter');
+				echo buildHiddenTag(CHARACTER_ACTION, 'deleteCharacter');
 				echo '<tr><td colspan="3" style="text-align: center;"><button onclick="event.preventDefault(); deleteCharacter(this.form, ' . $character_description . ')">' . $page_action . '</button></td></tr>';
 			} 
 		?>
@@ -955,7 +956,7 @@ function doesSuperConstitutionApply($input, $character_super_stats) {
 
 function buildEditReadySpellsUrl($player_name, $character_name) {
 	$url = CurlHelper::buildUrl('characterActionRouter');
-	$url = CurlHelper::addParameter($url, 'characterAction', 'editReadySpells');
+	$url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'editReadySpells');
 	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
 
@@ -964,7 +965,7 @@ function buildEditReadySpellsUrl($player_name, $character_name) {
 
 function buildEditGMSpellsUrl($player_name, $character_name) {
 	$url = CurlHelper::buildUrl('characterActionRouter');
-	$url = CurlHelper::addParameter($url, 'characterAction', 'editGMSpells');
+	$url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'editGMSpells');
 	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
 
@@ -973,7 +974,7 @@ function buildEditGMSpellsUrl($player_name, $character_name) {
 
 function buildEditExtraSlotUrl($player_name, $character_name) {
 	$url = CurlHelper::buildUrl('characterActionRouter');
-	$url = CurlHelper::addParameter($url, 'characterAction', 'editExtraSlots');
+	$url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'editExtraSlots');
 	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
 
@@ -994,7 +995,7 @@ function buildSpellBookIcon($character_class, $classes_that_know_spells, $player
 
 function buildPromoteUrl($player_name, $character_name, $character_class_name) {
 	$url = CurlHelper::buildUrl('characterActionRouter');
-	$url = CurlHelper::addParameter($url, 'characterAction', 'promote');
+	$url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'promote');
 	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
 	$url = CurlHelper::addParameter($url, CHARACTER_CLASS_NAME, $character_class_name);

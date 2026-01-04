@@ -11,6 +11,7 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
@@ -417,7 +418,7 @@ function buildSlotActionFormStart($formId, $spellSlotId, $playerName, $character
     $playerNameTag = buildHiddenTag(PLAYER_NAME, $playerName);
     $characterNameTag = buildHiddenTag(CHARACTER_NAME, $characterName);
     $spellSlotIdTag = buildHiddenTag(SPELL_SLOT_ID, $spellSlotId);
-    $characterActionTag = buildHiddenTagWithId('characterAction', $characterActionId, '');
+    $characterActionTag = buildHiddenTagWithId(CHARACTER_ACTION, $characterActionId, '');
     return $formStartTag . $playerNameTag . $characterNameTag . $spellSlotIdTag . $characterActionTag;
 }
 

@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/characterName.php';
 
 class ActionBarHelper {
@@ -77,7 +78,7 @@ class ActionBarHelper {
     
     static function buildEditSpellBookUrl($player_name, $character_name, $character_class, $page_action) {
         $url = CurlHelper::buildUrl('characterActionRouter');
-        $url = CurlHelper::addParameter($url, 'characterAction', 'editSpellBook');
+        $url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'editSpellBook');
         $url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
         $url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
         $url = CurlHelper::addParameter($url, CHARACTER_CLASS_NAME, $character_class);
@@ -97,7 +98,7 @@ class ActionBarHelper {
     
     static function buildEditReadySpellsUrl($player_name, $character_name) {
         $url = CurlHelper::buildUrl('characterActionRouter');
-        $url = CurlHelper::addParameter($url, 'characterAction', 'editReadySpells');
+        $url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'editReadySpells');
         $url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
         $url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
     
@@ -115,7 +116,7 @@ class ActionBarHelper {
     
     static function buildEditGMReadySpellsUrl($player_name, $character_name) {
         $url = CurlHelper::buildUrl('characterActionRouter');
-        $url = CurlHelper::addParameter($url, 'characterAction', 'editGMSpells');
+        $url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'editGMSpells');
         $url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
         $url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
     
@@ -134,7 +135,7 @@ class ActionBarHelper {
 
     static function buildEditWeaponTalentsUrl($player_name, $character_name) {
         $url = CurlHelper::buildUrl('characterActionRouter');
-        $url = CurlHelper::addParameter($url, 'characterAction', 'editWeaponTalents');
+        $url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'editWeaponTalents');
         $url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
         $url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
     
@@ -152,7 +153,7 @@ class ActionBarHelper {
 
     static function buildEditWeaponsUrl($player_name, $character_name) {
         $url = CurlHelper::buildUrl('characterActionRouter');
-        $url = CurlHelper::addParameter($url, 'characterAction', 'playerCharacterWeaponMain');
+        $url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'playerCharacterWeaponMain');
         $url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
         $url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
     
@@ -169,7 +170,7 @@ class ActionBarHelper {
 
     static function buildEditPlayerCharacterWeaponUrl($player_name, $character_name, $player_character_weapon_id) {
         $url = CurlHelper::buildUrl('characterActionRouter');
-        $url = CurlHelper::addParameter($url, 'characterAction', 'updatePlayerCharacterWeapon');
+        $url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'updatePlayerCharacterWeapon');
         $url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
         $url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
         $url = CurlHelper::addParameter($url, PLAYER_CHARACTER_WEAPON_ID, $player_character_weapon_id);
@@ -188,7 +189,7 @@ class ActionBarHelper {
 
     static function buildEditSkillsUrl($player_name, $character_name) {
         $url = CurlHelper::buildUrl('characterActionRouter');
-        $url = CurlHelper::addParameter($url, 'characterAction', 'editSkills');
+        $url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'editSkills');
         $url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
         $url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
     
@@ -204,7 +205,7 @@ class ActionBarHelper {
 
     static function buildPromoteUrl($player_name, $character_name, $character_class_name) {
         $url = CurlHelper::buildUrl('characterActionRouter');
-        $url = CurlHelper::addParameter($url, 'characterAction', 'promote');
+        $url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'promote');
         $url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
         $url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
         $url = CurlHelper::addParameter($url, CHARACTER_CLASS_NAME, $character_class_name);
@@ -223,7 +224,7 @@ class ActionBarHelper {
     
     static function buildEditExtraSlotUrl($player_name, $character_name) {
         $url = CurlHelper::buildUrl('characterActionRouter');
-        $url = CurlHelper::addParameter($url, 'characterAction', 'editExtraSlots');
+        $url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'editExtraSlots');
         $url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
         $url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
 

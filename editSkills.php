@@ -11,6 +11,7 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
@@ -113,7 +114,7 @@ function buildDeletDeleteIcon($player_name, $character_name, $character_skill_id
 
 function buildDeleteSkillUrl($player_name, $character_name, $character_skill_id) {
     $url = CurlHelper::buildUrl('characterActionRouter');
-	$url = CurlHelper::addParameter($url, 'characterAction', 'deleteCharacterSkill');
+	$url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'deleteCharacterSkill');
 	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
 	$url = CurlHelper::addParameter($url, 'playerCharacterSkillId', $character_skill_id);

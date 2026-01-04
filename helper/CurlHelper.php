@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/env.php';
+require_once __DIR__ . '/webio/characterAction.php';
 
 class CurlHelper {
 
@@ -44,14 +45,14 @@ class CurlHelper {
 	
 	public static function buildCharacterActionRouterUrl($player_name, $action) {
 		$redirect_url = CurlHelper::buildUrl('characterActionRouter');
-		$redirect_url = CurlHelper::addParameter($redirect_url, 'characterAction', $action);
+		$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_ACTION, $action);
 		$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $player_name);
 		return $redirect_url;
 	}
 	
 	public static function buildCharacterCRUDUrl($player_name, $character_name, $navigation_action) {
 		$redirect_url = CurlHelper::buildUrl('characterActionRouter');
-		$redirect_url = CurlHelper::addParameter($redirect_url, 'characterAction', $navigation_action);
+		$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_ACTION, $navigation_action);
 		$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $player_name);
 		$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $character_name);
 
@@ -60,7 +61,7 @@ class CurlHelper {
 	
 	public static function buildCharacterCRUDRedirect($player_name, $character_name, $navigation_action) {
 		$redirect_url = CurlHelper::buildUrl('characterActionRouter');
-		$redirect_url = CurlHelper::addParameter($redirect_url, 'characterAction', $navigation_action);
+		$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_ACTION, $navigation_action);
 		$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $player_name);
 		$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $character_name);
 

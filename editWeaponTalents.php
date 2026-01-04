@@ -11,6 +11,7 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
@@ -146,7 +147,7 @@ function buildDeleteWeaponTalentIcon($player_name, $character_name, $player_weap
 
 function buildDeleteWeaponTalentUrl($player_name, $character_name, $player_weapon_talent_id) {
 	$url = CurlHelper::buildUrl('characterActionRouter');
-	$url = CurlHelper::addParameter($url, 'characterAction', 'deleteWeaponTalent');
+	$url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'deleteWeaponTalent');
 	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
 	$url = CurlHelper::addParameter($url, WEAPON_PROFICIENCY_ID, $player_weapon_talent_id);

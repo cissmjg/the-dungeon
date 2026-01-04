@@ -11,6 +11,7 @@ require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/WebParameterHelper.php';
 require_once __DIR__ . '/webio/textInput.php';
 
+require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/characterClassName.php';
@@ -82,8 +83,8 @@ require_once __DIR__ . '/webio/missileLongRange.php';
 require_once __DIR__ . '/webio/missileHitBonus.php';
 require_once __DIR__ . '/webio/missileDamageBonus.php';
 
-getRequiredStringParameter($errors, $input, __FILE__, 'characterAction');
-$character_action = $input['characterAction'];
+ getCharacterAction($errors, $input);
+$character_action = $input[CHARACTER_ACTION];
 
 switch($character_action) {
 	case "login":
@@ -926,7 +927,11 @@ switch($character_action) {
 		die(json_encode($errors));
 }
 
-function initiateSession($pdo, $player_name, $errors) {
+function getCharacterAction(&$errors, &$input) {
+	getRequiredStringParameter($errors, $input, __FILE__, CHARACTER_ACTION);
+}
+
+function initiateSession($pdo, $player_name, &$errors) {
 	deleteSessionTicket($pdo, $player_name, $errors);
 	createSessionTicket($pdo, $player_name, $errors);
 	if (count($errors) > 0) {
@@ -938,7 +943,7 @@ function initiateSession($pdo, $player_name, $errors) {
 	}
 }
 
-function deleteSessionTicket($pdo, $player_name, $errors) {
+function deleteSessionTicket($pdo, $player_name, &$errors) {
 	$sql_exec = "CALL deleteSessionTicket(:playerName)";
 
 	$statement = $pdo->prepare($sql_exec);
