@@ -35,7 +35,7 @@ $errors[CHARACTER_CHARISMA] = [];
 getPlayerName($errors, $input);
 getPageAction($errors, $input);
 
-$page_action = $input['pageAction'];
+$page_action = $input[PAGE_ACTION];
 
 $data_entered = !empty($_POST[PLAYER_NAME]);
 if ($data_entered) {
@@ -49,13 +49,13 @@ $race_list = getRaceList($pdo, $errors);
 $page_title = 'New Character';
 
 $input_class='valid';
-if ($input['pageAction'] == PAGE_ACTION_EDIT) {
+if ($input[PAGE_ACTION] == PAGE_ACTION_EDIT) {
 	$input_class = "valid";
 }
 
 $read_only = '';
 $disabled = '';
-if ($input['pageAction'] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent($errors)) {
+if ($input[PAGE_ACTION] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent($errors)) {
 	$read_only = ' readonly';
 	$disabled = ' disabled';
 	$input_class = "view_only";
@@ -283,7 +283,7 @@ if ($input['pageAction'] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent
 </table>
 </div>
 <?php
-	if ($input['pageAction'] == PAGE_ACTION_VALIDATE && $data_entered && noErrorsPresent($errors)) {
+	if ($input[PAGE_ACTION] == PAGE_ACTION_VALIDATE && $data_entered && noErrorsPresent($errors)) {
 		$button_bar = '<div style="border: solid 1px; border-color: blue; border-radius: 10px; margin-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; width: 405px; display: table;">' . PHP_EOL;
 		$button_bar .= '<button style="float:left; margin-top: 5px;" type="submit" name="pageAction" value="' . PAGE_ACTION_EDIT . '" formaction="characterCreation1.php">Edit</button>' . PHP_EOL;
 		$button_bar .= '<button style="float:right; margin-top: 5px;" type="submit" formaction="characterCreation2.php">Select Class(es)</button>' . PHP_EOL;
@@ -293,7 +293,7 @@ if ($input['pageAction'] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent
 		echo buildHiddenTag(CHARACTER_GENDER, $input[CHARACTER_GENDER]) . PHP_EOL;
 	} else {
 		echo '<div style="border: solid 1px; border-color: blue; border-radius: 10px; margin-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; width: 405px; display: table;"><button style="margin-top: 5px;" type="submit">Validate</button></div>';
-		echo buildHiddenTag('pageAction', PAGE_ACTION_VALIDATE);
+		echo buildHiddenTag(PAGE_ACTION, PAGE_ACTION_VALIDATE);
 	} 
 ?>
 </form>

@@ -402,7 +402,7 @@ $errors_exist = errorsExist($errors);
 </table>
 </div>
 <?php
-	echo buildHiddenTag('pageAction', PAGE_ACTION_VALIDATE);
+	echo buildHiddenTag(PAGE_ACTION, PAGE_ACTION_VALIDATE);
 	$button_bar = '<div style="margin-top: 5px; padding-bottom: 5px; padding-left: 5px; width: 405px;" class="character_create_action_bar_container">' . PHP_EOL;
 	$button_bar .= '<div class="character_create_action_bar_item_one"><button style="margin-top: 5px;" type="submit" formaction="characterCreation1.php">Attributes</button></div>' . PHP_EOL;
 	$button_bar .= '<div style="text-align: center;"  class="character_create_action_bar_item_two"><button style="margin-top: 5px;" type="submit" formaction="characterCreation2.php">Validate</button></div>' . PHP_EOL;

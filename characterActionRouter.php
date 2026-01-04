@@ -1016,7 +1016,7 @@ function buildEditSpellBookRedirect($input) {
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_CLASS_NAME, $input[CHARACTER_CLASS_NAME]);
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'pageAction',  $input['pageAction']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PAGE_ACTION,  $input[PAGE_ACTION]);
 
 	return 'Location:' . $redirect_url;
 }
@@ -1079,7 +1079,7 @@ function buildCRUDCharacterRedirect($input, $crud_action) {
 	if (isset($input[CHARACTER_NAME])) {
 		$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 	}
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'pageAction',  $crud_action);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PAGE_ACTION,  $crud_action);
 	
 	return 'Location:' . $redirect_url;
 }

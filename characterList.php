@@ -86,7 +86,7 @@ $account_character_summaries = json_decode($raw_results);
 	function buildNewCharacterPortraitAnchor($img_tag, $player_name) {
 		$create_character_url = CurlHelper::buildUrl('characterCreation1');
 		$create_character_url = CurlHelper:: addParameter($create_character_url, PLAYER_NAME, $player_name);
-		$create_character_url = CurlHelper:: addParameter($create_character_url, 'pageAction', 'validate');
+		$create_character_url = CurlHelper:: addParameter($create_character_url, PAGE_ACTION, 'validate');
 	
 		$output_html = '<a href="' . $create_character_url . '" target="_blank">';
 		$output_html .= $img_tag;

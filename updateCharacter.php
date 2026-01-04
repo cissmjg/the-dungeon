@@ -85,7 +85,7 @@ if (count($errors) > 0) {
 $url_crudCharacter = CurlHelper::buildUrl('crudCharacter');
 $url_crudCharacter = CurlHelper::addParameter($url_crudCharacter, PLAYER_NAME, $input[PLAYER_NAME]);
 $url_crudCharacter = CurlHelper::addParameter($url_crudCharacter, CHARACTER_NAME, $input[CHARACTER_NAME]);
-$url_crudCharacter = CurlHelper::addParameter($url_crudCharacter, 'pageAction', 'update');
+$url_crudCharacter = CurlHelper::addParameter($url_crudCharacter, PAGE_ACTION, 'update');
 $url_crudCharacter = CurlHelper::addParameter($url_crudCharacter, 'updateTimestamp', mktime(null));
 $location_header = "Location:" . $url_crudCharacter;
 

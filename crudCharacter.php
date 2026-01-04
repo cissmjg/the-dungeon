@@ -63,7 +63,7 @@ const NO_CHARACTER_CLASS_ID = 0;
 $classes_that_know_spells = array('Magic-User', 'Illusionist', 'Healer', 'Wu Jen');
 
 getPageAction($errors, $input);
-$page_action = $input['pageAction'];
+$page_action = $input[PAGE_ACTION];
 
 getPlayerName($errors, $input);
 
