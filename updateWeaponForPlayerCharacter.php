@@ -453,8 +453,8 @@ function updateWeaponForPlayerCharacter(\PDO $pdo, $input, &$errors, &$log) {
         $statement->bindParam(':missileWeaponDamage', $input[MISSILE_WEAPON_DAMAGE], PDO::PARAM_STR);
         $log[] = 'missileWeaponDamage: ' . $input[MISSILE_WEAPON_DAMAGE];
 
-        $statement->bindParam(':missileAttacksPerRound', $input['missileAttacksPerRound'], PDO::PARAM_STR);
-        $log[] = 'missileAttacksPerRound: ' . $input['missileAttacksPerRound'];
+        $statement->bindParam(':missileAttacksPerRound', $input[MISSILE_ATTACKS_PER_ROUND], PDO::PARAM_STR);
+        $log[] = 'missileAttacksPerRound: ' . $input[MISSILE_ATTACKS_PER_ROUND];
 
         if ($input['missileHitBonus'] == OPTIONAL_INTEGER_PARAMETER) {
             $statement->bindParam(':missileHitBonus', $null_value, PDO::PARAM_NULL);
