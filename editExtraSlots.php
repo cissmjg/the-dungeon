@@ -205,7 +205,7 @@ function buildAddExtraSlotForm($form_id, $player_name, $character_name, $charact
     $form_html .= buildHiddenTag(PLAYER_NAME, $player_name) . PHP_EOL;
     $form_html .= buildHiddenTag(CHARACTER_NAME, $character_name) . PHP_EOL;
     $form_html .= buildHiddenTag(PLAYER_CHARACTER_CLASS_ID, $player_character_class_id) . PHP_EOL;
-    $form_html .= buildHiddenTag('spellTypeId', $extra_slot_spell_type) . PHP_EOL;
+    $form_html .= buildHiddenTag(SPELL_TYPE_ID, $extra_slot_spell_type) . PHP_EOL;
     $form_html .= buildHiddenTagWithId('characterAction', $character_action_id, ALLOCATE_CHARACTER_ACTION) . PHP_EOL;
     $form_html .= "Add ";
     $form_html .= '<select id="slotLevel" name="slotLevel">' . PHP_EOL;

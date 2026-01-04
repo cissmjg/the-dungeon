@@ -1224,7 +1224,7 @@ function buildAllocateExtraSlotParams($input) {
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[PLAYER_CHARACTER_CLASS_ID] = $input[PLAYER_CHARACTER_CLASS_ID];
 	$params[SPELL_SLOT_LEVEL] = $input[SPELL_SLOT_LEVEL];
-	$params['spellTypeId'] = $input['spellTypeId'];
+	$params[SPELL_TYPE_ID] = $input[SPELL_TYPE_ID];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;
