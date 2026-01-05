@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/requiredParameter.php';
-require_once __DIR__ . '/helper/WebParameterHelper.php';
+require_once __DIR__ . '/../helper/WebParameterHelper.php';
 const MELEE_WEAPON_DAMAGE = 'meleeWeaponDamage';
 
 function getMeleeWeaponDamage(&$errors, &$input) {

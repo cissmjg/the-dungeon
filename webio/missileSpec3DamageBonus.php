@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/requiredParameter.php';
 require_once __DIR__ . '/optionalParameter.php';
-require_once __DIR__ . '/helper/WebParameterHelper.php';
+require_once __DIR__ . '/../helper/WebParameterHelper.php';
 const MISSILE_SPEC3_DAMAGE_BONUS = 'missileSpec3DamageBonus';
 
 function getMissileSpec3DamageBonus(&$errors, &$input) {

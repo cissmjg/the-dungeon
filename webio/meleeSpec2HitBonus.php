@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/requiredParameter.php';
 require_once __DIR__ . '/optionalParameter.php';
-require_once __DIR__ . '/helper/WebParameterHelper.php';
+require_once __DIR__ . '/../helper/WebParameterHelper.php';
 const MELEE_SPEC2_HIT_BONUS = 'meleeSpec2HitBonus';
 
 function getMeleeSpec2HitBonus(&$errors, &$input) {

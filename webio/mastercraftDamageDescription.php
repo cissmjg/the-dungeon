@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/requiredParameter.php';
 require_once __DIR__ . '/optionalParameter.php';
-require_once __DIR__ . '/helper/WebParameterHelper.php';
+require_once __DIR__ . '/../helper/WebParameterHelper.php';
 const MASTERCRAFT_DAMAGE_DESCRIPTION = MASTERCRAFT_DAMAGE_DESCRIPTION;
 
 function getMastercraftDamageDescription(&$errors, &$input) {
