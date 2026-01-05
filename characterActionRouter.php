@@ -10,10 +10,10 @@ require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/WebParameterHelper.php';
 require_once __DIR__ . '/webio/requiredParameter.php';
-require_once __DIR__ . '/webio/optionalParameter.php';
-require_once __DIR__ . '/webio/textInput.php';
 
+require_once __DIR__ . '/webio/textInput.php';
 require_once __DIR__ . '/webio/characterAction.php';
+
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/characterClassName.php';
@@ -272,65 +272,6 @@ switch($character_action) {
 		$location_header = buildEditWeaponTalentsRedirect($input);
 		header($location_header);
 		exit;
-		break;
-	case "addWeaponTalent":
-		// Get player name
-		getPlayerName($errors, $input);
-
-		// Get character name	
-		getCharacterName($errors, $input);
-
-		// Weapon Proficiency (Talent) ID
-		getRequiredIntegerParameter($errors, $input, __FILE__, WEAPON_PROFICIENCY_ID);
-
-		// Preferred weapon (Cavalier)
-		getOptionalStringParameter($errors, $input, __FILE__, IS_PREFERRED, 'not preferred');
-
-		$url_add_weapon_talent = CurlHelper::buildUrl('addWeaponTalent');
-		$params_add_weapon_talent = buildAddWeaponTalentParams($input);
-		$raw_result = CurlHelper::performGetRequest($url_add_weapon_talent, $params_add_weapon_talent);
-		$result = json_decode($raw_result);
-		if (str_starts_with($result[0],  "SUCCESS|")) {
-			$location_header = buildEditWeaponTalentsRedirect($input);
-			header($location_header);
-			exit;
-		} else {
-			RestHeaderHelper::emitRestHeaders();
-			$errors[] = "Execution Error|";
-			$errors[] = $character_action . "|";
-			$errors[] = __FILE__ . "|";
-			$errors[] = $result;
-			die(json_encode($errors));
-		}
-
-		break;
-	case "deleteWeaponTalent":
-		// Get player name
-		getPlayerName($errors, $input);
-
-		// Get character name	
-		getCharacterName($errors, $input);
-
-		// Weapon Proficiency (Talent) ID
-		getRequiredIntegerParameter($errors, $input, __FILE__, WEAPON_PROFICIENCY_ID);
-
-		$url_delete_weapon_talent = CurlHelper::buildUrl('deleteWeaponTalent');
-		$params_delete_weapon_talent = buildDeleteWeaponTalentParams($input);
-		$raw_result = CurlHelper::performGetRequest($url_delete_weapon_talent, $params_delete_weapon_talent);
-		$result = json_decode($raw_result);
-		if (str_starts_with($result[0],  "SUCCESS|")) {
-			$location_header = buildDeleteWeaponTalentRedirect($input);
-			header($location_header);
-			exit;
-		} else {
-			RestHeaderHelper::emitRestHeaders();
-			$errors[] = "Execution Error|";
-			$errors[] = $character_action . "|";
-			$errors[] = __FILE__ . "|";
-			$errors[] = $result;
-			die(json_encode($errors));
-		}
-
 		break;
 	case "editSkills":
 		// Get player name
