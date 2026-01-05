@@ -14,6 +14,7 @@ require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
+require_once __DIR__ . '/webio/removeEmpty.php';
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once 'hiddenTag.php';
@@ -270,7 +271,7 @@ function getSpellPoolForLevelAndType($input, $characterClassName, $playerSlotLev
     $params[CHARACTER_NAME] = $input[CHARACTER_NAME];
     $params[CHARACTER_CLASS_NAME] = $characterClassName;
     $params[SPELL_LEVEL] = $playerSlotLevel;
-    $params['removeEmpty'] = true;
+    $params[REMOVE_EMPTY] = true;
     $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
     $url = CurlHelper::buildUrl('getSpellPoolForPlayerCharacter');

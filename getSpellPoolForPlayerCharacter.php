@@ -14,7 +14,7 @@ require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/characterClassName.php';
 require_once __DIR__ . '/webio/spellLevel.php';
-require_once __DIR__ . '/webio/optionalParameter.php';
+require_once __DIR__ . '/webio/removeEmpty.php';
 require_once 'emptySpellSlot.php';
 
 // Filter and sanitize names
@@ -38,9 +38,9 @@ if ($spell_level == -1) {
 
 $result = getSpellPoolForPlayerCharacter($pdo, $player_name, $character_name, $character_class_name, $spell_level, $errors);
 
-getOptionalBooleanParameter($errors, $input, __FILE__, 'removeEmpty', false);
+getRemoveEmpty($errors, $input);
 
-if ($input['removeEmpty']) {
+if ($input[REMOVE_EMPTY]) {
 	$filtered_spell_pool = [];
 	foreach($result AS $spell_pool_entry) {
 		if ($spell_pool_entry['spell_name'] != EMPTY_SLOT_SPELL_NAME) {
