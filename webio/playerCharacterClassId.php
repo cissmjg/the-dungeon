@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/webio/requiredParameter.php';
+require_once __DIR__ . '/requiredParameter.php';
 const PLAYER_CHARACTER_CLASS_ID = 'playerCharacterClassId';
 
 function getPlayerCharacterClassId(&$errors, &$input) {

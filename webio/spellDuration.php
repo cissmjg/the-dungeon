@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/webio/requiredParameter.php';
+require_once __DIR__ . '/requiredParameter.php';
 const SPELL_DURATION = 'spellDuration';
 
 function getSpellDuration(&$errors, &$input) {

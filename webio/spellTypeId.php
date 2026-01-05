@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/webio/requiredParameter.php';
+require_once __DIR__ . '/requiredParameter.php';
 const SPELL_TYPE_ID = SPELL_TYPE_ID;
 
 function getSpellTypeId(&$errors, &$input) {

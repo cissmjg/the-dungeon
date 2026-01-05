@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/webio/requiredParameter.php';
+require_once __DIR__ . '/requiredParameter.php';
 
 const CRAFT_STATUS_ARTISAN = 0;
 const CRAFT_STATUS_MASTERCRAFT = 1;

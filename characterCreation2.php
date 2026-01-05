@@ -10,7 +10,6 @@ require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/pageAction.php';
-require_once __DIR__ . '/webio/requiredParameter.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once 'hiddenTag.php';
 

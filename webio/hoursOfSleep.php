@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/webio/requiredParameter.php';
+require_once __DIR__ . '/requiredParameter.php';
 const HOURS_OF_SLEEP = 'hoursOfSleep';
 
 function getHoursOfSleep(&$errors, &$input) {

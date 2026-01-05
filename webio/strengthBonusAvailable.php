@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/webio/requiredParameter.php';
+require_once __DIR__ . '/requiredParameter.php';
 const STRENGTH_BONUS_AVAILABLE = 'strengthBonusAvailable';
 
 function getStrengthBonusAvailable(&$errors, &$input) {

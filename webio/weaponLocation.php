@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/webio/requiredParameter.php';
+require_once __DIR__ . '/requiredParameter.php';
 const WEAPON_LOCATION = 'weaponLocation';
 
 function getWeaponLocation(&$errors, &$input, $default_value) {

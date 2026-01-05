@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/webio/requiredParameter.php';
+require_once __DIR__ . '/requiredParameter.php';
 const IS_READY = IS_READY;
 
 function getIsReady(&$errors, &$input) {

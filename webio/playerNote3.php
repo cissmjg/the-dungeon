@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/webio/requiredParameter.php';
+require_once __DIR__ . '/requiredParameter.php';
 const PLAYER_NOTE3 = 'playerNote3';
 
 function getPlayerNote3(&$errors, &$input, $default_value) {
