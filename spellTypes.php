@@ -11,7 +11,7 @@
     const SPELL_TYPE_WU_JEN = 10;
     const SPELL_TYPE_UNDEFINED = -1;
 
-function getSpellTypeID($spell_type_name) {
+function getSpellTypeIDFromName($spell_type_name) {
     switch($spell_type_name) {
         case "Cleric":
             return SPELL_TYPE_CLERIC;
