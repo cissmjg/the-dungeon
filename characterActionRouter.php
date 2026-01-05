@@ -9,6 +9,8 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/WebParameterHelper.php';
+require_once __DIR__ . '/webio/requiredParameter.php';
+require_once __DIR__ . '/webio/optionalParameter.php';
 require_once __DIR__ . '/webio/textInput.php';
 
 require_once __DIR__ . '/webio/characterAction.php';
@@ -24,8 +26,7 @@ require_once __DIR__ . '/webio/spellLevel.php';
 require_once __DIR__ . '/webio/spellPoolSlotId.php';
 require_once __DIR__ . '/webio/spellDuration.php';
 require_once __DIR__ . '/webio/spellCastingTime.php';
-require_once __DIR__ . '/webio/requiredParameter.php';
-require_once __DIR__ . '/webio/optionalParameter.php';
+require_once __DIR__ . '/webio/castStatus.php';
 require_once 'cantripSpellSlot.php';
 require_once __DIR__ . '/webio/playerCharacterClassId.php';
 require_once __DIR__ . '/webio/playerCharacterWeaponId.php';
@@ -1166,7 +1167,7 @@ function buildCastSlotParams($input) {
 	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
-	$params['castStatus'] = True;
+	$params[CAST_STATUS] = True;
 	$params[SPELL_DURATION] = $input[SPELL_DURATION];
 	$params[SPELL_CASTING_TIME] = $input[SPELL_CASTING_TIME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
@@ -1178,7 +1179,7 @@ function buildResetSlotParams($input) {
 	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
-	$params['castStatus'] = false;
+	$params[CAST_STATUS] = false;
 	$params[SPELL_DURATION] = $input[SPELL_DURATION];
 	$params[SPELL_CASTING_TIME] = $input[SPELL_CASTING_TIME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
