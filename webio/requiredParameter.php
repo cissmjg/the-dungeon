@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/helper/RestHeaderHelper.php';
+require_once __DIR__ . '/../helper/RestHeaderHelper.php';
 
 function getRequiredStringParameter(&$errors, &$input, $calling_module, $parameter_name) {
 	// Get required parameter
