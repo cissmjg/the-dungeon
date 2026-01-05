@@ -15,6 +15,7 @@ require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/spellLevel.php';
+require_once __DIR__ . '/webio/spellSlotId.php';
 require_once __DIR__ . '/webio/removeEmpty.php';
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
