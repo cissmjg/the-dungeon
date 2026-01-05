@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/webio/requiredParameter.php';
+require_once __DIR__ . '/requiredParameter.php';
 require_once __DIR__ . '/optionalParameter.php';
 const CAST_STATUS = 'removeEmpty';
 
