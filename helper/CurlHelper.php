@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/env.php';
+require_once __DIR__ . '/../env.php';
 require_once __DIR__ . '/webio/characterAction.php';
 
 class CurlHelper {
