@@ -20,7 +20,7 @@ require_once __DIR__ . '/webio/spellCastingTime.php';
 getSpellSlotId($errors, $input);
 
 // Cast Status
-getRequiredBooleanParameter($errors, $input, __FILE__, 'castStatus');
+getCastStatus($errors, $input);
 
 // Spell Duration
 getSpellCastingTime($errors, $input);
@@ -29,7 +29,7 @@ getSpellCastingTime($errors, $input);
 getSpellDuration($errors, $input);
 
 $spell_slot_id = $input[SPELL_SLOT_ID];
-$cast_status = $input['castStatus'];
+$cast_status = $input[CAST_STATUS];
 $spell_casting_time = $input[SPELL_CASTING_TIME];
 $spell_duration = $input[SPELL_DURATION];
 
