@@ -111,18 +111,18 @@ if(isset($_GET['updateTimestamp']) || isset($_POST['updateTimestamp'])) {
 	$last_update_message = $input[CHARACTER_NAME] . ' last updated on ' . date("h:i:sa");
 }
 
-$primary_character_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_CLASSES]->characterClass1->class_id);
+$primary_character_class_name = getCharacterClassNameFromClassId($character_class_list, $input[CHARACTER_CLASSES]->characterClass1->class_id);
 validateCharacterClass($errors, $character_class_minimums, $character_class_maximums, $input[CHARACTER_CLASSES]->characterClass1->class_id, $primary_character_class_name, $input);
 
 $secondary_class_available = !empty($input[CHARACTER_CLASSES]->characterClass2);
 if ($secondary_class_available) {
-	$secondary_character_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_CLASSES]->characterClass2->class_id);
+	$secondary_character_class_name = getCharacterClassNameFromClassId($character_class_list, $input[CHARACTER_CLASSES]->characterClass2->class_id);
 	validateCharacterClass($errors, $character_class_minimums, $character_class_maximums, $input[CHARACTER_CLASSES]->characterClass2->class_id, $secondary_character_class_name, $input);
 }
 
 $tertiary_class_available = !empty($input[CHARACTER_CLASSES]->characterClass3);
 if ($tertiary_class_available) {
-	$tertiary_character_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_CLASSES]->characterClass3->class_id);
+	$tertiary_character_class_name = getCharacterClassNameFromClassId($character_class_list, $input[CHARACTER_CLASSES]->characterClass3->class_id);
 	validateCharacterClass($errors, $character_class_minimums, $character_class_maximums, $input[CHARACTER_CLASSES]->characterClass3->class_id, $tertiary_character_class_name, $input);
 }
 
@@ -1156,7 +1156,7 @@ function validateCharacterClass(&$errors, $character_class_minimums, $character_
 	}
 }
 
-function getCharacterClassName($character_class_list, $character_class_id) {
+function getCharacterClassNameFromClassId($character_class_list, $character_class_id) {
 	foreach($character_class_list AS $character_class) {
 		if ($character_class['character_class_id'] == $character_class_id) {
 			return $character_class['character_class_name'];
