@@ -13,3 +13,4 @@ class RestHeaderHelper
 		header($Content_Type . $Content_Type_Json);
 	}
 }
+?>
