@@ -16,6 +16,8 @@ require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/playerCharacterClassId.php';
 require_once __DIR__ . '/webio/spellTypeId.php';
+require_once __DIR__ . '/webio/spellSlotLevel';
+require_once __DIR__ . '/webio/spellSlotId.php';
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once 'hiddenTag.php';
@@ -66,10 +68,10 @@ $extra_slot_max_for_types = getExtraSlotMaxForTypes($pdo, $input[PLAYER_NAME], $
 </head>
 <body>
     <form name="xsDeallocate" id="xsDeallocate" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter')?>">
-        <input type="hidden" name="playerName" id="playerName" value="<?= $input[PLAYER_NAME] ?>">
-        <input type="hidden" name="characterName" id="characterName" value="<?= $input[CHARACTER_NAME] ?>">
-        <input type="hidden" name="characterAction" id="<?= DEALLOCATE_CHARACTER_ACTION_ID ?>" value="<?= DEALLOCATE_CHARACTER_ACTION?>">
-        <input type="hidden" name="spellSlotId" id="spellSlotId" value="">
+        <input type="hidden" name="<?= PLAYER_NAME ?>" id="playerName" value="<?= $input[PLAYER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_NAME ?>" id="characterName" value="<?= $input[CHARACTER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="<?= DEALLOCATE_CHARACTER_ACTION_ID ?>" value="<?= DEALLOCATE_CHARACTER_ACTION?>">
+        <input type="hidden" name="<?= SPELL_SLOT_ID ?>" id="<?= SPELL_SLOT_ID ?>" value="">
     </form>
 <?php
     echo '<div style="width: 100%;"><span class="character_summary">' . $character_summary_stats . '</span><span class="action_bar">' . $action_bar . '</span></div>';
@@ -211,7 +213,7 @@ function buildAddExtraSlotForm($form_id, $player_name, $character_name, $charact
     $form_html .= buildHiddenTag(SPELL_TYPE_ID, $extra_slot_spell_type) . PHP_EOL;
     $form_html .= buildHiddenTagWithId(CHARACTER_ACTION, $character_action_id, ALLOCATE_CHARACTER_ACTION) . PHP_EOL;
     $form_html .= "Add ";
-    $form_html .= '<select id="slotLevel" name="slotLevel">' . PHP_EOL;
+    $form_html .= '<select id="' . SPELL_SLOT_LEVEL .'" name="' . SPELL_SLOT_LEVEL . '">' . PHP_EOL;
 
     for ($i = $extra_slot_max_level; $i >= 1; $i--) {
         $spell_level_desc = $nf->format($i);
