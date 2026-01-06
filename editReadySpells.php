@@ -16,6 +16,9 @@ require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/spellLevel.php';
 require_once __DIR__ . '/webio/spellSlotId.php';
+require_once __DIR__ . '/webio/spellCatalogId.php';
+require_once __DIR__ . '/webio/spellDuration.php';
+require_once __DIR__ . '/webio/spellCastingTime.php';
 require_once __DIR__ . '/webio/removeEmpty.php';
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
@@ -90,12 +93,12 @@ $prev_spell_level = -1;
 </head>
 <body>
     <form name="slot-action-form" id="slot-action-form" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter')?>">
-        <input type="hidden" name="playerName" id="playerName" value="<?= $input[PLAYER_NAME] ?>">
-        <input type="hidden" name="characterName" id="characterName" value="<?= $input[CHARACTER_NAME] ?>">
-        <input type="hidden" name="characterAction" id="characterAction" value="">
-        <input type="hidden" name="spellSlotId" id="spellSlotId" value="">
-        <input type="hidden" id="spellDuration" name="spellDuration" value="">
-        <input type="hidden" id="spellCastingTime" name="spellCastingTime" value="">
+        <input type="hidden" name="<?= PLAYER_NAME ?>" id="playerName" value="<?= $input[PLAYER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_NAME ?>" id="characterName" value="<?= $input[CHARACTER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="characterAction" value="">
+        <input type="hidden" name="<?= SPELL_SLOT_ID ?>" id="spellSlotId" value="">
+        <input type="hidden" name="<?= SPELL_DURATION ?>" id="spellDuration" value="">
+        <input type="hidden" name="<?= SPELL_CASTING_TIME ?>" id="spellCastingTime" value="">
     </form>
     <?php
     $locale = 'en_US';

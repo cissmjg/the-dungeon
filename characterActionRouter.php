@@ -1108,7 +1108,7 @@ function buildCastSlotParams($input) {
 	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
-	$params[CAST_STATUS] = True;
+	$params[CAST_STATUS] = true;
 	$params[SPELL_DURATION] = $input[SPELL_DURATION];
 	$params[SPELL_CASTING_TIME] = $input[SPELL_CASTING_TIME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
