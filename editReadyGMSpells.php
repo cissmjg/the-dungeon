@@ -80,6 +80,8 @@ $cantrip_select_html = '<select id="available_cantrip" name="available_cantrip" 
 	<link rel="stylesheet" href="dnd-default.css">
     <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
     <meta name="Cache-Control" content="no-store">
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
     <script src="editReadyGMSpells.js" type="text/javascript"></script>
     <script src="submitTheForm.js" type="text/javascript"></script>
     <style>
