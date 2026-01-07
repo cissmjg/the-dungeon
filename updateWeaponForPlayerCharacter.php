@@ -181,8 +181,8 @@ function updateWeaponForPlayerCharacter(\PDO $pdo, $input, &$errors, &$log) {
         $log[] = 'isPreferred: ' . $input[IS_PREFERRED];
     }
 
-    $statement->bindParam(':craftStatus', $input['craftStatus'], PDO::PARAM_INT);
-    $log[] = 'craftStatus: ' . $input['craftStatus'];
+    $statement->bindParam(':craftStatus', $input[CRAFT_STATUS], PDO::PARAM_INT);
+    $log[] = 'craftStatus: ' . $input[CRAFT_STATUS];
 
     if (strcasecmp($input[STRENGTH_BONUS_AVAILABLE], 'YES') == 0) {
         $statement->bindParam(':strengthBonusAvailable', $true_value, PDO::PARAM_BOOL);

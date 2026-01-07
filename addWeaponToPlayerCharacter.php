@@ -186,7 +186,7 @@ function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
         $statement->bindParam(':isPreferred', $false_value, PDO::PARAM_BOOL);
     }
 
-    $statement->bindParam(':craftStatus', $input['craftStatus'], PDO::PARAM_INT);
+    $statement->bindParam(':craftStatus', $input[CRAFT_STATUS], PDO::PARAM_INT);
 
     if (strcasecmp($input[STRENGTH_BONUS_AVAILABLE], 'YES') == 0) {
         $statement->bindParam(':strengthBonusAvailable', $true_value, PDO::PARAM_BOOL);

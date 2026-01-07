@@ -15,6 +15,8 @@ require_once 'characterSummary.php';
 require_once 'characterSummaryRenderer.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once __DIR__ . '/webio/craftStatus.php';
+require_once __DIR__ . '/webio/characterAction.php';
+require_once __DIR__ . '/webio/weaponProficiencyId.php';
 require_once 'faDeleteIcon.php';
 
 require_once __DIR__ . '/webio/playerName.php';
@@ -68,10 +70,10 @@ $weapon_list = getWeaponSummaryForPlayerCharacter($pdo, $input[PLAYER_NAME], $in
 </head>
 <body>
     <form name="deleteWeapon" id="deleteWeapon" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter') ?>">
-        <input type="hidden" name="characterAction" value="deletePlayerCharacterWeapon">
-        <input type="hidden" name="playerName" value="<?= $input[PLAYER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_ACTION ?>" value="deletePlayerCharacterWeapon">
+        <input type="hidden" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
         <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
-        <input type="hidden" name="playerCharacterWeaponId" id="playerCharacterWeaponId" value="">
+        <input type="hidden" name="<?= PLAYER_CHARACTER_WEAPON_ID ?>" id="<?= PLAYER_CHARACTER_WEAPON_ID ?>" value="">
     </form>
     <div style="width: 100%; margin-bottom: 3px;"><span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span></div>
     <div class="characterSheetFeature">
@@ -83,10 +85,10 @@ $weapon_list = getWeaponSummaryForPlayerCharacter($pdo, $input[PLAYER_NAME], $in
             <div style="text-align: center;">
                 <form name="selectWeapon" id="selectWeapon" method="POST" action="<?= CurlHelper::buildUrl('addPlayerCharacterWeapon') ?>">
                     <label for="weaponNamePattern">Weapon Name</label><br>
-                    <input type="hidden" name="playerName" value="<?= $input[PLAYER_NAME] ?>">
+                    <input type="hidden" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
                     <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
-                    <input type="text" id="weaponNamePattern" maxlength="32"><button type="button" onclick="populateWeaponList(WEAPON_PROFICIENCY_ID, 'weaponNamePattern');"><span class="fa-solid fa-magnifying-glass"></span></button><br>
-                    <select name="weaponProficiencyId" id="weaponProficiencyId" onchange="weaponListChanged('selectWeaponButton', WEAPON_PROFICIENCY_ID);" hidden>
+                    <input type="text" id="weaponNamePattern" maxlength="32"><button type="button" onclick="populateWeaponList('<?= WEAPON_PROFICIENCY_ID ?>', 'weaponNamePattern');"><span class="fa-solid fa-magnifying-glass"></span></button><br>
+                    <select name="<?= WEAPON_PROFICIENCY_ID?>" id="<?= WEAPON_PROFICIENCY_ID?>" onchange="weaponListChanged('selectWeaponButton', '<?= WEAPON_PROFICIENCY_ID ?>');" hidden>
                     </select>
                     <br><br>
                     <button id="selectWeaponButton" type="submit" hidden>Weapon Details &gt; &gt;</button>
