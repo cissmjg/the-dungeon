@@ -2,13 +2,13 @@
 declare(strict_types=1);
 require_once __DIR__ . '/webio/optionalParameter.php';
 require_once __DIR__ . '/webio/characterName.php';
-require_once 'characterAtributes.php';
+require_once 'characterAttributes.php';
 require_once __DIR__ . '/webio/raceId.php';
 
 function getCharacterAttributes(&$errors, &$input, $calling_module) {
     getOptionalRaceId($errors, $input, $calling_module);
     getGender($errors, $input, $calling_module);
-    getCharacterName($errors, $input, $calling_module);
+    getOptionalCharacterName($errors, $input, $calling_module);
     getCharacterStrengthRaw($errors, $input, $calling_module);
     getCharacterStrength($errors, $input, $calling_module);
     getCharacterIntelligenceRaw($errors, $input, $calling_module);
@@ -23,10 +23,6 @@ function getCharacterAttributes(&$errors, &$input, $calling_module) {
     getCharacterCharisma($errors, $input, $calling_module);
     getCharacterComelinessRaw($errors, $input, $calling_module);
     getCharacterComeliness($errors, $input, $calling_module);
-}
-
-function getCharacterName(&$errors, &$input, $calling_module) {
-    return getOptionalStringParameter($errors, $input, $calling_module, CHARACTER_NAME, '');
 }
 
 function getCharacterStrength(&$errors, &$input, $calling_module) {

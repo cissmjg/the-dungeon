@@ -17,7 +17,7 @@ require_once 'faEditIcon.php';
 
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/raceId.php';
-require_once 'characterAtributes.php';
+require_once 'characterAttributes.php';
 require_once 'characterRaces.php';
 require_once 'adjustCharacterRacialAttributes.php';
 require_once 'getCharacterCreationAttributes.php';
@@ -84,29 +84,29 @@ if ($primary_class_available == false) {
 } else {
 	if ($secondary_class_available == true) {
 		if ($tertiary_class_available == false) {
-			$primary_character_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
-			$secondary_character_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_SECONDARY_CLASS]);
+			$primary_character_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
+			$secondary_character_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_SECONDARY_CLASS]);
 			$tertiary_classes = getCharacterTertiaryClassesForRace($class_combinations, $input[CHARACTER_RACE_ID], $primary_character_class_name, $secondary_character_class_name);
 		}
 	} else {
-		$primary_character_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
+		$primary_character_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
 		$secondary_classes = getCharacterSecondaryClassesForRace($class_combinations, $input[CHARACTER_RACE_ID], $primary_character_class_name);
 		$tertiary_class_available = false;
 	}
 }
 
 if ($primary_class_available) {
-	$primary_character_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
+	$primary_character_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
 	validateCharacterClass($errors, $character_class_minimums, $character_class_maximums, $input[CHARACTER_PRIMARY_CLASS], $primary_character_class_name, $input);
 }
 
 if ($secondary_class_available) {
-	$secondary_character_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_SECONDARY_CLASS]);
+	$secondary_character_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_SECONDARY_CLASS]);
 	validateCharacterClass($errors, $character_class_minimums, $character_class_maximums, $input[CHARACTER_SECONDARY_CLASS], $secondary_character_class_name, $input);
 }
 
 if ($tertiary_class_available) {
-	$tertiary_character_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_TERTIARY_CLASS]);
+	$tertiary_character_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_TERTIARY_CLASS]);
 	validateCharacterClass($errors, $character_class_minimums, $character_class_maximums, $input[CHARACTER_TERTIARY_CLASS], $tertiary_character_class_name, $input);
 }
 
@@ -148,8 +148,8 @@ $errors_exist = errorsExist($errors);
 <body>
     <div style="border: solid 1px; border-color: blue; border-radius: 10px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; width: auto; display: table;">
     <table style="margin-top: 5px;">
-    <form id="characterCreation2" action="characterCreation2.php" method="post">
-	<input type="hidden" id="playerName" name="playerName" value="<?= $input[PLAYER_NAME] ?>">
+    <form id="characterCreation2" action="<?= CurlHelper::buildUrl('characterCreation2.php') ?>" method="POST">
+	<input type="hidden" id="playerName" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
 	<tr>
 		<td colspan="4">
 			<div style="background-color: Aquamarine; text-align:center; border-radius: 10px;">Character Creation Stage 2</div>
@@ -308,7 +308,7 @@ $errors_exist = errorsExist($errors);
 	    <td>
 			<?php
 				if ($primary_class_available) {
-					$primary_class_name =  getCharacterClassName($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
+					$primary_class_name =  getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
 					echo '<input style="float: left;" class="view_only" type="text" value="' . $primary_class_name . '" readonly>' . PHP_EOL;
 					echo buildHiddenTag(CHARACTER_PRIMARY_CLASS, $input[CHARACTER_PRIMARY_CLASS]) . PHP_EOL;
 					$change_primary_class = new FaEditIcon();
@@ -343,10 +343,10 @@ $errors_exist = errorsExist($errors);
 	<?php
 	if (count($secondary_classes) > 0 || $secondary_class_available) {
 		echo '<tr>' . PHP_EOL;
-		echo '<td>2<sup>nd class</td>' . PHP_EOL;
+		echo '<td>2<sup>nd</sup> class</td>' . PHP_EOL;
 		echo '<td>';
 		if ($secondary_class_available) {
-			$secondary_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_SECONDARY_CLASS]);
+			$secondary_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_SECONDARY_CLASS]);
 			echo '<input style="float: left;" class="view_only" type="text" value="' . $secondary_class_name . '" readonly>' . PHP_EOL;
 			echo buildHiddenTag(CHARACTER_SECONDARY_CLASS, $input[CHARACTER_SECONDARY_CLASS]) . PHP_EOL;
 			$change_secondary_class = new FaEditIcon();
@@ -372,10 +372,10 @@ $errors_exist = errorsExist($errors);
 
 	if ((is_array($tertiary_classes) && count($tertiary_classes) > 0) || $tertiary_class_available) {
 		echo '<tr>' . PHP_EOL;
-		echo '<td>3<sup>rd class</td>' . PHP_EOL;
+		echo '<td>3<sup>rd</sup> class</td>' . PHP_EOL;
 		echo '<td>';
 		if ($tertiary_class_available) {
-			$tertiary_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_TERTIARY_CLASS]);
+			$tertiary_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_TERTIARY_CLASS]);
 			echo '<input style="float: left;" class="view_only" type="text" value="' . $tertiary_class_name . '" readonly>' . PHP_EOL;
 			echo buildHiddenTag(CHARACTER_TERTIARY_CLASS, $input[CHARACTER_TERTIARY_CLASS]) . PHP_EOL;
 			$change_tertiary_class = new FaEditIcon();
@@ -445,7 +445,7 @@ function getCharacterClassList(\PDO $pdo, $errors) {
 	return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getCharacterClassName($character_class_list, $character_class_id) {
+function getCharacterClassNameFromCharacterSummary($character_class_list, $character_class_id) {
 	foreach($character_class_list AS $character_class) {
 		if ($character_class['character_class_id'] == $character_class_id) {
 			return $character_class['character_class_name'];

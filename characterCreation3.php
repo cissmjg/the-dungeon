@@ -17,7 +17,7 @@ require_once 'faEditIcon.php';
 
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/raceId.php';
-require_once 'characterAtributes.php';
+require_once 'characterAttributes.php';
 require_once 'characterRaces.php';
 require_once 'adjustCharacterRacialAttributes.php';
 require_once 'getCharacterCreationAttributes.php';
@@ -193,7 +193,7 @@ $page_title = 'New Character';
 	    <td>
 			<?php
 				if ($primary_class_available) {
-					$primary_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
+					$primary_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
 					echo '<input style="float: left;" class="view_only" type="text" value="' . $primary_class_name . '" readonly>' . PHP_EOL;
 					echo buildHiddenTag(CHARACTER_PRIMARY_CLASS,$input[CHARACTER_PRIMARY_CLASS]) . PHP_EOL;
 				}
@@ -206,7 +206,7 @@ $page_title = 'New Character';
 		echo '<td>2<sup>nd class</td>' . PHP_EOL;
 		echo '<td>';
 		if ($secondary_class_available) {
-			$secondary_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_SECONDARY_CLASS]);
+			$secondary_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_SECONDARY_CLASS]);
 			echo '<input style="float: left;" class="view_only" type="text" value="' . $secondary_class_name . '" readonly>' . PHP_EOL;
 			echo buildHiddenTag(CHARACTER_SECONDARY_CLASS, $input[CHARACTER_SECONDARY_CLASS]) . PHP_EOL;
 		}
@@ -219,7 +219,7 @@ $page_title = 'New Character';
 		echo '<td>3<sup>rd class</td>' . PHP_EOL;
 		echo '<td>';
 		if ($tertiary_class_available == true) {
-			$tertiary_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_TERTIARY_CLASS]);
+			$tertiary_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_TERTIARY_CLASS]);
 			echo '<input style="float: left;" class="view_only" type="text" value="' . $tertiary_class_name . '" readonly>' . PHP_EOL;
 			echo buildHiddenTag(CHARACTER_TERTIARY_CLASS, $input[CHARACTER_TERTIARY_CLASS]) . PHP_EOL;
 		}
@@ -273,7 +273,7 @@ function getCharacterClassList(\PDO $pdo, $errors) {
 	return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getCharacterClassName($character_class_list, $character_class_id) {
+function getCharacterClassNameFromCharacterSummary($character_class_list, $character_class_id) {
 	foreach($character_class_list AS $character_class) {
 		if ($character_class['character_class_id'] == $character_class_id) {
 			return $character_class['character_class_name'];

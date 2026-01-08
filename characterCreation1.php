@@ -15,7 +15,7 @@ require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once 'hiddenTag.php';
 
 require_once __DIR__ . '/webio/characterName.php';
-require_once 'characterAtributes.php';
+require_once 'characterAttributes.php';
 require_once 'adjustCharacterRacialAttributes.php';
 require_once 'getCharacterCreationAttributes.php';
 require_once 'validateRacialAttributes.php';
@@ -76,8 +76,8 @@ if ($input[PAGE_ACTION] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent(
 <body>
     <div style="border: solid 1px; border-color: blue; border-radius: 10px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; width: auto; display: table;">
     <table style="margin-top: 5px;">
-    <form id="characterCreation1" action="characterCreation1.php" method="post">
-	<input type="hidden" id="playerName" name="playerName" value="<?= $input[PLAYER_NAME] ?>">
+    <form id="characterCreation1" action="<?= CurlHelper::buildUrl('characterCreation1.php') ?>" method="POST">
+	<input type="hidden" id="<?= PLAYER_NAME ?>" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
 	<tr>
 		<td colspan="4">
 			<div style="background-color: Aquamarine; text-align:center; border-radius: 10px;">Character Creation Stage 1</div>
