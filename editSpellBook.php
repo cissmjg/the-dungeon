@@ -6,13 +6,17 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
+require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/webio/characterAction.php';
+require_once __DIR__ . '/webio/spellLevel.php';
+require_once __DIR__ . '/webio/spellCatalogId.php';
+
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/characterClassName.php';
+require_once __DIR__ . '/webio/spellPoolSlotId.php';
 require_once __DIR__ . '/webio/pageAction.php';
-require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once 'hiddenTag.php';
 
 require_once 'faEditIcon.php';
