@@ -142,6 +142,7 @@ switch($character_action) {
 			$errors[] = "Execution Error|";
 			$errors[] = $character_action . "|";
 			$errors[] = __FILE__ . "|";
+			$errors[] = $input;
 			$errors[] = $result;
 			die(json_encode($errors));
 		}

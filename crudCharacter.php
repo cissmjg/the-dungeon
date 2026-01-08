@@ -739,11 +739,11 @@ if ($tertiary_class_available) {
 		<td colspan="2" id="characterSiblingsLabel">Siblings</td>
 		<td>
 		<?php
-			$character_siblings = $input[CHARACTER_SIBLINGS] ?? '';
+			$character_siblings = $input[CHARACTER_SIBLINGS] ?? '0';
 			if ($page_action == PAGE_UPDATE) {
-				echo '<input type="number" style="text-align: center;" class="' . $input_class . '" id="' . CHARACTER_SIBLINGS .'" name="' . CHARACTER_SIBLINGS . '" min="0" max="99" value="' . empty($character_siblings) ? "0" : $character_siblings . '">';
+				echo '<input type="number" style="text-align: center;" class="' . $input_class . '" id="' . CHARACTER_SIBLINGS .'" name="' . CHARACTER_SIBLINGS . '" min="0" max="99" value="' . $character_siblings . '">';
 			} else {
-				echo empty($character_siblings) ? "0" : $character_siblings;
+				echo $character_siblings;
 			}
 		?>
 		</td>
@@ -820,12 +820,12 @@ function formatClassesForEdit($character_class, $form_field_id, $read_only, $pla
 
 function buildClassLevelCell($class_level, $player_name, $character_name, $character_class_name, $page_action) {
 	if ($page_action == PAGE_UPDATE) {
-		$output_html = '<td style="text-align: right;">';
-		$output_html .= $class_level;
-		$output_html .= '&nbsp;';
+		$output_html = '<td style="text-align: right;">&nbsp;';
 		$output_html .= ActionBarHelper::buildPromoteClassIcon($player_name, $character_name, $character_class_name);
+		$output_html .= '&nbsp;';
+		$output_html .= $class_level;
 	} else {
-		$output_html = '<td style="text-align: center;">';
+		$output_html = '<td style="text-align: center;">&nbsp;';
 		$output_html .= $class_level;
 	}
 
@@ -1052,13 +1052,13 @@ function buildActionBar($page_action, $player_name, $character_name) {
 		$output_html .= ActionBarHelper::buildEditWeaponsIcon($player_name, $character_name);
 		$output_html .= '&nbsp;';
 
-		return $output_html . '&nbsp;';;
+		return $output_html . '&nbsp;';
 	} else if ($page_action == PAGE_DELETE) {
 		$output_html = ActionBarHelper::buildUserViewIcon($player_name, $character_name);
 		$output_html .= '&nbsp;';
 		$output_html .= ActionBarHelper::buildUserEditIcon($player_name, $character_name);
 
-		return $output_html . '&nbsp;';;
+		return $output_html . '&nbsp;';
 	} else if ($page_action == PAGE_VIEW) {
 		$output_html = ActionBarHelper::buildUserEditIcon($player_name, $character_name);
 		$output_html .= '&nbsp;';

@@ -199,10 +199,12 @@ class ActionBarHelper {
     }
 
     static function buildPromoteClassIcon($player_name, $character_name, $character_class_name) {
-        $output_html = '$nbsp;';
+        $output_html = '&nbsp;';
         $url_promote_class = ActionBarHelper::buildPromoteUrl($player_name, $character_name, $character_class_name);
         $url_promote_icon = '<span class="fa-solid fa-arrow-up-right-dots" style="color: blue; cursor: pointer;" title="Promote"></span>';
         $output_html .= '<a href="' . $url_promote_class . '">' . $url_promote_icon . '</a>';
+
+        return $output_html;
     }
 
     static function buildPromoteUrl($player_name, $character_name, $character_class_name) {
