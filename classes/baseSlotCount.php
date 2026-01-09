@@ -98,7 +98,7 @@ class BaseSlotCount implements Stringable {
 		}
 	}
 	
-	 public function __toString() {
+	 public function __toString(): string {
 		 return "spell_type: " . $this->spell_type_id . ", 1st: " . $this->level_1_count . ", 2nd: " . $this->level_2_count . ", 3rd: " . $this->level_3_count . ", 4th: " . $this->level_4_count . ", 5th: " . $this->level_5_count . ", 6th: " . $this->level_6_count . ", 7th: " . $this->level_7_count . ", 8th: " . $this->level_8_count . ", 9th: " . $this->level_9_count;
 	 }
 }

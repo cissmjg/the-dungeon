@@ -1,6 +1,6 @@
 <?php
 
-include_once 'characterSummary.php';
+include_once './characterSummary.php';
 
 class CharacterSummaryRenderer
 {
@@ -12,19 +12,19 @@ class CharacterSummaryRenderer
 	public function render(\CharacterSummary $character_summary) {
         $output_html = $this->character_name . ' &nbsp; ';
         $output_html .= '<strong>';
-		$output_html .= 'S: ' . $character_summary->formatStrength($character_summary);
+		$output_html .= 'S: ' . $character_summary->formatStrength();
         $output_html .= '</strong>';
 
         $output_html .= ' | <strong>';
-        $output_html .= 'I: ' . $character_summary->formatIntelligence($character_summary);
+        $output_html .= 'I: ' . $character_summary->formatIntelligence();
         $output_html .= '</strong>';
 
         $output_html .= ' | <strong>';
-        $output_html .= 'W: ' . $character_summary->formatWisdom($character_summary);
+        $output_html .= 'W: ' . $character_summary->formatWisdom();
         $output_html .= '</strong>';
 
         $output_html .= ' | <strong>';
-        $output_html .= 'D: ' . $character_summary->formatDexterity($character_summary);
+        $output_html .= 'D: ' . $character_summary->formatDexterity();
         $output_html .= '</strong>';
 
         $output_html .= ' | <strong>';

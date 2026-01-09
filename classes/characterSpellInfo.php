@@ -1,6 +1,6 @@
 <?php
 
-require_once 'baseSlotCount.php';
+require_once './baseSlotCount.php';
 
 class CharacterSpellInfo implements Stringable {
 	
@@ -119,7 +119,7 @@ class CharacterSpellInfo implements Stringable {
 		return $this->spell_type_id_2;
 	}
 	
-	public function __toString() {
+	public function __toString(): string {
 		$output = $this->player_name . ":" . $this->character_name . ":" . $this->class_name . " ";
 		foreach ($this->base_slot_counts AS $spell_type_id => $base_slot_count) {
 			$output .= $spell_type_id . ":" . $base_slot_count;

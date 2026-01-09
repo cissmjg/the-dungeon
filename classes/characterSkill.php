@@ -1,6 +1,6 @@
 <?php
 
-class CharacterSkill implements JsonSerializable, Stringable {
+class CharacterSkill implements JsonSerializable {
 
     private $skill_id;
     private $skill_name;
@@ -44,10 +44,6 @@ class CharacterSkill implements JsonSerializable, Stringable {
     public function jsonSerialize() {
         return get_object_vars($this);
     }
-	
-	public function __toString() {
-		return $this->formatted_name;
-	}
 }
 //  skill_catalog_id	skill_catalog_name	skill_catalog_attribute	skill_catalog_max_count	skill_catalog_skill_focus	skill_catalog_roll_name	skill_catalog_attribute_bonus	skill_catalog_ability_text	skill_prerequisite_skill_id	
 

@@ -16,8 +16,8 @@ require_once __DIR__ . '/webio/characterClassName.php';
 require_once __DIR__ . '/webio/playerCharacterClassId.php';
 require_once __DIR__ . '/webio/characterLevel.php';
 require_once 'characterIds.php';
-require_once 'characterSummary.php';
-require_once 'characterSpellInfo.php';
+require_once __DIR__ . '/classes/characterSummary.php';
+require_once __DIR__ . '/classes/characterSpellInfo.php';
 
 require_once 'spellTypes.php';
 

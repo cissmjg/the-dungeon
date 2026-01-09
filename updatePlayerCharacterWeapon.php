@@ -11,11 +11,11 @@ validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
-require_once 'characterSummary.php';
-require_once 'characterSummaryRenderer.php';
+require_once __DIR__ . '/classes/characterSummary.php';
+require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
 
-require_once 'playerCharacterWeapon.php';
+require_once __DIR__ . '/classes/playerCharacterWeapon.php';
 require_once 'weaponType.php';
 require_once 'weaponSubtype.php';
 require_once 'characterClasses.php';

@@ -18,8 +18,8 @@ require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once 'hiddenTag.php';
 
-require_once 'characterSummary.php';
-require_once 'characterSummaryRenderer.php';
+require_once __DIR__ . '/classes/characterSummary.php';
+require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 require_once 'characterWeaponTalents.php';
 require_once 'characterWeaponTalent.php';
 
@@ -27,7 +27,7 @@ require_once 'characterWeaponTalent.php';
 getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 
-$weapon_talents= getWeaponTalents($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
+$weapon_talents= getWeaponTalents($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
 $available_weapon_talents = getWeaponTalentsAvailableForPlayerCharacter($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $character_summary = new CharacterSummary();
@@ -106,10 +106,10 @@ $add_weapon_url = CurlHelper::buildUrl('characterActionRouter');
 
 <?php
 
-function getWeaponTalents(\PDO $pdo, $player_name, $character_name) {
+function getWeaponTalents(\PDO $pdo, $player_name, $character_name, &$errors) {
 
 	$weapon_talents = new CharacterWeaponTalents();
-	$weapon_talents->init($pdo, $player_name, $character_name);
+	$weapon_talents->init($pdo, $player_name, $character_name, $errors);
 
 	return $weapon_talents->getWeaponTalents();
 }

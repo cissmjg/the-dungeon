@@ -1,12 +1,12 @@
 <?php
-require_once 'rmFactor.php';
+require_once './rmFactor.php';
 
 class RmUIEntry {
-    const DEFAULT_CELL_DESC_STYLE = "rmEntryDefaultDesc";
-    const DEFAULT_CELL_DATA_STYLE = "rmEntryDefaultData";
-    const DEFAULT_ROW_STYLE = "rmRowDefault";
+    private const DEFAULT_CELL_DESC_STYLE = "rmEntryDefaultDesc";
+    private const DEFAULT_CELL_DATA_STYLE = "rmEntryDefaultData";
+    private const DEFAULT_ROW_STYLE = "rmRowDefault";
 
-    private $cellDescStyle = DEFAULT_CELL_DESC_STYLE;
+    private $cellDescStyle = RmUIEntry::DEFAULT_CELL_DESC_STYLE;
     public function getCellDescStyle() {
         return $this->cellDescStyle;
     }
@@ -15,7 +15,7 @@ class RmUIEntry {
         $this->cellDescStyle = $cell_desc_style;
     }
 
-    private $cellDataStyle = DEFAULT_CELL_DATA_STYLE;
+    private $cellDataStyle = RmUIEntry::DEFAULT_CELL_DATA_STYLE;
     public function getCellDataStyle() {
         return $this->cellDataStyle;
     }
@@ -42,7 +42,7 @@ class RmUIEntry {
         $this->cellData = $cell_data;
     }
 
-    private $rowStyle = DEFAULT_ROW_STYLE;
+    private $rowStyle = RmUIEntry::DEFAULT_ROW_STYLE;
     public function getRowStyle() {
         return $this->rowStyle;
     }

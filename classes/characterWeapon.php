@@ -34,11 +34,11 @@
         }
 
         function getPlayerWeaponId() {
-            return $this->player_weapon_id;
+            return $this->player_character_weapon_id;
         }
 
         function getWeaponName() {
-            return $this->weapon_name;
+            return $this->player_character_weapon_description;
         }
 
         function getWeaponIsReady() {
@@ -57,12 +57,20 @@
             return $this->weapon_range;
         }
 
-        function getWeaponNotes() {
-            return $this->weapon_notes;
+        function getWeaponNote1() {
+            return $this->weapon_player_note_1;
         }
 
-        function isPreferred() {
-            return $this->is_preferred;
+        function getWeaponNote2() {
+            return $this->weapon_player_note_2;
+        }
+
+        function getWeaponNote3() {
+            return $this->weapon_player_note_3;
+        }
+
+        function isReady() {
+            return $this->weapon_is_ready;
         }
      
        	// function called when encoded with json_encode

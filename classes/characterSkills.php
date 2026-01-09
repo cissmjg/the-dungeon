@@ -2,9 +2,9 @@
 
 const WEAPON_PROFICIENCY = 179;
 
-require_once 'characterSkill.php';
+require_once './characterSkill.php';
 
-class CharacterSkills implements JsonSerializable, Stringable {
+class CharacterSkills implements JsonSerializable {
 
     private $player_skills = [];
 
@@ -21,10 +21,6 @@ class CharacterSkills implements JsonSerializable, Stringable {
 
     public function getPlayerCharacterSkills() {
         return $this->player_skills;
-    }
-
-    public function getErrors() {
-        return $this->$errors;
     }
 
     public function getSkillsForPlayerCharacter(\PDO $pdo, $player_name, $character_name, &$errors) {
@@ -47,10 +43,6 @@ class CharacterSkills implements JsonSerializable, Stringable {
     public function jsonSerialize() {
         return get_object_vars($this);
     }
-	
-	public function __toString() {
-		return $this->player_skills;
-	}
 }
 
 ?>

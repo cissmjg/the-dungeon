@@ -24,8 +24,8 @@ require_once 'faCancelIcon.php';
 require_once 'faUpdateSpellBookIcon.php';
 
 require_once __DIR__ . '/classes/ActionBarHelper.php';
-require_once 'characterSummary.php';
-require_once 'characterSummaryRenderer.php';
+require_once __DIR__ . '/classes/characterSummary.php';
+require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 require_once 'classAbilitiesGM.php';
 require_once 'characterClasses.php';
 

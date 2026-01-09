@@ -11,8 +11,8 @@ require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once 'characterAttributes.php';
 require_once 'characterClasses.php';
-require_once 'characterSummary.php';
-require_once 'characterSummaryRenderer.php';
+require_once __DIR__ . '/classes/characterSummary.php';
+require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';

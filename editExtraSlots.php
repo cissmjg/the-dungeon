@@ -26,8 +26,8 @@ require_once 'faAddIcon.php';
 require_once 'faCancelIcon.php';
 require_once 'spellTypes.php';
 
-require_once 'characterSummary.php';
-require_once 'characterSummaryRenderer.php';
+require_once __DIR__ . '/classes/characterSummary.php';
+require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 require_once 'characterClasses.php';
 
 const DEALLOCATE_CHARACTER_ACTION = "deallocateExtraSlot";

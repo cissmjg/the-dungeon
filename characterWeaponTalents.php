@@ -4,8 +4,8 @@
 
         private $character_weapon_talents = [];
 
-        function init(\PDO $pdo, $player_name, $character_name) {
-            $weapon_talents = $this->initWeaponTalents($pdo, $player_name, $character_name);
+        public function init(\PDO $pdo, $player_name, $character_name, &$errors) {
+            $weapon_talents = $this->initWeaponTalents($pdo, $player_name, $character_name, $errors);
             foreach($weapon_talents AS $weapon_talent) {
                 $character_weapon_talent = new CharacterWeaponTalent();
                 $character_weapon_talent->init($weapon_talent);
@@ -13,7 +13,7 @@
             }
         }
         
-        function initWeaponTalents(\PDO $pdo, $player_name, $character_name) {
+        private function initWeaponTalents(\PDO $pdo, $player_name, $character_name, &$errors) {
             $sql_exec = "CALL getWeaponTalentsForPlayerCharacter(:playerName, :characterName)";
             
             $statement = $pdo->prepare($sql_exec);
@@ -29,7 +29,7 @@
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        function getWeaponTalents() {
+        public function getWeaponTalents() {
             return $this->character_weapon_talents;
         }
 

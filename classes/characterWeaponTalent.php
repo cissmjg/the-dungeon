@@ -19,35 +19,31 @@
             $this->is_preferred = $weapon['is_preferred'];
         }
 
-        function getPlayerWeaponId() {
+        public function getPlayerWeaponId() {
             return $this->player_weapon_id;
         }
 
-        function getWeaponName() {
+        public function getWeaponName() {
             return $this->weapon_name;
         }
 
-        function getWeaponIsReady() {
-            return $this->weapon_is_ready;
-        }
-
-        function getWeaponSpeed() {
+        public function getWeaponSpeed() {
             return $this->weapon_speed;
         }
 
-        function getWeaponDamage() {
+        public function getWeaponDamage() {
             return $this->weapon_damage;
         }
 
-        function getWeaponRange() {
+        public function getWeaponRange() {
             return $this->weapon_range;
         }
 
-        function getWeaponNotes() {
+        public function getWeaponNotes() {
             return $this->weapon_notes;
         }
 
-        function isPreferred() {
+        public function isPreferred() {
             return $this->is_preferred;
         }
      

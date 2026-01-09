@@ -1,5 +1,5 @@
 <?php
-require_once 'weaponType.php';
+require_once __DIR__ . '/../weaponType.php';
 
 class WeaponDetail implements JsonSerializable
 {

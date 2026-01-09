@@ -36,8 +36,8 @@ require_once 'faReclaimCantripIcon.php';
 require_once 'faStopSpellIcon.php';
 require_once 'faRunSpellIcon.php';
 
-require_once 'characterSummary.php';
-require_once 'characterSummaryRenderer.php';
+require_once __DIR__ . '/classes/characterSummary.php';
+require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 
 require_once 'emptySpellSlot.php';
 require_once 'cantripSpellSlot.php';
