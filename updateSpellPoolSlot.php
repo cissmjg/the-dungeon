@@ -21,7 +21,7 @@ $spell_catalog_id = $input[SPELL_CATALOG_ID];
 $spell_pool_slot_id = $input[SPELL_POOL_SLOT_ID];
 
 $log[] = "SUCCESS|";
-updateSpellPoolSlot($pdo, $spell_catalog_id, $spell_pool_slot_id, $errors);
+updateSpellPoolSlot($pdo, $spell_catalog_id, $spell_pool_slot_id, errors: $errors);
 
 RestHeaderHelper::emitRestHeaders();
 if (count($errors) > 0) {
