@@ -17,7 +17,7 @@ require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once __DIR__ . '/webio/craftStatus.php';
 require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/weaponProficiencyId.php';
-require_once 'faDeleteIcon.php';
+require_once __DIR__ . '/fa/faDeleteIcon.php';
 
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';

@@ -6,7 +6,7 @@ require_once 'characterRaces.php';
 require_once 'skillReserveIds.php';
 
 require_once 'availableCharacterSkill.php';
-require_once __DIR__ . '/classes/accountCharacterSummary.php';
+require_once 'accountCharacterSummary.php';
 
 class AvailableCharacterSkills implements JsonSerializable {
 

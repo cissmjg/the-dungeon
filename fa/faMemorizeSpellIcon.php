@@ -1,6 +1,5 @@
 <?php
 require_once 'faActionIcon.php';
-use faAction;
 
 class FaMemorizeSpellIcon extends FaActionIcon {
 
@@ -8,7 +7,7 @@ class FaMemorizeSpellIcon extends FaActionIcon {
         return "fa-solid fa-book-open-reader";
     }
 
-    function buildStyles() {
+    public function buildStyles() {
         parent::addStyle("color: Blue;");
         return parent::buildStyles();
     }

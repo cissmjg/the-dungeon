@@ -1,6 +1,5 @@
 <?php
 require_once 'faActionIcon.php';
-use faAction;
 
 class FaNatureIcon extends FaActionIcon {
 
@@ -8,7 +7,7 @@ class FaNatureIcon extends FaActionIcon {
         return "fa-solid fa-tree";
     }
 
-    function buildStyles() {
+    public function buildStyles() {
         parent::addStyle("color: MediumSpringGreen;");
         return parent::buildStyles();
     }

@@ -9,7 +9,7 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 // validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
-require_once __DIR__ . '/classes/accountCharacterSummary.php';
+require_once 'accountCharacterSummary.php';
 
 const PORTRAIT_DIR = "portraits/";
 const UNKNOWN_PORTRAIT = "Unknown.jpg";

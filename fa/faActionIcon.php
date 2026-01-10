@@ -88,7 +88,7 @@ abstract class FaActionIcon {
         return ' class="' . $this-> getFaClassList() . '"';
     }
 
-    function buildStyles() {
+    protected function buildStyles() {
         $this->addStyle('cursor: pointer;');
 
         $final_style_list = ' style="';

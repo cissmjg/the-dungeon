@@ -1,6 +1,5 @@
 <?php
 require_once 'faActionIcon.php';
-use faAction;
 
 class FaCancelIcon extends FaActionIcon {
 
@@ -8,7 +7,7 @@ class FaCancelIcon extends FaActionIcon {
         return "fa-solid fa-xmark";
     }
 
-    function buildStyles() {
+    public function buildStyles() {
         parent::addStyle("color: red;");
         return parent::buildStyles();
     }

@@ -1,6 +1,5 @@
 <?php
 require_once 'faActionIcon.php';
-use faAction;
 
 class FaAddIcon extends FaActionIcon {
 
@@ -8,7 +7,7 @@ class FaAddIcon extends FaActionIcon {
         return "fa-solid fa-plus";
     }
 
-    function buildStyles() {
+    public function buildStyles() {
         parent::addStyle("color: dodgerblue;");
         return parent::buildStyles();
     }

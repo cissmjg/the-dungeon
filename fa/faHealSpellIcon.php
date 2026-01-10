@@ -1,6 +1,5 @@
 <?php
 require_once 'faActionIcon.php';
-use faAction;
 
 class FaHealSpellIcon extends FaActionIcon {
 
@@ -8,7 +7,7 @@ class FaHealSpellIcon extends FaActionIcon {
         return "fa-solid fa-heart";
     }
 
-    function buildStyles() {
+    public function buildStyles() {
         parent::addStyle("color: Maroon;");
         return parent::buildStyles();
     }

@@ -1,6 +1,5 @@
 <?php
 require_once 'faActionIcon.php';
-use faAction;
 
 class FaRunSpellIcon extends FaActionIcon {
 
@@ -8,7 +7,7 @@ class FaRunSpellIcon extends FaActionIcon {
         return "fa-solid fa-person-running";
     }
 
-    function buildStyles() {
+    public function buildStyles() {
         parent::addStyle("color: Red;");
         return parent::buildStyles();
     }

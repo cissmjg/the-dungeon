@@ -1,6 +1,5 @@
 <?php
 require_once 'faActionIcon.php';
-use faAction;
 
 class FaReclaimCantripIcon extends FaActionIcon {
 
@@ -8,7 +7,7 @@ class FaReclaimCantripIcon extends FaActionIcon {
         return "fa-solid fa-minimize";
     }
     
-    function buildStyles() {
+    public function buildStyles() {
         parent::addStyle("color: DodgerBlue;");
         return parent::buildStyles();
     }

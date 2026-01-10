@@ -1,6 +1,5 @@
 <?php
 require_once 'faActionIcon.php';
-use faAction;
 
 class FaStopSpellIcon extends FaActionIcon {
 
@@ -8,7 +7,7 @@ class FaStopSpellIcon extends FaActionIcon {
         return "fa-regular fa-hourglass-half";
     }
 
-    function buildStyles() {
+    public function buildStyles() {
         parent::addStyle("color: Red;");
         return parent::buildStyles();
     }

@@ -22,8 +22,8 @@ require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once 'hiddenTag.php';
 
-require_once 'faAddIcon.php';
-require_once 'faCancelIcon.php';
+require_once __DIR__ . '/fa/faAddIcon.php';
+require_once __DIR__ . '/fa/faCancelIcon.php';
 require_once 'spellTypes.php';
 
 require_once __DIR__ . '/classes/characterSummary.php';

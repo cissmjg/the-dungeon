@@ -1,6 +1,5 @@
 <?php
 require_once 'faActionIcon.php';
-use faAction;
 
 class FaRefreshIcon extends FaActionIcon {
 
@@ -8,7 +7,7 @@ class FaRefreshIcon extends FaActionIcon {
         return "fa-solid fa-refresh";
     }
 
-    function buildStyles() {
+    public function buildStyles() {
         parent::addStyle("color: Lime;");
         return parent::buildStyles();
     }

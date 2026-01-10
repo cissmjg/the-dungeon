@@ -1,6 +1,5 @@
 <?php
 require_once 'faActionIcon.php';
-use faAction;
 
 class FaUpdateSpellBookIcon extends FaActionIcon {
 
@@ -8,7 +7,7 @@ class FaUpdateSpellBookIcon extends FaActionIcon {
         return "fa-solid fa-feather-pointed";
     }
 
-    function buildStyles() {
+    public function buildStyles() {
         parent::addStyle("color: OrangeRed;");
         return parent::buildStyles();
     }

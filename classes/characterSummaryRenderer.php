@@ -1,6 +1,6 @@
 <?php
 
-include_once './characterSummary.php';
+require_once 'characterSummary.php';
 
 class CharacterSummaryRenderer
 {

@@ -1,6 +1,5 @@
 <?php
 require_once 'faActionIcon.php';
-use faAction;
 
 class FaCastSpellIcon extends FaActionIcon {
 
@@ -8,7 +7,7 @@ class FaCastSpellIcon extends FaActionIcon {
         return "fa-solid fa-wand-sparkles";
     }
     
-    function buildStyles() {
+    public function buildStyles() {
         parent::addStyle("color: DodgerBlue;");
         return parent::buildStyles();
     }

@@ -1,6 +1,5 @@
 <?php
 require_once 'faActionIcon.php';
-use faAction;
 
 class FaEditIcon extends FaActionIcon {
 
@@ -8,7 +7,7 @@ class FaEditIcon extends FaActionIcon {
         return "fa-solid fa-pen";
     }
 
-    function buildStyles() {
+    public function buildStyles() {
         parent::addStyle("color: black;");
         return parent::buildStyles();
     }

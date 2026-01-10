@@ -17,14 +17,14 @@ require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once 'hiddenTag.php';
 
-require_once 'faCastSpellIcon.php';
-require_once 'faSleepIcon.php';
+require_once __DIR__ . '/fa/faCastSpellIcon.php';
+require_once __DIR__ . '/fa/faSleepIcon.php';
 require_once 'spellSlotTypes.php';
 
 require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
-require_once 'faRunSpellIcon.php';
-require_once 'faStopSpellIcon.php';
+require_once __DIR__ . '/fa/faRunSpellIcon.php';
+require_once __DIR__ . '/fa/faStopSpellIcon.php';
 
 require_once 'cantripSpellSlot.php';
 

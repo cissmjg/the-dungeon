@@ -19,9 +19,9 @@ require_once __DIR__ . '/webio/spellPoolSlotId.php';
 require_once __DIR__ . '/webio/pageAction.php';
 require_once 'hiddenTag.php';
 
-require_once 'faEditIcon.php';
-require_once 'faCancelIcon.php';
-require_once 'faUpdateSpellBookIcon.php';
+require_once __DIR__ . '/fa/faEditIcon.php';
+require_once __DIR__ . '/fa/faCancelIcon.php';
+require_once __DIR__ . '/fa/faUpdateSpellBookIcon.php';
 
 require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once __DIR__ . '/classes/characterSummary.php';

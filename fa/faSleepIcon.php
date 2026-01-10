@@ -1,6 +1,5 @@
 <?php
 require_once 'faActionIcon.php';
-use faAction;
 
 class FaSleepIcon extends FaActionIcon {
 
@@ -8,7 +7,7 @@ class FaSleepIcon extends FaActionIcon {
         return "fa-solid fa-bed";
     }
 
-    function buildStyles() {
+    public function buildStyles() {
         parent::addStyle("color: Maroon;");
         return parent::buildStyles();
     }

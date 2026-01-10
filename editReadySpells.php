@@ -24,17 +24,17 @@ require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once 'hiddenTag.php';
 
-require_once 'faCancelIcon.php';
-require_once 'faCastSpellIcon.php';
-require_once 'faEditIcon.php';
-require_once 'faRefreshIcon.php';
-require_once 'faMemorizeSpellIcon.php';
-require_once 'faPraySpellIcon.php';
-require_once 'faHealSpellIcon.php';
-require_once 'faNatureIcon.php';
-require_once 'faReclaimCantripIcon.php';
-require_once 'faStopSpellIcon.php';
-require_once 'faRunSpellIcon.php';
+require_once __DIR__ . '/fa/faCancelIcon.php';
+require_once __DIR__ . '/fa/faCastSpellIcon.php';
+require_once __DIR__ . '/fa/faEditIcon.php';
+require_once __DIR__ . '/fa/faRefreshIcon.php';
+require_once __DIR__ . '/fa/faMemorizeSpellIcon.php';
+require_once __DIR__ . '/fa/faPraySpellIcon.php';
+require_once __DIR__ . '/fa/faHealSpellIcon.php';
+require_once __DIR__ . '/fa/faNatureIcon.php';
+require_once __DIR__ . '/fa/faReclaimCantripIcon.php';
+require_once __DIR__ . '/fa/faStopSpellIcon.php';
+require_once __DIR__ . '/fa/faRunSpellIcon.php';
 
 require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
