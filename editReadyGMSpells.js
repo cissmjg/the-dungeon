@@ -24,9 +24,16 @@ function recoverSpellPoints() {
 
 function showCantrip() {
     let cantripSlotID = $('#available_cantrip').val();
+    if (cantripSlotID == "slot-action-row-select") {
+            return;
+    }
 
     let theCantripRow = $("#" + cantripSlotID);
-    theCantripRow.hidden = !theCantripRow.hidden;
+    if (theCantripRow.is(":hidden")) {
+        theCantripRow.show();
+    } else {
+        theCantripRow.hide();
+    }
 }
 
 function submitStopActionForm(spell_slot_id, character_action) {

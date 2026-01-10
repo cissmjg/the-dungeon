@@ -182,9 +182,16 @@ $cantrip_select_html = '<select id="available_cantrip" name="available_cantrip" 
         $rowCounter = 0;
         echo '<table class="ready_spells">' . PHP_EOL;
 
+        $cantrip_select_option_added = false;
         foreach($availableSpells AS $availableSpell) {
+            $slot_action_row_id = buildActionSlotRowId($availableSpell);
             if ($availableSpell->spell_level == 0) {
                 $option = buildCantripOptions($slot_action_row_id, $availableSpell->spell_name);
+                if ($cantrip_select_option_added == false) {
+                    $cantrip_select_html .= '<option value="slot-action-row-select">' . "[Select a Cantrip]" . '</option>' . PHP_EOL;
+                    $cantrip_select_option_added = true;
+                }
+                    
                 $cantrip_select_html .= $option;
             }
 
@@ -203,7 +210,6 @@ $cantrip_select_html = '<select id="available_cantrip" name="available_cantrip" 
                 $slotAction_html = buildCastSlotForm($input[PLAYER_NAME], $input[CHARACTER_NAME], $availableSpell);
                 $backgroundColor = $rowCounter % 2 == 0 ? "white" : "lightgray";
                 $hidden_row = $availableSpell->spell_level == 0 ? ' hidden' : '';
-                $slot_action_row_id = buildActionSlotRowId($availableSpell);
                 echo '<tr style="background-color: '. $backgroundColor .'" id="' . $slot_action_row_id . '"' . $hidden_row . '>' . PHP_EOL . $slotAction_html . '</tr>' . PHP_EOL;
             }
             
@@ -231,11 +237,6 @@ $cantrip_select_html = '<select id="available_cantrip" name="available_cantrip" 
     }
     ?>
 </table>
-<div>
-    <pre>
-        <?= $debug_output ?>
-    </pre>
-</div>
 </body>
 </html>
 
