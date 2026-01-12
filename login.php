@@ -4,8 +4,10 @@ $errors = [];
 $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
 
-$players = getPlayerList($pdo, $errors);
+require_once __DIR__ . '/webio/playerName.php';
 
+$players = getPlayerList($pdo, $errors);
+$login_url = CurlHelper::buildUrl('characterActionRouter');
 ?>
 
 <!DOCTYPE html>
@@ -32,6 +34,21 @@ $players = getPlayerList($pdo, $errors);
             vertical-align: sub;
         }
 
+        .main {
+            width: 720px;
+            height: 400px;
+            display: flex;
+        }
+
+        .left {
+            flex: 0 0 190px; /* fixed width */
+        }
+        .right {
+            flex: 1; /* takes remaining space */
+            background-color: white;
+            padding-left: 3px;
+            padding-right: 3px;            
+        }
     </style>
     <script src="backButtonDisable.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -49,30 +66,29 @@ $players = getPlayerList($pdo, $errors);
     </script>
 </head>
 <body style="background-color: whitesmoke; margin: 15px; font-family: sans-serif; font-size: 24px;">
-    <?php
-        $login_url = CurlHelper::buildUrl('characterActionRouter');
-    ?>
-    <div style="float: left;">
-        <img src="Thumbs up.jpg" height="400">
-    </div>
-    <div style="float: left; background-color: white; height: 400px; padding: 15px;">
-        <div style="text-align:center; padding-top: 37px; padding-bottom: 37px;">Login to the dungeon</div>
-        <form action="<?= $login_url ?>" method="post">
-            <input type="hidden" name="characterAction" value="login">
-            <label for="playerName">Username</label>
-            <select style="font-size: 24px; width: 100%; margin-top: 5px;" name="playerName" id="playerName">
-            <?php
-                foreach($players AS $player) {
-                    echo '<option value="' . $player['player_name'] . '">' . $player['player_name'] . '</option>' . PHP_EOL;
-                }
-            ?>
-            </select>
-            <label for="password">Password</label>
-            <input style="font-size: 24px; width: 97%; margin-top: 5px; border-top:none; border-left: none; border-right: none;" type="password" name="password" id="password">
-            <div style="text-align:center; margin-top: 30px; ">
-                <button style="font-size: 24px;" onclick="event.preventDefault(); checkForm(this.form);">Sign in</button>
-            </div>
-        </form>
+    <div class="main">
+        <div class="left">
+            <img src="Thumbs up.jpg" height="400" width="190" title="Thumbs up">
+        </div>
+        <div class="right">
+            <div style="text-align: center; padding-top: 74px; width:">Login to The Dungeon</div>
+            <form action="<?= $login_url ?>" method="post">
+                <input type="hidden" name="characterAction" value="login">
+                <label for="playerName">Username</label>
+                <select style="font-size: 24px; width: 100%; margin-top: 5px;" name="<?= PLAYER_NAME ?>" id="<?= PLAYER_NAME ?>">
+                <?php
+                    foreach($players AS $player) {
+                        echo '<option value="' . $player['player_name'] . '">' . $player['player_name'] . '</option>' . PHP_EOL;
+                    }
+                ?>
+                </select>
+                <label for="password">Password</label>
+                <input style="font-size: 24px; width: 95%; margin-top: 5px; border-top:none; border-left: none; border-right: none;" type="password" name="password" id="password">
+                <div style="text-align:center; margin-top: 30px; ">
+                    <button style="font-size: 24px;" onclick="event.preventDefault(); checkForm(this.form);">Sign in</button>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>
