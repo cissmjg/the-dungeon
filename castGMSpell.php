@@ -15,7 +15,7 @@ require_once __DIR__ . '/webio/spellDuration.php';
 require_once __DIR__ . '/webio/spellCastingTime.php';
 require_once __DIR__ . '/classes/characterSummary.php';
 
-require_once 'spellSlotTypes.php';
+require_once __DIR__ . '/dbio/constants/spellSlotTypes.php';
 
 $log = [];
 $errors = [];

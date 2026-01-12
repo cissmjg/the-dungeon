@@ -19,7 +19,7 @@ require_once 'hiddenTag.php';
 
 require_once __DIR__ . '/fa/faCastSpellIcon.php';
 require_once __DIR__ . '/fa/faSleepIcon.php';
-require_once 'spellSlotTypes.php';
+require_once __DIR__ . '/dbio/constants/spellSlotTypes.php';
 
 require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
