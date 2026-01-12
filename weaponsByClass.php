@@ -6,7 +6,7 @@ $input = [];
 
 $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 require_once __dir__ . '/webio/characterClassId.php';
-require_once 'characterClasses.php';
+require_once __DIR__ . '/dbio/constants/characterClasses.php';
 
 $all_classes = getAllCharacterClasses($pdo);
 

@@ -28,7 +28,7 @@ require_once 'spellTypes.php';
 
 require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
-require_once 'characterClasses.php';
+require_once __DIR__ . '/dbio/constants/characterClasses.php';
 
 const DEALLOCATE_CHARACTER_ACTION = "deallocateExtraSlot";
 const DEALLOCATE_CHARACTER_ACTION_ID = "xs-deallocate-character-action";

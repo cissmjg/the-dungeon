@@ -17,7 +17,7 @@ require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/requiredParameter.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once 'hiddenTag.php';
-require_once 'characterClasses.php';
+require_once __DIR__ . '/dbio/constants/characterClasses.php';
 require_once 'characterClassSuperStats.php';
 require_once 'characterClassRestrictions.php';
 

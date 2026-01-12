@@ -1,6 +1,6 @@
 <?php
 
-require_once 'characterClasses.php';
+require_once __DIR__ . '/dbio/constants/characterClasses.php';
 require_once 'characterAttributes.php';
 
 $character_super_stats = [];
