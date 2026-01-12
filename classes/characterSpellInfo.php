@@ -1,6 +1,6 @@
 <?php
 
-require_once './baseSlotCount.php';
+require_once 'baseSlotCount.php';
 
 class CharacterSpellInfo implements Stringable {
 	

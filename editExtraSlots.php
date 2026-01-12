@@ -24,7 +24,7 @@ require_once 'hiddenTag.php';
 
 require_once __DIR__ . '/fa/faAddIcon.php';
 require_once __DIR__ . '/fa/faCancelIcon.php';
-require_once 'spellTypes.php';
+require_once __DIR__ . '/dbio/constants/spellTypes.php';
 
 require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';

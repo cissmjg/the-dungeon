@@ -19,7 +19,7 @@ require_once 'characterIds.php';
 require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSpellInfo.php';
 
-require_once 'spellTypes.php';
+require_once __DIR__ . '/dbio/constants/spellTypes.php';
 
 // Filter and sanitize names
 getPlayerName($errors, $input);
