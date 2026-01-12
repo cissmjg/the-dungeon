@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 require_once 'characterAttributes.php';
-require_once 'characterRaces.php';
+require_once __DIR__ . '/dbio/constants/characterRaces.php';
 
 const MALE = 'M';
 const FEMALE = 'F';

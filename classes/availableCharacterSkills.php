@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/../dbio/constants/characterClasses.php';
-require_once 'characterRaces.php';
+require_once __DIR__ . '/dbio/constants/characterRaces.php';
 require_once 'skillReserveIds.php';
 
 require_once 'availableCharacterSkill.php';
@@ -124,7 +124,7 @@ class AvailableCharacterSkills implements JsonSerializable {
         $log[] = $available_skills_with_no_prerequisite;
 
         // Remove skills where prerequisite skills are missing
-        $this->available_skills = $this->filter_prerequisite_skills($available_skills_with_prerequisite, $character_skill_ids);
+        // $this->available_skills = $this->filter_prerequisite_skills($available_skills_with_prerequisite, $character_skill_ids);
     }
 
     public function getSkillsAvailableForPlayerCharacterClass(\PDO $pdo, $character_class, $character_race, $character_class_level, $character_intelligence, $character_dexterity, $character_charisma, &$errors) {

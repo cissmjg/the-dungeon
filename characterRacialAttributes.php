@@ -5,7 +5,7 @@ $input = [];
 
 $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
-require_once 'characterRaces.php';
+require_once __DIR__ . '/dbio/constants/characterRaces.php';
 require_once 'characterAttributes.php';
 require_once 'minmaxRacialAttributes.php';
 require_once __DIR__ . '/webio/raceId.php';
