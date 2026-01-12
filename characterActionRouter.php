@@ -27,7 +27,7 @@ require_once __DIR__ . '/webio/spellPoolSlotId.php';
 require_once __DIR__ . '/webio/spellDuration.php';
 require_once __DIR__ . '/webio/spellCastingTime.php';
 require_once __DIR__ . '/webio/castStatus.php';
-require_once 'cantripSpellSlot.php';
+require_once __DIR__ . '/dbio/constants/cantripSpellSlot.php';
 require_once __DIR__ . '/webio/playerCharacterClassId.php';
 require_once __DIR__ . '/webio/playerCharacterWeaponId.php';
 require_once __DIR__ . '/webio/spellSlotLevel.php';
@@ -107,7 +107,7 @@ switch($character_action) {
 			break;
 			exit;
 		}
-		initiateSession($pdo, $input[PLAYER_NAME], $errors);
+		initiateSession($pdo, $input[PLAYER_NAME], $errors, $character_action);
 		$player_permissions = getPlayerPermissions($pdo, $input[PLAYER_NAME], $errors);
 		$redirect_url = '';
 		if(!empty($player_permissions['is_dm']) && $player_permissions['is_dm'] == TRUE) {
@@ -875,7 +875,7 @@ function getCharacterAction(&$errors, &$input) {
 	getRequiredStringParameter($errors, $input, __FILE__, CHARACTER_ACTION);
 }
 
-function initiateSession($pdo, $player_name, &$errors) {
+function initiateSession($pdo, $player_name, &$errors, $character_action) {
 	deleteSessionTicket($pdo, $player_name, $errors);
 	createSessionTicket($pdo, $player_name, $errors);
 	if (count($errors) > 0) {

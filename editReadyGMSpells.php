@@ -26,7 +26,7 @@ require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 require_once __DIR__ . '/fa/faRunSpellIcon.php';
 require_once __DIR__ . '/fa/faStopSpellIcon.php';
 
-require_once 'cantripSpellSlot.php';
+require_once __DIR__ . '/dbio/constants/cantripSpellSlot.php';
 
 const MAX_HOURS_SLEEP = 8;
 
