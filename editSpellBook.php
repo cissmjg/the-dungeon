@@ -29,7 +29,7 @@ require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 require_once 'classAbilitiesGM.php';
 require_once 'characterClasses.php';
 
-require_once 'emptySpellSlot.php';
+require_once __DIR__ . '/dbio/constants/emptySpellSlot.php';
 
 const UPDATE_SPELL_POOL_ACTION = 'updateSpellPool';
 

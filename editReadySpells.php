@@ -39,7 +39,7 @@ require_once __DIR__ . '/fa/faRunSpellIcon.php';
 require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 
-require_once 'emptySpellSlot.php';
+require_once __DIR__ . '/dbio/constants/emptySpellSlot.php';
 require_once 'cantripSpellSlot.php';
 
 // Populate player and character names in $input

@@ -15,7 +15,7 @@ require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/characterClassName.php';
 require_once __DIR__ . '/webio/spellLevel.php';
 require_once __DIR__ . '/webio/removeEmpty.php';
-require_once 'emptySpellSlot.php';
+require_once __DIR__ . '/dbio/constants/emptySpellSlot.php';
 
 // Filter and sanitize names
 getPlayerName($errors, $input);
