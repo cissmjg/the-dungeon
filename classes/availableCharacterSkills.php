@@ -1,9 +1,9 @@
 <?php
 
-require_once __DIR__ . '/webio/characterName.php';
+require_once __DIR__ . '/../webio/characterName.php';
 require_once __DIR__ . '/../dbio/constants/characterClasses.php';
-require_once __DIR__ . '/dbio/constants/characterRaces.php';
-require_once 'skillReserveIds.php';
+require_once __DIR__ . '/../dbio/constants/characterRaces.php';
+require_once __DIR__ . '/../dbio/constants/skillReserveIds.php';
 
 require_once 'availableCharacterSkill.php';
 require_once 'accountCharacterSummary.php';
