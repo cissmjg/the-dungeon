@@ -20,7 +20,7 @@ require_once 'hiddenTag.php';
 
 require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
-require_once 'characterWeaponTalents.php';
+require_once __DIR__ . '/classes/characterWeaponTalents.php';
 require_once 'characterWeaponTalent.php';
 
 // Populate player and character names in $input
