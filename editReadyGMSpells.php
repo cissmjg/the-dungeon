@@ -11,11 +11,21 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/CurlHelper.php';
-require_once __DIR__ . '/webio/playerName.php';
-require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
+require_once __DIR__ . '/webio/characterAction.php';
+require_once __DIR__ . '/webio/spellCatalogId.php';
+require_once __DIR__ . '/webio/spellLevel.php';
+require_once __DIR__ . '/webio/spellDuration.php';
+require_once __DIR__ . '/webio/spellCastingTime.php';
+require_once __DIR__ . '/webio/hoursOfSleep.php';
+require_once __DIR__ . '/webio/spellSlotId.php';
+
 require_once 'hiddenTag.php';
+
+require_once __DIR__ . '/webio/playerName.php';
+require_once __DIR__ . '/webio/characterName.php';
+require_once __DIR__ . '/webio/characterLevel.php';
 
 require_once __DIR__ . '/fa/faCastSpellIcon.php';
 require_once __DIR__ . '/fa/faSleepIcon.php';
@@ -68,7 +78,7 @@ $locale = 'en_US';
 $nf = new NumberFormatter($locale, NumberFormatter::ORDINAL);
 $action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
-$character_level = getCharacterLevel($character_summary->getCharacterClasses());
+$character_level = getCharacterLevelFromCharacterSummary($character_summary->getCharacterClasses());
 $cantrip_select_html = '<select id="available_cantrip" name="available_cantrip" onchange="showCantrip()" style="font-size: 14pt;">' . PHP_EOL;
 ?>
 <!DOCTYPE html>
@@ -145,27 +155,26 @@ $cantrip_select_html = '<select id="available_cantrip" name="available_cantrip" 
 </head>
 <body>
     <form name="slot-action-form" id="slot-action-form" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter') ?>">
-        <input type="hidden" name="playerName" id="playerName" value="<?= $input[PLAYER_NAME] ?>">
-        <input type="hidden" name="characterName" id="characterName" value="<?= $input[CHARACTER_NAME] ?>">
-        <input type="hidden" name="characterAction" id="castGMSpellCharacterAction" value="">
-        <input type="hidden" name="spellPoolId" id="spellPoolId" value="">
-        <input type="hidden" name="spellCatalogId" id="spellCatalogId" value="">
-        <input type="hidden" name="spellLevel" id="spellLevel" value="">
-        <input type="hidden" name="spellDuration" id="spellDuration" value="">
-        <input type="hidden" name="spellCastingTime" id ="spellCastingTime" value="">
+        <input type="hidden" name="<?= PLAYER_NAME ?>" id="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_NAME ?>" id="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="castGMSpellCharacterAction" value="">
+        <input type="hidden" name="<?= SPELL_CATALOG_ID ?>" id="<?= SPELL_CATALOG_ID ?>" value="">
+        <input type="hidden" name="<?= SPELL_LEVEL ?>" id="<?= SPELL_LEVEL ?>" value="">
+        <input type="hidden" name="<?= SPELL_DURATION ?>" id="<?= SPELL_DURATION ?>" value="">
+        <input type="hidden" name="<?= SPELL_CASTING_TIME ?>" id ="<?= SPELL_CASTING_TIME?>" value="">
     </form>
     <form name="recover-spell-points" id="recover-spell-points" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter') ?>">
-        <input type="hidden" name="playerName" id="playerName" value="<?= $input[PLAYER_NAME] ?>">
-        <input type="hidden" name="characterName" id="characterName" value="<?= $input[CHARACTER_NAME] ?>">
-        <input type="hidden" name="characterAction" id="recoverSpellPointsCharacterAction" value="">
-        <input type="hidden" name="characterLevel" id="characterLevel" value="<?= $character_level ?>">
-        <input type="hidden" name="hoursOfSleep" id="hoursOfSleep" value="">
+        <input type="hidden" name="<?= PLAYER_NAME ?>" id="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_NAME ?>" id="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="recoverSpellPointsCharacterAction" value="">
+        <input type="hidden" name="<?= CHARACTER_LEVEL ?>" id="<?= CHARACTER_LEVEL ?>" value="<?= $character_level ?>">
+        <input type="hidden" name="<?= HOURS_OF_SLEEP ?>" id="<?= HOURS_OF_SLEEP ?>" value="">
     </form>
     <form name="stop-action-form" id="stop-action-form" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter') ?>">
-        <input type="hidden" name="playerName" id="playerName" value="<?= $input[PLAYER_NAME] ?>">
-        <input type="hidden" name="characterName" id="characterName" value="<?= $input[CHARACTER_NAME] ?>">
-        <input type="hidden" name="characterAction" id="stopGMSpellCharacterAction" value="">
-        <input type="hidden" name="spellSlotId" id="spellSlotId" value="">
+        <input type="hidden" name="<?= PLAYER_NAME ?>" id="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_NAME ?>" id="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="stopGMSpellCharacterAction" value="">
+        <input type="hidden" name="<?= SPELL_SLOT_ID ?>" id="<?= SPELL_SLOT_ID ?>" value="">
     </form>
     <div style="width: 100%;"><span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span></div>
     <?php
@@ -418,7 +427,7 @@ function buildCantripOptions($row_id, $available_spell_name) {
     return '<option value="' . $row_id . '">' . $available_spell_name . '</option>' . PHP_EOL;
 }
 
-function getCharacterLevel($character_classes) {
+function getCharacterLevelFromCharacterSummary($character_classes) {
     foreach($character_classes AS $character_class) {
         return $character_class['character_level'];
     }
