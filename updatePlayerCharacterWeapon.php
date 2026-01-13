@@ -17,7 +17,7 @@ require_once __DIR__ . '/classes/ActionBarHelper.php';
 
 require_once __DIR__ . '/classes/playerCharacterWeapon.php';
 require_once 'weaponType.php';
-require_once 'weaponSubtype.php';
+require_once __DIR__ . '/dbio/constants/weaponSubtype.php';
 require_once __DIR__ . '/dbio/constants/characterClasses.php';
 require_once __DIR__ . '/helper/WebParameterHelper.php';
 require_once __DIR__ . '/webio/craftStatus.php';
