@@ -1,6 +1,6 @@
 <?php
 
-require_once 'weaponType.php';
+require_once __DIR__ . '/../dbio/constants/weaponType.php';
 
 class PlayerCharacterWeapon implements JsonSerializable {
 

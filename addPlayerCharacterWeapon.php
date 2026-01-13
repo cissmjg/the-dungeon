@@ -68,7 +68,7 @@ require_once __DIR__ . '/webio/weaponDescription.php';
 require_once __DIR__ . '/webio/weaponLocation.php';
 
 require_once __DIR__ . '/classes/weaponDetail.php';
-require_once 'weaponType.php';
+require_once __DIR__ . '/dbio/constants/weaponType.php';
 require_once __DIR__ . '/dbio/constants/weaponSubtype.php';
 require_once __DIR__ . '/dbio/constants/characterClasses.php';
 require_once __DIR__ . '/helper/WebParameterHelper.php';
