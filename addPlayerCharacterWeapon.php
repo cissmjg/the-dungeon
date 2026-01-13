@@ -324,13 +324,13 @@ $craft_status_magic_selected = "";
                 <?php if ($weaponDetail->getMissileWeaponAdditionalText() != NULL): ?>
                     <div class="inputRow"><label for="missileAdditionalText">Additional Info: </label><input type="text" id="<?= MISSILE_ADDITIONAL_TEXT ?>" name="<?= MISSILE_ADDITIONAL_TEXT ?>" size="32" maxlength="32" value="<?= $weaponDetail->getMissileWeaponAdditionalText() ?>"></div>
                 <?php endif ?>
-                <?php if ($weaponDetail->getMissileWeaponSubtype() == BOW): ?>
+                <?php if ($weaponDetail->getMissileWeaponSubtype() == WEAPON_SUBTYPE_BOW): ?>
                 <div class="inputRow"><label for="strengthBonusAvailable">Strength Bonus? </label><select name="<?= STRENGTH_BONUS_AVAILABLE ?>" id="<?= STRENGTH_BONUS_AVAILABLE ?>">
                     <option value="NO">No</option>
                     <option value="YES">Yes</option>
                 </select></div>
                 <?php else: ?>
-                    <input type="hidden" name="<?= STRENGTH_BONUS_AVAILABLE ?>" id="<?= STRENGTH_BONUS_AVAILABLE ?>" value="<?= isStrengthBonusAvailable($weaponDetail->getWeaponName()) ?>">
+                    <input type="hidden" name="<?= STRENGTH_BONUS_AVAILABLE ?>" id="<?= STRENGTH_BONUS_AVAILABLE ?>" value="<?= isStrengthBonusAvailable($playerCharacterWeapon->getWeaponProficiencyId()) ?>">
                 <?php endif ?>
                 <div class="inputRow"><label for="missileShortRange">Short Range: </label><input type="text" id="<?= MISSILE_SHORT_RANGE ?>" name="<?= MISSILE_SHORT_RANGE ?>" maxlength="32" value="<?= $weaponDetail->getMissileWeaponShortRange() ?>"></div>
                 <div class="inputRow"><label for="missileMediumRange">Medium Range: </label><input type="text" id="<?= MISSILE_MEDIUM_RANGE ?>" name="<?= MISSILE_MEDIUM_RANGE ?>" maxlength="32" value="<?= $weaponDetail->getMissileWeaponMediumRange() ?>"></div>
@@ -400,29 +400,31 @@ function isCavalier($character_classes) {
 }
 
 function isRanged($weapon_subtype) {
-    return  ($weapon_subtype == MISC_MISSILE) || ($weapon_subtype == BOW) || ($weapon_subtype == CROSSBOW) ||  
-            ($weapon_subtype == AXE) || ($weapon_subtype ==  HAMMER) || ($weapon_subtype == SLING);
+    return  ($weapon_subtype == WEAPON_SUBTYPE_MISC_MISSILE) || ($weapon_subtype == WEAPON_SUBTYPE_BOW) || ($weapon_subtype == WEAPON_SUBTYPE_CROSSBOW) ||  
+            ($weapon_subtype == WEAPON_SUBTYPE_AXE) || ($weapon_subtype ==  WEAPON_SUBTYPE_HAMMER) || ($weapon_subtype == WEAPON_SUBTYPE_SLING);
 }
 
 function isMasterCraftDamageEligible($weapon_subtype) {
-    return ($weapon_subtype == MISC_MELEE) || ($weapon_subtype == AXE) || ($weapon_subtype == POLE_ARM) || ($weapon_subtype == CLUB) || ($weapon_subtype == ONE_HANDED_SWORD) || ($weapon_subtype == HAMMER) || ($weapon_subtype == LANCE) || ($weapon_subtype == TWO_HANDED_SWORD);
+    return  ($weapon_subtype == WEAPON_SUBTYPE_MISC_MELEE) || ($weapon_subtype == WEAPON_SUBTYPE_AXE) || ($weapon_subtype == WEAPON_SUBTYPE_POLE_ARM) || 
+            ($weapon_subtype == WEAPON_SUBTYPE_CLUB) || ($weapon_subtype == WEAPON_SUBTYPE_ONE_HANDED_SWORD) || ($weapon_subtype == WEAPON_SUBTYPE_HAMMER) || 
+            ($weapon_subtype == WEAPON_SUBTYPE_LANCE) || ($weapon_subtype == WEAPON_SUBTYPE_TWO_HANDED_SWORD);
 }
 
-function isStrengthBonusAvailable($weapon_name) {
-    switch($weapon_name) {
-        case "Dagger":
+function isStrengthBonusAvailable($weapon_proficiency_id) {
+    switch($weapon_proficiency_id) {
+        case DAGGER:
             return "YES";
-        case "Battle Axe":
+        case BATTLE_AXE:
             return "YES";
-        case "Hand Axe":
+        case HAND_AXE:
             return "YES";
-        case "Spear":
+        case SPEAR:
             return "YES";
-        case "Hammer":
+        case HAMMER:
             return "YES";
-        case "Dwarven Throwing Hammer":
+        case DWARVEN_THROWING_HAMMER:
             return "YES";
-        case "Javelin":
+        case JAVELIN:
             return "YES";
         default:
             return "NO";

@@ -1,61 +1,61 @@
 <?php
 
-const MISC_MELEE = 1;
-const MISC_MISSILE = 2;
-const BOW = 3;
-const CROSSBOW = 4;
-const ARROW = 5;
-const QUARREL = 6;
-const AXE = 7;
-const POLE_ARM = 8;
-const CLUB = 9;
-const ONE_HANDED_SWORD = 10;
-const HAMMER = 11;
-const LANCE = 12;
-const SLING = 13;
-const BULLET = 14;
-const BLOW_GUN = 15;
-const NEEDLE = 16;
-const TWO_HANDED_SWORD = 17;
-const TALENT = 18;
+const WEAPON_SUBTYPE_MISC_MELEE = 1;
+const WEAPON_SUBTYPE_MISC_MISSILE = 2;
+const WEAPON_SUBTYPE_BOW = 3;
+const WEAPON_SUBTYPE_CROSSBOW = 4;
+const WEAPON_SUBTYPE_ARROW = 5;
+const WEAPON_SUBTYPE_QUARREL = 6;
+const WEAPON_SUBTYPE_AXE = 7;
+const WEAPON_SUBTYPE_POLE_ARM = 8;
+const WEAPON_SUBTYPE_CLUB = 9;
+const WEAPON_SUBTYPE_ONE_HANDED_SWORD = 10;
+const WEAPON_SUBTYPE_HAMMER = 11;
+const WEAPON_SUBTYPE_LANCE = 12;
+const WEAPON_SUBTYPE_SLING = 13;
+const WEAPON_SUBTYPE_BULLET = 14;
+const WEAPON_SUBTYPE_BLOW_GUN = 15;
+const WEAPON_SUBTYPE_NEEDLE = 16;
+const WEAPON_SUBTYPE_TWO_HANDED_SWORD = 17;
+const WEAPON_SUBTYPE_TALENT = 18;
 
 function getWeaponSubtypeDescription($weapon_subtype) {
     switch($weapon_subtype) {
-        case MISC_MELEE:
+        case WEAPON_SUBTYPE_MISC_MELEE:
             return "Misc. Melee";
-        case MISC_MISSILE:
+        case WEAPON_SUBTYPE_MISC_MISSILE:
             return "Misc. Missile";
-        case BOW:
+        case WEAPON_SUBTYPE_BOW:
             return "Bow";
-        case CROSSBOW:
+        case WEAPON_SUBTYPE_CROSSBOW:
             return "Crossbow";
-        case ARROW:
+        case WEAPON_SUBTYPE_ARROW:
             return "Arrow";
-        case QUARREL:
+        case WEAPON_SUBTYPE_QUARREL:
             return "Quarrel";
-        case AXE:
+        case WEAPON_SUBTYPE_AXE:
             return "Axe";
-        case POLE_ARM:
+        case WEAPON_SUBTYPE_POLE_ARM:
             return "Pole Arm";
-        case CLUB:
+        case WEAPON_SUBTYPE_CLUB:
             return "Club";
-        case ONE_HANDED_SWORD:
+        case WEAPON_SUBTYPE_ONE_HANDED_SWORD:
             return "One Handed Sword";
-        case HAMMER:
+        case WEAPON_SUBTYPE_HAMMER:
             return "Hammer";
-        case LANCE:
+        case WEAPON_SUBTYPE_LANCE:
             return "Lance";
-        case SLING:
+        case WEAPON_SUBTYPE_SLING:
             return "Sling";
-        case BULLET:
+        case WEAPON_SUBTYPE_BULLET:
             return "Bullet";
-        case BLOW_GUN:
+        case WEAPON_SUBTYPE_BLOW_GUN:
             return "Blow gun";
-        case NEEDLE:
+        case WEAPON_SUBTYPE_NEEDLE:
             return "Needle";
-        case TWO_HANDED_SWORD:
+        case WEAPON_SUBTYPE_TWO_HANDED_SWORD:
             case "Two Handed Sword";
-        case TALENT:
+        case WEAPON_SUBTYPE_TALENT:
             case "Talent";
         default:
             return "UNKNOWN";

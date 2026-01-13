@@ -355,7 +355,7 @@ $craft_status_magic_selected = "";
                 <?php if ($playerCharacterWeapon->getMissileAdditionalText() != NULL): ?>
                     <div class="inputRow"><label for="missileAdditionalText">Additional Info: </label><input type="text" id="missileAdditionalText" name="missileAdditionalText" size="32" maxlength="32" value="<?= $playerCharacterWeapon->getMissileAdditionalText() ?>"></div>
                 <?php endif ?>
-                <?php if ($playerCharacterWeapon->getMissileWeaponSubtype() == BOW): ?>
+                <?php if ($playerCharacterWeapon->getMissileWeaponSubtype() == WEAPON_SUBTYPE_BOW): ?>
                     <?php
                         $strength_bow_no = '';
                         $strength_bow_yes = '';
@@ -438,12 +438,14 @@ function isCavalier($character_classes) {
 }
 
 function isRanged($weapon_subtype) {
-    return  ($weapon_subtype == MISC_MISSILE) || ($weapon_subtype == BOW) || ($weapon_subtype == CROSSBOW) ||  
-            ($weapon_subtype == AXE) || ($weapon_subtype ==  HAMMER) || ($weapon_subtype == SLING);
+    return  ($weapon_subtype == WEAPON_SUBTYPE_MISC_MISSILE) || ($weapon_subtype == WEAPON_SUBTYPE_BOW) || ($weapon_subtype == WEAPON_SUBTYPE_CROSSBOW) ||  
+            ($weapon_subtype == WEAPON_SUBTYPE_AXE) || ($weapon_subtype ==  WEAPON_SUBTYPE_HAMMER) || ($weapon_subtype == WEAPON_SUBTYPE_SLING);
 }
 
 function isMasterCraftDamageEligible($weapon_subtype) {
-    return ($weapon_subtype == MISC_MELEE) || ($weapon_subtype == AXE) || ($weapon_subtype == POLE_ARM) || ($weapon_subtype == CLUB) || ($weapon_subtype == ONE_HANDED_SWORD) || ($weapon_subtype == HAMMER) || ($weapon_subtype == LANCE) || ($weapon_subtype == TWO_HANDED_SWORD);
+    return  ($weapon_subtype == WEAPON_SUBTYPE_MISC_MELEE) || ($weapon_subtype == WEAPON_SUBTYPE_AXE) || ($weapon_subtype == WEAPON_SUBTYPE_POLE_ARM) || 
+            ($weapon_subtype == WEAPON_SUBTYPE_CLUB) || ($weapon_subtype == WEAPON_SUBTYPE_ONE_HANDED_SWORD) || ($weapon_subtype == WEAPON_SUBTYPE_HAMMER) || 
+            ($weapon_subtype == WEAPON_SUBTYPE_LANCE) || ($weapon_subtype == WEAPON_SUBTYPE_TWO_HANDED_SWORD);
 }
 
 function isStrengthBonusAvailable($weapon_proficiency_id) {
