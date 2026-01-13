@@ -22,6 +22,7 @@ require_once __DIR__ . '/dbio/constants/characterClasses.php';
 require_once __DIR__ . '/helper/WebParameterHelper.php';
 require_once __DIR__ . '/webio/craftStatus.php';
 require_once __DIR__ . '/dbio/constants/weapons.php';
+require_once __DIR__ . '/webio/weaponProficiencyId.php';
 
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
@@ -29,28 +30,54 @@ require_once __DIR__ . '/webio/playerCharacterWeaponId.php';
 require_once __DIR__ . '/webio/playerCharacterWeaponSkillId.php';
 require_once __DIR__ . '/webio/weaponDescription.php';
 require_once __DIR__ . '/webio/weaponLocation.php';
+require_once __DIR__ . '/webio/craftStatus.php';
+require_once __DIR__ . '/webio/isPreferred.php';
 require_once __DIR__ . '/webio/isProficient.php';
 require_once __DIR__ . '/webio/isReady.php';
-require_once __DIR__ . '/webio/isPreferred.php';
-require_once __DIR__ . '/webio/craftStatus.php';
-require_once __DIR__ . '/webio/strengthBonusAvailable.php';
+require_once __DIR__ . '/webio/mastercraftDamageDescription.php';
+require_once __DIR__ . '/webio/mastercraftHitDescription.php';
+require_once __DIR__ . '/webio/meleeAdditionalText.php';
+require_once __DIR__ . '/webio/meleeAttacksPerRound.php';
+require_once __DIR__ . '/webio/meleeDamageBonus.php';
+require_once __DIR__ . '/webio/meleeHitBonus.php';
+require_once __DIR__ . '/webio/meleeNumberOfHands.php';
+require_once __DIR__ . '/webio/meleeSpec1DamageBonus.php';
+require_once __DIR__ . '/webio/meleeSpec1Description.php';
+require_once __DIR__ . '/webio/meleeSpec1HitBonus.php';
+require_once __DIR__ . '/webio/meleeSpec2DamageBonus.php';
+require_once __DIR__ . '/webio/meleeSpec2Description.php';
+require_once __DIR__ . '/webio/meleeSpec2HitBonus.php';
+require_once __DIR__ . '/webio/meleeSpec3DamageBonus.php';
+require_once __DIR__ . '/webio/meleeSpec3Description.php';
+require_once __DIR__ . '/webio/meleeSpec3HitBonus.php';
+require_once __DIR__ . '/webio/meleeWeaponDamage.php';
+require_once __DIR__ . '/webio/meleeWeaponSpeed.php';
+require_once __DIR__ . '/webio/meleeWeaponSubtype.php';
+require_once __DIR__ . '/webio/meleeWeaponType.php';
+require_once __DIR__ . '/webio/missileAdditionalText.php';
+require_once __DIR__ . '/webio/missileAttacksPerRound.php';
+require_once __DIR__ . '/webio/missileDamageBonus.php';
+require_once __DIR__ . '/webio/missileHitBonus.php';
+require_once __DIR__ . '/webio/missileLongRange.php';
+require_once __DIR__ . '/webio/missileMediumRange.php';
+require_once __DIR__ . '/webio/missileShortRange.php';
+require_once __DIR__ . '/webio/missileSpec1DamageBonus.php';
+require_once __DIR__ . '/webio/missileSpec1Description.php';
+require_once __DIR__ . '/webio/missileSpec1HitBonus.php';
+require_once __DIR__ . '/webio/missileSpec2DamageBonus.php';
+require_once __DIR__ . '/webio/missileSpec2Description.php';
+require_once __DIR__ . '/webio/missileSpec2HitBonus.php';
+require_once __DIR__ . '/webio/missileSpec3DamageBonus.php';
+require_once __DIR__ . '/webio/missileSpec3Description.php';
+require_once __DIR__ . '/webio/missileSpec3HitBonus.php';
+require_once __DIR__ . '/webio/missileWeaponDamage.php';
+require_once __DIR__ . '/webio/missileWeaponSpeed.php';
+require_once __DIR__ . '/webio/missileWeaponSubtype.php';
+require_once __DIR__ . '/webio/missileWeaponType.php';
 require_once __DIR__ . '/webio/playerNote1.php';
 require_once __DIR__ . '/webio/playerNote2.php';
 require_once __DIR__ . '/webio/playerNote3.php';
-require_once __DIR__ . '/webio/meleeWeaponType.php';
-require_once __DIR__ . '/webio/meleeWeaponSpeed.php';
-require_once __DIR__ . '/webio/meleeWeaponDamage.php';
-require_once __DIR__ . '/webio/meleeAttacksPerRound.php';
-require_once __DIR__ . '/webio/meleeNumberOfHands.php';
-require_once __DIR__ . '/webio/meleeAdditionalText.php';
-require_once __DIR__ . '/webio/missileWeaponType.php';
-require_once __DIR__ . '/webio/missileWeaponSpeed.php';
-require_once __DIR__ . '/webio/missileWeaponDamage.php';
-require_once __DIR__ . '/webio/missileAttacksPerRound.php';
-require_once __DIR__ . '/webio/missileAdditionalText.php';
-require_once __DIR__ . '/webio/missileShortRange.php';
-require_once __DIR__ . '/webio/missileMediumRange.php';
-require_once __DIR__ . '/webio/missileLongRange.php';
+require_once __DIR__ . '/webio/strengthBonusAvailable.php';
 
 // Populate player and character names in $input
 getPlayerName($errors, $input);
@@ -146,7 +173,7 @@ $craft_status_magic_selected = "";
             <input type="hidden" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
             <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
             <input type="hidden" name="<?= WEAPON_PROFICIENCY_ID ?>" value="<?= $playerCharacterWeapon->getWeaponProficiencyId() ?>">
-            <input type="hidden" name="<?= PLAYER_CHARACTER_WEAPON_SKILL_ID ?>" value="<?= $playerCharacterWeapon->getWeaponId() ?? '0'?>">
+            <input type="hidden" name="<?= PLAYER_CHARACTER_WEAPON_ID ?>" value="<?= $playerCharacterWeapon->getWeaponId() ?? '0'?>">
             <h3><?= $playerCharacterWeapon->getWeaponDescription(); ?></h3>
             <div class="inputRow"><label for="weaponDescription">Weapon Name: </label><input type="text" name="<?= WEAPON_DESCRIPTION ?>" id="<?= WEAPON_DESCRIPTION ?>" maxlength="32" value="<?= $playerCharacterWeapon->getWeaponDescription(); ?>"></div>
             <div class="inputRow"><label for="weaponLocation">Weapon Location: </label><input type="text" name="<?= WEAPON_LOCATION ?>" id="<?= WEAPON_LOCATION ?>" maxlength="32" value="<?= $playerCharacterWeapon->getWeaponLocation() ?>"> <select id="weaponLocationHints" onchange="populateWeaponLocation('weaponLocationHints', '<?= WEAPON_LOCATION ?>');">
