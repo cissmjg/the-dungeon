@@ -21,7 +21,7 @@ require_once 'weaponSubtype.php';
 require_once __DIR__ . '/dbio/constants/characterClasses.php';
 require_once __DIR__ . '/helper/WebParameterHelper.php';
 require_once __DIR__ . '/webio/craftStatus.php';
-require_once 'weapons.php';
+require_once __DIR__ . '/dbio/constants/weapons.php';
 
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
