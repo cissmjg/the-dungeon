@@ -22,7 +22,7 @@ require_once __DIR__ . '/dbio/constants/characterRaces.php';
 require_once __DIR__ . '/rules/adjustCharacterRacialAttributes.php';
 require_once 'getCharacterCreationAttributes.php';
 require_once __DIR__ . '/rules/characterClassCombinations.php';
-require_once 'characterClassRestrictions.php';
+require_once __DIR__ . '/rules/characterClassRestrictions.php';
 require_once 'validateRacialAttributes.php';
 
 const PAGE_ACTION_VALIDATE = "validate";
