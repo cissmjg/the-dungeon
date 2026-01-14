@@ -15,7 +15,6 @@ require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/characterClassName.php';
 require_once __DIR__ . '/webio/playerCharacterClassId.php';
 require_once __DIR__ . '/webio/characterLevel.php';
-require_once 'characterIds.php';
 require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSpellInfo.php';
 
@@ -373,4 +372,15 @@ function calculateWisdomBonus($new_spell_level, $character_wisdom) {
 	}
 	
 	return 0;
+}
+function getCharacterIds(\PDO $pdo, string $player_name, string $character_name, string $character_class_name) {
+	$sql_exec = "CALL getCharacterIds(:playerName, :characterName, :characterClassName)";
+
+	$statement = $pdo->prepare($sql_exec);
+	$statement->bindParam(':playerName', $player_name, PDO::PARAM_STR);
+	$statement->bindParam(':characterName', $character_name, PDO::PARAM_STR);
+	$statement->bindParam(':characterClassName', $character_class_name, PDO::PARAM_STR);
+	$statement->execute();
+
+	return $statement->fetch(PDO::FETCH_ASSOC);
 }
