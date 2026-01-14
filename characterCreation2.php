@@ -23,7 +23,6 @@ require_once __DIR__ . '/rules/adjustCharacterRacialAttributes.php';
 require_once __DIR__ . '/rules/getCharacterCreationAttributes.php';
 require_once __DIR__ . '/rules/characterClassCombinations.php';
 require_once __DIR__ . '/rules/characterClassRestrictions.php';
-require_once 'validateRacialAttributes.php';
 
 const PAGE_ACTION_VALIDATE = "validate";
 const PAGE_ACTION_EDIT = "edit";
