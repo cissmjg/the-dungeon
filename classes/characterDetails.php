@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ .  '/accountClassSummary.php';
-require_once __DIR__ . '/../characterAttributes.php';
+require_once __DIR__ . '/../dbio/constants/characterAttributes.php';
 
 class CharacterDetails implements JsonSerializable
 {
