@@ -16,7 +16,7 @@ require_once 'hiddenTag.php';
 
 require_once __DIR__ . '/dbio/constants/characterAttributes.php';
 require_once __DIR__ . '/rules/adjustCharacterRacialAttributes.php';
-require_once 'getCharacterCreationAttributes.php';
+require_once __DIR__ . '/rules/getCharacterCreationAttributes.php';
 require_once 'validateRacialAttributes.php';
 
 const PAGE_ACTION_VALIDATE = "validate";
