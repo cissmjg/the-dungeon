@@ -19,7 +19,7 @@ require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/raceId.php';
 require_once __DIR__ . '/dbio/constants/characterAttributes.php';
 require_once __DIR__ . '/dbio/constants/characterRaces.php';
-require_once 'adjustCharacterRacialAttributes.php';
+require_once __DIR__ . '/rules/adjustCharacterRacialAttributes.php';
 require_once 'getCharacterCreationAttributes.php';
 require_once 'characterClassCombinations.php';
 require_once 'characterClassRestrictions.php';

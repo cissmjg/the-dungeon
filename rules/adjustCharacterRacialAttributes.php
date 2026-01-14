@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
-require_once __DIR__ . '/dbio/constants/characterRaces.php';
-require_once __DIR__ . '/dbio/constants/characterAttributes.php';
+require_once __DIR__ . '/../dbio/constants/characterRaces.php';
+require_once __DIR__ . '/../dbio/constants/characterAttributes.php';
 
 function adjustCharacterAttributes(&$errors, &$input, $calling_module) {
     $race = $input[CHARACTER_RACE_ID];
