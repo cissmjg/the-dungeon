@@ -18,7 +18,7 @@ require_once __DIR__ . '/webio/requiredParameter.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once 'hiddenTag.php';
 require_once __DIR__ . '/dbio/constants/characterClasses.php';
-require_once 'characterClassSuperStats.php';
+require_once __DIR__ . '/rules/characterClassSuperStats.php';
 require_once __DIR__ . '/rules/characterClassRestrictions.php';
 
 // Alignments
