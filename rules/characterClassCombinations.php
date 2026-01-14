@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 
-require_once __DIR__ . '/dbio/constants/characterRaces.php';
-require_once __DIR__ . '/dbio/constants/characterClasses.php';
+require_once __DIR__ . '/../dbio/constants/characterRaces.php';
+require_once __DIR__ . '/../dbio/constants/characterClasses.php';
 
 $class_combinations = array();
 
