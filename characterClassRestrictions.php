@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-require_once 'characterAttributes.php';
+require_once __DIR__ . '/dbio/constants/characterAttributes.php';
 require_once __DIR__ . '/dbio/constants/characterClasses.php';
 
 const MINIMUM_ATTRIBUTE_VALUE = 3;

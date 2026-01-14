@@ -8,7 +8,7 @@ validateSessionCredentials($pdo);
 require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/webio/characterName.php';
-require_once 'characterAttributes.php';
+require_once __DIR__ . '/dbio/constants/characterAttributes.php';
 
 $errors = [];
 $input = [];

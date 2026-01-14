@@ -1,5 +1,5 @@
 <?php
-require_once 'characterAttributes.php';
+require_once __DIR__ . '/dbio/constants/characterAttributes.php';
 require_once 'minmaxRacialAttributes.php';
 
 function validateRacialAttributes(&$errors, $input, $attributes_min_max) {

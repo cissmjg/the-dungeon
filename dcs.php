@@ -9,7 +9,7 @@ validateSessionCredentials($pdo);
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
-require_once 'characterAttributes.php';
+require_once __DIR__ . '/dbio/constants/characterAttributes.php';
 require_once __DIR__ . '/dbio/constants/characterClasses.php';
 require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
