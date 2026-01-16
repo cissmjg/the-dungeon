@@ -665,7 +665,7 @@ switch($character_action) {
 		// Get Spell Slot ID
 		getSpellSlotId($errors, $input);
 
-		$url_deallocate_slot = CurlHelper::buildUrl('deallocateExtraSlot');
+		$url_deallocate_slot = CurlHelper::buildUrlDbioDirectory('deallocateExtraSlot');
 		$params_deallocate_slot = buildDeallocateExtraSlotParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_deallocate_slot, $params_deallocate_slot);
 		$result = json_decode($raw_result);
@@ -694,7 +694,7 @@ switch($character_action) {
 		// Get Spell Slot ID
 		getSpellSlotId($errors, $input);
 
-		$url_deallocate_slot = CurlHelper::buildUrl('deallocateExtraSlot');
+		$url_deallocate_slot = CurlHelper::buildUrlDbioDirectory('deallocateExtraSlot');
 		$params_deallocate_slot = buildDeallocateExtraSlotParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_deallocate_slot, $params_deallocate_slot);
 		$result = json_decode($raw_result);
@@ -760,7 +760,7 @@ switch($character_action) {
 		// Get Spell Slot ID
 		getSpellSlotId($errors, $input);
 
-		$url_deallocate_extra_slot = CurlHelper::buildUrl('deallocateExtraSlot');
+		$url_deallocate_extra_slot = CurlHelper::buildUrlDbioDirectory('deallocateExtraSlot');
 		$params_deallocate_extra_slot = buildDeallocateExtraSlotParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_deallocate_extra_slot, $params_deallocate_extra_slot);
 		$result = json_decode($raw_result);
@@ -794,7 +794,7 @@ switch($character_action) {
 		// Get the ID of the spell type for the slot
 		getSpellTypeId($errors, $input);
 
-		$url_allocate_extra_slot = CurlHelper::buildUrl('allocateExtraSlot');
+		$url_allocate_extra_slot = CurlHelper::buildUrlDbioDirectory('allocateExtraSlot');
 		$params_allocate_extra_slot = buildAllocateExtraSlotParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_allocate_extra_slot, $params_allocate_extra_slot);
 		$result = json_decode($raw_result);

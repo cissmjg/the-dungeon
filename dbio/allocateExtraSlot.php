@@ -1,18 +1,19 @@
 <?php
 
-require_once __DIR__ . '/env.php';
-require_once __DIR__ . '/validateCredentials.php';
-$pdo = require_once __DIR__ . '/dbio/DBConnection.php';
+require_once __DIR__ . '/../env.php';
+require_once __DIR__ . '/../validateCredentials.php';
+$pdo = require_once __DIR__ . '/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once __DIR__ . '/helper/RestHeaderHelper.php';
-require_once __DIR__ . '/webio/playerCharacterClassId.php';
-require_once __DIR__ . '/webio/spellSlotLevel.php';
-require_once __DIR__ . '/webio/spellTypeId.php';
+require_once __DIR__ . '/../helper/RestHeaderHelper.php';
+require_once __DIR__ . '/../webio/playerCharacterClassId.php';
+require_once __DIR__ . '/../webio/spellSlotLevel.php';
+require_once __DIR__ . '/../webio/spellTypeId.php';
 
 $log = [];
 $errors = [];
+$input = [];
 
 getPlayerCharacterClassId($errors, $input);
 getSpellSlotLevel($errors, $input);

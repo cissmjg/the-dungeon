@@ -19,6 +19,7 @@ require_once __DIR__ . '/dbio/constants/spellSlotTypes.php';
 
 $log = [];
 $errors = [];
+$input = [];
 
 // Get player name
 getPlayerName($errors, $input);
