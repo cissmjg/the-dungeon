@@ -343,9 +343,19 @@ switch($character_action) {
 			// Get the Spell Level
 			getSpellLevel($errors, $input);
 	
-			$url_allocate_cantrips = CurlHelper::buildUrl('allocateCantripsForSlot');
+			$url_allocate_cantrips = CurlHelper::buildUrlDbioDirectory('allocateCantripsForSlot');
 			$params_allocate_cantrips = buildAllocateCantripsParams($input);
 			$raw_result = CurlHelper::performGetRequest($url_allocate_cantrips, $params_allocate_cantrips);
+			$cantrip_allocation_result = json_decode($raw_result);
+			if (!str_starts_with($cantrip_allocation_result[0],  "SUCCESS|")) {
+				RestHeaderHelper::emitRestHeaders();
+				$errors[] = "Execution Error|";
+				$errors[] = $character_action . "|" .'allocateCantripsForSlot' . "|";
+				$errors[] = __FILE__ . "|";
+				$errors[] = print_r($cantrip_allocation_result, true) . "|";
+				$errors[] = $input;
+				die(json_encode($errors));
+			}
 		}
 			
 		$url_update_ready_slot = CurlHelper::buildUrl('updateReadySpellSlot');

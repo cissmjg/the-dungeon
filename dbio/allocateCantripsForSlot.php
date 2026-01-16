@@ -1,21 +1,24 @@
 <?php
 
-require_once __DIR__ . '/env.php';
-require_once __DIR__ . '/validateCredentials.php';
-$pdo = require_once __DIR__ . '/dbio/DBConnection.php';
+require_once __DIR__ . '/../env.php';
+require_once __DIR__ . '/../validateCredentials.php';
+$pdo = require_once __DIR__ . '/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once __DIR__ . '/helper/RestHeaderHelper.php';
-require_once __DIR__ . '/webio/playerName.php';
-require_once __DIR__ . '/webio/characterName.php';
-require_once __DIR__ . '/webio/characterClassName.php';
-require_once __DIR__ . '/webio/spellCatalogId.php';
-require_once __DIR__ . '/webio/spellSlotId.php';
-require_once __DIR__ . '/webio/spellLevel.php';
+require_once __DIR__ . '/../helper/RestHeaderHelper.php';
+require_once __DIR__ . '/../webio/playerName.php';
+require_once __DIR__ . '/../webio/characterName.php';
+require_once __DIR__ . '/../webio/characterClassName.php';
+require_once __DIR__ . '/../webio/spellCatalogId.php';
+require_once __DIR__ . '/../webio/spellSlotId.php';
+require_once __DIR__ . '/../webio/spellLevel.php';
+
+const NUMBER_OF_CANTRIPS_PER_SPELL_LEVEL = 4;
 
 $log = [];
 $errors = [];
+$input = [];
 
 getPlayerName($errors, $input);
 getCharacterName($errors, $input);
@@ -23,9 +26,11 @@ getCharacterClassName($errors, $input);
 getSpellSlotId($errors, $input);
 getSpellLevel($errors, $input);
 
-$log[] = "SUCCESS|";
+$number_of_cantrips = (int)$input[SPELL_LEVEL] * (int)NUMBER_OF_CANTRIPS_PER_SPELL_LEVEL;
 
-$number_of_cantrips = $input[SPELL_LEVEL] * 4;
+$log[] = "SUCCESS|";
+$log[] = "Cantrip Count: " . $number_of_cantrips . "|";
+
 for ($i = 0; $i < $number_of_cantrips; $i++) {
 	allocateCantripForSlot($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input[CHARACTER_CLASS_NAME], $input[SPELL_SLOT_ID], $errors);
 }
