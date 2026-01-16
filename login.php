@@ -7,7 +7,7 @@ require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/webio/playerName.php';
 
 $players = getPlayerList($pdo, $errors);
-$login_url = CurlHelper::buildUrl('characterActionRouter');
+$login_url = CurlHelper::buildCharacterActionRouterUrl();
 ?>
 
 <!DOCTYPE html>

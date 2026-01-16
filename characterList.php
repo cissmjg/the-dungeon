@@ -5,6 +5,7 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/pageAction.php';
@@ -130,7 +131,9 @@ $account_character_summaries = json_decode($raw_results);
 	}
 
 	function buildViewCharacterUrl($player_name, $character_name) {
-		$url = CurlHelper::buildCharacterActionRouterUrl($player_name, 'viewCharacter');
+		$url = CurlHelper::buildCharacterActionRouterUrl();
+		$url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'viewCharacter');
+		$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 		$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
 
 		return $url;

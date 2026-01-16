@@ -69,7 +69,7 @@ $weapon_list = getWeaponSummaryForPlayerCharacter($pdo, $input[PLAYER_NAME], $in
     </style>
 </head>
 <body>
-    <form name="deleteWeapon" id="deleteWeapon" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter') ?>">
+    <form name="deleteWeapon" id="deleteWeapon" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl() ?>">
         <input type="hidden" name="<?= CHARACTER_ACTION ?>" value="deletePlayerCharacterWeapon">
         <input type="hidden" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
         <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">

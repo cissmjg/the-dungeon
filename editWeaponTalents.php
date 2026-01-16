@@ -38,7 +38,7 @@ $character_summary_stats = $character_summary_renderer->render($character_summar
 
 $action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
-$add_weapon_url = CurlHelper::buildUrl('characterActionRouter');
+$add_weapon_url = CurlHelper::buildCharacterActionRouterUrl();
 
 ?>
 
@@ -146,7 +146,7 @@ function buildDeleteWeaponTalentIcon($player_name, $character_name, $player_weap
 }
 
 function buildDeleteWeaponTalentUrl($player_name, $character_name, $player_weapon_talent_id) {
-	$url = CurlHelper::buildUrl('characterActionRouter');
+	$url = CurlHelper::buildCharacterActionRouterUrl();
 	$url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'deleteWeaponTalent');
 	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);

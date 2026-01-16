@@ -113,7 +113,7 @@ function buildDeletDeleteIcon($player_name, $character_name, $character_skill_id
 }
 
 function buildDeleteSkillUrl($player_name, $character_name, $character_skill_id) {
-    $url = CurlHelper::buildUrl('characterActionRouter');
+    $url = CurlHelper::buildCharacterActionRouterUrl();
 	$url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'deleteCharacterSkill');
 	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);

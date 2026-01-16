@@ -67,7 +67,7 @@ $extra_slot_max_for_types = getExtraSlotMaxForTypes($pdo, $input[PLAYER_NAME], $
     <script src="submitTheForm.js" type="text/javascript"></script>
 </head>
 <body>
-    <form name="xsDeallocate" id="xsDeallocate" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter')?>">
+    <form name="xsDeallocate" id="xsDeallocate" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl()?>">
         <input type="hidden" name="<?= PLAYER_NAME ?>" id="playerName" value="<?= $input[PLAYER_NAME] ?>">
         <input type="hidden" name="<?= CHARACTER_NAME ?>" id="characterName" value="<?= $input[CHARACTER_NAME] ?>">
         <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="<?= DEALLOCATE_CHARACTER_ACTION_ID ?>" value="<?= DEALLOCATE_CHARACTER_ACTION?>">
@@ -206,7 +206,7 @@ function buildAddExtraSlotIcon($form_id, $character_action_id) {
 }
 
 function buildAddExtraSlotForm($form_id, $player_name, $character_name, $character_action_id, $player_character_class_id, $extra_slot_spell_type, $extra_slot_max_level, $nf) {
-    $form_html  = PHP_EOL . '<form id="' . $form_id . '" name="' . $form_id . '" method="POST" action="' .  CurlHelper::buildUrl('characterActionRouter') . '">' . PHP_EOL;
+    $form_html  = PHP_EOL . '<form id="' . $form_id . '" name="' . $form_id . '" method="POST" action="' .  CurlHelper::buildCharacterActionRouterUrl() . '">' . PHP_EOL;
     $form_html .= buildHiddenTag(PLAYER_NAME, $player_name) . PHP_EOL;
     $form_html .= buildHiddenTag(CHARACTER_NAME, $character_name) . PHP_EOL;
     $form_html .= buildHiddenTag(PLAYER_CHARACTER_CLASS_ID, $player_character_class_id) . PHP_EOL;

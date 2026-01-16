@@ -956,7 +956,7 @@ function doesSuperConstitutionApply($input, $character_super_stats) {
 }
 
 function buildEditReadySpellsUrl($player_name, $character_name) {
-	$url = CurlHelper::buildUrl('characterActionRouter');
+	$url = CurlHelper::buildCharacterActionRouterUrl();
 	$url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'editReadySpells');
 	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
@@ -965,7 +965,7 @@ function buildEditReadySpellsUrl($player_name, $character_name) {
 }
 
 function buildEditGMSpellsUrl($player_name, $character_name) {
-	$url = CurlHelper::buildUrl('characterActionRouter');
+	$url = CurlHelper::buildCharacterActionRouterUrl();
 	$url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'editGMSpells');
 	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
@@ -974,7 +974,7 @@ function buildEditGMSpellsUrl($player_name, $character_name) {
 }
 
 function buildEditExtraSlotUrl($player_name, $character_name) {
-	$url = CurlHelper::buildUrl('characterActionRouter');
+	$url = CurlHelper::buildCharacterActionRouterUrl();
 	$url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'editExtraSlots');
 	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
@@ -995,7 +995,7 @@ function buildSpellBookIcon($character_class, $classes_that_know_spells, $player
 }
 
 function buildPromoteUrl($player_name, $character_name, $character_class_name) {
-	$url = CurlHelper::buildUrl('characterActionRouter');
+	$url = CurlHelper::buildCharacterActionRouterUrl();
 	$url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'promote');
 	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);

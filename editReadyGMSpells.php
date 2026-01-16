@@ -154,7 +154,7 @@ $cantrip_select_html = '<select id="available_cantrip" name="available_cantrip" 
     </style>
 </head>
 <body>
-    <form name="slot-action-form" id="slot-action-form" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter') ?>">
+    <form name="slot-action-form" id="slot-action-form" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl() ?>">
         <input type="hidden" name="<?= PLAYER_NAME ?>" id="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
         <input type="hidden" name="<?= CHARACTER_NAME ?>" id="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
         <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="castGMSpellCharacterAction" value="">
@@ -163,14 +163,14 @@ $cantrip_select_html = '<select id="available_cantrip" name="available_cantrip" 
         <input type="hidden" name="<?= SPELL_DURATION ?>" id="<?= SPELL_DURATION ?>" value="">
         <input type="hidden" name="<?= SPELL_CASTING_TIME ?>" id ="<?= SPELL_CASTING_TIME?>" value="">
     </form>
-    <form name="recover-spell-points" id="recover-spell-points" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter') ?>">
+    <form name="recover-spell-points" id="recover-spell-points" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl() ?>">
         <input type="hidden" name="<?= PLAYER_NAME ?>" id="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
         <input type="hidden" name="<?= CHARACTER_NAME ?>" id="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
         <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="recoverSpellPointsCharacterAction" value="">
         <input type="hidden" name="<?= CHARACTER_LEVEL ?>" id="<?= CHARACTER_LEVEL ?>" value="<?= $character_level ?>">
         <input type="hidden" name="<?= HOURS_OF_SLEEP ?>" id="<?= HOURS_OF_SLEEP ?>" value="">
     </form>
-    <form name="stop-action-form" id="stop-action-form" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter') ?>">
+    <form name="stop-action-form" id="stop-action-form" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl() ?>">
         <input type="hidden" name="<?= PLAYER_NAME ?>" id="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
         <input type="hidden" name="<?= CHARACTER_NAME ?>" id="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
         <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="stopGMSpellCharacterAction" value="">

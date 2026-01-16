@@ -92,7 +92,7 @@ $prev_spell_level = -1;
     <script src="editReadySpells.js" type="text/javascript"></script>
 </head>
 <body>
-    <form name="slot-action-form" id="slot-action-form" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter')?>">
+    <form name="slot-action-form" id="slot-action-form" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl()?>">
         <input type="hidden" name="<?= PLAYER_NAME ?>" id="playerName" value="<?= $input[PLAYER_NAME] ?>">
         <input type="hidden" name="<?= CHARACTER_NAME ?>" id="characterName" value="<?= $input[CHARACTER_NAME] ?>">
         <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="characterAction" value="">
@@ -418,7 +418,7 @@ function buildRunningSlotForm($spellSlotId, $spellName, $spellLink, $readySpell)
 function buildSlotActionFormStart($formId, $spellSlotId, $playerName, $characterName, $characterActionId) {
     $formStartTag = '<form ';
     $formStartTag .= 'id="' . $formId . '" name="' . $formId .'" ';
-    $routerActionUrl = CurlHelper::buildUrl('characterActionRouter');
+    $routerActionUrl = CurlHelper::buildCharacterActionRouterUrl();
     $formStartTag .= 'action="' . $routerActionUrl . '" ';
     $formStartTag .= 'method="POST">';
     $playerNameTag = buildHiddenTag(PLAYER_NAME, $playerName);

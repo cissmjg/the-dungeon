@@ -9,6 +9,7 @@ validateSessionCredentials($pdo);
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/WebParameterHelper.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/webio/characterAction.php';
 
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
@@ -133,7 +134,9 @@ if (count($errors) > 0) {
     exit;
 }
 
-$url = CurlHelper::buildCharacterActionRouterUrl($input[PLAYER_NAME], 'playerCharacterWeaponMain');
+$url = CurlHelper::buildCharacterActionRouterUrl();
+$url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'playerCharacterWeaponMain');
+$url = CurlHelper::addParameter($url, PLAYER_NAME, $input[PLAYER_NAME]);
 $url = CurlHelper::addParameter($url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
 $location_header = 'Location:' . $url;

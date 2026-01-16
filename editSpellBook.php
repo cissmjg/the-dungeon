@@ -205,7 +205,7 @@ function buildFormHtml($spell_level, $available_mu_spells, $spell_pool_id, $play
 function buildFormStart($form_id_name, $character_action_id, $spell_pool_id, $player_name, $character_name, $character_class_name, $spell_pool_form_id) {
     $form_start_tag = "<form ";
     $form_start_tag .= 'id="' . $form_id_name . '" name="' . $form_id_name .'" ';
-    $router_action_url = CurlHelper::buildUrl('characterActionRouter');
+    $router_action_url = CurlHelper::buildCharacterActionRouterUrl();
     $form_start_tag .= 'action="' . $router_action_url . '">';
     $player_name_tag = buildHiddenTag(PLAYER_NAME, $player_name);
     $character_name_tag = buildHiddenTag(CHARACTER_NAME, $character_name);
