@@ -71,6 +71,7 @@ require_once __DIR__ . '/classes/weaponDetail.php';
 require_once __DIR__ . '/dbio/constants/weaponType.php';
 require_once __DIR__ . '/dbio/constants/weaponSubtype.php';
 require_once __DIR__ . '/dbio/constants/characterClasses.php';
+require_once __DIR__ . '/dbio/constants/weapons.php';
 require_once __DIR__ . '/helper/WebParameterHelper.php';
 
 require_once __DIR__ . '/webio/playerName.php';
@@ -330,7 +331,7 @@ $craft_status_magic_selected = "";
                     <option value="YES">Yes</option>
                 </select></div>
                 <?php else: ?>
-                    <input type="hidden" name="<?= STRENGTH_BONUS_AVAILABLE ?>" id="<?= STRENGTH_BONUS_AVAILABLE ?>" value="<?= isStrengthBonusAvailable($playerCharacterWeapon->getWeaponProficiencyId()) ?>">
+                    <input type="hidden" name="<?= STRENGTH_BONUS_AVAILABLE ?>" id="<?= STRENGTH_BONUS_AVAILABLE ?>" value="<?= isStrengthBonusAvailable($weaponDetail-> getWeaponProficiencyId()) ?>">
                 <?php endif ?>
                 <div class="inputRow"><label for="missileShortRange">Short Range: </label><input type="text" id="<?= MISSILE_SHORT_RANGE ?>" name="<?= MISSILE_SHORT_RANGE ?>" maxlength="32" value="<?= $weaponDetail->getMissileWeaponShortRange() ?>"></div>
                 <div class="inputRow"><label for="missileMediumRange">Medium Range: </label><input type="text" id="<?= MISSILE_MEDIUM_RANGE ?>" name="<?= MISSILE_MEDIUM_RANGE ?>" maxlength="32" value="<?= $weaponDetail->getMissileWeaponMediumRange() ?>"></div>
