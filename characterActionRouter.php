@@ -170,7 +170,7 @@ switch($character_action) {
 		// Get Character Name
 		getCharacterName($errors, $input);
 
-		$url_delete_character = CurlHelper::buildUrl('deleteCharacter');
+		$url_delete_character = CurlHelper::buildUrlDbioDirectory('deleteCharacter');
 		$params_delete_character = buildDeleteCharacterParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_delete_character, $params_delete_character);
 		$result = json_decode($raw_result);

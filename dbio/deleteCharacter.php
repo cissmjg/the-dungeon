@@ -4,14 +4,14 @@ $errors = [];
 $input = [];
 $log = [];
 
-require_once __DIR__ . '/validateCredentials.php';
-$pdo = require_once __DIR__ . '/dbio/DBConnection.php';
+require_once __DIR__ . '/../validateCredentials.php';
+$pdo = require_once __DIR__ . '/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once __DIR__ . '/helper/RestHeaderHelper.php';
-require_once __DIR__ . '/webio/playerName.php';
-require_once __DIR__ . '/webio/characterName.php';
+require_once __DIR__ . '/../helper/RestHeaderHelper.php';
+require_once __DIR__ . '/../webio/playerName.php';
+require_once __DIR__ . '/../webio/characterName.php';
 
 getPlayerName($errors, $input);
 getCharacterName($errors, $input);
@@ -38,6 +38,6 @@ function deletePlayerCharacter(\PDO $pdo, $player_name, $character_name, &$error
 	try {
 		$statement->execute();
 	} catch(Exception $e) {
-		$errors[] = "Exception in getCharactersForPlayer : " . $e->getMessage();
+		$errors[] = "Exception in deletePlayerCharacter : " . $e->getMessage();
 	}
 }
