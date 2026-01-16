@@ -851,7 +851,7 @@ switch($character_action) {
 		// Get the Player Character Weapon ID
 		getPlayerCharacterWeaponId($errors, $input);
 
-		$url_delete_weapon = CurlHelper::buildUrl('deletePlayerCharacterWeapon');
+		$url_delete_weapon = CurlHelper::buildUrlDbioDirectory('deletePlayerCharacterWeapon');
 		$params_delete_weapon = buildDeleteWeaponParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_delete_weapon, $params_delete_weapon);
 		$result = json_decode($raw_result);
