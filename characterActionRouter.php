@@ -588,7 +588,7 @@ switch($character_action) {
 		// Get the Spell Casting time of the spell being cast
 		getSpellCastingTime($errors, $input);
 
-		$url_adjust_spell_points = CurlHelper::buildUrl('decreaseSpellPoints');
+		$url_adjust_spell_points = CurlHelper::buildUrlDbioDirectory('decreaseSpellPoints');
 		$params_adjust_spell_points = buildAdjustSpellPointsParams($input);		
 		$raw_result = CurlHelper::performGetRequest($url_adjust_spell_points, $params_adjust_spell_points);
 		$result = json_decode($raw_result);
