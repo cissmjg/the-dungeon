@@ -66,11 +66,15 @@ class CurlHelper {
 		$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $player_name);
 		$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $character_name);
 
-		return 'Location:' . CurlHelper::buildCharacterCRUDUrl($player_name, $character_name, $navigation_action);
+		return CurlHelper::buildLocationHeader(CurlHelper::buildCharacterCRUDUrl($player_name, $character_name, $navigation_action));
 	}
 
 	public static function buildUrlDbioDirectory($dbio_endpoint) {
 		$endpoint = 'dbio/' . $dbio_endpoint;
 		return  CurlHelper::buildUrl($endpoint);
+	}
+
+	public static function buildLocationHeader($endpoint) {
+		return 'Location:' . $endpoint;
 	}
 }

@@ -18,7 +18,6 @@ require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/characterClassName.php';
 require_once __DIR__ . '/webio/characterLevel.php';
-require_once 'guid.php';
 require_once __DIR__ . '/webio/pageAction.php';
 require_once __DIR__ . '/webio/spellCatalogId.php';
 require_once __DIR__ . '/webio/spellSlotId.php';
@@ -949,14 +948,14 @@ function getPlayerPermissions(\PDO $pdo, $player_name, &$errors) {
 function buildCharacterListRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('characterList');
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildDmDashboardRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('dmDashboard');
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildEditSpellBookRedirect($input) {
@@ -966,7 +965,7 @@ function buildEditSpellBookRedirect($input) {
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_CLASS_NAME, $input[CHARACTER_CLASS_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, PAGE_ACTION,  $input[PAGE_ACTION]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildEditReadySpellsRedirect($input) {
@@ -974,7 +973,7 @@ function buildEditReadySpellsRedirect($input) {
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildEditGMSpellsRedirect($input) {
@@ -982,7 +981,7 @@ function buildEditGMSpellsRedirect($input) {
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildEditExtraSlotsRedirect($input) {
@@ -990,14 +989,14 @@ function buildEditExtraSlotsRedirect($input) {
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildHomeRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('home');
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildCreateCharacterRedirect($input) {
@@ -1009,7 +1008,7 @@ function buildViewCharacterRedirect($input) {
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildEditCharacterRedirect($input) {
@@ -1018,7 +1017,7 @@ function buildEditCharacterRedirect($input) {
 
 function buildLoginRedirect() {
 	$redirect_url = CurlHelper::buildUrl('login');
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildCRUDCharacterRedirect($input, $crud_action) {
@@ -1029,7 +1028,7 @@ function buildCRUDCharacterRedirect($input, $crud_action) {
 	}
 	$redirect_url = CurlHelper::addParameter($redirect_url, PAGE_ACTION,  $crud_action);
 	
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildEditWeaponTalentsRedirect($input) {
@@ -1037,7 +1036,7 @@ function buildEditWeaponTalentsRedirect($input) {
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildEditSkillsRedirect($input) {
@@ -1045,7 +1044,7 @@ function buildEditSkillsRedirect($input) {
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildDeleteWeaponTalentRedirect($input) {
@@ -1053,7 +1052,7 @@ function buildDeleteWeaponTalentRedirect($input) {
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildPlayerCharacterWeaponMainRedirect($input) {
@@ -1061,7 +1060,7 @@ function buildPlayerCharacterWeaponMainRedirect($input) {
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildPlayerCharacterWeaponUpdateRedirect($input) {
@@ -1070,7 +1069,7 @@ function buildPlayerCharacterWeaponUpdateRedirect($input) {
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_CHARACTER_WEAPON_ID, $input[PLAYER_CHARACTER_WEAPON_ID]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildUpdateSpellPoolParams($input) {

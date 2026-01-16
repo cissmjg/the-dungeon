@@ -139,7 +139,7 @@ $url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'playerCharacterWeaponMa
 $url = CurlHelper::addParameter($url, PLAYER_NAME, $input[PLAYER_NAME]);
 $url = CurlHelper::addParameter($url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
-$location_header = 'Location:' . $url;
+$location_header = CurlHelper::buildLocationHeader($url);
 header($location_header);
 
 function updateWeaponForPlayerCharacter(\PDO $pdo, $input, &$errors, &$log) {

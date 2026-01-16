@@ -80,7 +80,7 @@ function getSessionTicketTimestamp($pdo, $player_name, $session_ticket, &$errors
 
 function buildLoginRedirect() {
 	$redirect_url = CurlHelper::buildUrl('login');
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 ?>
