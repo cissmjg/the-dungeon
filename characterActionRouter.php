@@ -594,7 +594,7 @@ switch($character_action) {
 		$result = json_decode($raw_result);
 		if (str_starts_with($result[0],  "SUCCESS|")) {
 			if($input[SPELL_DURATION] > 0 || $input[SPELL_CASTING_TIME] > 0) {
-				$url_cast_gm_spell = CurlHelper::buildUrl('castGMSpell');
+				$url_cast_gm_spell = CurlHelper::buildUrlDbioDirectory('castGMSpell');
 				$params_cast_gm_spell = buildCastGMSpellParams($input);
 				$raw_result = CurlHelper::performGetRequest($url_cast_gm_spell, $params_cast_gm_spell);
 				$result = json_decode($raw_result);
@@ -603,7 +603,7 @@ switch($character_action) {
 				if (!str_starts_with($result[0],  "SUCCESS|")) {
 					RestHeaderHelper::emitRestHeaders();
 					$errors[] = "Execution Error|";
-					$errors[] = $character_action . "|";
+					$errors[] = $character_action . "|" . "castGMSpell";
 					$errors[] = __FILE__ . "|";
 					$errors[] = $result;
 					die(json_encode($errors));
@@ -615,7 +615,7 @@ switch($character_action) {
 		} else {
 			RestHeaderHelper::emitRestHeaders();
 			$errors[] = "Execution Error|";
-			$errors[] = $character_action . "|";
+			$errors[] = $character_action . "|" . "decreaseSpellPoints";
 			$errors[] = __FILE__ . "|";
 			$errors[] = $result;
 			die(json_encode($errors));

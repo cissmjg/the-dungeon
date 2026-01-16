@@ -1,21 +1,21 @@
 <?php
 
-require_once __DIR__ . '/env.php';
-require_once __DIR__ . '/validateCredentials.php';
-$pdo = require_once __DIR__ . '/dbio/DBConnection.php';
+require_once __DIR__ . '/../env.php';
+require_once __DIR__ . '/../validateCredentials.php';
+$pdo = require_once __DIR__ . '/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once __DIR__ . '/helper/RestHeaderHelper.php';
-require_once __DIR__ . '/webio/playerName.php';
-require_once __DIR__ . '/webio/characterName.php';
-require_once __DIR__ . '/webio/spellCatalogId.php';
-require_once __DIR__ . '/webio/spellLevel.php';
-require_once __DIR__ . '/webio/spellDuration.php';
-require_once __DIR__ . '/webio/spellCastingTime.php';
-require_once __DIR__ . '/classes/characterSummary.php';
+require_once __DIR__ . '/../helper/RestHeaderHelper.php';
+require_once __DIR__ . '/../webio/playerName.php';
+require_once __DIR__ . '/../webio/characterName.php';
+require_once __DIR__ . '/../webio/spellCatalogId.php';
+require_once __DIR__ . '/../webio/spellLevel.php';
+require_once __DIR__ . '/../webio/spellDuration.php';
+require_once __DIR__ . '/../webio/spellCastingTime.php';
+require_once __DIR__ . '/../classes/characterSummary.php';
 
-require_once __DIR__ . '/dbio/constants/spellSlotTypes.php';
+require_once __DIR__ . '/constants/spellSlotTypes.php';
 
 $log = [];
 $errors = [];
