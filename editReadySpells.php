@@ -51,7 +51,7 @@ $params[PLAYER_NAME] = $input[PLAYER_NAME];
 $params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
-$url = CurlHelper::buildUrl('getReadySpellsForPlayerCharacter');
+$url = CurlHelper::buildUrlDbioDirectory('getReadySpellsForPlayerCharacter');
 $raw_results = CurlHelper::performGetRequest($url, $params);
 
 $readySpells = json_decode($raw_results);

@@ -56,7 +56,7 @@ $availableSpells = json_decode($raw_results);
 
 $spellListByLevel = [];
 
-$url = CurlHelper::buildUrl('getReadySpellsForPlayerCharacter');
+$url = CurlHelper::buildUrlDbioDirectory('getReadySpellsForPlayerCharacter');
 $raw_results = CurlHelper::performGetRequest($url, $params);
 
 $allRunningSpells = json_decode($raw_results);
