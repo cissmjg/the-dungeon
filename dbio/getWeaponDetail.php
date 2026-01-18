@@ -3,16 +3,16 @@
 $errors = [];
 $input = [];
 
-require_once __DIR__ . '/validateCredentials.php';
-$pdo = require_once __DIR__ . '/dbio/DBConnection.php';
+require_once __DIR__ . '/../validateCredentials.php';
+$pdo = require_once __DIR__ . '/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once __DIR__ . '/helper/RestHeaderHelper.php';
-require_once __DIR__ . '/webio/playerName.php';
-require_once __DIR__ . '/webio/characterName.php';
-require_once __DIR__ . '/webio/weaponProficiencyId.php';
-require_once __DIR__ . '/classes/weaponDetail.php';
+require_once __DIR__ . '/../helper/RestHeaderHelper.php';
+require_once __DIR__ . '/../webio/playerName.php';
+require_once __DIR__ . '/../webio/characterName.php';
+require_once __DIR__ . '/../webio/weaponProficiencyId.php';
+require_once __DIR__ . '/../classes/weaponDetail.php';
 
 // Filter and sanitize names
 getPlayerName($errors, $input);
