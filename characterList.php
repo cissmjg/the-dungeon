@@ -22,7 +22,7 @@ $player_name = $input[PLAYER_NAME];
 $params = [];
 $params[PLAYER_NAME] = $player_name;
 
-$url = CurlHelper::buildUrl('getAccountSummary');
+$url = CurlHelper::buildUrlDbioDirectory('getAccountSummary');
 $raw_results = CurlHelper::performGetRequest($url, $params);
 
 $account_character_summaries = json_decode($raw_results);
@@ -99,7 +99,8 @@ $account_character_summaries = json_decode($raw_results);
 	}
 
 	function buildPortraitImage($account_character_summary) {
-		$output_html = '<img class="character_portrait_image" src="' . $account_character_summary->portrait_file_location . '" ';
+		$character_portrait = PORTRAIT_DIR . $account_character_summary->portrait_file_location;
+		$output_html = '<img class="character_portrait_image" src="' . $character_portrait . '" ';
 		$output_html .= 'title="' . $account_character_summary->character_name . '" ';
 		$output_html .= 'alt="' . $account_character_summary->character_name . '"';
 		$output_html .= '>';
