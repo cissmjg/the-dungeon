@@ -955,33 +955,6 @@ function doesSuperConstitutionApply($input, $character_super_stats) {
 	return false;
 }
 
-function buildEditReadySpellsUrl($player_name, $character_name) {
-	$url = CurlHelper::buildCharacterActionRouterUrl();
-	$url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'editReadySpells');
-	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
-	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
-
-	return $url;
-}
-
-function buildEditGMSpellsUrl($player_name, $character_name) {
-	$url = CurlHelper::buildCharacterActionRouterUrl();
-	$url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'editGMSpells');
-	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
-	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
-
-	return $url;
-}
-
-function buildEditExtraSlotUrl($player_name, $character_name) {
-	$url = CurlHelper::buildCharacterActionRouterUrl();
-	$url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'editExtraSlots');
-	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
-	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
-
-	return $url;
-}
-
 function buildSpellBookIcon($character_class, $classes_that_know_spells, $player_name, $character_name) {
 	$output_html = '';
 	foreach($character_class->spell_classes AS $spell_class) {
@@ -992,16 +965,6 @@ function buildSpellBookIcon($character_class, $classes_that_know_spells, $player
 	}
 
 	return $output_html;
-}
-
-function buildPromoteUrl($player_name, $character_name, $character_class_name) {
-	$url = CurlHelper::buildCharacterActionRouterUrl();
-	$url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'promote');
-	$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
-	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
-	$url = CurlHelper::addParameter($url, CHARACTER_CLASS_NAME, $character_class_name);
-	
-	return $url;
 }
 
 function getCharacterClassList(\PDO $pdo, &$errors) {
@@ -1036,7 +999,7 @@ function getExistingCharacter($player_name, $character_name) {
     $params[CHARACTER_NAME] = $character_name;
     $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
     
-    $url = CurlHelper::buildUrl('getPlayerCharacterDetails');
+    $url = CurlHelper::buildUrlDbioDirectory('getPlayerCharacterDetails');
     $raw_results = CurlHelper::performGetRequest($url, $params);
 
     return json_decode($raw_results);

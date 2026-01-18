@@ -153,7 +153,7 @@ class AvailableCharacterSkills implements JsonSerializable {
         $params[CHARACTER_NAME] = $character_name;
         $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
         
-        $url = CurlHelper::buildUrl('getPlayerCharacterDetails');
+        $url = CurlHelper::buildUrlDbioDirectory('../getPlayerCharacterDetails');
         $raw_results = CurlHelper::performGetRequest($url, $params);
     
         return json_decode($raw_results);
