@@ -69,7 +69,7 @@ $character_summary_stats = $character_summary_renderer->render($character_summar
 
 foreach($spell_pool_entries AS $spell_pool_entry) {
     if (!array_key_exists($spell_pool_entry->spell_level, $available_spells_by_level)) {
-        $spell_pool_slot_url = CurlHelper::buildUrl('getUnallocatedSpellsForSpellBook');
+        $spell_pool_slot_url = CurlHelper::buildUrlDbioDirectory('getUnallocatedSpellsForSpellBook');
         $spell_pool_slot_params = buildUnallocatedSpellsParams($input[PLAYER_NAME], $input[CHARACTER_NAME], $input[CHARACTER_CLASS_NAME], $spell_pool_entry->spell_level);
         $mu_spells = json_decode(CurlHelper::performGetRequest($spell_pool_slot_url, $spell_pool_slot_params));
         $available_spells_by_level[$spell_pool_entry->spell_level] = $mu_spells;
