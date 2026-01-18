@@ -6,6 +6,10 @@
 	flex: 50%;
 }
 
+.characterSheetFeatureContent {
+    display: none;
+}
+
 .tableLayout {
 	border:1pt solid;
 	border-collapse: collapse;
