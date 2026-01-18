@@ -1,25 +1,29 @@
 <?php
 
 $errors = [];
+$input = [];
 
-require_once __DIR__ . '/validateCredentials.php';
-$pdo = require_once __DIR__ . '/dbio/DBConnection.php';
+require_once __DIR__ . '/../validateCredentials.php';
+$pdo = require_once __DIR__ . '/DBConnection.php';
+
+require_once __DIR__ . '/../helper/RestHeaderHelper.php';
+
+require_once __DIR__ . '/../webio/playerName.php';
 
 validateSessionCredentials($pdo);
 
-require_once __DIR__ . '/helper/RestHeaderHelper.php';
+getPlayerName($errors, $input);
 
-$player_name = filter_input(INPUT_GET, PLAYER_NAME, FILTER_SANITIZE_STRING);
-if ($player_name == NULL ) {
-	$errors['errorPlayerName'] = 'Player name is missing';
-	RestHeaderHelper::emitRestHeaders();
-	die(json_encode($errors));
-} 
+$player_name = $input[PLAYER_NAME];
 
 $result = getCharactersForPlayer($pdo, $player_name, $errors);
 
 RestHeaderHelper::emitRestHeaders();
-echo json_encode($result);
+if (count($errors) > 0) {
+	json_encode($errors);
+} else {
+	echo json_encode($result);
+}
 
 function getCharactersForPlayer(\PDO $pdo, $player_name, &$errors) {
 	$sql_exec = "CALL getCharactersForPlayer(:playerName)";
