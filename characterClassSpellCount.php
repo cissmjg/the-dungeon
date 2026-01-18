@@ -11,20 +11,21 @@ require_once __DIR__ . '/webio/characterClassName.php';
 
 const MAX_CHARACTER_LEVEL_FOR_ATTAINING_SPELLS = 30;
 
+getCharacterClassName($errors, $input);
+$character_class_name = $input[CHARACTER_CLASS_NAME];
+
 $spell_casting_classes = getAllSpellCastingClasses($pdo, $errors);
+if (count($errors) > 0) {
+    RestHeaderHelper::emitRestHeaders();
+	echo json_decode($errors);
+} 
 
 $character_class_name = '';
 $spell_count_for_classes = null;
-if (isset($_POST[CHARACTER_CLASS_NAME]))
-{
-    getCharacterClassName($errors, $input);
-    $character_class_name = $input[CHARACTER_CLASS_NAME];
-    $url = CurlHelper::buildUrl('getCharacterClassSpellCount');
-    $raw_results = CurlHelper::performGetRequest($url, $input);
-    
-    $spell_count_for_classes = json_decode($raw_results);
-}
+$url = CurlHelper::buildUrlDbioDirectory('getCharacterClassSpellCount');
+$raw_results = CurlHelper::performGetRequest($url, $input);
 
+$spell_count_for_classes = json_decode($raw_results);
 
 $spell_count_by_level = [];
 $spell_class_types = [];
@@ -267,7 +268,7 @@ if ($spell_count_for_classes != null) {
             return $blank_row;
         }
 
-        function getAllSpellCastingClasses(\PDO $pdo, $errors) {
+        function getAllSpellCastingClasses(\PDO $pdo, &$errors) {
             $sql_exec = "CALL getAllSpellCastingClasses()";
             
             $statement = $pdo->prepare($sql_exec);

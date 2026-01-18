@@ -3,17 +3,21 @@
 $errors = [];
 $input = [];
 
-$pdo = require_once __DIR__ . '/dbio/DBConnection.php';
+$pdo = require_once __DIR__ . '/DBConnection.php';
 
-require_once __DIR__ . '/helper/RestHeaderHelper.php';
-require_once __DIR__ . '/webio/characterClassName.php';
+require_once __DIR__ . '/../helper/RestHeaderHelper.php';
+require_once __DIR__ . '/../webio/characterClassName.php';
 
 getCharacterClassName($errors, $input);
 
 $result = getCharacterClassSpellCount($pdo, $input[CHARACTER_CLASS_NAME], $errors);
 
 RestHeaderHelper::emitRestHeaders();
-echo json_encode($result);
+if (count($errors) > 0) {
+	echo json_decode($errors);
+} else {
+	echo json_encode($result);
+}
 
 function getCharacterClassSpellCount(\PDO $pdo, $character_class_name, &$errors) {
 	$sql_exec = "CALL getCharacterClassSpellCount(:characterClassName)";
