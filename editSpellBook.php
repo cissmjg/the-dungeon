@@ -49,7 +49,7 @@ $params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 $params[CHARACTER_CLASS_NAME] = $input[CHARACTER_CLASS_NAME];
 $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
-$url = CurlHelper::buildUrl('getSpellBookForPlayerCharacter');
+$url = CurlHelper::buildUrlDbioDirectory('getSpellBookForPlayerCharacter');
 $raw_results = CurlHelper::performGetRequest($url, $params);
 
 $spell_pool_entries = json_decode($raw_results);
