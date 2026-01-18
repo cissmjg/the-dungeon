@@ -4,16 +4,16 @@ $errors = [];
 $input = [];
 $log = [];
 
-require_once __DIR__ . '/validateCredentials.php';
-$pdo = require_once __DIR__ . '/dbio/DBConnection.php';
+require_once __DIR__ . '/../validateCredentials.php';
+$pdo = require_once __DIR__ . '/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once __DIR__ . '/helper/RestHeaderHelper.php';
-require_once __DIR__ . '/webio/playerName.php';
-require_once __DIR__ . '/webio/characterName.php';
-require_once __DIR__ . '/webio/characterClassName.php';
-require_once __DIR__ . '/webio/spellLevel.php';
+require_once __DIR__ . '/../helper/RestHeaderHelper.php';
+require_once __DIR__ . '/../webio/playerName.php';
+require_once __DIR__ . '/../webio/characterName.php';
+require_once __DIR__ . '/../webio/characterClassName.php';
+require_once __DIR__ . '/../webio/spellLevel.php';
 
 // Filter and sanitize names
 getPlayerName($errors, $input);
