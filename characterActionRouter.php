@@ -95,7 +95,7 @@ switch($character_action) {
 		//Get the password the user entered
 		getRequiredStringParameter($errors, $input, __FILE__, 'password');
 		
-		$url = CurlHelper::buildUrl('getPlayerPassword');
+		$url = CurlHelper::buildUrlDbioDirectory('getPlayerPassword');
 		$params = buildGetPasswordParams($input);
 		$raw_result = CurlHelper::performGetRequest($url, $params);
 		$player_creds = json_decode($raw_result);
