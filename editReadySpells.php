@@ -279,7 +279,7 @@ function getSpellPoolForLevelAndType($input, $characterClassName, $playerSlotLev
     $params[REMOVE_EMPTY] = true;
     $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
-    $url = CurlHelper::buildUrl('getSpellPoolForPlayerCharacter');
+    $url = CurlHelper::buildUrlDbioDirectory('getSpellPoolForPlayerCharacter');
     $spellPool = CurlHelper::performGetRequest($url, $params);
     $allSpellsForLevel = json_decode($spellPool);
 
