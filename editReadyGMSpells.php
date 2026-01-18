@@ -49,7 +49,7 @@ $params[PLAYER_NAME] = $input[PLAYER_NAME];
 $params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
-$url = CurlHelper::buildUrl('getSpellBookForGreaterMage');
+$url = CurlHelper::buildUrlDbioDirectory('getSpellBookForGreaterMage');
 $raw_results = CurlHelper::performGetRequest($url, $params);
 
 $availableSpells = json_decode($raw_results);
