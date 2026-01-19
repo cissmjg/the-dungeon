@@ -80,6 +80,9 @@ if ($tertiary_class_available) {
 
 $page_title = 'New Character';
 
+$url_insert_character = CurlHelper::buildUrlDbioDirectory('insertCharacter');
+$url_character_creation2 = CurlHelper::buildUrl('characterCreation2');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -95,8 +98,8 @@ $page_title = 'New Character';
 <body>
     <div style="border: solid 1px; border-color: blue; border-radius: 10px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; width: auto; display: table;">
     <table style="margin-top: 5px;">
-    <form id="characterCreation3" action="insertCharacter.php" method="post">
-	<input type="hidden" id="playerName" name="playerName" value="<?= $input[PLAYER_NAME] ?>">
+    <form id="characterCreation3" name="characterCreation3" action="<?= $url_insert_character ?>" method="POST">
+	<input type="hidden" id="playerName" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
 	<tr>
 		<td colspan="4">
 			<div style="background-color: Aquamarine; text-align:center; border-radius: 10px;">Character Creation Stage 3</div>
@@ -232,7 +235,7 @@ $page_title = 'New Character';
 <?php
 	echo buildHiddenTag(PAGE_ACTION, PAGE_ACTION_VALIDATE);
 	$button_bar = '<div style="margin-top: 5px; padding-bottom: 5px; padding-left: 5px; width: 405px;" class="character_create_action_bar_container">' . PHP_EOL;
-	$button_bar .= '<button style="float:right; margin-top: 5px;" type="submit" formaction="characterCreation2.php">Select Class(es)</button>' . PHP_EOL;
+	$button_bar .= '<button style="float:right; margin-top: 5px;" type="submit" formaction="' . $url_character_creation2 . '">Select Class(es)</button>' . PHP_EOL;
 	$button_bar .= '<div style="text-align: center;"  class="character_create_action_bar_item_two">&nbsp;</div>' . PHP_EOL;
 	$button_bar .= '<div class="character_create_action_bar_item_three"><button id="' . FINALIZE_BUTTON_ID . '" type="submit">Create Character</button></div>' . PHP_EOL;
 	$button_bar .= '</div>' . PHP_EOL;

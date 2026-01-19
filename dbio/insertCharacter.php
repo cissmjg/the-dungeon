@@ -1,20 +1,25 @@
 <?php
 
-require_once __DIR__ . '/validateCredentials.php';
-$pdo = require_once __DIR__ . '/dbio/DBConnection.php';
+const PLAYER_CHARACTER_ID = 'playerCharacterId';
+
+require_once __DIR__ . '/../validateCredentials.php';
+$pdo = require_once __DIR__ . '/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once __DIR__ . '/helper/CurlHelper.php';
-require_once __DIR__ . '/helper/RestHeaderHelper.php';
-require_once __DIR__ . '/webio/characterName.php';
-require_once __DIR__ . '/dbio/constants/characterAttributes.php';
+require_once __DIR__ . '/../helper/CurlHelper.php';
+require_once __DIR__ . '/../helper/RestHeaderHelper.php';
+require_once __DIR__ . '/constants/characterAttributes.php';
+
+require_once __DIR__ . '/../webio/playerName.php';
+require_once __DIR__ . '/../webio/characterName.php';
 
 $errors = [];
 $input = [];
 
-filterAndSantizePlayerName($input, $errors);
-filterAndSantizeCharacterName($input, $errors);
+getPlayerName($errors, $input);
+getCharacterName($errors, $input);
+
 filterAndSanitizeStrength($input, $errors);
 filterAndSanitizeSuperStrength($input, $errors);
 filterAndSanitizeIntelligence($input, $errors);
@@ -44,13 +49,24 @@ if (count($errors) > 0) {
 	die(json_encode($errors));
 }
 	
-$input['playerCharacterId'] = $new_character['playerCharacterId'];
+$input[PLAYER_CHARACTER_ID] = $new_character[PLAYER_CHARACTER_ID];
 insertCharacterClasses($pdo, $input, $errors);
+if (count($errors) > 0) {
+	$errors[] = "Database Error|";
+	$errors[] = __FILE__ . "|";
+	$errors[] = 'Failure on insertCharacterClasses';
+	RestHeaderHelper::emitRestHeaders();
+	die(json_encode($errors));
+}
 
-// Update Optional info using $input[playerCharacterId]
+$redirect_url = CurlHelper::buildCharacterActionRouterUrl();
+$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_ACTION, 'viewCharacter');
+$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
+$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
-$location_header = CurlHelper::buildCharacterCRUDRedirect($input[PLAYER_NAME], $input[CHARACTER_NAME],'viewCharacter');
-header($location_header);
+$redirect_header = CurlHelper::buildLocationHeader($redirect_url);
+header($redirect_header);
+
 exit;
 
 function insertBaseCharacter(\PDO $pdo, $input, &$errors) {
@@ -89,15 +105,21 @@ function insertBaseCharacter(\PDO $pdo, $input, &$errors) {
 
 function insertCharacterClasses(\PDO $pdo, $input, &$errors) {
 	if (!empty($input[CHARACTER_PRIMARY_CLASS])) {
-		insertCharacterClass($pdo, $input['playerCharacterId'], $input[CHARACTER_PRIMARY_CLASS], $errors);
+		insertCharacterClass($pdo, $input[PLAYER_CHARACTER_ID], $input[CHARACTER_PRIMARY_CLASS], $errors);
+		if (count($errors) > 0) {
+			return;
+		}
 	}
 	
 	if (!empty($input[CHARACTER_SECONDARY_CLASS])) {
-		insertCharacterClass($pdo, $input['playerCharacterId'], $input[CHARACTER_SECONDARY_CLASS], $errors);
+		insertCharacterClass($pdo, $input[PLAYER_CHARACTER_ID], $input[CHARACTER_SECONDARY_CLASS], $errors);
+		if (count($errors) > 0) {
+			return;
+		}
 	}
 	
 	if (!empty($input[CHARACTER_TERTIARY_CLASS])) {
-		insertCharacterClass($pdo, $input['playerCharacterId'], $input[CHARACTER_TERTIARY_CLASS], $errors);
+		insertCharacterClass($pdo, $input[PLAYER_CHARACTER_ID], $input[CHARACTER_TERTIARY_CLASS], $errors);
 	}
 }
 
@@ -114,14 +136,6 @@ function insertCharacterClass(\PDO $pdo, $player_character_id, $character_class_
 	}
 
 	return $statement->fetch(PDO::FETCH_ASSOC);
-}
-
-function filterAndSantizePlayerName(&$input, &$errors) {
-	filterAndSantizeStringFormField($input, $errors, PLAYER_NAME);
-}
-
-function filterAndSantizeCharacterName(&$input, &$errors) {
-	filterAndSantizeStringFormField($input, $errors, CHARACTER_NAME);
 }
 
 function filterAndSanitizeStrength(&$input, &$errors) {

@@ -34,11 +34,20 @@ class ActionBarHelper {
     }
 
     static function buildUserEditIcon($player_name, $character_name) {
-        $url_edit_character = CurlHelper::buildCharacterCRUDUrl($player_name, $character_name, 'editCharacter');
+        $url_edit_character = ActionBarHelper::buildUserEditUrl($player_name, $character_name);
         $icon_edit_character = '<span class="fa-solid fa-user-pen" style="color: black; cursor: pointer;" title="Update ' . $character_name . '"></span>';
         $anchor_edit_character = '<a href="' . $url_edit_character . '">' . $icon_edit_character . '</a>';
 
         return $anchor_edit_character;
+    }
+
+    static function buildUserEditUrl($player_name, $character_name) {
+        $url_view_character = CurlHelper::buildCharacterActionRouterUrl();
+        $url_view_character = CurlHelper::addParameter($url_view_character, CHARACTER_ACTION, 'editCharacter');
+        $url_view_character = CurlHelper::addParameter($url_view_character, PLAYER_NAME, $player_name);
+        $url_view_character = CurlHelper::addParameter($url_view_character, CHARACTER_NAME, $character_name);
+
+        return $url_view_character;
     }
 
     static function buildUserDeleteIcon($player_name, $character_name) {
