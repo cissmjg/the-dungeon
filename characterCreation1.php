@@ -8,11 +8,12 @@ validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
-require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/pageAction.php';
-require_once __DIR__ . '/webio/raceId.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
-require_once 'hiddenTag.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
+
+require_once __DIR__ . '/webio/playerName.php';
+require_once __DIR__ . '/webio/raceId.php';
 
 require_once __DIR__ . '/dbio/constants/characterAttributes.php';
 require_once __DIR__ . '/rules/adjustCharacterRacialAttributes.php';
@@ -137,7 +138,7 @@ if ($input[PAGE_ACTION] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent(
 		<td id="characterStrengthLabel">Strength</td>
 		<td>
 			<input type="number" style="text-align: center;" class="<?= $input_class ?>" id="<?= CHARACTER_STRENGTH_RAW ?>" name="<?= CHARACTER_STRENGTH_RAW ?>" min="3" max="18" value="<?php echo $input[CHARACTER_STRENGTH_RAW] ?? ''; ?>"<?= $read_only ?> required>
-			<?= buildHiddenTag(CHARACTER_STRENGTH, $input[CHARACTER_STRENGTH] ?? '') . PHP_EOL; ?>
+			<?= HtmlHelper::buildHiddenTag(CHARACTER_STRENGTH, $input[CHARACTER_STRENGTH] ?? '') . PHP_EOL; ?>
 		</td>
 		<td style="text-align: center;"><span class="view_only"><?= $input[CHARACTER_STRENGTH] ?? '' ?></span></td>
 		<td>
@@ -160,7 +161,7 @@ if ($input[PAGE_ACTION] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent(
 		<td id="characterIntelligenceLabel">Intelligence</td>
 		<td>
 			<input type="number" style="text-align: center;" class="<?= $input_class ?>" id="<?= CHARACTER_INTELLIGENCE_RAW ?>" name="<?= CHARACTER_INTELLIGENCE_RAW ?>" min="3" max="18" value="<?php echo $input[CHARACTER_INTELLIGENCE_RAW] ?? ''; ?>"<?= $read_only ?> required>
-			<?= buildHiddenTag(CHARACTER_INTELLIGENCE, $input[CHARACTER_INTELLIGENCE] ?? '') . PHP_EOL; ?>
+			<?= HtmlHelper::buildHiddenTag(CHARACTER_INTELLIGENCE, $input[CHARACTER_INTELLIGENCE] ?? '') . PHP_EOL; ?>
 		</td>
 		<td style="text-align: center;"><span class="view_only"><?= $input[CHARACTER_INTELLIGENCE] ?? ''; ?></span></td>
 		<td>
@@ -183,7 +184,7 @@ if ($input[PAGE_ACTION] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent(
 		<td id="characterWisdomLabel">Wisdom</td>
 		<td>
 			<input type="number" style="text-align: center;" class="<?= $input_class ?>" id="<?= CHARACTER_WISDOM_RAW ?>" name="<?= CHARACTER_WISDOM_RAW ?>" min="3" max="18" value="<?php echo $input[CHARACTER_WISDOM_RAW] ?? ''; ?>"<?= $read_only ?> required>
-			<?= buildHiddenTag(CHARACTER_WISDOM, $input[CHARACTER_WISDOM] ?? '') . PHP_EOL; ?>
+			<?= HtmlHelper::buildHiddenTag(CHARACTER_WISDOM, $input[CHARACTER_WISDOM] ?? '') . PHP_EOL; ?>
 		</td>
 		<td style="text-align: center;"><span class="view_only"><?= $input[CHARACTER_WISDOM] ?? ''; ?></span></td>
 		<td>
@@ -206,7 +207,7 @@ if ($input[PAGE_ACTION] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent(
 		<td id="characterDexterityLabel">Dexterity</td>
 		<td>
 			<input type="number" style="text-align: center;" class="<?= $input_class ?>" id="<?= CHARACTER_DEXTERITY_RAW ?>" name="<?= CHARACTER_DEXTERITY_RAW ?>" min="3" max="18" value="<?php echo $input[CHARACTER_DEXTERITY_RAW] ?? ''; ?>"<?= $read_only ?> required>
-			<?= buildHiddenTag(CHARACTER_DEXTERITY, $input[CHARACTER_DEXTERITY] ?? '') . PHP_EOL; ?>
+			<?= HtmlHelper::buildHiddenTag(CHARACTER_DEXTERITY, $input[CHARACTER_DEXTERITY] ?? '') . PHP_EOL; ?>
 		</td>
 		<td style="text-align: center;"><span class="view_only"><?= $input[CHARACTER_DEXTERITY] ?? ''; ?></span></td>
 		<td>
@@ -229,7 +230,7 @@ if ($input[PAGE_ACTION] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent(
 		<td id="characterConstitutionLabel">Constitution</td>
 		<td>
 			<input type="number" style="text-align: center;" class="<?= $input_class ?>" id="<?= CHARACTER_CONSTITUTION_RAW ?>" name="<?= CHARACTER_CONSTITUTION_RAW ?>" min="3" max="18" value="<?php echo $input[CHARACTER_CONSTITUTION_RAW] ?? ''; ?>"<?= $read_only ?> required>
-			<?= buildHiddenTag(CHARACTER_CONSTITUTION, $input[CHARACTER_CONSTITUTION] ?? '') . PHP_EOL; ?>
+			<?= HtmlHelper::buildHiddenTag(CHARACTER_CONSTITUTION, $input[CHARACTER_CONSTITUTION] ?? '') . PHP_EOL; ?>
 		</td>
 		<td style="text-align: center;"><span class="view_only"><?= $input[CHARACTER_CONSTITUTION] ?? ''; ?></span></td>
 		<td>
@@ -252,7 +253,7 @@ if ($input[PAGE_ACTION] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent(
 		<td id="characterCharismaLabel">Charisma</td>
 		<td>
 			<input type="number" style="text-align: center;" class="<?= $input_class ?>" id="<?= CHARACTER_CHARISMA_RAW ?>" name="<?= CHARACTER_CHARISMA_RAW ?>" min="3" max="18" value="<?php echo $input[CHARACTER_CHARISMA_RAW] ?? ''; ?>"<?= $read_only ?> required>
-			<?= buildHiddenTag(CHARACTER_CHARISMA, $input[CHARACTER_CHARISMA] ?? '') . PHP_EOL; ?>
+			<?= HtmlHelper::buildHiddenTag(CHARACTER_CHARISMA, $input[CHARACTER_CHARISMA] ?? '') . PHP_EOL; ?>
 		</td>
 		<td style="text-align: center;"><span class="view_only"><?= $input[CHARACTER_CHARISMA] ?? ''; ?></span></td>
 		<td>
@@ -275,7 +276,7 @@ if ($input[PAGE_ACTION] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent(
 		<td id="characterComelinessLabel">Comeliness</td>
 		<td>
 			<input type="number" style="text-align: center;" class="<?= $input_class ?>" id="<?= CHARACTER_COMELINESS_RAW ?>" name="<?= CHARACTER_COMELINESS_RAW ?>" min="3" max="18" value="<?php echo $input[CHARACTER_COMELINESS_RAW] ?? ''; ?>"<?= $read_only ?> required>
-			<?= buildHiddenTag(CHARACTER_COMELINESS, $input[CHARACTER_COMELINESS] ?? '') . PHP_EOL; ?>
+			<?= HtmlHelper::buildHiddenTag(CHARACTER_COMELINESS, $input[CHARACTER_COMELINESS] ?? '') . PHP_EOL; ?>
 		</td>
 		<td style="text-align: center;"><span class="view_only"><?= $input[CHARACTER_COMELINESS] ?? ''; ?></span></td>
 	</tr>
@@ -288,11 +289,11 @@ if ($input[PAGE_ACTION] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent(
 		$button_bar .= '<button style="float:right; margin-top: 5px;" type="submit" formaction="characterCreation2.php">Select Class(es)</button>' . PHP_EOL;
 		$button_bar .= '</div>' . PHP_EOL;
 		echo $button_bar;
-		echo buildHiddenTag(CHARACTER_RACE_ID, $input[CHARACTER_RACE_ID]) . PHP_EOL;
-		echo buildHiddenTag(CHARACTER_GENDER, $input[CHARACTER_GENDER]) . PHP_EOL;
+		echo HtmlHelper::buildHiddenTag(CHARACTER_RACE_ID, $input[CHARACTER_RACE_ID]) . PHP_EOL;
+		echo HtmlHelper::buildHiddenTag(CHARACTER_GENDER, $input[CHARACTER_GENDER]) . PHP_EOL;
 	} else {
 		echo '<div style="border: solid 1px; border-color: blue; border-radius: 10px; margin-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; width: 405px; display: table;"><button style="margin-top: 5px;" type="submit">Validate</button></div>';
-		echo buildHiddenTag(PAGE_ACTION, PAGE_ACTION_VALIDATE);
+		echo HtmlHelper::buildHiddenTag(PAGE_ACTION, PAGE_ACTION_VALIDATE);
 	} 
 ?>
 </form>

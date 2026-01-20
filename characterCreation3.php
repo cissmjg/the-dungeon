@@ -8,15 +8,16 @@ validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
-require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/pageAction.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
-require_once 'hiddenTag.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
 
 require_once __DIR__ . '/fa/faEditIcon.php';
 
+require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/raceId.php';
+
 require_once __DIR__ . '/dbio/constants/characterAttributes.php';
 require_once __DIR__ . '/dbio/constants/characterRaces.php';
 require_once __DIR__ . '/rules/adjustCharacterRacialAttributes.php';
@@ -197,7 +198,7 @@ $url_character_creation2 = CurlHelper::buildUrl('characterCreation2');
 				if ($primary_class_available) {
 					$primary_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
 					echo '<input style="float: left;" class="view_only" type="text" value="' . $primary_class_name . '" readonly>' . PHP_EOL;
-					echo buildHiddenTag(CHARACTER_PRIMARY_CLASS,$input[CHARACTER_PRIMARY_CLASS]) . PHP_EOL;
+					echo HtmlHelper::buildHiddenTag(CHARACTER_PRIMARY_CLASS,$input[CHARACTER_PRIMARY_CLASS]) . PHP_EOL;
 				}
 			?>			
 		</td>
@@ -210,7 +211,7 @@ $url_character_creation2 = CurlHelper::buildUrl('characterCreation2');
 		if ($secondary_class_available) {
 			$secondary_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_SECONDARY_CLASS]);
 			echo '<input style="float: left;" class="view_only" type="text" value="' . $secondary_class_name . '" readonly>' . PHP_EOL;
-			echo buildHiddenTag(CHARACTER_SECONDARY_CLASS, $input[CHARACTER_SECONDARY_CLASS]) . PHP_EOL;
+			echo HtmlHelper::buildHiddenTag(CHARACTER_SECONDARY_CLASS, $input[CHARACTER_SECONDARY_CLASS]) . PHP_EOL;
 		}
 		echo '</td>' . PHP_EOL;
 		echo '</tr>' . PHP_EOL;
@@ -223,7 +224,7 @@ $url_character_creation2 = CurlHelper::buildUrl('characterCreation2');
 		if ($tertiary_class_available == true) {
 			$tertiary_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_TERTIARY_CLASS]);
 			echo '<input style="float: left;" class="view_only" type="text" value="' . $tertiary_class_name . '" readonly>' . PHP_EOL;
-			echo buildHiddenTag(CHARACTER_TERTIARY_CLASS, $input[CHARACTER_TERTIARY_CLASS]) . PHP_EOL;
+			echo HtmlHelper::buildHiddenTag(CHARACTER_TERTIARY_CLASS, $input[CHARACTER_TERTIARY_CLASS]) . PHP_EOL;
 		}
         
         echo '</td>' . PHP_EOL;
@@ -233,7 +234,7 @@ $url_character_creation2 = CurlHelper::buildUrl('characterCreation2');
 </table>
 </div>
 <?php
-	echo buildHiddenTag(PAGE_ACTION, PAGE_ACTION_VALIDATE);
+	echo HtmlHelper::buildHiddenTag(PAGE_ACTION, PAGE_ACTION_VALIDATE);
 	$button_bar = '<div style="margin-top: 5px; padding-bottom: 5px; padding-left: 5px; width: 405px;" class="character_create_action_bar_container">' . PHP_EOL;
 	$button_bar .= '<button style="float:right; margin-top: 5px;" type="submit" formaction="' . $url_character_creation2 . '">Select Class(es)</button>' . PHP_EOL;
 	$button_bar .= '<div style="text-align: center;"  class="character_create_action_bar_item_two">&nbsp;</div>' . PHP_EOL;
@@ -241,8 +242,8 @@ $url_character_creation2 = CurlHelper::buildUrl('characterCreation2');
 	$button_bar .= '</div>' . PHP_EOL;
 	echo $button_bar;
 
-	echo buildHiddenTag(CHARACTER_ARMOR_CLASS, 10);
-	echo buildHiddenTag(CHARACTER_HIT_POINTS, 0);
+	echo HtmlHelper::buildHiddenTag(CHARACTER_ARMOR_CLASS, 10);
+	echo HtmlHelper::buildHiddenTag(CHARACTER_HIT_POINTS, 0);
 ?>
 </form>
 </body>

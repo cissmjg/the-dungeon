@@ -11,9 +11,10 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/CurlHelper.php';
-require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
-require_once 'hiddenTag.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
+
+require_once __DIR__ . '/webio/playerName.php';
 
 const STARTNEWFIGHT = "StartNewFight";
 const ENDOFROUND = "EndOfRound";
@@ -25,6 +26,14 @@ const REFRESHSPELLLIST = "RefreshSpellList";
 getPlayerName($errors, $input);
 
 $player_permissions = getPlayerPermissions($pdo, $input[PLAYER_NAME], $errors);
+if (count($errors) > 0) {
+    RestHeaderHelper::emitRestHeaders();
+    die(json_encode($errors));
+}
+
+if (!$player_permissions['is_dm']) {
+    die();
+}
 
 ?>
 <!DOCTYPE html>
@@ -69,8 +78,8 @@ $player_permissions = getPlayerPermissions($pdo, $input[PLAYER_NAME], $errors);
     ?>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <?php
-            echo buildHiddenTag(CURRENTCOMBATROUND, $current_combat_round) . PHP_EOL;
-            echo buildHiddenTag(PLAYER_NAME, $input[PLAYER_NAME]) . PHP_EOL;
+            echo HtmlHelper::buildHiddenTag(CURRENTCOMBATROUND, $current_combat_round) . PHP_EOL;
+            echo HtmlHelper::buildHiddenTag(PLAYER_NAME, $input[PLAYER_NAME]) . PHP_EOL;
         ?>
 
         <table>

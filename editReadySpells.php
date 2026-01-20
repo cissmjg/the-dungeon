@@ -12,8 +12,6 @@ validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/webio/characterAction.php';
-require_once __DIR__ . '/webio/playerName.php';
-require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/spellLevel.php';
 require_once __DIR__ . '/webio/spellSlotId.php';
 require_once __DIR__ . '/webio/spellCatalogId.php';
@@ -22,7 +20,7 @@ require_once __DIR__ . '/webio/spellCastingTime.php';
 require_once __DIR__ . '/webio/removeEmpty.php';
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
-require_once 'hiddenTag.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
 
 require_once __DIR__ . '/fa/faCancelIcon.php';
 require_once __DIR__ . '/fa/faCastSpellIcon.php';
@@ -35,6 +33,9 @@ require_once __DIR__ . '/fa/faNatureIcon.php';
 require_once __DIR__ . '/fa/faReclaimCantripIcon.php';
 require_once __DIR__ . '/fa/faStopSpellIcon.php';
 require_once __DIR__ . '/fa/faRunSpellIcon.php';
+
+require_once __DIR__ . '/webio/playerName.php';
+require_once __DIR__ . '/webio/characterName.php';
 
 require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
@@ -215,8 +216,8 @@ function buildSlotChangeForm($playerName, $characterName, $characterClassName, $
     $formId = buildSlotChangeFormId($spellSlotId);
     $characterActionId = buildSlotChangeCharacterActionId($spellSlotId);
     $formStartHtml = buildSlotActionFormStart($formId, $spellSlotId, $playerName, $characterName, $characterActionId);  // player, character, slot, action
-    $characterClassNameTag = buildHiddenTag(CHARACTER_CLASS_NAME, $characterClassName);
-    $spellLevelTag = buildHiddenTag(SPELL_LEVEL, $spellLevel);
+    $characterClassNameTag = HtmlHelper::buildHiddenTag(CHARACTER_CLASS_NAME, $characterClassName);
+    $spellLevelTag = HtmlHelper::buildHiddenTag(SPELL_LEVEL, $spellLevel);
 
     $spellNameTag = '<span>' . $spellName . '</span>&nbsp;';
     $leftArrowHtml = buildLeftArrowHtml() . '&nbsp;';
@@ -421,10 +422,10 @@ function buildSlotActionFormStart($formId, $spellSlotId, $playerName, $character
     $routerActionUrl = CurlHelper::buildCharacterActionRouterUrl();
     $formStartTag .= 'action="' . $routerActionUrl . '" ';
     $formStartTag .= 'method="POST">';
-    $playerNameTag = buildHiddenTag(PLAYER_NAME, $playerName);
-    $characterNameTag = buildHiddenTag(CHARACTER_NAME, $characterName);
-    $spellSlotIdTag = buildHiddenTag(SPELL_SLOT_ID, $spellSlotId);
-    $characterActionTag = buildHiddenTagWithId(CHARACTER_ACTION, $characterActionId, '');
+    $playerNameTag = HtmlHelper::buildHiddenTag(PLAYER_NAME, $playerName);
+    $characterNameTag = HtmlHelper::buildHiddenTag(CHARACTER_NAME, $characterName);
+    $spellSlotIdTag = HtmlHelper::buildHiddenTag(SPELL_SLOT_ID, $spellSlotId);
+    $characterActionTag = HtmlHelper::buildHiddenTagWithId(CHARACTER_ACTION, $characterActionId, '');
     return $formStartTag . $playerNameTag . $characterNameTag . $spellSlotIdTag . $characterActionTag;
 }
 

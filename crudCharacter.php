@@ -8,15 +8,17 @@ validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
-require_once __DIR__ . '/webio/playerName.php';
-require_once __DIR__ . '/webio/characterName.php';
-require_once __DIR__ . '/webio/raceId.php';
-require_once __DIR__ . '/dbio/constants/characterAttributes.php';
 require_once __DIR__ . '/webio/pageAction.php';
 require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/requiredParameter.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
-require_once 'hiddenTag.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
+
+require_once __DIR__ . '/webio/playerName.php';
+require_once __DIR__ . '/webio/characterName.php';
+require_once __DIR__ . '/webio/raceId.php';
+
+require_once __DIR__ . '/dbio/constants/characterAttributes.php';
 require_once __DIR__ . '/dbio/constants/characterClasses.php';
 require_once __DIR__ . '/rules/characterClassSuperStats.php';
 require_once __DIR__ . '/rules/characterClassRestrictions.php';
@@ -766,7 +768,7 @@ if ($tertiary_class_available) {
 
 			if ($page_action == PAGE_DELETE) {
 				$character_description = "'" . $input[CHARACTER_NAME] . "'";
-				echo buildHiddenTag(CHARACTER_ACTION, 'deleteCharacter');
+				echo HtmlHelper::buildHiddenTag(CHARACTER_ACTION, 'deleteCharacter');
 				echo '<tr><td colspan="3" style="text-align: center;"><button onclick="event.preventDefault(); deleteCharacter(this.form, ' . $character_description . ')">' . $page_action . '</button></td></tr>';
 			} 
 		?>

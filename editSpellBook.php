@@ -12,18 +12,19 @@ require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/spellLevel.php';
 require_once __DIR__ . '/webio/spellCatalogId.php';
 
-require_once __DIR__ . '/webio/playerName.php';
-require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/characterClassName.php';
 require_once __DIR__ . '/webio/spellPoolSlotId.php';
 require_once __DIR__ . '/webio/pageAction.php';
-require_once 'hiddenTag.php';
+require_once __DIR__ . '/classes/ActionBarHelper.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
 
 require_once __DIR__ . '/fa/faEditIcon.php';
 require_once __DIR__ . '/fa/faCancelIcon.php';
 require_once __DIR__ . '/fa/faUpdateSpellBookIcon.php';
 
-require_once __DIR__ . '/classes/ActionBarHelper.php';
+require_once __DIR__ . '/webio/playerName.php';
+require_once __DIR__ . '/webio/characterName.php';
+
 require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 require_once __DIR__ . '/dbio/constants/classAbilitiesGM.php';
@@ -207,12 +208,12 @@ function buildFormStart($form_id_name, $character_action_id, $spell_pool_id, $pl
     $form_start_tag .= 'id="' . $form_id_name . '" name="' . $form_id_name .'" ';
     $router_action_url = CurlHelper::buildCharacterActionRouterUrl();
     $form_start_tag .= 'action="' . $router_action_url . '">';
-    $player_name_tag = buildHiddenTag(PLAYER_NAME, $player_name);
-    $character_name_tag = buildHiddenTag(CHARACTER_NAME, $character_name);
-    $character_class_name = buildHiddenTag(CHARACTER_CLASS_NAME, $character_class_name);
-    $router_action_tag = buildHiddenTagWithId(CHARACTER_ACTION, $character_action_id, '');
-    $spell_pool_id_tag = buildHiddenTagWithId(SPELL_POOL_SLOT_ID, $spell_pool_form_id, $spell_pool_id);
-    $page_action_tag = buildHiddenTag(PAGE_ACTION, 'edit');
+    $player_name_tag = HtmlHelper::buildHiddenTag(PLAYER_NAME, $player_name);
+    $character_name_tag = HtmlHelper::buildHiddenTag(CHARACTER_NAME, $character_name);
+    $character_class_name = HtmlHelper::buildHiddenTag(CHARACTER_CLASS_NAME, $character_class_name);
+    $router_action_tag = HtmlHelper::buildHiddenTagWithId(CHARACTER_ACTION, $character_action_id, '');
+    $spell_pool_id_tag = HtmlHelper::buildHiddenTagWithId(SPELL_POOL_SLOT_ID, $spell_pool_form_id, $spell_pool_id);
+    $page_action_tag = HtmlHelper::buildHiddenTag(PAGE_ACTION, 'edit');
 
     return $form_start_tag . $player_name_tag . $character_name_tag . $character_class_name . $router_action_tag . $spell_pool_id_tag . $page_action_tag . PHP_EOL;
 }

@@ -8,15 +8,16 @@ validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
-require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/pageAction.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
-require_once 'hiddenTag.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
 
 require_once __DIR__ . '/fa/faEditIcon.php';
 
+require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/raceId.php';
+
 require_once __DIR__ . '/dbio/constants/characterAttributes.php';
 require_once __DIR__ . '/dbio/constants/characterRaces.php';
 require_once __DIR__ . '/rules/adjustCharacterRacialAttributes.php';
@@ -309,7 +310,7 @@ $errors_exist = errorsExist($errors);
 				if ($primary_class_available) {
 					$primary_class_name =  getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
 					echo '<input style="float: left;" class="view_only" type="text" value="' . $primary_class_name . '" readonly>' . PHP_EOL;
-					echo buildHiddenTag(CHARACTER_PRIMARY_CLASS, $input[CHARACTER_PRIMARY_CLASS]) . PHP_EOL;
+					echo HtmlHelper::buildHiddenTag(CHARACTER_PRIMARY_CLASS, $input[CHARACTER_PRIMARY_CLASS]) . PHP_EOL;
 					$change_primary_class = new FaEditIcon();
 					$change_primary_class->addStyle('float: right;');
 					$change_primary_class->setOnClickJsFunction('submitTheForm');
@@ -347,7 +348,7 @@ $errors_exist = errorsExist($errors);
 		if ($secondary_class_available) {
 			$secondary_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_SECONDARY_CLASS]);
 			echo '<input style="float: left;" class="view_only" type="text" value="' . $secondary_class_name . '" readonly>' . PHP_EOL;
-			echo buildHiddenTag(CHARACTER_SECONDARY_CLASS, $input[CHARACTER_SECONDARY_CLASS]) . PHP_EOL;
+			echo HtmlHelper::buildHiddenTag(CHARACTER_SECONDARY_CLASS, $input[CHARACTER_SECONDARY_CLASS]) . PHP_EOL;
 			$change_secondary_class = new FaEditIcon();
 			$change_secondary_class->addStyle('float: right;');
 			$change_secondary_class->setOnClickJsFunction('submitTheForm');
@@ -376,7 +377,7 @@ $errors_exist = errorsExist($errors);
 		if ($tertiary_class_available) {
 			$tertiary_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_TERTIARY_CLASS]);
 			echo '<input style="float: left;" class="view_only" type="text" value="' . $tertiary_class_name . '" readonly>' . PHP_EOL;
-			echo buildHiddenTag(CHARACTER_TERTIARY_CLASS, $input[CHARACTER_TERTIARY_CLASS]) . PHP_EOL;
+			echo HtmlHelper::buildHiddenTag(CHARACTER_TERTIARY_CLASS, $input[CHARACTER_TERTIARY_CLASS]) . PHP_EOL;
 			$change_tertiary_class = new FaEditIcon();
 			$change_tertiary_class->addStyle('float: right;');
 			$change_tertiary_class->setOnClickJsFunction('submitTheForm');
@@ -401,7 +402,7 @@ $errors_exist = errorsExist($errors);
 </table>
 </div>
 <?php
-	echo buildHiddenTag(PAGE_ACTION, PAGE_ACTION_VALIDATE);
+	echo HtmlHelper::buildHiddenTag(PAGE_ACTION, PAGE_ACTION_VALIDATE);
 	$button_bar = '<div style="margin-top: 5px; padding-bottom: 5px; padding-left: 5px; width: 405px;" class="character_create_action_bar_container">' . PHP_EOL;
 	$button_bar .= '<div class="character_create_action_bar_item_one"><button style="margin-top: 5px;" type="submit" formaction="characterCreation1.php">Attributes</button></div>' . PHP_EOL;
 	$button_bar .= '<div style="text-align: center;"  class="character_create_action_bar_item_two"><button style="margin-top: 5px;" type="submit" formaction="characterCreation2.php">Validate</button></div>' . PHP_EOL;

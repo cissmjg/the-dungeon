@@ -12,15 +12,16 @@ validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/webio/characterAction.php';
-require_once __DIR__ . '/webio/playerName.php';
-require_once __DIR__ . '/webio/characterName.php';
-require_once __DIR__ . '/webio/playerCharacterClassId.php';
 require_once __DIR__ . '/webio/spellTypeId.php';
 require_once __DIR__ . '/webio/spellSlotLevel.php';
 require_once __DIR__ . '/webio/spellSlotId.php';
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/classes/ActionBarHelper.php';
-require_once 'hiddenTag.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
+
+require_once __DIR__ . '/webio/playerName.php';
+require_once __DIR__ . '/webio/characterName.php';
+require_once __DIR__ . '/webio/playerCharacterClassId.php';
 
 require_once __DIR__ . '/fa/faAddIcon.php';
 require_once __DIR__ . '/fa/faCancelIcon.php';
@@ -207,11 +208,11 @@ function buildAddExtraSlotIcon($form_id, $character_action_id) {
 
 function buildAddExtraSlotForm($form_id, $player_name, $character_name, $character_action_id, $player_character_class_id, $extra_slot_spell_type, $extra_slot_max_level, $nf) {
     $form_html  = PHP_EOL . '<form id="' . $form_id . '" name="' . $form_id . '" method="POST" action="' .  CurlHelper::buildCharacterActionRouterUrl() . '">' . PHP_EOL;
-    $form_html .= buildHiddenTag(PLAYER_NAME, $player_name) . PHP_EOL;
-    $form_html .= buildHiddenTag(CHARACTER_NAME, $character_name) . PHP_EOL;
-    $form_html .= buildHiddenTag(PLAYER_CHARACTER_CLASS_ID, $player_character_class_id) . PHP_EOL;
-    $form_html .= buildHiddenTag(SPELL_TYPE_ID, $extra_slot_spell_type) . PHP_EOL;
-    $form_html .= buildHiddenTagWithId(CHARACTER_ACTION, $character_action_id, ALLOCATE_CHARACTER_ACTION) . PHP_EOL;
+    $form_html .= HtmlHelper::buildHiddenTag(PLAYER_NAME, $player_name) . PHP_EOL;
+    $form_html .= HtmlHelper::buildHiddenTag(CHARACTER_NAME, $character_name) . PHP_EOL;
+    $form_html .= HtmlHelper::buildHiddenTag(PLAYER_CHARACTER_CLASS_ID, $player_character_class_id) . PHP_EOL;
+    $form_html .= HtmlHelper::buildHiddenTag(SPELL_TYPE_ID, $extra_slot_spell_type) . PHP_EOL;
+    $form_html .= HtmlHelper::buildHiddenTagWithId(CHARACTER_ACTION, $character_action_id, ALLOCATE_CHARACTER_ACTION) . PHP_EOL;
     $form_html .= "Add ";
     $form_html .= '<select id="' . SPELL_SLOT_LEVEL .'" name="' . SPELL_SLOT_LEVEL . '">' . PHP_EOL;
 
