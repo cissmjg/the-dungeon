@@ -1,11 +1,11 @@
-import { buildURL, addParameter } from './RestHelper.js';
+import { addParameter, buildDbioDirURL } from './RestHelper.js';
 
 const initialWeaponSelectPrompt = "[Select a Weapon]";
 
 export function populateWeaponList(weaponListName, weaponSearchTextboxName) {
     const weaponQueryPattern = '#' + weaponSearchTextboxName;
     const weaponList = "#" + weaponListName;
-    let weaponQueryAPI = buildURL('getWeaponProficiencyByPattern');
+    let weaponQueryAPI = buildDbioDirURL('getWeaponProficiencyByPattern');
     weaponQueryAPI = addParameter(weaponQueryAPI, 'textInput', $(weaponQueryPattern).val());
     $(weaponList).empty();
     $.getJSON(weaponQueryAPI,

@@ -1,4 +1,4 @@
-import { STARTING_URL } from "./env.js";
+import { STARTING_URL, DBIO_DIR_URL } from "./env.js";
 
 export function buildURL(endpoint) {
     let final_rest_uri = endpoint;
@@ -7,6 +7,15 @@ export function buildURL(endpoint) {
     }
 
     return STARTING_URL + final_rest_uri;
+}
+
+export function buildDbioDirURL(endpoint) {
+    let final_rest_uri = endpoint;
+    if (!endpoint.endsWith(".php")) {
+        final_rest_uri += ".php";
+    }
+
+    return DBIO_DIR_URL + final_rest_uri;
 }
 
 export function addParameter(url, paramName, paramValue) {
