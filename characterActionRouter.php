@@ -245,7 +245,7 @@ switch($character_action) {
 		//Get page action
 		getPageAction($errors, $input);
 
-		$url_update_spell_pool = CurlHelper::buildUrl('updateSpellPoolSlot');
+		$url_update_spell_pool = CurlHelper::buildUrlDbioDirectory('updateSpellPoolSlot');
 		$params_update_spell_pool = buildUpdateSpellPoolParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_update_spell_pool, $params_update_spell_pool);
 		$result = json_decode($raw_result);
