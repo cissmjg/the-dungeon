@@ -1,16 +1,16 @@
 <?php
 
-require_once __DIR__ . '/validateCredentials.php';
-$pdo = require_once __DIR__ . '/dbio/DBConnection.php';
+require_once __DIR__ . '/../validateCredentials.php';
+$pdo = require_once __DIR__ . '/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once __DIR__ . '/helper/CurlHelper.php';
-require_once __DIR__ . '/helper/RestHeaderHelper.php';
-require_once __DIR__ . '/webio/pageAction.php';
-require_once __DIR__ . '/webio/playerName.php';
-require_once __DIR__ . '/webio/characterName.php';
-require_once __DIR__ . '/dbio/constants/characterAttributes.php';
+require_once __DIR__ . '/../helper/CurlHelper.php';
+require_once __DIR__ . '/../helper/RestHeaderHelper.php';
+require_once __DIR__ . '/../webio/pageAction.php';
+require_once __DIR__ . '/../webio/playerName.php';
+require_once __DIR__ . '/../webio/characterName.php';
+require_once __DIR__ . '/constants/characterAttributes.php';
 
 $errors = [];
 $input = [];
@@ -87,8 +87,9 @@ $url_crudCharacter = CurlHelper::buildUrl('crudCharacter');
 $url_crudCharacter = CurlHelper::addParameter($url_crudCharacter, PLAYER_NAME, $input[PLAYER_NAME]);
 $url_crudCharacter = CurlHelper::addParameter($url_crudCharacter, CHARACTER_NAME, $input[CHARACTER_NAME]);
 $url_crudCharacter = CurlHelper::addParameter($url_crudCharacter, PAGE_ACTION, 'update');
-$url_crudCharacter = CurlHelper::addParameter($url_crudCharacter, 'updateTimestamp', mktime(null));
-$location_header = "Location:" . $url_crudCharacter;
+$url_crudCharacter = CurlHelper::addParameter($url_crudCharacter, 'updateTimestamp', time());
+
+$location_header = CurlHelper::buildLocationHeader($url_crudCharacter);
 
 header($location_header);
 exit;
@@ -281,14 +282,6 @@ function updateOptionalCharacterData(\PDO $pdo, $input, &$errors) {
 	} catch(Exception $e) {
 		$errors[] = "Exception in updateOptionalCharacterData : " . $e->getMessage();
 	}
-}
-
-function filterAndSantizePlayerName(&$input, &$errors) {
-	filterAndSantizeStringFormField($input, $errors, PLAYER_NAME);
-}
-
-function filterAndSantizeCharacterName(&$input, &$errors) {
-	filterAndSantizeStringFormField($input, $errors, CHARACTER_NAME);
 }
 
 function filterAndSanitizeStrength(&$input, &$errors) {

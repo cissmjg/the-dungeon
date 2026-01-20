@@ -81,9 +81,9 @@ if ($page_action == PAGE_UPDATE) {
 
 $character_action = '';
 if ($page_action == PAGE_UPDATE) {
-    $character_action = 'updateCharacter.php';
+    $character_action = CurlHelper::buildUrlDbioDirectory('updateCharacter.php');
 } else if ($page_action == PAGE_DELETE) {
-    $character_action = 'characterActionRouter.php';
+    $character_action = CurlHelper::buildCharacterActionRouterUrl();
 }
 
 $action_bar = '';
@@ -154,7 +154,7 @@ if ($tertiary_class_available) {
 <span id="statusBar" style="font-weight: bold;"><?= $last_update_message ?></span>
 <table>
 <form action="<?php echo $character_action ?>" method="POST">
-	<input type="hidden" id = "playerName" name="playerName" value="<?= $input[PLAYER_NAME] ?>">
+	<input type="hidden" id = "playerName" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
 	<tr>
 		<td class="character_detail_header" colspan="3"><?php echo $input[CHARACTER_NAME] ?? ''; ?>
 			<input type="hidden" id="<?= CHARACTER_NAME ?>" name="<?= CHARACTER_NAME ?>" value="<?php echo $input[CHARACTER_NAME] ?? ''; ?>">
