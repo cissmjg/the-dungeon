@@ -4,33 +4,32 @@ $errors = [];
 $input = [];
 $log = [];
 
-require_once __DIR__ . '/validateCredentials.php';
-$pdo = require_once __DIR__ . '/dbio/DBConnection.php';
+require_once __DIR__ . '/../validateCredentials.php';
+$pdo = require_once __DIR__ . '/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once __DIR__ . '/helper/RestHeaderHelper.php';
-require_once __DIR__ . '/webio/playerName.php';
-require_once __DIR__ . '/webio/characterName.php';
-require_once __DIR__ . '/webio/characterClassName.php';
-require_once __DIR__ . '/webio/playerCharacterClassId.php';
-require_once __DIR__ . '/webio/characterLevel.php';
-require_once __DIR__ . '/classes/characterSummary.php';
-require_once __DIR__ . '/classes/characterSpellInfo.php';
+require_once __DIR__ . '/../helper/RestHeaderHelper.php';
+require_once __DIR__ . '/../webio/playerName.php';
+require_once __DIR__ . '/../webio/characterName.php';
+require_once __DIR__ . '/../webio/characterClassName.php';
+require_once __DIR__ . '/../webio/playerCharacterClassId.php';
+require_once __DIR__ . '/../webio/characterLevel.php';
+require_once __DIR__ . '/../classes/characterSummary.php';
+require_once __DIR__ . '/../classes/characterSpellInfo.php';
 
-require_once __DIR__ . '/dbio/constants/spellTypes.php';
+require_once __DIR__ . '/constants/spellTypes.php';
 
 // Filter and sanitize names
 getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 getCharacterClassName($errors, $input);
 
+$character_ids = getCharacterIds($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input[CHARACTER_CLASS_NAME]);
 if (count($errors) > 0) {
 	RestHeaderHelper::emitRestHeaders();
 	die(json_encode($errors));
 }
-
-$character_ids = getCharacterIds($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input[CHARACTER_CLASS_NAME]);
 
 $character_summary = new CharacterSummary();
 $character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
@@ -52,15 +51,28 @@ if ($input['spell_type_id_1'] == NULL && $input['spell_type_id_2'] == NULL) {
 }
 
 // Base spell slots for current level
-$before_character_spell_info = getCharacterSpellInfo($pdo, $input, $error, $log);
+$before_character_spell_info = getCharacterSpellInfo($pdo, $input, $errors, $log);
+if (count($errors) > 0) {
+	RestHeaderHelper::emitRestHeaders();
+	die(json_encode($errors));
+}
 
 // Add 1 to character level
 $new_class = promoteCharacterClass($pdo, $input, $errors);
+if (count($errors) > 0) {
+	RestHeaderHelper::emitRestHeaders();
+	die(json_encode($errors));
+}
+
 $log[] = "Promotion: " . $new_class[CHARACTER_NAME] . ", " . $new_class[PLAYER_CHARACTER_CLASS_ID] . ", " . $new_class[CHARACTER_CLASS_NAME] . ", " . $new_class[CHARACTER_LEVEL];
 $player_character_class_id = $new_class[PLAYER_CHARACTER_CLASS_ID];
 
 // Base spell slots for new (promoted) level
-$after_character_spell_info = getCharacterSpellInfo($pdo, $input, $error, $log);
+$after_character_spell_info = getCharacterSpellInfo($pdo, $input, $errors, $log);
+if (count($errors) > 0) {
+	RestHeaderHelper::emitRestHeaders();
+	die(json_encode($errors));
+}
 
 // Spells for the new level ?
 if ($after_character_spell_info->getBaseSlotCounts() == 0) {
@@ -70,6 +82,10 @@ if ($after_character_spell_info->getBaseSlotCounts() == 0) {
 
 // Add any new spell levels
 $new_spell_levels_available = getNewSpellLevelForCharacter($pdo, $input, $errors);
+if (count($errors) > 0) {
+	RestHeaderHelper::emitRestHeaders();
+	die(json_encode($errors));
+}
 
 // Allocate new spell levels for character
 if (count($new_spell_levels_available) > 0) {
@@ -89,6 +105,10 @@ if (count($new_spell_levels_available) > 0) {
 
 			// Copy Cantrips 
 			populateCantripsForPlayerCharacterClass($pdo, $player_character_class_id, $cantrip_spell_type, $errors);
+			if (count($errors) > 0) {
+				RestHeaderHelper::emitRestHeaders();
+				die(json_encode($errors));
+			}
 		}
 		
 		$log[] = "Spell allocation: " . $spell_type . ", " . $player_character_class_id . ", " . $spell_level;
@@ -97,6 +117,10 @@ if (count($new_spell_levels_available) > 0) {
 		if ($spell_type == SPELL_TYPE_CLERIC || $spell_type == SPELL_TYPE_DRUID || $spell_type == SPELL_TYPE_HEALER || $spell_type == SPELL_TYPE_SHUKENJA) {
 			$log[] = "populateClericSpells: " . $player_character_class_id . ", " . $character_ids['generic_race_id'] . ", " . $spell_level;
 			populateClericSpells($pdo, $player_character_class_id, $character_ids['generic_race_id'], $spell_level, $errors);
+			if (count($errors) > 0) {
+				RestHeaderHelper::emitRestHeaders();
+				die(json_encode($errors));
+			}
 		}
 
 		// Spell_type Healer, Magic-User, Illusionist, Wu Jen
@@ -104,6 +128,10 @@ if (count($new_spell_levels_available) > 0) {
 			$number_of_slots = getNumberMUSpellSlots($character_summary->getIntelligence(), $character_summary->getSuperIntelligence());
 			$log[] = "allocateNewMUSpellPoolSlot: " . $player_character_class_id . ", " . $spell_level . ", " . $number_of_slots;
 			allocateNewMUSpellPoolSlot($pdo, $player_character_class_id, $spell_level, $number_of_slots, $errors);
+			if (count($errors) > 0) {
+				RestHeaderHelper::emitRestHeaders();
+				die(json_encode($errors));
+			}
 		}
 	}
 }
@@ -116,7 +144,7 @@ $log[] = "Before Character Spell Info: " . $before_character_spell_info;
 $log[] = "Diff   Character Spell Info: " . $diff_base_slot_counts;
 
 // Allocate slots in player_spell_slot based on the difference in base slots
-allocateReadySlotsForPlayerCharacterClass($pdo, $player_character_class_id, $diff_base_slot_counts, $new_spell_levels_available, $character_summary->getWisdom(), $error, $log);
+allocateReadySlotsForPlayerCharacterClass($pdo, $player_character_class_id, $diff_base_slot_counts, $new_spell_levels_available, $character_summary->getWisdom(), $errors, $log);
 
 emitOutput($errors, $log);
 
@@ -246,37 +274,37 @@ function getNumberMUSpellSlots($intelligence, $super_intelligence) {
 	return 50;
 }
 
-function getCharacterSpellInfo(\PDO $pdo, $input, &$error, &$log) {
+function getCharacterSpellInfo(\PDO $pdo, $input, &$errors, &$log) {
 	$character_spell_info = new CharacterSpellInfo($input[PLAYER_NAME], $input[CHARACTER_NAME], $input[CHARACTER_CLASS_NAME], $input['spell_type_id_1'], $input['spell_type_id_2']);
-	$character_spell_info->init($pdo, $error, $log);
+	$character_spell_info->init($pdo, $errors, $log);
 
 	return $character_spell_info;
 }
 
-function allocateReadySlotsForPlayerCharacterClass(\PDO $pdo, $player_character_class_id, $diff_base_slot_counts, $new_spell_levels_available, $character_wisdom, &$error, &$log) {
+function allocateReadySlotsForPlayerCharacterClass(\PDO $pdo, $player_character_class_id, $diff_base_slot_counts, $new_spell_levels_available, $character_wisdom, &$errors, &$log) {
 	$log_output = "allocateReadySlotsForPlayerCharacterClass: " . "count(new_spell_levels_available): " . count($new_spell_levels_available) . " wisdom: " . $character_wisdom;
 	$log[] = $log_output;
 	foreach($diff_base_slot_counts->getBaseSlotCounts() AS $spell_type_id => $base_slot_count) {
-		allocateReadySlotsForSpellType($pdo, $player_character_class_id, $spell_type_id, $base_slot_count, $new_spell_levels_available, $character_wisdom, $error, $log);
+		allocateReadySlotsForSpellType($pdo, $player_character_class_id, $spell_type_id, $base_slot_count, $new_spell_levels_available, $character_wisdom, $errors, $log);
 	}
 }
 
-function allocateReadySlotsForSpellType($pdo, $player_character_class_id, $spell_type_id, $base_slot_count, $new_spell_levels_available, $character_wisdom, &$error, &$log) {
+function allocateReadySlotsForSpellType($pdo, $player_character_class_id, $spell_type_id, $base_slot_count, $new_spell_levels_available, $character_wisdom, &$errors, &$log) {
 	for ($slot_level = 1; $slot_level <= 9; $slot_level++) {
 		$spell_slot_diff = $base_slot_count->getBaseSlotCount($slot_level);
 		if ($spell_slot_diff > 0) {
 			$log_output = "allocateReadySlotsForSpellType: " . "spell_slot_diff: " . $spell_slot_diff . " slot_level: " . $slot_level;
 			$log[] = $log_output;
 			for ($j = 0; $j < $spell_slot_diff; $j++) {
-				allocateReadyBaseSpellSlot($pdo, $player_character_class_id, $slot_level, $spell_type_id, $error, $log);
+				allocateReadyBaseSpellSlot($pdo, $player_character_class_id, $slot_level, $spell_type_id, $errors, $log);
 			}
 		}
 	}
 
 	$log_output = "allocateReadySlotsForSpellType: " . "spell_type_id: " . $spell_type_id . " character_wisdom: " . $character_wisdom;
 	$log[] = $log_output;
-	// Cleric, Druid, Healer Wisdom bonus
-	if ($spell_type_id == 1 || $spell_type_id == 2 || $spell_type_id == 3) {
+	// Cleric, Druid, Healer, Shukenja Wisdom bonus
+	if ($spell_type_id == SPELL_TYPE_CLERIC || $spell_type_id == SPELL_TYPE_DRUID || $spell_type_id == SPELL_TYPE_HEALER || $spell_type_id == SPELL_TYPE_SHUKENJA) {
 		$log_output = "allocateReadySlotsForSpellType: " . ": count(new_spell_levels_available): " . count($new_spell_levels_available);
 		$log[] = $log_output;
 		for ($i = 0; $i < count($new_spell_levels_available); $i++) {
@@ -289,7 +317,7 @@ function allocateReadySlotsForSpellType($pdo, $player_character_class_id, $spell
 				$log[] = $log_output;
 				if ($bonus_slot_count > 0) {
 					for($j = 0; $j < $bonus_slot_count; $j++) {
-						allocateReadyWisdomSpellSlot($pdo, $player_character_class_id, $new_spell_level, $new_spell_type, $error, $log);
+						allocateReadyWisdomSpellSlot($pdo, $player_character_class_id, $new_spell_level, $new_spell_type, $errors, $log);
 					}
 				}
 			}
@@ -298,7 +326,7 @@ function allocateReadySlotsForSpellType($pdo, $player_character_class_id, $spell
 }
 
 
-function allocateReadyBaseSpellSlot(\PDO $pdo, $player_character_class_id, $slot_level, $spell_type_id, &$error, &$log) {
+function allocateReadyBaseSpellSlot(\PDO $pdo, $player_character_class_id, $slot_level, $spell_type_id, &$errors, &$log) {
 	$log_output = "allocateReadyBaseSpellSlot: " . "spell_type_id: " . $spell_type_id . " slot_level: " . $slot_level;
 	$log[] = $log_output;
 	$sql_exec = "CALL allocateReadyBaseSpellSlot (:playerCharacterClassId, :slotLevel, :spellTypeId)";
@@ -310,11 +338,11 @@ function allocateReadyBaseSpellSlot(\PDO $pdo, $player_character_class_id, $slot
 	try {
 		$statement->execute();
 	} catch(Exception $e) {
-		$error[] = "Exception in allocateReadyBaseSpellSlot : " . $e->getMessage();
+		$errors[] = "Exception in allocateReadyBaseSpellSlot : " . $e->getMessage();
 	}
 }
 
-function allocateReadyWisdomSpellSlot(\PDO $pdo, $player_character_class_id, $slot_level, $spell_type_id, &$error, &$log) {
+function allocateReadyWisdomSpellSlot(\PDO $pdo, $player_character_class_id, $slot_level, $spell_type_id, &$errors, &$log) {
 	$log_output = "allocateReadyWisdomSpellSlot: " . "spell_type_id: " . $spell_type_id . " slot_level: " . $slot_level;
 	$log[] = $log_output;
 	$sql_exec = "CALL allocateReadyWisdomSpellSlot (:playerCharacterClassId, :slotLevel, :spellTypeId)";
@@ -326,7 +354,7 @@ function allocateReadyWisdomSpellSlot(\PDO $pdo, $player_character_class_id, $sl
 	try {
 		$statement->execute();
 	} catch(Exception $e) {
-		$error[] = "Exception in allocateReadyWisdomSpellSlot : " . $e->getMessage();
+		$errors[] = "Exception in allocateReadyWisdomSpellSlot : " . $e->getMessage();
 	}
 }
 

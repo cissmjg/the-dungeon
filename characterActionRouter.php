@@ -128,7 +128,7 @@ switch($character_action) {
 		// Get character class name	
 		getCharacterClassName($errors, $input);
 		
-		$url = CurlHelper::buildUrl('promoteClass');
+		$url = CurlHelper::buildUrlDbioDirectory('promoteClass');
 		$params =  buildPromoteClassParams($input);
 		$raw_result = CurlHelper::performGetRequest($url, $params);
 		$result = json_decode($raw_result);
