@@ -389,7 +389,7 @@ switch($character_action) {
 		// Get Spell Slot ID
 		getSpellSlotId($errors, $input);
 
-		$url_reclaim_cantrips = CurlHelper::buildUrl('reclaimCantripSlots');
+		$url_reclaim_cantrips = CurlHelper::buildUrlDbioDirectory('reclaimCantripSlots');
 		$params_reclaim_cantrips = buildReallocateCantripsParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_reclaim_cantrips, $params_reclaim_cantrips);
 		$result = json_decode($raw_result);
