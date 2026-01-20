@@ -10,10 +10,12 @@ $pdo = require_once __DIR__ . '/DBConnection.php';
 validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/../helper/RestHeaderHelper.php';
+require_once __DIR__ . '/../helper/SpellCalculationHelper.php';
+require_once __DIR__ . '/../timeUnitOfMeasure.php';
+
 require_once __DIR__ . '/../webio/playerName.php';
 require_once __DIR__ . '/../webio/characterName.php';
-require_once __DIR__ . '/../spellCalculations.php';
-require_once __DIR__ . '/../timeUnitOfMeasure.php';
+
 
 // Get player and Character Name
 getPlayerName($errors, $input);
@@ -78,7 +80,7 @@ function getReadySpells(\PDO $pdo, $player_name, $character_name, $character_cla
 function normalizeReadySpells($spells_for_class, $character_class) {
 	$normalized_spells_for_class = [];
 	foreach($spells_for_class AS $spell_for_class) {
-        $character_level = getAdjustedCasterLevel($character_class, $character_class['character_level'], $spell_for_class['player_slot_spell_type_id']);
+        $character_level = SpellCalculationHelper::getAdjustedCasterLevel($character_class, $character_class['character_level'], $spell_for_class['player_slot_spell_type_id']);
 		$normalized_spell_for_class = [];
 		$normalized_spell_for_class['spell_type'] = $spell_for_class['spell_type'];
 		$normalized_spell_for_class['player_slot_level'] = $spell_for_class['player_slot_level'];
@@ -88,15 +90,15 @@ function normalizeReadySpells($spells_for_class, $character_class) {
 		$normalized_spell_for_class['spell_slot_id'] = $spell_for_class['spell_slot_id'];
 		$normalized_spell_for_class['has_spell_cast'] = $spell_for_class['has_spell_cast'];
 		$normalized_spell_for_class['character_class_name'] = $spell_for_class['character_class_name'];
-		$normalized_spell_for_class['spell_casting_time'] = getSpellCastingTime($spell_for_class);
-		$normalized_spell_for_class['spell_range'] = getSpellRange($spell_for_class, $character_level);
-		$normalized_spell_for_class['spell_duration'] = getSpellDuration($spell_for_class, $character_level);
+		$normalized_spell_for_class['spell_casting_time'] = SpellCalculationHelper::getSpellCastingTime($spell_for_class);
+		$normalized_spell_for_class['spell_range'] = SpellCalculationHelper::getSpellRange($spell_for_class, $character_level);
+		$normalized_spell_for_class['spell_duration'] = SpellCalculationHelper::getSpellDuration($spell_for_class, $character_level);
 		$normalized_spell_for_class['spell_area_of_effect'] = $spell_for_class['spell_area_of_effect'];
 		$normalized_spell_for_class['player_slot_casting_time_remaining'] = $spell_for_class['player_slot_casting_time_remaining'];
 		$normalized_spell_for_class['player_slot_running_time_remaining'] = $spell_for_class['player_slot_running_time_remaining'];
 
         // Calculate spell duration in terms of rounds
-        $spell_duration_in_rounds = calculateDurationInRounds($character_level, $spell_for_class['spell_duration_time_fixed'], $spell_for_class['spell_duration_time_fixed_uom'], $spell_for_class['spell_duration_time_per_level'], $spell_for_class['spell_duration_time_per_level_uom'], $spell_for_class['spell_duration_level_factor']);
+        $spell_duration_in_rounds = SpellCalculationHelper::calculateDurationInRounds($character_level, $spell_for_class['spell_duration_time_fixed'], $spell_for_class['spell_duration_time_fixed_uom'], $spell_for_class['spell_duration_time_per_level'], $spell_for_class['spell_duration_time_per_level_uom'], $spell_for_class['spell_duration_level_factor']);
         if($spell_duration_in_rounds != 0) {
             $normalized_spell_for_class['spell_duration_in_rounds'] = $spell_duration_in_rounds;
         }
