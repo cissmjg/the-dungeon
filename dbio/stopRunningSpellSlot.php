@@ -4,15 +4,15 @@ $log = [];
 $errors = [];
 $input = [];
 
-require_once __DIR__ . '/validateCredentials.php';
-$pdo = require_once __DIR__ . '/dbio/DBConnection.php';
+require_once __DIR__ . '/../validateCredentials.php';
+$pdo = require_once __DIR__ . '/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once __DIR__ . '/helper/RestHeaderHelper.php';
-require_once __DIR__ . '/webio/spellSlotId.php';
-require_once __DIR__ . '/webio/spellDuration.php';
-require_once __DIR__ . '/webio/spellCastingTime.php';
+require_once __DIR__ . '/../helper/RestHeaderHelper.php';
+require_once __DIR__ . '/../webio/spellSlotId.php';
+require_once __DIR__ . '/../webio/spellDuration.php';
+require_once __DIR__ . '/../webio/spellCastingTime.php';
 
 // Get Spell Slot ID
 getSpellSlotId($errors, $input);
@@ -51,6 +51,6 @@ function setSlotCastingTimeAndDuration(\PDO $pdo, $spell_slot_id, $casting_time,
 	try {
 		$statement->execute();
 	} catch(Exception $e) {
-		$errors[] = "Exception in setSlotCastTimeAndDuration : " . $e->getMessage();
+		$errors[] = "Exception in setSlotCastingTimeAndDuration : " . $e->getMessage();
 	}
 }
