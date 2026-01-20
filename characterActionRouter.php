@@ -515,7 +515,7 @@ switch($character_action) {
 		// Get Spell Casting Time
 		getSpellDuration($errors, $input);
 
-		$url_stop_casting_slot = CurlHelper::buildUrl('stopCastingSpellSlot');
+		$url_stop_casting_slot = CurlHelper::buildUrlDbioDirectory('stopCastingSpellSlot');
 		$params_stop_casting_slot = buildStopCastingSlotParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_stop_casting_slot, $params_stop_casting_slot);
 		$result = json_decode($raw_result);
