@@ -169,7 +169,7 @@ $craft_status_magic_selected = "";
     <div style="background-color: Aquamarine; text-align:center; border-radius: 10px;">Weapon Details</div>
     <?php if ($playerCharacterWeapon != null): ?>
     <div id="updatePlayerCharacterWeaponContainer">
-        <form name="updatePlayerCharacterWeapon" id="updatePlayerCharacterWeapon" method="POST" action="<?= CurlHelper::buildUrl('updateWeaponForPlayerCharacter'); ?>">
+        <form name="updatePlayerCharacterWeapon" id="updatePlayerCharacterWeapon" method="POST" action="<?= CurlHelper::buildUrlDbioDirectory('updateWeaponForPlayerCharacter'); ?>">
             <input type="hidden" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
             <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
             <input type="hidden" name="<?= WEAPON_PROFICIENCY_ID ?>" value="<?= $playerCharacterWeapon->getWeaponProficiencyId() ?>">
