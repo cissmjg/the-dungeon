@@ -4,16 +4,16 @@ $log = [];
 $errors = [];
 $input = [];
 
-require_once __DIR__ . '/validateCredentials.php';
-$pdo = require_once __DIR__ . '/dbio/DBConnection.php';
+require_once __DIR__ . '/../validateCredentials.php';
+$pdo = require_once __DIR__ . '/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once __DIR__ . '/helper/RestHeaderHelper.php';
-require_once __DIR__ . '/webio/castStatus.php';
-require_once __DIR__ . '/webio/spellSlotId.php';
-require_once __DIR__ . '/webio/spellDuration.php';
-require_once __DIR__ . '/webio/spellCastingTime.php';
+require_once __DIR__ . '/../helper/RestHeaderHelper.php';
+require_once __DIR__ . '/../webio/castStatus.php';
+require_once __DIR__ . '/../webio/spellSlotId.php';
+require_once __DIR__ . '/../webio/spellDuration.php';
+require_once __DIR__ . '/../webio/spellCastingTime.php';
 
 // Get Spell Slot ID
 getSpellSlotId($errors, $input);
@@ -37,7 +37,14 @@ $log[] = "Slot ID: " . $spell_slot_id;
 $log[] = "cast status : " . $cast_status;
 $log[] = "spell duration : " . $spell_duration;
 $log[] = "spell casting time : " . $spell_casting_time;
+
 setSlotCastStatus($pdo, $spell_slot_id, $cast_status, $errors);
+
+if (count($errors) > 0) {
+	RestHeaderHelper::emitRestHeaders();
+	echo json_encode($errors);
+}
+
 setSlotCastingTimeAndDuration($pdo, $spell_slot_id, $spell_casting_time, $spell_duration, $errors);
 
 RestHeaderHelper::emitRestHeaders();

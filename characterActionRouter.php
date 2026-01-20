@@ -446,7 +446,7 @@ switch($character_action) {
 		// Get Spell Casting Time
 		getSpellDuration($errors, $input);
 
-		$url_cast_slot = CurlHelper::buildUrl('setSlotCastStatus');
+		$url_cast_slot = CurlHelper::buildUrlDbioDirectory('setSlotCastStatus');
 		$params_cast_slot = buildCastSlotParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_cast_slot, $params_cast_slot);
 		$result = json_decode($raw_result);
@@ -481,7 +481,7 @@ switch($character_action) {
 		// Get Spell Casting Time
 		getSpellDuration($errors, $input);
 
-		$url_reset_slot = CurlHelper::buildUrl('setSlotCastStatus');
+		$url_reset_slot = CurlHelper::buildUrlDbioDirectory('setSlotCastStatus');
 		$params_reset_slot = buildResetSlotParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_reset_slot, $params_reset_slot);
 		$result = json_decode($raw_result);
