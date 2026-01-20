@@ -636,7 +636,7 @@ switch($character_action) {
 		// Get hours of sleep
 		getHoursOfSleep($errors, $input);
 
-		$url_adjust_spell_points = CurlHelper::buildUrl('recoverSpellPointsBySleep');
+		$url_adjust_spell_points = CurlHelper::buildUrlDbioDirectory('recoverSpellPointsBySleep');
 		$params_adjust_spell_points = buildRecoverSpellPointsParams($input);		
 		$raw_result = CurlHelper::performGetRequest($url_adjust_spell_points, $params_adjust_spell_points);
 		$result = json_decode($raw_result);

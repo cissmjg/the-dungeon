@@ -1,21 +1,22 @@
 <?php
 
-require_once __DIR__ . '/env.php';
-require_once __DIR__ . '/validateCredentials.php';
-$pdo = require_once __DIR__ . '/dbio/DBConnection.php';
+require_once __DIR__ . '/../env.php';
+require_once __DIR__ . '/../validateCredentials.php';
+$pdo = require_once __DIR__ . '/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once __DIR__ . '/helper/RestHeaderHelper.php';
-require_once __DIR__ . '/webio/playerName.php';
-require_once __DIR__ . '/webio/characterName.php';
-require_once __DIR__ . '/webio/characterLevel.php';
-require_once __DIR__ . '/webio/hoursOfSleep.php';
+require_once __DIR__ . '/../helper/RestHeaderHelper.php';
+require_once __DIR__ . '/../webio/playerName.php';
+require_once __DIR__ . '/../webio/characterName.php';
+require_once __DIR__ . '/../webio/characterLevel.php';
+require_once __DIR__ . '/../webio/hoursOfSleep.php';
 
 // This module decreases available spell points for a spell level being cast
 
 $log = [];
 $errors = [];
+$input = [];
 
 // Filter and sanitize IDs
 getPlayerName($errors, $input);
