@@ -358,7 +358,7 @@ switch($character_action) {
 			}
 		}
 			
-		$url_update_ready_slot = CurlHelper::buildUrl('updateReadySpellSlot');
+		$url_update_ready_slot = CurlHelper::buildUrlDbioDirectory('updateReadySpellSlot');
 		$params_update_ready_slot = buildUpdateReadySlotParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_update_ready_slot, $params_update_ready_slot);
 
