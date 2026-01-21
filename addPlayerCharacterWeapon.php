@@ -104,21 +104,29 @@ $craft_status_artisan_selected = "";
 $craft_status_mastercraft_selected = "";
 $craft_status_magic_selected = "";
 
+$page_title = $input[CHARACTER_NAME] . ' Weapons';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $input[CHARACTER_NAME] ?> Weapons</title>
-	<link rel="stylesheet" href="dnd-default.css">
+    <meta name="Cache-Control" content="no-store">
+
+    <title><?= $page_title ?></title>
+
+    <link rel="stylesheet" href="dnd-default.css">
 	<link rel="stylesheet" href="characterSheet.css">
+    <link rel="stylesheet" href="addPlayerCharacterWeapon.css">
+
     <script src="../js/jquery-1.12.4.min.js"></script>
     <script src="../js/jquery-ui.min.js"></script>
+    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
+
     <script src="./env.js" type="module"></script>
     <script src="./RestHelper.js" type="module"></script>
+    <script src="./characterSheetContainer.js"></script>
     <script src="./playerCharacterWeaponIO.js" type="module"></script>
-    <script src="characterSheetContainer.js"></script>
     <script type="module">
         import { populateWeaponLocation, craftStatusChanged, updateHitBonus, updateDamageBonus, populateDefaultHitDamageBonuses } from './playerCharacterWeaponIO.js';
 
@@ -129,39 +137,7 @@ $craft_status_magic_selected = "";
         window.updateDamageBonus = updateDamageBonus;
         window.populateDefaultHitDamageBonuses = populateDefaultHitDamageBonuses;
     </script>
-    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-    <meta name="Cache-Control" content="no-store">
     <script src="submitTheForm.js"></script>
-    <style>
-        label {
-            color: DarkSlateGrey;
-            font-size: 14px;
-        }
-
-        .inputRow {
-            padding-bottom: 3px;
-        }
-
-        .masterCraftSection {
-            width: 350px; 
-            border: 2px solid green; 
-            margin-top: 10px; 
-            padding-top: 3px; 
-            margin-bottom: 10px; 
-            padding-bottom: 3px; 
-            padding-left: 3px;
-        }
-
-        .magicSection {
-            width: 400px; 
-            border: 2px solid green; 
-            margin-top: 10px; 
-            padding-top: 3px; 
-            margin-bottom: 10px; 
-            padding-bottom: 3px; 
-            padding-left: 3px;
-        }
-    </style>
 </head>
 <body>
     <div style="width: 100%;"><span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span></div>
