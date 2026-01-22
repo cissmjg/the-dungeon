@@ -17,6 +17,7 @@ require_once __DIR__ . '/classes/ActionBarHelper.php';
 require_once __DIR__ . '/webio/craftStatus.php';
 require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/weaponProficiencyId.php';
+
 require_once __DIR__ . '/fa/faDeleteIcon.php';
 
 require_once __DIR__ . '/webio/playerName.php';
@@ -36,19 +37,28 @@ $character_summary_stats = $character_summary_renderer->render($character_summar
 $action_bar = ActionBarHelper::buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $weapon_list = getWeaponSummaryForPlayerCharacter($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+
+$page_title = $input[CHARACTER_NAME] . ' Weapons';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $input[CHARACTER_NAME] ?> Weapons</title>
-	<link rel="stylesheet" href="dnd-default.css">
-    <link rel="stylesheet" href="characterSheet.css">
+    <meta name="Cache-Control" content="no-store">
+
+    <title><?= $page_title ?></title>
+
     <script src="../js/jquery-1.12.4.min.js"></script>
     <script src="../js/jquery-ui.min.js"></script>
+    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="dnd-default.css">
+
+    <link rel="stylesheet" href="togglePanel.css">
+    <script type="module" src="togglePanel.js"></script>
+
     <script src="playerCharacterWeaponMain.js" type="module"></script>
-    <script src="characterSheetContainer.js"></script>
     <script type="module">
         import { populateWeaponList, weaponListChanged, confirmPlayerCharacterWeaponDelete } from './playerCharacterWeaponMain.js';
 
@@ -57,9 +67,6 @@ $weapon_list = getWeaponSummaryForPlayerCharacter($pdo, $input[PLAYER_NAME], $in
         window.weaponListChanged = weaponListChanged;
         window.confirmPlayerCharacterWeaponDelete = confirmPlayerCharacterWeaponDelete;
     </script>
-    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-    <meta name="Cache-Control" content="no-store">
-    <script src="submitTheForm.js"></script>
     <style>
         label {
             color: lightgray;
@@ -76,11 +83,11 @@ $weapon_list = getWeaponSummaryForPlayerCharacter($pdo, $input[PLAYER_NAME], $in
         <input type="hidden" name="<?= PLAYER_CHARACTER_WEAPON_ID ?>" id="<?= PLAYER_CHARACTER_WEAPON_ID ?>" value="">
     </form>
     <div style="width: 100%; margin-bottom: 3px;"><span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span></div>
-    <div class="characterSheetFeature">
+    <div class="togglePanel">
         <a href="#">
-            <i class="fa fa-plus"></i> Add a weapon
+            <span class="fa fa-plus"></span> Add a weapon
         </a>
-        <div class="characterSheetFeatureContent">
+        <div class="togglePanelContent">
             <div style="background-color: Aquamarine; text-align:center; border-radius: 10px;">Select Weapon</div>
             <div style="text-align: center;">
                 <form name="selectWeapon" id="selectWeapon" method="POST" action="<?= CurlHelper::buildUrl('addPlayerCharacterWeapon') ?>">
