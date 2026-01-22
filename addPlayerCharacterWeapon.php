@@ -115,29 +115,17 @@ $page_title = $input[CHARACTER_NAME] . ' Weapons';
 
     <title><?= $page_title ?></title>
 
-    <link rel="stylesheet" href="dnd-default.css">
-	<link rel="stylesheet" href="characterSheet.css">
-    <link rel="stylesheet" href="addPlayerCharacterWeapon.css">
-
     <script src="../js/jquery-1.12.4.min.js"></script>
     <script src="../js/jquery-ui.min.js"></script>
     <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
 
-    <script src="./env.js" type="module"></script>
-    <script src="./RestHelper.js" type="module"></script>
-    <script src="./characterSheetContainer.js"></script>
-    <script src="./playerCharacterWeaponIO.js" type="module"></script>
-    <script type="module">
-        import { populateWeaponLocation, craftStatusChanged, updateHitBonus, updateDamageBonus, populateDefaultHitDamageBonuses } from './playerCharacterWeaponIO.js';
+    <link rel="stylesheet" href="dnd-default.css">
 
-        // Attach to global scope
-        window.populateWeaponLocation = populateWeaponLocation;
-        window.craftStatusChanged = craftStatusChanged;
-        window.updateHitBonus = updateHitBonus;
-        window.updateDamageBonus = updateDamageBonus;
-        window.populateDefaultHitDamageBonuses = populateDefaultHitDamageBonuses;
-    </script>
-    <script src="submitTheForm.js"></script>
+    <link rel="stylesheet" href="togglePanel.css">
+    <script type="module" src="togglePanel.js"></script>
+
+    <script src="addPlayerCharacterWeapon.js" type="module"></script>
+    <link href="addPlayerCharacterWeapon.css" rel="stylesheet">
 </head>
 <body>
     <div style="width: 100%;"><span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span></div>
