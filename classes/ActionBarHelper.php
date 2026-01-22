@@ -27,7 +27,7 @@ class ActionBarHelper {
         $url_view_character = CurlHelper::addParameter($url_view_character, PLAYER_NAME, $player_name);
         $url_view_character = CurlHelper::addParameter($url_view_character, CHARACTER_NAME, $character_name);
 
-        $icon_view_character = '<span class="fa-solid fa-user" style="color: black; cursor: pointer; title="View ' . $character_name . '"></span>';
+        $icon_view_character = '<span class="fa-solid fa-user" style="color: black; cursor: pointer;" title="View ' . $character_name . '"></span>';
         $anchor_view_character = '<a href="' . $url_view_character . '">' . $icon_view_character . '</a>';
 
         return $anchor_view_character;

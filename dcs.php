@@ -54,7 +54,7 @@ $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 	<script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?>
+<span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span>
 <div class="character_sheet_container">
 	<div class="character_sheet_column">
 		<table cellspacing="0" class="tableLayout">
