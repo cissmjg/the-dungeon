@@ -13,7 +13,7 @@ require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
-require_once __DIR__ . '/classes/ActionBarHelper.php';
+require_once __DIR__ . '/helper/ActionBarHelper.php';
 require_once __DIR__ . '/webio/craftStatus.php';
 require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/weaponProficiencyId.php';

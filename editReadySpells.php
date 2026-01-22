@@ -19,7 +19,7 @@ require_once __DIR__ . '/webio/spellDuration.php';
 require_once __DIR__ . '/webio/spellCastingTime.php';
 require_once __DIR__ . '/webio/removeEmpty.php';
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
-require_once __DIR__ . '/classes/ActionBarHelper.php';
+require_once __DIR__ . '/helper/ActionBarHelper.php';
 require_once __DIR__ . '/helper/HtmlHelper.php';
 
 require_once __DIR__ . '/fa/faCancelIcon.php';
