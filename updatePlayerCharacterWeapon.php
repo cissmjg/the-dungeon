@@ -111,58 +111,21 @@ $craft_status_magic_selected = "";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $input[CHARACTER_NAME] ?> Weapons</title>
-	<link rel="stylesheet" href="dnd-default.css">
-	<link rel="stylesheet" href="characterSheet.css">
+    <meta name="Cache-Control" content="no-store">
+
+    <title><?= $page_title ?></title>
+
     <script src="../js/jquery-1.12.4.min.js"></script>
     <script src="../js/jquery-ui.min.js"></script>
-    <script src="./env.js" type="module"></script>
-    <script src="./RestHelper.js" type="module"></script>
-    <script src="./playerCharacterWeaponIO.js" type="module"></script>
-    <script src="characterSheetContainer.js"></script>
-    <script type="module">
-        import { populateWeaponLocation, craftStatusChanged, updateHitBonus, updateDamageBonus, populateDefaultHitDamageBonuses } from './playerCharacterWeaponIO.js';
-
-        // Attach to global scope
-        window.populateWeaponLocation = populateWeaponLocation;
-        window.craftStatusChanged = craftStatusChanged;
-        window.updateHitBonus = updateHitBonus;
-        window.updateDamageBonus = updateDamageBonus;
-        window.populateDefaultHitDamageBonuses = populateDefaultHitDamageBonuses;
-    </script>
     <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-    <meta name="Cache-Control" content="no-store">
-    <script src="submitTheForm.js"></script>
-    <style>
-        label {
-            color: DarkSlateGrey;
-            font-size: 14px;
-        }
 
-        .inputRow {
-            padding-bottom: 3px;
-        }
+	<link rel="stylesheet" href="dnd-default.css">
 
-        .masterCraftSection {
-            width: 350px; 
-            border: 2px solid green; 
-            margin-top: 10px; 
-            padding-top: 3px; 
-            margin-bottom: 10px; 
-            padding-bottom: 3px; 
-            padding-left: 3px;
-        }
+    <link rel="stylesheet" href="togglePanel.css">
+    <script type="module" src="togglePanel.js"></script>
 
-        .magicSection {
-            width: 400px; 
-            border: 2px solid green; 
-            margin-top: 10px; 
-            padding-top: 3px; 
-            margin-bottom: 10px; 
-            padding-bottom: 3px; 
-            padding-left: 3px;
-        }
-    </style>
+    <script src="updatePlayerCharacterWeapon.js" type="module"></script>
+	<link href="updatePlayerCharacterWeapon.css" rel="stylesheet" >
 </head>
 <body>
     <div style="width: 100%;"><span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span></div>

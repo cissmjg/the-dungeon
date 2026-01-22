@@ -1,7 +1,3 @@
-import { buildURL, addParameter } from './RestHelper.js';
-
-const initialWeaponSelectPrompt = "[Select a Weapon]";
-
 export function populateWeaponLocation(weaponLocationHintsName, weaponLocationName) {
     const jqWeaponLocationHintsName = '#' + weaponLocationHintsName;
     const jqWeaponLocationName = '#' + weaponLocationName;
@@ -150,4 +146,28 @@ export function populateDefaultHitDamageBonuses(magicBonusId, meleeHitBonusId, m
     $(jqMeleeDamageBonusId).val(magicBonus);
     $(jqMissileHitBonusId).val(magicBonus);
     $(jqMissileDamageBonusId).val(magicBonus);
+}
+
+export function showRollModifierSectionClick(contentID, contentIconID) {
+    const jqRollModifierSectionElement = '#' + contentID;
+    let theRollModifierSectionElement = $(jqRollModifierSectionElement);
+
+    if (theRollModifierSectionElement.is(":hidden")) {
+        theRollModifierSectionElement.show();
+    } else {
+        theRollModifierSectionElement.hide();
+    }
+    
+    const jqContentIconId = "#" + contentIconID;
+    
+    if ($(jqContentIconId).hasClass("fa-chevron-down")) {
+        $(jqContentIconId)
+          .removeClass("fa-chevron-down")
+          .addClass("fa-chevron-up");
+    }
+    else {
+        $(jqContentIconId)
+          .removeClass("fa-chevron-up")
+          .addClass("fa-chevron-down");
+    }
 }
