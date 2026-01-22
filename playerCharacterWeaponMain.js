@@ -42,3 +42,7 @@ export function confirmPlayerCharacterWeaponDelete(formId, playerCharacterWeapon
     $(jqPlayerCharacterWeaponId).val(playerCharacterWeaponIdValue);
     $(jqFormId).submit();
 }
+
+window.populateWeaponList = populateWeaponList;
+window.weaponListChanged = weaponListChanged;
+window.confirmPlayerCharacterWeaponDelete = confirmPlayerCharacterWeaponDelete;

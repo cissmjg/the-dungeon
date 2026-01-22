@@ -59,21 +59,7 @@ $page_title = $input[CHARACTER_NAME] . ' Weapons';
     <script type="module" src="togglePanel.js"></script>
 
     <script src="playerCharacterWeaponMain.js" type="module"></script>
-    <script type="module">
-        import { populateWeaponList, weaponListChanged, confirmPlayerCharacterWeaponDelete } from './playerCharacterWeaponMain.js';
-
-        // Attach to global scope
-        window.populateWeaponList = populateWeaponList;
-        window.weaponListChanged = weaponListChanged;
-        window.confirmPlayerCharacterWeaponDelete = confirmPlayerCharacterWeaponDelete;
-    </script>
-    <style>
-        label {
-            color: lightgray;
-            font-size: 14px;
-            vertical-align: sub;
-        }
-    </style>
+	<link href="playerCharacterWeaponMain.css" rel="stylesheet" >
 </head>
 <body>
     <form name="deleteWeapon" id="deleteWeapon" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl() ?>">
