@@ -48,15 +48,22 @@ $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Cache-Control" content="no-store">
+
     <title><?= $page_title ?></title>
-	<link rel="stylesheet" href="dnd-default.css">
-	<link rel="stylesheet" href="characterSheet.css">
-	<script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
+
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="dnd-default.css">
+
+    <link href="dcs.css" rel="stylesheet">
 </head>
 <body>
 <span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span>
-<div class="character_sheet_container">
-	<div class="character_sheet_column">
+<div class="characterSheetContainer">
+	<div class="characterSheetColumn">
 		<table cellspacing="0" class="tableLayout">
 			<tr>
 				<td colspan="4" class="tableHeader"><?= $input[CHARACTER_NAME] ?></td>
@@ -89,8 +96,8 @@ $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 				<td colspan="2" class="tableHeader">Class Abilities</td>
 			</tr>
 			<tr>
-				<td width=75% class="tableHeader">Type</td>
-				<td width=25% class="tableHeader">Total</td>
+				<td width="75%" class="tableHeader">Type</td>
+				<td width="25%" class="tableHeader">Total</td>
 			</tr>
 		</table>
 		<div>&nbsp;</div>
@@ -99,8 +106,8 @@ $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 				<td colspan="2" class="tableHeader">Saving Throws</td>
 			</tr>
 			<tr>
-				<td width=75% class="tableHeader">Type</td>
-				<td width=25% class="tableHeader">Total</td>
+				<td width="75%" class="tableHeader">Type</td>
+				<td width="25%" class="tableHeader">Total</td>
 			</tr>
 		</table>
 		<div>&nbsp;</div>
@@ -109,12 +116,12 @@ $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 				<td colspan="2" class="tableHeader">Racial Abilities</td>
 			</tr>
 			<tr>
-				<td width=75% class="tableHeader">Type</td>
-				<td width=25% class="tableHeader">Total</td>
+				<td width="75%" class="tableHeader">Type</td>
+				<td width="25%" class="tableHeader">Total</td>
 			</tr>
 		</table>
 	</div>
-	<div class="character_sheet_column">
+	<div class="characterSheetColumn">
 		<table cellspacing="0" class="tableLayout">
 			<tr>
 				<td colspan="6" class="tableHeader">Attributes</td>
@@ -177,48 +184,48 @@ $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 			</tr>
 		</table>
 		<div>&nbsp;</div>
-			<table cellspacing=0 class="tableLayout">
+			<table cellspacing="0" class="tableLayout">
 				<tr>
-					<td colspan=5 class="tableHeader">Character</td>
+					<td colspan="5" class="tableHeader">Character</td>
 				</tr>
 				<tr>
 					<td class="attributeLabel">Class</td>
 					<td class="attributeValue"><?= formatClasses($character_summary) ?></td>
-					<td width=15% class="attributeValue"> &nbsp; </td>
+					<td width="15%" class="attributeValue"> &nbsp; </td>
 					<td class="attributeLabel">Alignment</td>
 					<td class="attributeValue"><?= $input[CHARACTER_ALIGNMENT] ?></td>
 				</tr>
 				<tr>
 					<td class="attributeLabel">Level</td>
 					<td class="attributeValue"><?= formatLevels($character_summary, $nf) ?></td>
-					<td width=15% class="attributeValue"> &nbsp; </td>
+					<td width="15%" class="attributeValue"> &nbsp; </td>
 					<td class="attributeLabel">Religion</td>
 					<td class="attributeValue"><?= $input[CHARACTER_RELIGION] ?></td>
 				</tr>
 				<tr>
 					<td class="attributeLabel">Race</td>
 					<td class="attributeValue"><?= $input[CHARACTER_RACE] ?></td>
-					<td width=15% class="attributeValue"> &nbsp; </td>
+					<td width="15%" class="attributeValue"> &nbsp; </td>
 					<td class="attributeLabel">Deity</td>
 					<td class="attributeValue"><?= $input[CHARACTER_DEITY] ?></td>
 				</tr>
 				<tr>
 					<td class="attributeLabel">Movement</td>
-					<td class="attributeValue"><?= formatMovement($input[CHARACTER_MOVEMENT]) ?></td>
-					<td width=15% class="attributeValue"> &nbsp; </td>
+					<td class="attributeValue"><?= formatMovement(character_movement: $input[CHARACTER_MOVEMENT]) ?></td>
+					<td width="15%" class="attributeValue"> &nbsp; </td>
 					<td class="attributeLabel">Hometown</td>
 					<td class="attributeValue"><?= $input[CHARACTER_HOMETOWN] ?></td>
 				</tr>
 				<tr>
 					<td class="attributeLabel">Hit Points</td>
 					<td class="attributeValue"><?= $character_summary->getHitPoints() ?></td>
-					<td width=15% class="attributeValue"> &nbsp; </td>
+					<td width="15%" class="attributeValue"> &nbsp; </td>
 					<td class="attributeLabel">Hit Die</td>
 					<td class="attributeValue"><?= $input[CHARACTER_HIT_DIE] ?></td>
 				</tr>
 				<tr>
 					<td colspan=2 class="attributeLabel">Experience Points</td>
-					<td colspan=3 class="attributeLabel"><?= formatExperiencePoints($input[CHARACTER_CLASSES]) ?></td>
+					<td colspan="3" class="attributeLabel"><?= formatExperiencePoints($input[CHARACTER_CLASSES]) ?></td>
 				</tr>
 			</table>
 			<div>&nbsp;</div>
@@ -227,20 +234,20 @@ $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 					<td colspan="2" class="tableHeader">Weapons and Skills</td>
 				</tr>
 				<tr>
-					<td width=50% class="attributeLabel">&nbsp;</td>
-					<td width=50% class="attributeLabel">&nbsp;</td>
+					<td width="50%" class="attributeLabel">&nbsp;</td>
+					<td width="50%" class="attributeLabel">&nbsp;</td>
 				</tr>
 			</table>
 			<div>&nbsp;</div>
-			<table cellspacing=0 class="tableLayout">
+			<table cellspacing="0" class="tableLayout">
 				<tr>
-					<td colspan=4 class="tableHeader">Valuables</td>
+					<td colspan="4" class="tableHeader">Valuables</td>
 				</tr>
 				<tr>
-					<td width=25% class="attributeLabel">Copper</td>
-					<td width=25% class="attributeValue">&nbsp;</td>
-					<td width=25% class="attributeLabel">Platinum</td>
-					<td width=25% class="attributeValue">&nbsp;</td>
+					<td width="25%" class="attributeLabel">Copper</td>
+					<td width="25%" class="attributeValue">&nbsp;</td>
+					<td width="25%" class="attributeLabel">Platinum</td>
+					<td width="25%" class="attributeValue">&nbsp;</td>
 				</tr>
 				<tr>
 					<td class="attributeLabel">Silver</td>
@@ -256,16 +263,16 @@ $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 				</tr>
 				<tr>
 					<td class="attributeLabel">Other</td>
-					<td colspan=3 class="attributeValue">&nbsp;</td>
+					<td colspan="3" class="attributeValue">&nbsp;</td>
 				</tr>
 			</table>
 			<div>&nbsp;</div>
-			<table cellspacing=0 class="tableLayout">
+			<table cellspacing="0" class="tableLayout">
 				<tr>
-					<td width=25% class="tableHeader">Backpack</td>
-					<td width=25% class="tableHeader">Left</td>
-					<td width=25% class="tableHeader">Center</td>
-					<td width=25% class="tableHeader">Right</td>
+					<td width="25%" class="tableHeader">Backpack</td>
+					<td width="25%" class="tableHeader">Left</td>
+					<td width="25%" class="tableHeader">Center</td>
+					<td width="25%" class="tableHeader">Right</td>
 				</tr>
 			</table>
 		</div>
