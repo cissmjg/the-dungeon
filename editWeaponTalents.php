@@ -47,10 +47,15 @@ $add_weapon_url = CurlHelper::buildCharacterActionRouterUrl();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $input[CHARACTER_NAME] ?> Weapon Talents</title>
-	<link rel="stylesheet" href="dnd-default.css">
-    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
     <meta name="Cache-Control" content="no-store">
+
+    <title><?= $page_title ?></title>
+
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="dnd-default.css">
 </head>
 <body>
 <span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?>

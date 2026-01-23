@@ -67,6 +67,7 @@ $character_summary_stats = $character_summary_renderer->render($character_summar
 
 $prev_spell_level = -1;
 
+$page_title = $input[CHARACTER_NAME] . ' spells';
 /*
     spell_type
     player_slot_level
@@ -85,12 +86,17 @@ $prev_spell_level = -1;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $input[CHARACTER_NAME] ?> Spells</title>
-	<link rel="stylesheet" href="dnd-default.css">
-    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
     <meta name="Cache-Control" content="no-store">
-    <script src="submitTheForm.js" type="text/javascript"></script>
-    <script src="editReadySpells.js" type="text/javascript"></script>
+
+    <title><?= $page_title ?></title>
+
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="dnd-default.css">
+
+    <script src="editReadySpells.js" type="module"></script>
 </head>
 <body>
     <form name="slot-action-form" id="slot-action-form" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl()?>">
@@ -180,7 +186,7 @@ function buildClassSpecificSpellIcon($spellType, $updateFormId, $updateFormChara
         $spellActionIcon = new FaPraySpellIcon();
     }
 
-    $spellActionIcon->setOnClickJsFunction('submitTheForm');
+    $spellActionIcon->setOnClickJsFunction('submitTheCharacterActionForm');
     $spellActionIcon->addOnclickJsParameter($updateFormId);
     $spellActionIcon->addOnclickJsParameter($updateFormCharacterActionId);
     $spellActionIcon->addOnclickJsParameter('updateReadySpellSlot');
@@ -462,7 +468,7 @@ function buildSlotActionButtonTag($slotActionIcon, $slotAction, $iconTitleText, 
 
 function buildReclaimCantripIcon($formId, $characterActionId) {
     $reclaimCantripIcon = new FaReclaimCantripIcon();
-    $reclaimCantripIcon->setOnClickJsFunction('submitTheForm');
+    $reclaimCantripIcon->setOnClickJsFunction('submitTheCharacterActionForm');
     $reclaimCantripIcon->addOnclickJsParameter($formId);
     $reclaimCantripIcon->addOnclickJsParameter($characterActionId);
     $reclaimCantripIcon->addOnclickJsParameter('reclaimCantripSlots');

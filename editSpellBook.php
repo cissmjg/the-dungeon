@@ -89,17 +89,25 @@ foreach($spell_pool_entries AS $spell_pool_entry) {
     }
 }
 
+$page_title = "Edit Spellbook";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit SpellBook</title>
+    <meta name="Cache-Control" content="no-store">
+
+    <title><?= $page_title ?></title>
+
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
     <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="submitTheForm.js"></script>
-    <script type="text/javascript" src="editSpellBook.js"></script>
-	<link rel="stylesheet" href="dnd-default.css">
+
+    <link rel="stylesheet" href="dnd-default.css">
+
+    <script src="editSpellBook.js" type="module"></script>
 </head>
 <body>
 <?php
@@ -244,7 +252,7 @@ function getEditPage(&$errors, &$input) {
 }
 
 function buildActionBar($player_name, $character_name, $character_class_name, $edit_page) {
-    $user_action_bar = ActionBarHelper::buildActionBar($player_name, $character_name) . PHP_EOL;
+    $user_action_bar = ActionBarHelper::buildUserViewIcon($player_name, $character_name) . PHP_EOL;
 
     $ready_spells_action_bar = '';
     if (getClassID($character_class_name) == GREATER_MAGE) {
@@ -294,7 +302,7 @@ function buildUpdateExistingSlotIcon($spell_pool_id, $spell_pool_form_id, $form_
 
 function buildUpdateSpellBookButtonTag($form_id_name, $form_character_action_id, $submit_icon_id, $spell_pool_id) {
     $cast_spell_icon = new FaUpdateSpellBookIcon();
-    $cast_spell_icon->setOnClickJsFunction('submitTheForm');
+    $cast_spell_icon->setOnClickJsFunction('submitTheCharacterActionForm');
     $cast_spell_icon->addOnclickJsParameter($form_id_name);
     $cast_spell_icon->addOnclickJsParameter($form_character_action_id);
     $cast_spell_icon->addOnclickJsParameter(UPDATE_SPELL_POOL_ACTION);

@@ -54,18 +54,25 @@ $character_summary_stats = $character_summary_renderer->render($character_summar
 
 $extra_slot_pc_id_by_type = [];
 $extra_slot_max_for_types = getExtraSlotMaxForTypes($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $character_summary->getCharacterClasses(), $extra_slot_pc_id_by_type, $errors);
+
+$page_title = $input[CHARACTER_NAME] . ' extra slots';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $input[CHARACTER_NAME] ?> Extra Slots</title>
-	<link rel="stylesheet" href="dnd-default.css">
-    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
     <meta name="Cache-Control" content="no-store">
-    <script src="editExtraSlots.js" type="text/javascript"></script>
-    <script src="submitTheForm.js" type="text/javascript"></script>
+
+    <title><?= $page_title ?></title>
+
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="dnd-default.css">
+
+    <script src="editExtraSlots.js" type="module"></script>
 </head>
 <body>
     <form name="xsDeallocate" id="xsDeallocate" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl()?>">
@@ -198,12 +205,12 @@ function buildDeleteExtraSlotIcon($extra_slot_id) {
 
 function buildAddExtraSlotIcon($form_id, $character_action_id) {
     $addExtraSlotIcon = new FaAddIcon();
-    $addExtraSlotIcon->setOnClickJsFunction('submitTheForm');
+    $addExtraSlotIcon->setOnClickJsFunction('submitTheCharacterActionForm');
     $addExtraSlotIcon->addOnclickJsParameter($form_id);
     $addExtraSlotIcon->addOnclickJsParameter($character_action_id);
     $addExtraSlotIcon->addOnclickJsParameter(ALLOCATE_CHARACTER_ACTION);
 
-    return $addExtraSlotIcon->build();;
+    return $addExtraSlotIcon->build();
 }
 
 function buildAddExtraSlotForm($form_id, $player_name, $character_name, $character_action_id, $player_character_class_id, $extra_slot_spell_type, $extra_slot_max_level, $nf) {

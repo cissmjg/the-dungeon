@@ -1,4 +1,6 @@
-function castGMSpell(spellCatalogIdValue, spellLevelValue, spellDurationValue, spellCastingTimeValue) {
+import { submitTheCharacterActionForm } from './submitTheCharacterActionForm.js';
+
+export function castGMSpell(spellCatalogIdValue, spellLevelValue, spellDurationValue, spellCastingTimeValue) {
     let jqSpellCatalogIdTag = '#spellCatalogId';
     $(jqSpellCatalogIdTag).val(spellCatalogIdValue);
 
@@ -11,18 +13,18 @@ function castGMSpell(spellCatalogIdValue, spellLevelValue, spellDurationValue, s
     let jqSpellCastingTag = "#spellCastingTime";
     $(jqSpellCastingTag).val(spellCastingTimeValue);
 
-    submitTheForm('slot-action-form', 'castGMSpellCharacterAction', 'castGMSpell');
+    submitTheCharacterActionForm('slot-action-form', 'castGMSpellCharacterAction', 'castGMSpell');
 }
 
-function recoverSpellPoints() {
+export function recoverSpellPoints() {
     let jqInputHoursOfSleep = $("#hoursOfSleepInput").val();
     let jqHoursOfSleepTag = "#hoursOfSleep";
     $(jqHoursOfSleepTag).val(jqInputHoursOfSleep);
 
-    submitTheForm('recover-spell-points', 'recoverSpellPointsCharacterAction', 'recoverSpellPointsBySleep');
+    submitTheCharacterActionForm('recover-spell-points', 'recoverSpellPointsCharacterAction', 'recoverSpellPointsBySleep');
 }
 
-function showCantrip() {
+export function showCantrip() {
     let cantripSlotID = $('#available_cantrip').val();
     if (cantripSlotID == "slot-action-row-select") {
             return;
@@ -36,9 +38,14 @@ function showCantrip() {
     }
 }
 
-function submitStopActionForm(spell_slot_id, character_action) {
+export function submitStopActionForm(spell_slot_id, character_action) {
     let spellslotIdTag = $("#spellSlotId");
     spellslotIdTag.val(spell_slot_id);
 
-    submitTheForm("stop-action-form", "stopGMSpellCharacterAction", character_action);
+    submitTheCharacterActionForm("stop-action-form", "stopGMSpellCharacterAction", character_action);
 }
+
+window.castGMSpell = castGMSpell;
+window.recoverSpellPoints = recoverSpellPoints;
+window.showCantrip = showCantrip;
+window.submitStopActionForm = submitStopActionForm;

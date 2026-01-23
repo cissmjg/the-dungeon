@@ -21,8 +21,6 @@ require_once __DIR__ . '/webio/spellCastingTime.php';
 require_once __DIR__ . '/webio/hoursOfSleep.php';
 require_once __DIR__ . '/webio/spellSlotId.php';
 
-require_once 'hiddenTag.php';
-
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/characterLevel.php';
@@ -80,78 +78,27 @@ $action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $character_level = getCharacterLevelFromCharacterSummary($character_summary->getCharacterClasses());
 $cantrip_select_html = '<select id="available_cantrip" name="available_cantrip" onchange="showCantrip()" style="font-size: 14pt;">' . PHP_EOL;
+
+$page_title = $input[CHARACTER_NAME] . ' Spells';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $input[CHARACTER_NAME] ?> Spells</title>
-	<link rel="stylesheet" href="dnd-default.css">
-    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
     <meta name="Cache-Control" content="no-store">
+
+    <title><?= $page_title ?></title>
+
     <script src="../js/jquery-1.12.4.min.js"></script>
     <script src="../js/jquery-ui.min.js"></script>
-    <script src="editReadyGMSpells.js" type="text/javascript"></script>
-    <script src="submitTheForm.js" type="text/javascript"></script>
-    <style>
-        .column_left {
-            float: left;
-            width: 33.33%;
-            text-align: left;
-            background-color: PaleTurquoise;
-            /* display: inline-block; */
-        }
+    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
 
-        .column_mid {
-            float: left;
-            width: 33.33%;
-            text-align: center;
-            background-color: PaleTurquoise;
-            /* display: inline-block; */
-        }
+    <link rel="stylesheet" href="dnd-default.css">
 
-        .column_right {
-            float: left;
-            width: 33.33%;
-            text-align: right;
-            background-color: PaleTurquoise;
-            /* display: inline-block; */
-        }
-
-        .row {
-            width: 100%;
-            padding-bottom: 2px;
-            padding-top: 2px;
-            display: flex;
-            flex-direction: row;
-            background-color: PaleTurquoise;
-        }
-
-        /* Clear floats after the columns */
-        row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        .positive_spell_points {
-            padding-left: 3px;
-            font-size: 20pt;
-            color: blue;
-        }
-
-        .negative_spell_points {
-            padding-left: 3px;
-            font-size: 20pt;
-            color: red;
-        }
-
-        .recover_spell_points {
-            font-size: 20pt;
-            padding-right: 3px;
-        }
-    </style>
+    <script src="editReadyGMSpells.js" type="module"></script>
+    <link href="editReadyGMSpells.css" rel="stylesheet">
 </head>
 <body>
     <form name="slot-action-form" id="slot-action-form" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl() ?>">
@@ -441,10 +388,6 @@ function buildSpellLevelHeader($spellLevel, $nf) {
 
     $header = '<tr><th>' . $spellLevelDesc . '</th><th>Name</th><th>CT</th><th>Rng</th><th>Dur</th><th>AoE</th></tr>';
     return $header;
-}
-
-function getBackgroundStyle($spellType) {
-    return "background-color:rgba(0, 0, 255, 0.15)";
 }
 
 function buildActionBar($playerName, $characterName) {

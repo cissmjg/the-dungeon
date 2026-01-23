@@ -1,101 +1,64 @@
-        function hideOtherElements(all_occupied_slots, submit_icon_id, cancel_icon_id, hide_element_icon_id, update_existing_slot_submit_icon_id) {
+import { submitTheCharacterActionForm } from './submitTheCharacterActionForm.js';
 
-            // Hide the other spells for this level
-            let other_slots = all_occupied_slots.split(",");
-            other_slots.forEach(function (other_slot, index) {
-                let other_slot_element = document.getElementById(other_slot);
-                if (other_slot_element != null) {
-                    other_slot_element.style.opacity = "0.0";
-                } else {
-                    alert ("Element with ID " + other_slot + " not found");
-                    return false;
-                }
-            });
+export function hideOtherElements(all_occupied_slots, submit_icon_id, cancel_icon_id, hide_element_icon_id, update_existing_slot_submit_icon_id) {
 
-            // Hide the feather that updates unallocated slots
-            let submit_icon = document.getElementById(submit_icon_id);
-            if (submit_icon != null) {
-                submit_icon.hidden = true;
-            } else {
-                alert ("Submit icon " + submit_icon_id + " not found");
-                return false;
-            }
+    // Hide the other spells for this level
+    let otherSlots = all_occupied_slots.split(",");
+    otherSlots.forEach(function (otherSlot, index) {
+        let otherSlotElement = $('#' + otherSlot);
+        otherSlotElement.css("opacity", "0.0");
+    });
 
-            // Make the cancel icon visible
-            let cancelEditIcon = document.getElementById(cancel_icon_id);
-            if (cancelEditIcon != null) {
-                cancelEditIcon.hidden = false;
-            } else {
-                alert ("Cancel icon with ID " + cancel_icon_id + " not found");
-                return false;
-            }
+    // Hide the feather that updates unallocated slots
+    let submitIcon = $('#' + submit_icon_id);
+    submitIcon.hide();
 
-            // Hide the 'hide elements' icon
-            let hideElementIcon = document.getElementById(hide_element_icon_id);
-            if (hideElementIcon != null) {
-                hideElementIcon.hidden = true;
-            } else {
-                alert ("Hide icon with ID " + hide_element_icon_id + " not found");
-                return false;
-            }
+    // Make the cancel icon visible
+    let cancelEditIcon = $('#' + cancel_icon_id);
+    cancelEditIcon.show();
 
-            // Show the feather that updates existing slots
-            let updateExistingSlotSubmitIcon = document.getElementById(update_existing_slot_submit_icon_id);
-            if (updateExistingSlotSubmitIcon != null) {
-                updateExistingSlotSubmitIcon.hidden = false;
-            } else {
-                alert ("Update existing slot icon with ID " + update_existing_slot_submit_icon_id + " not found");
-                return false;
-            }
-        }
+    // Hide the 'hide elements' icon
+    let hideElementIcon = $('#' + hide_element_icon_id);
+    hideElementIcon.hide();
 
-        function unhideOtherElements(all_occupied_slots, submit_icon_id, cancel_icon_id, hide_element_icon_id, update_existing_slot_submit_icon_id) {
+    // Show the feather that updates existing slots
+    let updateExistingSlotSubmitIcon = $('#' + update_existing_slot_submit_icon_id);
+    updateExistingSlotSubmitIcon.show();
+}
 
-            // Show the other spells for this level
-            let other_slots = all_occupied_slots.split(",");
-            other_slots.forEach(function (other_slot, index) {
-                let other_slot_element = document.getElementById(other_slot);
-                if (other_slot_element != null) {
-                    other_slot_element.style.opacity = "1.0";
-                } else {
-                    alert ("Element with ID " + other_slot + " not found");
-                    return false;
-                }
-            });
+export function unhideOtherElements(all_occupied_slots, submit_icon_id, cancel_icon_id, hide_element_icon_id, update_existing_slot_submit_icon_id) {
 
-            // Show the feather that updates unallocated slots
-            let submit_icon = document.getElementById(submit_icon_id);
-            if (submit_icon != null) {
-                submit_icon.hidden = false;
-            } else {
-                alert ("Submit icon " + submit_icon_id + " not found");
-                return false;
-            }
+    // Show the other spells for this level
+    let otherSlots = all_occupied_slots.split(",");
+    otherSlots.forEach(function (otherslot, index) {
+        let otherSlotElement = $('#' + other_slot);
+        otherSlotElement.css("opacity", "1.0");
+    });
 
-            // Make the cancel icon hidden
-            let cancelEditIcon = document.getElementById(cancel_icon_id);
-            if (cancelEditIcon != null) {
-                cancelEditIcon.hidden = true;
-            } else {
-                alert ("Cancel icon with ID " + cancel_icon_id + " not found");
-                return false;
-            }
+    // Show the feather that updates unallocated slots
+    let submitIcon = $('#' + submit_icon_id);
+    submitIcon.show();
 
-            // Show the 'hide elements' icon
-            let hideElementIconId = document.getElementById(hide_element_icon_id);
-            if (hideElementIconId != null) {
-                hideElementIconId.hidden = false;
-            } else {
-                alert ("Hide icon with ID " + hide_element_icon_id + " not found");
-                return false;
-            }
+    // Make the cancel icon hidden
+    let cancelEditIcon = $('#' + cancel_icon_id);
+    cancelEditIcon.hide();
 
-            // Hide the feather that updates existing slots
-            let updateExistingSlotSubmitIcon = document.getElementById(update_existing_slot_submit_icon_id);
-            if (updateExistingSlotSubmitIcon != null) {
-                updateExistingSlotSubmitIcon.hidden = true;
-            } else {
-                alert ("Update existing slot icon with ID " + update_existing_slot_submit_icon_id + " not found");
-                return false;
-            }
-        }
+    // Show the 'hide elements' icon
+    let hideElementIconId = $('#' + hide_element_icon_id);
+    hideElementIconId.show();
+
+    // Hide the feather that updates existing slots
+    let updateExistingSlotSubmitIcon = $('#' + update_existing_slot_submit_icon_id);
+    updateExistingSlotSubmitIcon.hide();
+}
+
+export function updateExistingSpellSlot(existingSpellSlotFormId, newSpellSlotId, formId, characterActionId, characterActionValue) {
+    let existingSpellSlot = $('#' + existingSpellSlotFormId);
+    existingSpellSlot.val(newSpellSlotId);
+    submitTheCharacterActionForm(formId, characterActionId, characterActionValue);
+}
+
+window.submitTheCharacterActionForm = submitTheCharacterActionForm;
+window.hideOtherElements = hideOtherElements;
+window.unhideOtherElements = unhideOtherElements;
+window.updateExistingSpellSlot = updateExistingSpellSlot;

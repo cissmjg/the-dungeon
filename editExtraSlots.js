@@ -1,11 +1,11 @@
-function deallocateExtraSlot(formId, characterActionId, characterActionValue, spellSlotIdValue) {
-    let spellSlotIdElement = document.getElementById("spellSlotId");
-    if (spellSlotIdElement != null) {
-        spellSlotIdElement.value = spellSlotIdValue;
-    } else {
-        alert("Spell Slot ID tag: " + characterActionId + " with ID [spellSlotId] not found");
-        return false;
-    }
+import { submitTheCharacterActionForm } from './submitTheCharacterActionForm.js';
 
-    submitTheForm(formId, characterActionId, characterActionValue);
+export function deallocateExtraSlot(formId, characterActionId, characterActionValue, spellSlotIdValue) {
+    let spellSlotIdTag = $('#' + "spellSlotId");
+    spellSlotIdTag.val(spellSlotIdValue);
+
+    submitTheCharacterActionForm(formId, characterActionId, characterActionValue);
 }
+
+window.deallocateExtraSlot = deallocateExtraSlot;
+window.submitTheCharacterActionForm = submitTheCharacterActionForm;
