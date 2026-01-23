@@ -21,15 +21,19 @@ $select_race_id_tag = buildAllRacesTag($all_races, $input);
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="dnd-default.css">
-    <title>Racial Attributes Limits</title>
-</head>
-<body>
+    <meta name="Cache-Control" content="no-store">
+
+    <title><?= $page_title ?></title>
+
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="dnd-default.css">
+</head><body>
     <table>
         <tr>
             <td>Race</td><td colspan="2"><form action="<?= $url_racial_attributes ?>" method="POST"><?= $select_race_id_tag ?><button type="submit">Go</button></form></td>
