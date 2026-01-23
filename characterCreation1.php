@@ -47,6 +47,8 @@ if ($data_entered) {
 $race_list = getRaceList($pdo, $errors);
 
 $page_title = 'New Character';
+$url_character_creation_1 = CurlHelper::buildUrl('characterCreation1.php');
+$url_character_creation_2 = CurlHelper::buildUrl('characterCreation2.php');
 
 $input_class='valid';
 if ($input[PAGE_ACTION] == PAGE_ACTION_EDIT) {
@@ -67,16 +69,20 @@ if ($input[PAGE_ACTION] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent(
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="Cache-Control" content="no-store">
+    <meta name="Cache-Control" content="no-store">
+
     <title><?= $page_title ?></title>
-	<link rel="stylesheet" href="dnd-default.css">
-	<script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-	<meta name="Cache-Control" content="no-store">
+
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="dnd-default.css">
 </head>
 <body>
     <div style="border: solid 1px; border-color: blue; border-radius: 10px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; width: auto; display: table;">
     <table style="margin-top: 5px;">
-    <form id="characterCreation1" action="<?= CurlHelper::buildUrl('characterCreation1.php') ?>" method="POST">
+    <form id="characterCreation1" action="<?= $url_character_creation_1 ?>" method="POST">
 	<input type="hidden" id="<?= PLAYER_NAME ?>" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
 	<tr>
 		<td colspan="4">
@@ -285,8 +291,8 @@ if ($input[PAGE_ACTION] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent(
 <?php
 	if ($input[PAGE_ACTION] == PAGE_ACTION_VALIDATE && $data_entered && noErrorsPresent($errors)) {
 		$button_bar = '<div style="border: solid 1px; border-color: blue; border-radius: 10px; margin-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; width: 405px; display: table;">' . PHP_EOL;
-		$button_bar .= '<button style="float:left; margin-top: 5px;" type="submit" name="pageAction" value="' . PAGE_ACTION_EDIT . '" formaction="characterCreation1.php">Edit</button>' . PHP_EOL;
-		$button_bar .= '<button style="float:right; margin-top: 5px;" type="submit" formaction="characterCreation2.php">Select Class(es)</button>' . PHP_EOL;
+		$button_bar .= '<button style="float:left; margin-top: 5px;" type="submit" name="' . PAGE_ACTION . '" value="' . PAGE_ACTION_EDIT . '" formaction="' . $url_character_creation_1 . '">Edit</button>' . PHP_EOL;
+		$button_bar .= '<button style="float:right; margin-top: 5px;" type="submit" formaction="' . $url_character_creation_2 . '">Select Class(es)</button>' . PHP_EOL;
 		$button_bar .= '</div>' . PHP_EOL;
 		echo $button_bar;
 		echo HtmlHelper::buildHiddenTag(CHARACTER_RACE_ID, $input[CHARACTER_RACE_ID]) . PHP_EOL;

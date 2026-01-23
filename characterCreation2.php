@@ -30,6 +30,7 @@ const PAGE_ACTION_EDIT = "edit";
 const NO_CLASS_SELECTED = "None";
 const NO_CHARACTER_CLASS_ID = 0;
 const FINALIZE_BUTTON_ID = "finalizeChacterActionID";
+const FORM_ID = "characterCreation2";
 
 $input = [];
 $errors = [];
@@ -111,6 +112,9 @@ if ($tertiary_class_available) {
 }
 
 $page_title = 'New Character';
+$url_character_creation_1 = CurlHelper::buildUrl('characterCreation1.php');
+$url_character_creation_2 = CurlHelper::buildUrl('characterCreation2.php');
+$url_character_creation_3 = CurlHelper::buildUrl('characterCreation3.php');
 
 $errors_exist = errorsExist($errors);
 
@@ -120,35 +124,22 @@ $errors_exist = errorsExist($errors);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="Cache-Control" content="no-store">
+    <meta name="Cache-Control" content="no-store">
+
     <title><?= $page_title ?></title>
-	<link rel="stylesheet" href="dnd-default.css">
-	<script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-	<meta name="Cache-Control" content="no-store">
-	<script type="text/javascript">
-		function submitTheForm(form_id, characterClassId) {
-			let theForm = document.getElementById(form_id);
 
-			theForm.elements[characterClassId].value = "None";
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
 
-			if (theForm == null) {
-				alert("Cannot find form with ID [" + form_id + "]");
-			} else {
-				theForm.submit();
-			}
-		}
+    <link rel="stylesheet" href="dnd-default.css">
 
-		function disableFinalize(finalizeButton) {
-			finalizeButton.disabled = 'true';
-			finalizeButton.style.opacity = 0.5;
-			finalizeButton.style.cursor = 'not-allowed';
-		}
-	</script>
+    <script src="characterCreation2.js" type="module"></script>
 </head>
 <body>
     <div style="border: solid 1px; border-color: blue; border-radius: 10px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; width: auto; display: table;">
     <table style="margin-top: 5px;">
-    <form id="characterCreation2" action="<?= CurlHelper::buildUrl('characterCreation2.php') ?>" method="POST">
+    <form id="<?= FORM_ID ?>" action="<?= $url_character_creation_2 ?>" method="POST">
 	<input type="hidden" id="playerName" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
 	<tr>
 		<td colspan="4">
@@ -314,7 +305,7 @@ $errors_exist = errorsExist($errors);
 					$change_primary_class = new FaEditIcon();
 					$change_primary_class->addStyle('float: right;');
 					$change_primary_class->setOnClickJsFunction('submitTheForm');
-					$change_primary_class->addOnclickJsParameter('characterCreation2');
+					$change_primary_class->addOnclickJsParameter(FORM_ID);
 					$change_primary_class->addOnclickJsParameter(CHARACTER_PRIMARY_CLASS);
 					echo $change_primary_class->build();
 				} else {
@@ -352,7 +343,7 @@ $errors_exist = errorsExist($errors);
 			$change_secondary_class = new FaEditIcon();
 			$change_secondary_class->addStyle('float: right;');
 			$change_secondary_class->setOnClickJsFunction('submitTheForm');
-			$change_secondary_class->addOnclickJsParameter('characterCreation2');
+			$change_secondary_class->addOnclickJsParameter(FORM_ID);
 			$change_secondary_class->addOnclickJsParameter(CHARACTER_SECONDARY_CLASS);
 			echo $change_secondary_class->build();
 		} else {
@@ -381,7 +372,7 @@ $errors_exist = errorsExist($errors);
 			$change_tertiary_class = new FaEditIcon();
 			$change_tertiary_class->addStyle('float: right;');
 			$change_tertiary_class->setOnClickJsFunction('submitTheForm');
-			$change_tertiary_class->addOnclickJsParameter('characterCreation2');
+			$change_tertiary_class->addOnclickJsParameter(FORM_ID);
 			$change_tertiary_class->addOnclickJsParameter(CHARACTER_TERTIARY_CLASS);
 			echo $change_tertiary_class->build();
 		} else {
@@ -404,14 +395,14 @@ $errors_exist = errorsExist($errors);
 <?php
 	echo HtmlHelper::buildHiddenTag(PAGE_ACTION, PAGE_ACTION_VALIDATE);
 	$button_bar = '<div style="margin-top: 5px; padding-bottom: 5px; padding-left: 5px; width: 405px;" class="character_create_action_bar_container">' . PHP_EOL;
-	$button_bar .= '<div class="character_create_action_bar_item_one"><button style="margin-top: 5px;" type="submit" formaction="characterCreation1.php">Attributes</button></div>' . PHP_EOL;
-	$button_bar .= '<div style="text-align: center;"  class="character_create_action_bar_item_two"><button style="margin-top: 5px;" type="submit" formaction="characterCreation2.php">Validate</button></div>' . PHP_EOL;
+	$button_bar .= '<div class="character_create_action_bar_item_one"><button style="margin-top: 5px;" type="submit" formaction="' . $url_character_creation_1 . '">Attributes</button></div>' . PHP_EOL;
+	$button_bar .= '<div style="text-align: center;"  class="character_create_action_bar_item_two"><button style="margin-top: 5px;" type="submit" formaction="' . $url_character_creation_2 . '">Validate</button></div>' . PHP_EOL;
 	$disabled = $errors_exist ? " disabled" : '';
 	$finalize_button_style = "float: right; margin-top: 5px;";
 	if ($errors_exist) {
 		$finalize_button_style .= ' opacity: 0.5; cursor: not-allowed';
 	}
-	$button_bar .= '<div class="character_create_action_bar_item_three"><button id="' . FINALIZE_BUTTON_ID . '" style="' . $finalize_button_style . '" type="submit" formaction="characterCreation3.php"' . $disabled . '>Finalize</button></div>' . PHP_EOL;
+	$button_bar .= '<div class="character_create_action_bar_item_three"><button id="' . FINALIZE_BUTTON_ID . '" style="' . $finalize_button_style . '" type="submit" formaction="' . $url_character_creation_3 . '"' . $disabled . '>Finalize</button></div>' . PHP_EOL;
 	$button_bar .= '</div>' . PHP_EOL;
 	echo $button_bar;
 ?>

@@ -90,11 +90,15 @@ $url_character_creation2 = CurlHelper::buildUrl('characterCreation2');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="Cache-Control" content="no-store">
-    <title><?= $page_title ?></title>
-	<link rel="stylesheet" href="dnd-default.css">
-	<script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
     <meta name="Cache-Control" content="no-store">
+
+    <title><?= $page_title ?></title>
+
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="dnd-default.css">
 </head>
 <body>
     <div style="border: solid 1px; border-color: blue; border-radius: 10px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; width: auto; display: table;">
@@ -206,7 +210,7 @@ $url_character_creation2 = CurlHelper::buildUrl('characterCreation2');
 	<?php
 	if ($secondary_class_available) {
 		echo '<tr>' . PHP_EOL;
-		echo '<td>2<sup>nd class</td>' . PHP_EOL;
+		echo '<td>2<sup>nd</sup> class</td>' . PHP_EOL;
 		echo '<td>';
 		if ($secondary_class_available) {
 			$secondary_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_SECONDARY_CLASS]);
@@ -219,7 +223,7 @@ $url_character_creation2 = CurlHelper::buildUrl('characterCreation2');
 
 	if ($tertiary_class_available) {
 		echo '<tr>' . PHP_EOL;
-		echo '<td>3<sup>rd class</td>' . PHP_EOL;
+		echo '<td>3<sup>rd</sup> class</td>' . PHP_EOL;
 		echo '<td>';
 		if ($tertiary_class_available == true) {
 			$tertiary_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_TERTIARY_CLASS]);
