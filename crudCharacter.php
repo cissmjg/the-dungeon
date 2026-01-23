@@ -134,21 +134,17 @@ if ($tertiary_class_available) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="Cache-Control" content="no-store">
-	<title><?= $input[CHARACTER_NAME] ?></title>
-	<link rel="stylesheet" href="dnd-default.css">
-	<script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-	<script type="text/javascript">
+    <meta name="Cache-Control" content="no-store">
 
-		function deleteCharacter(characterForm, characterDescription) {
-			if (confirm("Are you sure you want to delete the character named '" + characterDescription + "'") == false) {
-				return false;
-			}
+    <title><?= $page_title ?></title>
 
-			characterForm.submit();
-		}
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
 
-	</script>
+    <link rel="stylesheet" href="dnd-default.css">
+
+    <script src="crudCharacter.js" type="module"></script>
 </head>
 <body>
 <span class="action_bar"><?= $action_bar ?></span>
