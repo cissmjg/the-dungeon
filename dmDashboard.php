@@ -21,6 +21,7 @@ const ENDOFROUND = "EndOfRound";
 const DAILYRESET = "DailyReset";
 const CURRENTCOMBATROUND = "CurrentCombatRound";
 const REFRESHSPELLLIST = "RefreshSpellList";
+const DMACTION = 'dmAction';
 
 // Populate player and character names in $input
 getPlayerName($errors, $input);
@@ -35,16 +36,24 @@ if (!$player_permissions['is_dm']) {
     die();
 }
 
+$page_title = 'DM Dashboard';
+$url = CurlHelper::buildUrl('dmDashboard');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DM Dashboard</title>
-	<link rel="stylesheet" href="dnd-default.css">
-    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
     <meta name="Cache-Control" content="no-store">
+
+    <title><?= $page_title ?></title>
+
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="dnd-default.css">
 </head>
 <body>
     <?php
@@ -55,8 +64,8 @@ if (!$player_permissions['is_dm']) {
         $current_combat_round = $_POST[CURRENTCOMBATROUND];
     }
 
-    if(!empty($_POST['dmAction'])) {
-        $dmAction = $_POST['dmAction'];
+    if(!empty($_POST[DMACTION])) {
+        $dmAction = $_POST[DMACTION];
         if($dmAction == STARTNEWFIGHT) {
             $current_combat_round = 1;
         } else if($dmAction == ENDOFROUND) {
@@ -76,7 +85,7 @@ if (!$player_permissions['is_dm']) {
     $current_round_desc = $nf->format($current_combat_round) . ' round';
 
     ?>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+    <form action="<?= $url ?>" method="POST">
         <?php
             echo HtmlHelper::buildHiddenTag(CURRENTCOMBATROUND, $current_combat_round) . PHP_EOL;
             echo HtmlHelper::buildHiddenTag(PLAYER_NAME, $input[PLAYER_NAME]) . PHP_EOL;
