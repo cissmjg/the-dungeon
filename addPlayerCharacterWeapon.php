@@ -105,6 +105,9 @@ $craft_status_mastercraft_selected = "";
 $craft_status_magic_selected = "";
 
 $page_title = $input[CHARACTER_NAME] . ' Weapons';
+$url_edit_weapons = CurlHelper::buildUrl('editPlayerCharacterWeapons');
+$url_add_weapon = CurlHelper::buildUrlDbioDirectory('addWeaponToPlayerCharacter');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -132,7 +135,7 @@ $page_title = $input[CHARACTER_NAME] . ' Weapons';
     <div style="background-color: Aquamarine; text-align:center; border-radius: 10px;">Weapon Details</div>
     <?php if ($weaponDetail != null): ?>
     <div id="addPlayerCharacterWeaponContainer">
-        <form name="addPlayerCharacterWeapon" id="addPlayerCharacterWeapon" method="POST" action="<?= CurlHelper::buildUrlDbioDirectory('addWeaponToPlayerCharacter'); ?>">
+        <form name="addPlayerCharacterWeapon" id="addPlayerCharacterWeapon" method="POST" action="<?= $url_add_weapon ?>">
             <input type="hidden" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
             <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
             <input type="hidden" name="<?= WEAPON_PROFICIENCY_ID ?>" value="<?= $input[WEAPON_PROFICIENCY_ID] ?>">
@@ -335,7 +338,7 @@ $page_title = $input[CHARACTER_NAME] . ' Weapons';
                 <input type="hidden" name="<?= MISSILE_SPEC3_DAMAGE_BONUS ?>" id="<?= MISSILE_SPEC3_DAMAGE_BONUS ?>" value="<?= OPTIONAL_INTEGER_PARAMETER ?>"> 
                 <input type="hidden" name="<?= MISSILE_SPEC3_DESCRIPTION ?>" id="<?= MISSILE_SPEC3_DESCRIPTION ?>" maxlength="32" value="<?= OPTIONAL_STRING_PARAMETER ?>">
             <?php endif ?>
-            <button type="submit" formaction="playerCharacterWeaponMain.php">&lt; &lt; Select Weapon</button> <button type="submit">Add Weapon &gt; &gt;</button>
+            <button type="submit" formaction="<?= $url_edit_weapons ?>">&lt; &lt; Select Weapon</button> <button type="submit">Add Weapon &gt; &gt;</button>
         </form>
     </div>
     <?php endif ?>

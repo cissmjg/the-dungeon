@@ -1066,7 +1066,7 @@ function buildDeleteWeaponTalentRedirect($input) {
 }
 
 function buildPlayerCharacterWeaponMainRedirect($input) {
-	$redirect_url = CurlHelper::buildUrl('playerCharacterWeaponMain');
+	$redirect_url = CurlHelper::buildUrl('editPlayerCharacterWeapons');
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 

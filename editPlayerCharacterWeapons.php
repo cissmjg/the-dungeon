@@ -58,8 +58,8 @@ $page_title = $input[CHARACTER_NAME] . ' Weapons';
     <link rel="stylesheet" href="togglePanel.css">
     <script type="module" src="togglePanel.js"></script>
 
-    <script src="playerCharacterWeaponMain.js" type="module"></script>
-	<link href="playerCharacterWeaponMain.css" rel="stylesheet" >
+    <script src="editPlayerCharacterWeapons.js" type="module"></script>
+	<link href="editPlayerCharacterWeapons.css" rel="stylesheet" >
 </head>
 <body>
     <form name="deleteWeapon" id="deleteWeapon" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl() ?>">
