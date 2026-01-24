@@ -6,6 +6,8 @@ $input = [];
 $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 
 require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
+
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterClassName.php';
 
@@ -54,16 +56,16 @@ if ($spell_count_for_classes != null) {
         }
     }
 }
+$page_title = 'Character Class Spell Count';
+$site_css_file = 'dnd-default.css';
+$page_specific_js = '';
+$page_specific_css = '';
+$enable_toggle_panels = false;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="dnd-default.css">
-    <title>Character Class Spell Count</title>
-</head>
 <body>
     <?php
     if ($spell_count_for_classes != null) {

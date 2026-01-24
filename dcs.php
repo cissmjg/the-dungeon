@@ -9,6 +9,8 @@ validateSessionCredentials($pdo);
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/helper/ActionBarHelper.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
+
 require_once __DIR__ . '/dbio/constants/characterAttributes.php';
 require_once __DIR__ . '/dbio/constants/characterClasses.php';
 require_once __DIR__ . '/classes/characterSummary.php';
@@ -24,7 +26,6 @@ $errors = [];
 getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 
-$page_title = $input[CHARACTER_NAME];
 $character_details = null;
 
 $character_details = getExistingCharacter($input[PLAYER_NAME], $input[CHARACTER_NAME]);
@@ -42,24 +43,16 @@ $action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME], $chara
 
 $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 
+$page_title = $input[CHARACTER_NAME];
+$site_css_file = 'dnd-default.css';
+$page_specific_js = '';
+$page_specific_css = 'dcs.css';
+$enable_toggle_panels = false;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="Cache-Control" content="no-store">
-
-    <title><?= $page_title ?></title>
-
-    <script src="../js/jquery-1.12.4.min.js"></script>
-    <script src="../js/jquery-ui.min.js"></script>
-    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="dnd-default.css">
-
-    <link href="dcs.css" rel="stylesheet">
-</head>
 <body>
 <span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span>
 <div class="characterSheetContainer">

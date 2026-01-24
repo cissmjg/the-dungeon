@@ -79,27 +79,19 @@ if ($tertiary_class_available) {
 	$tertiary_character_class_id = getCharacterClassId($character_class_list, $input[CHARACTER_TERTIARY_CLASS]);
 }
 
-$page_title = 'New Character';
-
 $url_insert_character = CurlHelper::buildUrlDbioDirectory('insertCharacter');
 $url_character_creation2 = CurlHelper::buildUrl('characterCreation2');
 
+$page_title = 'New Character';
+$site_css_file = 'dnd-default.css';
+$page_specific_js = '';
+$page_specific_css = '';
+$enable_toggle_panels = false;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="Cache-Control" content="no-store">
-
-    <title><?= $page_title ?></title>
-
-    <script src="../js/jquery-1.12.4.min.js"></script>
-    <script src="../js/jquery-ui.min.js"></script>
-    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="dnd-default.css">
-</head>
 <body>
     <div style="border: solid 1px; border-color: blue; border-radius: 10px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; width: auto; display: table;">
     <table style="margin-top: 5px;">

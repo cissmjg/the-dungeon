@@ -11,6 +11,8 @@ validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
+
 require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 require_once __DIR__ . '/helper/ActionBarHelper.php';
@@ -108,28 +110,15 @@ $page_title = $input[CHARACTER_NAME] . ' Weapons';
 $url_edit_weapons = CurlHelper::buildUrl('editPlayerCharacterWeapons');
 $url_add_weapon = CurlHelper::buildUrlDbioDirectory('addWeaponToPlayerCharacter');
 
+$page_title = $input[CHARACTER_NAME] . ' Weapons';
+$site_css_file = 'dnd-default.css';
+$page_specific_js = 'addPlayerCharacterWeapon.js';
+$page_specific_css = 'addPlayerCharacterWeapon.css';
+$enable_toggle_panels = true;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="Cache-Control" content="no-store">
-
-    <title><?= $page_title ?></title>
-
-    <script src="../js/jquery-1.12.4.min.js"></script>
-    <script src="../js/jquery-ui.min.js"></script>
-    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="dnd-default.css">
-
-    <link rel="stylesheet" href="togglePanel.css">
-    <script type="module" src="togglePanel.js"></script>
-
-    <script src="addPlayerCharacterWeapon.js" type="module"></script>
-    <link href="addPlayerCharacterWeapon.css" rel="stylesheet">
-</head>
 <body>
     <div style="width: 100%;"><span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span></div>
     <div style="background-color: Aquamarine; text-align:center; border-radius: 10px;">Weapon Details</div>

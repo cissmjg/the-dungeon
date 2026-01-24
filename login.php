@@ -4,6 +4,7 @@ $errors = [];
 require_once __DIR__ . '/env.php';
 $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
 
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterAction.php';
@@ -11,28 +12,17 @@ require_once __DIR__ . '/webio/characterAction.php';
 $players = getPlayerList($pdo, $errors);
 $login_url = CurlHelper::buildCharacterActionRouterUrl();
 
-$page_title = 'Login';
 $img_url = STARTING_URL . 'Thumbs up.jpg';
+$page_title = 'Login';
+$site_css_file = 'dnd-default.css';
+$page_specific_js = 'login.js';
+$page_specific_css = 'login.css';
+$enable_toggle_panels = false;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
+
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="Cache-Control" content="no-store">
-
-    <title><?= $page_title ?></title>
-
-    <script src="../js/jquery-1.12.4.min.js"></script>
-    <script src="../js/jquery-ui.min.js"></script>
-    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="dnd-default.css">
-
-    <script src="login.js" type="module"></script>
-    <link href="login.css" rel="stylesheet">
-</head>
 <body style="background-color: whitesmoke; margin: 15px; font-family: sans-serif; font-size: 24px;">
     <div class="main">
         <div class="left">

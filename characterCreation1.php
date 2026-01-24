@@ -46,7 +46,6 @@ if ($data_entered) {
 
 $race_list = getRaceList($pdo, $errors);
 
-$page_title = 'New Character';
 $url_character_creation_1 = CurlHelper::buildUrl('characterCreation1.php');
 $url_character_creation_2 = CurlHelper::buildUrl('characterCreation2.php');
 
@@ -62,6 +61,15 @@ if ($input[PAGE_ACTION] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent(
 	$disabled = ' disabled';
 	$input_class = "view_only";
 }
+
+$page_title = 'New Character';
+$site_css_file = 'dnd-default.css';
+$page_specific_js = '';
+$page_specific_css = '';
+$enable_toggle_panels = false;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
 
 ?>
 <!DOCTYPE html>

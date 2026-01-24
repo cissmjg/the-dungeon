@@ -5,6 +5,8 @@ $input = [];
 
 $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
+
 require_once __DIR__ . '/dbio/constants/characterRaces.php';
 require_once __DIR__ . '/dbio/constants/characterAttributes.php';
 require_once __DIR__ . '/rules/minmaxRacialAttributes.php';
@@ -19,21 +21,17 @@ if (isset($_POST[RACE_ID])) {
 $all_races = getAllRaces($pdo, $errors);
 $select_race_id_tag = buildAllRacesTag($all_races, $input);
 
+$page_title = 'Character Racial Attributes';
+$site_css_file = 'dnd-default.css';
+$page_specific_js = '';
+$page_specific_css = '';
+$enable_toggle_panels = false;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
+
 ?>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="Cache-Control" content="no-store">
-
-    <title><?= $page_title ?></title>
-
-    <script src="../js/jquery-1.12.4.min.js"></script>
-    <script src="../js/jquery-ui.min.js"></script>
-    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="dnd-default.css">
-</head><body>
+<body>
     <table>
         <tr>
             <td>Race</td><td colspan="2"><form action="<?= $url_racial_attributes ?>" method="POST"><?= $select_race_id_tag ?><button type="submit">Go</button></form></td>

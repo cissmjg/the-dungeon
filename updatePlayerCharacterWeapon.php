@@ -11,15 +11,17 @@ validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/helper/ActionBarHelper.php';
+require_once __DIR__ . '/helper/WebParameterHelper.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
+
 require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
-require_once __DIR__ . '/helper/ActionBarHelper.php';
 
 require_once __DIR__ . '/classes/playerCharacterWeapon.php';
 require_once __DIR__ . '/dbio/constants/weaponType.php';
 require_once __DIR__ . '/dbio/constants/weaponSubtype.php';
 require_once __DIR__ . '/dbio/constants/characterClasses.php';
-require_once __DIR__ . '/helper/WebParameterHelper.php';
 require_once __DIR__ . '/webio/craftStatus.php';
 require_once __DIR__ . '/dbio/constants/weapons.php';
 require_once __DIR__ . '/webio/weaponProficiencyId.php';
@@ -106,7 +108,15 @@ $craft_status_mastercraft_selected = "";
 $craft_status_magic_selected = "";
 
 $url_update_weapon = CurlHelper::buildUrlDbioDirectory('updateWeaponForPlayerCharacter');
+
 $page_title = $input[CHARACTER_NAME] . ' weapon update';
+$site_css_file = 'dnd-default.css';
+$page_specific_js = 'updatePlayerCharacterWeapon.js';
+$page_specific_css = 'updatePlayerCharacterWeapon.css';
+$enable_toggle_panels = true;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
 
 ?>
 <!DOCTYPE html>

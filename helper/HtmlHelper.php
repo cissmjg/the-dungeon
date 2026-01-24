@@ -1,6 +1,12 @@
 <?php
 
 class HtmlHelper {
+
+const JQUERY_LIB = "../js/jquery-1.12.4.min.js";
+const JQUERY_UI_LIB = "../js/jquery-ui.min.js";
+
+const FONT_AWESOME_LIB = "https://kit.fontawesome.com/4295d6f264.js";
+
     public static function buildHiddenTag($name, $value) {
         return HtmlHelper::buildHiddenTagWithId($name, $name, $value);
     }
@@ -15,5 +21,35 @@ class HtmlHelper {
 
         return $hidden_tag;
     }
+    public static function formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels) {
+        $output_html  = '<!DOCTYPE html>' . PHP_EOL;
+        $output_html .= '<html lang="en">' . PHP_EOL;
+        $output_html .= '<head>' . PHP_EOL;
+        $output_html .= '    <meta charset="UTF-8">' . PHP_EOL;
+        $output_html .= '    <meta name="viewport" content="width=device-width, initial-scale=1.0">' . PHP_EOL;
+        $output_html .= '    <meta name="Cache-Control" content="no-store">' . PHP_EOL . PHP_EOL;
+        $output_html .= '    <title>' . $page_title . '</title>' . PHP_EOL . PHP_EOL;
+        $output_html .= '    <script src="' . HtmlHelper::JQUERY_LIB . '"></script>' . PHP_EOL;
+        $output_html .= '    <script src="' . HtmlHelper::JQUERY_UI_LIB . '"></script>' . PHP_EOL;
+        $output_html .= '    <script src="' . HtmlHelper::FONT_AWESOME_LIB . '" crossorigin="anonymous"></script>' . PHP_EOL . PHP_EOL;
+        $output_html .= '    <link rel="stylesheet" href="' . $site_css_file .'">' . PHP_EOL . PHP_EOL;
+        if ($enable_toggle_panels) {
+            $output_html .= '    <link rel="stylesheet" href="togglePanel.css">' . PHP_EOL;
+            $output_html .= '    <script type="module" src="togglePanel.js"></script>' . PHP_EOL . PHP_EOL;
+        }
+
+        if (!empty($page_specific_js)) {
+            $output_html .= '    <script src="' . $page_specific_js . '" type="module"></script>' . PHP_EOL;
+        }
+
+        if (!empty($page_specific_css)) {
+             $output_html .= '    <link href="' . $page_specific_css .'" rel="stylesheet">' . PHP_EOL;
+        }
+
+        $output_html .= '</head>' . PHP_EOL;
+
+        return $output_html;
+    }
 }
+
 ?>

@@ -56,24 +56,15 @@ $extra_slot_pc_id_by_type = [];
 $extra_slot_max_for_types = getExtraSlotMaxForTypes($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $character_summary->getCharacterClasses(), $extra_slot_pc_id_by_type, $errors);
 
 $page_title = $input[CHARACTER_NAME] . ' extra slots';
+$site_css_file = 'dnd-default.css';
+$page_specific_js = 'editExtraSlots.js';
+$page_specific_css = '';
+$enable_toggle_panels = false;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="Cache-Control" content="no-store">
-
-    <title><?= $page_title ?></title>
-
-    <script src="../js/jquery-1.12.4.min.js"></script>
-    <script src="../js/jquery-ui.min.js"></script>
-    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="dnd-default.css">
-
-    <script src="editExtraSlots.js" type="module"></script>
-</head>
 <body>
     <form name="xsDeallocate" id="xsDeallocate" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl()?>">
         <input type="hidden" name="<?= PLAYER_NAME ?>" id="playerName" value="<?= $input[PLAYER_NAME] ?>">

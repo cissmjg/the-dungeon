@@ -11,6 +11,10 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/helper/RestHeaderHelper.php';
+require_once __DIR__ . '/helper/ActionBarHelper.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
+
 require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/spellLevel.php';
 require_once __DIR__ . '/webio/spellSlotId.php';
@@ -18,9 +22,6 @@ require_once __DIR__ . '/webio/spellCatalogId.php';
 require_once __DIR__ . '/webio/spellDuration.php';
 require_once __DIR__ . '/webio/spellCastingTime.php';
 require_once __DIR__ . '/webio/removeEmpty.php';
-require_once __DIR__ . '/helper/RestHeaderHelper.php';
-require_once __DIR__ . '/helper/ActionBarHelper.php';
-require_once __DIR__ . '/helper/HtmlHelper.php';
 
 require_once __DIR__ . '/fa/faCancelIcon.php';
 require_once __DIR__ . '/fa/faCastSpellIcon.php';
@@ -68,6 +69,14 @@ $character_summary_stats = $character_summary_renderer->render($character_summar
 $prev_spell_level = -1;
 
 $page_title = $input[CHARACTER_NAME] . ' spells';
+$site_css_file = 'dnd-default.css';
+$page_specific_js = 'editReadySpells.js';
+$page_specific_css = '';
+$enable_toggle_panels = false;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
+
 /*
     spell_type
     player_slot_level
@@ -81,23 +90,6 @@ $page_title = $input[CHARACTER_NAME] . ' spells';
     spell_duration
 */
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="Cache-Control" content="no-store">
-
-    <title><?= $page_title ?></title>
-
-    <script src="../js/jquery-1.12.4.min.js"></script>
-    <script src="../js/jquery-ui.min.js"></script>
-    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="dnd-default.css">
-
-    <script src="editReadySpells.js" type="module"></script>
-</head>
 <body>
     <form name="slot-action-form" id="slot-action-form" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl()?>">
         <input type="hidden" name="<?= PLAYER_NAME ?>" id="playerName" value="<?= $input[PLAYER_NAME] ?>">
