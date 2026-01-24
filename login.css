@@ -1,0 +1,31 @@
+input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+label {
+    color: lightgray;
+    font-size: 14px;
+    vertical-align: sub;
+}
+
+.main {
+    width: 720px;
+    height: 400px;
+    display: flex;
+}
+
+.left {
+    flex: 0 0 190px; /* fixed width */
+}
+.right {
+    flex: 1; /* takes remaining space */
+    background-color: white;
+    padding-left: 3px;
+    padding-right: 3px;            
+}

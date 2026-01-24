@@ -1,13 +1,18 @@
 <?php
 $errors = [];
 
+require_once __DIR__ . '/env.php';
 $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
 
 require_once __DIR__ . '/webio/playerName.php';
+require_once __DIR__ . '/webio/characterAction.php';
 
 $players = getPlayerList($pdo, $errors);
 $login_url = CurlHelper::buildCharacterActionRouterUrl();
+
+$page_title = 'Login';
+$img_url = STARTING_URL . 'Thumbs up.jpg';
 ?>
 
 <!DOCTYPE html>
@@ -15,65 +20,28 @@ $login_url = CurlHelper::buildCharacterActionRouterUrl();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <meta name="Cache-Control" content="no-store">
+
+    <title><?= $page_title ?></title>
+
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
     <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-    <style>
-        input {
-			-webkit-appearance: none;
-			-moz-appearance: none;
-			appearance: none;
-        }
 
-        input:focus {
-            outline: none;
-        }
+    <link rel="stylesheet" href="dnd-default.css">
 
-        label {
-            color: lightgray;
-            font-size: 14px;
-            vertical-align: sub;
-        }
-
-        .main {
-            width: 720px;
-            height: 400px;
-            display: flex;
-        }
-
-        .left {
-            flex: 0 0 190px; /* fixed width */
-        }
-        .right {
-            flex: 1; /* takes remaining space */
-            background-color: white;
-            padding-left: 3px;
-            padding-right: 3px;            
-        }
-    </style>
-    <script src="backButtonDisable.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        function checkForm(loginForm) {
-            let pwdField = document.getElementById("password");
-            if (pwdField != null) {
-                if (pwdField.value.length == 0) {
-                    alert('Please enter a password');
-                    return false;
-                }
-            }
-
-            loginForm.submit();
-        }
-    </script>
+    <script src="login.js" type="module"></script>
+    <link href="login.css" rel="stylesheet">
 </head>
 <body style="background-color: whitesmoke; margin: 15px; font-family: sans-serif; font-size: 24px;">
     <div class="main">
         <div class="left">
-            <img src="Thumbs up.jpg" height="400" width="190" title="Thumbs up">
+            <img src="<?= $img_url ?>" height="400" width="190" title="Thumbs up">
         </div>
         <div class="right">
             <div style="text-align: center; padding-top: 74px; width:">Login to The Dungeon</div>
-            <form action="<?= $login_url ?>" method="post">
-                <input type="hidden" name="characterAction" value="login">
+            <form action="<?= $login_url ?>" method="POST">
+                <input type="hidden" name="<?= CHARACTER_ACTION ?>" value="login">
                 <label for="playerName">Username</label>
                 <select style="font-size: 24px; width: 100%; margin-top: 5px;" name="<?= PLAYER_NAME ?>" id="<?= PLAYER_NAME ?>">
                 <?php
