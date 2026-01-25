@@ -8,6 +8,7 @@ require_once __DIR__ . '/helper/HtmlHelper.php';
 
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterAction.php';
+require_once __DIR__ . '/characterActionRoutes.php';
 
 $players = getPlayerList($pdo, $errors);
 $login_url = CurlHelper::buildCharacterActionRouterUrl();
@@ -31,7 +32,7 @@ echo $html_header;
         <div class="right">
             <div style="text-align: center; padding-top: 74px; width:">Login to The Dungeon</div>
             <form action="<?= $login_url ?>" method="POST">
-                <input type="hidden" name="<?= CHARACTER_ACTION ?>" value="login">
+                <input type="hidden" name="<?= CHARACTER_ACTION ?>" value="<?= CHARACTER_ACTION_LOGIN ?>">
                 <label for="playerName">Username</label>
                 <select style="font-size: 24px; width: 100%; margin-top: 5px;" name="<?= PLAYER_NAME ?>" id="<?= PLAYER_NAME ?>">
                 <?php

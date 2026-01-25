@@ -9,6 +9,8 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/WebParameterHelper.php';
+require_once __DIR__ . '/characterActionRoutes.php';
+
 require_once __DIR__ . '/webio/requiredParameter.php';
 
 require_once __DIR__ . '/webio/textInput.php';
@@ -88,7 +90,7 @@ require_once __DIR__ . '/webio/missileDamageBonus.php';
 $character_action = $input[CHARACTER_ACTION];
 
 switch($character_action) {
-	case "login":
+	case CHARACTER_ACTION_LOGIN:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -118,7 +120,7 @@ switch($character_action) {
 		header($redirect_url);
 		break;
 		exit;
-	case "promote":
+	case CHARACTER_ACTION_PROMOTE:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -147,7 +149,7 @@ switch($character_action) {
 		}
 		break;
 		
-	case "characterList":
+	case CHARACTER_ACTION_LIST_CHARACTERS:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -155,15 +157,18 @@ switch($character_action) {
 		header($location_header);
 		exit;
 		break;
-	case "createNew":
+	case CHARACTER_ACTION_CREATE_CHARACTER:
 		// Get player name
 		getPlayerName($errors, $input);
+
+		// Get the page action
+		getPageAction($errors, $input);
 
 		$location_header = buildCreateCharacterRedirect($input);
 		header($location_header);
 		exit;
 		break;
-	case "deleteCharacter":
+	case CHARACTER_ACTION_DELETE_CHARACTER:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -187,7 +192,7 @@ switch($character_action) {
 			die(json_encode($errors));
 		}
 		break;
-	case "viewCharacter":
+	case CHARACTER_ACTION_VIEW_CHARACTER:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -198,7 +203,7 @@ switch($character_action) {
 		header($location_header);
 		exit;
 		break;
-	case "editCharacter":
+	case CHARACTER_ACTION_EDIT_CHARACTER:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -209,7 +214,7 @@ switch($character_action) {
 		header($location_header);
 		exit;
 		break;
-	case "editSpellBook":
+	case CHARACTER_ACTION_EDIT_SPELLBOOK:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -226,7 +231,7 @@ switch($character_action) {
 		header($location_header);
 		exit;
 		break;
-	case "updateSpellPool":
+	case CHARACTER_ACTION_UPDATE_SPELLPOOL:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -262,7 +267,7 @@ switch($character_action) {
 			die(json_encode($errors));
 		}
 		break;
-	case "editWeaponTalents":
+	case CHARACTER_ACTION_EDIT_WEAPON_TALENTS:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -273,7 +278,7 @@ switch($character_action) {
 		header($location_header);
 		exit;
 		break;
-	case "editSkills":
+	case CHARACTER_ACTION_EDIT_SKILLS:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -284,7 +289,7 @@ switch($character_action) {
 		header($location_header);
 		exit;
 		break;
-	case "deleteCharacterSkill":
+	case CHARACTER_ACTION_DELETE_SKILL:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -314,15 +319,7 @@ switch($character_action) {
 		exit;
 		break;
 
-	case "home":
-		// Get player name
-		getPlayerName($errors, $input);
-
-		$url_home = buildHomeRedirect($input);
-		header($url_home);
-		exit;
-		break;
-	case "updateReadySpellSlot":
+	case CHARACTER_ACTION_UPDATE_READY_SPELL_SLOT:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -378,7 +375,7 @@ switch($character_action) {
 		}
 		exit;
 		break;
-	case "reclaimCantripSlots":
+	case CHARACTER_ACTION_RECLAIM_CANTRIP_SLOTS:
 
 		// Get player name
 		getPlayerName($errors, $input);
@@ -408,7 +405,7 @@ switch($character_action) {
 		}
 		exit;
 		break;
-	case "editReadySpells":
+	case CHARACTER_ACTION_EDIT_READY_SPELLS:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -419,7 +416,7 @@ switch($character_action) {
 		header($location_header);
 		exit;
 		break;
-	case "editGMSpells":
+	case CHARACTER_ACTION_EDIT_GM_READY_SPELLS:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -430,7 +427,7 @@ switch($character_action) {
 		header($location_header);
 		exit;
 		break;
-	case "castSpellSlot":
+	case CHARACTER_ACTION_CAST_SPELL_SLOT:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -465,7 +462,7 @@ switch($character_action) {
 		}
 		exit;
 		break;
-	case "resetSpellSlot":
+	case CHARACTER_ACTION_RESET_SPELL_SLOT:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -499,7 +496,7 @@ switch($character_action) {
 		}
 		exit;
 		break;
-	case "stopCastingSpellSlot":
+	case CHARACTER_ACTION_STOP_CASTING_SPELL_SLOT:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -534,7 +531,7 @@ switch($character_action) {
 
 		exit;
 		break;
-	case "stopRunningSpellSlot":
+	case CHARACTER_ACTION_STOP_RUNNING_SPELL_SLOT:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -569,7 +566,7 @@ switch($character_action) {
 
 		exit;
 		break;
-	case "castGMSpell":
+	case CHARACTER_ACTION_CAST_GM_SPELL:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -623,7 +620,7 @@ switch($character_action) {
 
 		break;
 		exit;
-	case "recoverSpellPointsBySleep":
+	case CHARACTER_ACTION_RECOVER_SPELL_POINTS_SLEEP:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -655,7 +652,7 @@ switch($character_action) {
 
 		break;
 		exit;
-	case "stopCastingGMSpellSlot":
+	case CHARACTER_ACTION_STOP_CASTING_GM_SPELL:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -684,7 +681,7 @@ switch($character_action) {
 
 		break;
 		exit;
-	case "stopRunninGMSpellSlot":
+	case CHARACTER_ACTION_STOP_RUNNING_GM_SPELL:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -713,7 +710,7 @@ switch($character_action) {
 
 		break;
 		exit;
-	case "dailyReset":
+	case CHARACTER_ACTION_DAILY_RESET:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -738,7 +735,7 @@ switch($character_action) {
 		}
 		break;
 		exit;
-	case "editExtraSlots":
+	case CHARACTER_ACTION_EDIT_EXTRA_SLOTS:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -750,7 +747,7 @@ switch($character_action) {
 
 		break;
 		exit;
-	case "deallocateExtraSlot":
+	case CHARACTER_ACTION_DEALLOCATE_EXTRA_SLOT:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -778,7 +775,7 @@ switch($character_action) {
 		}
 		break;
 		exit;
-	case "allocateExtraSlot":
+	case CHARACTER_ACTION_ALLOCATE_EXTRA_SLOT:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -812,7 +809,7 @@ switch($character_action) {
 		}
 		break;
 		exit;
-	case "playerCharacterWeaponMain":
+	case CHARACTER_ACTION_EDIT_PLAYER_CHARACTER_WEAPONS:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -825,7 +822,7 @@ switch($character_action) {
 		break;
 		exit;
 
-	case "updatePlayerCharacterWeapon":
+	case CHARACTER_ACTION_UPDATE_PLAYER_CHARACTER_WEAPON:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -841,7 +838,7 @@ switch($character_action) {
 		break;
 		exit;
 
-	case "deletePlayerCharacterWeapon":
+	case CHARACTER_ACTION_DELETE_PLAYER_CHARACTER_WEAPON:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -969,7 +966,7 @@ function buildDmDashboardRedirect($input) {
 }
 
 function buildEditSpellBookRedirect($input) {
-	$redirect_url = CurlHelper::buildUrl('editSpellBook');
+	$redirect_url = CurlHelper::buildUrl(CHARACTER_ACTION_EDIT_SPELLBOOK);
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_CLASS_NAME, $input[CHARACTER_CLASS_NAME]);
@@ -1002,15 +999,12 @@ function buildEditExtraSlotsRedirect($input) {
 	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
-function buildHomeRedirect($input) {
-	$redirect_url = CurlHelper::buildUrl('home');
-	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
-
-	return CurlHelper::buildLocationHeader($redirect_url);
-}
-
 function buildCreateCharacterRedirect($input) {
-	return $redirect_url = buildCRUDCharacterRedirect($input, 'create');
+	$create_character_url = CurlHelper::buildUrl('characterCreation1');
+	$create_character_url = CurlHelper:: addParameter($create_character_url, PLAYER_NAME, $input[PLAYER_NAME]);
+	$create_character_url = CurlHelper:: addParameter($create_character_url, PAGE_ACTION, 'validate');
+
+	return CurlHelper::buildLocationHeader($create_character_url);
 }
 
 function buildViewCharacterRedirect($input) {

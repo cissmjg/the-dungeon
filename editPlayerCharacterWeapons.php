@@ -51,7 +51,7 @@ echo $html_header;
 ?>
 <body>
     <form name="deleteWeapon" id="deleteWeapon" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl() ?>">
-        <input type="hidden" name="<?= CHARACTER_ACTION ?>" value="deletePlayerCharacterWeapon">
+        <input type="hidden" name="<?= CHARACTER_ACTION ?>" value="<?= CHARACTER_ACTION_DELETE_PLAYER_CHARACTER_WEAPON ?>">
         <input type="hidden" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
         <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
         <input type="hidden" name="<?= PLAYER_CHARACTER_WEAPON_ID ?>" id="<?= PLAYER_CHARACTER_WEAPON_ID ?>" value="">

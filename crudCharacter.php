@@ -10,6 +10,7 @@ require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/webio/pageAction.php';
 require_once __DIR__ . '/webio/characterAction.php';
+require_once __DIR__ . '/characterActionRoutes.php';
 require_once __DIR__ . '/webio/requiredParameter.php';
 require_once __DIR__ . '/helper/ActionBarHelper.php';
 require_once __DIR__ . '/helper/HtmlHelper.php';
@@ -756,7 +757,7 @@ echo $html_header;
 
 			if ($page_action == PAGE_DELETE) {
 				$character_description = "'" . $input[CHARACTER_NAME] . "'";
-				echo HtmlHelper::buildHiddenTag(CHARACTER_ACTION, 'deleteCharacter');
+				echo HtmlHelper::buildHiddenTag(CHARACTER_ACTION, CHARACTER_ACTION_DELETE_CHARACTER);
 				echo '<tr><td colspan="3" style="text-align: center;"><button onclick="event.preventDefault(); deleteCharacter(this.form, ' . $character_description . ')">' . $page_action . '</button></td></tr>';
 			} 
 		?>

@@ -8,6 +8,7 @@ require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/helper/HtmlHelper.php';
 
 require_once __DIR__ . '/webio/characterAction.php';
+require_once __DIR__ . '/characterActionRoutes.php';
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/pageAction.php';
@@ -89,8 +90,9 @@ echo $html_header;
 	}
 
 	function buildNewCharacterPortraitAnchor($img_tag, $player_name) {
-		$create_character_url = CurlHelper::buildUrl('characterCreation1');
-		$create_character_url = CurlHelper:: addParameter($create_character_url, PLAYER_NAME, $player_name);
+		$create_character_url = CurlHelper::buildCharacterActionRouterUrl();
+		$create_character_url = CurlHelper::addParameter($create_character_url, CHARACTER_ACTION, CHARACTER_ACTION_CREATE_CHARACTER);
+		$create_character_url = CurlHelper::addParameter($create_character_url, PLAYER_NAME, $player_name);
 		$create_character_url = CurlHelper:: addParameter($create_character_url, PAGE_ACTION, 'validate');
 	
 		$output_html = '<a href="' . $create_character_url . '" target="_blank">';
@@ -135,7 +137,7 @@ echo $html_header;
 
 	function buildViewCharacterUrl($player_name, $character_name) {
 		$url = CurlHelper::buildCharacterActionRouterUrl();
-		$url = CurlHelper::addParameter($url, CHARACTER_ACTION, 'viewCharacter');
+		$url = CurlHelper::addParameter($url, CHARACTER_ACTION, CHARACTER_ACTION_VIEW_CHARACTER);
 		$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
 		$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
 

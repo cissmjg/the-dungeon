@@ -16,6 +16,7 @@ require_once __DIR__ . '/helper/ActionBarHelper.php';
 require_once __DIR__ . '/helper/HtmlHelper.php';
 
 require_once __DIR__ . '/webio/characterAction.php';
+require_once __DIR__ . '/characterActionRoutes.php';
 require_once __DIR__ . '/webio/spellLevel.php';
 require_once __DIR__ . '/webio/spellSlotId.php';
 require_once __DIR__ . '/webio/spellCatalogId.php';
@@ -181,7 +182,7 @@ function buildClassSpecificSpellIcon($spellType, $updateFormId, $updateFormChara
     $spellActionIcon->setOnClickJsFunction('submitTheCharacterActionForm');
     $spellActionIcon->addOnclickJsParameter($updateFormId);
     $spellActionIcon->addOnclickJsParameter($updateFormCharacterActionId);
-    $spellActionIcon->addOnclickJsParameter('updateReadySpellSlot');
+    $spellActionIcon->addOnclickJsParameter(CHARACTER_ACTION_UPDATE_READY_SPELL_SLOT);
 
     return  $spellActionIcon->build();
 }
@@ -429,22 +430,22 @@ function buildSlotActionFormStart($formId, $spellSlotId, $playerName, $character
 
 function buildCastSlotButtonTag($spellSlotId, $spellDuration, $spellCastingTime) {
     $castSpellIcon = new FaCastSpellIcon();
-    return buildSlotActionButtonTag($castSpellIcon, 'castSpellSlot', 'Cast Spell', $spellSlotId, $spellDuration, $spellCastingTime);
+    return buildSlotActionButtonTag($castSpellIcon, CHARACTER_ACTION_CAST_SPELL_SLOT, 'Cast Spell', $spellSlotId, $spellDuration, $spellCastingTime);
 }
 
 function buildResetSlotButtonTag($spellSlotId) {
     $refreshSlotIcon = new FaRefreshIcon();
-    return buildSlotActionButtonTag($refreshSlotIcon, 'resetSpellSlot', "Refresh spell", $spellSlotId, '0', '0');
+    return buildSlotActionButtonTag($refreshSlotIcon, CHARACTER_ACTION_RESET_SPELL_SLOT, "Refresh spell", $spellSlotId, '0', '0');
 }
 
 function buildCastingSlotButtonTag($spellSlotId) {
     $castingSlotIcon = new FaStopSpellIcon();
-    return buildSlotActionButtonTag($castingSlotIcon, 'stopCastingSpellSlot', 'Stop casting spell', $spellSlotId, '0', '0');
+    return buildSlotActionButtonTag($castingSlotIcon, CHARACTER_ACTION_STOP_CASTING_SPELL_SLOT, 'Stop casting spell', $spellSlotId, '0', '0');
 }
 
 function buildRunningSlotButtonTag($spellSlotId) {
     $runningSlotIcon = new FaRunSpellIcon();
-    return buildSlotActionButtonTag($runningSlotIcon, 'stopRunningSpellSlot', 'Stop running spell', $spellSlotId, '0', '0');
+    return buildSlotActionButtonTag($runningSlotIcon, CHARACTER_ACTION_STOP_RUNNING_SPELL_SLOT, 'Stop running spell', $spellSlotId, '0', '0');
 }
 
 function buildSlotActionButtonTag($slotActionIcon, $slotAction, $iconTitleText, $spellSlotId, $spellDuration, $spellCastingTime) {
@@ -463,7 +464,7 @@ function buildReclaimCantripIcon($formId, $characterActionId) {
     $reclaimCantripIcon->setOnClickJsFunction('submitTheCharacterActionForm');
     $reclaimCantripIcon->addOnclickJsParameter($formId);
     $reclaimCantripIcon->addOnclickJsParameter($characterActionId);
-    $reclaimCantripIcon->addOnclickJsParameter('reclaimCantripSlots');
+    $reclaimCantripIcon->addOnclickJsParameter(CHARACTER_ACTION_RECLAIM_CANTRIP_SLOTS);
     
     return $reclaimCantripIcon->build();
 }

@@ -119,27 +119,6 @@ $html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_s
 echo $html_header;
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="Cache-Control" content="no-store">
-
-    <title><?= $page_title ?></title>
-
-    <script src="../js/jquery-1.12.4.min.js"></script>
-    <script src="../js/jquery-ui.min.js"></script>
-    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-
-	<link rel="stylesheet" href="dnd-default.css">
-
-    <link rel="stylesheet" href="togglePanel.css">
-    <script type="module" src="togglePanel.js"></script>
-
-    <script src="updatePlayerCharacterWeapon.js" type="module"></script>
-	<link href="updatePlayerCharacterWeapon.css" rel="stylesheet" >
-</head>
 <body>
     <div style="width: 100%;"><span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span></div>
     <div style="background-color: Aquamarine; text-align:center; border-radius: 10px;">Weapon Details</div>

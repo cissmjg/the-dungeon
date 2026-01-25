@@ -13,7 +13,9 @@ export function castGMSpell(spellCatalogIdValue, spellLevelValue, spellDurationV
     let jqSpellCastingTag = "#spellCastingTime";
     $(jqSpellCastingTag).val(spellCastingTimeValue);
 
-    submitTheCharacterActionForm('slot-action-form', 'castGMSpellCharacterAction', 'castGMSpell');
+    const CHARACTER_ACTION_CAST_GM_SPELL = 'castGMSpell';
+
+    submitTheCharacterActionForm('slot-action-form', 'castGMSpellCharacterAction', CHARACTER_ACTION_CAST_GM_SPELL);
 }
 
 export function recoverSpellPoints() {
@@ -21,7 +23,9 @@ export function recoverSpellPoints() {
     let jqHoursOfSleepTag = "#hoursOfSleep";
     $(jqHoursOfSleepTag).val(jqInputHoursOfSleep);
 
-    submitTheCharacterActionForm('recover-spell-points', 'recoverSpellPointsCharacterAction', 'recoverSpellPointsBySleep');
+    const CHARACTER_ACTION_RECOVER_SPELL_POINTS_SLEEP = 'recoverSpellPointsBySleep';
+
+    submitTheCharacterActionForm('recover-spell-points', 'recoverSpellPointsCharacterAction', CHARACTER_ACTION_RECOVER_SPELL_POINTS_SLEEP);
 }
 
 export function showCantrip() {

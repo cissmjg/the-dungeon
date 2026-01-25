@@ -12,6 +12,8 @@ validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/webio/characterAction.php';
+require_once __DIR__ . '/characterActionRoutes.php';
+
 require_once __DIR__ . '/webio/spellTypeId.php';
 require_once __DIR__ . '/webio/spellSlotLevel.php';
 require_once __DIR__ . '/webio/spellSlotId.php';
@@ -31,9 +33,7 @@ require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 require_once __DIR__ . '/dbio/constants/characterClasses.php';
 
-const DEALLOCATE_CHARACTER_ACTION = "deallocateExtraSlot";
 const DEALLOCATE_CHARACTER_ACTION_ID = "xs-deallocate-character-action";
-const ALLOCATE_CHARACTER_ACTION = "allocateExtraSlot";
 
 // Populate player and character names in $input
 getPlayerName($errors, $input);
@@ -69,7 +69,7 @@ echo $html_header;
     <form name="xsDeallocate" id="xsDeallocate" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl()?>">
         <input type="hidden" name="<?= PLAYER_NAME ?>" id="playerName" value="<?= $input[PLAYER_NAME] ?>">
         <input type="hidden" name="<?= CHARACTER_NAME ?>" id="characterName" value="<?= $input[CHARACTER_NAME] ?>">
-        <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="<?= DEALLOCATE_CHARACTER_ACTION_ID ?>" value="<?= DEALLOCATE_CHARACTER_ACTION?>">
+        <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="<?= DEALLOCATE_CHARACTER_ACTION_ID ?>" value="<?= CHARACTER_ACTION_DEALLOCATE_EXTRA_SLOT ?>">
         <input type="hidden" name="<?= SPELL_SLOT_ID ?>" id="<?= SPELL_SLOT_ID ?>" value="">
     </form>
 <?php
@@ -181,7 +181,7 @@ function getMaxExtraSlotLevelBySpellType(\PDO $pdo, $player_name, $character_nam
 function buildDeleteExtraSlotIcon($extra_slot_id) {
     $form_id = "xsDeallocate";
     $character_action_id = DEALLOCATE_CHARACTER_ACTION_ID;
-    $character_action_value = DEALLOCATE_CHARACTER_ACTION;
+    $character_action_value = CHARACTER_ACTION_DEALLOCATE_EXTRA_SLOT;
     $spell_slot_id_value = $extra_slot_id;
 
     $deallocateExtraSlotIcon = new FaCancelIcon();
@@ -199,7 +199,7 @@ function buildAddExtraSlotIcon($form_id, $character_action_id) {
     $addExtraSlotIcon->setOnClickJsFunction('submitTheCharacterActionForm');
     $addExtraSlotIcon->addOnclickJsParameter($form_id);
     $addExtraSlotIcon->addOnclickJsParameter($character_action_id);
-    $addExtraSlotIcon->addOnclickJsParameter(ALLOCATE_CHARACTER_ACTION);
+    $addExtraSlotIcon->addOnclickJsParameter(CHARACTER_ACTION_ALLOCATE_EXTRA_SLOT);
 
     return $addExtraSlotIcon->build();
 }
@@ -210,7 +210,7 @@ function buildAddExtraSlotForm($form_id, $player_name, $character_name, $charact
     $form_html .= HtmlHelper::buildHiddenTag(CHARACTER_NAME, $character_name) . PHP_EOL;
     $form_html .= HtmlHelper::buildHiddenTag(PLAYER_CHARACTER_CLASS_ID, $player_character_class_id) . PHP_EOL;
     $form_html .= HtmlHelper::buildHiddenTag(SPELL_TYPE_ID, $extra_slot_spell_type) . PHP_EOL;
-    $form_html .= HtmlHelper::buildHiddenTagWithId(CHARACTER_ACTION, $character_action_id, ALLOCATE_CHARACTER_ACTION) . PHP_EOL;
+    $form_html .= HtmlHelper::buildHiddenTagWithId(CHARACTER_ACTION, $character_action_id, CHARACTER_ACTION_ALLOCATE_EXTRA_SLOT) . PHP_EOL;
     $form_html .= "Add ";
     $form_html .= '<select id="' . SPELL_SLOT_LEVEL .'" name="' . SPELL_SLOT_LEVEL . '">' . PHP_EOL;
 

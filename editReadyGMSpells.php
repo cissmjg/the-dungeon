@@ -16,6 +16,7 @@ require_once __DIR__ . '/helper/ActionBarHelper.php';
 require_once __DIR__ . '/helper/HtmlHelper.php';
 
 require_once __DIR__ . '/webio/characterAction.php';
+require_once __DIR__ . '/characterActionRoutes.php';
 require_once __DIR__ . '/webio/spellCatalogId.php';
 require_once __DIR__ . '/webio/spellLevel.php';
 require_once __DIR__ . '/webio/spellDuration.php';
@@ -325,12 +326,12 @@ function buildRunningSlotForm($readySpell) {
 
 function buildCastingSlotButtonTag($spellSlotId) {
     $castingSlotIcon = new FaStopSpellIcon();
-    return buildSlotActionButtonTag($castingSlotIcon, 'stopCastingGMSpellSlot', 'Stop casting spell', $spellSlotId);
+    return buildSlotActionButtonTag($castingSlotIcon, CHARACTER_ACTION_STOP_CASTING_GM_SPELL, 'Stop casting spell', $spellSlotId);
 }
 
 function buildRunningSlotButtonTag($spellSlotId) {
     $runningSlotIcon = new FaRunSpellIcon();
-    return buildSlotActionButtonTag($runningSlotIcon, 'stopRunninGMSpellSlot', 'Stop running spell', $spellSlotId);
+    return buildSlotActionButtonTag($runningSlotIcon, CHARACTER_ACTION_STOP_RUNNING_GM_SPELL, 'Stop running spell', $spellSlotId);
 }
 
 function buildSlotActionButtonTag($slotActionIcon, $slotAction, $iconTitleText, $spellSlotId) {

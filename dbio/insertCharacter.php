@@ -10,6 +10,7 @@ validateSessionCredentials($pdo);
 require_once __DIR__ . '/../helper/CurlHelper.php';
 require_once __DIR__ . '/../helper/RestHeaderHelper.php';
 require_once __DIR__ . '/constants/characterAttributes.php';
+require_once __DIR__ . '/../characterActionRoutes.php';
 
 require_once __DIR__ . '/../webio/playerName.php';
 require_once __DIR__ . '/../webio/characterName.php';
@@ -60,7 +61,7 @@ if (count($errors) > 0) {
 }
 
 $redirect_url = CurlHelper::buildCharacterActionRouterUrl();
-$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_ACTION, 'viewCharacter');
+$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_ACTION, CHARACTER_ACTION_VIEW_CHARACTER);
 $redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 $redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 

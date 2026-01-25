@@ -11,6 +11,7 @@ require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/helper/HtmlHelper.php';
 
 require_once __DIR__ . '/webio/characterAction.php';
+require_once __DIR__ . '/characterActionRoutes.php';
 require_once __DIR__ . '/webio/spellLevel.php';
 require_once __DIR__ . '/webio/spellCatalogId.php';
 
@@ -32,8 +33,6 @@ require_once __DIR__ . '/dbio/constants/classAbilitiesGM.php';
 require_once __DIR__ . '/dbio/constants/characterClasses.php';
 
 require_once __DIR__ . '/dbio/constants/emptySpellSlot.php';
-
-const UPDATE_SPELL_POOL_ACTION = 'updateSpellPool';
 
 $input = [];
 $errors = [];
@@ -286,7 +285,7 @@ function buildUpdateExistingSlotIcon($spell_pool_id, $spell_pool_form_id, $form_
     $cast_spell_icon->addOnclickJsParameter($spell_pool_id);
     $cast_spell_icon->addOnclickJsParameter($form_id_name);
     $cast_spell_icon->addOnclickJsParameter($form_character_action_id);
-    $cast_spell_icon->addOnclickJsParameter(UPDATE_SPELL_POOL_ACTION);
+    $cast_spell_icon->addOnclickJsParameter(CHARACTER_ACTION_UPDATE_SPELLPOOL);
 
     return $cast_spell_icon->build();
 }
@@ -296,7 +295,7 @@ function buildUpdateSpellBookButtonTag($form_id_name, $form_character_action_id,
     $cast_spell_icon->setOnClickJsFunction('submitTheCharacterActionForm');
     $cast_spell_icon->addOnclickJsParameter($form_id_name);
     $cast_spell_icon->addOnclickJsParameter($form_character_action_id);
-    $cast_spell_icon->addOnclickJsParameter(UPDATE_SPELL_POOL_ACTION);
+    $cast_spell_icon->addOnclickJsParameter(CHARACTER_ACTION_UPDATE_SPELLPOOL);
     $cast_spell_icon->setElementId($submit_icon_id);
     if ($spell_pool_id == -1) {
         $cast_spell_icon->setHidden(true);
