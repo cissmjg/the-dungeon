@@ -48,6 +48,7 @@ $enable_toggle_panels = true;
 
 $html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
 echo $html_header;
+
 ?>
 <body>
     <form name="deleteWeapon" id="deleteWeapon" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl() ?>">
@@ -85,8 +86,9 @@ echo $html_header;
             <tr><th>&nbsp;</th><th>Description</th><th>Location</th><th>Craft Status</th></tr>
             <?php
                 foreach($weapon_list AS $weapon) {
+                    $weapon_desc = str_replace("'", "", html_entity_decode($weapon['weapon_description']));
                     $output_row  = '<tr>';
-                    $output_row .= '<td>' . buildDeletePlayerCharacterWeaponIcon($weapon['weapon_description'], $weapon['player_character_weapon_id']) . '</td>';
+                    $output_row .= '<td>' . buildDeletePlayerCharacterWeaponIcon($weapon_desc, $weapon['player_character_weapon_id']) . '</td>';
                     $output_row .= '<td>' . buildWeaponNameCell($input[PLAYER_NAME], $input[CHARACTER_NAME], $weapon) . '</td>';
                     $output_row .= '<td>' . $weapon['weapon_location'] . '</td>';
                     $output_row .= '<td>' . getCraftStatusDescription($weapon['weapon_craft_status']) . '</td>';
@@ -96,6 +98,7 @@ echo $html_header;
             ?>
         </table>
     <?php endif ?>
+<div>
 </body>
 </html>
 
@@ -132,7 +135,7 @@ function buildDeletePlayerCharacterWeaponIcon($weapon_desc, $player_character_we
     $delete_icon->addOnclickJsParameter('deleteWeapon');
     $delete_icon->addOnclickJsParameter(PLAYER_CHARACTER_WEAPON_ID);
     $delete_icon->addOnclickJsParameter($player_character_weapon_id);
-    $delete_icon->addOnclickJsParameter($weapon_desc);
+    $delete_icon->addOnclickJsParameter(str_replace("'", "", $weapon_desc));
     $delete_icon->setHoverText('Delete ' . $weapon_desc);
 
     return $delete_icon->build();
