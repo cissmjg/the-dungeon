@@ -34,7 +34,7 @@ const FONT_AWESOME_LIB = "https://kit.fontawesome.com/4295d6f264.js";
         $output_html .= '    <script src="' . HtmlHelper::FONT_AWESOME_LIB . '" crossorigin="anonymous"></script>' . PHP_EOL . PHP_EOL;
         $output_html .= '    <link rel="stylesheet" href="css/' . $site_css_file .'">' . PHP_EOL . PHP_EOL;
         if ($enable_toggle_panels) {
-            $output_html .= '    <link rel="stylesheet" href="togglePanel.css">' . PHP_EOL;
+            $output_html .= '    <link rel="stylesheet" href="css/togglePanel.css">' . PHP_EOL;
             $output_html .= '    <script type="module" src="js/togglePanel.js"></script>' . PHP_EOL . PHP_EOL;
         }
 
