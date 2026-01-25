@@ -25,12 +25,15 @@ const PAGE_ACTION_EDIT = "edit";
 
 $input = [];
 $errors = [];
+$errors[CHARACTER_NAME] = [];
 $errors[CHARACTER_STRENGTH] = [];
 $errors[CHARACTER_INTELLIGENCE] = [];
 $errors[CHARACTER_WISDOM] = [];
 $errors[CHARACTER_DEXTERITY] = [];
 $errors[CHARACTER_CONSTITUTION] = [];
 $errors[CHARACTER_CHARISMA] = [];
+
+$query_errors = [];
 
 getPlayerName($errors, $input);
 getPageAction($errors, $input);
@@ -42,6 +45,16 @@ if ($data_entered) {
 	getCharacterAttributes($errors, $input, __FILE__);
 	adjustCharacterAttributes($errors, $input, __FILE__);
 	validateRacialAttributes($errors, $input, $attributes_min_max);
+	if (!empty($input[CHARACTER_NAME])) {
+		$character_name_query = getPlayerCharacterId($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $query_errors);
+		if (count($query_errors) > 0) {
+			die (json_encode($query_errors));
+		}
+
+		if ($character_name_query['playerCharacterId'] != 0) {
+			$errors[CHARACTER_NAME][] = "Character name already used";
+		}
+	}
 }
 
 $race_list = getRaceList($pdo, $errors);
@@ -106,12 +119,16 @@ echo $html_header;
 					echo buildThumbsDownIcon('Please enter a name');
 				}
 
-				if ($data_entered && !empty($input[CHARACTER_NAME])) {
-					echo  buildThumbsUpIcon();
-				}
+				if (!empty($errors[CHARACTER_NAME])) {
+					echo buildThumbsDownIcon($errors[CHARACTER_NAME][0]);
+				} else {
+					if ($data_entered && !empty($input[CHARACTER_NAME])) {
+						echo  buildThumbsUpIcon();
+					}
 
-				if(!$data_entered) {
-					echo '&nbsp;';
+					if(!$data_entered) {
+						echo '&nbsp;';
+					}
 				}
 			?>
 		</td>
@@ -327,6 +344,22 @@ function getRaceList(\PDO $pdo, &$errors) {
 	return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function getPlayerCharacterId(\PDO $pdo, $player_name, $character_name, &$errors) {
+	$sql_exec = "CALL checkDuplicateCharacterName(:playerName, :characterName)";
+
+	$statement = $pdo->prepare($sql_exec);
+
+	$statement->bindParam(':playerName', $player_name, PDO::PARAM_STR);
+	$statement->bindParam(':characterName', $character_name, PDO::PARAM_STR);
+	try {
+		$statement->execute();
+	} catch(Exception $e) {
+		$errors[] = "Exception in " . __FILE__ . ".getPlayerCharacterId : " . $e->getMessage();
+	}
+
+	return $statement->fetch(PDO::FETCH_ASSOC);
+}
+
 function buildThumbsUpIcon() {
 	return '<span class="fa-regular fa-thumbs-up"></span>';
 }
@@ -336,7 +369,7 @@ function buildThumbsDownIcon($error_message) {
 }
 
 function noErrorsPresent($errors) {
-	return count($errors[CHARACTER_STRENGTH]) == 0 && count($errors[CHARACTER_INTELLIGENCE]) == 0 && count($errors[CHARACTER_WISDOM]) == 0 && count($errors[CHARACTER_DEXTERITY]) == 0 && count($errors[CHARACTER_CONSTITUTION]) == 0 && count($errors[CHARACTER_CHARISMA]) == 0;
+	return count($errors[CHARACTER_STRENGTH]) == 0 && count($errors[CHARACTER_INTELLIGENCE]) == 0 && count($errors[CHARACTER_WISDOM]) == 0 && count($errors[CHARACTER_DEXTERITY]) == 0 && count($errors[CHARACTER_CONSTITUTION]) == 0 && count($errors[CHARACTER_CHARISMA]) == 0 && count($errors[CHARACTER_NAME]) == 0;
 }
 
 ?>

@@ -519,6 +519,21 @@ BEGIN
 	SELECT nullSpellId;
 END
 
+CREATE PROCEDURE checkDuplicateCharacterName
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64)
+)
+BEGIN
+	DECLARE playerCharacterId INT DEFAULT 0;
+
+	SELECT player_character.id
+	INTO playerCharacterId
+	FROM player_character
+	WHERE player_character.name = characterName;
+
+	SELECT playerCharacterId;
+END
+
 CREATE PROCEDURE createBaseCharacter
 (IN playerName VARCHAR(32),
  IN characterName VARCHAR(64),
