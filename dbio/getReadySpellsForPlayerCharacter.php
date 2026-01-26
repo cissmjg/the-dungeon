@@ -11,7 +11,6 @@ validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/../helper/RestHeaderHelper.php';
 require_once __DIR__ . '/../helper/SpellCalculationHelper.php';
-require_once __DIR__ . '/../timeUnitOfMeasure.php';
 
 require_once __DIR__ . '/../webio/playerName.php';
 require_once __DIR__ . '/../webio/characterName.php';
