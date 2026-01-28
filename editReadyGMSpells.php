@@ -10,24 +10,34 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once 'CurlHelper.php';
-require_once 'playerName.php';
-require_once 'characterName.php';
-require_once 'RestHeaderHelper.php';
-require_once __DIR__ . '/classes/ActionBarHelper.php';
-require_once 'hiddenTag.php';
+require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/helper/RestHeaderHelper.php';
+require_once __DIR__ . '/helper/ActionBarHelper.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
 
-require_once 'faCastSpellIcon.php';
-require_once 'faSleepIcon.php';
-require_once 'spellSlotTypes.php';
+require_once __DIR__ . '/webio/characterAction.php';
+require_once __DIR__ . '/characterActionRoutes.php';
+require_once __DIR__ . '/webio/spellCatalogId.php';
+require_once __DIR__ . '/webio/spellLevel.php';
+require_once __DIR__ . '/webio/spellDuration.php';
+require_once __DIR__ . '/webio/spellCastingTime.php';
+require_once __DIR__ . '/webio/hoursOfSleep.php';
+require_once __DIR__ . '/webio/spellSlotId.php';
 
-require_once 'characterAttributes.php';
-require_once 'characterSummary.php';
-require_once 'characterSummaryRenderer.php';
-require_once 'faRunSpellIcon.php';
-require_once 'faStopSpellIcon.php';
+require_once __DIR__ . '/webio/playerName.php';
+require_once __DIR__ . '/webio/characterName.php';
+require_once __DIR__ . '/webio/characterLevel.php';
 
-require_once 'cantripSpellSlot.php';
+require_once __DIR__ . '/fa/faCastSpellIcon.php';
+require_once __DIR__ . '/fa/faSleepIcon.php';
+require_once __DIR__ . '/dbio/constants/spellSlotTypes.php';
+
+require_once __DIR__ . '/classes/characterSummary.php';
+require_once __DIR__ . '/classes/characterSummaryRenderer.php';
+require_once __DIR__ . '/fa/faRunSpellIcon.php';
+require_once __DIR__ . '/fa/faStopSpellIcon.php';
+
+require_once __DIR__ . '/dbio/constants/cantripSpellSlot.php';
 
 const MAX_HOURS_SLEEP = 8;
 
@@ -36,18 +46,18 @@ getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 
 $params = [];
-$params['playerName'] = $input['playerName'];
+$params[PLAYER_NAME] = $input[PLAYER_NAME];
 $params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
-$url = CurlHelper::buildUrl('getSpellBookForGreaterMage');
+$url = CurlHelper::buildUrlDbioDirectory('getSpellBookForGreaterMage');
 $raw_results = CurlHelper::performGetRequest($url, $params);
 
 $availableSpells = json_decode($raw_results);
 
 $spellListByLevel = [];
 
-$url = CurlHelper::buildUrl('getReadySpellsForPlayerCharacter');
+$url = CurlHelper::buildUrlDbioDirectory('getReadySpellsForPlayerCharacter');
 $raw_results = CurlHelper::performGetRequest($url, $params);
 
 $allRunningSpells = json_decode($raw_results);
@@ -58,7 +68,7 @@ if (!empty($allRunningSpells)) {
 }
 
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input['playerName'], $input[CHARACTER_NAME]);
+$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $character_summary_renderer = new CharacterSummaryRenderer($input[CHARACTER_NAME]);
 $character_summary_stats = $character_summary_renderer->render($character_summary);
@@ -67,104 +77,43 @@ $prev_spell_level = -1;
 
 $locale = 'en_US';
 $nf = new NumberFormatter($locale, NumberFormatter::ORDINAL);
-$action_bar = buildActionBar($input['playerName'], $input[CHARACTER_NAME]);
+$action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
-$character_level = getCharacterLevel($character_summary->getCharacterClasses());
+$character_level = getCharacterLevelFromCharacterSummary($character_summary->getCharacterClasses());
 $cantrip_select_html = '<select id="available_cantrip" name="available_cantrip" onchange="showCantrip()" style="font-size: 14pt;">' . PHP_EOL;
+
+$page_title = $input[CHARACTER_NAME] . ' Spells';
+$site_css_file = 'dnd-default.css';
+$page_specific_js = 'editReadyGMSpells.js';
+$page_specific_css = 'editReadyGMSpells.css';
+$enable_toggle_panels = false;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $input[CHARACTER_NAME] ?> Spells</title>
-	<link rel="stylesheet" href="dnd-default.css">
-    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-    <meta name="Cache-Control" content="no-store">
-    <script src="editReadyGMSpells.js" type="text/javascript"></script>
-    <script src="submitTheForm.js" type="text/javascript"></script>
-    <style>
-        .column_left {
-            float: left;
-            width: 33.33%;
-            text-align: left;
-            background-color: PaleTurquoise;
-            /* display: inline-block; */
-        }
-
-        .column_mid {
-            float: left;
-            width: 33.33%;
-            text-align: center;
-            background-color: PaleTurquoise;
-            /* display: inline-block; */
-        }
-
-        .column_right {
-            float: left;
-            width: 33.33%;
-            text-align: right;
-            background-color: PaleTurquoise;
-            /* display: inline-block; */
-        }
-
-        .row {
-            width: 100%;
-            padding-bottom: 2px;
-            padding-top: 2px;
-            display: flex;
-            flex-direction: row;
-            background-color: PaleTurquoise;
-        }
-
-        /* Clear floats after the columns */
-        row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        .positive_spell_points {
-            padding-left: 3px;
-            font-size: 20pt;
-            color: blue;
-        }
-
-        .negative_spell_points {
-            padding-left: 3px;
-            font-size: 20pt;
-            color: red;
-        }
-
-        .recover_spell_points {
-            font-size: 20pt;
-            padding-right: 3px;
-        }
-    </style>
-</head>
 <body>
-    <form name="slot-action-form" id="slot-action-form" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter') ?>">
-        <input type="hidden" name="playerName" id="playerName" value="<?= $input['playerName'] ?>">
-        <input type="hidden" name="characterName" id="characterName" value="<?= $input[CHARACTER_NAME] ?>">
-        <input type="hidden" name="characterAction" id="castGMSpellCharacterAction" value="">
-        <input type="hidden" name="spellPoolId" id="spellPoolId" value="">
-        <input type="hidden" name="spellCatalogId" id="spellCatalogId" value="">
-        <input type="hidden" name="spellLevel" id="spellLevel" value="">
-        <input type="hidden" name="spellDuration" id="spellDuration" value="">
-        <input type="hidden" name="spellCastingTime" id ="spellCastingTime" value="">
+    <form name="slot-action-form" id="slot-action-form" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl() ?>">
+        <input type="hidden" name="<?= PLAYER_NAME ?>" id="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_NAME ?>" id="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="castGMSpellCharacterAction" value="">
+        <input type="hidden" name="<?= SPELL_CATALOG_ID ?>" id="<?= SPELL_CATALOG_ID ?>" value="">
+        <input type="hidden" name="<?= SPELL_LEVEL ?>" id="<?= SPELL_LEVEL ?>" value="">
+        <input type="hidden" name="<?= SPELL_DURATION ?>" id="<?= SPELL_DURATION ?>" value="">
+        <input type="hidden" name="<?= SPELL_CASTING_TIME ?>" id ="<?= SPELL_CASTING_TIME?>" value="">
     </form>
-    <form name="recover-spell-points" id="recover-spell-points" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter') ?>">
-        <input type="hidden" name="playerName" id="playerName" value="<?= $input['playerName'] ?>">
-        <input type="hidden" name="characterName" id="characterName" value="<?= $input[CHARACTER_NAME] ?>">
-        <input type="hidden" name="characterAction" id="recoverSpellPointsCharacterAction" value="">
-        <input type="hidden" name="characterLevel" id="characterLevel" value="<?= $character_level ?>">
-        <input type="hidden" name="hoursOfSleep" id="hoursOfSleep" value="">
+    <form name="recover-spell-points" id="recover-spell-points" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl() ?>">
+        <input type="hidden" name="<?= PLAYER_NAME ?>" id="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_NAME ?>" id="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="recoverSpellPointsCharacterAction" value="">
+        <input type="hidden" name="<?= CHARACTER_LEVEL ?>" id="<?= CHARACTER_LEVEL ?>" value="<?= $character_level ?>">
+        <input type="hidden" name="<?= HOURS_OF_SLEEP ?>" id="<?= HOURS_OF_SLEEP ?>" value="">
     </form>
-    <form name="stop-action-form" id="stop-action-form" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter') ?>">
-        <input type="hidden" name="playerName" id="playerName" value="<?= $input['playerName'] ?>">
-        <input type="hidden" name="characterName" id="characterName" value="<?= $input[CHARACTER_NAME] ?>">
-        <input type="hidden" name="characterAction" id="stopGMSpellCharacterAction" value="">
-        <input type="hidden" name="spellSlotId" id="spellSlotId" value="">
+    <form name="stop-action-form" id="stop-action-form" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl() ?>">
+        <input type="hidden" name="<?= PLAYER_NAME ?>" id="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_NAME ?>" id="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="stopGMSpellCharacterAction" value="">
+        <input type="hidden" name="<?= SPELL_SLOT_ID ?>" id="<?= SPELL_SLOT_ID ?>" value="">
     </form>
     <div style="width: 100%;"><span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span></div>
     <?php
@@ -181,9 +130,16 @@ $cantrip_select_html = '<select id="available_cantrip" name="available_cantrip" 
         $rowCounter = 0;
         echo '<table class="ready_spells">' . PHP_EOL;
 
+        $cantrip_select_option_added = false;
         foreach($availableSpells AS $availableSpell) {
+            $slot_action_row_id = buildActionSlotRowId($availableSpell);
             if ($availableSpell->spell_level == 0) {
                 $option = buildCantripOptions($slot_action_row_id, $availableSpell->spell_name);
+                if ($cantrip_select_option_added == false) {
+                    $cantrip_select_html .= '<option value="slot-action-row-select">' . "[Select a Cantrip]" . '</option>' . PHP_EOL;
+                    $cantrip_select_option_added = true;
+                }
+                    
                 $cantrip_select_html .= $option;
             }
 
@@ -199,10 +155,9 @@ $cantrip_select_html = '<select id="available_cantrip" name="available_cantrip" 
             }
 
             if ($character_summary->getSpellPoints() >= $availableSpell->spell_level) {
-                $slotAction_html = buildCastSlotForm($input['playerName'], $input[CHARACTER_NAME], $availableSpell);
+                $slotAction_html = buildCastSlotForm($input[PLAYER_NAME], $input[CHARACTER_NAME], $availableSpell);
                 $backgroundColor = $rowCounter % 2 == 0 ? "white" : "lightgray";
                 $hidden_row = $availableSpell->spell_level == 0 ? ' hidden' : '';
-                $slot_action_row_id = buildActionSlotRowId($availableSpell);
                 echo '<tr style="background-color: '. $backgroundColor .'" id="' . $slot_action_row_id . '"' . $hidden_row . '>' . PHP_EOL . $slotAction_html . '</tr>' . PHP_EOL;
             }
             
@@ -230,11 +185,6 @@ $cantrip_select_html = '<select id="available_cantrip" name="available_cantrip" 
     }
     ?>
 </table>
-<div>
-    <pre>
-        <?= $debug_output ?>
-    </pre>
-</div>
 </body>
 </html>
 
@@ -376,12 +326,12 @@ function buildRunningSlotForm($readySpell) {
 
 function buildCastingSlotButtonTag($spellSlotId) {
     $castingSlotIcon = new FaStopSpellIcon();
-    return buildSlotActionButtonTag($castingSlotIcon, 'stopCastingGMSpellSlot', 'Stop casting spell', $spellSlotId);
+    return buildSlotActionButtonTag($castingSlotIcon, CHARACTER_ACTION_STOP_CASTING_GM_SPELL, 'Stop casting spell', $spellSlotId);
 }
 
 function buildRunningSlotButtonTag($spellSlotId) {
     $runningSlotIcon = new FaRunSpellIcon();
-    return buildSlotActionButtonTag($runningSlotIcon, 'stopRunninGMSpellSlot', 'Stop running spell', $spellSlotId);
+    return buildSlotActionButtonTag($runningSlotIcon, CHARACTER_ACTION_STOP_RUNNING_GM_SPELL, 'Stop running spell', $spellSlotId);
 }
 
 function buildSlotActionButtonTag($slotActionIcon, $slotAction, $iconTitleText, $spellSlotId) {
@@ -416,7 +366,7 @@ function buildCantripOptions($row_id, $available_spell_name) {
     return '<option value="' . $row_id . '">' . $available_spell_name . '</option>' . PHP_EOL;
 }
 
-function getCharacterLevel($character_classes) {
+function getCharacterLevelFromCharacterSummary($character_classes) {
     foreach($character_classes AS $character_class) {
         return $character_class['character_level'];
     }
@@ -430,10 +380,6 @@ function buildSpellLevelHeader($spellLevel, $nf) {
 
     $header = '<tr><th>' . $spellLevelDesc . '</th><th>Name</th><th>CT</th><th>Rng</th><th>Dur</th><th>AoE</th></tr>';
     return $header;
-}
-
-function getBackgroundStyle($spellType) {
-    return "background-color:rgba(0, 0, 255, 0.15)";
 }
 
 function buildActionBar($playerName, $characterName) {

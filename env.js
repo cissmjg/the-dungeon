@@ -1,1 +1,0 @@
-export const STARTING_URL = "https://www.themikegsite.com/dandd/";

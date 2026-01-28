@@ -1,0 +1,56 @@
+.column_left {
+    float: left;
+    width: 33.33%;
+    text-align: left;
+    background-color: PaleTurquoise;
+    /* display: inline-block; */
+}
+
+.column_mid {
+    float: left;
+    width: 33.33%;
+    text-align: center;
+    background-color: PaleTurquoise;
+    /* display: inline-block; */
+}
+
+.column_right {
+    float: left;
+    width: 33.33%;
+    text-align: right;
+    background-color: PaleTurquoise;
+    /* display: inline-block; */
+}
+
+.row {
+    width: 100%;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    display: flex;
+    flex-direction: row;
+    background-color: PaleTurquoise;
+}
+
+/* Clear floats after the columns */
+row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.positive_spell_points {
+    padding-left: 3px;
+    font-size: 20pt;
+    color: blue;
+}
+
+.negative_spell_points {
+    padding-left: 3px;
+    font-size: 20pt;
+    color: red;
+}
+
+.recover_spell_points {
+    font-size: 20pt;
+    padding-right: 3px;
+}

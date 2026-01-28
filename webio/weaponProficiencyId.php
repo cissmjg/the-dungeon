@@ -1,0 +1,14 @@
+<?php
+require_once __DIR__ . '/requiredParameter.php';
+require_once __DIR__ . '/optionalParameter.php';
+require_once __DIR__ . '/../helper/WebParameterHelper.php';
+
+const WEAPON_PROFICIENCY_ID = 'weaponProficiencyId';
+
+function getWeaponProficiencyId(&$errors, &$input) {
+	getRequiredIntegerParameter($errors, $input, __FILE__, WEAPON_PROFICIENCY_ID);
+}
+
+function getOptionalWeaponProficiencyId(&$errors, &$input) {
+	getOptionalIntegerParameter($errors, $input, __FILE__, WEAPON_PROFICIENCY_ID, OPTIONAL_INTEGER_PARAMETER);
+}

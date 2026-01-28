@@ -6,24 +6,26 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once 'RestHeaderHelper.php';
-require_once 'CurlHelper.php';
-require_once 'playerName.php';
-require_once 'pageAction.php';
-require_once 'requiredParameter.php';
-require_once __DIR__ . '/classes/ActionBarHelper.php';
-require_once 'hiddenTag.php';
+require_once __DIR__ . '/helper/RestHeaderHelper.php';
+require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/webio/pageAction.php';
+require_once __DIR__ . '/helper/ActionBarHelper.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
 
-require_once 'characterAttributes.php';
-require_once 'adjustCharacterRacialAttributes.php';
-require_once 'getCharacterCreationAttributes.php';
-require_once 'validateRacialAttributes.php';
+require_once __DIR__ . '/webio/playerName.php';
+require_once __DIR__ . '/webio/raceId.php';
+
+require_once __DIR__ . '/dbio/constants/characterAttributes.php';
+require_once __DIR__ . '/rules/adjustCharacterRacialAttributes.php';
+require_once __DIR__ . '/rules/getCharacterCreationAttributes.php';
+require_once __DIR__ . '/rules/validateRacialAttributes.php';
 
 const PAGE_ACTION_VALIDATE = "validate";
 const PAGE_ACTION_EDIT = "edit";
 
 $input = [];
 $errors = [];
+$errors[CHARACTER_NAME] = [];
 $errors[CHARACTER_STRENGTH] = [];
 $errors[CHARACTER_INTELLIGENCE] = [];
 $errors[CHARACTER_WISDOM] = [];
@@ -31,34 +33,56 @@ $errors[CHARACTER_DEXTERITY] = [];
 $errors[CHARACTER_CONSTITUTION] = [];
 $errors[CHARACTER_CHARISMA] = [];
 
+$query_errors = [];
+
 getPlayerName($errors, $input);
 getPageAction($errors, $input);
 
-$page_action = $input['pageAction'];
+$page_action = $input[PAGE_ACTION];
 
-$data_entered = !empty($_POST['playerName']);
+$data_entered = !empty($_POST[PLAYER_NAME]);
 if ($data_entered) {
 	getCharacterAttributes($errors, $input, __FILE__);
 	adjustCharacterAttributes($errors, $input, __FILE__);
 	validateRacialAttributes($errors, $input, $attributes_min_max);
+	if (!empty($input[CHARACTER_NAME])) {
+		$character_name_query = getPlayerCharacterId($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $query_errors);
+		if (count($query_errors) > 0) {
+			die (json_encode($query_errors));
+		}
+
+		if ($character_name_query['playerCharacterId'] != 0) {
+			$errors[CHARACTER_NAME][] = "Character name already used";
+		}
+	}
 }
 
 $race_list = getRaceList($pdo, $errors);
 
-$page_title = 'New Character';
+$url_character_creation_1 = CurlHelper::buildUrl('characterCreation1.php');
+$url_character_creation_2 = CurlHelper::buildUrl('characterCreation2.php');
 
 $input_class='valid';
-if ($input['pageAction'] == PAGE_ACTION_EDIT) {
+if ($input[PAGE_ACTION] == PAGE_ACTION_EDIT) {
 	$input_class = "valid";
 }
 
 $read_only = '';
 $disabled = '';
-if ($input['pageAction'] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent($errors)) {
+if ($input[PAGE_ACTION] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent($errors)) {
 	$read_only = ' readonly';
 	$disabled = ' disabled';
 	$input_class = "view_only";
 }
+
+$page_title = 'New Character';
+$site_css_file = 'dnd-default.css';
+$page_specific_js = '';
+$page_specific_css = '';
+$enable_toggle_panels = false;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
 
 ?>
 <!DOCTYPE html>
@@ -66,17 +90,21 @@ if ($input['pageAction'] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="Cache-Control" content="no-store">
+    <meta name="Cache-Control" content="no-store">
+
     <title><?= $page_title ?></title>
-	<link rel="stylesheet" href="dnd-default.css">
-	<script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-	<meta name="Cache-Control" content="no-store">
+
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="dnd-default.css">
 </head>
 <body>
     <div style="border: solid 1px; border-color: blue; border-radius: 10px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; width: auto; display: table;">
     <table style="margin-top: 5px;">
-    <form id="characterCreation1" action="characterCreation1.php" method="post">
-	<input type="hidden" id="playerName" name="playerName" value="<?= $input['playerName'] ?>">
+    <form id="characterCreation1" action="<?= $url_character_creation_1 ?>" method="POST">
+	<input type="hidden" id="<?= PLAYER_NAME ?>" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
 	<tr>
 		<td colspan="4">
 			<div style="background-color: Aquamarine; text-align:center; border-radius: 10px;">Character Creation Stage 1</div>
@@ -91,12 +119,16 @@ if ($input['pageAction'] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent
 					echo buildThumbsDownIcon('Please enter a name');
 				}
 
-				if ($data_entered && !empty($input[CHARACTER_NAME])) {
-					echo  buildThumbsUpIcon();
-				}
+				if (!empty($errors[CHARACTER_NAME])) {
+					echo buildThumbsDownIcon($errors[CHARACTER_NAME][0]);
+				} else {
+					if ($data_entered && !empty($input[CHARACTER_NAME])) {
+						echo  buildThumbsUpIcon();
+					}
 
-				if(!$data_entered) {
-					echo '&nbsp;';
+					if(!$data_entered) {
+						echo '&nbsp;';
+					}
 				}
 			?>
 		</td>
@@ -108,8 +140,8 @@ if ($input['pageAction'] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent
 				<?php
 					$selectedRace = $input[CHARACTER_RACE_ID] ?? '';
 					foreach($race_list AS $race) {
-						$selected = $race['race_id'] == $selectedRace ? " selected" : '';
-						echo '<option value="' . $race['race_id'] . '"' . $selected . '>' . $race['race_name'] . '</option>' . PHP_EOL;
+						$selected = $race[RACE_ID] == $selectedRace ? " selected" : '';
+						echo '<option value="' . $race[RACE_ID] . '"' . $selected . '>' . $race['race_name'] . '</option>' . PHP_EOL;
 					}
 				?>
 	        </select>
@@ -137,7 +169,7 @@ if ($input['pageAction'] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent
 		<td id="characterStrengthLabel">Strength</td>
 		<td>
 			<input type="number" style="text-align: center;" class="<?= $input_class ?>" id="<?= CHARACTER_STRENGTH_RAW ?>" name="<?= CHARACTER_STRENGTH_RAW ?>" min="3" max="18" value="<?php echo $input[CHARACTER_STRENGTH_RAW] ?? ''; ?>"<?= $read_only ?> required>
-			<?= buildHiddenTag(CHARACTER_STRENGTH, $input[CHARACTER_STRENGTH] ?? '') . PHP_EOL; ?>
+			<?= HtmlHelper::buildHiddenTag(CHARACTER_STRENGTH, $input[CHARACTER_STRENGTH] ?? '') . PHP_EOL; ?>
 		</td>
 		<td style="text-align: center;"><span class="view_only"><?= $input[CHARACTER_STRENGTH] ?? '' ?></span></td>
 		<td>
@@ -160,7 +192,7 @@ if ($input['pageAction'] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent
 		<td id="characterIntelligenceLabel">Intelligence</td>
 		<td>
 			<input type="number" style="text-align: center;" class="<?= $input_class ?>" id="<?= CHARACTER_INTELLIGENCE_RAW ?>" name="<?= CHARACTER_INTELLIGENCE_RAW ?>" min="3" max="18" value="<?php echo $input[CHARACTER_INTELLIGENCE_RAW] ?? ''; ?>"<?= $read_only ?> required>
-			<?= buildHiddenTag(CHARACTER_INTELLIGENCE, $input[CHARACTER_INTELLIGENCE] ?? '') . PHP_EOL; ?>
+			<?= HtmlHelper::buildHiddenTag(CHARACTER_INTELLIGENCE, $input[CHARACTER_INTELLIGENCE] ?? '') . PHP_EOL; ?>
 		</td>
 		<td style="text-align: center;"><span class="view_only"><?= $input[CHARACTER_INTELLIGENCE] ?? ''; ?></span></td>
 		<td>
@@ -183,7 +215,7 @@ if ($input['pageAction'] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent
 		<td id="characterWisdomLabel">Wisdom</td>
 		<td>
 			<input type="number" style="text-align: center;" class="<?= $input_class ?>" id="<?= CHARACTER_WISDOM_RAW ?>" name="<?= CHARACTER_WISDOM_RAW ?>" min="3" max="18" value="<?php echo $input[CHARACTER_WISDOM_RAW] ?? ''; ?>"<?= $read_only ?> required>
-			<?= buildHiddenTag(CHARACTER_WISDOM, $input[CHARACTER_WISDOM] ?? '') . PHP_EOL; ?>
+			<?= HtmlHelper::buildHiddenTag(CHARACTER_WISDOM, $input[CHARACTER_WISDOM] ?? '') . PHP_EOL; ?>
 		</td>
 		<td style="text-align: center;"><span class="view_only"><?= $input[CHARACTER_WISDOM] ?? ''; ?></span></td>
 		<td>
@@ -206,7 +238,7 @@ if ($input['pageAction'] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent
 		<td id="characterDexterityLabel">Dexterity</td>
 		<td>
 			<input type="number" style="text-align: center;" class="<?= $input_class ?>" id="<?= CHARACTER_DEXTERITY_RAW ?>" name="<?= CHARACTER_DEXTERITY_RAW ?>" min="3" max="18" value="<?php echo $input[CHARACTER_DEXTERITY_RAW] ?? ''; ?>"<?= $read_only ?> required>
-			<?= buildHiddenTag(CHARACTER_DEXTERITY, $input[CHARACTER_DEXTERITY] ?? '') . PHP_EOL; ?>
+			<?= HtmlHelper::buildHiddenTag(CHARACTER_DEXTERITY, $input[CHARACTER_DEXTERITY] ?? '') . PHP_EOL; ?>
 		</td>
 		<td style="text-align: center;"><span class="view_only"><?= $input[CHARACTER_DEXTERITY] ?? ''; ?></span></td>
 		<td>
@@ -229,7 +261,7 @@ if ($input['pageAction'] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent
 		<td id="characterConstitutionLabel">Constitution</td>
 		<td>
 			<input type="number" style="text-align: center;" class="<?= $input_class ?>" id="<?= CHARACTER_CONSTITUTION_RAW ?>" name="<?= CHARACTER_CONSTITUTION_RAW ?>" min="3" max="18" value="<?php echo $input[CHARACTER_CONSTITUTION_RAW] ?? ''; ?>"<?= $read_only ?> required>
-			<?= buildHiddenTag(CHARACTER_CONSTITUTION, $input[CHARACTER_CONSTITUTION] ?? '') . PHP_EOL; ?>
+			<?= HtmlHelper::buildHiddenTag(CHARACTER_CONSTITUTION, $input[CHARACTER_CONSTITUTION] ?? '') . PHP_EOL; ?>
 		</td>
 		<td style="text-align: center;"><span class="view_only"><?= $input[CHARACTER_CONSTITUTION] ?? ''; ?></span></td>
 		<td>
@@ -252,7 +284,7 @@ if ($input['pageAction'] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent
 		<td id="characterCharismaLabel">Charisma</td>
 		<td>
 			<input type="number" style="text-align: center;" class="<?= $input_class ?>" id="<?= CHARACTER_CHARISMA_RAW ?>" name="<?= CHARACTER_CHARISMA_RAW ?>" min="3" max="18" value="<?php echo $input[CHARACTER_CHARISMA_RAW] ?? ''; ?>"<?= $read_only ?> required>
-			<?= buildHiddenTag(CHARACTER_CHARISMA, $input[CHARACTER_CHARISMA] ?? '') . PHP_EOL; ?>
+			<?= HtmlHelper::buildHiddenTag(CHARACTER_CHARISMA, $input[CHARACTER_CHARISMA] ?? '') . PHP_EOL; ?>
 		</td>
 		<td style="text-align: center;"><span class="view_only"><?= $input[CHARACTER_CHARISMA] ?? ''; ?></span></td>
 		<td>
@@ -275,24 +307,24 @@ if ($input['pageAction'] != PAGE_ACTION_EDIT && $data_entered && noErrorsPresent
 		<td id="characterComelinessLabel">Comeliness</td>
 		<td>
 			<input type="number" style="text-align: center;" class="<?= $input_class ?>" id="<?= CHARACTER_COMELINESS_RAW ?>" name="<?= CHARACTER_COMELINESS_RAW ?>" min="3" max="18" value="<?php echo $input[CHARACTER_COMELINESS_RAW] ?? ''; ?>"<?= $read_only ?> required>
-			<?= buildHiddenTag(CHARACTER_COMELINESS, $input[CHARACTER_COMELINESS] ?? '') . PHP_EOL; ?>
+			<?= HtmlHelper::buildHiddenTag(CHARACTER_COMELINESS, $input[CHARACTER_COMELINESS] ?? '') . PHP_EOL; ?>
 		</td>
 		<td style="text-align: center;"><span class="view_only"><?= $input[CHARACTER_COMELINESS] ?? ''; ?></span></td>
 	</tr>
 </table>
 </div>
 <?php
-	if ($input['pageAction'] == PAGE_ACTION_VALIDATE && $data_entered && noErrorsPresent($errors)) {
+	if ($input[PAGE_ACTION] == PAGE_ACTION_VALIDATE && $data_entered && noErrorsPresent($errors)) {
 		$button_bar = '<div style="border: solid 1px; border-color: blue; border-radius: 10px; margin-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; width: 405px; display: table;">' . PHP_EOL;
-		$button_bar .= '<button style="float:left; margin-top: 5px;" type="submit" name="pageAction" value="' . PAGE_ACTION_EDIT . '" formaction="characterCreation1.php">Edit</button>' . PHP_EOL;
-		$button_bar .= '<button style="float:right; margin-top: 5px;" type="submit" formaction="characterCreation2.php">Select Class(es)</button>' . PHP_EOL;
+		$button_bar .= '<button style="float:left; margin-top: 5px;" type="submit" name="' . PAGE_ACTION . '" value="' . PAGE_ACTION_EDIT . '" formaction="' . $url_character_creation_1 . '">Edit</button>' . PHP_EOL;
+		$button_bar .= '<button style="float:right; margin-top: 5px;" type="submit" formaction="' . $url_character_creation_2 . '">Select Class(es)</button>' . PHP_EOL;
 		$button_bar .= '</div>' . PHP_EOL;
 		echo $button_bar;
-		echo buildHiddenTag(CHARACTER_RACE_ID, $input[CHARACTER_RACE_ID]) . PHP_EOL;
-		echo buildHiddenTag(CHARACTER_GENDER, $input[CHARACTER_GENDER]) . PHP_EOL;
+		echo HtmlHelper::buildHiddenTag(CHARACTER_RACE_ID, $input[CHARACTER_RACE_ID]) . PHP_EOL;
+		echo HtmlHelper::buildHiddenTag(CHARACTER_GENDER, $input[CHARACTER_GENDER]) . PHP_EOL;
 	} else {
 		echo '<div style="border: solid 1px; border-color: blue; border-radius: 10px; margin-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; width: 405px; display: table;"><button style="margin-top: 5px;" type="submit">Validate</button></div>';
-		echo buildHiddenTag('pageAction', PAGE_ACTION_VALIDATE);
+		echo HtmlHelper::buildHiddenTag(PAGE_ACTION, PAGE_ACTION_VALIDATE);
 	} 
 ?>
 </form>
@@ -312,6 +344,22 @@ function getRaceList(\PDO $pdo, &$errors) {
 	return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function getPlayerCharacterId(\PDO $pdo, $player_name, $character_name, &$errors) {
+	$sql_exec = "CALL checkDuplicateCharacterName(:playerName, :characterName)";
+
+	$statement = $pdo->prepare($sql_exec);
+
+	$statement->bindParam(':playerName', $player_name, PDO::PARAM_STR);
+	$statement->bindParam(':characterName', $character_name, PDO::PARAM_STR);
+	try {
+		$statement->execute();
+	} catch(Exception $e) {
+		$errors[] = "Exception in " . __FILE__ . ".getPlayerCharacterId : " . $e->getMessage();
+	}
+
+	return $statement->fetch(PDO::FETCH_ASSOC);
+}
+
 function buildThumbsUpIcon() {
 	return '<span class="fa-regular fa-thumbs-up"></span>';
 }
@@ -321,7 +369,7 @@ function buildThumbsDownIcon($error_message) {
 }
 
 function noErrorsPresent($errors) {
-	return count($errors[CHARACTER_STRENGTH]) == 0 && count($errors[CHARACTER_INTELLIGENCE]) == 0 && count($errors[CHARACTER_WISDOM]) == 0 && count($errors[CHARACTER_DEXTERITY]) == 0 && count($errors[CHARACTER_CONSTITUTION]) == 0 && count($errors[CHARACTER_CHARISMA]) == 0;
+	return count($errors[CHARACTER_STRENGTH]) == 0 && count($errors[CHARACTER_INTELLIGENCE]) == 0 && count($errors[CHARACTER_WISDOM]) == 0 && count($errors[CHARACTER_DEXTERITY]) == 0 && count($errors[CHARACTER_CONSTITUTION]) == 0 && count($errors[CHARACTER_CHARISMA]) == 0 && count($errors[CHARACTER_NAME]) == 0;
 }
 
 ?>

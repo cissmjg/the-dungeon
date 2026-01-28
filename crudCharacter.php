@@ -6,18 +6,23 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once 'RestHeaderHelper.php';
-require_once 'CurlHelper.php';
-require_once 'playerName.php';
-require_once 'characterName.php';
-require_once 'pageAction.php';
-require_once 'requiredParameter.php';
-require_once __DIR__ . '/classes/ActionBarHelper.php';
-require_once 'hiddenTag.php';
-require_once 'characterAttributes.php';
-require_once 'characterClasses.php';
-require_once 'characterClassSuperStats.php';
-require_once 'characterClassRestrictions.php';
+require_once __DIR__ . '/helper/RestHeaderHelper.php';
+require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/webio/pageAction.php';
+require_once __DIR__ . '/webio/characterAction.php';
+require_once __DIR__ . '/characterActionRoutes.php';
+require_once __DIR__ . '/webio/requiredParameter.php';
+require_once __DIR__ . '/helper/ActionBarHelper.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
+
+require_once __DIR__ . '/webio/playerName.php';
+require_once __DIR__ . '/webio/characterName.php';
+require_once __DIR__ . '/webio/raceId.php';
+
+require_once __DIR__ . '/dbio/constants/characterAttributes.php';
+require_once __DIR__ . '/dbio/constants/characterClasses.php';
+require_once __DIR__ . '/rules/characterClassSuperStats.php';
+require_once __DIR__ . '/rules/characterClassRestrictions.php';
 
 // Alignments
 const LAWFUL_GOOD = "Lawful Good";
@@ -63,7 +68,7 @@ const NO_CHARACTER_CLASS_ID = 0;
 $classes_that_know_spells = array('Magic-User', 'Illusionist', 'Healer', 'Wu Jen');
 
 getPageAction($errors, $input);
-$page_action = $input['pageAction'];
+$page_action = $input[PAGE_ACTION];
 
 getPlayerName($errors, $input);
 
@@ -79,21 +84,21 @@ if ($page_action == PAGE_UPDATE) {
 
 $character_action = '';
 if ($page_action == PAGE_UPDATE) {
-    $character_action = 'updateCharacter.php';
+    $character_action = CurlHelper::buildUrlDbioDirectory('updateCharacter.php');
 } else if ($page_action == PAGE_DELETE) {
-    $character_action = 'characterActionRouter.php';
+    $character_action = CurlHelper::buildCharacterActionRouterUrl();
 }
 
 $action_bar = '';
 $character_details = null;
 
 getCharacterName($errors, $input);
-$character_details = getExistingCharacter($input['playerName'], $input[CHARACTER_NAME]);
+$character_details = getExistingCharacter($input[PLAYER_NAME], $input[CHARACTER_NAME]);
 foreach ($character_details AS $attribute_name => $attribute_value) {
 	$input[$attribute_name] = $attribute_value;
 }
 
-$action_bar = buildActionBar($page_action, $input['playerName'], $input[CHARACTER_NAME]);
+$action_bar = buildActionBar($page_action, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $input_class='valid';
 $read_only = '';
@@ -109,50 +114,38 @@ if(isset($_GET['updateTimestamp']) || isset($_POST['updateTimestamp'])) {
 	$last_update_message = $input[CHARACTER_NAME] . ' last updated on ' . date("h:i:sa");
 }
 
-$primary_character_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_CLASSES]->characterClass1->class_id);
+$primary_character_class_name = getCharacterClassNameFromClassId($character_class_list, $input[CHARACTER_CLASSES]->characterClass1->class_id);
 validateCharacterClass($errors, $character_class_minimums, $character_class_maximums, $input[CHARACTER_CLASSES]->characterClass1->class_id, $primary_character_class_name, $input);
 
 $secondary_class_available = !empty($input[CHARACTER_CLASSES]->characterClass2);
 if ($secondary_class_available) {
-	$secondary_character_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_CLASSES]->characterClass2->class_id);
+	$secondary_character_class_name = getCharacterClassNameFromClassId($character_class_list, $input[CHARACTER_CLASSES]->characterClass2->class_id);
 	validateCharacterClass($errors, $character_class_minimums, $character_class_maximums, $input[CHARACTER_CLASSES]->characterClass2->class_id, $secondary_character_class_name, $input);
 }
 
 $tertiary_class_available = !empty($input[CHARACTER_CLASSES]->characterClass3);
 if ($tertiary_class_available) {
-	$tertiary_character_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_CLASSES]->characterClass3->class_id);
+	$tertiary_character_class_name = getCharacterClassNameFromClassId($character_class_list, $input[CHARACTER_CLASSES]->characterClass3->class_id);
 	validateCharacterClass($errors, $character_class_minimums, $character_class_maximums, $input[CHARACTER_CLASSES]->characterClass3->class_id, $tertiary_character_class_name, $input);
 }
 
+$page_title = $input[CHARACTER_NAME];
+$site_css_file = 'dnd-default.css';
+$page_specific_js = 'crudCharacter.js';
+$page_specific_css = '';
+$enable_toggle_panels = false;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="Cache-Control" content="no-store">
-	<title><?= $input[CHARACTER_NAME] ?></title>
-	<link rel="stylesheet" href="dnd-default.css">
-	<script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-	<script type="text/javascript">
-
-		function deleteCharacter(characterForm, characterDescription) {
-			if (confirm("Are you sure you want to delete the character named '" + characterDescription + "'") == false) {
-				return false;
-			}
-
-			characterForm.submit();
-		}
-
-	</script>
-</head>
 <body>
 <span class="action_bar"><?= $action_bar ?></span>
 <div> <!-- Attributes/Classes -->
 <span id="statusBar" style="font-weight: bold;"><?= $last_update_message ?></span>
 <table>
 <form action="<?php echo $character_action ?>" method="POST">
-	<input type="hidden" id = "playerName" name="playerName" value="<?= $input['playerName'] ?>">
+	<input type="hidden" id = "playerName" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
 	<tr>
 		<td class="character_detail_header" colspan="3"><?php echo $input[CHARACTER_NAME] ?? ''; ?>
 			<input type="hidden" id="<?= CHARACTER_NAME ?>" name="<?= CHARACTER_NAME ?>" value="<?php echo $input[CHARACTER_NAME] ?? ''; ?>">
@@ -168,7 +161,7 @@ if ($tertiary_class_available) {
 				for($i = 0; $i < count($race_list); $i++) {
 					$race = $race_list[$i];
 					$selected = $race['race_name'] == $selectedRace ? " selected" : '';
-					echo '<option value="' . $race['race_id'] . '"' . $selected . '>' . $race['race_name'] . '</option>' . PHP_EOL;
+					echo '<option value="' . $race[RACE_ID] . '"' . $selected . '>' . $race['race_name'] . '</option>' . PHP_EOL;
 				}
 				echo '</select>' . PHP_EOL;
 			} else {
@@ -737,11 +730,11 @@ if ($tertiary_class_available) {
 		<td colspan="2" id="characterSiblingsLabel">Siblings</td>
 		<td>
 		<?php
-			$character_siblings = $input[CHARACTER_SIBLINGS] ?? '';
+			$character_siblings = $input[CHARACTER_SIBLINGS] ?? '0';
 			if ($page_action == PAGE_UPDATE) {
-				echo '<input type="number" style="text-align: center;" class="' . $input_class . '" id="' . CHARACTER_SIBLINGS .'" name="' . CHARACTER_SIBLINGS . '" min="0" max="99" value="' . empty($character_siblings) ? "0" : $character_siblings . '">';
+				echo '<input type="number" style="text-align: center;" class="' . $input_class . '" id="' . CHARACTER_SIBLINGS .'" name="' . CHARACTER_SIBLINGS . '" min="0" max="99" value="' . $character_siblings . '">';
 			} else {
-				echo empty($character_siblings) ? "0" : $character_siblings;
+				echo $character_siblings;
 			}
 		?>
 		</td>
@@ -749,13 +742,13 @@ if ($tertiary_class_available) {
 
 	<?php
 			echo '<tr style="background-color: lightgray;"><td>Class</td><td style="text-align: center;">Level</td><td>XP</td></tr>' . PHP_EOL;
-			echo formatClassesForEdit($input[CHARACTER_CLASSES]->characterClass1, CHARACTER_PRIMARY_CLASS, $read_only, $input['playerName'], $input[CHARACTER_NAME], $input_class, $page_action, $classes_that_know_spells);
+			echo formatClassesForEdit($input[CHARACTER_CLASSES]->characterClass1, CHARACTER_PRIMARY_CLASS, $read_only, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input_class, $page_action, $classes_that_know_spells);
 			if (!empty($input[CHARACTER_CLASSES]->characterClass2)) {
-				echo formatClassesForEdit($input[CHARACTER_CLASSES]->characterClass2, CHARACTER_SECONDARY_CLASS, $read_only, $input['playerName'], $input[CHARACTER_NAME], $input_class, $page_action, $classes_that_know_spells);
+				echo formatClassesForEdit($input[CHARACTER_CLASSES]->characterClass2, CHARACTER_SECONDARY_CLASS, $read_only, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input_class, $page_action, $classes_that_know_spells);
 			}
 
 			if (!empty($input[CHARACTER_CLASSES]->characterClass3)) {
-				echo formatClassesForEdit($input[CHARACTER_CLASSES]->characterClass3, CHARACTER_TERTIARY_CLASS, $read_only, $input['playerName'], $input[CHARACTER_NAME], $input_class, $page_action, $classes_that_know_spells);
+				echo formatClassesForEdit($input[CHARACTER_CLASSES]->characterClass3, CHARACTER_TERTIARY_CLASS, $read_only, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input_class, $page_action, $classes_that_know_spells);
 			}
 
 			if ($page_action == PAGE_UPDATE) {
@@ -764,7 +757,7 @@ if ($tertiary_class_available) {
 
 			if ($page_action == PAGE_DELETE) {
 				$character_description = "'" . $input[CHARACTER_NAME] . "'";
-				echo buildHiddenTag('characterAction', 'deleteCharacter');
+				echo HtmlHelper::buildHiddenTag(CHARACTER_ACTION, CHARACTER_ACTION_DELETE_CHARACTER);
 				echo '<tr><td colspan="3" style="text-align: center;"><button onclick="event.preventDefault(); deleteCharacter(this.form, ' . $character_description . ')">' . $page_action . '</button></td></tr>';
 			} 
 		?>
@@ -818,12 +811,12 @@ function formatClassesForEdit($character_class, $form_field_id, $read_only, $pla
 
 function buildClassLevelCell($class_level, $player_name, $character_name, $character_class_name, $page_action) {
 	if ($page_action == PAGE_UPDATE) {
-		$output_html = '<td style="text-align: right;">';
-		$output_html .= $class_level;
-		$output_html .= '&nbsp;';
+		$output_html = '<td style="text-align: right;">&nbsp;';
 		$output_html .= ActionBarHelper::buildPromoteClassIcon($player_name, $character_name, $character_class_name);
+		$output_html .= '&nbsp;';
+		$output_html .= $class_level;
 	} else {
-		$output_html = '<td style="text-align: center;">';
+		$output_html = '<td style="text-align: center;">&nbsp;';
 		$output_html .= $class_level;
 	}
 
@@ -953,33 +946,6 @@ function doesSuperConstitutionApply($input, $character_super_stats) {
 	return false;
 }
 
-function buildEditReadySpellsUrl($player_name, $character_name) {
-	$url = CurlHelper::buildUrl('characterActionRouter');
-	$url = CurlHelper::addParameter($url, 'characterAction', 'editReadySpells');
-	$url = CurlHelper::addParameter($url, 'playerName', $player_name);
-	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
-
-	return $url;
-}
-
-function buildEditGMSpellsUrl($player_name, $character_name) {
-	$url = CurlHelper::buildUrl('characterActionRouter');
-	$url = CurlHelper::addParameter($url, 'characterAction', 'editGMSpells');
-	$url = CurlHelper::addParameter($url, 'playerName', $player_name);
-	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
-
-	return $url;
-}
-
-function buildEditExtraSlotUrl($player_name, $character_name) {
-	$url = CurlHelper::buildUrl('characterActionRouter');
-	$url = CurlHelper::addParameter($url, 'characterAction', 'editExtraSlots');
-	$url = CurlHelper::addParameter($url, 'playerName', $player_name);
-	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
-
-	return $url;
-}
-
 function buildSpellBookIcon($character_class, $classes_that_know_spells, $player_name, $character_name) {
 	$output_html = '';
 	foreach($character_class->spell_classes AS $spell_class) {
@@ -990,16 +956,6 @@ function buildSpellBookIcon($character_class, $classes_that_know_spells, $player
 	}
 
 	return $output_html;
-}
-
-function buildPromoteUrl($player_name, $character_name, $character_class_name) {
-	$url = CurlHelper::buildUrl('characterActionRouter');
-	$url = CurlHelper::addParameter($url, 'characterAction', 'promote');
-	$url = CurlHelper::addParameter($url, 'playerName', $player_name);
-	$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
-	$url = CurlHelper::addParameter($url, 'characterClassName', $character_class_name);
-	
-	return $url;
 }
 
 function getCharacterClassList(\PDO $pdo, &$errors) {
@@ -1030,11 +986,11 @@ function getRaceList(\PDO $pdo, &$errors) {
 
 function getExistingCharacter($player_name, $character_name) {
     $params = [];
-    $params['playerName'] = $player_name;
+    $params[PLAYER_NAME] = $player_name;
     $params[CHARACTER_NAME] = $character_name;
     $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
     
-    $url = CurlHelper::buildUrl('getPlayerCharacterDetails');
+    $url = CurlHelper::buildUrlDbioDirectory('getPlayerCharacterDetails');
     $raw_results = CurlHelper::performGetRequest($url, $params);
 
     return json_decode($raw_results);
@@ -1050,13 +1006,13 @@ function buildActionBar($page_action, $player_name, $character_name) {
 		$output_html .= ActionBarHelper::buildEditWeaponsIcon($player_name, $character_name);
 		$output_html .= '&nbsp;';
 
-		return $output_html . '&nbsp;';;
+		return $output_html . '&nbsp;';
 	} else if ($page_action == PAGE_DELETE) {
 		$output_html = ActionBarHelper::buildUserViewIcon($player_name, $character_name);
 		$output_html .= '&nbsp;';
 		$output_html .= ActionBarHelper::buildUserEditIcon($player_name, $character_name);
 
-		return $output_html . '&nbsp;';;
+		return $output_html . '&nbsp;';
 	} else if ($page_action == PAGE_VIEW) {
 		$output_html = ActionBarHelper::buildUserEditIcon($player_name, $character_name);
 		$output_html .= '&nbsp;';
@@ -1154,7 +1110,7 @@ function validateCharacterClass(&$errors, $character_class_minimums, $character_
 	}
 }
 
-function getCharacterClassName($character_class_list, $character_class_id) {
+function getCharacterClassNameFromClassId($character_class_list, $character_class_id) {
 	foreach($character_class_list AS $character_class) {
 		if ($character_class['character_class_id'] == $character_class_id) {
 			return $character_class['character_class_name'];

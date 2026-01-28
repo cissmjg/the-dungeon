@@ -10,33 +10,44 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once 'CurlHelper.php';
-require_once 'playerName.php';
-require_once 'RestHeaderHelper.php';
-require_once 'hiddenTag.php';
+require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/helper/RestHeaderHelper.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
+
+require_once __DIR__ . '/webio/playerName.php';
 
 const STARTNEWFIGHT = "StartNewFight";
 const ENDOFROUND = "EndOfRound";
 const DAILYRESET = "DailyReset";
 const CURRENTCOMBATROUND = "CurrentCombatRound";
 const REFRESHSPELLLIST = "RefreshSpellList";
+const DMACTION = 'dmAction';
 
 // Populate player and character names in $input
 getPlayerName($errors, $input);
 
-$player_permissions = getPlayerPermissions($pdo, $input['playerName'], $errors);
+$player_permissions = getPlayerPermissions($pdo, $input[PLAYER_NAME], $errors);
+if (count($errors) > 0) {
+    RestHeaderHelper::emitRestHeaders();
+    die(json_encode($errors));
+}
+
+if (!$player_permissions['is_dm']) {
+    die();
+}
+
+$url = CurlHelper::buildUrl('dmDashboard');
+
+$page_title = 'DM Dashboard';
+$site_css_file = 'dnd-default.css';
+$page_specific_js = '';
+$page_specific_css = '';
+$enable_toggle_panels = false;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DM Dashboard</title>
-	<link rel="stylesheet" href="dnd-default.css">
-    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-    <meta name="Cache-Control" content="no-store">
-</head>
 <body>
     <?php
     $locale = 'en_US';
@@ -46,8 +57,8 @@ $player_permissions = getPlayerPermissions($pdo, $input['playerName'], $errors);
         $current_combat_round = $_POST[CURRENTCOMBATROUND];
     }
 
-    if(!empty($_POST['dmAction'])) {
-        $dmAction = $_POST['dmAction'];
+    if(!empty($_POST[DMACTION])) {
+        $dmAction = $_POST[DMACTION];
         if($dmAction == STARTNEWFIGHT) {
             $current_combat_round = 1;
         } else if($dmAction == ENDOFROUND) {
@@ -67,10 +78,10 @@ $player_permissions = getPlayerPermissions($pdo, $input['playerName'], $errors);
     $current_round_desc = $nf->format($current_combat_round) . ' round';
 
     ?>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+    <form action="<?= $url ?>" method="POST">
         <?php
-            echo buildHiddenTag(CURRENTCOMBATROUND, $current_combat_round) . PHP_EOL;
-            echo buildHiddenTag('playerName', $input['playerName']) . PHP_EOL;
+            echo HtmlHelper::buildHiddenTag(CURRENTCOMBATROUND, $current_combat_round) . PHP_EOL;
+            echo HtmlHelper::buildHiddenTag(PLAYER_NAME, $input[PLAYER_NAME]) . PHP_EOL;
         ?>
 
         <table>

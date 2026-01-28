@@ -519,6 +519,21 @@ BEGIN
 	SELECT nullSpellId;
 END
 
+CREATE PROCEDURE checkDuplicateCharacterName
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64)
+)
+BEGIN
+	DECLARE playerCharacterId INT DEFAULT 0;
+
+	SELECT player_character.id
+	INTO playerCharacterId
+	FROM player_character
+	WHERE player_character.name = characterName;
+
+	SELECT playerCharacterId;
+END
+
 CREATE PROCEDURE createBaseCharacter
 (IN playerName VARCHAR(32),
  IN characterName VARCHAR(64),
@@ -1549,23 +1564,26 @@ CREATE PROCEDURE promoteCharacterClass
  IN characterClassName VARCHAR(32))
 BEGIN
     
-    DECLARE characterLevel INT DEFAULT 0;
+    DECLARE currentCharacterLevel INT DEFAULT 0;
+    DECLARE newCharacterLevel INT DEFAULT 0;
     DECLARE playerCharacterClassId INT DEFAULT 0;
     
     SELECT player_character_class.character_level, player_character_class.id
-    INTO characterLevel, playerCharacterClassId
+    INTO currentCharacterLevel, playerCharacterClassId
 	FROM player_character_class
 		JOIN player_character ON player_character.id = player_character_class.player_character_id
 		JOIN player ON player.id = player_character.player_id
 		JOIN character_class ON character_class.id = player_character_class.character_class_id
 		WHERE player.name = playerName AND player_character.name = characterName AND character_class.name = characterClassName;
-        
+    
+	SET newCharacterLevel = currentCharacterLevel + 1;
+
 	START TRANSACTION;
-		UPDATE player_character_class SET character_level = characterLevel + 1
+		UPDATE player_character_class SET character_level = newCharacterLevel
 		WHERE id = playerCharacterClassId;
 	COMMIT;
 	
-	SELECT characterName, playerCharacterClassId, characterClassName, character_level FROM player_character_class
+	SELECT characterName, playerCharacterClassId, characterClassName, newCharacterLevel as characterLevel FROM player_character_class
 	WHERE ID = playerCharacterClassId;
 END
 

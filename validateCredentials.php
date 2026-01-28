@@ -1,10 +1,10 @@
 <?php
 
-require_once 'CurlHelper.php';
-require_once 'RestHeaderHelper.php';
+require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/env.php';
 
-require_once 'playerName.php';
+require_once __DIR__ . '/webio/playerName.php';
 
 function validateSessionCredentials(\PDO $pdo) {
     // Only validate credentials in Production
@@ -43,7 +43,7 @@ function validateSessionTicket(\PDO $pdo, $session_ticket) {
     $cred_validate_errors = [];
     getPlayerName($cred_validate_errors, $cred_validate_input);
 
-    $player_name = $cred_validate_input['playerName'];
+    $player_name = $cred_validate_input[PLAYER_NAME];
     $cred_query = getSessionTicketTimestamp($pdo, $player_name, $session_ticket, $cred_validate_errors);
     if (count($cred_validate_errors) > 0) {
         RestHeaderHelper::emitRestHeaders();
@@ -80,7 +80,7 @@ function getSessionTicketTimestamp($pdo, $player_name, $session_ticket, &$errors
 
 function buildLoginRedirect() {
 	$redirect_url = CurlHelper::buildUrl('login');
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 ?>

@@ -6,16 +6,18 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once 'RestHeaderHelper.php';
-require_once 'CurlHelper.php';
-require_once __DIR__ . '/classes/ActionBarHelper.php';
-require_once 'characterAttributes.php';
-require_once 'characterClasses.php';
-require_once 'characterSummary.php';
-require_once 'characterSummaryRenderer.php';
+require_once __DIR__ . '/helper/RestHeaderHelper.php';
+require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/helper/ActionBarHelper.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
 
-require_once 'playerName.php';
-require_once 'characterName.php';
+require_once __DIR__ . '/dbio/constants/characterAttributes.php';
+require_once __DIR__ . '/dbio/constants/characterClasses.php';
+require_once __DIR__ . '/classes/characterSummary.php';
+require_once __DIR__ . '/classes/characterSummaryRenderer.php';
+
+require_once __DIR__ . '/webio/playerName.php';
+require_once __DIR__ . '/webio/characterName.php';
 
 $input = [];
 $log = [];
@@ -24,39 +26,37 @@ $errors = [];
 getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 
-$page_title = $input[CHARACTER_NAME];
 $character_details = null;
 
-$character_details = getExistingCharacter($input['playerName'], $input[CHARACTER_NAME]);
+$character_details = getExistingCharacter($input[PLAYER_NAME], $input[CHARACTER_NAME]);
 foreach ($character_details AS $attribute_name => $attribute_value) {
 	$input[$attribute_name] = $attribute_value;
 }
 
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input['playerName'], $input[CHARACTER_NAME]);
+$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $character_summary_renderer = new CharacterSummaryRenderer($input[CHARACTER_NAME]);
 $character_summary_stats = $character_summary_renderer->render($character_summary);
 
-$action_bar = buildActionBar($input['playerName'], $input[CHARACTER_NAME], $character_summary);
+$action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME], $character_summary);
 
 $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 
+$page_title = $input[CHARACTER_NAME];
+$site_css_file = 'dnd-default.css';
+$page_specific_js = '';
+$page_specific_css = 'dcs.css';
+$enable_toggle_panels = false;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $page_title ?></title>
-	<link rel="stylesheet" href="dnd-default.css">
-	<link rel="stylesheet" href="characterSheet.css">
-	<script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-</head>
 <body>
-<span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?>
-<div class="character_sheet_container">
-	<div class="character_sheet_column">
+<span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span>
+<div class="characterSheetContainer">
+	<div class="characterSheetColumn">
 		<table cellspacing="0" class="tableLayout">
 			<tr>
 				<td colspan="4" class="tableHeader"><?= $input[CHARACTER_NAME] ?></td>
@@ -89,8 +89,8 @@ $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 				<td colspan="2" class="tableHeader">Class Abilities</td>
 			</tr>
 			<tr>
-				<td width=75% class="tableHeader">Type</td>
-				<td width=25% class="tableHeader">Total</td>
+				<td width="75%" class="tableHeader">Type</td>
+				<td width="25%" class="tableHeader">Total</td>
 			</tr>
 		</table>
 		<div>&nbsp;</div>
@@ -99,8 +99,8 @@ $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 				<td colspan="2" class="tableHeader">Saving Throws</td>
 			</tr>
 			<tr>
-				<td width=75% class="tableHeader">Type</td>
-				<td width=25% class="tableHeader">Total</td>
+				<td width="75%" class="tableHeader">Type</td>
+				<td width="25%" class="tableHeader">Total</td>
 			</tr>
 		</table>
 		<div>&nbsp;</div>
@@ -109,12 +109,12 @@ $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 				<td colspan="2" class="tableHeader">Racial Abilities</td>
 			</tr>
 			<tr>
-				<td width=75% class="tableHeader">Type</td>
-				<td width=25% class="tableHeader">Total</td>
+				<td width="75%" class="tableHeader">Type</td>
+				<td width="25%" class="tableHeader">Total</td>
 			</tr>
 		</table>
 	</div>
-	<div class="character_sheet_column">
+	<div class="characterSheetColumn">
 		<table cellspacing="0" class="tableLayout">
 			<tr>
 				<td colspan="6" class="tableHeader">Attributes</td>
@@ -177,48 +177,48 @@ $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 			</tr>
 		</table>
 		<div>&nbsp;</div>
-			<table cellspacing=0 class="tableLayout">
+			<table cellspacing="0" class="tableLayout">
 				<tr>
-					<td colspan=5 class="tableHeader">Character</td>
+					<td colspan="5" class="tableHeader">Character</td>
 				</tr>
 				<tr>
 					<td class="attributeLabel">Class</td>
 					<td class="attributeValue"><?= formatClasses($character_summary) ?></td>
-					<td width=15% class="attributeValue"> &nbsp; </td>
+					<td width="15%" class="attributeValue"> &nbsp; </td>
 					<td class="attributeLabel">Alignment</td>
 					<td class="attributeValue"><?= $input[CHARACTER_ALIGNMENT] ?></td>
 				</tr>
 				<tr>
 					<td class="attributeLabel">Level</td>
 					<td class="attributeValue"><?= formatLevels($character_summary, $nf) ?></td>
-					<td width=15% class="attributeValue"> &nbsp; </td>
+					<td width="15%" class="attributeValue"> &nbsp; </td>
 					<td class="attributeLabel">Religion</td>
 					<td class="attributeValue"><?= $input[CHARACTER_RELIGION] ?></td>
 				</tr>
 				<tr>
 					<td class="attributeLabel">Race</td>
 					<td class="attributeValue"><?= $input[CHARACTER_RACE] ?></td>
-					<td width=15% class="attributeValue"> &nbsp; </td>
+					<td width="15%" class="attributeValue"> &nbsp; </td>
 					<td class="attributeLabel">Deity</td>
 					<td class="attributeValue"><?= $input[CHARACTER_DEITY] ?></td>
 				</tr>
 				<tr>
 					<td class="attributeLabel">Movement</td>
-					<td class="attributeValue"><?= formatMovement($input[CHARACTER_MOVEMENT]) ?></td>
-					<td width=15% class="attributeValue"> &nbsp; </td>
+					<td class="attributeValue"><?= formatMovement(character_movement: $input[CHARACTER_MOVEMENT]) ?></td>
+					<td width="15%" class="attributeValue"> &nbsp; </td>
 					<td class="attributeLabel">Hometown</td>
 					<td class="attributeValue"><?= $input[CHARACTER_HOMETOWN] ?></td>
 				</tr>
 				<tr>
 					<td class="attributeLabel">Hit Points</td>
 					<td class="attributeValue"><?= $character_summary->getHitPoints() ?></td>
-					<td width=15% class="attributeValue"> &nbsp; </td>
+					<td width="15%" class="attributeValue"> &nbsp; </td>
 					<td class="attributeLabel">Hit Die</td>
 					<td class="attributeValue"><?= $input[CHARACTER_HIT_DIE] ?></td>
 				</tr>
 				<tr>
 					<td colspan=2 class="attributeLabel">Experience Points</td>
-					<td colspan=3 class="attributeLabel"><?= formatExperiencePoints($input[CHARACTER_CLASSES]) ?></td>
+					<td colspan="3" class="attributeLabel"><?= formatExperiencePoints($input[CHARACTER_CLASSES]) ?></td>
 				</tr>
 			</table>
 			<div>&nbsp;</div>
@@ -227,20 +227,20 @@ $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 					<td colspan="2" class="tableHeader">Weapons and Skills</td>
 				</tr>
 				<tr>
-					<td width=50% class="attributeLabel">&nbsp;</td>
-					<td width=50% class="attributeLabel">&nbsp;</td>
+					<td width="50%" class="attributeLabel">&nbsp;</td>
+					<td width="50%" class="attributeLabel">&nbsp;</td>
 				</tr>
 			</table>
 			<div>&nbsp;</div>
-			<table cellspacing=0 class="tableLayout">
+			<table cellspacing="0" class="tableLayout">
 				<tr>
-					<td colspan=4 class="tableHeader">Valuables</td>
+					<td colspan="4" class="tableHeader">Valuables</td>
 				</tr>
 				<tr>
-					<td width=25% class="attributeLabel">Copper</td>
-					<td width=25% class="attributeValue">&nbsp;</td>
-					<td width=25% class="attributeLabel">Platinum</td>
-					<td width=25% class="attributeValue">&nbsp;</td>
+					<td width="25%" class="attributeLabel">Copper</td>
+					<td width="25%" class="attributeValue">&nbsp;</td>
+					<td width="25%" class="attributeLabel">Platinum</td>
+					<td width="25%" class="attributeValue">&nbsp;</td>
 				</tr>
 				<tr>
 					<td class="attributeLabel">Silver</td>
@@ -256,16 +256,16 @@ $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 				</tr>
 				<tr>
 					<td class="attributeLabel">Other</td>
-					<td colspan=3 class="attributeValue">&nbsp;</td>
+					<td colspan="3" class="attributeValue">&nbsp;</td>
 				</tr>
 			</table>
 			<div>&nbsp;</div>
-			<table cellspacing=0 class="tableLayout">
+			<table cellspacing="0" class="tableLayout">
 				<tr>
-					<td width=25% class="tableHeader">Backpack</td>
-					<td width=25% class="tableHeader">Left</td>
-					<td width=25% class="tableHeader">Center</td>
-					<td width=25% class="tableHeader">Right</td>
+					<td width="25%" class="tableHeader">Backpack</td>
+					<td width="25%" class="tableHeader">Left</td>
+					<td width="25%" class="tableHeader">Center</td>
+					<td width="25%" class="tableHeader">Right</td>
 				</tr>
 			</table>
 		</div>
@@ -276,11 +276,11 @@ $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 
 function getExistingCharacter($player_name, $character_name) {
     $params = [];
-    $params['playerName'] = $player_name;
+    $params[PLAYER_NAME] = $player_name;
     $params[CHARACTER_NAME] = $character_name;
     $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
     
-    $url = CurlHelper::buildUrl('getPlayerCharacterDetails');
+    $url = CurlHelper::buildUrlDbioDirectory('getPlayerCharacterDetails');
     $raw_results = CurlHelper::performGetRequest($url, $params);
 
     return json_decode($raw_results);

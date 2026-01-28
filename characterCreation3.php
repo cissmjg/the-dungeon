@@ -6,23 +6,24 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once 'RestHeaderHelper.php';
-require_once 'CurlHelper.php';
-require_once 'playerName.php';
-require_once 'pageAction.php';
-require_once 'requiredParameter.php';
-require_once __DIR__ . '/classes/ActionBarHelper.php';
-require_once 'hiddenTag.php';
+require_once __DIR__ . '/helper/RestHeaderHelper.php';
+require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/webio/pageAction.php';
+require_once __DIR__ . '/helper/ActionBarHelper.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
 
-require_once 'faEditIcon.php';
+require_once __DIR__ . '/fa/faEditIcon.php';
 
-require_once 'characterAttributes.php';
-require_once 'characterRaces.php';
-require_once 'adjustCharacterRacialAttributes.php';
-require_once 'getCharacterCreationAttributes.php';
-require_once 'characterClassCombinations.php';
-require_once 'characterClassRestrictions.php';
-require_once 'validateRacialAttributes.php';
+require_once __DIR__ . '/webio/playerName.php';
+require_once __DIR__ . '/webio/characterName.php';
+require_once __DIR__ . '/webio/raceId.php';
+
+require_once __DIR__ . '/dbio/constants/characterAttributes.php';
+require_once __DIR__ . '/dbio/constants/characterRaces.php';
+require_once __DIR__ . '/rules/adjustCharacterRacialAttributes.php';
+require_once __DIR__ . '/rules/getCharacterCreationAttributes.php';
+require_once __DIR__ . '/rules/characterClassCombinations.php';
+require_once __DIR__ . '/rules/characterClassRestrictions.php';
 
 const PAGE_ACTION_VALIDATE = "validate";
 const PAGE_ACTION_EDIT = "edit";
@@ -78,25 +79,24 @@ if ($tertiary_class_available) {
 	$tertiary_character_class_id = getCharacterClassId($character_class_list, $input[CHARACTER_TERTIARY_CLASS]);
 }
 
+$url_insert_character = CurlHelper::buildUrlDbioDirectory('insertCharacter');
+$url_character_creation2 = CurlHelper::buildUrl('characterCreation2');
+
 $page_title = 'New Character';
+$site_css_file = 'dnd-default.css';
+$page_specific_js = '';
+$page_specific_css = '';
+$enable_toggle_panels = false;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="Cache-Control" content="no-store">
-    <title><?= $page_title ?></title>
-	<link rel="stylesheet" href="dnd-default.css">
-	<script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-    <meta name="Cache-Control" content="no-store">
-</head>
 <body>
     <div style="border: solid 1px; border-color: blue; border-radius: 10px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; width: auto; display: table;">
     <table style="margin-top: 5px;">
-    <form id="characterCreation3" action="insertCharacter.php" method="post">
-	<input type="hidden" id="playerName" name="playerName" value="<?= $input['playerName'] ?>">
+    <form id="characterCreation3" name="characterCreation3" action="<?= $url_insert_character ?>" method="POST">
+	<input type="hidden" id="playerName" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
 	<tr>
 		<td colspan="4">
 			<div style="background-color: Aquamarine; text-align:center; border-radius: 10px;">Character Creation Stage 3</div>
@@ -113,7 +113,7 @@ $page_title = 'New Character';
                 $selectedRace = $input[CHARACTER_RACE_ID];
                 $race_display_name = '';
                 foreach($race_list AS $race) {
-                    if ($race['race_id'] == $selectedRace) {
+                    if ($race[RACE_ID] == $selectedRace) {
                         $race_display_name = $race['race_name'];
                         break;
                     }
@@ -192,9 +192,9 @@ $page_title = 'New Character';
 	    <td>
 			<?php
 				if ($primary_class_available) {
-					$primary_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
+					$primary_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
 					echo '<input style="float: left;" class="view_only" type="text" value="' . $primary_class_name . '" readonly>' . PHP_EOL;
-					echo buildHiddenTag(CHARACTER_PRIMARY_CLASS,$input[CHARACTER_PRIMARY_CLASS]) . PHP_EOL;
+					echo HtmlHelper::buildHiddenTag(CHARACTER_PRIMARY_CLASS,$input[CHARACTER_PRIMARY_CLASS]) . PHP_EOL;
 				}
 			?>			
 		</td>
@@ -202,12 +202,12 @@ $page_title = 'New Character';
 	<?php
 	if ($secondary_class_available) {
 		echo '<tr>' . PHP_EOL;
-		echo '<td>2<sup>nd class</td>' . PHP_EOL;
+		echo '<td>2<sup>nd</sup> class</td>' . PHP_EOL;
 		echo '<td>';
 		if ($secondary_class_available) {
-			$secondary_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_SECONDARY_CLASS]);
+			$secondary_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_SECONDARY_CLASS]);
 			echo '<input style="float: left;" class="view_only" type="text" value="' . $secondary_class_name . '" readonly>' . PHP_EOL;
-			echo buildHiddenTag(CHARACTER_SECONDARY_CLASS, $input[CHARACTER_SECONDARY_CLASS]) . PHP_EOL;
+			echo HtmlHelper::buildHiddenTag(CHARACTER_SECONDARY_CLASS, $input[CHARACTER_SECONDARY_CLASS]) . PHP_EOL;
 		}
 		echo '</td>' . PHP_EOL;
 		echo '</tr>' . PHP_EOL;
@@ -215,12 +215,12 @@ $page_title = 'New Character';
 
 	if ($tertiary_class_available) {
 		echo '<tr>' . PHP_EOL;
-		echo '<td>3<sup>rd class</td>' . PHP_EOL;
+		echo '<td>3<sup>rd</sup> class</td>' . PHP_EOL;
 		echo '<td>';
 		if ($tertiary_class_available == true) {
-			$tertiary_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_TERTIARY_CLASS]);
+			$tertiary_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_TERTIARY_CLASS]);
 			echo '<input style="float: left;" class="view_only" type="text" value="' . $tertiary_class_name . '" readonly>' . PHP_EOL;
-			echo buildHiddenTag(CHARACTER_TERTIARY_CLASS, $input[CHARACTER_TERTIARY_CLASS]) . PHP_EOL;
+			echo HtmlHelper::buildHiddenTag(CHARACTER_TERTIARY_CLASS, $input[CHARACTER_TERTIARY_CLASS]) . PHP_EOL;
 		}
         
         echo '</td>' . PHP_EOL;
@@ -230,16 +230,16 @@ $page_title = 'New Character';
 </table>
 </div>
 <?php
-	echo buildHiddenTag('pageAction', PAGE_ACTION_VALIDATE);
+	echo HtmlHelper::buildHiddenTag(PAGE_ACTION, PAGE_ACTION_VALIDATE);
 	$button_bar = '<div style="margin-top: 5px; padding-bottom: 5px; padding-left: 5px; width: 405px;" class="character_create_action_bar_container">' . PHP_EOL;
-	$button_bar .= '<button style="float:right; margin-top: 5px;" type="submit" formaction="characterCreation2.php">Select Class(es)</button>' . PHP_EOL;
+	$button_bar .= '<button style="float:right; margin-top: 5px;" type="submit" formaction="' . $url_character_creation2 . '">Select Class(es)</button>' . PHP_EOL;
 	$button_bar .= '<div style="text-align: center;"  class="character_create_action_bar_item_two">&nbsp;</div>' . PHP_EOL;
 	$button_bar .= '<div class="character_create_action_bar_item_three"><button id="' . FINALIZE_BUTTON_ID . '" type="submit">Create Character</button></div>' . PHP_EOL;
 	$button_bar .= '</div>' . PHP_EOL;
 	echo $button_bar;
 
-	echo buildHiddenTag(CHARACTER_ARMOR_CLASS, 10);
-	echo buildHiddenTag(CHARACTER_HIT_POINTS, 0);
+	echo HtmlHelper::buildHiddenTag(CHARACTER_ARMOR_CLASS, 10);
+	echo HtmlHelper::buildHiddenTag(CHARACTER_HIT_POINTS, 0);
 ?>
 </form>
 </body>
@@ -272,7 +272,7 @@ function getCharacterClassList(\PDO $pdo, $errors) {
 	return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getCharacterClassName($character_class_list, $character_class_id) {
+function getCharacterClassNameFromCharacterSummary($character_class_list, $character_class_id) {
 	foreach($character_class_list AS $character_class) {
 		if ($character_class['character_class_id'] == $character_class_id) {
 			return $character_class['character_class_name'];

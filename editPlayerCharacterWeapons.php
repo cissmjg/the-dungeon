@@ -9,199 +9,136 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once 'RestHeaderHelper.php';
-require_once 'CurlHelper.php';
-require_once 'characterAttributes.php';
-require_once 'characterSummary.php';
-require_once 'weaponDetail.php';
-require_once 'weaponType.php';
-require_once 'weaponSubtype.php';
-require_once 'characterClasses.php';
+require_once __DIR__ . '/helper/RestHeaderHelper.php';
+require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
 
-require_once 'playerName.php';
-require_once 'characterName.php';
-require_once 'weaponCatalogId.php';
-require_once 'playerWeaponProficiencyId.php';
-require_once 'weaponDescription.php';
-require_once 'weaponLocation.php';
-require_once 'isReady.php';
-require_once 'craftStatus.php';
-require_once 'hitBonus.php';
-require_once 'hitBonusSpec1.php';
-require_once 'hitBonusSpec2.php';
-require_once 'hitBonusSpec3.php';
-require_once 'damageBonus.php';
-require_once 'weaponSpeed.php';
-require_once 'weaponShortRange.php';
-require_once 'weaponMediumRange.php';
-require_once 'weaponLongRange.php';
-require_once 'weaponDamage.php';
-require_once 'damageBonusSpec1.php';
-require_once 'damageBonusSpec2.php';
-require_once 'damageBonusSpec3.php';
-require_once 'attacksPerRound.php';
-require_once 'strengthBonusAvailable.php';
-require_once 'playerNote1.php';
-require_once 'playerNote2.php';
-require_once 'playerNote3.php';
+require_once __DIR__ . '/classes/characterSummary.php';
+require_once __DIR__ . '/classes/characterSummaryRenderer.php';
+require_once __DIR__ . '/helper/ActionBarHelper.php';
+require_once __DIR__ . '/webio/craftStatus.php';
+require_once __DIR__ . '/webio/characterAction.php';
+require_once __DIR__ . '/webio/weaponProficiencyId.php';
+
+require_once __DIR__ . '/fa/faDeleteIcon.php';
+
+require_once __DIR__ . '/webio/playerName.php';
+require_once __DIR__ . '/webio/characterName.php';
+require_once __DIR__ . '/webio/playerCharacterWeaponId.php';
 
 // Populate player and character names in $input
 getPlayerName($errors, $input);
 getCharacterName($errors, $input);
-getOptionalWeaponCatalogId($errors, $input);
-
-$weaponDetail = null;
-if ($input['weaponCatalogId'] != OPTIONAL_INTEGER_PARAMETER) {
-    $weaponDetail = getWeaponDetail($pdo, $input['weaponCatalogId'], $errors);
-} 
 
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input['playerName'], $input[CHARACTER_NAME]);
+$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
+
+$character_summary_renderer = new CharacterSummaryRenderer($input[CHARACTER_NAME]);
+$character_summary_stats = $character_summary_renderer->render($character_summary);
+
+$action_bar = ActionBarHelper::buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
+
+$weapon_list = getWeaponSummaryForPlayerCharacter($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+
+$page_title = $input[CHARACTER_NAME] . ' Weapons';
+$site_css_file = 'dnd-default.css';
+$page_specific_js = 'editPlayerCharacterWeapons.js';
+$page_specific_css = 'editPlayerCharacterWeapons.css';
+$enable_toggle_panels = true;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $input[CHARACTER_NAME] ?> Weapons</title>
-	<link rel="stylesheet" href="dnd-default.css">
-	<link rel="stylesheet" href="characterSheet.css">
-    <script src="../js/jquery-1.12.4.min.js"></script>
-    <script src="../js/jquery-ui.min.js"></script>
-    <script src="env.js" type="module"></script>
-    <script src="RestHelper.js" type="module"></script>
-    <script src="editPlayerCharacterWeapons.js" type="module"></script>
-    <script src="characterSheetContainer.js"></script>
-    <script type="module">
-        import { populateWeaponList, getWeaponDetail } from './editPlayerCharacterWeapons.js';
-
-        // Attach to global scope
-        window.populateWeaponList = populateWeaponList; 
-        window.getWeaponDetail = getWeaponDetail;
-    </script>
-    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-    <meta name="Cache-Control" content="no-store">
-    <script src="submitTheForm.js"></script>
-    <style>
-        label {
-            color: lightgray;
-            font-size: 14px;
-            vertical-align: sub;
-        }
-    </style>
-</head>
 <body>
-    <i class="fa-solid fa-sword"></i> <i class="fa-regular fa-sword"></i> <i class="fa-light fa-sword"></i> <i class="fa-thin fa-sword"></i>
-    <div class="characterSheetFeature">
+    <form name="deleteWeapon" id="deleteWeapon" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl() ?>">
+        <input type="hidden" name="<?= CHARACTER_ACTION ?>" value="<?= CHARACTER_ACTION_DELETE_PLAYER_CHARACTER_WEAPON ?>">
+        <input type="hidden" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
+        <input type="hidden" name="<?= PLAYER_CHARACTER_WEAPON_ID ?>" id="<?= PLAYER_CHARACTER_WEAPON_ID ?>" value="">
+    </form>
+    <div style="width: 100%; margin-bottom: 3px;"><span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span></div>
+    <div class="togglePanel">
         <a href="#">
-            <i class="fa fa-plus"></i> Add a Weapon 
+            <span class="fa fa-plus"></span> Add a weapon
         </a>
-        <div class="characterSheetFeatureContent">
-            <form name="selectWeapon" id="selectWeapon" method="POST" action="<?= STARTING_URL . basename($_SERVER['PHP_SELF']) ?>">
-                <label for="weaponNamePattern">Weapon Name</label><br>
-                <input type="hidden" name="playerName" value="<?= $input['playerName'] ?>">
-                <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
-                <input type="text" id="weaponNamePattern" maxlength="32"><button type="button" onclick="populateWeaponList('weaponCatalogId', 'weaponNamePattern');">Go</button><br>
-                <select name="weaponCatalogId" id="weaponCatalogId" onchange="getWeaponDetail('selectWeapon', 'weaponCatalogId');" hidden>
-                </select>
-            </form>
+        <div class="togglePanelContent">
+            <div style="background-color: Aquamarine; text-align:center; border-radius: 10px;">Select Weapon</div>
+            <div style="text-align: center;">
+                <form name="selectWeapon" id="selectWeapon" method="POST" action="<?= CurlHelper::buildUrl('addPlayerCharacterWeapon') ?>">
+                    <label for="weaponNamePattern">Weapon Name</label><br>
+                    <input type="hidden" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
+                    <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
+                    <input type="text" id="weaponNamePattern" maxlength="32"><button type="button" onclick="populateWeaponList('<?= WEAPON_PROFICIENCY_ID ?>', 'weaponNamePattern');"><span class="fa-solid fa-magnifying-glass"></span></button><br>
+                    <select name="<?= WEAPON_PROFICIENCY_ID?>" id="<?= WEAPON_PROFICIENCY_ID?>" onchange="weaponListChanged('selectWeaponButton', '<?= WEAPON_PROFICIENCY_ID ?>');" hidden>
+                    </select>
+                    <br><br>
+                    <button id="selectWeaponButton" type="submit" hidden>Weapon Details &gt; &gt;</button>
+                </form>
+            </div>
         </div>
     </div>
-    <div>
-        <form name="addPlayerCharacterWeapon" id="addPlayerCharacterWeapon" method="POST" action="<?= CurlHelper::buildUrl('characterActionRouter'); ?>">
-            <input type="hidden" name="playerName" value="<?= $input['playerName'] ?>">
-            <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
-            <input type="hidden" name="weaponCatalogId" value="<?= $input['weaponCatalogId'] ?>">
-            <input type="hidden" name="playerWeaponProficiencyId" value="0">
-            <label><?= $weaponDetail->getWeaponName(); ?></label><br>
-            <label for="weaponDescription">Weapon Name</label><br>
-            <input type="text" name="weaponDescription" id="weaponDescription" maxlength="32" value="<?= $weaponDetail->getWeaponName(); ?>">
-        
-            <input type="text" name="weaponSpeed" id="weaponSpeed" maxlength="32" value="<?= $weaponDetail->getWeaponSpeed(); ?>">
-            <input type="text" name="weaponDamage" id="weaponDamage" maxlength="32" value="<?= $weaponDetail->getWeaponDamage(); ?>">
-            <input type="text" name="attacksPerRound" id="attacksPerRound" maxlength="32">
-            <label for="weaponLocation">Weapon Location</label><br>
-            <input type="text" name="weaponLocation" id="weaponLocation" maxlength="32">
-            <label for="isReady">Ready Weapon? </label><select name="isReady" id="isReady">
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select>
-            <?php if (isCavalier($character_summary->character_classes)): ?>
-                <label for="isPreferred">Is Preferred?</label><select name="isPreferred" id="isPreferred">
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
-            <?php else: ?>
-                <input type="hidden" name="isPreferred" id="isPreferred" value="no">
-            <?php endif ?>
-            <input type="hidden" name="hitBonus" id="hitBonus" value="0">
-            <input type="hidden" name="damageBonus" id="damageBonus" value="0">
-            <select name="craftStatus" id="craftStatus" onchange="showHitDamageSections('craftStatus', 'masterCraftSection', 'magicSection');">
-                <option value="<?= CRAFT_STATUS_ARTISAN ?>">Artisan</option>
-                <option value="<?= CRAFT_STATUS_MASTERCRAFT ?>">MasterCraft</option>
-                <option value="<?= CRAFT_STATUS_MAGIC ?>">Magic</option>
-            </select>
-            <div id="masterCraftSection" hidden>
-                <label for="masterCraftHitBonus">Hit</label>
-                <select id="masterCraftHitBonus" onchange="updateHitBonus('masterCraftHitBonus', 'hitBonus');">
-                    <option value="0">Artisan</option>
-                    <option value="1">Balanced</option>
-                </select>
-                <label for="masterCraftDamageBonus">Damage</label>
-                <select id="masterCraftDamageBonus" onchange="updateDamageBonus('masterCraftDamageBonus', 'damageBonus');">
-                    <option value="0">Artisan</option>
-                    <option value="1">Sharp/Heavy</option>
-                    <option value="2">Extra-Sharp/Extra-Heavy</option>
-                </select>
-            </div>
-            <div id="magicSection" hidden>
-                <label for="magicBonus">Magic Bonus</label>
-                <select id="magicBonus" onchange="updateHitBonus('magicBonus', 'hitBonus'); updateDamageBonus('masterCraftDamageBonus', 'damageBonus'); showSpecBonusesSection('specBonuses');">
-                    <option value="1">+1</option>
-                    <option value="2">+2</option>
-                    <option value="3">+3</option>
-                    <option value="4">+4</option>
-                    <option value="5">+5</option>
-                </select>
-                <div id="specBonuses" hidden>
-                    <label for="hitBonusSpec1">Additional Hit Bonus</label><input type="text" name="hitBonusSpec1" id="hitBonusSpec1" maxlength="32"><br>
-                    <label for="hitBonusSpec2">Additional Hit Bonus</label><input type="text" name="hitBonusSpec2" id="hitBonusSpec2" maxlength="32"><br>
-                    <label for="hitBonusSpec3">Additional Hit Bonus</label><input type="text" name="hitBonusSpec3" id="hitBonusSpec3" maxlength="32"><br>
-                    <br>
-                    <label for="damageBonusSpec1">Additional Damage Bonus</label><input type="text" name="damageBonusSpec1" id="damageBonusSpec1" maxlength="32"><br>
-                    <label for="damageBonusSpec2">Additional Damage Bonus</label><input type="text" name="damageBonusSpec2" id="damageBonusSpec2" maxlength="32"><br>
-                    <label for="damageBonusSpec3">Additional Damage Bonus</label><input type="text" name="damageBonusSpec3" id="damageBonusSpec3" maxlength="32"><br>
-                </div>
-            </div>
-        </form>
-    </div>
+    <h3>Weapon List</h3>
+    <?php if (count($weapon_list) == 0): ?>
+        <span style="font-size: 18px;">No weapons available</span>
+    <?php else: ?>
+        <table>
+            <tr><th>&nbsp;</th><th>Description</th><th>Location</th><th>Craft Status</th></tr>
+            <?php
+                foreach($weapon_list AS $weapon) {
+                    $weapon_desc = str_replace("'", "", html_entity_decode($weapon['weapon_description']));
+                    $output_row  = '<tr>';
+                    $output_row .= '<td>' . buildDeletePlayerCharacterWeaponIcon($weapon_desc, $weapon['player_character_weapon_id']) . '</td>';
+                    $output_row .= '<td>' . buildWeaponNameCell($input[PLAYER_NAME], $input[CHARACTER_NAME], $weapon) . '</td>';
+                    $output_row .= '<td>' . $weapon['weapon_location'] . '</td>';
+                    $output_row .= '<td>' . getCraftStatusDescription($weapon['weapon_craft_status']) . '</td>';
+                    $output_row .= '</tr>' . PHP_EOL;
+                    echo $output_row;
+                }
+            ?>
+        </table>
+    <?php endif ?>
+<div>
 </body>
 </html>
+
 <?php
-function getWeaponDetail(\PDO $pdo, $weapon_id, &$errors) {
-    $weapon_detail = new WeaponDetail();
-    $weapon_detail->init($pdo, $weapon_id, $errors);
+function getWeaponSummaryForPlayerCharacter(\PDO $pdo, $player_name, $character_name, &$errors) {
+    $sql_exec = "CALL getWeaponSummaryForPlayerCharacter(:playerName, :characterName)";
+	
+	$statement = $pdo->prepare($sql_exec);
+	$statement->bindParam(':playerName', $player_name, PDO::PARAM_STR);
+	$statement->bindParam(':characterName', $character_name, PDO::PARAM_STR);
+	try {
+		$statement->execute();
+	} catch(Exception $e) {
+		$errors[] = "Exception in getWeaponSummaryForPlayerCharacter : " . $e->getMessage();
+	}
 
-    if(!empty($errors)) {
-        die($errors);
-    }
-
-    return $weapon_detail;
+	return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function isCavalier($character_classes) {
-    foreach($character_classes AS $character_class) {
-        if (getClassID($character_class_name) == CAVALIER) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+function buildWeaponNameCell($player_name, $character_name, $weapon) {
+    $weapon_desc = $weapon['weapon_description'];
+    $player_character_weapon_id = $weapon['player_character_weapon_id'];
+    $output_html  = $weapon_desc;
+    $output_html .= '<span style="float: right; margin-left: 15px;">';
+    $output_html .= ActionBarHelper::buildEditPlayerCharacterWeapon($player_name, $character_name, $player_character_weapon_id);
+    $output_html .= '</span>';
+
+    return $output_html;
 }
 
-function isRanged($weapon_subtype) {
-    return  ($weapon_subtype == MISC_MISSILE) || ($weapon_subtype == BOW) || ($weapon_subtype == CROSSBOW) ||  
-            ($weapon_subtype == AXE) || ($weapon_subtype ==  HAMMER) || ($weapon_subtype == SLING);
+function buildDeletePlayerCharacterWeaponIcon($weapon_desc, $player_character_weapon_id) {
+    $delete_icon = new FaDeleteIcon();
+    $delete_icon->setOnClickJsFunction('confirmPlayerCharacterWeaponDelete');
+    $delete_icon->addOnclickJsParameter('deleteWeapon');
+    $delete_icon->addOnclickJsParameter(PLAYER_CHARACTER_WEAPON_ID);
+    $delete_icon->addOnclickJsParameter($player_character_weapon_id);
+    $delete_icon->addOnclickJsParameter(str_replace("'", "", $weapon_desc));
+    $delete_icon->setHoverText('Delete ' . $weapon_desc);
+
+    return $delete_icon->build();
 }
+
 ?>

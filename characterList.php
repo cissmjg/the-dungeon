@@ -4,8 +4,14 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once 'CurlHelper.php';
-require_once 'playerName.php';
+require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
+
+require_once __DIR__ . '/webio/characterAction.php';
+require_once __DIR__ . '/characterActionRoutes.php';
+require_once __DIR__ . '/webio/playerName.php';
+require_once __DIR__ . '/webio/characterName.php';
+require_once __DIR__ . '/webio/pageAction.php';
 
 $errors = [];
 $input = [];
@@ -14,26 +20,26 @@ const PORTRAIT_DIR = "portraits/";
 const UNKNOWN_PORTRAIT = "Unknown.jpg";
 
 getPlayerName($errors, $input);
-$player_name = $input['playerName'];
+$player_name = $input[PLAYER_NAME];
 
 $params = [];
-$params['playerName'] = $player_name;
+$params[PLAYER_NAME] = $player_name;
 
-$url = CurlHelper::buildUrl('getAccountSummary');
+$url = CurlHelper::buildUrlDbioDirectory('getAccountSummary');
 $raw_results = CurlHelper::performGetRequest($url, $params);
 
 $account_character_summaries = json_decode($raw_results);
+
+$page_title = 'Character List';
+$site_css_file = 'dnd-default.css';
+$page_specific_js = '';
+$page_specific_css = '';
+$enable_toggle_panels = false;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-	<meta name="Cache-Control" content="no-store">
-	<link rel="stylesheet" href="dnd-default.css">
-    <title>Character List</title>
-</head>
 <body>
 <div class="player_portraits">
 <?php
@@ -84,9 +90,10 @@ $account_character_summaries = json_decode($raw_results);
 	}
 
 	function buildNewCharacterPortraitAnchor($img_tag, $player_name) {
-		$create_character_url = CurlHelper::buildUrl('characterCreation1');
-		$create_character_url = CurlHelper:: addParameter($create_character_url, 'playerName', $player_name);
-		$create_character_url = CurlHelper:: addParameter($create_character_url, 'pageAction', 'validate');
+		$create_character_url = CurlHelper::buildCharacterActionRouterUrl();
+		$create_character_url = CurlHelper::addParameter($create_character_url, CHARACTER_ACTION, CHARACTER_ACTION_CREATE_CHARACTER);
+		$create_character_url = CurlHelper::addParameter($create_character_url, PLAYER_NAME, $player_name);
+		$create_character_url = CurlHelper:: addParameter($create_character_url, PAGE_ACTION, 'validate');
 	
 		$output_html = '<a href="' . $create_character_url . '" target="_blank">';
 		$output_html .= $img_tag;
@@ -96,7 +103,8 @@ $account_character_summaries = json_decode($raw_results);
 	}
 
 	function buildPortraitImage($account_character_summary) {
-		$output_html = '<img class="character_portrait_image" src="' . $account_character_summary->portrait_file_location . '" ';
+		$character_portrait = PORTRAIT_DIR . $account_character_summary->portrait_file_location;
+		$output_html = '<img class="character_portrait_image" src="' . $character_portrait . '" ';
 		$output_html .= 'title="' . $account_character_summary->character_name . '" ';
 		$output_html .= 'alt="' . $account_character_summary->character_name . '"';
 		$output_html .= '>';
@@ -128,8 +136,10 @@ $account_character_summaries = json_decode($raw_results);
 	}
 
 	function buildViewCharacterUrl($player_name, $character_name) {
-		$url = CurlHelper::buildCharacterActionRouterUrl($player_name, 'viewCharacter');
-		$url = CurlHelper::addParameter($url, 'characterName', $character_name);
+		$url = CurlHelper::buildCharacterActionRouterUrl();
+		$url = CurlHelper::addParameter($url, CHARACTER_ACTION, CHARACTER_ACTION_VIEW_CHARACTER);
+		$url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
+		$url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
 
 		return $url;
 	}

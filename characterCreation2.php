@@ -6,29 +6,31 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once 'RestHeaderHelper.php';
-require_once 'CurlHelper.php';
-require_once 'playerName.php';
-require_once 'pageAction.php';
-require_once 'requiredParameter.php';
-require_once __DIR__ . '/classes/ActionBarHelper.php';
-require_once 'hiddenTag.php';
+require_once __DIR__ . '/helper/RestHeaderHelper.php';
+require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/webio/pageAction.php';
+require_once __DIR__ . '/helper/ActionBarHelper.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
 
-require_once 'faEditIcon.php';
+require_once __DIR__ . '/fa/faEditIcon.php';
 
-require_once 'characterAttributes.php';
-require_once 'characterRaces.php';
-require_once 'adjustCharacterRacialAttributes.php';
-require_once 'getCharacterCreationAttributes.php';
-require_once 'characterClassCombinations.php';
-require_once 'characterClassRestrictions.php';
-require_once 'validateRacialAttributes.php';
+require_once __DIR__ . '/webio/playerName.php';
+require_once __DIR__ . '/webio/characterName.php';
+require_once __DIR__ . '/webio/raceId.php';
+
+require_once __DIR__ . '/dbio/constants/characterAttributes.php';
+require_once __DIR__ . '/dbio/constants/characterRaces.php';
+require_once __DIR__ . '/rules/adjustCharacterRacialAttributes.php';
+require_once __DIR__ . '/rules/getCharacterCreationAttributes.php';
+require_once __DIR__ . '/rules/characterClassCombinations.php';
+require_once __DIR__ . '/rules/characterClassRestrictions.php';
 
 const PAGE_ACTION_VALIDATE = "validate";
 const PAGE_ACTION_EDIT = "edit";
 const NO_CLASS_SELECTED = "None";
 const NO_CHARACTER_CLASS_ID = 0;
 const FINALIZE_BUTTON_ID = "finalizeChacterActionID";
+const FORM_ID = "characterCreation2";
 
 $input = [];
 $errors = [];
@@ -83,72 +85,53 @@ if ($primary_class_available == false) {
 } else {
 	if ($secondary_class_available == true) {
 		if ($tertiary_class_available == false) {
-			$primary_character_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
-			$secondary_character_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_SECONDARY_CLASS]);
+			$primary_character_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
+			$secondary_character_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_SECONDARY_CLASS]);
 			$tertiary_classes = getCharacterTertiaryClassesForRace($class_combinations, $input[CHARACTER_RACE_ID], $primary_character_class_name, $secondary_character_class_name);
 		}
 	} else {
-		$primary_character_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
+		$primary_character_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
 		$secondary_classes = getCharacterSecondaryClassesForRace($class_combinations, $input[CHARACTER_RACE_ID], $primary_character_class_name);
 		$tertiary_class_available = false;
 	}
 }
 
 if ($primary_class_available) {
-	$primary_character_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
+	$primary_character_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
 	validateCharacterClass($errors, $character_class_minimums, $character_class_maximums, $input[CHARACTER_PRIMARY_CLASS], $primary_character_class_name, $input);
 }
 
 if ($secondary_class_available) {
-	$secondary_character_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_SECONDARY_CLASS]);
+	$secondary_character_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_SECONDARY_CLASS]);
 	validateCharacterClass($errors, $character_class_minimums, $character_class_maximums, $input[CHARACTER_SECONDARY_CLASS], $secondary_character_class_name, $input);
 }
 
 if ($tertiary_class_available) {
-	$tertiary_character_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_TERTIARY_CLASS]);
+	$tertiary_character_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_TERTIARY_CLASS]);
 	validateCharacterClass($errors, $character_class_minimums, $character_class_maximums, $input[CHARACTER_TERTIARY_CLASS], $tertiary_character_class_name, $input);
 }
 
-$page_title = 'New Character';
+$url_character_creation_1 = CurlHelper::buildUrl('characterCreation1.php');
+$url_character_creation_2 = CurlHelper::buildUrl('characterCreation2.php');
+$url_character_creation_3 = CurlHelper::buildUrl('characterCreation3.php');
 
 $errors_exist = errorsExist($errors);
 
+$page_title = 'New Character';
+$site_css_file = 'dnd-default.css';
+$page_specific_js = 'characterCreation2.js';
+$page_specific_css = '';
+$enable_toggle_panels = false;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="Cache-Control" content="no-store">
-    <title><?= $page_title ?></title>
-	<link rel="stylesheet" href="dnd-default.css">
-	<script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-	<meta name="Cache-Control" content="no-store">
-	<script type="text/javascript">
-		function submitTheForm(form_id, characterClassId) {
-			let theForm = document.getElementById(form_id);
-
-			theForm.elements[characterClassId].value = "None";
-
-			if (theForm == null) {
-				alert("Cannot find form with ID [" + form_id + "]");
-			} else {
-				theForm.submit();
-			}
-		}
-
-		function disableFinalize(finalizeButton) {
-			finalizeButton.disabled = 'true';
-			finalizeButton.style.opacity = 0.5;
-			finalizeButton.style.cursor = 'not-allowed';
-		}
-	</script>
-</head>
 <body>
     <div style="border: solid 1px; border-color: blue; border-radius: 10px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; width: auto; display: table;">
     <table style="margin-top: 5px;">
-    <form id="characterCreation2" action="characterCreation2.php" method="post">
-	<input type="hidden" id="playerName" name="playerName" value="<?= $input['playerName'] ?>">
+    <form id="<?= FORM_ID ?>" action="<?= $url_character_creation_2 ?>" method="POST">
+	<input type="hidden" id="playerName" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
 	<tr>
 		<td colspan="4">
 			<div style="background-color: Aquamarine; text-align:center; border-radius: 10px;">Character Creation Stage 2</div>
@@ -165,7 +148,7 @@ $errors_exist = errorsExist($errors);
                 $selectedRace = $input[CHARACTER_RACE_ID];
                 $race_display_name = '';
                 foreach($race_list AS $race) {
-                    if ($race['race_id'] == $selectedRace) {
+                    if ($race[RACE_ID] == $selectedRace) {
                         $race_display_name = $race['race_name'];
                         break;
                     }
@@ -307,13 +290,13 @@ $errors_exist = errorsExist($errors);
 	    <td>
 			<?php
 				if ($primary_class_available) {
-					$primary_class_name =  getCharacterClassName($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
+					$primary_class_name =  getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_PRIMARY_CLASS]);
 					echo '<input style="float: left;" class="view_only" type="text" value="' . $primary_class_name . '" readonly>' . PHP_EOL;
-					echo buildHiddenTag(CHARACTER_PRIMARY_CLASS, $input[CHARACTER_PRIMARY_CLASS]) . PHP_EOL;
+					echo HtmlHelper::buildHiddenTag(CHARACTER_PRIMARY_CLASS, $input[CHARACTER_PRIMARY_CLASS]) . PHP_EOL;
 					$change_primary_class = new FaEditIcon();
 					$change_primary_class->addStyle('float: right;');
 					$change_primary_class->setOnClickJsFunction('submitTheForm');
-					$change_primary_class->addOnclickJsParameter('characterCreation2');
+					$change_primary_class->addOnclickJsParameter(FORM_ID);
 					$change_primary_class->addOnclickJsParameter(CHARACTER_PRIMARY_CLASS);
 					echo $change_primary_class->build();
 				} else {
@@ -342,16 +325,16 @@ $errors_exist = errorsExist($errors);
 	<?php
 	if (count($secondary_classes) > 0 || $secondary_class_available) {
 		echo '<tr>' . PHP_EOL;
-		echo '<td>2<sup>nd class</td>' . PHP_EOL;
+		echo '<td>2<sup>nd</sup> class</td>' . PHP_EOL;
 		echo '<td>';
 		if ($secondary_class_available) {
-			$secondary_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_SECONDARY_CLASS]);
+			$secondary_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_SECONDARY_CLASS]);
 			echo '<input style="float: left;" class="view_only" type="text" value="' . $secondary_class_name . '" readonly>' . PHP_EOL;
-			echo buildHiddenTag(CHARACTER_SECONDARY_CLASS, $input[CHARACTER_SECONDARY_CLASS]) . PHP_EOL;
+			echo HtmlHelper::buildHiddenTag(CHARACTER_SECONDARY_CLASS, $input[CHARACTER_SECONDARY_CLASS]) . PHP_EOL;
 			$change_secondary_class = new FaEditIcon();
 			$change_secondary_class->addStyle('float: right;');
 			$change_secondary_class->setOnClickJsFunction('submitTheForm');
-			$change_secondary_class->addOnclickJsParameter('characterCreation2');
+			$change_secondary_class->addOnclickJsParameter(FORM_ID);
 			$change_secondary_class->addOnclickJsParameter(CHARACTER_SECONDARY_CLASS);
 			echo $change_secondary_class->build();
 		} else {
@@ -371,16 +354,16 @@ $errors_exist = errorsExist($errors);
 
 	if ((is_array($tertiary_classes) && count($tertiary_classes) > 0) || $tertiary_class_available) {
 		echo '<tr>' . PHP_EOL;
-		echo '<td>3<sup>rd class</td>' . PHP_EOL;
+		echo '<td>3<sup>rd</sup> class</td>' . PHP_EOL;
 		echo '<td>';
 		if ($tertiary_class_available) {
-			$tertiary_class_name = getCharacterClassName($character_class_list, $input[CHARACTER_TERTIARY_CLASS]);
+			$tertiary_class_name = getCharacterClassNameFromCharacterSummary($character_class_list, $input[CHARACTER_TERTIARY_CLASS]);
 			echo '<input style="float: left;" class="view_only" type="text" value="' . $tertiary_class_name . '" readonly>' . PHP_EOL;
-			echo buildHiddenTag(CHARACTER_TERTIARY_CLASS, $input[CHARACTER_TERTIARY_CLASS]) . PHP_EOL;
+			echo HtmlHelper::buildHiddenTag(CHARACTER_TERTIARY_CLASS, $input[CHARACTER_TERTIARY_CLASS]) . PHP_EOL;
 			$change_tertiary_class = new FaEditIcon();
 			$change_tertiary_class->addStyle('float: right;');
 			$change_tertiary_class->setOnClickJsFunction('submitTheForm');
-			$change_tertiary_class->addOnclickJsParameter('characterCreation2');
+			$change_tertiary_class->addOnclickJsParameter(FORM_ID);
 			$change_tertiary_class->addOnclickJsParameter(CHARACTER_TERTIARY_CLASS);
 			echo $change_tertiary_class->build();
 		} else {
@@ -401,16 +384,16 @@ $errors_exist = errorsExist($errors);
 </table>
 </div>
 <?php
-	echo buildHiddenTag('pageAction', PAGE_ACTION_VALIDATE);
+	echo HtmlHelper::buildHiddenTag(PAGE_ACTION, PAGE_ACTION_VALIDATE);
 	$button_bar = '<div style="margin-top: 5px; padding-bottom: 5px; padding-left: 5px; width: 405px;" class="character_create_action_bar_container">' . PHP_EOL;
-	$button_bar .= '<div class="character_create_action_bar_item_one"><button style="margin-top: 5px;" type="submit" formaction="characterCreation1.php">Attributes</button></div>' . PHP_EOL;
-	$button_bar .= '<div style="text-align: center;"  class="character_create_action_bar_item_two"><button style="margin-top: 5px;" type="submit" formaction="characterCreation2.php">Validate</button></div>' . PHP_EOL;
+	$button_bar .= '<div class="character_create_action_bar_item_one"><button style="margin-top: 5px;" type="submit" formaction="' . $url_character_creation_1 . '">Attributes</button></div>' . PHP_EOL;
+	$button_bar .= '<div style="text-align: center;"  class="character_create_action_bar_item_two"><button style="margin-top: 5px;" type="submit" formaction="' . $url_character_creation_2 . '">Validate</button></div>' . PHP_EOL;
 	$disabled = $errors_exist ? " disabled" : '';
 	$finalize_button_style = "float: right; margin-top: 5px;";
 	if ($errors_exist) {
 		$finalize_button_style .= ' opacity: 0.5; cursor: not-allowed';
 	}
-	$button_bar .= '<div class="character_create_action_bar_item_three"><button id="' . FINALIZE_BUTTON_ID . '" style="' . $finalize_button_style . '" type="submit" formaction="characterCreation3.php"' . $disabled . '>Finalize</button></div>' . PHP_EOL;
+	$button_bar .= '<div class="character_create_action_bar_item_three"><button id="' . FINALIZE_BUTTON_ID . '" style="' . $finalize_button_style . '" type="submit" formaction="' . $url_character_creation_3 . '"' . $disabled . '>Finalize</button></div>' . PHP_EOL;
 	$button_bar .= '</div>' . PHP_EOL;
 	echo $button_bar;
 ?>
@@ -444,7 +427,7 @@ function getCharacterClassList(\PDO $pdo, $errors) {
 	return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getCharacterClassName($character_class_list, $character_class_id) {
+function getCharacterClassNameFromCharacterSummary($character_class_list, $character_class_id) {
 	foreach($character_class_list AS $character_class) {
 		if ($character_class['character_class_id'] == $character_class_id) {
 			return $character_class['character_class_name'];

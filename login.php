@@ -1,78 +1,53 @@
 <?php
 $errors = [];
 
+require_once __DIR__ . '/env.php';
 $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
-require_once 'CurlHelper.php';
+require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
+
+require_once __DIR__ . '/webio/playerName.php';
+require_once __DIR__ . '/webio/characterAction.php';
+require_once __DIR__ . '/characterActionRoutes.php';
 
 $players = getPlayerList($pdo, $errors);
+$login_url = CurlHelper::buildCharacterActionRouterUrl();
+
+$img_url = STARTING_URL . 'Thumbs up.jpg';
+$page_title = 'Login';
+$site_css_file = 'dnd-default.css';
+$page_specific_js = 'login.js';
+$page_specific_css = 'login.css';
+$enable_toggle_panels = false;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-    <style>
-        input {
-			-webkit-appearance: none;
-			-moz-appearance: none;
-			appearance: none;
-        }
-
-        input:focus {
-            outline: none;
-        }
-
-        label {
-            color: lightgray;
-            font-size: 14px;
-            vertical-align: sub;
-        }
-
-    </style>
-    <script src="backButtonDisable.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        function checkForm(loginForm) {
-            let pwdField = document.getElementById("password");
-            if (pwdField != null) {
-                if (pwdField.value.length == 0) {
-                    alert('Please enter a password');
-                    return false;
-                }
-            }
-
-            loginForm.submit();
-        }
-    </script>
-</head>
 <body style="background-color: whitesmoke; margin: 15px; font-family: sans-serif; font-size: 24px;">
-    <?php
-        $login_url = CurlHelper::buildUrl('characterActionRouter');
-    ?>
-    <div style="float: left;">
-        <img src="Thumbs up.jpg" height="400">
-    </div>
-    <div style="float: left; background-color: white; height: 400px; padding: 15px;">
-        <div style="text-align:center; padding-top: 37px; padding-bottom: 37px;">Login to the dungeon</div>
-        <form action="<?= $login_url ?>" method="post">
-            <input type="hidden" name="characterAction" value="login">
-            <label for="playerName">Username</label>
-            <select style="font-size: 24px; width: 100%; margin-top: 5px;" name="playerName" id="playerName">
-            <?php
-                foreach($players AS $player) {
-                    echo '<option value="' . $player['player_name'] . '">' . $player['player_name'] . '</option>' . PHP_EOL;
-                }
-            ?>
-            </select>
-            <label for="password">Password</label>
-            <input style="font-size: 24px; width: 97%; margin-top: 5px; border-top:none; border-left: none; border-right: none;" type="password" name="password" id="password">
-            <div style="text-align:center; margin-top: 30px; ">
-                <button style="font-size: 24px;" onclick="event.preventDefault(); checkForm(this.form);">Sign in</button>
-            </div>
-        </form>
+    <div class="main">
+        <div class="left">
+            <img src="<?= $img_url ?>" height="400" width="190" title="Thumbs up">
+        </div>
+        <div class="right">
+            <div style="text-align: center; padding-top: 74px; width:">Login to The Dungeon</div>
+            <form action="<?= $login_url ?>" method="POST">
+                <input type="hidden" name="<?= CHARACTER_ACTION ?>" value="<?= CHARACTER_ACTION_LOGIN ?>">
+                <label for="playerName">Username</label>
+                <select style="font-size: 24px; width: 100%; margin-top: 5px;" name="<?= PLAYER_NAME ?>" id="<?= PLAYER_NAME ?>">
+                <?php
+                    foreach($players AS $player) {
+                        echo '<option value="' . $player['player_name'] . '">' . $player['player_name'] . '</option>' . PHP_EOL;
+                    }
+                ?>
+                </select>
+                <label for="password">Password</label>
+                <input style="font-size: 24px; width: 95%; margin-top: 5px; border-top:none; border-left: none; border-right: none;" type="password" name="password" id="password">
+                <div style="text-align:center; margin-top: 30px; ">
+                    <button style="font-size: 24px;" onclick="event.preventDefault(); checkForm(this.form);">Sign in</button>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>

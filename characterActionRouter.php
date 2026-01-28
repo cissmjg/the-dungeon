@@ -6,96 +6,98 @@ $log = [];
 
 require_once __DIR__ . '/env.php';
 $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
-require_once 'CurlHelper.php';
-require_once 'RestHeaderHelper.php';
-require_once 'WebParameterHelper.php';
-require_once 'textInput.php';
+require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/helper/RestHeaderHelper.php';
+require_once __DIR__ . '/helper/WebParameterHelper.php';
+require_once __DIR__ . '/characterActionRoutes.php';
 
-require_once 'playerName.php';
-require_once 'characterName.php';
-require_once 'characterAttributes.php';
-require_once 'characterClassName.php';
-require_once 'characterLevel.php';
-require_once 'guid.php';
-require_once 'pageAction.php';
-require_once 'spellCatalogId.php';
-require_once 'spellSlotId.php';
-require_once 'spellLevel.php';
-require_once 'spellPoolId.php';
-require_once 'spellPoolSlotId.php';
-require_once 'spellDuration.php';
-require_once 'spellCastingTime.php';
-require_once 'requiredParameter.php';
-require_once 'optionalParameter.php';
-require_once 'cantripSpellSlot.php';
-require_once 'playerCharacterClassId.php';
-require_once 'playerCharacterWeaponId.php';
-require_once 'spellSlotLevel.php';
-require_once 'spellTypeId.php';
-require_once 'hoursOfSleep.php';
+require_once __DIR__ . '/webio/requiredParameter.php';
 
-require_once 'weaponProficiencyId.php';
-require_once 'weaponDescription.php';
-require_once 'weaponLocation.php';
-require_once 'isProficient.php';
-require_once 'isReady.php';
-require_once 'isPreferred.php';
-require_once 'craftStatus.php';
-require_once 'strengthBonusAvailable.php';
-require_once 'playerNote1.php';
-require_once 'playerNote2.php';
-require_once 'playerNote3.php';
-require_once 'mastercraftHitDescription.php';
-require_once 'mastercraftDamageDescription.php';
-require_once 'meleeWeaponType.php';
-require_once 'meleeWeaponSpeed.php';
-require_once 'meleeWeaponDamage.php';
-require_once 'meleeAttacksPerRound.php';
-require_once 'meleeNumberOfHands.php';
-require_once 'meleeAdditionalText.php';
-require_once 'meleeHitBonus.php';
-require_once 'meleeDamageBonus.php';
-require_once 'meleeSpec1HitBonus.php';
-require_once 'meleeSpec1DamageBonus.php';
-require_once 'meleeSpec1Description.php';
-require_once 'meleeSpec2HitBonus.php';
-require_once 'meleeSpec2DamageBonus.php';
-require_once 'meleeSpec2Description.php';
-require_once 'meleeSpec3HitBonus.php';
-require_once 'meleeSpec3DamageBonus.php';
-require_once 'meleeSpec3Description.php';
-require_once 'missileWeaponType.php';
-require_once 'missileWeaponSpeed.php';
-require_once 'missileWeaponDamage.php';
-require_once 'missileAttacksPerRound.php';
-require_once 'missileAdditionalText.php';
-require_once 'missileSpec1HitBonus.php';
-require_once 'missileSpec1DamageBonus.php';
-require_once 'missileSpec1Description.php';
-require_once 'missileSpec2HitBonus.php';
-require_once 'missileSpec2DamageBonus.php';
-require_once 'missileSpec2Description.php';
-require_once 'missileSpec3HitBonus.php';
-require_once 'missileSpec3DamageBonus.php';
-require_once 'missileSpec3Description.php';
-require_once 'missileShortRange.php';
-require_once 'missileMediumRange.php';
-require_once 'missileLongRange.php';
-require_once 'missileHitBonus.php';
-require_once 'missileDamageBonus.php';
+require_once __DIR__ . '/webio/textInput.php';
+require_once __DIR__ . '/webio/characterAction.php';
 
-getRequiredStringParameter($errors, $input, __FILE__, 'characterAction');
-$character_action = $input['characterAction'];
+require_once __DIR__ . '/webio/playerName.php';
+require_once __DIR__ . '/webio/characterName.php';
+require_once __DIR__ . '/webio/characterClassName.php';
+require_once __DIR__ . '/webio/characterLevel.php';
+require_once __DIR__ . '/webio/pageAction.php';
+require_once __DIR__ . '/webio/spellCatalogId.php';
+require_once __DIR__ . '/webio/spellSlotId.php';
+require_once __DIR__ . '/webio/spellLevel.php';
+require_once __DIR__ . '/webio/spellPoolSlotId.php';
+require_once __DIR__ . '/webio/spellDuration.php';
+require_once __DIR__ . '/webio/spellCastingTime.php';
+require_once __DIR__ . '/webio/castStatus.php';
+require_once __DIR__ . '/dbio/constants/cantripSpellSlot.php';
+require_once __DIR__ . '/webio/playerCharacterClassId.php';
+require_once __DIR__ . '/webio/playerCharacterWeaponId.php';
+require_once __DIR__ . '/webio/spellSlotLevel.php';
+require_once __DIR__ . '/webio/spellTypeId.php';
+require_once __DIR__ . '/webio/hoursOfSleep.php';
+require_once __DIR__ . '/webio/playerCharacterWeaponId.php';
+
+require_once __DIR__ . '/webio/weaponProficiencyId.php';
+require_once __DIR__ . '/webio/weaponDescription.php';
+require_once __DIR__ . '/webio/weaponLocation.php';
+require_once __DIR__ . '/webio/isProficient.php';
+require_once __DIR__ . '/webio/isReady.php';
+require_once __DIR__ . '/webio/isPreferred.php';
+require_once __DIR__ . '/webio/craftStatus.php';
+require_once __DIR__ . '/webio/strengthBonusAvailable.php';
+require_once __DIR__ . '/webio/playerNote1.php';
+require_once __DIR__ . '/webio/playerNote2.php';
+require_once __DIR__ . '/webio/playerNote3.php';
+require_once __DIR__ . '/webio/mastercraftHitDescription.php';
+require_once __DIR__ . '/webio/mastercraftDamageDescription.php';
+require_once __DIR__ . '/webio/meleeWeaponType.php';
+require_once __DIR__ . '/webio/meleeWeaponSpeed.php';
+require_once __DIR__ . '/webio/meleeWeaponDamage.php';
+require_once __DIR__ . '/webio/meleeAttacksPerRound.php';
+require_once __DIR__ . '/webio/meleeNumberOfHands.php';
+require_once __DIR__ . '/webio/meleeAdditionalText.php';
+require_once __DIR__ . '/webio/meleeHitBonus.php';
+require_once __DIR__ . '/webio/meleeDamageBonus.php';
+require_once __DIR__ . '/webio/meleeSpec1HitBonus.php';
+require_once __DIR__ . '/webio/meleeSpec1DamageBonus.php';
+require_once __DIR__ . '/webio/meleeSpec1Description.php';
+require_once __DIR__ . '/webio/meleeSpec2HitBonus.php';
+require_once __DIR__ . '/webio/meleeSpec2DamageBonus.php';
+require_once __DIR__ . '/webio/meleeSpec2Description.php';
+require_once __DIR__ . '/webio/meleeSpec3HitBonus.php';
+require_once __DIR__ . '/webio/meleeSpec3DamageBonus.php';
+require_once __DIR__ . '/webio/meleeSpec3Description.php';
+require_once __DIR__ . '/webio/missileWeaponType.php';
+require_once __DIR__ . '/webio/missileWeaponSpeed.php';
+require_once __DIR__ . '/webio/missileWeaponDamage.php';
+require_once __DIR__ . '/webio/missileAttacksPerRound.php';
+require_once __DIR__ . '/webio/missileAdditionalText.php';
+require_once __DIR__ . '/webio/missileSpec1HitBonus.php';
+require_once __DIR__ . '/webio/missileSpec1DamageBonus.php';
+require_once __DIR__ . '/webio/missileSpec1Description.php';
+require_once __DIR__ . '/webio/missileSpec2HitBonus.php';
+require_once __DIR__ . '/webio/missileSpec2DamageBonus.php';
+require_once __DIR__ . '/webio/missileSpec2Description.php';
+require_once __DIR__ . '/webio/missileSpec3HitBonus.php';
+require_once __DIR__ . '/webio/missileSpec3DamageBonus.php';
+require_once __DIR__ . '/webio/missileSpec3Description.php';
+require_once __DIR__ . '/webio/missileShortRange.php';
+require_once __DIR__ . '/webio/missileMediumRange.php';
+require_once __DIR__ . '/webio/missileLongRange.php';
+require_once __DIR__ . '/webio/missileHitBonus.php';
+require_once __DIR__ . '/webio/missileDamageBonus.php';
+
+ getCharacterAction($errors, $input);
+$character_action = $input[CHARACTER_ACTION];
 
 switch($character_action) {
-	case "login":
+	case CHARACTER_ACTION_LOGIN:
 		// Get player name
 		getPlayerName($errors, $input);
 
 		//Get the password the user entered
 		getRequiredStringParameter($errors, $input, __FILE__, 'password');
 		
-		$url = CurlHelper::buildUrl('getPlayerPassword');
+		$url = CurlHelper::buildUrlDbioDirectory('getPlayerPassword');
 		$params = buildGetPasswordParams($input);
 		$raw_result = CurlHelper::performGetRequest($url, $params);
 		$player_creds = json_decode($raw_result);
@@ -106,8 +108,8 @@ switch($character_action) {
 			break;
 			exit;
 		}
-		initiateSession($pdo, $input['playerName'], $errors);
-		$player_permissions = getPlayerPermissions($pdo, $input['playerName'], $errors);
+		initiateSession($pdo, $input[PLAYER_NAME], $errors, $character_action);
+		$player_permissions = getPlayerPermissions($pdo, $input[PLAYER_NAME], $errors);
 		$redirect_url = '';
 		if(!empty($player_permissions['is_dm']) && $player_permissions['is_dm'] == TRUE) {
 			$redirect_url = buildDmDashboardRedirect($input);
@@ -118,7 +120,7 @@ switch($character_action) {
 		header($redirect_url);
 		break;
 		exit;
-	case "promote":
+	case CHARACTER_ACTION_PROMOTE:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -128,7 +130,7 @@ switch($character_action) {
 		// Get character class name	
 		getCharacterClassName($errors, $input);
 		
-		$url = CurlHelper::buildUrl('promoteClass');
+		$url = CurlHelper::buildUrlDbioDirectory('promoteClass');
 		$params =  buildPromoteClassParams($input);
 		$raw_result = CurlHelper::performGetRequest($url, $params);
 		$result = json_decode($raw_result);
@@ -141,12 +143,13 @@ switch($character_action) {
 			$errors[] = "Execution Error|";
 			$errors[] = $character_action . "|";
 			$errors[] = __FILE__ . "|";
+			$errors[] = $input;
 			$errors[] = $result;
 			die(json_encode($errors));
 		}
 		break;
 		
-	case "characterList":
+	case CHARACTER_ACTION_LIST_CHARACTERS:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -154,22 +157,25 @@ switch($character_action) {
 		header($location_header);
 		exit;
 		break;
-	case "createNew":
+	case CHARACTER_ACTION_CREATE_CHARACTER:
 		// Get player name
 		getPlayerName($errors, $input);
+
+		// Get the page action
+		getPageAction($errors, $input);
 
 		$location_header = buildCreateCharacterRedirect($input);
 		header($location_header);
 		exit;
 		break;
-	case "deleteCharacter":
+	case CHARACTER_ACTION_DELETE_CHARACTER:
 		// Get player name
 		getPlayerName($errors, $input);
 
 		// Get Character Name
 		getCharacterName($errors, $input);
 
-		$url_delete_character = CurlHelper::buildUrl('deleteCharacter');
+		$url_delete_character = CurlHelper::buildUrlDbioDirectory('deleteCharacter');
 		$params_delete_character = buildDeleteCharacterParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_delete_character, $params_delete_character);
 		$result = json_decode($raw_result);
@@ -186,7 +192,7 @@ switch($character_action) {
 			die(json_encode($errors));
 		}
 		break;
-	case "viewCharacter":
+	case CHARACTER_ACTION_VIEW_CHARACTER:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -197,7 +203,7 @@ switch($character_action) {
 		header($location_header);
 		exit;
 		break;
-	case "editCharacter":
+	case CHARACTER_ACTION_EDIT_CHARACTER:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -208,7 +214,7 @@ switch($character_action) {
 		header($location_header);
 		exit;
 		break;
-	case "editSpellBook":
+	case CHARACTER_ACTION_EDIT_SPELLBOOK:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -225,7 +231,7 @@ switch($character_action) {
 		header($location_header);
 		exit;
 		break;
-	case "updateSpellPool":
+	case CHARACTER_ACTION_UPDATE_SPELLPOOL:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -244,7 +250,7 @@ switch($character_action) {
 		//Get page action
 		getPageAction($errors, $input);
 
-		$url_update_spell_pool = CurlHelper::buildUrl('updateSpellPoolSlot');
+		$url_update_spell_pool = CurlHelper::buildUrlDbioDirectory('updateSpellPoolSlot');
 		$params_update_spell_pool = buildUpdateSpellPoolParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_update_spell_pool, $params_update_spell_pool);
 		$result = json_decode($raw_result);
@@ -261,7 +267,7 @@ switch($character_action) {
 			die(json_encode($errors));
 		}
 		break;
-	case "editWeaponTalents":
+	case CHARACTER_ACTION_EDIT_WEAPON_TALENTS:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -272,66 +278,7 @@ switch($character_action) {
 		header($location_header);
 		exit;
 		break;
-	case "addWeaponTalent":
-		// Get player name
-		getPlayerName($errors, $input);
-
-		// Get character name	
-		getCharacterName($errors, $input);
-
-		// Weapon Proficiency (Talent) ID
-		getRequiredIntegerParameter($errors, $input, __FILE__, 'weaponProficiencyId');
-
-		// Preferred weapon (Cavalier)
-		getOptionalStringParameter($errors, $input, __FILE__, 'isPreferred', 'not preferred');
-
-		$url_add_weapon_talent = CurlHelper::buildUrl('addWeaponTalent');
-		$params_add_weapon_talent = buildAddWeaponTalentParams($input);
-		$raw_result = CurlHelper::performGetRequest($url_add_weapon_talent, $params_add_weapon_talent);
-		$result = json_decode($raw_result);
-		if (str_starts_with($result[0],  "SUCCESS|")) {
-			$location_header = buildEditWeaponTalentsRedirect($input);
-			header($location_header);
-			exit;
-		} else {
-			RestHeaderHelper::emitRestHeaders();
-			$errors[] = "Execution Error|";
-			$errors[] = $character_action . "|";
-			$errors[] = __FILE__ . "|";
-			$errors[] = $result;
-			die(json_encode($errors));
-		}
-
-		break;
-	case "deleteWeaponTalent":
-		// Get player name
-		getPlayerName($errors, $input);
-
-		// Get character name	
-		getCharacterName($errors, $input);
-
-		// Weapon Proficiency (Talent) ID
-		getRequiredIntegerParameter($errors, $input, __FILE__, 'weaponProficiencyId');
-
-		$url_delete_weapon_talent = CurlHelper::buildUrl('deleteWeaponTalent');
-		$params_delete_weapon_talent = buildDeleteWeaponTalentParams($input);
-		$raw_result = CurlHelper::performGetRequest($url_delete_weapon_talent, $params_delete_weapon_talent);
-		$result = json_decode($raw_result);
-		if (str_starts_with($result[0],  "SUCCESS|")) {
-			$location_header = buildDeleteWeaponTalentRedirect($input);
-			header($location_header);
-			exit;
-		} else {
-			RestHeaderHelper::emitRestHeaders();
-			$errors[] = "Execution Error|";
-			$errors[] = $character_action . "|";
-			$errors[] = __FILE__ . "|";
-			$errors[] = $result;
-			die(json_encode($errors));
-		}
-
-		break;
-	case "editSkills":
+	case CHARACTER_ACTION_EDIT_SKILLS:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -342,7 +289,7 @@ switch($character_action) {
 		header($location_header);
 		exit;
 		break;
-	case "deleteCharacterSkill":
+	case CHARACTER_ACTION_DELETE_SKILL:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -372,15 +319,7 @@ switch($character_action) {
 		exit;
 		break;
 
-	case "home":
-		// Get player name
-		getPlayerName($errors, $input);
-
-		$url_home = buildHomeRedirect($input);
-		header($url_home);
-		exit;
-		break;
-	case "updateReadySpellSlot":
+	case CHARACTER_ACTION_UPDATE_READY_SPELL_SLOT:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -394,19 +333,29 @@ switch($character_action) {
 		getSpellCatalogId($errors, $input);
 
 		$raw_result = '';
-		if ($input['spellCatalogId'] == CANTRIP_SLOT_SPELL_CATALOG_ID) {
+		if ($input[SPELL_CATALOG_ID] == CANTRIP_SLOT_SPELL_CATALOG_ID) {
 			// Get character class name	
 			getCharacterClassName($errors, $input);
 
 			// Get the Spell Level
 			getSpellLevel($errors, $input);
 	
-			$url_allocate_cantrips = CurlHelper::buildUrl('allocateCantripsForSlot');
+			$url_allocate_cantrips = CurlHelper::buildUrlDbioDirectory('allocateCantripsForSlot');
 			$params_allocate_cantrips = buildAllocateCantripsParams($input);
 			$raw_result = CurlHelper::performGetRequest($url_allocate_cantrips, $params_allocate_cantrips);
+			$cantrip_allocation_result = json_decode($raw_result);
+			if (!str_starts_with($cantrip_allocation_result[0],  "SUCCESS|")) {
+				RestHeaderHelper::emitRestHeaders();
+				$errors[] = "Execution Error|";
+				$errors[] = $character_action . "|" .'allocateCantripsForSlot' . "|";
+				$errors[] = __FILE__ . "|";
+				$errors[] = print_r($cantrip_allocation_result, true) . "|";
+				$errors[] = $input;
+				die(json_encode($errors));
+			}
 		}
 			
-		$url_update_ready_slot = CurlHelper::buildUrl('updateReadySpellSlot');
+		$url_update_ready_slot = CurlHelper::buildUrlDbioDirectory('updateReadySpellSlot');
 		$params_update_ready_slot = buildUpdateReadySlotParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_update_ready_slot, $params_update_ready_slot);
 
@@ -426,7 +375,7 @@ switch($character_action) {
 		}
 		exit;
 		break;
-	case "reclaimCantripSlots":
+	case CHARACTER_ACTION_RECLAIM_CANTRIP_SLOTS:
 
 		// Get player name
 		getPlayerName($errors, $input);
@@ -437,7 +386,7 @@ switch($character_action) {
 		// Get Spell Slot ID
 		getSpellSlotId($errors, $input);
 
-		$url_reclaim_cantrips = CurlHelper::buildUrl('reclaimCantripSlots');
+		$url_reclaim_cantrips = CurlHelper::buildUrlDbioDirectory('reclaimCantripSlots');
 		$params_reclaim_cantrips = buildReallocateCantripsParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_reclaim_cantrips, $params_reclaim_cantrips);
 		$result = json_decode($raw_result);
@@ -456,7 +405,7 @@ switch($character_action) {
 		}
 		exit;
 		break;
-	case "editReadySpells":
+	case CHARACTER_ACTION_EDIT_READY_SPELLS:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -467,7 +416,7 @@ switch($character_action) {
 		header($location_header);
 		exit;
 		break;
-	case "editGMSpells":
+	case CHARACTER_ACTION_EDIT_GM_READY_SPELLS:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -478,7 +427,7 @@ switch($character_action) {
 		header($location_header);
 		exit;
 		break;
-	case "castSpellSlot":
+	case CHARACTER_ACTION_CAST_SPELL_SLOT:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -494,7 +443,7 @@ switch($character_action) {
 		// Get Spell Casting Time
 		getSpellDuration($errors, $input);
 
-		$url_cast_slot = CurlHelper::buildUrl('setSlotCastStatus');
+		$url_cast_slot = CurlHelper::buildUrlDbioDirectory('setSlotCastStatus');
 		$params_cast_slot = buildCastSlotParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_cast_slot, $params_cast_slot);
 		$result = json_decode($raw_result);
@@ -513,7 +462,7 @@ switch($character_action) {
 		}
 		exit;
 		break;
-	case "resetSpellSlot":
+	case CHARACTER_ACTION_RESET_SPELL_SLOT:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -529,7 +478,7 @@ switch($character_action) {
 		// Get Spell Casting Time
 		getSpellDuration($errors, $input);
 
-		$url_reset_slot = CurlHelper::buildUrl('setSlotCastStatus');
+		$url_reset_slot = CurlHelper::buildUrlDbioDirectory('setSlotCastStatus');
 		$params_reset_slot = buildResetSlotParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_reset_slot, $params_reset_slot);
 		$result = json_decode($raw_result);
@@ -547,7 +496,7 @@ switch($character_action) {
 		}
 		exit;
 		break;
-	case "stopCastingSpellSlot":
+	case CHARACTER_ACTION_STOP_CASTING_SPELL_SLOT:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -563,7 +512,7 @@ switch($character_action) {
 		// Get Spell Casting Time
 		getSpellDuration($errors, $input);
 
-		$url_stop_casting_slot = CurlHelper::buildUrl('stopCastingSpellSlot');
+		$url_stop_casting_slot = CurlHelper::buildUrlDbioDirectory('stopCastingSpellSlot');
 		$params_stop_casting_slot = buildStopCastingSlotParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_stop_casting_slot, $params_stop_casting_slot);
 		$result = json_decode($raw_result);
@@ -582,7 +531,7 @@ switch($character_action) {
 
 		exit;
 		break;
-	case "stopRunningSpellSlot":
+	case CHARACTER_ACTION_STOP_RUNNING_SPELL_SLOT:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -598,7 +547,7 @@ switch($character_action) {
 		// Get Spell Casting Time
 		getSpellDuration($errors, $input);
 
-		$url_stop_running_slot = CurlHelper::buildUrl('stopRunningSpellSlot');
+		$url_stop_running_slot = CurlHelper::buildUrlDbioDirectory('stopRunningSpellSlot');
 		$params_stop_running_slot = buildStopCastingSlotParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_stop_running_slot, $params_stop_running_slot);
 		$result = json_decode($raw_result);
@@ -617,7 +566,7 @@ switch($character_action) {
 
 		exit;
 		break;
-	case "castGMSpell":
+	case CHARACTER_ACTION_CAST_GM_SPELL:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -636,13 +585,13 @@ switch($character_action) {
 		// Get the Spell Casting time of the spell being cast
 		getSpellCastingTime($errors, $input);
 
-		$url_adjust_spell_points = CurlHelper::buildUrl('decreaseSpellPoints');
+		$url_adjust_spell_points = CurlHelper::buildUrlDbioDirectory('decreaseSpellPoints');
 		$params_adjust_spell_points = buildAdjustSpellPointsParams($input);		
 		$raw_result = CurlHelper::performGetRequest($url_adjust_spell_points, $params_adjust_spell_points);
 		$result = json_decode($raw_result);
 		if (str_starts_with($result[0],  "SUCCESS|")) {
-			if($input['spellDuration'] > 0 || $input['spellCastingTime'] > 0) {
-				$url_cast_gm_spell = CurlHelper::buildUrl('castGMSpell');
+			if($input[SPELL_DURATION] > 0 || $input[SPELL_CASTING_TIME] > 0) {
+				$url_cast_gm_spell = CurlHelper::buildUrlDbioDirectory('castGMSpell');
 				$params_cast_gm_spell = buildCastGMSpellParams($input);
 				$raw_result = CurlHelper::performGetRequest($url_cast_gm_spell, $params_cast_gm_spell);
 				$result = json_decode($raw_result);
@@ -651,7 +600,7 @@ switch($character_action) {
 				if (!str_starts_with($result[0],  "SUCCESS|")) {
 					RestHeaderHelper::emitRestHeaders();
 					$errors[] = "Execution Error|";
-					$errors[] = $character_action . "|";
+					$errors[] = $character_action . "|" . "castGMSpell";
 					$errors[] = __FILE__ . "|";
 					$errors[] = $result;
 					die(json_encode($errors));
@@ -663,7 +612,7 @@ switch($character_action) {
 		} else {
 			RestHeaderHelper::emitRestHeaders();
 			$errors[] = "Execution Error|";
-			$errors[] = $character_action . "|";
+			$errors[] = $character_action . "|" . "decreaseSpellPoints";
 			$errors[] = __FILE__ . "|";
 			$errors[] = $result;
 			die(json_encode($errors));
@@ -671,7 +620,7 @@ switch($character_action) {
 
 		break;
 		exit;
-	case "recoverSpellPointsBySleep":
+	case CHARACTER_ACTION_RECOVER_SPELL_POINTS_SLEEP:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -684,7 +633,7 @@ switch($character_action) {
 		// Get hours of sleep
 		getHoursOfSleep($errors, $input);
 
-		$url_adjust_spell_points = CurlHelper::buildUrl('recoverSpellPointsBySleep');
+		$url_adjust_spell_points = CurlHelper::buildUrlDbioDirectory('recoverSpellPointsBySleep');
 		$params_adjust_spell_points = buildRecoverSpellPointsParams($input);		
 		$raw_result = CurlHelper::performGetRequest($url_adjust_spell_points, $params_adjust_spell_points);
 		$result = json_decode($raw_result);
@@ -703,7 +652,7 @@ switch($character_action) {
 
 		break;
 		exit;
-	case "stopCastingGMSpellSlot":
+	case CHARACTER_ACTION_STOP_CASTING_GM_SPELL:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -713,7 +662,7 @@ switch($character_action) {
 		// Get Spell Slot ID
 		getSpellSlotId($errors, $input);
 
-		$url_deallocate_slot = CurlHelper::buildUrl('deallocateExtraSlot');
+		$url_deallocate_slot = CurlHelper::buildUrlDbioDirectory('deallocateExtraSlot');
 		$params_deallocate_slot = buildDeallocateExtraSlotParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_deallocate_slot, $params_deallocate_slot);
 		$result = json_decode($raw_result);
@@ -732,7 +681,7 @@ switch($character_action) {
 
 		break;
 		exit;
-	case "stopRunninGMSpellSlot":
+	case CHARACTER_ACTION_STOP_RUNNING_GM_SPELL:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -742,7 +691,7 @@ switch($character_action) {
 		// Get Spell Slot ID
 		getSpellSlotId($errors, $input);
 
-		$url_deallocate_slot = CurlHelper::buildUrl('deallocateExtraSlot');
+		$url_deallocate_slot = CurlHelper::buildUrlDbioDirectory('deallocateExtraSlot');
 		$params_deallocate_slot = buildDeallocateExtraSlotParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_deallocate_slot, $params_deallocate_slot);
 		$result = json_decode($raw_result);
@@ -761,7 +710,7 @@ switch($character_action) {
 
 		break;
 		exit;
-	case "dailyReset":
+	case CHARACTER_ACTION_DAILY_RESET:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -786,7 +735,7 @@ switch($character_action) {
 		}
 		break;
 		exit;
-	case "editExtraSlots":
+	case CHARACTER_ACTION_EDIT_EXTRA_SLOTS:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -798,7 +747,7 @@ switch($character_action) {
 
 		break;
 		exit;
-	case "deallocateExtraSlot":
+	case CHARACTER_ACTION_DEALLOCATE_EXTRA_SLOT:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -808,7 +757,7 @@ switch($character_action) {
 		// Get Spell Slot ID
 		getSpellSlotId($errors, $input);
 
-		$url_deallocate_extra_slot = CurlHelper::buildUrl('deallocateExtraSlot');
+		$url_deallocate_extra_slot = CurlHelper::buildUrlDbioDirectory('deallocateExtraSlot');
 		$params_deallocate_extra_slot = buildDeallocateExtraSlotParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_deallocate_extra_slot, $params_deallocate_extra_slot);
 		$result = json_decode($raw_result);
@@ -826,7 +775,7 @@ switch($character_action) {
 		}
 		break;
 		exit;
-	case "allocateExtraSlot":
+	case CHARACTER_ACTION_ALLOCATE_EXTRA_SLOT:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -842,7 +791,7 @@ switch($character_action) {
 		// Get the ID of the spell type for the slot
 		getSpellTypeId($errors, $input);
 
-		$url_allocate_extra_slot = CurlHelper::buildUrl('allocateExtraSlot');
+		$url_allocate_extra_slot = CurlHelper::buildUrlDbioDirectory('allocateExtraSlot');
 		$params_allocate_extra_slot = buildAllocateExtraSlotParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_allocate_extra_slot, $params_allocate_extra_slot);
 		$result = json_decode($raw_result);
@@ -860,7 +809,7 @@ switch($character_action) {
 		}
 		break;
 		exit;
-	case "playerCharacterWeaponMain":
+	case CHARACTER_ACTION_EDIT_PLAYER_CHARACTER_WEAPONS:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -873,7 +822,7 @@ switch($character_action) {
 		break;
 		exit;
 
-	case "updatePlayerCharacterWeapon":
+	case CHARACTER_ACTION_UPDATE_PLAYER_CHARACTER_WEAPON:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -889,7 +838,7 @@ switch($character_action) {
 		break;
 		exit;
 
-	case "deletePlayerCharacterWeapon":
+	case CHARACTER_ACTION_DELETE_PLAYER_CHARACTER_WEAPON:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -899,7 +848,7 @@ switch($character_action) {
 		// Get the Player Character Weapon ID
 		getPlayerCharacterWeaponId($errors, $input);
 
-		$url_delete_weapon = CurlHelper::buildUrl('deletePlayerCharacterWeapon');
+		$url_delete_weapon = CurlHelper::buildUrlDbioDirectory('deletePlayerCharacterWeapon');
 		$params_delete_weapon = buildDeleteWeaponParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_delete_weapon, $params_delete_weapon);
 		$result = json_decode($raw_result);
@@ -928,7 +877,11 @@ switch($character_action) {
 		die(json_encode($errors));
 }
 
-function initiateSession($pdo, $player_name, $errors) {
+function getCharacterAction(&$errors, &$input) {
+	getRequiredStringParameter($errors, $input, __FILE__, CHARACTER_ACTION);
+}
+
+function initiateSession($pdo, $player_name, &$errors, $character_action) {
 	deleteSessionTicket($pdo, $player_name, $errors);
 	createSessionTicket($pdo, $player_name, $errors);
 	if (count($errors) > 0) {
@@ -940,7 +893,7 @@ function initiateSession($pdo, $player_name, $errors) {
 	}
 }
 
-function deleteSessionTicket($pdo, $player_name, $errors) {
+function deleteSessionTicket($pdo, $player_name, &$errors) {
 	$sql_exec = "CALL deleteSessionTicket(:playerName)";
 
 	$statement = $pdo->prepare($sql_exec);
@@ -1001,68 +954,65 @@ function getPlayerPermissions(\PDO $pdo, $player_name, &$errors) {
 
 function buildCharacterListRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('characterList');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
-	return 'Location:' . $redirect_url;
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildDmDashboardRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('dmDashboard');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildEditSpellBookRedirect($input) {
-	$redirect_url = CurlHelper::buildUrl('editSpellBook');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::buildUrl(CHARACTER_ACTION_EDIT_SPELLBOOK);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'characterClassName', $input['characterClassName']);
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'pageAction',  $input['pageAction']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_CLASS_NAME, $input[CHARACTER_CLASS_NAME]);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PAGE_ACTION,  $input[PAGE_ACTION]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildEditReadySpellsRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('editReadySpells');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildEditGMSpellsRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('editReadyGMSpells');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildEditExtraSlotsRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('editExtraSlots');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
-	return 'Location:' . $redirect_url;
-}
-
-function buildHomeRedirect($input) {
-	$redirect_url = CurlHelper::buildUrl('home');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
-
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildCreateCharacterRedirect($input) {
-	return $redirect_url = buildCRUDCharacterRedirect($input, 'create');
+	$create_character_url = CurlHelper::buildUrl('characterCreation1');
+	$create_character_url = CurlHelper:: addParameter($create_character_url, PLAYER_NAME, $input[PLAYER_NAME]);
+	$create_character_url = CurlHelper:: addParameter($create_character_url, PAGE_ACTION, 'validate');
+
+	return CurlHelper::buildLocationHeader($create_character_url);
 }
 
 function buildViewCharacterRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('dcs');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildEditCharacterRedirect($input) {
@@ -1071,74 +1021,66 @@ function buildEditCharacterRedirect($input) {
 
 function buildLoginRedirect() {
 	$redirect_url = CurlHelper::buildUrl('login');
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildCRUDCharacterRedirect($input, $crud_action) {
 	$redirect_url = CurlHelper::buildUrl('crudCharacter');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	if (isset($input[CHARACTER_NAME])) {
 		$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 	}
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'pageAction',  $crud_action);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PAGE_ACTION,  $crud_action);
 	
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildEditWeaponTalentsRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('editWeaponTalents');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildEditSkillsRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('editSkills');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildDeleteWeaponTalentRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('editWeaponTalents');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
-	return 'Location:' . $redirect_url;
-}
-
-function buildEditCharacterWeaponsRedirect($input) {
-	$redirect_url = CurlHelper::buildUrl('editPlayerCharacterWeapons');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
-	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
-
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildPlayerCharacterWeaponMainRedirect($input) {
-	$redirect_url = CurlHelper::buildUrl('playerCharacterWeaponMain');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::buildUrl('editPlayerCharacterWeapons');
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildPlayerCharacterWeaponUpdateRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('updatePlayerCharacterWeapon');
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerName', $input['playerName']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
-	$redirect_url = CurlHelper::addParameter($redirect_url, 'playerCharacterWeaponId', $input['playerCharacterWeaponId']);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_CHARACTER_WEAPON_ID, $input[PLAYER_CHARACTER_WEAPON_ID]);
 
-	return 'Location:' . $redirect_url;
+	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildUpdateSpellPoolParams($input) {
 	$parmas = [];
-	$params['playerName'] = $input['playerName'];
-	$params['spellCatalogId'] = $input['spellCatalogId'];
-	$params['spellPoolSlotId'] = $input['spellPoolSlotId'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
+	$params[SPELL_CATALOG_ID] = $input[SPELL_CATALOG_ID];
+	$params[SPELL_POOL_SLOT_ID] = $input[SPELL_POOL_SLOT_ID];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;
@@ -1146,9 +1088,9 @@ function buildUpdateSpellPoolParams($input) {
 
 function buildUpdateReadySlotParams($input) {
 	$parmas = [];
-	$params['playerName'] = $input['playerName'];
-	$params['spellCatalogId'] = $input['spellCatalogId'];
-	$params['spellSlotId'] = $input['spellSlotId'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
+	$params[SPELL_CATALOG_ID] = $input[SPELL_CATALOG_ID];
+	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;
@@ -1156,11 +1098,11 @@ function buildUpdateReadySlotParams($input) {
 
 function buildAllocateCantripsParams($input) {
 	$parmas = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
-	$params['spellSlotId'] = $input['spellSlotId'];
-	$params['spellLevel'] = $input['spellLevel'];
-	$params['characterClassName'] = $input['characterClassName'];
+	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
+	$params[SPELL_LEVEL] = $input[SPELL_LEVEL];
+	$params[CHARACTER_CLASS_NAME] = $input[CHARACTER_CLASS_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;
@@ -1168,11 +1110,11 @@ function buildAllocateCantripsParams($input) {
 
 function buildCastSlotParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
-	$params['spellSlotId'] = $input['spellSlotId'];
-	$params['castStatus'] = True;
-	$params['spellDuration'] = $input['spellDuration'];
-	$params['spellCastingTime'] = $input['spellCastingTime'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
+	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
+	$params[CAST_STATUS] = true;
+	$params[SPELL_DURATION] = $input[SPELL_DURATION];
+	$params[SPELL_CASTING_TIME] = $input[SPELL_CASTING_TIME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;
@@ -1180,11 +1122,11 @@ function buildCastSlotParams($input) {
 
 function buildResetSlotParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
-	$params['spellSlotId'] = $input['spellSlotId'];
-	$params['castStatus'] = false;
-	$params['spellDuration'] = $input['spellDuration'];
-	$params['spellCastingTime'] = $input['spellCastingTime'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
+	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
+	$params[CAST_STATUS] = false;
+	$params[SPELL_DURATION] = $input[SPELL_DURATION];
+	$params[SPELL_CASTING_TIME] = $input[SPELL_CASTING_TIME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;
@@ -1192,10 +1134,10 @@ function buildResetSlotParams($input) {
 
 function buildStopCastingSlotParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
-	$params['spellSlotId'] = $input['spellSlotId'];
-	$params['spellDuration'] = $input['spellDuration'];
-	$params['spellCastingTime'] = $input['spellCastingTime'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
+	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
+	$params[SPELL_DURATION] = $input[SPELL_DURATION];
+	$params[SPELL_CASTING_TIME] = $input[SPELL_CASTING_TIME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;
@@ -1203,9 +1145,9 @@ function buildStopCastingSlotParams($input) {
 
 function buildStopRunningSlotParams($input) {
 	$params = [];
-	$params['spellSlotId'] = $input['spellSlotId'];
-	$params['spellDuration'] = $input['spellDuration'];
-	$params['spellCastingTime'] = $input['spellCastingTime'];
+	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
+	$params[SPELL_DURATION] = $input[SPELL_DURATION];
+	$params[SPELL_CASTING_TIME] = $input[SPELL_CASTING_TIME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;
@@ -1213,8 +1155,8 @@ function buildStopRunningSlotParams($input) {
 
 function buildReallocateCantripsParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
-	$params['spellSlotId'] = $input['spellSlotId'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
+	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;
@@ -1222,10 +1164,10 @@ function buildReallocateCantripsParams($input) {
 
 function buildAllocateExtraSlotParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
-	$params['playerCharacterClassId'] = $input['playerCharacterClassId'];
-	$params['slotLevel'] = $input['slotLevel'];
-	$params['spellTypeId'] = $input['spellTypeId'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
+	$params[PLAYER_CHARACTER_CLASS_ID] = $input[PLAYER_CHARACTER_CLASS_ID];
+	$params[SPELL_SLOT_LEVEL] = $input[SPELL_SLOT_LEVEL];
+	$params[SPELL_TYPE_ID] = $input[SPELL_TYPE_ID];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;
@@ -1233,8 +1175,8 @@ function buildAllocateExtraSlotParams($input) {
 
 function buildDeallocateExtraSlotParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
-	$params['spellSlotId'] = $input['spellSlotId'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
+	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;
@@ -1242,7 +1184,7 @@ function buildDeallocateExtraSlotParams($input) {
 
 function buildDeleteCharacterParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
@@ -1251,7 +1193,7 @@ function buildDeleteCharacterParams($input) {
 
 function buildDailyResetParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
@@ -1260,9 +1202,9 @@ function buildDailyResetParams($input) {
 
 function buildPromoteClassParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
-	$params['characterClassName'] = $input['characterClassName'];
+	$params[CHARACTER_CLASS_NAME] = $input[CHARACTER_CLASS_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;
@@ -1270,14 +1212,14 @@ function buildPromoteClassParams($input) {
 
 function buildGetPasswordParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 
 	return $params;
 }
 
 function buildEditWeaponTalentsParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
@@ -1286,28 +1228,28 @@ function buildEditWeaponTalentsParams($input) {
 
 function buildAddWeaponTalentParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
-	$params['weaponProficiencyId'] = $input['weaponProficiencyId'];
-	$params['isPreferred'] = $input['isPreferred'];
+	$params[WEAPON_PROFICIENCY_ID] = $input[WEAPON_PROFICIENCY_ID];
+	$params[IS_PREFERRED] = $input[IS_PREFERRED];
 	
 	return $params;
 }
 
 function buildDeleteWeaponTalentParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
-	$params['weaponProficiencyId'] = $input['weaponProficiencyId'];
+	$params[WEAPON_PROFICIENCY_ID] = $input[WEAPON_PROFICIENCY_ID];
 	
 	return $params;
 }
 
 function buildEditSkillsParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 	
@@ -1316,7 +1258,7 @@ function buildEditSkillsParams($input) {
 
 function buildDeleteCharacterSkillsParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params['playerCharacterSkillId'] = $input['playerCharacterSkillId'];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 	
@@ -1325,9 +1267,9 @@ function buildDeleteCharacterSkillsParams($input) {
 
 function buildAdjustSpellPointsParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
-	$params['spellLevel'] = $input['spellLevel'];
+	$params[SPELL_LEVEL] = $input[SPELL_LEVEL];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 	
 	return $params;
@@ -1335,10 +1277,10 @@ function buildAdjustSpellPointsParams($input) {
 
 function buildRecoverSpellPointsParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
-	$params['characterLevel'] = $input['characterLevel'];
-	$params['hoursOfSleep'] = $input['hoursOfSleep'];
+	$params[CHARACTER_LEVEL] = $input[CHARACTER_LEVEL];
+	$params[HOURS_OF_SLEEP] = $input[HOURS_OF_SLEEP];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;
@@ -1346,12 +1288,12 @@ function buildRecoverSpellPointsParams($input) {
 
 function buildCastGMSpellParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
-	$params['spellCatalogId'] = $input['spellCatalogId'];
-	$params['spellLevel'] = $input['spellLevel'];
-	$params['spellDuration'] = $input['spellDuration'];
-	$params['spellCastingTime'] = $input['spellCastingTime'];
+	$params[SPELL_CATALOG_ID] = $input[SPELL_CATALOG_ID];
+	$params[SPELL_LEVEL] = $input[SPELL_LEVEL];
+	$params[SPELL_DURATION] = $input[SPELL_DURATION];
+	$params[SPELL_CASTING_TIME] = $input[SPELL_CASTING_TIME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;
@@ -1359,7 +1301,7 @@ function buildCastGMSpellParams($input) {
 
 function buildEditCharacterWeaponsParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
@@ -1368,9 +1310,42 @@ function buildEditCharacterWeaponsParams($input) {
 
 function buildDeleteWeaponParams($input) {
 	$params = [];
-	$params['playerName'] = $input['playerName'];
-	$params['playerCharacterWeaponId'] = $input['playerCharacterWeaponId'];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
+	$params[PLAYER_CHARACTER_WEAPON_ID] = $input[PLAYER_CHARACTER_WEAPON_ID];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
 	return $params;
+}
+
+function GUIDv4 ($trim = true)
+{
+    // Windows
+    if (function_exists('com_create_guid') === true) {
+        if ($trim === true)
+            return trim(com_create_guid(), '{}');
+        else
+            return com_create_guid();
+    }
+
+    // OSX/Linux
+    if (function_exists('openssl_random_pseudo_bytes') === true) {
+        $data = openssl_random_pseudo_bytes(16);
+        $data[6] = chr(ord($data[6]) & 0x0f | 0x40);    // set version to 0100
+        $data[8] = chr(ord($data[8]) & 0x3f | 0x80);    // set bits 6-7 to 10
+        return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
+    }
+    // Fallback (PHP 4.2+)
+    mt_srand(hrtime(true));
+    $charid = strtolower(md5(uniqid(rand(), true)));
+    $hyphen = chr(45);                  // "-"
+    $lbrace = $trim ? "" : chr(123);    // "{"
+    $rbrace = $trim ? "" : chr(125);    // "}"
+    $guidv4 = $lbrace.
+              substr($charid,  0,  8).$hyphen.
+              substr($charid,  8,  4).$hyphen.
+              substr($charid, 12,  4).$hyphen.
+              substr($charid, 16,  4).$hyphen.
+              substr($charid, 20, 12).
+              $rbrace;
+    return $guidv4;
 }

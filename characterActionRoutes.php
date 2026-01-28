@@ -1,0 +1,33 @@
+<?php
+    const CHARACTER_ACTION_LOGIN = 'login';
+    const CHARACTER_ACTION_PROMOTE = 'promote';
+    const CHARACTER_ACTION_LIST_CHARACTERS = 'characterList';
+    const CHARACTER_ACTION_CREATE_CHARACTER = 'createNew';
+    const CHARACTER_ACTION_DELETE_CHARACTER = 'deleteCharacter';
+    const CHARACTER_ACTION_VIEW_CHARACTER = 'viewCharacter';
+    const CHARACTER_ACTION_EDIT_CHARACTER = 'editCharacter';
+    const CHARACTER_ACTION_EDIT_SPELLBOOK = 'editSpellBook';
+    const CHARACTER_ACTION_UPDATE_SPELLPOOL = 'updateSpellPool';
+    const CHARACTER_ACTION_EDIT_WEAPON_TALENTS = 'editWeaponTalents';
+    const CHARACTER_ACTION_EDIT_SKILLS = 'editSkills';
+    const CHARACTER_ACTION_DELETE_SKILL = 'deleteCharacterSkill';
+    const CHARACTER_ACTION_UPDATE_READY_SPELL_SLOT = 'updateReadySpellSlot';
+    const CHARACTER_ACTION_RECLAIM_CANTRIP_SLOTS = 'reclaimCantripSlots';
+    const CHARACTER_ACTION_EDIT_READY_SPELLS = 'editReadySpells';
+    const CHARACTER_ACTION_EDIT_GM_READY_SPELLS = 'editGMSpells';
+    const CHARACTER_ACTION_CAST_SPELL_SLOT = 'castSpellSlot';
+    const CHARACTER_ACTION_RESET_SPELL_SLOT = 'resetSpellSlot';
+    const CHARACTER_ACTION_STOP_CASTING_SPELL_SLOT = 'stopCastingSpellSlot';
+    const CHARACTER_ACTION_STOP_RUNNING_SPELL_SLOT = 'stopRunningSpellSlot';
+    const CHARACTER_ACTION_CAST_GM_SPELL = 'castGMSpell';
+    const CHARACTER_ACTION_RECOVER_SPELL_POINTS_SLEEP = 'recoverSpellPointsBySleep';
+    const CHARACTER_ACTION_STOP_CASTING_GM_SPELL = 'stopCastingGMSpellSlot';
+    const CHARACTER_ACTION_STOP_RUNNING_GM_SPELL = 'stopRunningGMSpellSlot';
+    const CHARACTER_ACTION_DAILY_RESET = 'dailyReset';
+    const CHARACTER_ACTION_EDIT_EXTRA_SLOTS = 'editExtraSlots';
+    const CHARACTER_ACTION_DEALLOCATE_EXTRA_SLOT = 'deallocateExtraSlot';
+    const CHARACTER_ACTION_ALLOCATE_EXTRA_SLOT = 'allocateExtraSlot';
+    const CHARACTER_ACTION_EDIT_PLAYER_CHARACTER_WEAPONS = 'editCharacterWeapons';
+    const CHARACTER_ACTION_UPDATE_PLAYER_CHARACTER_WEAPON = 'updatePlayerCharacterWeapon';
+    const CHARACTER_ACTION_DELETE_PLAYER_CHARACTER_WEAPON = 'deletePlayerCharacterWeapon';
+?>

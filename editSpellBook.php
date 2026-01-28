@@ -6,27 +6,33 @@ $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 
 validateSessionCredentials($pdo);
 
-require_once 'CurlHelper.php';
-require_once 'playerName.php';
-require_once 'characterName.php';
-require_once 'characterClassName.php';
-require_once 'pageAction.php';
-require_once 'RestHeaderHelper.php';
-require_once 'hiddenTag.php';
+require_once __DIR__ . '/helper/RestHeaderHelper.php';
+require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
 
-require_once 'faEditIcon.php';
-require_once 'faCancelIcon.php';
-require_once 'faUpdateSpellBookIcon.php';
+require_once __DIR__ . '/webio/characterAction.php';
+require_once __DIR__ . '/characterActionRoutes.php';
+require_once __DIR__ . '/webio/spellLevel.php';
+require_once __DIR__ . '/webio/spellCatalogId.php';
 
-require_once __DIR__ . '/classes/ActionBarHelper.php';
-require_once 'characterSummary.php';
-require_once 'characterSummaryRenderer.php';
-require_once 'classAbilitiesGM.php';
-require_once 'characterClasses.php';
+require_once __DIR__ . '/webio/characterClassName.php';
+require_once __DIR__ . '/webio/spellPoolSlotId.php';
+require_once __DIR__ . '/webio/pageAction.php';
+require_once __DIR__ . '/helper/ActionBarHelper.php';
 
-require_once 'emptySpellSlot.php';
+require_once __DIR__ . '/fa/faEditIcon.php';
+require_once __DIR__ . '/fa/faCancelIcon.php';
+require_once __DIR__ . '/fa/faUpdateSpellBookIcon.php';
 
-const UPDATE_SPELL_POOL_ACTION = 'updateSpellPool';
+require_once __DIR__ . '/webio/playerName.php';
+require_once __DIR__ . '/webio/characterName.php';
+
+require_once __DIR__ . '/classes/characterSummary.php';
+require_once __DIR__ . '/classes/characterSummaryRenderer.php';
+require_once __DIR__ . '/dbio/constants/classAbilitiesGM.php';
+require_once __DIR__ . '/dbio/constants/characterClasses.php';
+
+require_once __DIR__ . '/dbio/constants/emptySpellSlot.php';
 
 $input = [];
 $errors = [];
@@ -39,12 +45,12 @@ getCharacterClassName($errors, $input);
 getPageAction($errors, $input);
 
 $params = [];
-$params['playerName'] = $input['playerName'];
-$params['characterName'] = $input['characterName'];
-$params['characterClassName'] = $input['characterClassName'];
+$params[PLAYER_NAME] = $input[PLAYER_NAME];
+$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
+$params[CHARACTER_CLASS_NAME] = $input[CHARACTER_CLASS_NAME];
 $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
-$url = CurlHelper::buildUrl('getSpellBookForPlayerCharacter');
+$url = CurlHelper::buildUrlDbioDirectory('getSpellBookForPlayerCharacter');
 $raw_results = CurlHelper::performGetRequest($url, $params);
 
 $spell_pool_entries = json_decode($raw_results);
@@ -57,15 +63,15 @@ $occupied_slots = [];
 $spell_pool_entries_by_level = [];
 
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input['playerName'], $input['characterName']);
+$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
-$character_summary_renderer = new CharacterSummaryRenderer($input['characterName']);
+$character_summary_renderer = new CharacterSummaryRenderer($input[CHARACTER_NAME]);
 $character_summary_stats = $character_summary_renderer->render($character_summary);
 
 foreach($spell_pool_entries AS $spell_pool_entry) {
     if (!array_key_exists($spell_pool_entry->spell_level, $available_spells_by_level)) {
-        $spell_pool_slot_url = CurlHelper::buildUrl('getUnallocatedSpellsForSpellBook');
-        $spell_pool_slot_params = buildUnallocatedSpellsParams($input['playerName'], $input['characterName'], $input['characterClassName'], $spell_pool_entry->spell_level);
+        $spell_pool_slot_url = CurlHelper::buildUrlDbioDirectory('getUnallocatedSpellsForSpellBook');
+        $spell_pool_slot_params = buildUnallocatedSpellsParams($input[PLAYER_NAME], $input[CHARACTER_NAME], $input[CHARACTER_CLASS_NAME], $spell_pool_entry->spell_level);
         $mu_spells = json_decode(CurlHelper::performGetRequest($spell_pool_slot_url, $spell_pool_slot_params));
         $available_spells_by_level[$spell_pool_entry->spell_level] = $mu_spells;
 
@@ -83,21 +89,19 @@ foreach($spell_pool_entries AS $spell_pool_entry) {
     }
 }
 
+$page_title = "Edit Spellbook";
+$site_css_file = 'dnd-default.css';
+$page_specific_js = 'editSpellBook.js';
+$page_specific_css = '';
+$enable_toggle_panels = false;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit SpellBook</title>
-    <script src="https://kit.fontawesome.com/4295d6f264.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="submitTheForm.js"></script>
-    <script type="text/javascript" src="editSpellBook.js"></script>
-	<link rel="stylesheet" href="dnd-default.css">
-</head>
 <body>
 <?php
-$action_bar = buildActionBar($input['playerName'], $input['characterName'], $input['characterClassName'], $edit_page);
+$action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME], $input[CHARACTER_CLASS_NAME], $edit_page);
 echo '<div style="width: 100%;"><span class="character_summary">' . $character_summary_stats . '</span><span class="action_bar">' . $action_bar . '</span></div>';
 if (count($spell_pool_entries) == 0) {
     echo '<h3>No spells available</h3>';
@@ -120,7 +124,7 @@ if (count($spell_pool_entries) == 0) {
             $form_character_action_id = buildCharacterActionId($spell_pool_entry->spell_pool_id);
             $form_id_name = buildFormId($spell_pool_entry->spell_level);
             if ($edit_page) {
-                $form_html = buildFormHtml($spell_pool_entry->spell_level, $available_mu_spells, $next_available_slot_id[$spell_pool_entry->spell_level], $input['playerName'], $input['characterName'], $input['characterClassName'], $submit_icon_id, $spell_pool_form_id);
+                $form_html = buildFormHtml($spell_pool_entry->spell_level, $available_mu_spells, $next_available_slot_id[$spell_pool_entry->spell_level], $input[PLAYER_NAME], $input[CHARACTER_NAME], $input[CHARACTER_CLASS_NAME], $submit_icon_id, $spell_pool_form_id);
                 echo '<tr><td colspan="4">' . $form_html . '</td></tr>' . PHP_EOL;
             }
             $column_counter = 1;
@@ -176,10 +180,10 @@ if (count($spell_pool_entries) == 0) {
 <?php
 function buildUnallocatedSpellsParams($player_name, $character_name, $character_class_name, $spell_level) {
     $params = [];
-    $params['playerName'] = $player_name;
-    $params['characterName'] = $character_name;
-    $params['characterClassName'] = $character_class_name;
-    $params['spellLevel'] = $spell_level;
+    $params[PLAYER_NAME] = $player_name;
+    $params[CHARACTER_NAME] = $character_name;
+    $params[CHARACTER_CLASS_NAME] = $character_class_name;
+    $params[SPELL_LEVEL] = $spell_level;
     $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
     return $params;
@@ -200,14 +204,14 @@ function buildFormHtml($spell_level, $available_mu_spells, $spell_pool_id, $play
 function buildFormStart($form_id_name, $character_action_id, $spell_pool_id, $player_name, $character_name, $character_class_name, $spell_pool_form_id) {
     $form_start_tag = "<form ";
     $form_start_tag .= 'id="' . $form_id_name . '" name="' . $form_id_name .'" ';
-    $router_action_url = CurlHelper::buildUrl('characterActionRouter');
+    $router_action_url = CurlHelper::buildCharacterActionRouterUrl();
     $form_start_tag .= 'action="' . $router_action_url . '">';
-    $player_name_tag = buildHiddenTag('playerName', $player_name);
-    $character_name_tag = buildHiddenTag('characterName', $character_name);
-    $character_class_name = buildHiddenTag('characterClassName', $character_class_name);
-    $router_action_tag = buildHiddenTagWithId('characterAction', $character_action_id, '');
-    $spell_pool_id_tag = buildHiddenTagWithId('spellPoolSlotId', $spell_pool_form_id, $spell_pool_id);
-    $page_action_tag = buildHiddenTag('pageAction', 'edit');
+    $player_name_tag = HtmlHelper::buildHiddenTag(PLAYER_NAME, $player_name);
+    $character_name_tag = HtmlHelper::buildHiddenTag(CHARACTER_NAME, $character_name);
+    $character_class_name = HtmlHelper::buildHiddenTag(CHARACTER_CLASS_NAME, $character_class_name);
+    $router_action_tag = HtmlHelper::buildHiddenTagWithId(CHARACTER_ACTION, $character_action_id, '');
+    $spell_pool_id_tag = HtmlHelper::buildHiddenTagWithId(SPELL_POOL_SLOT_ID, $spell_pool_form_id, $spell_pool_id);
+    $page_action_tag = HtmlHelper::buildHiddenTag(PAGE_ACTION, 'edit');
 
     return $form_start_tag . $player_name_tag . $character_name_tag . $character_class_name . $router_action_tag . $spell_pool_id_tag . $page_action_tag . PHP_EOL;
 }
@@ -217,7 +221,7 @@ function buildLabelForSelect() {
 }
 
 function buildCandidateOptionsForSlot($mu_spells, $spell_slot_id) {
-    $tag_name_id = 'spellCatalogId';
+    $tag_name_id = SPELL_CATALOG_ID;
     $data_spell_pool_id = 'data-spell-pool-id="' . $spell_slot_id;
     $select_tag = '<select id="' . $tag_name_id . '" name="' .  $tag_name_id . '" ' . $data_spell_pool_id . '" style="font-size: 18px;">' . PHP_EOL;
     $option_list = '';
@@ -230,7 +234,7 @@ function buildCandidateOptionsForSlot($mu_spells, $spell_slot_id) {
 }
 
 function getEditPage(&$errors, &$input) {
-    if ($input['pageAction'] == 'edit') {
+    if ($input[PAGE_ACTION] == 'edit') {
         return true;
     } else {
         return false;
@@ -238,7 +242,7 @@ function getEditPage(&$errors, &$input) {
 }
 
 function buildActionBar($player_name, $character_name, $character_class_name, $edit_page) {
-    $user_action_bar = ActionBarHelper::buildActionBar($player_name, $character_name) . PHP_EOL;
+    $user_action_bar = ActionBarHelper::buildUserViewIcon($player_name, $character_name) . PHP_EOL;
 
     $ready_spells_action_bar = '';
     if (getClassID($character_class_name) == GREATER_MAGE) {
@@ -281,17 +285,17 @@ function buildUpdateExistingSlotIcon($spell_pool_id, $spell_pool_form_id, $form_
     $cast_spell_icon->addOnclickJsParameter($spell_pool_id);
     $cast_spell_icon->addOnclickJsParameter($form_id_name);
     $cast_spell_icon->addOnclickJsParameter($form_character_action_id);
-    $cast_spell_icon->addOnclickJsParameter(UPDATE_SPELL_POOL_ACTION);
+    $cast_spell_icon->addOnclickJsParameter(CHARACTER_ACTION_UPDATE_SPELLPOOL);
 
     return $cast_spell_icon->build();
 }
 
 function buildUpdateSpellBookButtonTag($form_id_name, $form_character_action_id, $submit_icon_id, $spell_pool_id) {
     $cast_spell_icon = new FaUpdateSpellBookIcon();
-    $cast_spell_icon->setOnClickJsFunction('submitTheForm');
+    $cast_spell_icon->setOnClickJsFunction('submitTheCharacterActionForm');
     $cast_spell_icon->addOnclickJsParameter($form_id_name);
     $cast_spell_icon->addOnclickJsParameter($form_character_action_id);
-    $cast_spell_icon->addOnclickJsParameter(UPDATE_SPELL_POOL_ACTION);
+    $cast_spell_icon->addOnclickJsParameter(CHARACTER_ACTION_UPDATE_SPELLPOOL);
     $cast_spell_icon->setElementId($submit_icon_id);
     if ($spell_pool_id == -1) {
         $cast_spell_icon->setHidden(true);

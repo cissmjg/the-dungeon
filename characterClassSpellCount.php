@@ -5,26 +5,29 @@ $input = [];
 
 $pdo = require_once __DIR__ . '/dbio/DBConnection.php';
 
-require_once 'CurlHelper.php';
-require_once 'playerName.php';
-require_once 'characterClassName.php';
+require_once __DIR__ . '/helper/CurlHelper.php';
+require_once __DIR__ . '/helper/HtmlHelper.php';
+
+require_once __DIR__ . '/webio/playerName.php';
+require_once __DIR__ . '/webio/characterClassName.php';
 
 const MAX_CHARACTER_LEVEL_FOR_ATTAINING_SPELLS = 30;
 
+getCharacterClassName($errors, $input);
+$character_class_name = $input[CHARACTER_CLASS_NAME];
+
 $spell_casting_classes = getAllSpellCastingClasses($pdo, $errors);
+if (count($errors) > 0) {
+    RestHeaderHelper::emitRestHeaders();
+	echo json_decode($errors);
+} 
 
 $character_class_name = '';
 $spell_count_for_classes = null;
-if (isset($_POST['characterClassName']))
-{
-    getCharacterClassName($errors, $input);
-    $character_class_name = $input['characterClassName'];
-    $url = CurlHelper::buildUrl('getCharacterClassSpellCount');
-    $raw_results = CurlHelper::performGetRequest($url, $input);
-    
-    $spell_count_for_classes = json_decode($raw_results);
-}
+$url = CurlHelper::buildUrlDbioDirectory('getCharacterClassSpellCount');
+$raw_results = CurlHelper::performGetRequest($url, $input);
 
+$spell_count_for_classes = json_decode($raw_results);
 
 $spell_count_by_level = [];
 $spell_class_types = [];
@@ -53,16 +56,16 @@ if ($spell_count_for_classes != null) {
         }
     }
 }
+$page_title = 'Character Class Spell Count';
+$site_css_file = 'dnd-default.css';
+$page_specific_js = '';
+$page_specific_css = '';
+$enable_toggle_panels = false;
+
+$html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
+echo $html_header;
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="dnd-default.css">
-    <title>Character Class Spell Count</title>
-</head>
 <body>
     <?php
     if ($spell_count_for_classes != null) {
@@ -115,7 +118,7 @@ if ($spell_count_for_classes != null) {
     <?php
         foreach($spell_casting_classes AS $spell_casting_class) {
             $selected_text = '';
-            if ($spell_casting_class['character_class_name'] == $input['characterClassName']) {
+            if ($spell_casting_class['character_class_name'] == $input[CHARACTER_CLASS_NAME]) {
                 $selected_text = " selected";
             }
             echo '<option value="' . $spell_casting_class['character_class_name'] . '"' . $selected_text . '>' . $spell_casting_class['character_class_name'] . '</option>' . PHP_EOL;
@@ -267,7 +270,7 @@ if ($spell_count_for_classes != null) {
             return $blank_row;
         }
 
-        function getAllSpellCastingClasses(\PDO $pdo, $errors) {
+        function getAllSpellCastingClasses(\PDO $pdo, &$errors) {
             $sql_exec = "CALL getAllSpellCastingClasses()";
             
             $statement = $pdo->prepare($sql_exec);
