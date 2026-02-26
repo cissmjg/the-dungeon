@@ -2,6 +2,8 @@
 
 require_once __DIR__ .  '/accountClassSummary.php';
 require_once __DIR__ . '/../dbio/constants/characterAttributes.php';
+require_once __DIR__ . '/../dbio/constants/characterRaces.php';
+require_once __DIR__ . '/../dbio/constants/characterClasses.php';
 
 class CharacterDetails implements JsonSerializable
 {
@@ -151,4 +153,195 @@ class CharacterDetails implements JsonSerializable
     {
         return get_object_vars($this);
     }
+	public function getCharacterName() {
+		return $this->characterName;
+	}
+
+	public function getRace() {
+		return $this->race;
+	}
+
+	public function getRaceId() {
+		return lookupRaceID($this->getRace());
+	}
+
+	public function getCharacterStrength() {
+		return $this->characterStrength;
+	}
+
+	public function getCharacterSuperStrength() {
+		return $this->characterSuperStrength;
+	}
+
+    public function formatStrength() {
+        $output = $this->getCharacterStrength();
+		if ($this->getCharacterSuperStrength() != null) {
+			$output .= '/' . $this->getCharacterSuperStrength();
+		}
+
+        return $output;
+    }
+
+	public function getCharacterIntelligence() {
+		return $this->characterIntelligence;
+	}
+
+	public function getCharacterSuperIntelligence() {
+		return $this->characterSuperIntelligence;
+	}
+
+    public function formatIntelligence() {
+		$output = $this->getCharacterIntelligence();
+		if ($this->getCharacterSuperIntelligence() != null) {
+			$output .= '/' . $this->getCharacterSuperIntelligence();
+		}
+
+        return $output;
+    }
+    
+	public function getCharacterWisdom() {
+		return $this->characterWisdom;
+	}
+
+	public function getCharacterSuperWisdom() {
+		return $this->characterSuperWisdom;
+	}
+
+	public function formatWisdom() {
+		$output = $this->getCharacterWisdom();
+		if ($this->getCharacterSuperWisdom() != null) {
+			$output .= '/' . $this->getCharacterSuperWisdom();
+		}
+
+        return  $output;
+    }
+
+	public function getCharacterDexterity() {
+		return $this->characterDexterity;
+	}
+
+	public function getCharacterSuperDexterity() {
+		return $this->characterSuperDexterity;
+	}
+
+    public function formatDexterity() {
+		$output = $this->getCharacterDexterity();
+		if ($this->getCharacterSuperDexterity() != null) {
+			$output .= '/' . $this->getCharacterSuperDexterity();
+		}
+
+        return $output;
+	}
+
+	public function getCharacterConstitution() {
+		return $this->characterConstitution;
+	}
+
+	public function getCharacterSuperConstitution() {
+		return $this->characterSuperConstitution;
+	}
+
+	public function getCharacterCharisma() {
+		return $this->characterCharisma;
+	}
+
+	public function getCharacterComeliness() {
+		return $this->characterComeliness;
+	}
+
+	public function getArmorClass() {
+		return $this->armorClass;
+	}
+
+	public function getHitPoints() {
+		return $this->hitPoints;
+	}
+
+	public function getGender() {
+		return $this->genderIn;
+	}
+
+	public function getMovement() {
+		return $this->movement;
+	}
+
+	public function getAlignment() {
+		return $this->alignment;
+	}
+
+	public function getReligion() {
+		return $this->religion;
+	}
+
+	public function getDeity() {
+		return $this->deity;
+	}
+
+	public function getHometown() {
+		return $this->hometown;
+	}
+
+	public function getHitDie() {
+		return $this->hit_die;
+	}
+
+	public function getAge() {
+		return $this->age;
+	}
+
+	public function getApparentAge() {
+		return $this->apparent_age;
+	}
+
+	public function getUnnaturalAge() {
+		return $this->unnatural_age;
+	}
+
+	public function getSocialClass() {
+		return $this->social_class;
+	}
+
+	public function getHeight() {
+		return $this->height;
+	}
+
+	public function getWeight() {
+		return $this->weight;
+	}
+
+	public function getHair() {
+		return $this->hair;
+	}
+
+	public function getEyes() {
+		return $this->eyes;
+	}
+
+	public function getSiblings() {
+		return $this->siblings;
+	}
+
+	public function getCharacterClasses() {
+		return $this->character_classes;
+	}
+
+	public function containsClassId($character_class_id) {
+		foreach($this->character_classes AS $character_class) {
+			if (getClassID($character_class->getClassName()) == $character_class_id) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public function levelForClassId($character_class_Id) {
+		foreach($this->character_classes AS $character_class) {
+			if (getClassID($character_class->getClassName()) == $character_class_Id) {
+				return $character_class->getClassLevel();
+			}
+		}
+
+		return 0;
+	}
 }

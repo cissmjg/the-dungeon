@@ -56,7 +56,7 @@ class AccountClassSummary implements JsonSerializable, Stringable {
         return get_object_vars($this);
     }
 	
-	public function __toString() {
+	public function __toString(): string {
 		return 'Class name : ' . $this->class_name . ' Class Level ' . $this->class_level;
 	}
 }

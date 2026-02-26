@@ -8,18 +8,12 @@ require_once __DIR__ . '/../webio/playerName.php';
 require_once __DIR__ . '/../webio/characterName.php';
 require_once __DIR__ . '/../webio/characterClassName.php';
 require_once __DIR__ . '/../webio/playerCharacterWeaponId.php';
+require_once __DIR__ . '/../webio/playerCharacterWeaponSkillId.php';
 
 class ActionBarHelper {
 
     static function buildActionBar($playerName, $characterName) {
         return ActionBarHelper::buildUserViewIcon($playerName, $characterName) . '&nbsp;' . PHP_EOL;
-    }
-
-    static function buildUserActionBar($player_name, $character_name) {
-        $user_view_icon = ActionBarHelper::buildUserViewIcon($player_name, $character_name) . PHP_EOL;
-        $user_edit_icon = ActionBarHelper::buildUserEditIcon($player_name, $character_name) . PHP_EOL;
-
-        return '<span>' . $user_view_icon . $user_edit_icon . '</span>';
     }
 
     static function buildUserViewIcon($player_name, $character_name) {
@@ -73,13 +67,6 @@ class ActionBarHelper {
         $spell_book_icon = '<span class="fa-solid fa-book" style="cursor: pointer;" title="Edit Spellbook"></span>';
 
         return '<a href="' . $url_edit_spellbook . '">' . $spell_book_icon . '</a>';
-    }
-
-    static function buildEditSpellBookIconWithPadding($player_name, $character_name, $character_class_name) {
-        $url_edit_spellbook = ActionBarHelper::buildEditSpellBookUrl($player_name, $character_name, $character_class_name, 'edit');
-        $spell_book_icon = '<span class="fa-solid fa-book" style="cursor: pointer;" title="Edit Spellbook"></span>';
-
-        return '<a style="padding: 10px;" href="' . $url_edit_spellbook . '">' . $spell_book_icon . '</a>';
     }
 
     static function buildDailyResetIcon($player_name, $character_name) {
@@ -141,25 +128,6 @@ class ActionBarHelper {
         return $url;
     }
 
-    static function buildEditWeaponTalentsIcon($player_name, $character_name) {
-        $output_html = '';
-        $title = "Update Weapon Talents for " . $character_name;
-        $url = ActionBarHelper::buildEditWeaponTalentsUrl($player_name, $character_name);
-        $edit_weapons_icon = '<span class="fa-solid fa-user-shield" style="cursor: pointer;" title="' . $title . '"></span>';
-        $output_html .= '<a href="' . $url . '">' . $edit_weapons_icon . '</a>';
-
-        return $output_html;
-    }
-
-    static function buildEditWeaponTalentsUrl($player_name, $character_name) {
-        $url = CurlHelper::buildCharacterActionRouterUrl();
-        $url = CurlHelper::addParameter($url, CHARACTER_ACTION, CHARACTER_ACTION_EDIT_WEAPON_TALENTS);
-        $url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
-        $url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
-    
-        return $url;
-    }
-
     static function buildEditWeaponsIcon($player_name, $character_name) {
         $output_html = '';
         $url = ActionBarHelper::buildEditWeaponsUrl($player_name, $character_name);
@@ -192,6 +160,41 @@ class ActionBarHelper {
         $url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
         $url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
         $url = CurlHelper::addParameter($url, PLAYER_CHARACTER_WEAPON_ID, $player_character_weapon_id);
+
+        return $url;
+    }
+
+    static function buildEditPlayerCharacterWeaponProficiencies($player_name, $character_name) {
+        $url = ActionBarHelper::buildEditPlayerCharacterWeaponProficienciesUrl($player_name, $character_name);
+        $edit_weapon_icon = '<span class="fa-solid fa-swords" style="cursor: pointer; color: black;" title="Edit Weapons"></span>';
+        $output_html = '<a href="' . $url . '">' . $edit_weapon_icon . '</a>';
+
+        return $output_html;
+    } 
+
+    static function buildEditPlayerCharacterWeaponProficienciesUrl($player_name, $character_name) {
+        $url = CurlHelper::buildCharacterActionRouterUrl();
+        $url = CurlHelper::addParameter($url, CHARACTER_ACTION, CHARACTER_ACTION_EDIT_PLAYER_CHARACTER_WEAPON_PROFICIENCIES);
+        $url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
+        $url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
+
+        return $url;
+    }
+
+    static function buildEditPlayerCharacterWeaponTalentIcon($player_name, $character_name, $player_character_weapon_proficiency_id) {
+        $url = ActionBarHelper::buildEditPlayerCharacterWeaponTalentUrl($player_name, $character_name, $player_character_weapon_proficiency_id);
+        $edit_weapon_icon = '<span class="fa-solid fa-pen" style="cursor: pointer; color: black;" title="Edit Weapon"></span>';
+        $output_html = '<a href="' . $url . '">' . $edit_weapon_icon . '</a>';
+
+        return $output_html;
+    } 
+
+    static function buildEditPlayerCharacterWeaponTalentUrl($player_name, $character_name, $player_character_weapon_proficiency_id) {
+        $url = CurlHelper::buildCharacterActionRouterUrl();
+        $url = CurlHelper::addParameter($url, CHARACTER_ACTION, CHARACTER_ACTION_EDIT_WEAPON_TALENTS);
+        $url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
+        $url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
+        $url = CurlHelper::addParameter($url, PLAYER_CHARACTER_WEAPON_SKILL_ID, $player_character_weapon_proficiency_id);
 
         return $url;
     }

@@ -6,12 +6,30 @@ BEGIN
 	VALUES (playerCharacterId, characterClassId, 0, 0);
 END
 
+CREATE PROCEDURE addSkill
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64),
+ IN skillCatalogId INT,
+ IN playerSkillName VARCHAR(64),
+ IN isSkillFocus BOOLEAN,
+ IN weaponProficiencyId INT,
+ IN weapon2ProficiencyId INT)
+ BEGIN
+	DECLARE playerCharacterSkillId INT DEFAULT 0;
+	
+	CALL addSkillToPlayerCharacter(playerName, characterName, skillCatalogId, playerSkillName, isSkillFocus, weaponProficiencyId, weapon2ProficiencyId, playerCharacterSkillId);
+	SELECT playerCharacterSkillId as player_character_skill_id;
+ END
+
 CREATE PROCEDURE addSkillToPlayerCharacter
 (IN playerName VARCHAR(32),
  IN characterName VARCHAR(64),
  IN skillCatalogId INT,
  IN playerSkillName VARCHAR(64),
- IN isSkillFocus BOOLEAN)
+ IN isSkillFocus BOOLEAN,
+ IN weaponProficiencyId INT,
+ IN weapon2ProficiencyId INT,
+ OUT playerCharacterSkillId INT)
 BEGIN
 	DECLARE playerCharacterId INT DEFAULT 0;
 	
@@ -21,28 +39,40 @@ BEGIN
 	JOIN player ON player.id = player_character.player_id
 	WHERE player.name = playerName AND player_character.name = characterName;
 	
-	INSERT INTO player_character_skill(player_character_id, skill_catalog_id, player_character_skill_name, is_skill_focus)
-	VALUES(playerCharacterId, skillCatalogId, playerSkillName, isSkillFocus);
+	INSERT INTO player_character_skill(player_character_id, skill_catalog_id, player_character_skill_name, is_skill_focus, weapon_proficiency_id, weapon2_proficiency_id)
+	VALUES(playerCharacterId, skillCatalogId, playerSkillName, isSkillFocus, weaponProficiencyId, weapon2ProficiencyId);
+
+	SELECT LAST_INSERT_ID()
+	INTO playerCharacterSkillId;
 END
 
-CREATE PROCEDURE addWeaponTalentToPlayerCharacter
+CREATE PROCEDURE addWeaponProficiencyToPlayerCharacter
 (IN playerName VARCHAR(32),
  IN characterName VARCHAR(64),
  IN weaponProficiencyId INT,
- IN isPreferred BOOLEAN
-)
-BEGIN
-	DECLARE playerCharacterId INT DEFAULT 0;
+ INOUT playerCharacterWeaponProficiencyId INT)
+ BEGIN
 	
-	SELECT player_character.id 
-	INTO playerCharacterId
-	FROM player_character
-	JOIN player ON player.id = player_character.player_id
-	WHERE player.name = playerName AND player_character.name = characterName;
+	DECLARE weaponProficiencySkillId INT DEFAULT 179;
+
+	SELECT id
+	INTO weaponProficiencySkillId
+	FROM skill_catalog
+	WHERE name = 'Weapon Proficiency';
+
+	CALL addSkillToPlayerCharacter(playerName, characterName, weaponProficiencySkillId, NULL, false, weaponProficiencyId, NULL, playerCharacterWeaponProficiencyId);
+ END
+
+CREATE PROCEDURE addWeaponProficiency
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64),
+ IN weaponProficiencyId INT)
+ BEGIN
 	
-	INSERT INTO player_weapon_proficiency (player_character_id, weapon_proficiency_id, is_preferred)
-	VALUES (playerCharacterId, weaponProficiencyId, isPreferred);
-END
+	DECLARE playerCharacterSkillId INT DEFAULT 0;
+
+	Call addWeaponProficiencyToPlayerCharacter(playerName, characterName, weaponProficiencyId, playerCharacterSkillId);
+ END
 
 CREATE PROCEDURE addWeaponToPlayerCharacter
 (IN playerName VARCHAR(32),
@@ -135,23 +165,7 @@ BEGIN
 				FROM player_character_skill
 				WHERE player_character_id = playerCharacterId AND skill_catalog_id = skillCatalogWeaponProficiency AND weapon_proficiency_id = weaponProficiencyId;
 			ELSE
-				INSERT INTO player_character_skill(
-					is_skill_focus,
-					player_character_id,
-					player_skill_name,
-					skill_catalog_id,
-					weapon_proficiency_id
-				)
-				VALUES(
-					false,
-					playerCharacterId,
-					NULL,
-					skillCatalogWeaponProficiency,
-					weaponProficiencyId
-				);
-
-				SELECT LAST_INSERT_ID()
-				INTO playerCharacterSkillId;
+				Call addWeaponProficiencyToPlayerCharacter(playerName, characterName, weaponProficiencyId, playerCharacterSkillId);
 			END IF;
 		END IF;
 
@@ -556,19 +570,67 @@ CREATE PROCEDURE createBaseCharacter
 BEGIN
 	DECLARE playerID INT DEFAULT 0;
 	DECLARE playerCharacterId INT DEFAULT 0;
+	DECLARE playerCharacterSkillId INT DEFAULT 0;
+	DECLARE fistWeaponProficiencyId INT DEFAULT 118;
 	
 	SELECT player.id
 	INTO playerID
 	FROM player
 	WHERE name = playerName;
+
+	SELECT id
+	INTO fistWeaponProficiencyId
+	FROM weapon_proficiency
+	WHERE name = 'Fist';
 	
-	INSERT INTO player_character (player_id, name, strength, super_strength, intelligence, super_intelligence, wisdom, super_wisdom, dexterity, super_dexterity, constitution, super_constitution, charisma, comeliness, race_id, armor_class, hit_points, gender)
-	VALUES (playerID, characterName, characterStrength, characterSuperStrength, characterIntelligence, characterSuperIntelligence, characterWisdom, characterSuperWisdom, characterDexterity, characterSuperDexterity, characterConstitution, characterSuperConstitution, characterCharisma, characterComeliness, raceId, armorClass, hitPoints, genderIn);
+	START TRANSACTION;
+	INSERT INTO player_character (
+		player_id, 
+		name, 
+		strength, 
+		super_strength, 
+		intelligence, 
+		super_intelligence, 
+		wisdom, 
+		super_wisdom, 
+		dexterity, 
+		super_dexterity, 
+		constitution, 
+		super_constitution, 
+		charisma, 
+		comeliness, 
+		race_id, 
+		armor_class, 
+		hit_points, gender
+	)
+	VALUES (
+		playerID, 
+		characterName, 
+		characterStrength, 
+		characterSuperStrength, 
+		characterIntelligence, 
+		characterSuperIntelligence, 
+		characterWisdom, 
+		characterSuperWisdom, 
+		characterDexterity, 
+		characterSuperDexterity, 
+		characterConstitution, 
+		characterSuperConstitution, 
+		characterCharisma, 
+		characterComeliness, 
+		raceId, 
+		armorClass, 
+		hitPoints, 
+		genderIn
+	);
 	
 	SELECT LAST_INSERT_ID()
 	INTO playerCharacterId;
 	
 	SELECT playerID, playerCharacterId;
+
+	Call addWeaponProficiencyToPlayerCharacter(playerName, characterName, fistWeaponProficiencyId, playerCharacterSkillId);
+	COMMIT;
 END
 
 CREATE PROCEDURE createSessionTicket
@@ -672,12 +734,6 @@ BEGIN
 	DELETE FROM player_character_skill WHERE id = playerCharacterSkillId;
 END
 
-CREATE PROCEDURE deleteWeaponTalentForPlayerCharacter
-(IN weaponProficiencyId INT)
-BEGIN
-	DELETE FROM player_weapon_proficiency WHERE id = weaponProficiencyId;
-END
-
 CREATE PROCEDURE deleteWeaponForPlayerCharacter
 (IN characterWeaponId INT)
 BEGIN
@@ -685,6 +741,20 @@ BEGIN
 		DELETE FROM player_character_weapon_mode WHERE player_character_weapon_id = characterWeaponId;
 		DELETE FROM player_character_weapon WHERE id = characterWeaponId;
 	COMMIT;
+END
+
+CREATE PROCEDURE deleteWeaponProficiencyForPlayerCharacter
+(IN playerCharacterWeaponProficiencyId INT)
+BEGIN
+	DECLARE fistWeaponProficiencyId INT DEFAULT 118;
+    
+	SELECT id
+	INTO fistWeaponProficiencyId
+	FROM weapon_proficiency 
+	WHERE name = 'Fist';
+
+	DELETE FROM player_character_skill 
+	WHERE id = playerCharacterWeaponProficiencyId AND weapon_proficiency_id <> fistWeaponProficiencyId;
 END
 
 CREATE PROCEDURE getActiveSpells()
@@ -720,6 +790,30 @@ CREATE PROCEDURE getAllSkills()
 BEGIN
 	SELECT id AS skill_id, name AS skill_name, attribute AS skill_attribute
 	FROM skill_catalog;
+END
+
+CREATE PROCEDURE getAllSkillsWithPrerequisites()
+BEGIN
+	SELECT
+		skill_catalog.id AS skill_catalog_id,
+		skill_catalog.name AS skill_catalog_name,
+		skill_catalog.attribute AS skill_catalog_attribute,
+		skill_catalog.skill_focus	AS skill_catalog_skill_focus,
+		skill_catalog.max_count AS skill_catalog_max_count,
+		skill_catalog.required_class AS skill_catalog_required_class_id,
+		skill_catalog.required_race AS skill_catalog_required_race_id,
+		skill_catalog.required_level AS skill_catalog_required_level,
+		skill_catalog.minimum_charisma AS skill_catalog_minimum_charisma,
+		skill_catalog.minimum_dexterity AS skill_catalog_minimum_dexterity,
+		skill_catalog.minimum_intelligence AS skill_catalog_minimum_intelligence,
+		skill_catalog.roll_name AS skill_catalog_roll_name,
+		skill_catalog.ability_text AS skill_catalog_ability_text,
+		skill_catalog.attribute_bonus AS skill_catalog_attribute_bonus,
+		skill_prerequisite.prerequisite_skill_id AS skill_catalog_prerequisite_id
+	FROM skill_catalog
+	JOIN skill_prerequisite ON skill_prerequisite.skill_catalog_id = skill_catalog.id
+	WHERE skill_catalog.is_active = true
+	ORDER BY skill_catalog.id;
 END
 
 CREATE PROCEDURE getAllSpellCastingClasses()
@@ -1112,21 +1206,17 @@ BEGIN
 	SELECT
 		player_character_skill.id AS player_character_skill_id,
 		player_character_skill.skill_catalog_id AS skill_catalog_id,
-		IFNULL(player_character_skill.player_character_skill_name,skill_catalog.name) AS skill_catalog_name,
-		skill_catalog.attribute AS skill_catalog_attribute,
-		skill_catalog.attribute_bonus AS skill_catalog_attribute_bonus,
-		skill_catalog.roll_name AS skill_catalog_roll_name,
-		skill_catalog.ability_text AS skill_catalog_ability_text,
-		skill_adjustment.name AS skill_adjustment_name,
-		skill_adjustment.type AS skill_adjustment_type,
-		skill_adjustment.bonus_adjustment AS skill_adjustment_attribute_bonus,
-		player_character_skill.is_skill_focus AS player_character_skill_is_skill_focus
+		COUNT(skill_catalog_id) AS player_character_skill_count,
+		IFNULL(player_character_skill.player_character_skill_name,skill_catalog.name) AS skill_name,
+		player_character_skill.is_skill_focus AS player_character_skill_is_skill_focus,
+		player_character_skill.weapon_proficiency_id AS player_character_weapon_proficiency_id,
+		player_character_skill.weapon2_proficiency_id AS player_character_weapon2_proficiency_id
 	FROM player_character_skill
 	JOIN skill_catalog ON skill_catalog.id = player_character_skill.skill_catalog_id
-	LEFT OUTER JOIN skill_adjustment ON skill_adjustment.skill_catalog_id = skill_catalog.id
 	JOIN player_character ON player_character.id = player_character_skill.player_character_id
 	JOIN player ON player.id = player_character.player_id
-	WHERE player_character.name = characterName AND player.name = playerName;
+	WHERE player_character.name = characterName AND player.name = playerName
+	GROUP BY skill_catalog_id, player_character_skill.weapon_proficiency_id;
 END
 
 CREATE PROCEDURE getSkillsAndRollsForPlayerCharacter
@@ -1144,7 +1234,9 @@ BEGIN
 		skill_adjustment.name AS skill_adjustment_name,
 		skill_adjustment.type AS skill_adjustment_type,
 		skill_adjustment.bonus_adjustment AS skill_adjustment_attribute_bonus,
-		player_character_skill.is_skill_focus AS player_character_skill_is_skill_focus
+		player_character_skill.is_skill_focus AS player_character_skill_is_skill_focus,
+		player_character_skill.weapon_proficiency_id AS player_character_weapon_proficiency_id,
+		player_character_skill.weapon2_proficiency_id AS player_character_weapon2_proficiency_id
 	FROM player_character_skill
 	JOIN skill_catalog ON skill_catalog.id = player_character_skill.skill_catalog_id
 	LEFT OUTER JOIN skill_adjustment ON skill_adjustment.skill_catalog_id = skill_catalog.id
@@ -1152,7 +1244,6 @@ BEGIN
 	JOIN player ON player.id = player_character.player_id
 	WHERE player_character.name = characterName AND player.name = playerName;
 END
-
 
 CREATE PROCEDURE getSpellBookForPlayerCharacter
 (IN playerName VARCHAR(32),
@@ -1378,9 +1469,85 @@ END
 CREATE PROCEDURE getWeaponProficiencyByPattern
 (IN weaponPatternName VARCHAR(32))
 BEGIN
-	SELECT name AS weapon_proficiency_name, id AS weapon_proficiency_id 
+
+	DECLARE fistWeaponProficiencyId INT DEFAULT 118;
+    
+	SELECT id
+	INTO fistWeaponProficiencyId
 	FROM weapon_proficiency 
-	WHERE name LIKE CONCAT('%', weaponPatternName, '%');
+	WHERE name = 'Fist';
+
+	SELECT 
+		name AS weapon_proficiency_name, 
+		id AS weapon_proficiency_id 
+	FROM weapon_proficiency 
+	WHERE 
+		name LIKE CONCAT('%', weaponPatternName, '%') AND
+		id <> fistWeaponProficiencyId;
+END
+
+CREATE PROCEDURE getWeaponProficienciesAvailableForPlayerCharacter
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64),
+ IN weaponPatternName VARCHAR(32))
+BEGIN
+	DECLARE playerCharacterId INT DEFAULT 0;
+	DECLARE skillCatalogWeaponProficiency INT DEFAULT 179;
+
+	SELECT player_character.id
+	INTO playerCharacterId
+	FROM player_character
+	JOIN player ON player.id = player_character.player_id
+	WHERE player.name = playerName AND player_character.name = characterName;
+
+	SELECT id
+	INTO skillCatalogWeaponProficiency
+	FROM skill_catalog
+	WHERE name = 'Weapon Proficiency';
+
+	SELECT 
+		weapon_proficiency.id AS weapon_proficiency_id, 
+		weapon_proficiency.name AS weapon_proficiency_name
+	FROM weapon_proficiency
+	WHERE 
+		name LIKE CONCAT('%', weaponPatternName, '%') AND
+		weapon_proficiency.id NOT IN 
+		(
+			SELECT player_character_skill.weapon_proficiency_id
+			FROM player_character_skill
+			WHERE 
+				player_character_skill.player_character_id = playerCharacterId AND
+				player_character_skill.skill_catalog_id = skillCatalogWeaponProficiency
+		);
+END
+
+CREATE PROCEDURE getWeaponProficienciesForPlayerCharacter
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64))
+BEGIN
+	DECLARE playerCharacterId INT DEFAULT 0;
+	DECLARE skillCatalogWeaponProficiency INT DEFAULT 179;
+
+	SELECT player_character.id
+	INTO playerCharacterId
+	FROM player_character
+	JOIN player ON player.id = player_character.player_id
+	WHERE player.name = playerName AND player_character.name = characterName;
+
+	SELECT id
+	INTO skillCatalogWeaponProficiency
+	FROM skill_catalog
+	WHERE name = 'Weapon Proficiency';
+
+	SELECT
+		player_character_skill.id AS player_weapon_proficiency_id,
+		weapon_proficiency.id AS weapon_proficiency_id,
+		weapon_proficiency.name AS weapon_proficiency_description
+	FROM player_character_skill
+	JOIN weapon_proficiency ON weapon_proficiency.id = player_character_skill.weapon_proficiency_id
+	WHERE
+		player_character_skill.skill_catalog_id = skillCatalogWeaponProficiency AND
+		player_character_skill.player_character_id = playerCharacterId;
 END
 
 CREATE PROCEDURE getWeaponProficiencyForPlayerCharacter
@@ -1415,83 +1582,6 @@ CREATE PROCEDURE getWeaponProficiencyName
 (IN weaponProficiencyId INT)
 BEGIN
 	SELECT name FROM weapon_proficiency where id = weaponProficiencyId;
-END
-
-CREATE PROCEDURE getWeaponTalentsAvailableForPlayerCharacter
-(IN playerName VARCHAR(32),
- IN characterName VARCHAR(64))
-BEGIN
-	SELECT DISTINCT(weapon_proficiency.name) AS weapon_name, weapon_proficiency.id AS weapon_id FROM weapon_proficiency
-	JOIN character_class_weapon_proficiency ON character_class_weapon_proficiency.weapon_proficiency_id = weapon_proficiency.id
-	JOIN character_class ON character_class.id = character_class_weapon_proficiency.character_class_id
-	JOIN player_character_class ON player_character_class.character_class_id = character_class.id
-	JOIN player_character ON player_character.id = player_character_class.player_character_id
-	JOIN player ON player.id = player_character.player_id
-	WHERE player_character.name = characterName AND player.name = playerName AND weapon_proficiency.id NOT IN (
-		SELECT weapon_proficiency.id FROM weapon_proficiency
-		JOIN player_weapon_proficiency ON player_weapon_proficiency.weapon_proficiency_id = weapon_proficiency.id
-		JOIN player_character ON player_character.id = player_weapon_proficiency.player_character_id
-		JOIN player ON player.id = player_character.player_id
-		WHERE player_character.name = characterName AND player.name = playerName
-	)
-	ORDER BY weapon_proficiency.name;
-END
-
-CREATE PROCEDURE getWeaponTalentsForPlayerCharacter
-(IN playerName VARCHAR(32),
- IN characterName VARCHAR(64))
-BEGIN
-	SELECT	player_weapon_proficiency.id AS player_weapon_id,
-			weapon_proficiency.name AS weapon_name, 
-			weapon_catalog.speed AS weapon_speed, 
-			weapon_catalog.damage AS weapon_damage, 
-			weapon_catalog.range_values AS weapon_range, 
-			weapon_catalog.additional_text AS weapon_notes,
-			player_weapon_proficiency.is_preferred as is_preferred
-	FROM player_weapon_proficiency
-	JOIN weapon_proficiency ON weapon_proficiency.id = player_weapon_proficiency.weapon_proficiency_id
-	JOIN weapon_catalog ON weapon_catalog.weapon_proficiency_id = weapon_proficiency.id
-	JOIN player_character ON player_character.id = player_weapon_proficiency.player_character_id
-	JOIN player ON player.id = player_character.player_id
-	WHERE player.name = playerName AND player_character.name = characterName
-	ORDER BY weapon_proficiency.name, weapon_catalog.type;
-END
-
-CREATE PROCEDURE getWeaponsForPlayerCharacter
-(IN playerName VARCHAR(32),
- IN characterName VARCHAR(64))
-BEGIN
-	DECLARE playerCharacterId INT DEFAULT 0;
-	
-	SELECT player_character.id
-	INTO playerCharacterId
-	FROM player_character
-	JOIN player ON player.id = player_character.player_id
-	WHERE player.name = playerName AND player_character.name = characterName;
-
-	SELECT	DISTINCT player_character_weapon.id AS player_character_weapon_id,
-			weapon_catalog_id as player_weapon_proficiency_id,
-			player_weapon_proficiency_id,
-			description	AS player_character_weapon_description,
-			is_ready AS weapon_is_ready,
-			player_weapon_proficiency.is_preferred AS is_preferred,
-			craft_status AS weapon_craft_status,
-			hit_bonus AS weapon_hit_bonus,
-			damage_bonus AS weapon_damage_bonus,
-			player_character_weapon.speed AS weapon_speed,
-			weapon_range,
-			player_character_weapon.damage AS weapon_damage,
-			attacks_per_round AS weapon_attacks_per_round,
-			player_note_1 AS weapon_player_note_1,
-			player_note_2 AS weapon_player_note_2,
-			player_note_3 AS weapon_player_note_3,
-			weapon_catalog.additional_text AS additional_text
-	FROM player_character_weapon
-	JOIN player_character ON player_character.id = player_character_weapon.player_character_id
-	JOIN player_weapon_proficiency ON player_weapon_proficiency.id = player_character_weapon.player_weapon_proficiency_id
-	JOIN weapon_proficiency ON weapon_proficiency.id = player_weapon_proficiency.weapon_proficiency_id
-	JOIN weapon_catalog ON weapon_catalog.weapon_proficiency_id = weapon_proficiency.id
-	WHERE player_character.id = playerCharacterId;
 END
 
 CREATE PROCEDURE getWeaponSubtypes

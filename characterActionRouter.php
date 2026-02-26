@@ -35,6 +35,8 @@ require_once __DIR__ . '/webio/spellSlotLevel.php';
 require_once __DIR__ . '/webio/spellTypeId.php';
 require_once __DIR__ . '/webio/hoursOfSleep.php';
 require_once __DIR__ . '/webio/playerCharacterWeaponId.php';
+require_once __DIR__ . '/webio/playerCharacterSkillId.php';
+require_once __DIR__ . '/webio/playerCharacterWeaponSkillId.php';
 
 require_once __DIR__ . '/webio/weaponProficiencyId.php';
 require_once __DIR__ . '/webio/weaponDescription.php';
@@ -267,18 +269,8 @@ switch($character_action) {
 			die(json_encode($errors));
 		}
 		break;
-	case CHARACTER_ACTION_EDIT_WEAPON_TALENTS:
-		// Get player name
-		getPlayerName($errors, $input);
 
-		// Get character name	
-		getCharacterName($errors, $input);
-
-		$location_header = buildEditWeaponTalentsRedirect($input);
-		header($location_header);
-		exit;
-		break;
-	case CHARACTER_ACTION_EDIT_SKILLS:
+		case CHARACTER_ACTION_EDIT_SKILLS:
 		// Get player name
 		getPlayerName($errors, $input);
 
@@ -297,7 +289,7 @@ switch($character_action) {
 		getCharacterName($errors, $input);
 
 		// Get the Character's Skill ID
-		getRequiredIntegerParameter($errors, $input, __FILE__, 'playerCharacterSkillId');
+		getPlayerCharacterSkillId($errors, $input);
 
 		$url_delete_skill = CurlHelper::buildUrl('deleteCharacterSkill');
 		$params_delete_skill = buildDeleteCharacterSkillsParams($input);
@@ -865,9 +857,62 @@ switch($character_action) {
 			die(json_encode($errors));
 		}
 
-		die(json_encode($log));
+	case CHARACTER_ACTION_EDIT_PLAYER_CHARACTER_WEAPON_PROFICIENCIES:
+		// Get player name
+		getPlayerName($errors, $input);
+
+		// Get character name	
+		getCharacterName($errors, $input);
+
+		$location_header = buildPlayerCharacterEditWeaponProficienciesRedirect($input);
+		header($location_header);
+
 		break;
+
+	case CHARACTER_ACTION_EDIT_WEAPON_TALENTS:
+		// Get player name
+		getPlayerName($errors, $input);
+
+		// Get character name	
+		getCharacterName($errors, $input);
+
+		$location_header = buildEditWeaponTalentsRedirect($input);
+		header($location_header);
 		exit;
+
+	case CHARACTER_ACTION_ADD_WEAPON_TALENT:
+		// Get player name
+		getPlayerName($errors, $input);
+
+		// Get character name	
+		getCharacterName($errors, $input);
+
+		// Get ID for skill being added	
+		getSkillCatalogId($errors, $input);
+
+		// Get (optional) character specific name for skill
+		getOptionalPlayerCharacterSkillName($errors, $input);
+
+		// Is this a skill Focus
+		getIsSkillFocus($errors, $input);
+
+		// Get the (optional) weapon proficiency ID
+		getOptionalWeaponProficiencyId($errors, $input);
+
+		// Get the (optional) weapon proficiency ID for the 2nd weapon
+		getOptionalWeapon2ProficiencyId($errors, $input);
+
+		// buildEditWeaponTalentsRedirect
+
+		break;
+
+    case CHARACTER_ACTION_DELETE_WEAPON_TALENT:
+
+		getPlayerCharacterSkillId($errors, $input);
+
+		// buildEditWeaponTalentsRedirect
+
+		break;
 
 	default:
 		RestHeaderHelper::emitRestHeaders();
@@ -875,10 +920,6 @@ switch($character_action) {
 		$errors[] = __FILE__ . "|";
 		$errors[] = 'Unhandled route: [' . $character_action . ']';
 		die(json_encode($errors));
-}
-
-function getCharacterAction(&$errors, &$input) {
-	getRequiredStringParameter($errors, $input, __FILE__, CHARACTER_ACTION);
 }
 
 function initiateSession($pdo, $player_name, &$errors, $character_action) {
@@ -935,6 +976,7 @@ function createSessionTicket($pdo, $player_name, &$errors) {
 }
 
 function calculateExpirationInSeconds() {
+	// 16 hours
 	return 60 * 60 * 16;
 }
 
@@ -1072,6 +1114,14 @@ function buildPlayerCharacterWeaponUpdateRedirect($input) {
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_CHARACTER_WEAPON_ID, $input[PLAYER_CHARACTER_WEAPON_ID]);
+
+	return CurlHelper::buildLocationHeader($redirect_url);
+}
+
+function buildPlayerCharacterEditWeaponProficienciesRedirect($input) {
+	$redirect_url = CurlHelper::buildUrl('editPlayerCharacterWeaponProficiencies');
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
+	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
 	return CurlHelper::buildLocationHeader($redirect_url);
 }
@@ -1259,7 +1309,7 @@ function buildEditSkillsParams($input) {
 function buildDeleteCharacterSkillsParams($input) {
 	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
-	$params['playerCharacterSkillId'] = $input['playerCharacterSkillId'];
+	$params[PLAYER_CHARACTER_SKILL_ID] = $input[PLAYER_CHARACTER_SKILL_ID];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 	
 	return $params;

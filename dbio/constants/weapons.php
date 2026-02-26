@@ -117,4 +117,5 @@ const WHIP = 114;
 const YAWARA = 115;	
 const KHOPESH_SWORD = 116;	
 const LONG_SWORD = 117;	
+const FIST = 118;
 ?>
