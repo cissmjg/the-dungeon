@@ -66,7 +66,7 @@ echo $html_header;
         <div class="togglePanelContent">
             <div style="background-color: Aquamarine; text-align:center; border-radius: 10px;">Select Weapon</div>
             <div style="text-align: center;">
-                <form name="selectWeapon" id="selectWeapon" method="POST" action="<?= CurlHelper::buildUrl('addWeaponProficiencyToPlayerCharacter') ?>">
+                <form name="selectWeapon" id="selectWeapon" method="POST" action="<?= CurlHelper::buildUrlDbioDirectory('addWeaponProficiencyToPlayerCharacter') ?>">
                     <label for="weaponNamePattern">Weapon Name</label><br>
                     <input type="hidden" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
                     <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
@@ -79,20 +79,18 @@ echo $html_header;
             </div>
         </div>
     </div>
-    <h3>Weapon List</h3>
+    <h3>Weapon Proficiencies</h3>
     <?php if (count($weapon_proficiency_list) == 0): ?>
         <span style="font-size: 18px;">No weapons available</span>
     <?php else: ?>
         <table>
-            <tr><th>&nbsp;</th><th>Description</th><th>Location</th><th>Craft Status</th></tr>
+            <tr><th>&nbsp;</th><th>Description</th></tr>
             <?php
                 foreach($weapon_proficiency_list AS $weapon_proficiency) {
                     $weapon_desc = str_replace("'", "", html_entity_decode($weapon_proficiency['weapon_proficiency_description']));
                     $output_row  = '<tr>';
                     $output_row .= '<td>' . buildDeletePlayerCharacterWeaponProficiencyIcon($form_id, $weapon_desc, $weapon_proficiency['player_weapon_proficiency_id']) . '</td>';
                     $output_row .= '<td>' . buildWeaponNameCell($input[PLAYER_NAME], $input[CHARACTER_NAME], $weapon_proficiency) . '</td>';
-                    $output_row .= '<td>' . $weapon_proficiency['weapon_location'] . '</td>';
-                    $output_row .= '<td>' . getCraftStatusDescription($weapon_proficiency['weapon_craft_status']) . '</td>';
                     $output_row .= '</tr>' . PHP_EOL;
                     echo $output_row;
                 }

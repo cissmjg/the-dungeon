@@ -5,7 +5,7 @@
 
         private $player_character_skills = [];
 
-        private $skill_catalog_ids;
+        private $skill_catalog_ids = [];
 
         public function init(\PDO $pdo, $player_name, $character_name, $errors) {
             $player_character_skills_db = $this->getSkillsForPlayerCharacter($pdo, $player_name, $character_name, $errors);
@@ -18,9 +18,8 @@
                 $player_character_skill->init($player_character_skill_db);
                 $skill_id = $player_character_skill_db['skill_catalog_id'];
                 $this->player_character_skills[$skill_id] = $player_character_skill;
+                $this->skill_catalog_ids[] = $skill_id;
             }
-
-            $this->skill_catalog_ids = array_column($this->player_character_skills, 'skill_catalog_id');
         }
 
         private function getSkillsForPlayerCharacter(\PDO $pdo, $player_name, $character_name, &$errors) {

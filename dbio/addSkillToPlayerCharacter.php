@@ -45,8 +45,8 @@ if(count($errors) > 0) {
     echo json_encode($errors);
 } else {
     $log[] = "SUCCESS|";
-    $log[] = "Character Skill Delete|";
-    $log[] = "playerCharacterSkillId: " . $input[PLAYER_CHARACTER_SKILL_ID];
+    $log[] = "Character Skill Add|";
+    $log[] = "playerCharacterSkillId: " . $player_character_weapon_skill_id;
 
     echo json_encode($log);
 }

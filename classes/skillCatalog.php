@@ -1,6 +1,6 @@
 <?php
-    require_once 'skillDetail.php';
-    require_once '/../dbio/constants/skillReserveIds.php';
+    require_once __DIR__ . '/skillDetail.php';
+    require_once __DIR__ . '/../dbio/constants/skillReserveIds.php';
 
     class SkillCatalog implements JsonSerializable {
 

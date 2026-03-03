@@ -164,9 +164,9 @@ class ActionBarHelper {
         return $url;
     }
 
-    static function buildEditPlayerCharacterWeaponProficiencies($player_name, $character_name) {
+    static function buildEditPlayerCharacterWeaponProficienciesIcon($player_name, $character_name) {
         $url = ActionBarHelper::buildEditPlayerCharacterWeaponProficienciesUrl($player_name, $character_name);
-        $edit_weapon_icon = '<span class="fa-solid fa-swords" style="cursor: pointer; color: black;" title="Edit Weapons"></span>';
+        $edit_weapon_icon = '<span class="fa-solid fa-swords" style="cursor: pointer; color: black;" title="Edit Proficiencies"></span>';
         $output_html = '<a href="' . $url . '">' . $edit_weapon_icon . '</a>';
 
         return $output_html;
@@ -183,7 +183,7 @@ class ActionBarHelper {
 
     static function buildEditPlayerCharacterWeaponTalentIcon($player_name, $character_name, $player_character_weapon_proficiency_id) {
         $url = ActionBarHelper::buildEditPlayerCharacterWeaponTalentUrl($player_name, $character_name, $player_character_weapon_proficiency_id);
-        $edit_weapon_icon = '<span class="fa-solid fa-pen" style="cursor: pointer; color: black;" title="Edit Weapon"></span>';
+        $edit_weapon_icon = '<span class="fa-solid fa-pen" style="cursor: pointer; color: black;" title="Edit Proficiencies"></span>';
         $output_html = '<a href="' . $url . '">' . $edit_weapon_icon . '</a>';
 
         return $output_html;

@@ -11,7 +11,7 @@ class CurlHelper {
 		$curl = curl_init();
 
 		if ($data) {
-			$url = sprintf("%s?%s", $url, http_build_query($data));
+			$url = CurlHelper::formatGetQuery($url, $data);
 		}
 
 		curl_setopt($curl, CURLOPT_URL, $url);
@@ -19,9 +19,11 @@ class CurlHelper {
 
 		$result = curl_exec($curl);
 
-		curl_close($curl);
-
 		return $result;
+	}
+
+	public static function formatGetQuery($url, $data = false) {
+		return sprintf("%s?%s", $url, http_build_query($data));
 	}
 	
 	public static function buildUrl($endpointPhp) {

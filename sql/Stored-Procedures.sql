@@ -1581,7 +1581,20 @@ END
 CREATE PROCEDURE getWeaponProficiencyName
 (IN weaponProficiencyId INT)
 BEGIN
-	SELECT name FROM weapon_proficiency where id = weaponProficiencyId;
+	SELECT name AS weapon_proficiency_name
+	FROM weapon_proficiency 
+	WHERE id = weaponProficiencyId;
+END
+
+CREATE PROCEDURE getWeaponProficiencyNameFromPlayerCharacterSkillId
+(IN playerCharacterWeaponSkillId INT)
+BEGIN
+	SELECT 
+		weapon_proficiency.name AS weapon_proficiency_name,
+		weapon_proficiency.id AS weapon_proficiency_id 
+	FROM weapon_proficiency
+    JOIN player_character_skill ON player_character_skill.weapon_proficiency_id = weapon_proficiency.id
+	WHERE player_character_skill.id = playerCharacterWeaponSkillId;
 END
 
 CREATE PROCEDURE getWeaponSubtypes

@@ -37,6 +37,11 @@ require_once __DIR__ . '/webio/hoursOfSleep.php';
 require_once __DIR__ . '/webio/playerCharacterWeaponId.php';
 require_once __DIR__ . '/webio/playerCharacterSkillId.php';
 require_once __DIR__ . '/webio/playerCharacterWeaponSkillId.php';
+require_once __DIR__ . '/webio/playerCharacterWeaponTalentId.php';
+require_once __DIR__ . '/webio/skillCatalogId.php';
+require_once __DIR__ . '/webio/playerCharacterSkillName.php';
+require_once __DIR__ . '/webio/isSkillFocus.php';
+require_once __DIR__ . '/webio/weapon2ProficiencyId.php';
 
 require_once __DIR__ . '/webio/weaponProficiencyId.php';
 require_once __DIR__ . '/webio/weaponDescription.php';
@@ -868,6 +873,33 @@ switch($character_action) {
 		header($location_header);
 
 		break;
+	
+	case CHARACTER_ACTION_DELETE_PLAYER_CHARACTER_WEAPON_PROFICIENCY:
+		// Get player name
+		getPlayerName($errors, $input);
+
+		// Get character name	
+		getCharacterName($errors, $input);
+
+		// Get the Skill ID for a player character weapon proficiency
+		getPlayerCharacterWeaponSkillId($errors, $input);
+
+		$url_delete_proficiency = CurlHelper::buildUrlDbioDirectory('deletePlayerCharacterWeaponProficiency');
+		$params_delete_proficiency = buildDeleteWeaponProficiencyParams($input);
+		$raw_result = CurlHelper::performGetRequest($url_delete_proficiency, $params_delete_proficiency);
+		$result = json_decode($raw_result);
+		if (str_starts_with($result[0], "SUCCESS|")) {
+			$location_header = buildPlayerCharacterEditWeaponProficienciesRedirect($input);
+			header($location_header);
+			exit;
+		} else {
+			RestHeaderHelper::emitRestHeaders();
+			$errors[] = "Execution Error|";
+			$errors[] = $character_action . "|";
+			$errors[] = __FILE__ . "|";
+			$errors[] = $result;
+			die(json_encode($errors));
+		}
 
 	case CHARACTER_ACTION_EDIT_WEAPON_TALENTS:
 		// Get player name
@@ -875,6 +907,9 @@ switch($character_action) {
 
 		// Get character name	
 		getCharacterName($errors, $input);
+
+		// Get the Skill ID for a player character weapon proficiency
+		getPlayerCharacterWeaponSkillId($errors, $input);
 
 		$location_header = buildEditWeaponTalentsRedirect($input);
 		header($location_header);
@@ -886,6 +921,9 @@ switch($character_action) {
 
 		// Get character name	
 		getCharacterName($errors, $input);
+
+		// Get the Skill ID for a player character weapon proficiency
+		getPlayerCharacterWeaponSkillId($errors, $input);
 
 		// Get ID for skill being added	
 		getSkillCatalogId($errors, $input);
@@ -902,17 +940,52 @@ switch($character_action) {
 		// Get the (optional) weapon proficiency ID for the 2nd weapon
 		getOptionalWeapon2ProficiencyId($errors, $input);
 
-		// buildEditWeaponTalentsRedirect
+		$url_add_talent = CurlHelper::buildUrlDbioDirectory('addSkillToPlayerCharacter');
+		$params_add_talent = buildAddWeaponTalentParams($input);
+		$raw_result = CurlHelper::performGetRequest($url_add_talent, $params_add_talent);
+		$result = json_decode($raw_result);
+		if (str_starts_with($result[0], "SUCCESS|")) {
+			$location_header = buildEditWeaponTalentsRedirect($input);
+			header($location_header);
+			exit;
+		} else {
+			RestHeaderHelper::emitRestHeaders();
+			$errors[] = "Execution Error|";
+			$errors[] = $character_action . "|";
+			$errors[] = __FILE__ . "|";
+			$errors[] = $result;
+			die(json_encode($errors));
+		}
 
-		break;
+	case CHARACTER_ACTION_DELETE_WEAPON_TALENT:		
+		// Get player name
+		getPlayerName($errors, $input);
 
-    case CHARACTER_ACTION_DELETE_WEAPON_TALENT:
+		// Get character name	
+		getCharacterName($errors, $input);
 
+		// Get the Skill ID for a player character weapon proficiency
+		getPlayerCharacterWeaponSkillId($errors, $input);
+
+		// Get the Skill ID for the weapon specific talent
 		getPlayerCharacterSkillId($errors, $input);
 
-		// buildEditWeaponTalentsRedirect
-
-		break;
+		$url_delete_talent = CurlHelper::buildUrlDbioDirectory('deletePlayerCharacterSkill');
+		$params_delete_talent = buildDeleteWeaponTalentParams($input);
+		$raw_result = CurlHelper::performGetRequest($url_delete_talent, $params_delete_talent);
+		$result = json_decode($raw_result);
+		if (str_starts_with($result[0], "SUCCESS|")) {
+			$location_header = buildEditWeaponTalentsRedirect($input);
+			header($location_header);
+			exit;
+		} else {
+			RestHeaderHelper::emitRestHeaders();
+			$errors[] = "Execution Error|";
+			$errors[] = $character_action . "|";
+			$errors[] = __FILE__ . "|";
+			$errors[] = $result;
+			die(json_encode($errors));
+		}
 
 	default:
 		RestHeaderHelper::emitRestHeaders();
@@ -1078,23 +1151,16 @@ function buildCRUDCharacterRedirect($input, $crud_action) {
 }
 
 function buildEditWeaponTalentsRedirect($input) {
-	$redirect_url = CurlHelper::buildUrl('editWeaponTalents');
+	$redirect_url = CurlHelper::buildUrl('editPlayerCharacterWeaponTalent');
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_CHARACTER_WEAPON_SKILL_ID, $input[PLAYER_CHARACTER_WEAPON_SKILL_ID]);
 
 	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
 function buildEditSkillsRedirect($input) {
 	$redirect_url = CurlHelper::buildUrl('editSkills');
-	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
-	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
-
-	return CurlHelper::buildLocationHeader($redirect_url);
-}
-
-function buildDeleteWeaponTalentRedirect($input) {
-	$redirect_url = CurlHelper::buildUrl('editWeaponTalents');
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
@@ -1276,27 +1342,6 @@ function buildEditWeaponTalentsParams($input) {
 	return $params;
 }
 
-function buildAddWeaponTalentParams($input) {
-	$params = [];
-	$params[PLAYER_NAME] = $input[PLAYER_NAME];
-	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
-	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
-	$params[WEAPON_PROFICIENCY_ID] = $input[WEAPON_PROFICIENCY_ID];
-	$params[IS_PREFERRED] = $input[IS_PREFERRED];
-	
-	return $params;
-}
-
-function buildDeleteWeaponTalentParams($input) {
-	$params = [];
-	$params[PLAYER_NAME] = $input[PLAYER_NAME];
-	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
-	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
-	$params[WEAPON_PROFICIENCY_ID] = $input[WEAPON_PROFICIENCY_ID];
-	
-	return $params;
-}
-
 function buildEditSkillsParams($input) {
 	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
@@ -1364,6 +1409,35 @@ function buildDeleteWeaponParams($input) {
 	$params[PLAYER_CHARACTER_WEAPON_ID] = $input[PLAYER_CHARACTER_WEAPON_ID];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 
+	return $params;
+}
+
+function buildDeleteWeaponProficiencyParams($input) {
+	$params = [];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
+	$params[PLAYER_CHARACTER_WEAPON_SKILL_ID] = $input[PLAYER_CHARACTER_WEAPON_SKILL_ID];
+
+	return $params;
+}
+
+function buildAddWeaponTalentParams($input) {
+	$params = [];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
+	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
+	$params[SKILL_CATALOG_ID] = $input[SKILL_CATALOG_ID];
+	$params[PLAYER_CHARACTER_SKILL_NAME] = $input[PLAYER_CHARACTER_SKILL_NAME];
+	$params[IS_SKILL_FOCUS] = $input[IS_SKILL_FOCUS];
+	$params[WEAPON_PROFICIENCY_ID] = $input[WEAPON_PROFICIENCY_ID];
+	$params[WEAPON2_PROFICIENCY_ID] = $input[WEAPON2_PROFICIENCY_ID];
+
+	return $params;
+}
+
+function buildDeleteWeaponTalentParams($input) {
+	$params = [];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
+	$params[PLAYER_CHARACTER_SKILL_ID] = $input[PLAYER_CHARACTER_SKILL_ID];
+	
 	return $params;
 }
 

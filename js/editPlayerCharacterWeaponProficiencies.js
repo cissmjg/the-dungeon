@@ -34,6 +34,10 @@ export function weaponListChanged(selectWeaponButtonName, weaponListName) {
 }
 
 export function confirmPlayerCharacterWeaponProficiencyDelete(formId, playerCharacterWeaponProficiencyId, playerCharacterWeaponProficiencyIdValue, weaponDescription) {
+    if (weaponDescription == 'Fist') {
+        alert("'Fist' cannot be deleted");
+        return false;
+    }
     if (confirm("Are you sure you want to delete the weapon proficiency for '" + weaponDescription + "'") == false) {
         return false;
     }
