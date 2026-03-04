@@ -6656,7 +6656,7 @@ INSERT INTO weapon_subtype(name) VALUES('Hammer');				-- 11
 INSERT INTO weapon_subtype(name) VALUES('Lance');				-- 12
 INSERT INTO weapon_subtype(name) VALUES('Sling');				-- 13
 INSERT INTO weapon_subtype(name) VALUES('Bullet');				-- 14
-INSERT INTO weapon_subtype(name) VALUES('Blow gun');			-- 15
+INSERT INTO weapon_subtype(name) VALUES('Blowgun');				-- 15
 INSERT INTO weapon_subtype(name) VALUES('Needle');				-- 16
 INSERT INTO weapon_subtype(name) VALUES('Two handed sword');	-- 17
 INSERT INTO weapon_subtype(name) VALUES('[TALENT]');			-- 18
@@ -6779,6 +6779,7 @@ INSERT INTO weapon_proficiency (name) VALUES ('Whip');
 INSERT INTO weapon_proficiency (name) VALUES ('Yawara');
 INSERT INTO weapon_proficiency (name) VALUES ('Khopesh Sword');
 INSERT INTO weapon_proficiency (name) VALUES ('Long Sword');
+INSERT INTO weapon_proficiency (name) VALUES ('Fist');
 
 -- Weapon Catalog
 -- '[TALENT]' 
@@ -6831,19 +6832,19 @@ VALUES (2, 5, 'n/a', 'd10/d10', '-', NULL, NULL, NULL, NULL, 0);
 
 -- 'Battle Axe'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (1, 7, '7/5', 'd8/d8', '1/2', NULL, NULL, NULL, NULL, 3);
+VALUES (1, 1, '7/5', 'd8/d8', '1/2', NULL, NULL, NULL, NULL, 3);
 
 -- 'Battle Axe'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (2, 7, '7', 'd8/d8', '2', '1', '2', '3', NULL, 3);
+VALUES (2, 2, '7', 'd8/d8', '2', '1', '2', '3', NULL, 3);
 
 -- 'Hand Axe'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (1, 7, '7', 'd6/d4', '1', NULL, NULL, NULL, NULL, 4);
+VALUES (1, 1, '7', 'd6/d4', '1', NULL, NULL, NULL, NULL, 4);
 
 -- 'Hand Axe'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (2, 7, '4', 'd6/d4', '1', '2', '4', '6', NULL, 4);
+VALUES (2, 2, '4', 'd6/d4', '1', '2', '4', '6', NULL, 4);
 
 -- 'Basilard'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
@@ -6871,7 +6872,7 @@ VALUES (1, 1, '2', 'd4+1/d4', '1', NULL, NULL, NULL, NULL, 10);
 
 -- 'Blowgun'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (2, 15, '3/9', 'n/a', '1', '2', '4', '6', NULL, 11);
+VALUES (2, 2, '3/9', 'n/a', '1', '2', '4', '6', NULL, 11);
 
 -- 'Needle'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
@@ -6923,7 +6924,7 @@ VALUES (1, 1, '4', 'd4+1/d3+1', '1', NULL, NULL, NULL, NULL, 0);
 
 -- 'Club'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (1, 9, '4', 'd6/d3', '1', NULL, NULL, NULL, NULL, 22);
+VALUES (1, 1, '4', 'd6/d3', '1', NULL, NULL, NULL, NULL, 22);
 
 -- 'Chakram'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
@@ -6959,7 +6960,7 @@ VALUES (2, 4, '2', '2d4/2d6', '2', '16', '32', '48', ' Fires at 1/3, Rapid reloa
 
 -- 'Dwarven War Club'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (1, 9, '6', '2d4/d6+1', '2', NULL, NULL, NULL, 'This item is NOT available for purchase and can only be given by a dwarf', 28);
+VALUES (1, 1, '6', '2d4/d6+1', '2', NULL, NULL, NULL, 'This item is NOT available for purchase and can only be given by a dwarf', 28);
 
 -- 'Dagger'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
@@ -6995,7 +6996,7 @@ VALUES (1, 1, '10', 'd12/2d8', '2', NULL, NULL, NULL, 'No double specialization 
 
 -- 'Elven Court Blade'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (1, 10, '9', 'd10/d12', '1', NULL, NULL, NULL, NULL, 36);
+VALUES (1, 17, '9', 'd10/d12', '2', NULL, NULL, NULL, NULL, 36);
 
 -- 'Elven Lightblade'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
@@ -7015,7 +7016,7 @@ VALUES (1, 8, '8', 'd8/d10', '2', NULL, NULL, NULL, 'Capable of dismounting a ri
 
 -- 'Fist/Punch'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (1, 1, '1', 'd3/d3', '1', NULL, NULL, NULL, NULL, 0);
+VALUES (1, 1, '1', 'd3/d3', '1', NULL, NULL, NULL, NULL, 118);
 
 -- 'Footman's Flail' 
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
@@ -7063,23 +7064,23 @@ VALUES (2, 2, '9', 'd4/d6', '1', '1', '2', '3', NULL, 51);
 
 -- 'Hammer'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (1, 11, '4', 'd4+1/d4', '1', NULL, NULL, NULL, NULL, 52);
+VALUES (1, 1, '4', 'd4+1/d4', '1', NULL, NULL, NULL, NULL, 52);
 
 -- 'Hammer'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (2, 11, '4', 'd4+1/d4', '1', '2', '4', '6', NULL, 52);
+VALUES (2, 2, '4', 'd4+1/d4', '1', '2', '4', '6', NULL, 52);
 
 -- 'Great Hammer'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (1, 11, '8', '2d4/d8+1', '1', NULL, NULL, NULL, NULL, 53);
+VALUES (1, 1, '8', '2d4/d8+1', '1', NULL, NULL, NULL, NULL, 53);
 
 -- 'Lucern Hammer', 
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (1, 11, '9', '2d4/d6', '1', NULL, NULL, NULL, 'Capable of dismounting a rider. Pole Weapon, Capable of a charge attack', 54);
+VALUES (1, 1, '9', '2d4/d6', '1', NULL, NULL, NULL, 'Capable of dismounting a rider. Pole Weapon, Capable of a charge attack', 54);
 
 -- 'Dwarven Throwing Hammer'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (2, 11, '3', 'd4+1/d4', '1', '2', NULL, NULL, 'Functions as a club when used as a melee weapon. No double specialization allowed. 4 hexes Indoors', 55);
+VALUES (2, 2, '3', 'd4+1/d4', '1', '2', NULL, NULL, 'Functions as a club when used as a melee weapon. No double specialization allowed. 4 hexes Indoors', 55);
 
 -- 'Harpoon'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
@@ -7115,7 +7116,7 @@ VALUES (2, 2, '3', '2d6/3d6', '2', '10', '20', '30', NULL, 62);
 
 -- 'Katana'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (1, 10, '4', 'd10/d12', '1', NULL, NULL, NULL, NULL, 63);
+VALUES (1, 1, '4', 'd10/d12', '1', NULL, NULL, NULL, NULL, 63);
 
 -- 'Katar'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
@@ -7351,7 +7352,7 @@ VALUES (2, 2, '2/8', 'd4/d4', '2', '2', '4', '6', NULL, 112);
 
 -- 'Wakizashi'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (1, 10, '4', 'd8/d8', '1', NULL, NULL, NULL, NULL, 113);
+VALUES (1, 1, '4', 'd8/d8', '1', NULL, NULL, NULL, NULL, 113);
 
 -- 'Whip'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
@@ -8842,7 +8843,7 @@ COMMIT;
 START TRANSACTION;
 
 INSERT INTO skill_catalog (name, attribute, skill_focus, max_count, required_class, required_race, required_level, minimum_charisma, minimum_dexterity, minimum_intelligence, roll_name, ability_text, attribute_bonus, is_active)
-VALUES('Improved Critical','To Hit', False, 1, 0, 0, 8, 0, 0, 0, NULL, 'Std: 16/22/27, Pole: 12/17/22, +20% on location', 0, False);
+VALUES('Improved Critical','To Hit', False, -1, 0, 0, 8, 0, 0, 0, NULL, 'Std: 16/22/27, Pole: 12/17/22, +20% on location', 0, False);
 
 -- Enforce logic of Specialization OR Weapon Focus Accuracy OR Weapon Focus Technique in PHP client
 -- SELECT skill_catalog.id FROM skill_catalog WHERE name = 'No PreRequisite';
@@ -9060,7 +9061,7 @@ COMMIT;
 START TRANSACTION;
 
 INSERT INTO skill_catalog (name, attribute, skill_focus, max_count, required_class, required_race, required_level, minimum_charisma, minimum_dexterity, minimum_intelligence, roll_name, ability_text, attribute_bonus, is_active)
-VALUES('Knowledge','Int', True, 1, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, True);
+VALUES('Knowledge','Int', True, -1, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, True);
 
 -- SELECT skill_catalog.id FROM skill_catalog WHERE name = 'No PreRequisite';
 -- 'No PreRequisite' ID = 1
@@ -9264,7 +9265,7 @@ START TRANSACTION;
 
 -- required_class = 4 (Fighter), required_race = 17 (Gnome), required_level = 3
 INSERT INTO skill_catalog (name, attribute, skill_focus, max_count, required_class, required_race, required_level, minimum_charisma, minimum_dexterity, minimum_intelligence, roll_name, ability_text, attribute_bonus, is_active)
-VALUES('Mountain Warrior (Gnome)','None', False, -1, 4, 17, 3, 0, 0, 0, NULL, '+{n * 2} melee damage, ranged attacks, +{n * 2} Balance rolls with higher ground', 0, True);
+VALUES('Mountain Warrior (Gnome)','None', False, -1, 4, 17, 3, 0, 0, 0, NULL, '+{n * 2} melee damage, ranged attacks, +{n * 2} Balance rolls with higher ground', 0, False);
 
 -- SELECT skill_catalog.id FROM skill_catalog WHERE name = 'Survival';
 -- 'Survival' ID = 110
@@ -9384,7 +9385,7 @@ COMMIT;
 START TRANSACTION;
 
 INSERT INTO skill_catalog (name, attribute, skill_focus, max_count, required_class, required_race, required_level, minimum_charisma, minimum_dexterity, minimum_intelligence, roll_name, ability_text, attribute_bonus, is_active)
-VALUES('Perform','Cha', True, 1, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, True);
+VALUES('Perform','Cha', True, -1, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, True);
 
 -- SELECT skill_catalog.id FROM skill_catalog WHERE name = 'No PreRequisite';
 -- 'No PreRequisite' ID = 1
@@ -10027,7 +10028,7 @@ START TRANSACTION;
 
 -- required_class = 4 (Fighter), minimum_dexterity = 17
 INSERT INTO skill_catalog (name, attribute, skill_focus, max_count, required_class, required_race, required_level, minimum_charisma, minimum_dexterity, minimum_intelligence, roll_name, ability_text, attribute_bonus, is_active)
-VALUES('Two Weapon Fighting','None', False, 1, 4, 0, 0, 0, 17, 0, NULL, 'Melee combat with two one handed weapons', 0, False);
+VALUES('Two Weapon Fighting','None', False, -1, 4, 0, 0, 0, 17, 0, NULL, 'Melee combat with two one handed weapons', 0, False);
 
 -- SELECT skill_catalog.id FROM skill_catalog WHERE name = 'No PreRequisite';
 -- 'No PreRequisite' ID = 1
@@ -10112,7 +10113,7 @@ COMMIT;
 START TRANSACTION;
 
 INSERT INTO skill_catalog (name, attribute, skill_focus, max_count, required_class, required_race, required_level, minimum_charisma, minimum_dexterity, minimum_intelligence, roll_name, ability_text, attribute_bonus, is_active)
-VALUES('Weapon Focus Accuracy','None', False, 1, 0, 0, 0, 0, 0, 0, NULL, 'Provides a +1 to hit with one specific weapon', 0, False);
+VALUES('Weapon Focus Accuracy','None', False, -1, 0, 0, 0, 0, 0, 0, NULL, 'Provides a +1 to hit with one specific weapon', 0, False);
 
 -- SELECT skill_catalog.id FROM skill_catalog WHERE name = 'No PreRequisite';
 -- 'No PreRequisite' ID = 1
@@ -10126,7 +10127,7 @@ COMMIT;
 START TRANSACTION;
 
 INSERT INTO skill_catalog (name, attribute, skill_focus, max_count, required_class, required_race, required_level, minimum_charisma, minimum_dexterity, minimum_intelligence, roll_name, ability_text, attribute_bonus, is_active)
-VALUES('Weapon Focus Greater Accuracy','None', False, 1, 0, 0, 0, 0, 0, 0, NULL, 'Provides a +1 to hit with one specific weapon', 0, False);
+VALUES('Weapon Focus Greater Accuracy','None', False, -1, 0, 0, 0, 0, 0, 0, NULL, 'Provides a +1 to hit with one specific weapon', 0, False);
 
 -- SELECT skill_catalog.id FROM skill_catalog WHERE name = 'Weapon Focus Accuracy';
 -- 'Weapon Focus Accuracy' ID = 168
@@ -10140,7 +10141,7 @@ COMMIT;
 START TRANSACTION;
 
 INSERT INTO skill_catalog (name, attribute, skill_focus, max_count, required_class, required_race, required_level, minimum_charisma, minimum_dexterity, minimum_intelligence, roll_name, ability_text, attribute_bonus, is_active)
-VALUES('Weapon Focus Technique','None', False, 1, 0, 0, 0, 0, 0, 0, NULL, 'Provides a +1 damage with one specific weapon', 0, False);
+VALUES('Weapon Focus Technique','None', False, -1, 0, 0, 0, 0, 0, 0, NULL, 'Provides a +1 damage with one specific weapon', 0, False);
 
 -- SELECT skill_catalog.id FROM skill_catalog WHERE name = 'No PreRequisite';
 -- 'No PreRequisite' ID = 1
@@ -10154,7 +10155,7 @@ COMMIT;
 START TRANSACTION;
 
 INSERT INTO skill_catalog (name, attribute, skill_focus, max_count, required_class, required_race, required_level, minimum_charisma, minimum_dexterity, minimum_intelligence, roll_name, ability_text, attribute_bonus, is_active)
-VALUES('Weapon Focus Greater Technique','None', False, 1, 0, 0, 0, 0, 0, 0, NULL, 'Provides a +1 damage with one specific weapon', 0, False);
+VALUES('Weapon Focus Greater Technique','None', False, -1, 0, 0, 0, 0, 0, 0, NULL, 'Provides a +1 damage with one specific weapon', 0, False);
 
 -- SELECT skill_catalog.id FROM skill_catalog WHERE name = 'Weapon Focus Technique';
 -- 'Weapon Focus Technique' ID = 171

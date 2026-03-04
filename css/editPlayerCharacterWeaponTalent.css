@@ -1,0 +1,7 @@
+@import url("candidateSkill.css");
+
+label {
+    color: lightgray;
+    font-size: 14px;
+    vertical-align: sub;
+}

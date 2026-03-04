@@ -1005,6 +1005,8 @@ function buildActionBar($page_action, $player_name, $character_name) {
 		$output_html .= '&nbsp;';
 		$output_html .= ActionBarHelper::buildEditWeaponsIcon($player_name, $character_name);
 		$output_html .= '&nbsp;';
+		$output_html .= ActionBarHelper::buildEditPlayerCharacterWeaponProficienciesIcon($player_name, $character_name);
+		$output_html .= '&nbsp;';
 
 		return $output_html . '&nbsp;';
 	} else if ($page_action == PAGE_DELETE) {

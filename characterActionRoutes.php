@@ -8,7 +8,7 @@
     const CHARACTER_ACTION_EDIT_CHARACTER = 'editCharacter';
     const CHARACTER_ACTION_EDIT_SPELLBOOK = 'editSpellBook';
     const CHARACTER_ACTION_UPDATE_SPELLPOOL = 'updateSpellPool';
-    const CHARACTER_ACTION_EDIT_WEAPON_TALENTS = 'editWeaponTalents';
+    const CHARACTER_ACTION_ADD_SKILLS = 'addSkill';
     const CHARACTER_ACTION_EDIT_SKILLS = 'editSkills';
     const CHARACTER_ACTION_DELETE_SKILL = 'deleteCharacterSkill';
     const CHARACTER_ACTION_UPDATE_READY_SPELL_SLOT = 'updateReadySpellSlot';
@@ -30,4 +30,9 @@
     const CHARACTER_ACTION_EDIT_PLAYER_CHARACTER_WEAPONS = 'editCharacterWeapons';
     const CHARACTER_ACTION_UPDATE_PLAYER_CHARACTER_WEAPON = 'updatePlayerCharacterWeapon';
     const CHARACTER_ACTION_DELETE_PLAYER_CHARACTER_WEAPON = 'deletePlayerCharacterWeapon';
+    const CHARACTER_ACTION_DELETE_PLAYER_CHARACTER_WEAPON_PROFICIENCY = 'deletePlayerCharacterWeaponProficiency';
+    const CHARACTER_ACTION_EDIT_PLAYER_CHARACTER_WEAPON_PROFICIENCIES = 'editPlayerCharacterWeaponProficiencies';
+    const CHARACTER_ACTION_ADD_WEAPON_TALENT = 'addPlayerCharacterWeaponTalent';
+    const CHARACTER_ACTION_EDIT_WEAPON_TALENTS = 'editWeaponTalents';
+    const CHARACTER_ACTION_DELETE_WEAPON_TALENT = 'deletePlayerCharacterWeaponTalent';
 ?>
