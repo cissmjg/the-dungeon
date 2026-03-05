@@ -26,7 +26,7 @@
 }
 
 .titleAttributeLiteral {
-	width:25%;
+	width:12%;
 	border:1pt solid;
 	text-align:center;
 	font-weight: bold;
@@ -34,7 +34,7 @@
 }
 
 .titleAttributeValue {
-	width:25%;
+	width:12%;
 	padding:0.0000pt 5.4pt 0.0000pt 5.4pt;
 	border:1pt solid;
 	border-collapse: collapse;

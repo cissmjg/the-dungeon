@@ -344,4 +344,14 @@ class CharacterDetails implements JsonSerializable
 
 		return 0;
 	}
+
+	public function isSpellcaster() {
+		foreach($this->character_classes AS $character_class) {
+			if (!empty($character_class->spell_class)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
 }

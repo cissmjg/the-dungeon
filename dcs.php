@@ -14,6 +14,7 @@ require_once __DIR__ . '/helper/HtmlHelper.php';
 require_once __DIR__ . '/dbio/constants/characterAttributes.php';
 require_once __DIR__ . '/dbio/constants/characterClasses.php';
 require_once __DIR__ . '/classes/characterSummary.php';
+require_once __DIR__ . '/classes/characterDetails.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 
 require_once __DIR__ . '/webio/playerName.php';
@@ -26,24 +27,23 @@ $errors = [];
 getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 
-$character_details = null;
+$player_name = $input[PLAYER_NAME];
+$character_name = $input[CHARACTER_NAME];
 
-$character_details = getExistingCharacter($input[PLAYER_NAME], $input[CHARACTER_NAME]);
-foreach ($character_details AS $attribute_name => $attribute_value) {
-	$input[$attribute_name] = $attribute_value;
+$character_details = new CharacterDetails();
+$character_details->init($pdo, $player_name, $character_name, $errors);
+if (count($errors) > 0) {
+	die(json_encode($errors));
 }
 
-$character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
+$character_summary_renderer = new CharacterSummaryRenderer($character_name);
+$character_summary_stats = $character_summary_renderer->renderCharacterDetails($character_details);
 
-$character_summary_renderer = new CharacterSummaryRenderer($input[CHARACTER_NAME]);
-$character_summary_stats = $character_summary_renderer->render($character_summary);
-
-$action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME], $character_summary);
+$action_bar = buildActionBar($player_name, $character_name, $character_details);
 
 $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 
-$page_title = $input[CHARACTER_NAME];
+$page_title = $character_name;
 $site_css_file = 'dnd-default.css';
 $page_specific_js = '';
 $page_specific_css = 'dcs.css';
@@ -59,13 +59,15 @@ echo $html_header;
 	<div class="characterSheetColumn">
 		<table cellspacing="0" class="tableLayout">
 			<tr>
-				<td colspan="4" class="tableHeader"><?= $input[CHARACTER_NAME] ?></td>
+				<td colspan="6" class="tableHeader"><?= $character_name ?></td>
 			</tr>
 			<tr>
 				<td class="titleAttributeLiteral">Armor Class</td>
-				<td class="titleAttributeValue"><?= $character_summary->getArmorClass(); ?></td>
+				<td class="titleAttributeValue"><?= $character_details->getArmorClass() ?></td>
 				<td class="titleAttributeLiteral">Hit Points</td>
-				<td class="titleAttributeValue"><?= $character_summary->getHitPoints(); ?></td>
+				<td class="titleAttributeValue"><?= $character_details->getHitPoints() ?></td>
+				<td class="titleAttributeLiteral">Movement</td>
+				<td class="titleAttributeValue"><?= formatMovement($character_details->getMovement()); ?></td>
 			</tr>
 		</table>
 		<div>&nbsp;</div>
@@ -121,55 +123,55 @@ echo $html_header;
 			</tr>
 			<tr>
 				<td class="attributeLabel">Str</td>
-				<td class="attributeValue"><?= $character_summary->formatStrength() ?></td>
+				<td class="attributeValue"><?= $character_details->formatStrength() ?></td>
 				<td class="attributeLabel">Age</td>
-				<td class="attributeValue"><?= $input[CHARACTER_AGE] ?></td>
+				<td class="attributeValue"><?= $character_details->getAge() ?></td>
 				<td class="attributeLabel">Sex</td>
-				<td class="attributeValue"><?= $input[CHARACTER_GENDER] ?></td>
+				<td class="attributeValue"><?= $character_details->getGender() ?></td>
 			</tr>
 			<tr>
 				<td class="attributeLabel">Int</td>
-				<td class="attributeValue"><?= $character_summary->formatIntelligence() ?></td>
+				<td class="attributeValue"><?= $character_details->formatIntelligence() ?></td>
 				<td class="attributeLabel">Apparent Age</td>
-				<td class="attributeValue"><?= $input[CHARACTER_APPARENT_AGE]?></td>
+				<td class="attributeValue"><?= $character_details->getApparentAge()?></td>
 				<td class="attributeLabel">Height</td>
-				<td class="attributeValue"><?= $input[CHARACTER_HEIGHT] ?></td>
+				<td class="attributeValue"><?= $character_details->getHeight() ?></td>
 			</tr>
 			<tr>
 				<td class="attributeLabel">Wis</td>
-				<td class="attributeValue"><?= $character_summary->formatWisdom() ?></td>
+				<td class="attributeValue"><?= $character_details->formatWisdom() ?></td>
 				<td class="attributeLabel">Unnatural Age</td>
-				<td class="attributeValue"><?= $input[CHARACTER_UNNATURAL_AGE] ?></td>
+				<td class="attributeValue"><?= $character_details->getUnnaturalAge() ?></td>
 				<td class="attributeLabel">Weight</td>
-				<td class="attributeValue"><?= $input[CHARACTER_WEIGHT] ?></td>
+				<td class="attributeValue"><?= $character_details->getWeight() ?></td>
 			</tr>
 			<tr>
 				<td class="attributeLabel">Dex</td>
-				<td class="attributeValue"><?= $character_summary->formatDexterity() ?></td>
+				<td class="attributeValue"><?= $character_details->formatDexterity() ?></td>
 				<td class="attributeLabel">Social Class</td>
-				<td class="attributeValue"><?= $input[CHARACTER_SOCIAL_CLASS] ?></td>
+				<td class="attributeValue"><?= $character_details->getSocialClass() ?></td>
 				<td class="attributeLabel">Hair</td>
-				<td class="attributeValue"><?= $input[CHARACTER_HAIR] ?></td>
+				<td class="attributeValue"><?= $character_details->getHair() ?></td>
 			</tr>
 			<tr>
 				<td class="attributeLabel">Con</td>
-				<td class="attributeValue"><?= $character_summary->getConstitution() ?></td>
+				<td class="attributeValue"><?= $character_details->getCharacterConstitution() ?></td>
 				<td class="attributeLabel">&nbsp;</td>
 				<td class="attributeValue">&nbsp;</td>
 				<td class="attributeLabel">Eyes</td>
-				<td class="attributeValue"><?= $input[CHARACTER_EYES] ?></td>
+				<td class="attributeValue"><?= $character_details->getEyes() ?></td>
 			</tr>
 			<tr>
 				<td class="attributeLabel">Cha</td>
-				<td class="attributeValue"><?= $character_summary->getCharisma() ?></td>
+				<td class="attributeValue"><?= $character_details->getCharacterCharisma() ?></td>
 				<td class="attributeLabel">&nbsp;</td>
 				<td class="attributeValue">&nbsp;</td>
 				<td class="attributeLabel">Siblings</td>
-				<td class="attributeValue"><?= $input[CHARACTER_SIBLINGS] ?? "0" ?></td>
+				<td class="attributeValue"><?= $character_details->getSiblings() ?? "0" ?></td>
 			</tr>
 			<tr>
 				<td class="attributeLabel">Com</td>
-				<td class="attributeValue"><?= $character_summary->getComeliness() ?></td>
+				<td class="attributeValue"><?= $character_details->getCharacterComeliness() ?></td>
 				<td class="attributeLabel">&nbsp;</td>
 				<td class="attributeValue">&nbsp;</td>
 				<td class="attributeLabel">&nbsp;</td>
@@ -183,42 +185,42 @@ echo $html_header;
 				</tr>
 				<tr>
 					<td class="attributeLabel">Class</td>
-					<td class="attributeValue"><?= formatClasses($character_summary) ?></td>
+					<td class="attributeValue"><?= formatClasses($character_details) ?></td>
 					<td width="15%" class="attributeValue"> &nbsp; </td>
 					<td class="attributeLabel">Alignment</td>
-					<td class="attributeValue"><?= $input[CHARACTER_ALIGNMENT] ?></td>
+					<td class="attributeValue"><?= $character_details->getAlignment() ?></td>
 				</tr>
 				<tr>
 					<td class="attributeLabel">Level</td>
-					<td class="attributeValue"><?= formatLevels($character_summary, $nf) ?></td>
+					<td class="attributeValue"><?= formatLevels($character_details, $nf) ?></td>
 					<td width="15%" class="attributeValue"> &nbsp; </td>
 					<td class="attributeLabel">Religion</td>
-					<td class="attributeValue"><?= $input[CHARACTER_RELIGION] ?></td>
+					<td class="attributeValue"><?= $character_details->getReligion() ?></td>
 				</tr>
 				<tr>
 					<td class="attributeLabel">Race</td>
-					<td class="attributeValue"><?= $input[CHARACTER_RACE] ?></td>
+					<td class="attributeValue"><?= $character_details->getRace() ?></td>
 					<td width="15%" class="attributeValue"> &nbsp; </td>
 					<td class="attributeLabel">Deity</td>
-					<td class="attributeValue"><?= $input[CHARACTER_DEITY] ?></td>
+					<td class="attributeValue"><?= $character_details->getDeity() ?></td>
 				</tr>
 				<tr>
 					<td class="attributeLabel">Movement</td>
-					<td class="attributeValue"><?= formatMovement(character_movement: $input[CHARACTER_MOVEMENT]) ?></td>
+					<td class="attributeValue"><?= formatMovement(character_movement: $character_details->getMovement()) ?></td>
 					<td width="15%" class="attributeValue"> &nbsp; </td>
 					<td class="attributeLabel">Hometown</td>
-					<td class="attributeValue"><?= $input[CHARACTER_HOMETOWN] ?></td>
+					<td class="attributeValue"><?= $character_details->getHometown() ?></td>
 				</tr>
 				<tr>
 					<td class="attributeLabel">Hit Points</td>
-					<td class="attributeValue"><?= $character_summary->getHitPoints() ?></td>
+					<td class="attributeValue"><?= $character_details->getHitPoints() ?></td>
 					<td width="15%" class="attributeValue"> &nbsp; </td>
 					<td class="attributeLabel">Hit Die</td>
-					<td class="attributeValue"><?= $input[CHARACTER_HIT_DIE] ?></td>
+					<td class="attributeValue"><?= $character_details->getHitDie() ?></td>
 				</tr>
 				<tr>
 					<td colspan=2 class="attributeLabel">Experience Points</td>
-					<td colspan="3" class="attributeLabel"><?= formatExperiencePoints($input[CHARACTER_CLASSES]) ?></td>
+					<td colspan="3" class="attributeLabel"><?= formatExperiencePoints($character_details) ?></td>
 				</tr>
 			</table>
 			<div>&nbsp;</div>
@@ -274,23 +276,13 @@ echo $html_header;
 </html>
 <?php
 
-function getExistingCharacter($player_name, $character_name) {
-    $params = [];
-    $params[PLAYER_NAME] = $player_name;
-    $params[CHARACTER_NAME] = $character_name;
-    $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
-    
-    $url = CurlHelper::buildUrlDbioDirectory('getPlayerCharacterDetails');
-    $raw_results = CurlHelper::performGetRequest($url, $params);
-
-    return json_decode($raw_results);
-}
-
-function buildActionBar($player_name, $character_name, $character_summary) {
+function buildActionBar($player_name, $character_name, \CharacterDetails $character_details) {
     $output_html = ActionBarHelper::buildUserEditIcon($player_name, $character_name);
 	$output_html .= '&nbsp;';
-	if (!empty($character_summary->getSpellClasses())) {
-		if (isGreaterMage($character_summary->getCharacterClasses())) {
+
+	if ($character_details->isSpellcaster()) {
+		$isGreaterMage = $character_details->containsClassId(GREATER_MAGE);
+		if ($isGreaterMage) {
 			$output_html .= ActionBarHelper::buildReadyGMSpellsIcon($player_name, $character_name);
 		} else {
 			$output_html .= ActionBarHelper::buildReadySpellsIcon($player_name, $character_name);
@@ -302,37 +294,27 @@ function buildActionBar($player_name, $character_name, $character_summary) {
     return $output_html;
 }
 
-function isGreaterMage($character_classes) {
-	foreach($character_classes AS $character_class) {
-		if (getClassID($character_class['class_name']) == GREATER_MAGE) {
-			return true;
-		}
-
-		return false;
-	}
-}
-
-function formatClasses(\CharacterSummary $character_summary) {
+function formatClasses(\CharacterDetails $character_details) {
 	$class_list = '';
-	foreach($character_summary->getCharacterClasses() AS $character_class) {
+	foreach($character_details->getCharacterClasses() AS $character_class) {
 		if (strlen($class_list) > 0) {
 			$class_list .= '/';
 		}
 
-		$class_list .= $character_class['class_name'];
+		$class_list .= $character_class->getClassName();
 	}
 
 	return $class_list;
 }
 
-function formatLevels(\CharacterSummary $character_summary, $nf) {
+function formatLevels(\CharacterDetails $character_details, $nf) {
 	$level_list = '';
-	foreach($character_summary->getCharacterClasses() AS $character_class) {
+	foreach($character_details->getCharacterClasses() AS $character_class) {
 		if (strlen($level_list) > 0) {
 			$level_list .= '/';
 		}
 
-		$level_list .= $nf->format($character_class['character_level']);
+		$level_list .= $nf->format($character_class->getClassLevel());
 	}
 
 	return $level_list;
@@ -346,13 +328,13 @@ function  formatMovement($character_movement) {
 	return '';
 }
 
-function formatExperiencePoints($input_character_classes) {
+function formatExperiencePoints(\CharacterDetails $character_details) {
 	$xp_list = '';
-	foreach($input_character_classes AS $character_class) {
+	foreach($character_details->getCharacterClasses() AS $character_class) {
 		if (strlen($xp_list)) {
 			$xp_list .= ' / ';
 		}
-		$xp_list .= number_format($character_class->number_of_experience_points);
+		$xp_list .= number_format($character_class->getNumberOfExperiencePoints());
 	}
 
 	return $xp_list;
