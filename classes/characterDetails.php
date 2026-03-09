@@ -389,13 +389,7 @@ class CharacterDetails implements JsonSerializable
 	}
 
 	public function isSpellcaster() {
-		foreach($this->character_classes AS $character_class) {
-			if (!empty($character_class->spell_class)) {
-				return true;
-			}
-		}
-
-		return false;
+		return ($this->isArcaneSpellcaster() || $this->isDivineSpellcaster());
 	}
 
 	public function isArcaneSpellcaster() {
