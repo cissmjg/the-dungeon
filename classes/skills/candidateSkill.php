@@ -132,38 +132,6 @@
             return empty(array_diff($subset, $superset));
         }
 
-        protected function isCharacterFighterType(\CharacterDetails $character_details) {
-            if ($character_details->containsClassId(FIGHTER)) {
-                return true;
-            }
-
-            if ($character_details->containsClassId(RANGER)) {
-                return true;
-            }
-
-            if ($character_details->containsClassId(ARCHER)) {
-                return true;
-            }
-
-            if ($character_details->containsClassId(ARCHER_RANGER)) {
-                return true;
-            }
-
-            if ($character_details->containsClassId(BERSERKER)) {
-                return true;
-            }
-
-            if ($character_details->containsClassId(MARINER)) {
-                return true;
-            }
-
-            if ($character_details->containsClassId(SENTINAL)) {
-                return true;
-            }
-
-            return false;
-        }
-
         public function render(\CharacterDetails $character_details, \PlayerCharacterSkillSet $player_character_skill_set) {
             $this->qualified = $this->isCharacterQualified($character_details, $player_character_skill_set);
             $skill_id = $this->getSkillId();

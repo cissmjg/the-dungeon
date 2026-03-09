@@ -151,4 +151,23 @@ function getGenericRaceID($race_name) {
             return -1;
     }
 }
+
+function isHalfElf($race_name) {
+    switch($race_name) {
+        case "Half-Elf (High)":	
+            return true;	
+        case "Half-Elf (Dark)":	
+            return true;	
+        case "Half-Elf (Gray)":	
+            return true;	
+        case "Half-Elf (Valley)":	
+            return true;	
+        case "Half-Elf (Wild)":	
+            return true;	
+        case "Half-Elf (Wood)":	
+            return true;     
+        default:
+            return false;
+    }
+}
 ?>
