@@ -13,7 +13,7 @@ require_once __DIR__ . '/helper/HtmlHelper.php';
 
 require_once __DIR__ . '/dbio/constants/characterAttributes.php';
 require_once __DIR__ . '/dbio/constants/characterClasses.php';
-require_once __DIR__ . '/classes/characterSummary.php';
+require_once __DIR__ . '/classes/attributeMetadata.php';
 require_once __DIR__ . '/classes/characterDetails.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 
@@ -39,15 +39,17 @@ if (count($errors) > 0) {
 $character_summary_renderer = new CharacterSummaryRenderer($character_name);
 $character_summary_stats = $character_summary_renderer->renderCharacterDetails($character_details);
 
+$attribute_metadata = new AttributeMetadata($character_details);
+
 $action_bar = buildActionBar($player_name, $character_name, $character_details);
 
 $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
 
 $page_title = $character_name;
 $site_css_file = 'dnd-default.css';
-$page_specific_js = '';
+$page_specific_js = 'dcs.js';
 $page_specific_css = 'dcs.css';
-$enable_toggle_panels = false;
+$enable_toggle_panels = true;
 
 $html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
 echo $html_header;
@@ -71,20 +73,20 @@ echo $html_header;
 			</tr>
 		</table>
 		<div>&nbsp;</div>
-		<table cellspacing="0" class="tableLayout">
-			<tr>
-				<td colspan="7" class="tableHeader">Combat Summary</td>
-			</tr>
-			<tr>
-				<td class="combatSummaryHeader">Weapon</td>
-				<td class="combatSummaryHeader">Spd</td>
-				<td class="combatSummaryHeader">Dmg</td>
-				<td class="combatSummaryHeader">Range</td>
-				<td class="combatSummaryHeader">Hit Adj.</td>
-				<td class="combatSummaryHeader">Dam. Adj.</td>
-				<td class="combatSummaryHeader">Notes</td>
-			</tr>
-		</table>
+		<div class="togglePanel">
+			<a href="#"><span class="fa fa-plus" style="padding-right: 5px;"></span></a><span class="toggleHeader">Combat Summary</span>
+			<table class="togglePanelContent tableHeader">
+				<tr>
+					<td class="combatSummaryHeader">Weapon</td>
+					<td class="combatSummaryHeader">Spd</td>
+					<td class="combatSummaryHeader">Dmg</td>
+					<td class="combatSummaryHeader">Range</td>
+					<td class="combatSummaryHeader">Hit Adj.</td>
+					<td class="combatSummaryHeader">Dam. Adj.</td>
+					<td class="combatSummaryHeader">Notes</td>
+				</tr>
+			</table>
+		</div>
 		<div>&nbsp;</div>
 		<table cellspacing="0" class="tableLayout">
 			<tr>
@@ -122,56 +124,74 @@ echo $html_header;
 				<td colspan="6" class="tableHeader">Attributes</td>
 			</tr>
 			<tr>
-				<td class="attributeLabel">Str</td>
+				<td class="attributeLabel"><a href="#" onclick="attributeDetailPanelClick('strength-metadata', 'strength-metadata-icon', DEFAULT_CLOSED_ICON_CLASS, DEFAULT_OPEN_ICON_CLASS);"><span id="strength-metadata-icon" class="fa-solid fa-chevron-down attributeDetailPanelIcon"></span></a>Str</td>
 				<td class="attributeValue"><?= $character_details->formatStrength() ?></td>
 				<td class="attributeLabel">Age</td>
 				<td class="attributeValue"><?= $character_details->getAge() ?></td>
 				<td class="attributeLabel">Sex</td>
 				<td class="attributeValue"><?= $character_details->getGender() ?></td>
 			</tr>
+			<tr id="strength-metadata" hidden>
+				<td colspan="6"><?= $attribute_metadata->getStrengthMetadata() ?></td>
+			</tr>
 			<tr>
-				<td class="attributeLabel">Int</td>
+				<td class="attributeLabel"><a href="#" onclick="attributeDetailPanelClick('intelligence-metadata', 'intelligence-metadata-icon', DEFAULT_CLOSED_ICON_CLASS, DEFAULT_OPEN_ICON_CLASS);"><span id="intelligence-metadata-icon" class="fa-solid fa-chevron-down attributeDetailPanelIcon"></span></a>Int</td>
 				<td class="attributeValue"><?= $character_details->formatIntelligence() ?></td>
 				<td class="attributeLabel">Apparent Age</td>
 				<td class="attributeValue"><?= $character_details->getApparentAge()?></td>
 				<td class="attributeLabel">Height</td>
 				<td class="attributeValue"><?= $character_details->getHeight() ?></td>
 			</tr>
+			<tr id="intelligence-metadata" hidden>
+				<td colspan="6"><?= $attribute_metadata->getIntelligenceMetadata() ?></td>
+			</tr>
 			<tr>
-				<td class="attributeLabel">Wis</td>
+				<td class="attributeLabel"><a href="#" onclick="attributeDetailPanelClick('wisdom-metadata', 'wisdom-metadata-icon', DEFAULT_CLOSED_ICON_CLASS, DEFAULT_OPEN_ICON_CLASS);"><span id="wisdom-metadata-icon" class="fa-solid fa-chevron-down attributeDetailPanelIcon"></span></a>Wis</td>
 				<td class="attributeValue"><?= $character_details->formatWisdom() ?></td>
 				<td class="attributeLabel">Unnatural Age</td>
 				<td class="attributeValue"><?= $character_details->getUnnaturalAge() ?></td>
 				<td class="attributeLabel">Weight</td>
 				<td class="attributeValue"><?= $character_details->getWeight() ?></td>
 			</tr>
+			<tr id="wisdom-metadata" hidden>
+				<td colspan="6"><?= $attribute_metadata->getWisdomMetadata() ?></td>
+			</tr>
 			<tr>
-				<td class="attributeLabel">Dex</td>
+				<td class="attributeLabel"><a href="#" onclick="attributeDetailPanelClick('dexterity-metadata', 'dexterity-metadata-icon', DEFAULT_CLOSED_ICON_CLASS, DEFAULT_OPEN_ICON_CLASS);"><span id="dexterity-metadata-icon" class="fa-solid fa-chevron-down attributeDetailPanelIcon"></span></a>Dex</td>
 				<td class="attributeValue"><?= $character_details->formatDexterity() ?></td>
 				<td class="attributeLabel">Social Class</td>
 				<td class="attributeValue"><?= $character_details->getSocialClass() ?></td>
 				<td class="attributeLabel">Hair</td>
 				<td class="attributeValue"><?= $character_details->getHair() ?></td>
 			</tr>
+			<tr id="dexterity-metadata" hidden>
+				<td colspan="6"><?= $attribute_metadata->getDexterityMetadata() ?></td>
+			</tr>
 			<tr>
-				<td class="attributeLabel">Con</td>
+				<td class="attributeLabel"><a href="#" onclick="attributeDetailPanelClick('constitution-metadata', 'constitution-metadata-icon', DEFAULT_CLOSED_ICON_CLASS, DEFAULT_OPEN_ICON_CLASS);"><span id="constitution-metadata-icon" class="fa-solid fa-chevron-down attributeDetailPanelIcon"></span></a>Con</td>
 				<td class="attributeValue"><?= $character_details->getCharacterConstitution() ?></td>
 				<td class="attributeLabel">&nbsp;</td>
 				<td class="attributeValue">&nbsp;</td>
 				<td class="attributeLabel">Eyes</td>
 				<td class="attributeValue"><?= $character_details->getEyes() ?></td>
 			</tr>
+			<tr id="constitution-metadata" hidden>
+				<td colspan="6"><?= $attribute_metadata->getConstitutionMetadata() ?></td>
+			</tr>
 			<tr>
-				<td class="attributeLabel">Cha</td>
+				<td class="attributeLabel"><a href="#" onclick="attributeDetailPanelClick('charisma-metadata', 'charisma-metadata-icon', DEFAULT_CLOSED_ICON_CLASS, DEFAULT_OPEN_ICON_CLASS);"><span id="charisma-metadata-icon" class="fa-solid fa-chevron-down attributeDetailPanelIcon"></span></a>Cha</td>
 				<td class="attributeValue"><?= $character_details->getCharacterCharisma() ?></td>
 				<td class="attributeLabel">&nbsp;</td>
 				<td class="attributeValue">&nbsp;</td>
 				<td class="attributeLabel">Siblings</td>
 				<td class="attributeValue"><?= $character_details->getSiblings() ?? "0" ?></td>
 			</tr>
+			<tr id="charisma-metadata" hidden>
+				<td colspan="6"><?= $attribute_metadata->getCharismaMetadata() ?></td>
+			</tr>
 			<tr>
-				<td class="attributeLabel">Com</td>
-				<td class="attributeValue"><?= $character_details->getCharacterComeliness() ?></td>
+				<td class="attributeLabel"><span style="padding-left: 28px;">Com</span></td>
+				<td class="attributeValue"><?= $character_details->getAdjustedCharacterComeliness() ?></td>
 				<td class="attributeLabel">&nbsp;</td>
 				<td class="attributeValue">&nbsp;</td>
 				<td class="attributeLabel">&nbsp;</td>

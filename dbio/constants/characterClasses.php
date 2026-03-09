@@ -130,4 +130,17 @@ function getClassID($class_name) {
             return -1;
     }
 }
+
+function isArcaneSpellcaster($class_id) {
+    return ($class_id == MAGIC_USER || $class_id == ILLUSIONIST || $class_id == WU_JEN || $class_id == ARCHER || $class_id == GREATER_MAGE || $class_id == GREATER_MAGE || $class_id == HEALER || $class_id == NEW_BARD || $class_id == ARCHER_RANGER);
+}
+
+function isDivineSpellcaster($class_id) {
+    return ($class_id == CLERIC || $class_id == DRUID || $class_id == PALADIN || $class_id == RANGER || $class_id == SHUKENJA || $class_id == ANTI_PALADIN || $class_id == HEALER || $class_id == NEW_BARD);
+}
+
+function isCharacterFighterType($class_id) {
+    return ($class_id == FIGHTER || $class_id == RANGER || $class_id == ARCHER || $class_id == ARCHER_RANGER || $class_id == BERSERKER || $class_id == MARINER || $class_id == SENTINAL);
+
+}
 ?>

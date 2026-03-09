@@ -249,6 +249,49 @@ class CharacterDetails implements JsonSerializable
 		return $this->characterComeliness;
 	}
 
+	public function getAdjustedCharacterComeliness() {
+		$character_comeliness = $this->characterComeliness;
+		$adjusted_comeliness = $character_comeliness + $this->getCharismaAdjustmentForComeliness($this->getCharacterCharisma());
+
+		return $character_comeliness . ' (' . $adjusted_comeliness . ')';
+	}
+
+	private function getCharismaAdjustmentForComeliness($character_charisma) {
+		if ($character_charisma < 3) {
+			return -8;
+		}
+
+		if ($character_charisma == 3) {
+			return -5;
+		}
+
+		if ($character_charisma >= 4 && $character_charisma <= 5) {
+			return -3;
+		}
+
+		if ($character_charisma >= 6 && $character_charisma <= 8) {
+			return -1;
+		}
+
+		if ($character_charisma >= 9 && $character_charisma <= 12) {
+			return 0;
+		}
+
+		if ($character_charisma >= 13 && $character_charisma <= 15) {
+			return 1;
+		}
+
+		if ($character_charisma >= 16 && $character_charisma <= 17) {
+			return 2;
+		}
+
+		if ($character_charisma == 18) {
+			return 3;
+		}
+
+		return 5;
+	}
+
 	public function getArmorClass() {
 		return $this->armorClass;
 	}
@@ -353,5 +396,39 @@ class CharacterDetails implements JsonSerializable
 		}
 
 		return false;
+	}
+
+	public function isArcaneSpellcaster() {
+		foreach($this->character_classes AS $character_class) {
+			if (isArcaneSpellcaster($character_class->getClassId())) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public function isDivineSpellcaster() {
+		foreach($this->character_classes AS $character_class) {
+			if (isDivineSpellcaster($character_class->getClassId())) {
+				return true;
+			}
+		}
+
+		return false;		
+	}
+
+	public function isFighterType() {
+		foreach($this->character_classes AS $character_class) {
+			if (isCharacterFighterType($character_class->getClassId())) {
+				return true;
+			}
+		}
+
+		return false;		
+	}
+
+	public function isHalfElf() {
+		return isHalfElf($this->getRace());
 	}
 }
