@@ -1206,7 +1206,6 @@ BEGIN
 	SELECT
 		player_character_skill.id AS player_character_skill_id,
 		player_character_skill.skill_catalog_id AS skill_catalog_id,
-		COUNT(skill_catalog_id) AS player_character_skill_count,
 		IFNULL(player_character_skill.player_character_skill_name,skill_catalog.name) AS skill_name,
 		player_character_skill.is_skill_focus AS player_character_skill_is_skill_focus,
 		player_character_skill.weapon_proficiency_id AS player_character_weapon_proficiency_id,
@@ -1215,8 +1214,7 @@ BEGIN
 	JOIN skill_catalog ON skill_catalog.id = player_character_skill.skill_catalog_id
 	JOIN player_character ON player_character.id = player_character_skill.player_character_id
 	JOIN player ON player.id = player_character.player_id
-	WHERE player_character.name = characterName AND player.name = playerName
-	GROUP BY skill_catalog_id, player_character_skill.weapon_proficiency_id;
+	WHERE player_character.name = characterName AND player.name = playerName;
 END
 
 CREATE PROCEDURE getSkillsAndRollsForPlayerCharacter
@@ -1548,6 +1546,44 @@ BEGIN
 	WHERE
 		player_character_skill.skill_catalog_id = skillCatalogWeaponProficiency AND
 		player_character_skill.player_character_id = playerCharacterId;
+END
+
+CREATE PROCEDURE getWeaponProficienciesOneHandedForPlayerCharacter
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64))
+BEGIN
+	DECLARE weaponProficiencySkillId INT DEFAULT 179;
+    DECLARE fistWeaponProficiencyId INT DEFAULT 118;
+
+	SELECT id
+	INTO weaponProficiencySkillId
+	FROM skill_catalog
+	WHERE name = 'Weapon Proficiency';
+	
+
+	SELECT id
+	INTO fistWeaponProficiencyId
+	FROM weapon_proficiency
+	WHERE name = 'Fist';
+    
+SELECT 
+	weapon_proficiency.name AS weapon_proficiency_name,
+    weapon_proficiency.id AS weapon_proficiency_id
+FROM weapon_proficiency
+JOIN weapon_catalog ON weapon_catalog.weapon_proficiency_id = weapon_proficiency.id
+WHERE weapon_catalog.number_of_hands = 1 AND weapon_catalog.type = 1 AND weapon_proficiency.id IN
+(
+	SELECT 
+    	player_character_skill.weapon_proficiency_id
+    FROM player_character_skill
+    JOIN player_character ON player_character.id = player_character_skill.player_character_id
+    JOIN player ON player.id = player_character.player_id
+    WHERE 
+        player.name = playerName AND 
+        player_character.name = characterName AND 
+        player_character_skill.skill_catalog_id = weaponProficiencySkillId AND
+        player_character_skill.weapon_proficiency_id <> fistWeaponProficiencyId
+);
 END
 
 CREATE PROCEDURE getWeaponProficiencyForPlayerCharacter

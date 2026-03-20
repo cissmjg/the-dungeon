@@ -13,7 +13,6 @@
         public function init($skill) {
             $this->id = $skill['player_character_skill_id'];
             $this->skill_catalog_id = $skill['skill_catalog_id'];
-            $this->player_character_skill_count = $skill['player_character_skill_count'];
             $this->player_character_skill_name = $skill['skill_name'];
             $this->is_skill_focus = $skill['player_character_skill_is_skill_focus'];
             $this->weapon_proficiency_id = $skill['player_character_weapon_proficiency_id'];
@@ -34,10 +33,6 @@
 
         public function getPlayerCharacterSkillName() {
             return $this->player_character_skill_name;
-        }
-
-        public function getPlayerCharacterSkillCount() {
-            return $this->player_character_skill_count;
         }
 
         public function isSkillFocus() {

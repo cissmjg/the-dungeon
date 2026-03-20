@@ -8843,7 +8843,7 @@ COMMIT;
 START TRANSACTION;
 
 INSERT INTO skill_catalog (name, attribute, skill_focus, max_count, required_class, required_race, required_level, minimum_charisma, minimum_dexterity, minimum_intelligence, roll_name, ability_text, attribute_bonus, is_active)
-VALUES('Improved Critical','To Hit', False, -1, 0, 0, 8, 0, 0, 0, NULL, 'Std: 16/22/27, Pole: 12/17/22, +20% on location', 0, False);
+VALUES('Improved Critical','To Hit', False, 1, 0, 0, 8, 0, 0, 0, NULL, 'Std: 16/22/27, Pole: 12/17/22, +20% on location', 0, False);
 
 -- Enforce logic of Specialization OR Weapon Focus Accuracy OR Weapon Focus Technique in PHP client
 -- SELECT skill_catalog.id FROM skill_catalog WHERE name = 'No PreRequisite';
@@ -9578,7 +9578,7 @@ COMMIT;
 START TRANSACTION;
 
 INSERT INTO skill_catalog (name, attribute, skill_focus, max_count, required_class, required_race, required_level, minimum_charisma, minimum_dexterity, minimum_intelligence, roll_name, ability_text, attribute_bonus, is_active)
-VALUES('Quick Draw','None', False, -1, 0, 0, 0, 0, 0, 0, NULL, 'Draw weapon and attack in the same round', 0, False);
+VALUES('Quick Draw','None', False, -1, 0, 0, 0, 0, 0, 0, NULL, 'Draw weapon and attack in the same round', 0, True);
 
 -- SELECT skill_catalog.id FROM skill_catalog WHERE name = 'No PreRequisite';
 -- 'No PreRequisite' ID = 1
@@ -10028,7 +10028,7 @@ START TRANSACTION;
 
 -- required_class = 4 (Fighter), minimum_dexterity = 17
 INSERT INTO skill_catalog (name, attribute, skill_focus, max_count, required_class, required_race, required_level, minimum_charisma, minimum_dexterity, minimum_intelligence, roll_name, ability_text, attribute_bonus, is_active)
-VALUES('Two Weapon Fighting','None', False, -1, 4, 0, 0, 0, 17, 0, NULL, 'Melee combat with two one handed weapons', 0, False);
+VALUES('Two Weapon Fighting','None', False, 1, 4, 0, 0, 0, 17, 0, NULL, 'Melee combat with two one handed weapons', 0, False);
 
 -- SELECT skill_catalog.id FROM skill_catalog WHERE name = 'No PreRequisite';
 -- 'No PreRequisite' ID = 1
@@ -10113,7 +10113,7 @@ COMMIT;
 START TRANSACTION;
 
 INSERT INTO skill_catalog (name, attribute, skill_focus, max_count, required_class, required_race, required_level, minimum_charisma, minimum_dexterity, minimum_intelligence, roll_name, ability_text, attribute_bonus, is_active)
-VALUES('Weapon Focus Accuracy','None', False, -1, 0, 0, 0, 0, 0, 0, NULL, 'Provides a +1 to hit with one specific weapon', 0, False);
+VALUES('Weapon Focus Accuracy','None', False, 1, 0, 0, 0, 0, 0, 0, NULL, 'Provides a +1 to hit with one specific weapon', 0, False);
 
 -- SELECT skill_catalog.id FROM skill_catalog WHERE name = 'No PreRequisite';
 -- 'No PreRequisite' ID = 1
@@ -10127,7 +10127,7 @@ COMMIT;
 START TRANSACTION;
 
 INSERT INTO skill_catalog (name, attribute, skill_focus, max_count, required_class, required_race, required_level, minimum_charisma, minimum_dexterity, minimum_intelligence, roll_name, ability_text, attribute_bonus, is_active)
-VALUES('Weapon Focus Greater Accuracy','None', False, -1, 0, 0, 0, 0, 0, 0, NULL, 'Provides a +1 to hit with one specific weapon', 0, False);
+VALUES('Weapon Focus Greater Accuracy','None', False, 1, 0, 0, 0, 0, 0, 0, NULL, 'Provides a +1 to hit with one specific weapon', 0, False);
 
 -- SELECT skill_catalog.id FROM skill_catalog WHERE name = 'Weapon Focus Accuracy';
 -- 'Weapon Focus Accuracy' ID = 168
@@ -10141,7 +10141,7 @@ COMMIT;
 START TRANSACTION;
 
 INSERT INTO skill_catalog (name, attribute, skill_focus, max_count, required_class, required_race, required_level, minimum_charisma, minimum_dexterity, minimum_intelligence, roll_name, ability_text, attribute_bonus, is_active)
-VALUES('Weapon Focus Technique','None', False, -1, 0, 0, 0, 0, 0, 0, NULL, 'Provides a +1 damage with one specific weapon', 0, False);
+VALUES('Weapon Focus Technique','None', False, 1, 0, 0, 0, 0, 0, 0, NULL, 'Provides a +1 damage with one specific weapon', 0, False);
 
 -- SELECT skill_catalog.id FROM skill_catalog WHERE name = 'No PreRequisite';
 -- 'No PreRequisite' ID = 1

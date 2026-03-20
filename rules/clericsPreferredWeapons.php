@@ -1,5 +1,5 @@
 <?php
-require_once '/../dbio/constants/weapons.php';
+require_once __DIR__ .  '/../dbio/constants/weapons.php';
 
 $clerics_preferred_weapons = [];
 

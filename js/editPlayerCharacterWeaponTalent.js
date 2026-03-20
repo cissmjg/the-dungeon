@@ -1,15 +1,29 @@
 
-export function submitAddWeaponTalentForm(form_id, skill_catalog_element_id, skill_catalog_value, weapon_talent_element_id, weapon_talent_element_value, weapon2_talent_element_id, weapon2_talent_value) {
+export function submitAddWeaponTalentForm(form_id, skill_catalog_element_id, skill_catalog_value, weapon2_element_id) {
 
+    const TWO_WEAPON_FIGHTING_SKILL_ID = 162;
     const jqAddWeaponTalentForm = $('#' + form_id);
     const jqSkillCatalogElement = $('#' + skill_catalog_element_id);
-    const jqWeaponTalentElement = $('#' + weapon_talent_element_id);
-    const jqWeapon2TalentElement = $('#' + weapon2_talent_element_id);
+    const jqWeapon2Element = $('#' + weapon2_element_id);
+
+    if (
+            skill_catalog_value == TWO_WEAPON_FIGHTING_SKILL_ID && jqWeapon2Element.val() == '-1' ||
+            skill_catalog_value == TWO_WEAPON_FIGHTING_SKILL_ID && jqWeapon2Element.val() == ''
+       ) 
+    {
+        alert('Please select a 2nd weapon');
+        return false;
+    }
 
     jqSkillCatalogElement.val(skill_catalog_value);
-    jqWeaponTalentElement.val(weapon_talent_element_value);
-    jqWeapon2TalentElement.val(weapon2_talent_value);
     jqAddWeaponTalentForm.submit();
+}
+
+export function updateOffhandWeaponProficiencyId(weapon2ProficiencyId, oneHandWeaponListId) {
+    const jqWeapon2ProficiencyElement = $('#' + weapon2ProficiencyId);
+    const jqOneHandWeaponList = $('#' + oneHandWeaponListId);
+
+    jqWeapon2ProficiencyElement.val(jqOneHandWeaponList.val());
 }
 
 export function confirmPlayerCharacterWeaponTalentDelete(formId, playerCharacterWeaponTalentId, playerCharacterWeaponTalentIdValue, weaponTalentDescription) {
@@ -26,3 +40,4 @@ export function confirmPlayerCharacterWeaponTalentDelete(formId, playerCharacter
 
 window.confirmPlayerCharacterWeaponTalentDelete = confirmPlayerCharacterWeaponTalentDelete;
 window.submitAddWeaponTalentForm = submitAddWeaponTalentForm;
+window.updateOffhandWeaponProficiencyId = updateOffhandWeaponProficiencyId;

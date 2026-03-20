@@ -17,7 +17,7 @@
                 $player_character_skill = new PlayerCharacterSkill();
                 $player_character_skill->init($player_character_skill_db);
                 $skill_id = $player_character_skill_db['skill_catalog_id'];
-                $this->player_character_skills[$skill_id] = $player_character_skill;
+                $this->player_character_skills[] = $player_character_skill;
                 $this->skill_catalog_ids[] = $skill_id;
             }
         }
@@ -46,14 +46,21 @@
             return $this->skill_catalog_ids;
         }
 
-        public function getSkill($skill_id) {
-            return  $this->player_character_skills[$skill_id];
-        }
-
         public function getAllSkillInstances($skill_id) {
             $specific_skill_list = [];
             foreach($this->player_character_skills AS $player_character_skill) {
                 if ($player_character_skill->getSkillCatalogId() == $skill_id) {
+                    $specific_skill_list[] = $player_character_skill;
+                }
+            }
+
+            return $specific_skill_list;
+        }
+
+        public function getAllSkillInstancesForWeapon($skill_id, $weapon_id) {
+            $specific_skill_list = [];
+            foreach($this->player_character_skills AS $player_character_skill) {
+                if ($player_character_skill->getSkillCatalogId() == $skill_id && $player_character_skill->getWeaponProficiencyId() == $weapon_id) {
                     $specific_skill_list[] = $player_character_skill;
                 }
             }

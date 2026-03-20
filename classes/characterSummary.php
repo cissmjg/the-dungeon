@@ -158,7 +158,11 @@ class CharacterSummary implements JsonSerializable
     public function formatStrength() {
         $output = $this->getStrength();
 		if ($this->getSuperStrength() != null) {
-			$output .= '/' . $this->getSuperStrength();
+			if ($this->getSuperStrength() == 100) {
+				$output .= '/00';
+			} else {
+				$output .= '/' . $this->getSuperStrength();
+			}
 		}
 
         return $output;
@@ -167,7 +171,11 @@ class CharacterSummary implements JsonSerializable
     public function formatIntelligence() {
 		$output = $this->getIntelligence();
 		if ($this->getSuperIntelligence() != null) {
-			$output .= '/' . $this->getSuperIntelligence();
+			if ($this->getSuperIntelligence() == 100) {
+				$output .= '/00';
+			} else {
+				$output .= '/' . $this->getSuperIntelligence();
+			}
 		}
 
         return $output;
@@ -176,7 +184,11 @@ class CharacterSummary implements JsonSerializable
     public function formatWisdom() {
 		$output = $this->getWisdom();
 		if ($this->getSuperWisdom() != null) {
-			$output .= '/' . $this->getSuperWisdom();
+			if ($this->getSuperWisdom() == 100) {
+				$output .= '/00';
+			} else {
+				$output .= '/' . $this->getSuperWisdom();
+			}
 		}
 
         return  $output;
@@ -185,7 +197,11 @@ class CharacterSummary implements JsonSerializable
     public function formatDexterity() {
 		$output = $this->getDexterity();
 		if ($this->getSuperDexterity() != null) {
-			$output .= '/' . $this->getSuperDexterity();
+			if ($this->getSuperDexterity() == 100) {
+				$output .= '/00';
+			} else {
+				$output .= '/' . $this->getSuperDexterity();
+			}
 		}
 
         return $output;

@@ -176,7 +176,11 @@ class CharacterDetails implements JsonSerializable
     public function formatStrength() {
         $output = $this->getCharacterStrength();
 		if ($this->getCharacterSuperStrength() != null) {
-			$output .= '/' . $this->getCharacterSuperStrength();
+			if ($this->getCharacterSuperStrength() == 100) {
+				$output .= '/00';
+			} else {
+				$output .= '/' . $this->getCharacterSuperStrength();
+			}
 		}
 
         return $output;
@@ -193,7 +197,11 @@ class CharacterDetails implements JsonSerializable
     public function formatIntelligence() {
 		$output = $this->getCharacterIntelligence();
 		if ($this->getCharacterSuperIntelligence() != null) {
-			$output .= '/' . $this->getCharacterSuperIntelligence();
+			if ($this->getCharacterSuperIntelligence() == 100) {
+				$output .= '/00';
+			} else {
+				$output .= '/' . $this->getCharacterSuperIntelligence();
+			}
 		}
 
         return $output;
@@ -210,7 +218,11 @@ class CharacterDetails implements JsonSerializable
 	public function formatWisdom() {
 		$output = $this->getCharacterWisdom();
 		if ($this->getCharacterSuperWisdom() != null) {
-			$output .= '/' . $this->getCharacterSuperWisdom();
+			if ($this->getCharacterSuperWisdom() == 100) {
+				$output .= '/00';
+			} else {
+				$output .= '/' . $this->getCharacterSuperWisdom();
+			}
 		}
 
         return  $output;
@@ -227,7 +239,11 @@ class CharacterDetails implements JsonSerializable
     public function formatDexterity() {
 		$output = $this->getCharacterDexterity();
 		if ($this->getCharacterSuperDexterity() != null) {
-			$output .= '/' . $this->getCharacterSuperDexterity();
+			if ($this->getCharacterSuperDexterity() == 100) {
+				$output .= '/00';
+			} else {
+				$output .= '/' . $this->getCharacterSuperDexterity();
+			}
 		}
 
         return $output;
@@ -388,6 +404,10 @@ class CharacterDetails implements JsonSerializable
 		return 0;
 	}
 
+	public function classCount() {
+		return count($this->character_classes);
+	}
+
 	public function isSpellcaster() {
 		return ($this->isArcaneSpellcaster() || $this->isDivineSpellcaster());
 	}
@@ -420,6 +440,17 @@ class CharacterDetails implements JsonSerializable
 		}
 
 		return false;		
+	}
+
+	public function getFighterTypeLevel() {
+		$level = 0;
+		foreach($this->character_classes AS $character_class) {
+			if (isCharacterFighterType($character_class->getClassId())) {
+				return $character_class->getClassLevel();
+			}
+		}
+
+		return $level;
 	}
 
 	public function isHalfElf() {
