@@ -28,6 +28,10 @@ class WeaponDetail implements JsonSerializable
     public function init(\PDO $pdo, $playerName, $characterName, $weaponProficiencyId, &$errors) {
 		
 		$weapon_details = $this->getWeaponDetail($pdo, $weaponProficiencyId, $errors);
+        if (count($errors) > 0) {
+            die(json_encode($errors));
+        }
+
         foreach($weapon_details AS $weapon_detail) {
             $this->weapon_name = $weapon_detail['weapon_name'];
             $this->weapon_id = $weapon_detail['weapon_id'];
@@ -55,6 +59,10 @@ class WeaponDetail implements JsonSerializable
         }
         
         $playerCharacterWeaponSkill = $this->getPlayerCharacterWeaponProficiency($pdo, $playerName, $characterName, $weaponProficiencyId, $errors);
+        if (count($errors) > 0) {
+            die(json_encode($errors));
+        }
+        
         $this->playerCharacterWeaponSkillId = $playerCharacterWeaponSkill['playerCharacterSkillId'];
         
     }

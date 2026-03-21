@@ -119,7 +119,7 @@ const KHOPESH_SWORD = 116;
 const LONG_SWORD = 117;	
 const FIST = 118;
 
-function getWeaponDescription($weapon_proficiency_id) {
+function getWeaponDescriptionFromProficiencyId($weapon_proficiency_id) {
     switch($weapon_proficiency_id) {
         case AKLYS: return 'Aklys';	
         case ATLATL: return 'Atlatl';	

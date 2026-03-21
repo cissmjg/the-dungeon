@@ -29,7 +29,7 @@ $characters_for_player = getCharactersForPlayer($pdo, $player_name, $errors);
 foreach($characters_for_player AS $character_for_player) {
 	$character_name = $character_for_player['character_name'];
 	$account_class_summary = new AccountCharacterSummary();
-	$account_class_summary->init($pdo, $player_name, $character_name);
+	$account_class_summary->init($pdo, $player_name, $character_name, $errors);
 	$normalized_portrait_file = verifyPortraitFile($character_for_player['player_character_portrait']);
 	$account_class_summary->setCharacterPortrait($normalized_portrait_file);
 	$account_character_summaries[] = $account_class_summary;

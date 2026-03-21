@@ -47,7 +47,7 @@ $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 $action_bar = ActionBarHelper::buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
+$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
 
 $character_summary_renderer = new CharacterSummaryRenderer($input[CHARACTER_NAME]);
 $character_summary_stats = $character_summary_renderer->render($character_summary);

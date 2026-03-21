@@ -17,14 +17,11 @@ require_once __DIR__ . '/../classes/characterSummary.php';
 getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 
-// If errors exist return them
-if (count($errors) > 0) {
-	RestHeaderHelper::emitRestHeaders();
-	die(json_encode($errors));
-}
-
 RestHeaderHelper::emitRestHeaders();
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
+$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+if (count($errors) > 0) {
+	die(json_encode($errors));
+}
 
 echo json_encode($character_summary);

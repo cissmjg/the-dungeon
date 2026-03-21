@@ -22,6 +22,10 @@ class CharacterSpellInfo implements Stringable {
 	public function init(\PDO $pdo, &$error, &$log) {
 
 		$result = $this->getBaseSpellSlotCount($pdo, $error);
+		if (count($error) > 0) {
+			die(json_encode($error));
+		}
+		
 		for ($i = 0; $i < count($result); $i++) {
 			$row = $result[$i];
 			$base_slot_count = new BaseSlotCount();
