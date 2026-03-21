@@ -34,6 +34,9 @@ if (count($errors) > 0) {
 
 $character_details = new CharacterDetails();
 $character_details->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+if (count($errors) > 0) {
+	die(json_encode($errors));
+}
 
 $attribute_metadata = new AttributeMetadata($character_details);
 
@@ -239,6 +242,9 @@ function populateCantripsForPlayerCharacterClass($pdo, $player_character_class_i
 function getCharacterSpellInfo(\PDO $pdo, $input, &$errors, &$log) {
 	$character_spell_info = new CharacterSpellInfo($input[PLAYER_NAME], $input[CHARACTER_NAME], $input[CHARACTER_CLASS_NAME], $input['spell_type_id_1'], $input['spell_type_id_2']);
 	$character_spell_info->init($pdo, $errors, $log);
+	if (count($errors) > 0) {
+		die(json_encode($errors));
+	}
 
 	return $character_spell_info;
 }

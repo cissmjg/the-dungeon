@@ -46,7 +46,7 @@ class CharacterDetails implements JsonSerializable
 		$i = 0;
 		$character_stats = $this->getCharacterDetails($pdo, $player_name, $character_name, $errors);
 		if (count($errors) > 0) {
-			return;
+			die(json_encode($errors));
 		}
         foreach ($character_stats AS $character_stats_class) {                    
             if ($i == 0) {
@@ -57,7 +57,7 @@ class CharacterDetails implements JsonSerializable
 			$spell_classes = [];
 			$spell_casting_classes = $this->getSpellClassesForCharacterClass($pdo, $player_name, $character_name, $character_stats_class['player_character_class_name'], $errors);
 			if (count($errors) > 0) {
-				return;
+				die(json_encode($errors));
 			}
 
 			if ($spell_casting_classes['spellClass1'] != null) {

@@ -47,7 +47,7 @@ $spell_duration = $input[SPELL_DURATION];
 $spell_casting_time = $input[SPELL_CASTING_TIME];
 
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $player_name, $character_name);
+$character_summary->init($pdo, $player_name, $character_name, $errors);
 
 $character_class_id = getCharacterClassId($character_summary->getCharacterClasses());
 

@@ -19,9 +19,13 @@ class CharacterSummary implements JsonSerializable
 	private $character_classes = [];
 	private $spell_classes = [];
 	
-	public function init(\PDO $pdo, $player_name, $character_name) {
+	public function init(\PDO $pdo, $player_name, $character_name, &$errors) {
 		
-		$character_stats = $this->getCharacterSummary($pdo, $player_name, $character_name);
+		$character_stats = $this->getCharacterSummary($pdo, $player_name, $character_name, $errors);
+		if (count($errors) > 0) {
+			die(json_encode($errors));
+		}
+
 		$this->strength = $character_stats['strength'];
 		$this->super_strength = $character_stats['super_strength'];
 		$this->intelligence = $character_stats['intelligence'];
@@ -37,10 +41,18 @@ class CharacterSummary implements JsonSerializable
 		$this->hit_points = $character_stats['hit_points'];
 		$this->spell_points = $character_stats['spell_points'];
 
-		$this->character_classes = $this->populateCharacterClasses($pdo, $player_name, $character_name);
+		$this->character_classes = $this->populateCharacterClasses($pdo, $player_name, $character_name, $errors);
+		if (count($errors) > 0) {
+			die(json_encode($errors));
+		}
+
 		for($i = 0; $i < count($this->character_classes); $i++) {
 			$character_class = $this->character_classes[$i];
-			$spell_casting_classes = $this->getSpellClassesForCharacterClass($pdo, $player_name, $character_name, $character_class['class_name']);
+			$spell_casting_classes = $this->getSpellClassesForCharacterClass($pdo, $player_name, $character_name, $character_class['class_name'], $errors);
+			if (count($errors) > 0) {
+				die(json_encode($errors));
+			}
+
 			if ($spell_casting_classes['spellClass1'] != null) {
 				$this->spell_classes[] = $spell_casting_classes['spellClass1'];
 			}
@@ -51,36 +63,48 @@ class CharacterSummary implements JsonSerializable
 		}
 	}
 	
-	private function getCharacterSummary(\PDO $pdo, $player_name, $character_name) {
+	private function getCharacterSummary(\PDO $pdo, $player_name, $character_name, &$errors) {
 		$sql_exec = "CALL getCharacterSummary(:playerName, :characterName)";
 
 		$statement = $pdo->prepare($sql_exec);
 		$statement->bindParam(':playerName', $player_name, PDO::PARAM_STR);
 		$statement->bindParam(':characterName', $character_name, PDO::PARAM_STR);
-		$statement->execute();
+		try {
+			$statement->execute();
+        } catch(Exception $e) {
+            $errors[] = "Exception in CharacterSummary.getCharacterSummary : " . $e->getMessage();
+        }    
 
 		return $statement->fetch(PDO::FETCH_ASSOC);
 	}
 		
-	private function populateCharacterClasses(\PDO $pdo, $player_name, $character_name) {
+	private function populateCharacterClasses(\PDO $pdo, $player_name, $character_name, &$errors) {
 		$sql_exec = "CALL getCharacterClasses(:playerName, :characterName)";
 
 		$statement = $pdo->prepare($sql_exec);
 		$statement->bindParam(':playerName', $player_name, PDO::PARAM_STR);
 		$statement->bindParam(':characterName', $character_name, PDO::PARAM_STR);
-		$statement->execute();
+		try {
+			$statement->execute();
+        } catch(Exception $e) {
+            $errors[] = "Exception in CharacterSummary.populateCharacterClasses : " . $e->getMessage();
+        }    
 
 		return $statement->fetchAll(PDO::FETCH_ASSOC);
 	}
 
-	private function getSpellClassesForCharacterClass(\PDO $pdo, $player_name, $character_name, $character_class_name) {
+	private function getSpellClassesForCharacterClass(\PDO $pdo, $player_name, $character_name, $character_class_name, &$errors) {
 		$sql_exec = "CALL getSpellClassesForCharacterClass(:playerName, :characterName, :characterClassName)";
 
 		$statement = $pdo->prepare($sql_exec);
 		$statement->bindParam(':playerName', $player_name, PDO::PARAM_STR);
 		$statement->bindParam(':characterName', $character_name, PDO::PARAM_STR);
 		$statement->bindParam(':characterClassName', $character_class_name, PDO::PARAM_STR);
-		$statement->execute();
+		try {
+			$statement->execute();
+        } catch(Exception $e) {
+            $errors[] = "Exception in CharacterSummary.getSpellClassesForCharacterClass : " . $e->getMessage();
+        }    
 
 		return $statement->fetch(PDO::FETCH_ASSOC);
 	}

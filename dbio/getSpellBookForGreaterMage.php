@@ -22,7 +22,10 @@ getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
+$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+if (count($errors) > 0) {
+	die(json_encode($errors));
+}
 
 $all_spells_in_spellbook = getSpellBookForGreaterMage($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
 

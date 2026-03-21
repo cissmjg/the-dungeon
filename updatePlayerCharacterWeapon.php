@@ -93,7 +93,7 @@ if(!empty($errors)) {
 }
 
 $character_summary = new CharacterSummary();
-$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
+$character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
 
 $character_summary_renderer = new CharacterSummaryRenderer($input[CHARACTER_NAME]);
 $character_summary_stats = $character_summary_renderer->render($character_summary);

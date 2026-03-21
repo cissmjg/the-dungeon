@@ -6,6 +6,10 @@
 
         public function init(\PDO $pdo, $player_name, $character_name, &$errors) {
             $weapon_talents = $this->initWeaponTalents($pdo, $player_name, $character_name, $errors);
+            if (count($errors) > 0) {
+                die(json_encode($errors));
+            }
+            
             foreach($weapon_talents AS $weapon_talent) {
                 $character_weapon_talent = new CharacterWeaponTalent();
                 $character_weapon_talent->init($weapon_talent);

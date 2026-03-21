@@ -51,7 +51,7 @@
         }
 
         protected function renderExistingSkillFields(\PlayerCharacterSkill $skill_instance, \CharacterDetails $character_details) {
-            $offhand_description = getWeaponDescription($skill_instance->getWeapon2ProficiencyId());
+            $offhand_description = getWeaponDescriptionFromProficiencyId($skill_instance->getWeapon2ProficiencyId());
             return $skill_instance->getPlayerCharacterSkillName() . ' - 1st: ' . $this->weapon_detail->getWeaponName() . ' / 2nd: ' . $offhand_description;
         }
 
