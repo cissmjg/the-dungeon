@@ -480,6 +480,7 @@ class AttributeMetadata {
             $locale = 'en_US';
             $nf = new NumberFormatter($locale, NumberFormatter::ORDINAL);
 
+            $spell_bonus = '';
             for($i = 1; $i <= 4; $i++) {
                 $bonus_spell_number = $this->calculateWisdomBonus($i);
                 if ($bonus_spell_number == 0) {

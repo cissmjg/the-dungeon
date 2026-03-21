@@ -1,7 +1,7 @@
 # Exclude dbconfig.php
 dbio/dbconfig.php
 
-# Exclude the portraits/icoms
+# Exclude the portraits/icons
 portraits/*
 icons/*
 

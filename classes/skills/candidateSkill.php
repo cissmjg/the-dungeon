@@ -29,17 +29,18 @@
         abstract protected function getSkillId();
 
         // Debug variables
-        private $charisma_satisfied;
-        private $dexterity_satisfied;
-        private $intelligence_satisfied;
-        private $race_satisfied;
-        private $class_and_level_satisfied;
-        private $skill_count_satisfied;
-        private $skill_prereq_satisfied;
-        private $qualified;
-        private $count_skill_instances = -1;
+        protected $charisma_satisfied;
+        protected $dexterity_satisfied;
+        protected $intelligence_satisfied;
+        protected $race_satisfied;
+        protected $class_and_level_satisfied;
+        protected $skill_count_satisfied;
+        protected $skill_prereq_satisfied;
+        protected $qualified;
+        protected $count_skill_instances = -1;
 
-        // REMOVE
+        private $log = [];
+
         private $player_character_skill_set;
 
         public function __construct(\SkillCatalog $skill_catalog, \FormIdLookup $formIdLookup) {
@@ -49,7 +50,7 @@
             $this->formIdLookup = $formIdLookup;
         }
         
-        private function isCharacterQualified(\CharacterDetails $character_details, \PlayerCharacterSkillSet $player_character_skill_set) {
+        protected function isCharacterQualified(\CharacterDetails $character_details, \PlayerCharacterSkillSet $player_character_skill_set) {
             $this->player_character_skill_set = $player_character_skill_set;
             $base_attributes_satisfied = $this->baseAttributesQualified($character_details, $player_character_skill_set, $this->skill);
             $prerequisite_skills_satisfied = $this->prerequisiteSkillsSatisfied($player_character_skill_set, $this->skill);
@@ -111,14 +112,14 @@
             return $this->skill_count_satisfied && $this->skill_prereq_satisfied;
         }
         
-        private function skillCountSatisfied(\PlayerCharacterSkillSet $player_character_skill_set, \SkillDetail $skill_detail) {
+        protected function skillCountSatisfied(\PlayerCharacterSkillSet $player_character_skill_set, \SkillDetail $skill_detail) {
             $max_count_satisfied = true;
             if($skill_detail->getMaxCount() != -1) {
                 
                 $skill_count = 0;
-                $player_character_skill_detail = $player_character_skill_set->getSkill($skill_detail->getSkillId());
+                $player_character_skill_detail = $player_character_skill_set->getAllSkillInstances($skill_detail->getSkillId());
                 if (!empty($player_character_skill_detail)) {
-                    $skill_count = $player_character_skill_detail->getPlayerCharacterSkillCount();
+                    $skill_count = count($player_character_skill_detail);
                 }
 
                 $max_count_satisfied = ($skill_count < $skill_detail->getMaxCount());
@@ -127,7 +128,7 @@
             return $max_count_satisfied;
         }
         
-        private function isSubset(array $subset, array $superset): bool {
+        protected function isSubset(array $subset, array $superset): bool {
             // array_diff returns elements in $subset not found in $superset
             return empty(array_diff($subset, $superset));
         }
@@ -135,7 +136,8 @@
         public function render(\CharacterDetails $character_details, \PlayerCharacterSkillSet $player_character_skill_set) {
             $this->qualified = $this->isCharacterQualified($character_details, $player_character_skill_set);
             $skill_id = $this->getSkillId();
-            $all_skill_instances = $player_character_skill_set->getAllSkillInstances($skill_id);
+            $all_skill_instances = $player_character_skill_set->getAllSkillInstancesForWeapon($skill_id, $this->getWeaponProficiencyValue());
+
             $this->count_skill_instances = count($all_skill_instances);
 
             if (!$this->qualified && $this->count_skill_instances == 0) {
@@ -160,34 +162,40 @@
             return $output_html;
         }
 
-        private function renderExistingSkillInstances(\CharacterDetails $character_details, $all_skill_instances) {
+        protected function renderExistingSkillInstances(\CharacterDetails $character_details, $all_skill_instances) {
             $output_html = '';
             if (!empty($all_skill_instances)) {
-                $output_html .= '    <div>';
+                $output_html .= '    <div>' . PHP_EOL;
                 foreach($all_skill_instances AS $skill_instance) {
-                    $output_html .= $this->formatExistingSkillInstance($skill_instance);
+                    if($skill_instance->getWeaponProficiencyId() == $this->getWeaponProficiencyValue()) {
+                        $output_html .= $this->formatExistingSkillInstance($skill_instance, $character_details);
+                    }
                 }
-                $output_html .= '</div>' . PHP_EOL;
+                $output_html .= '    </div>' . PHP_EOL;
             }
 
             return $output_html;
         }
 
-        private function formatExistingSkillInstance(\PlayerCharacterSkill $skill_instance) {
+        protected function formatExistingSkillInstance(\PlayerCharacterSkill $skill_instance, \CharacterDetails $character_details) {
             $skill_name =  str_replace("'", "", html_entity_decode($skill_instance->getPlayerCharacterSkillName()));
             $form_id = $this->formIdLookup->getDeleteFormId();
             $talent_id = $this->formIdLookup->getDeleteWeaponTalentId();
             $player_character_talent_id = $skill_instance->getPlayerCharacterSkillId();
 
-            $output_html  = '    <div>';
+            $output_html  = '    <div style="padding-top: 5px;">';
             $output_html .= $this->buildDeletePlayerCharacterWeaponTalentIcon($form_id, $talent_id, $player_character_talent_id, $skill_name);
-            $output_html .= $skill_instance->getPlayerCharacterSkillName();
+            $output_html .= $this->renderExistingSkillFields($skill_instance, $character_details);
             $output_html .= '</div>' . PHP_EOL;
 
             return $output_html;
         }
 
-        private function buildDeletePlayerCharacterWeaponTalentIcon($delete_form_id, $delete_talent_id, $player_character_weapon_talent_id, $weapon_talent_desc) {
+        protected function renderExistingSkillFields(\PlayerCharacterSkill $skill_instance, \CharacterDetails $character_details) {
+            return $skill_instance->getPlayerCharacterSkillName();
+        }
+
+        protected function buildDeletePlayerCharacterWeaponTalentIcon($delete_form_id, $delete_talent_id, $player_character_weapon_talent_id, $weapon_talent_desc) {
             $delete_icon = new FaDeleteIcon();
             $delete_icon->setOnClickJsFunction('confirmPlayerCharacterWeaponTalentDelete');
             $delete_icon->addOnclickJsParameter($delete_form_id);
@@ -201,35 +209,32 @@
             return $delete_icon->build();
         }
 
-        private function renderNewSkillInstance(\CharacterDetails $character_details, \PlayerCharacterSkillSet $player_character_skill_set) {
+        protected function renderNewSkillInstance(\CharacterDetails $character_details, \PlayerCharacterSkillSet $player_character_skill_set) {
             $skill_name = $this->skill->getSkillName();
             $form_id = $this->formIdLookup->getAddFormId();
             $skill_catalog_element_id = $this->formIdLookup->getAddSkillCatalogElementId();
             $skill_catalog_value = $this->getSkillId();
-            $weapon_proficiency_id = $this->formIdLookup->getAddWeaponProficiencyElementId();
-            $weapon2_proficiency_id = $this->formIdLookup->getAddWeapon2ProficiencyElementId();
-
-            $weapon_proficiency_value = $this->add_weapon_proficiency_value;
-            $weapon2_proficiency_value = $this->add_weapon2_proficiency_value;
+            $weapon2_element_id = $this->formIdLookup->getAddWeapon2ProficiencyElementId();
 
             $output_html = '';
             $output_html  = '    <div>';
-            $output_html .= $this->buildAddPlayerCharacterWeaponTalentIcon($form_id, $skill_catalog_element_id, $skill_catalog_value, $weapon_proficiency_id, $weapon_proficiency_value, $weapon2_proficiency_id, $weapon2_proficiency_value);
-            $output_html .= $skill_name;
+            $output_html .= $this->buildAddPlayerCharacterWeaponTalentIcon($form_id, $skill_catalog_element_id, $skill_catalog_value, $weapon2_element_id);
+            $output_html .= $this->renderNewSkillFields($skill_name, $character_details);
             $output_html .= '</div>' . PHP_EOL;
             return $output_html;
         }
 
-        private function buildAddPlayerCharacterWeaponTalentIcon($add_form_id, $skill_catalog_element_id, $skill_catalog_value, $weapon_talent_element_id, $weapon_talent_element_value, $weapon2_talent_element_id, $weapon2_talent_element_value) {
+        protected function renderNewSkillFields($skill_name, \CharacterDetails $character_details) {
+            return $skill_name;
+        }
+
+        protected function buildAddPlayerCharacterWeaponTalentIcon($add_form_id, $skill_catalog_element_id, $skill_catalog_value, $weapon2_element_id) {
             $new_icon = new FaNewIcon();
             $new_icon->setOnClickJsFunction('submitAddWeaponTalentForm');
             $new_icon->addOnclickJsParameter($add_form_id);
             $new_icon->addOnclickJsParameter($skill_catalog_element_id);
             $new_icon->addOnclickJsParameter($skill_catalog_value);
-            $new_icon->addOnclickJsParameter($weapon_talent_element_id);
-            $new_icon->addOnclickJsParameter($weapon_talent_element_value);
-            $new_icon->addOnclickJsParameter($weapon2_talent_element_id);
-            $new_icon->addOnclickJsParameter($weapon2_talent_element_value);
+            $new_icon->addOnclickJsParameter($weapon2_element_id);
             $new_icon->addStyle("padding-right: 10px;");
             $new_icon->addStyle("padding-left: 5px;");
 
@@ -237,7 +242,14 @@
         }
 
         public function dump() {
-            $output  = PHP_EOL . '- ' . $this->skill->getSkillName() . ' -' . PHP_EOL;
+            $bar  = '';
+            for ($i = 0; $i < strlen($this->skill->getSkillName()) + 4; $i++) {
+                $bar .= '-';
+            }
+
+            $output  = PHP_EOL . $bar . PHP_EOL;
+            $output .= '- ' . $this->skill->getSkillName() . ' -' . PHP_EOL;
+            $output .= $bar . PHP_EOL;
             $output .= 'Qualified : ' . var_export($this->qualified, true) . PHP_EOL;
             $output .= 'Charisma satisfied : ' . var_export($this->charisma_satisfied, true) . PHP_EOL;
             $output .= 'Dexterity satisfied : ' . var_export($this->dexterity_satisfied, true) . PHP_EOL;
@@ -249,6 +261,13 @@
             $output .= '    Skill Prereq IDs : ' . var_export($this->skill->getPrerequisiteSKillIds(), true) . PHP_EOL;
             $output .= '    Character Skills : ' . var_export($this->player_character_skill_set->getPlayerCharacterSkillIds(), true) . PHP_EOL;
             $output .= 'Skill instance count : ' . $this->count_skill_instances . PHP_EOL;
+            if (count($this->log) > 0) {
+                $output .= '- Log [START] -' . PHP_EOL;
+                foreach($this->log AS $log_entry) {
+                    $output .= $log_entry . PHP_EOL;
+                }
+                $output .= '- Log [ END ] -' . PHP_EOL;
+            }
 
             return $output;
         }
