@@ -1,4 +1,5 @@
 import { addParameter, buildDbioDirURL } from './RestHelper.js';
+import { submitAddSkillForm, confirmPlayerCharacterSkillDelete } from './candidateSkill.js';
 
 const initialWeaponSelectPrompt = "[Select a Weapon]";
 
@@ -52,3 +53,6 @@ export function confirmPlayerCharacterWeaponProficiencyDelete(formId, playerChar
 window.populateWeaponList = populateWeaponList;
 window.weaponListChanged = weaponListChanged;
 window.confirmPlayerCharacterWeaponProficiencyDelete = confirmPlayerCharacterWeaponProficiencyDelete;
+
+window.submitAddSkillForm = submitAddSkillForm;
+window.confirmPlayerCharacterSkillDelete = confirmPlayerCharacterSkillDelete;

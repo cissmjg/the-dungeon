@@ -1,10 +1,10 @@
 <?php
     require_once __DIR__ . '/../../dbio/constants/skills.php';
-    require_once __DIR__ . '/candidateSkill.php';
+    require_once 'candidateWeaponSkill.php';
     require_once __DIR__ . '/../../dbio/constants/weaponType.php';
     require_once __DIR__ . '/../../dbio/constants/weaponSubtype.php';
 
-    class WeaponDoubleSpecialization extends CandidateSkill {
+    class WeaponDoubleSpecialization extends CandidateWeaponSkill {
         protected function getSkillId() {
             return DOUBLE_SPECIALIZATION;
         }

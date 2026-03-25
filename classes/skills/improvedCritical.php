@@ -1,9 +1,9 @@
 <?php
     require_once __DIR__ . '/../../dbio/constants/skills.php';
     require_once __DIR__ . '/../../dbio/constants/weaponType.php';
-    require_once __DIR__ . '/candidateSkill.php';
+    require_once 'candidateWeaponSkill.php';
 
-    class ImprovedCritical extends CandidateSkill {
+    class ImprovedCritical extends CandidateWeaponSkill {
         protected function getSkillId() {
             return IMPROVED_CRITICAL;
         }
