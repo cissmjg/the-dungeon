@@ -1,3 +1,4 @@
+import { confirmPlayerCharacterSkillDelete } from './candidateSkill.js';
 
 export function submitAddWeaponTalentForm(form_id, skill_catalog_element_id, skill_catalog_value, weapon2_element_id) {
 
@@ -26,18 +27,6 @@ export function updateOffhandWeaponProficiencyId(weapon2ProficiencyId, oneHandWe
     jqWeapon2ProficiencyElement.val(jqOneHandWeaponList.val());
 }
 
-export function confirmPlayerCharacterWeaponTalentDelete(formId, playerCharacterWeaponTalentId, playerCharacterWeaponTalentIdValue, weaponTalentDescription) {
-    if (confirm("Are you sure you want to delete the weapon proficiency for '" + weaponTalentDescription + "'") == false) {
-        return false;
-    }
-
-    const jqPlayerCharacterWeaponTalentId = '#' + playerCharacterWeaponTalentId;
-    const jqFormId = '#' + formId;
-
-    $(jqPlayerCharacterWeaponTalentId).val(playerCharacterWeaponTalentIdValue);
-    $(jqFormId).submit();
-}
-
-window.confirmPlayerCharacterWeaponTalentDelete = confirmPlayerCharacterWeaponTalentDelete;
+window.confirmPlayerCharacterSkillDelete = confirmPlayerCharacterSkillDelete;
 window.submitAddWeaponTalentForm = submitAddWeaponTalentForm;
 window.updateOffhandWeaponProficiencyId = updateOffhandWeaponProficiencyId;

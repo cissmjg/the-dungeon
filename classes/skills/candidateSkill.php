@@ -7,24 +7,6 @@
     abstract class CandidateSkill {
         protected $skill;
         protected $formIdLookup;
-
-        protected $add_weapon_proficiency_value;
-        public function getWeaponProficiencyValue() {
-            return $this->add_weapon_proficiency_value;
-        }
-
-        public function setWeaponProficiencyValue($weapon_proficiency_value) {
-            $this->add_weapon_proficiency_value = $weapon_proficiency_value;
-        }
-
-        protected $add_weapon2_proficiency_value;
-        public function getWeapon2ProficiencyValue() {
-            return $this->add_weapon2_proficiency_value;
-        }
-
-        public function setWeapon2ProficiencyValue($weapon_proficiency_value) {
-            $this->add_weapon2_proficiency_value = $weapon_proficiency_value;
-        }
         
         abstract protected function getSkillId();
 
@@ -136,7 +118,7 @@
         public function render(\CharacterDetails $character_details, \PlayerCharacterSkillSet $player_character_skill_set) {
             $this->qualified = $this->isCharacterQualified($character_details, $player_character_skill_set);
             $skill_id = $this->getSkillId();
-            $all_skill_instances = $player_character_skill_set->getAllSkillInstancesForWeapon($skill_id, $this->getWeaponProficiencyValue());
+            $all_skill_instances = $player_character_skill_set->getAllSkillInstances($skill_id);
 
             $this->count_skill_instances = count($all_skill_instances);
 
@@ -167,9 +149,7 @@
             if (!empty($all_skill_instances)) {
                 $output_html .= '    <div>' . PHP_EOL;
                 foreach($all_skill_instances AS $skill_instance) {
-                    if($skill_instance->getWeaponProficiencyId() == $this->getWeaponProficiencyValue()) {
-                        $output_html .= $this->formatExistingSkillInstance($skill_instance, $character_details);
-                    }
+                    $output_html .= $this->formatExistingSkillInstance($skill_instance, $character_details);
                 }
                 $output_html .= '    </div>' . PHP_EOL;
             }
@@ -180,11 +160,11 @@
         protected function formatExistingSkillInstance(\PlayerCharacterSkill $skill_instance, \CharacterDetails $character_details) {
             $skill_name =  str_replace("'", "", html_entity_decode($skill_instance->getPlayerCharacterSkillName()));
             $form_id = $this->formIdLookup->getDeleteFormId();
-            $talent_id = $this->formIdLookup->getDeleteWeaponTalentId();
+            $talent_id = $this->formIdLookup->getDeleteSkillElementId();
             $player_character_talent_id = $skill_instance->getPlayerCharacterSkillId();
 
             $output_html  = '    <div style="padding-top: 5px;">';
-            $output_html .= $this->buildDeletePlayerCharacterWeaponTalentIcon($form_id, $talent_id, $player_character_talent_id, $skill_name);
+            $output_html .= $this->buildDeletePlayerCharacterSkillIcon($form_id, $talent_id, $player_character_talent_id, $skill_name);
             $output_html .= $this->renderExistingSkillFields($skill_instance, $character_details);
             $output_html .= '</div>' . PHP_EOL;
 
@@ -195,16 +175,16 @@
             return $skill_instance->getPlayerCharacterSkillName();
         }
 
-        protected function buildDeletePlayerCharacterWeaponTalentIcon($delete_form_id, $delete_talent_id, $player_character_weapon_talent_id, $weapon_talent_desc) {
+        protected function buildDeletePlayerCharacterSkillIcon($delete_form_id, $delete_skill_element_id, $delete_skill_element_value_id, $skill_desc) {
             $delete_icon = new FaDeleteIcon();
-            $delete_icon->setOnClickJsFunction('confirmPlayerCharacterWeaponTalentDelete');
+            $delete_icon->setOnClickJsFunction('confirmPlayerCharacterSkillDelete');
             $delete_icon->addOnclickJsParameter($delete_form_id);
-            $delete_icon->addOnclickJsParameter($delete_talent_id);
-            $delete_icon->addOnclickJsParameter($player_character_weapon_talent_id);
-            $delete_icon->addOnclickJsParameter($weapon_talent_desc);
+            $delete_icon->addOnclickJsParameter($delete_skill_element_id);
+            $delete_icon->addOnclickJsParameter($delete_skill_element_value_id);
+            $delete_icon->addOnclickJsParameter($skill_desc);
             $delete_icon->addStyle("padding-right: 10px;");
             $delete_icon->addStyle("padding-left: 5px;");
-            $delete_icon->setHoverText('Delete ' . $weapon_talent_desc);
+            $delete_icon->setHoverText('Delete ' . $skill_desc);
 
             return $delete_icon->build();
         }
@@ -214,11 +194,10 @@
             $form_id = $this->formIdLookup->getAddFormId();
             $skill_catalog_element_id = $this->formIdLookup->getAddSkillCatalogElementId();
             $skill_catalog_value = $this->getSkillId();
-            $weapon2_element_id = $this->formIdLookup->getAddWeapon2ProficiencyElementId();
 
             $output_html = '';
             $output_html  = '    <div>';
-            $output_html .= $this->buildAddPlayerCharacterWeaponTalentIcon($form_id, $skill_catalog_element_id, $skill_catalog_value, $weapon2_element_id);
+            $output_html .= $this->buildAddPlayerCharacterSkillIcon($form_id, $skill_catalog_element_id, $skill_catalog_value);
             $output_html .= $this->renderNewSkillFields($skill_name, $character_details);
             $output_html .= '</div>' . PHP_EOL;
             return $output_html;
@@ -228,13 +207,12 @@
             return $skill_name;
         }
 
-        protected function buildAddPlayerCharacterWeaponTalentIcon($add_form_id, $skill_catalog_element_id, $skill_catalog_value, $weapon2_element_id) {
+        protected function buildAddPlayerCharacterSkillIcon($add_form_id, $skill_catalog_element_id, $skill_catalog_value) {
             $new_icon = new FaNewIcon();
-            $new_icon->setOnClickJsFunction('submitAddWeaponTalentForm');
+            $new_icon->setOnClickJsFunction('submitAddSkillForm');
             $new_icon->addOnclickJsParameter($add_form_id);
             $new_icon->addOnclickJsParameter($skill_catalog_element_id);
             $new_icon->addOnclickJsParameter($skill_catalog_value);
-            $new_icon->addOnclickJsParameter($weapon2_element_id);
             $new_icon->addStyle("padding-right: 10px;");
             $new_icon->addStyle("padding-left: 5px;");
 

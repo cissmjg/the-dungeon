@@ -4,9 +4,9 @@
     require_once __DIR__ . '/../../dbio/constants/weaponType.php';
     require_once __DIR__ . '/../../dbio/constants/weapons.php';
     require_once __DIR__ . '/../../webio/weapon2ProficiencyId.php';
-    require_once __DIR__ . '/candidateSkill.php';
+    require_once 'candidateWeaponSkill.php';
 
-    class TwoWeaponFighting extends CandidateSkill {
+    class TwoWeaponFighting extends CandidateWeaponSkill {
         protected function getSkillId() {
             return TWO_WEAPON_FIGHTING;
         }

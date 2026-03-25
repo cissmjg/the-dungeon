@@ -17,17 +17,35 @@ require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 require_once __DIR__ . '/helper/ActionBarHelper.php';
 require_once __DIR__ . '/webio/characterAction.php';
+require_once __DIR__ . '/webio/skillCatalogId.php';
+require_once __DIR__ . '/webio/isSkillFocus.php';
 require_once __DIR__ . '/webio/weaponProficiencyId.php';
+require_once __DIR__ . '/webio/weapon2ProficiencyId.php';
 
 require_once __DIR__ . '/fa/faDeleteIcon.php';
+
+require_once __DIR__ . '/classes/skillCatalog.php';
+require_once __DIR__ . '/classes/playerCharacterSkillSet.php';
+require_once __DIR__ . '/classes/characterDetails.php';
 
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/playerCharacterWeaponSkillId.php';
+require_once __DIR__ . '/webio/playerCharacterSkillId.php';
+
+require_once __DIR__ . '/classes/skills/brutalThrow.php';
+require_once __DIR__ . '/classes/skills/powerAttack.php';
+require_once __DIR__ . '/classes/skills/powerThrow.php';
+require_once __DIR__ . '/classes/skills/weaponFinesse.php';
+require_once __DIR__ . '/classes/skills/zenArchery.php';
 
 // Populate player and character names in $input
 getPlayerName($errors, $input);
 getCharacterName($errors, $input);
+
+// Debug section
+$debug_output = '';
+$debug_skills = true;
 
 $character_summary = new CharacterSummary();
 $character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
@@ -39,7 +57,33 @@ $action_bar = ActionBarHelper::buildActionBar($input[PLAYER_NAME], $input[CHARAC
 
 $weapon_proficiency_list = getWeaponProficienciesForPlayerCharacter($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
 
-$form_id = 'deleteWeaponProficiency';
+$delete_weapon_proficiency_form_id = 'deleteWeaponProficiency';
+
+$delete_attribute_weapon_skill_form_id = 'deleteAttributeWeaponSkill';
+$delete_attribute_weapon_skill_id = $delete_attribute_weapon_skill_form_id . '-' . SKILL_CATALOG_ID;
+
+$add_attribute_weapon_skill_form_id = 'addAttributeWeaponSkill';
+$add_attribute_weapon_skill_element_id = $add_attribute_weapon_skill_form_id . '-' . SKILL_CATALOG_ID;
+
+$form_id_lookup = new FormIdLookup($delete_attribute_weapon_skill_form_id, $delete_attribute_weapon_skill_id, $add_attribute_weapon_skill_form_id, $add_attribute_weapon_skill_element_id, WEAPON_PROFICIENCY_ID, WEAPON2_PROFICIENCY_ID);
+
+$the_skill_catalog = new SkillCatalog();
+$the_skill_catalog->init($pdo, $errors);
+if (count($errors) > 0) {
+    die(json_encode($errors));
+}
+
+$player_character_skill_set = new PlayerCharacterSkillSet();
+$player_character_skill_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+if (count($errors) > 0) {
+    die(json_encode($errors));
+}
+
+$character_details = new CharacterDetails();
+$character_details->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+if (count($errors) > 0) {
+    die(json_encode($errors));
+}
 
 $page_title = $input[CHARACTER_NAME] . ' Weapon Proficiencies';
 $site_css_file = 'dnd-default.css';
@@ -52,11 +96,28 @@ echo $html_header;
 
 ?>
 <body>
-    <form name="<?= $form_id ?>" id="<?= $form_id ?>" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl() ?>">
+    <form name="<?= $delete_weapon_proficiency_form_id ?>" id="<?= $delete_weapon_proficiency_form_id ?>" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl() ?>">
         <input type="hidden" name="<?= CHARACTER_ACTION ?>" value="<?= CHARACTER_ACTION_DELETE_PLAYER_CHARACTER_WEAPON_PROFICIENCY ?>">
         <input type="hidden" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
         <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
         <input type="hidden" name="<?= PLAYER_CHARACTER_WEAPON_SKILL_ID ?>" id="<?= PLAYER_CHARACTER_WEAPON_SKILL_ID ?>" value="">
+    </form>
+    <form name="<?= $delete_attribute_weapon_skill_form_id ?>" id="<?= $delete_attribute_weapon_skill_form_id ?>" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl() ?>">
+        <input type="hidden" name="<?= CHARACTER_ACTION ?>" value="<?= CHARACTER_ACTION_DELETE_ATTRIBUTE_WEAPON_SKILL ?>">
+        <input type="hidden" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
+        <input type="hidden" name="<?= PLAYER_CHARACTER_WEAPON_SKILL_ID ?>" id="<?= PLAYER_CHARACTER_WEAPON_SKILL_ID ?>" value="">
+        <input type="hidden" name="<?= PLAYER_CHARACTER_SKILL_ID ?>" id="<?= $delete_attribute_weapon_skill_id ?>" value="">
+    </form>
+    <form name="<?= $add_attribute_weapon_skill_form_id ?>" id="<?= $add_attribute_weapon_skill_form_id ?>" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl() ?>">
+        <input type="hidden" name="<?= CHARACTER_ACTION ?>" value="<?= CHARACTER_ACTION_ADD_ATTRIBUTE_WEAPON_SKILL ?>">
+        <input type="hidden" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
+        <input type="hidden" name="<?= PLAYER_CHARACTER_WEAPON_SKILL_ID ?>" id="<?= PLAYER_CHARACTER_WEAPON_SKILL_ID ?>" value="">
+        <input type="hidden" name="<?= SKILL_CATALOG_ID ?>" id="<?= $add_attribute_weapon_skill_element_id ?>" value="">
+        <input type="hidden" name="<?= IS_SKILL_FOCUS ?>" id="<?= IS_SKILL_FOCUS ?>" value="No">
+        <input type="hidden" name="<?= WEAPON_PROFICIENCY_ID ?>" id="<?= WEAPON_PROFICIENCY_ID ?>" value="">
+        <input type="hidden" name="<?= WEAPON2_PROFICIENCY_ID ?>" id="<?= WEAPON2_PROFICIENCY_ID ?>" value="">
     </form>
     <div style="width: 100%; margin-bottom: 3px;"><span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span></div>
     <div class="togglePanel">
@@ -89,18 +150,51 @@ echo $html_header;
                 foreach($weapon_proficiency_list AS $weapon_proficiency) {
                     $weapon_desc = str_replace("'", "", html_entity_decode($weapon_proficiency['weapon_proficiency_description']));
                     $output_row  = '<tr>';
-                    $output_row .= '<td>' . buildDeletePlayerCharacterWeaponProficiencyIcon($form_id, $weapon_desc, $weapon_proficiency['player_weapon_proficiency_id']) . '</td>';
+                    $output_row .= '<td>' . buildDeletePlayerCharacterWeaponProficiencyIcon($delete_weapon_proficiency_form_id, $weapon_desc, $weapon_proficiency['player_weapon_proficiency_id']) . '</td>';
                     $output_row .= '<td>' . buildWeaponNameCell($input[PLAYER_NAME], $input[CHARACTER_NAME], $weapon_proficiency) . '</td>';
                     $output_row .= '</tr>' . PHP_EOL;
                     echo $output_row;
                 }
-                //player_weapon_proficiency_id
-                //weapon_proficiency_description
-                //weapon_proficiency_id
             ?>
         </table>
     <?php endif ?>
-<div>
+<div>&nbsp;</div>
+    <h3>Attribute-based weapon talents</h3>
+    <?php
+    $brutal_throw = new BrutalThrow($the_skill_catalog, $form_id_lookup);
+    echo $brutal_throw->render($character_details, $player_character_skill_set);
+
+    $power_attack = new PowerAttack($the_skill_catalog, $form_id_lookup);
+    echo $power_attack->render($character_details, $player_character_skill_set);
+
+    $power_throw = new PowerThrow($the_skill_catalog, $form_id_lookup);
+    echo $power_throw->render($character_details, $player_character_skill_set);
+
+    $weapon_finesse = new WeaponFinesse($the_skill_catalog, $form_id_lookup);
+    echo $weapon_finesse->render($character_details, $player_character_skill_set);
+
+    $zen_archery = new ZenArchery($the_skill_catalog, $form_id_lookup);
+    echo $zen_archery->render($character_details, $player_character_skill_set);
+
+    if ($debug_skills) {
+        $debug_output .= $brutal_throw->dump();
+        $debug_output .= $power_attack->dump();
+        $debug_output .= $power_throw->dump();
+        $debug_output .= $weapon_finesse->dump();
+        $debug_output .= $zen_archery->dump();
+    }
+    ?>
+<?php if ($debug_skills): ?>
+<div>&nbsp;</div>
+<div class="togglePanel">
+    <a href="#"><span class="fa fa-plus" style="padding-right: 5px;"></span></a><span class="toggleHeader">Qualifications</span>
+    <div class="togglePanelContent tableHeader">
+    <pre>
+        <?= $debug_output ?>
+    </pre>
+    </div>
+</div>
+<?php endif ?>
 </body>
 </html>
 

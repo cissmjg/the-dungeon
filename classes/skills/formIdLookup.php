@@ -2,15 +2,15 @@
 
     class FormIdLookup  implements JsonSerializable {
         private $delete_form_id;
-        private $delete_weapon_talent_id;
+        private $delete_skill_element_id;
         private $add_form_id;
         private $add_skill_catalog_element_id;
         private $add_weapon_proficiency_element_id;
         private $add_weapon2_proficiency_element_id;
 
-        public function __construct($delete_form_id, $delete_weapon_talent_id, $add_form_id, $add_skill_catalog_element_id, $add_weapon_proficiency_element_id, $add_weapon2_proficiency_element_id) {
+        public function __construct($delete_form_id, $delete_skill_element_id, $add_form_id, $add_skill_catalog_element_id, $add_weapon_proficiency_element_id, $add_weapon2_proficiency_element_id) {
             $this->delete_form_id = $delete_form_id;
-            $this->delete_weapon_talent_id = $delete_weapon_talent_id;
+            $this->delete_skill_element_id = $delete_skill_element_id;
             $this->add_form_id = $add_form_id;
             $this->add_skill_catalog_element_id = $add_skill_catalog_element_id;
             $this->add_weapon_proficiency_element_id = $add_weapon_proficiency_element_id;
@@ -27,8 +27,8 @@
             return $this->delete_form_id;
         }
 
-        public function getDeleteWeaponTalentId() {
-            return $this->delete_weapon_talent_id;
+        public function getDeleteSkillElementId() {
+            return $this->delete_skill_element_id;
         }
 
         public function getAddFormId() {

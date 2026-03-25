@@ -1,6 +1,7 @@
 <?php
+    require_once 'candidateWeaponSkill.php';
 
-    class QuickDraw extends CandidateSkill {
+    class QuickDraw extends CandidateWeaponSkill {
         protected function getSkillId() {
             return QUICK_DRAW;
         }

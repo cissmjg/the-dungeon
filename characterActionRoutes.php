@@ -35,4 +35,6 @@
     const CHARACTER_ACTION_ADD_WEAPON_TALENT = 'addPlayerCharacterWeaponTalent';
     const CHARACTER_ACTION_EDIT_WEAPON_TALENTS = 'editWeaponTalents';
     const CHARACTER_ACTION_DELETE_WEAPON_TALENT = 'deletePlayerCharacterWeaponTalent';
+    const CHARACTER_ACTION_ADD_ATTRIBUTE_WEAPON_SKILL = 'addAttribiteWeaponSkill';
+    const CHARACTER_ACTION_DELETE_ATTRIBUTE_WEAPON_SKILL = 'deleteAttributeWeaponSkill';
 ?>
