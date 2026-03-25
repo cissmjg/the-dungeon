@@ -239,8 +239,11 @@ echo $html_header;
 					<td class="attributeValue"><?= $character_details->getHitDie() ?></td>
 				</tr>
 				<tr>
-					<td colspan=2 class="attributeLabel">Experience Points</td>
-					<td colspan="3" class="attributeLabel"><?= formatExperiencePoints($character_details) ?></td>
+					<td class="attributeLabel">Experience Points</td>
+					<td class="attributeValue"><?= formatExperiencePoints($character_details) ?></td>
+					<td width="15%" class="attributeValue"> &nbsp; </td>
+					<td class="attributeLabel">Non-Proficiency Penalty</td>
+					<td class="attributeValue"><?= $character_details->getNonProficienyPenalty() ?></td>
 				</tr>
 			</table>
 			<div>&nbsp;</div>

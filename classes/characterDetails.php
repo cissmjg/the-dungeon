@@ -4,6 +4,7 @@ require_once __DIR__ .  '/accountClassSummary.php';
 require_once __DIR__ . '/../dbio/constants/characterAttributes.php';
 require_once __DIR__ . '/../dbio/constants/characterRaces.php';
 require_once __DIR__ . '/../dbio/constants/characterClasses.php';
+require_once __DIR__ . '/../dbio/constants/nonProficientPenalty.php';
 
 class CharacterDetails implements JsonSerializable
 {
@@ -455,5 +456,17 @@ class CharacterDetails implements JsonSerializable
 
 	public function isHalfElf() {
 		return isHalfElf($this->getRace());
+	}
+
+	public function getNonProficienyPenalty() {
+		$character_non_proficiency_penalty = -10;
+		foreach($this->character_classes AS $character_class) {
+			$current_non_proficiency = getNonProficiencyPenalty($character_class->getClassId());
+			if($current_non_proficiency > $character_non_proficiency_penalty) {
+				$character_non_proficiency_penalty = $current_non_proficiency;
+			}
+		}
+
+		return $character_non_proficiency_penalty;
 	}
 }
