@@ -1,5 +1,6 @@
 <?php
     require_once 'playerCharacterSkill.php';
+    require_once __DIR__ . '/../dbio/constants/skills.php';
 
     class PlayerCharacterSkillSet implements JsonSerializable {
 
@@ -66,6 +67,10 @@
             }
 
             return $specific_skill_list;
+        }
+
+        public function isProficientWithWeapon($weapon_proficiency_id) {
+            return count($this->getAllSkillInstancesForWeapon(WEAPON_PROFICIENCY, $weapon_proficiency_id)) > 0;
         }
     }
 ?>

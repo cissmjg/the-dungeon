@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../dbio/constants/weaponType.php';
+require_once 'playerCharacterSkillSet.php';
 
 class PlayerCharacterWeapon implements JsonSerializable {
 
@@ -10,6 +11,7 @@ class PlayerCharacterWeapon implements JsonSerializable {
     private $weaponLocation;
     private $isReady;
     private $isPreferred;
+    private $isProficient = false;
     private $craftStatus;
     private $strengthBonusAvailable;
     private $playerNote1;
@@ -56,7 +58,7 @@ class PlayerCharacterWeapon implements JsonSerializable {
     private $missileMediumRange;
     private $missileLongRange;
 
-    public function init(\PDO $pdo, $player_character_weapon_id, &$errors) {
+    public function init(\PDO $pdo, $player_character_weapon_id, PlayerCharacterSkillSet $player_character_skill_set, &$errors) {
 
         $weapon_details = $this->getPlayerCharacterWeapon($pdo, $player_character_weapon_id, $errors);
         if(count($errors) > 0) {
@@ -64,77 +66,83 @@ class PlayerCharacterWeapon implements JsonSerializable {
         }
 
         foreach($weapon_details AS $weapon_detail) {
-            if ($weapon_detail['player_character_weapon_type'] == WEAPON_TYPE_MELEE) {
-                $this->meleeWeaponType              = $weapon_detail['player_character_weapon_type'];
-                $this->meleeWeaponSubtype           = $weapon_detail['player_character_weapon_subtype'];
-                $this->weaponId                     = $weapon_detail['player_character_weapon_id'];
-                $this->weaponProficiencyId          = $weapon_detail['player_character_weapon_proficiency_id'];
-                $this->craftStatus                  = $weapon_detail['player_character_weapon_craft_status'];
-                $this->weaponDescription            = $weapon_detail['player_character_weapon_description'];
-                $this->isPreferred                  = $weapon_detail['player_character_weapon_is_preferred'];
-                $this->isReady                      = $weapon_detail['player_character_weapon_is_ready'];
-                $this->weaponLocation               = $weapon_detail['player_character_weapon_location'];
-                $this->playerNote1                  = $weapon_detail['player_character_weapon_player_note1'];
-                $this->playerNote2                  = $weapon_detail['player_character_weapon_player_note2'];
-                $this->playerNote3                  = $weapon_detail['player_character_weapon_player_note3'];
-                $this->strengthBonusAvailable       = $weapon_detail['player_character_weapon_strength_bonus_available'];
-                $this->meleeWeaponSpeed             = $weapon_detail['player_character_weapon_speed'];
-                $this->meleeWeaponDamage            = $weapon_detail['player_character_weapon_damage'];
-                $this->meleeAttacksPerRound         = $weapon_detail['player_character_weapon_attacks_per_round'];
-                $this->meleeNumberOfHands           = $weapon_detail['player_character_weapon_number_of_hands'];
-                $this->meleeHitBonus                = $weapon_detail['player_character_weapon_hit_bonus'];
-                $this->meleeDamageBonus             = $weapon_detail['player_character_weapon_damage_bonus'];
-                $this->mastercraftHitDescription    = $weapon_detail['player_character_weapon_mastercraft_hit_description'];
-                $this->mastercraftDamageDescription = $weapon_detail['player_character_weapon_mastercraft_damage_description'];
-                $this->meleeSpec1HitBonus           = $weapon_detail['player_character_weapon_spec1_hit_bonus'];
-                $this->meleeSpec1DamageBonus        = $weapon_detail['player_character_weapon_spec1_damage_bonus'];
-                $this->meleeSpec1Description        = $weapon_detail['player_character_weapon_spec1_description'];
-                $this->meleeSpec2HitBonus           = $weapon_detail['player_character_weapon_spec2_hit_bonus'];
-                $this->meleeSpec2DamageBonus        = $weapon_detail['player_character_weapon_spec2_damage_bonus'];
-                $this->meleeSpec2Description        = $weapon_detail['player_character_weapon_spec2_description'];
-                $this->meleeSpec3HitBonus           = $weapon_detail['player_character_weapon_spec3_hit_bonus'];
-                $this->meleeSpec3DamageBonus        = $weapon_detail['player_character_weapon_spec3_damage_bonus'];
-                $this->meleeSpec3Description      = $weapon_detail['player_character_weapon_spec3_description'];
-                $this->meleeAdditionalText          = $weapon_detail['player_character_weapon_short_range'];
-            }
-
-            if ($weapon_detail['player_character_weapon_type'] == WEAPON_TYPE_MISSILE) {
-                $this->missileWeaponType            = $weapon_detail['player_character_weapon_type'];
-                $this->missileWeaponSubtype         = $weapon_detail['player_character_weapon_subtype'];
-                $this->weaponId                     = $weapon_detail['player_character_weapon_id'];
-                $this->weaponProficiencyId          = $weapon_detail['player_character_weapon_proficiency_id'];
-                $this->craftStatus                  = $weapon_detail['player_character_weapon_craft_status'];
-                $this->weaponDescription            = $weapon_detail['player_character_weapon_description'];
-                $this->isPreferred                  = $weapon_detail['player_character_weapon_is_preferred'];
-                $this->isReady                      = $weapon_detail['player_character_weapon_is_ready'];
-                $this->weaponLocation               = $weapon_detail['player_character_weapon_location'];
-                $this->playerNote1                  = $weapon_detail['player_character_weapon_player_note1'];
-                $this->playerNote2                  = $weapon_detail['player_character_weapon_player_note2'];
-                $this->playerNote3                  = $weapon_detail['player_character_weapon_player_note3'];
-                $this->strengthBonusAvailable       = $weapon_detail['player_character_weapon_strength_bonus_available'];
-                $this->missileWeaponSpeed           = $weapon_detail['player_character_weapon_speed'];
-                $this->missileWeaponDamage          = $weapon_detail['player_character_weapon_damage'];
-                $this->missileAttacksPerRound       = $weapon_detail['player_character_weapon_attacks_per_round'];
-                $this->missileNumberOfHands         = $weapon_detail['player_character_weapon_number_of_hands'];
-                $this->missileHitBonus              = $weapon_detail['player_character_weapon_hit_bonus'];
-                $this->missileDamageBonus           = $weapon_detail['player_character_weapon_damage_bonus'];
-                $this->mastercraftHitDescription    = $weapon_detail['player_character_weapon_mastercraft_hit_description'];
-                $this->mastercraftDamageDescription = $weapon_detail['player_character_weapon_mastercraft_damage_description'];
-                $this->missileSpec1HitBonus         = $weapon_detail['player_character_weapon_spec1_hit_bonus'];
-                $this->missileSpec1DamageBonus      = $weapon_detail['player_character_weapon_spec1_damage_bonus'];
-                $this->missileSpec1Description      = $weapon_detail['player_character_weapon_spec1_description'];
-                $this->missileSpec2HitBonus         = $weapon_detail['player_character_weapon_spec2_hit_bonus'];
-                $this->missileSpec2DamageBonus      = $weapon_detail['player_character_weapon_spec2_damage_bonus'];
-                $this->missileSpec2Description      = $weapon_detail['player_character_weapon_spec2_description'];
-                $this->missileSpec3HitBonus         = $weapon_detail['player_character_weapon_spec3_hit_bonus'];
-                $this->missileSpec3DamageBonus      = $weapon_detail['player_character_weapon_spec3_damage_bonus'];
-                $this->missileSpec3Description      = $weapon_detail['player_character_weapon_spec3_description'];
-                $this->missileAdditionalText        = $weapon_detail['player_character_weapon_additional_text'];
-                $this->missileShortRange            = $weapon_detail['player_character_weapon_short_range'];
-                $this->missileMediumRange           = $weapon_detail['player_character_weapon_medium_range'];
-                $this->missileLongRange             = $weapon_detail['player_character_weapon_long_range'];
-            }
+            $this->populate($weapon_detail, $player_character_skill_set);
         }
+    }
+
+    public function populate($weapon_detail, PlayerCharacterSkillSet $player_character_skill_set) {
+        if ($weapon_detail['player_character_weapon_type'] == WEAPON_TYPE_MELEE) {
+            $this->meleeWeaponType              = $weapon_detail['player_character_weapon_type'];
+            $this->meleeWeaponSubtype           = $weapon_detail['player_character_weapon_subtype'];
+            $this->weaponId                     = $weapon_detail['player_character_weapon_id'];
+            $this->weaponProficiencyId          = $weapon_detail['player_character_weapon_proficiency_id'];
+            $this->craftStatus                  = $weapon_detail['player_character_weapon_craft_status'];
+            $this->weaponDescription            = $weapon_detail['player_character_weapon_description'];
+            $this->isPreferred                  = $weapon_detail['player_character_weapon_is_preferred'];
+            $this->isReady                      = $weapon_detail['player_character_weapon_is_ready'];
+            $this->weaponLocation               = $weapon_detail['player_character_weapon_location'];
+            $this->playerNote1                  = $weapon_detail['player_character_weapon_player_note1'];
+            $this->playerNote2                  = $weapon_detail['player_character_weapon_player_note2'];
+            $this->playerNote3                  = $weapon_detail['player_character_weapon_player_note3'];
+            $this->strengthBonusAvailable       = $weapon_detail['player_character_weapon_strength_bonus_available'];
+            $this->meleeWeaponSpeed             = $weapon_detail['player_character_weapon_speed'];
+            $this->meleeWeaponDamage            = $weapon_detail['player_character_weapon_damage'];
+            $this->meleeAttacksPerRound         = $weapon_detail['player_character_weapon_attacks_per_round'];
+            $this->meleeNumberOfHands           = $weapon_detail['player_character_weapon_number_of_hands'];
+            $this->meleeHitBonus                = $weapon_detail['player_character_weapon_hit_bonus'];
+            $this->meleeDamageBonus             = $weapon_detail['player_character_weapon_damage_bonus'];
+            $this->mastercraftHitDescription    = $weapon_detail['player_character_weapon_mastercraft_hit_description'];
+            $this->mastercraftDamageDescription = $weapon_detail['player_character_weapon_mastercraft_damage_description'];
+            $this->meleeSpec1HitBonus           = $weapon_detail['player_character_weapon_spec1_hit_bonus'];
+            $this->meleeSpec1DamageBonus        = $weapon_detail['player_character_weapon_spec1_damage_bonus'];
+            $this->meleeSpec1Description        = $weapon_detail['player_character_weapon_spec1_description'];
+            $this->meleeSpec2HitBonus           = $weapon_detail['player_character_weapon_spec2_hit_bonus'];
+            $this->meleeSpec2DamageBonus        = $weapon_detail['player_character_weapon_spec2_damage_bonus'];
+            $this->meleeSpec2Description        = $weapon_detail['player_character_weapon_spec2_description'];
+            $this->meleeSpec3HitBonus           = $weapon_detail['player_character_weapon_spec3_hit_bonus'];
+            $this->meleeSpec3DamageBonus        = $weapon_detail['player_character_weapon_spec3_damage_bonus'];
+            $this->meleeSpec3Description      = $weapon_detail['player_character_weapon_spec3_description'];
+            $this->meleeAdditionalText          = $weapon_detail['player_character_weapon_short_range'];
+        }
+
+        if ($weapon_detail['player_character_weapon_type'] == WEAPON_TYPE_MISSILE) {
+            $this->missileWeaponType            = $weapon_detail['player_character_weapon_type'];
+            $this->missileWeaponSubtype         = $weapon_detail['player_character_weapon_subtype'];
+            $this->weaponId                     = $weapon_detail['player_character_weapon_id'];
+            $this->weaponProficiencyId          = $weapon_detail['player_character_weapon_proficiency_id'];
+            $this->craftStatus                  = $weapon_detail['player_character_weapon_craft_status'];
+            $this->weaponDescription            = $weapon_detail['player_character_weapon_description'];
+            $this->isPreferred                  = $weapon_detail['player_character_weapon_is_preferred'];
+            $this->isReady                      = $weapon_detail['player_character_weapon_is_ready'];
+            $this->weaponLocation               = $weapon_detail['player_character_weapon_location'];
+            $this->playerNote1                  = $weapon_detail['player_character_weapon_player_note1'];
+            $this->playerNote2                  = $weapon_detail['player_character_weapon_player_note2'];
+            $this->playerNote3                  = $weapon_detail['player_character_weapon_player_note3'];
+            $this->strengthBonusAvailable       = $weapon_detail['player_character_weapon_strength_bonus_available'];
+            $this->missileWeaponSpeed           = $weapon_detail['player_character_weapon_speed'];
+            $this->missileWeaponDamage          = $weapon_detail['player_character_weapon_damage'];
+            $this->missileAttacksPerRound       = $weapon_detail['player_character_weapon_attacks_per_round'];
+            $this->missileNumberOfHands         = $weapon_detail['player_character_weapon_number_of_hands'];
+            $this->missileHitBonus              = $weapon_detail['player_character_weapon_hit_bonus'];
+            $this->missileDamageBonus           = $weapon_detail['player_character_weapon_damage_bonus'];
+            $this->mastercraftHitDescription    = $weapon_detail['player_character_weapon_mastercraft_hit_description'];
+            $this->mastercraftDamageDescription = $weapon_detail['player_character_weapon_mastercraft_damage_description'];
+            $this->missileSpec1HitBonus         = $weapon_detail['player_character_weapon_spec1_hit_bonus'];
+            $this->missileSpec1DamageBonus      = $weapon_detail['player_character_weapon_spec1_damage_bonus'];
+            $this->missileSpec1Description      = $weapon_detail['player_character_weapon_spec1_description'];
+            $this->missileSpec2HitBonus         = $weapon_detail['player_character_weapon_spec2_hit_bonus'];
+            $this->missileSpec2DamageBonus      = $weapon_detail['player_character_weapon_spec2_damage_bonus'];
+            $this->missileSpec2Description      = $weapon_detail['player_character_weapon_spec2_description'];
+            $this->missileSpec3HitBonus         = $weapon_detail['player_character_weapon_spec3_hit_bonus'];
+            $this->missileSpec3DamageBonus      = $weapon_detail['player_character_weapon_spec3_damage_bonus'];
+            $this->missileSpec3Description      = $weapon_detail['player_character_weapon_spec3_description'];
+            $this->missileAdditionalText        = $weapon_detail['player_character_weapon_additional_text'];
+            $this->missileShortRange            = $weapon_detail['player_character_weapon_short_range'];
+            $this->missileMediumRange           = $weapon_detail['player_character_weapon_medium_range'];
+            $this->missileLongRange             = $weapon_detail['player_character_weapon_long_range'];
+        }
+
+        $this->isProficient = $player_character_skill_set->isProficientWithWeapon($this->weaponProficiencyId);
     }
 
     public function getPlayerCharacterWeapon(\PDO $pdo, $player_character_weapon_id, &$errors) {

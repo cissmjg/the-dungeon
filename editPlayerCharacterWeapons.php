@@ -15,10 +15,12 @@ require_once __DIR__ . '/helper/HtmlHelper.php';
 
 require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
+require_once __DIR__ . '/classes/playerCharacterSkillSet.php';
 require_once __DIR__ . '/helper/ActionBarHelper.php';
 require_once __DIR__ . '/webio/craftStatus.php';
 require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/weaponProficiencyId.php';
+require_once __DIR__ . '/dbio/constants/skills.php';
 
 require_once __DIR__ . '/fa/faDeleteIcon.php';
 
@@ -39,6 +41,15 @@ $character_summary_stats = $character_summary_renderer->render($character_summar
 $action_bar = ActionBarHelper::buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $weapon_list = getWeaponSummaryForPlayerCharacter($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+if (count($errors) > 0) {
+    die(json_encode($errors));
+}
+
+$player_character_skill_set = new PlayerCharacterSkillSet();
+$player_character_skill_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+if (count($errors) > 0) {
+    die(json_encode($errors));
+}
 
 $form_id = 'deleteWeapon';
 
@@ -85,14 +96,17 @@ echo $html_header;
         <span style="font-size: 18px;">No weapons available</span>
     <?php else: ?>
         <table>
-            <tr><th>&nbsp;</th><th>Description</th><th>Location</th><th>Craft Status</th></tr>
+            <tr><th>&nbsp;</th><th>Description</th><th>Location</th><th>Proficient</th></th><th>Craft Status</th></tr>
             <?php
                 foreach($weapon_list AS $weapon) {
                     $weapon_desc = str_replace("'", "", html_entity_decode($weapon['weapon_description']));
+                    $weapon_proficiency_id = $weapon['weapon_proficiency_id'];
+                    $is_proficient = $player_character_skill_set->isProficientWithWeapon($weapon_proficiency_id) ? "Yes" : "No";
                     $output_row  = '<tr>';
                     $output_row .= '<td>' . buildDeletePlayerCharacterWeaponIcon($form_id, $weapon_desc, $weapon['player_character_weapon_id']) . '</td>';
                     $output_row .= '<td>' . buildWeaponNameCell($input[PLAYER_NAME], $input[CHARACTER_NAME], $weapon) . '</td>';
                     $output_row .= '<td>' . $weapon['weapon_location'] . '</td>';
+                    $output_row .= '<td>' . $is_proficient . '</td>';
                     $output_row .= '<td>' . getCraftStatusDescription($weapon['weapon_craft_status']) . '</td>';
                     $output_row .= '</tr>' . PHP_EOL;
                     echo $output_row;
