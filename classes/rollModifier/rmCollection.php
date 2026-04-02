@@ -9,6 +9,12 @@ class RmCollection implements IteratorAggregate {
         $this->rmFactorList[] = $rmFactor;
     }
 
+    public function addAll(RmCollection $rmCollection) {
+        foreach($rmCollection AS $rmFactor) {
+            $this->add($rmFactor);
+        }
+    }
+
     /** @return RmFactor[] */
     public function getAll(): array {
         return $this->rmFactorList;

@@ -17,6 +17,10 @@
             $this->add_weapon2_proficiency_element_id = $add_weapon2_proficiency_element_id;
         }
 
+        public static function createEmpty() {
+            return new FormIdLookup('', '', '', '', '', '');
+        }
+
         // function called when encoded with json_encode
         public function jsonSerialize()
         {

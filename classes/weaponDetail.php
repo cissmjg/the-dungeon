@@ -1,10 +1,10 @@
 <?php
 require_once __DIR__ . '/../dbio/constants/weaponType.php';
+require_once __DIR__ . '/../dbio/constants/weapons.php';
 
 class WeaponDetail implements JsonSerializable
 {
     private $weapon_name;
-	private $weapon_id;
     private $weapon_proficiency_id;
     private $playerCharacterWeaponSkillId;
 
@@ -34,7 +34,6 @@ class WeaponDetail implements JsonSerializable
 
         foreach($weapon_details AS $weapon_detail) {
             $this->weapon_name = $weapon_detail['weapon_name'];
-            $this->weapon_id = $weapon_detail['weapon_id'];
             $this->weapon_proficiency_id = $weaponProficiencyId;
             if ($weapon_detail['weapon_type'] == WEAPON_TYPE_MELEE) {
                 $this->weapon_melee_type = WEAPON_TYPE_MELEE;
@@ -106,10 +105,6 @@ class WeaponDetail implements JsonSerializable
 
     public function getWeaponName() {
         return $this->weapon_name;
-    }
-
-	public function getWeaponId() {
-        return $this->weapon_id;
     }
 
     public function getWeaponProficiencyId() {

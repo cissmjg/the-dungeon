@@ -65,6 +65,9 @@ $delete_attribute_weapon_skill_id = $delete_attribute_weapon_skill_form_id . '-'
 $add_attribute_weapon_skill_form_id = 'addAttributeWeaponSkill';
 $add_attribute_weapon_skill_element_id = $add_attribute_weapon_skill_form_id . '-' . SKILL_CATALOG_ID;
 
+$select_weapon_form_id = "selectWeapon";
+$select_weapon_element_id = $select_weapon_form_id . '-' . WEAPON_PROFICIENCY_ID;
+
 $form_id_lookup = new FormIdLookup($delete_attribute_weapon_skill_form_id, $delete_attribute_weapon_skill_id, $add_attribute_weapon_skill_form_id, $add_attribute_weapon_skill_element_id, WEAPON_PROFICIENCY_ID, WEAPON2_PROFICIENCY_ID);
 
 $the_skill_catalog = new SkillCatalog();
@@ -127,12 +130,12 @@ echo $html_header;
         <div class="togglePanelContent">
             <div style="background-color: Aquamarine; text-align:center; border-radius: 10px;">Select Weapon</div>
             <div style="text-align: center;">
-                <form name="selectWeapon" id="selectWeapon" method="POST" action="<?= CurlHelper::buildUrlDbioDirectory('addWeaponProficiencyToPlayerCharacter') ?>">
+                <form name="<?= $select_weapon_form_id ?>" id="<?= $select_weapon_form_id ?>" method="POST" action="<?= CurlHelper::buildUrlDbioDirectory('addWeaponProficiencyToPlayerCharacter') ?>">
                     <label for="weaponNamePattern">Weapon Name</label><br>
                     <input type="hidden" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
                     <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
-                    <input type="text" id="weaponNamePattern" maxlength="32"><button type="button" onclick="populateWeaponList('<?= WEAPON_PROFICIENCY_ID ?>', '<?= $input[PLAYER_NAME] ?>', '<?= $input[CHARACTER_NAME] ?>', 'weaponNamePattern');"><span class="fa-solid fa-magnifying-glass"></span></button><br>
-                    <select name="<?= WEAPON_PROFICIENCY_ID?>" id="<?= WEAPON_PROFICIENCY_ID?>" onchange="weaponListChanged('selectWeaponButton', '<?= WEAPON_PROFICIENCY_ID ?>');" hidden>
+                    <input type="text" id="weaponNamePattern" maxlength="32"><button type="button" onclick="populateWeaponList('<?= $select_weapon_element_id ?>', '<?= $input[PLAYER_NAME] ?>', '<?= $input[CHARACTER_NAME] ?>', 'weaponNamePattern');"><span class="fa-solid fa-magnifying-glass"></span></button><br>
+                    <select name="<?= WEAPON_PROFICIENCY_ID ?>" id="<?= $select_weapon_element_id ?>" onchange="weaponListChanged('selectWeaponButton', '<?= $select_weapon_element_id ?>');" hidden>
                     </select>
                     <br><br>
                     <button id="selectWeaponButton" type="submit" hidden>Add Weapon Proficiency</button>
