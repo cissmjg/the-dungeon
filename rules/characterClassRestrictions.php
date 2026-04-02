@@ -75,6 +75,14 @@ $character_class_minimums[CAVALIER][CHARACTER_WISDOM] = 10;
 $character_class_minimums[CAVALIER][CHARACTER_DEXTERITY] = 15;
 $character_class_minimums[CAVALIER][CHARACTER_CONSTITUTION] = 15;
 
+$character_class_minimums[ELVEN_CAVALIER] = [];
+$character_class_maximums[ELVEN_CAVALIER] = [];
+$character_class_minimums[ELVEN_CAVALIER][CHARACTER_STRENGTH] = 15;
+$character_class_minimums[ELVEN_CAVALIER][CHARACTER_INTELLIGENCE] = 10;
+$character_class_minimums[ELVEN_CAVALIER][CHARACTER_WISDOM] = 10;
+$character_class_minimums[ELVEN_CAVALIER][CHARACTER_DEXTERITY] = 16;
+$character_class_minimums[ELVEN_CAVALIER][CHARACTER_CONSTITUTION] = 15;
+
 $character_class_maximums[BARBARIAN] = [];
 $character_class_minimums[BARBARIAN] = [];
 

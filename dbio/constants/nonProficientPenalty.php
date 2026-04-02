@@ -1,5 +1,7 @@
 <?php
 
+require_once 'characterClasses.php';
+
 const CLERIC_NON_PROFICIENCY = -3;
 const DRUID_NON_PROFICIENCY = -4;
 const FIGHTER_NON_PROFICIENCY = -2;
@@ -45,6 +47,8 @@ function getNonProficiencyPenalty($class_id) {
         case MONK:
             return MONK_NON_PROFICIENCY;
         case CAVALIER:
+            return CAVALIER_NON_PROFICIENCY;
+        case ELVEN_CAVALIER:
             return CAVALIER_NON_PROFICIENCY;
         case BARBARIAN:
             return BARBARIAN_NON_PROFICIENCY;

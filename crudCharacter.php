@@ -877,7 +877,7 @@ function buildThumbsDownIcon($error_message_list) {
 function doesSuperStrengthApply($input, $character_super_stats) {
 
 	$primary_class = $input[CHARACTER_CLASSES]->characterClass1->class_id;
-	if ($primary_class == PALADIN || $primary_class == CAVALIER) {
+	if ($primary_class == PALADIN || $primary_class == CAVALIER || $primary_class == ELVEN_CAVALIER) {
 		return true;
 	}
 
@@ -917,7 +917,7 @@ function doesSuperWisdomApply($input, $character_super_stats) {
 function doesSuperDexterityApply($input, $character_super_stats) {
 
 	$primary_class = $input[CHARACTER_CLASSES]->characterClass1->class_id;
-	if ($primary_class == PALADIN || $primary_class == CAVALIER) {
+	if ($primary_class == PALADIN || $primary_class == CAVALIER || $primary_class == ELVEN_CAVALIER) {
 		return true;
 	}
 
@@ -934,7 +934,7 @@ function doesSuperConstitutionApply($input, $character_super_stats) {
 
 	$primary_class = $input[CHARACTER_CLASSES]->characterClass1->class_id;
 	$character_constitution = $input[CHARACTER_CONSTITUTION];
-	if ($primary_class == PALADIN || $primary_class == CAVALIER) {
+	if ($primary_class == PALADIN || $primary_class == CAVALIER || $primary_class == ELVEN_CAVALIER) {
 		return true;
 	}
 
@@ -1033,7 +1033,7 @@ function validateCharacterClass(&$errors, $character_class_minimums, $character_
 		$errors[CHARACTER_STRENGTH][] = 'Does not meet minimum for ' . $character_class_name . '(' . $min_strength . ')';
 	}
 
-	if (!($character_class_id == CAVALIER || $character_class_id == PALADIN)) {
+	if (!($character_class_id == CAVALIER || $character_class_id == PALADIN || $character_class_id == ELVEN_CAVALIER)) {
 		if ($input[CHARACTER_STRENGTH] > $max_strength) {
 			$errors[CHARACTER_STRENGTH][] = 'Exceeds maximum for ' . $character_class_name . '(' . $max_strength . ')';
 		}
@@ -1065,7 +1065,7 @@ function validateCharacterClass(&$errors, $character_class_minimums, $character_
 		$errors[CHARACTER_DEXTERITY][] = 'Does not meet minimum for ' . $character_class_name . '(' . $min_dexterity . ')';
 	}
 
-	if (!($character_class_id == CAVALIER || $character_class_id == PALADIN)) {
+	if (!($character_class_id == CAVALIER || $character_class_id == PALADIN || $character_class_id == ELVEN_CAVALIER)) {
 		if ($input[CHARACTER_DEXTERITY] > $max_dexterity) {
 			$errors[CHARACTER_DEXTERITY][] = 'Exceeds maximum for ' . $character_class_name . '(' . $max_dexterity . ')';
 		}
@@ -1077,7 +1077,7 @@ function validateCharacterClass(&$errors, $character_class_minimums, $character_
 		$errors[CHARACTER_CONSTITUTION][] = 'Does not meet minimum for ' . $character_class_name . '(' . $min_constitution . ')';
 	}
 
-	if (!($character_class_id == CAVALIER || $character_class_id == PALADIN)) {
+	if (!($character_class_id == CAVALIER || $character_class_id == PALADIN || $character_class_id == ELVEN_CAVALIER)) {
 		if ($input[CHARACTER_CONSTITUTION] > $max_constitution) {
 			$errors[CHARACTER_CONSTITUTION][] = 'Exceeds maximum for ' . $character_class_name . '(' . $max_constitution . ')';
 		}

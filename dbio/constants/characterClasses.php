@@ -41,6 +41,7 @@ const MERCHANT = 44;
 const BARD = 45;
 const NEW_BARD = 46;
 const ARCHER_RANGER = 47;
+const ELVEN_CAVALIER = 48;
 
 function getClassID($class_name) {
     switch($class_name) {
@@ -126,6 +127,8 @@ function getClassID($class_name) {
             return NEW_BARD;
         case "Archer-Ranger":
             return ARCHER_RANGER;
+        case "Elven Cavalier":
+            return ELVEN_CAVALIER;
         default:
             return -1;
     }
