@@ -4,7 +4,6 @@
     {
         private $id;
         private $skill_catalog_id;
-        private $player_character_skill_count;
         private $player_character_skill_name;
         private $is_skill_focus;
         private $weapon_proficiency_id;

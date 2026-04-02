@@ -33,7 +33,6 @@ require_once __DIR__ . '/webio/playerCharacterWeaponSkillId.php';
 require_once __DIR__ . '/webio/weaponDescription.php';
 require_once __DIR__ . '/webio/weaponLocation.php';
 require_once __DIR__ . '/webio/craftStatus.php';
-require_once __DIR__ . '/webio/isPreferred.php';
 require_once __DIR__ . '/webio/isProficient.php';
 require_once __DIR__ . '/webio/isReady.php';
 require_once __DIR__ . '/webio/mastercraftDamageDescription.php';
@@ -166,23 +165,6 @@ echo $html_header;
                 <option value="NO"<?= $isReadyNo ?>>No</option>
                 <option value="YES"<?= $isReadyYes ?>>Yes</option>
             </select></div>
-            <?php
-                $isPreferredNo = '';
-                $isPreferredYes = '';
-                if ($playerCharacterWeapon->getIsPreferred()) {
-                    $isPreferredYes = " selected";
-                } else {
-                    $isPreferredNo = " selected";
-                }
-            ?>
-            <?php if (isCavalier($character_summary->getCharacterClasses())): ?>
-                <div class="inputRow"><label for="isPreferred">Preferred weapon? </label><select name="<?= IS_PREFERRED ?>" id="<?= IS_PREFERRED ?>">
-                    <option value="NO"<?= $isPreferredNo ?>>No</option>
-                    <option value="YES"<?= $isPreferredYes ?>>Yes</option>
-                </select></div>
-            <?php else: ?>
-                <input type="hidden" name="<?= IS_PREFERRED ?>" id="<?= IS_PREFERRED ?>" value="NO">
-            <?php endif ?>
             <?php
                 $craft_status = $playerCharacterWeapon->getCraftStatus();
                 if ($craft_status == CRAFT_STATUS_ARTISAN) {

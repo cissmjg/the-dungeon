@@ -9,7 +9,6 @@ class PlayerCharacterWeapon implements JsonSerializable {
     private $weaponDescription;
     private $weaponLocation;
     private $isReady;
-    private $isPreferred;
     private $craftStatus;
     private $strengthBonusAvailable;
     private $playerNote1;
@@ -71,7 +70,6 @@ class PlayerCharacterWeapon implements JsonSerializable {
                 $this->weaponProficiencyId          = $weapon_detail['player_character_weapon_proficiency_id'];
                 $this->craftStatus                  = $weapon_detail['player_character_weapon_craft_status'];
                 $this->weaponDescription            = $weapon_detail['player_character_weapon_description'];
-                $this->isPreferred                  = $weapon_detail['player_character_weapon_is_preferred'];
                 $this->isReady                      = $weapon_detail['player_character_weapon_is_ready'];
                 $this->weaponLocation               = $weapon_detail['player_character_weapon_location'];
                 $this->playerNote1                  = $weapon_detail['player_character_weapon_player_note1'];
@@ -105,7 +103,6 @@ class PlayerCharacterWeapon implements JsonSerializable {
                 $this->weaponProficiencyId          = $weapon_detail['player_character_weapon_proficiency_id'];
                 $this->craftStatus                  = $weapon_detail['player_character_weapon_craft_status'];
                 $this->weaponDescription            = $weapon_detail['player_character_weapon_description'];
-                $this->isPreferred                  = $weapon_detail['player_character_weapon_is_preferred'];
                 $this->isReady                      = $weapon_detail['player_character_weapon_is_ready'];
                 $this->weaponLocation               = $weapon_detail['player_character_weapon_location'];
                 $this->playerNote1                  = $weapon_detail['player_character_weapon_player_note1'];
@@ -115,7 +112,6 @@ class PlayerCharacterWeapon implements JsonSerializable {
                 $this->missileWeaponSpeed           = $weapon_detail['player_character_weapon_speed'];
                 $this->missileWeaponDamage          = $weapon_detail['player_character_weapon_damage'];
                 $this->missileAttacksPerRound       = $weapon_detail['player_character_weapon_attacks_per_round'];
-                $this->missileNumberOfHands         = $weapon_detail['player_character_weapon_number_of_hands'];
                 $this->missileHitBonus              = $weapon_detail['player_character_weapon_hit_bonus'];
                 $this->missileDamageBonus           = $weapon_detail['player_character_weapon_damage_bonus'];
                 $this->mastercraftHitDescription    = $weapon_detail['player_character_weapon_mastercraft_hit_description'];
@@ -175,10 +171,6 @@ class PlayerCharacterWeapon implements JsonSerializable {
 
     public function getIsReady() {
         return $this->isReady;
-    }
-
-    public function getIsPreferred() {
-        return $this->isPreferred;
     }
 
     public function getCraftStatus() {
