@@ -219,9 +219,9 @@
         private function getRacialBonus(CharacterDetails $character_details, PlayerCharacterWeapon $player_character_weapon) {
             $rm_racial = null;
             if (
-                $character_details->getRaceId() == RACE_ELF || 	$character_details->getRaceId() == RACE_DARK_ELF ||
-                $character_details->getRaceId() == RACE_GRAY_ELF || 	$character_details->getRaceId() == RACE_HIGH_ELF ||
-                $character_details->getRaceId() == RACE_VALLEY_ELF || 	$character_details->getRaceId() == RACE_WILD_ELF ||
+                $character_details->getRaceId() == RACE_ELF        || $character_details->getRaceId() == RACE_DARK_ELF ||
+                $character_details->getRaceId() == RACE_GRAY_ELF   || $character_details->getRaceId() == RACE_HIGH_ELF ||
+                $character_details->getRaceId() == RACE_VALLEY_ELF || $character_details->getRaceId() == RACE_WILD_ELF ||
                 $character_details->getRaceId() == RACE_WOOD_ELF
                ) {
                 if (
@@ -240,6 +240,9 @@
         private function getWeaponBonus(PlayerCharacterWeapon $player_character_weapon) {
             $rm_weapon = null;
             if ($player_character_weapon->getMeleeHitBonus() != 0) {
+                $rm_weapon_desc = "Magic Bonus";
+                $rm_weapon_modifier = $player_character_weapon->getMeleeHitBonus();
+                $rm_weapon = new RmFactor($rm_weapon_desc, $rm_weapon_modifier);
             }
             return $rm_weapon;
         }
