@@ -351,7 +351,7 @@ echo $html_header;
 				$character_constitution = $input[CHARACTER_CONSTITUTION] ?? '';
 				echo '<input type="number" style="text-align: center;" class="' . $input_class . '" id="' . CHARACTER_CONSTITUTION . '" name="' . CHARACTER_CONSTITUTION .'" min="3" max="25" value="' . $character_constitution . '" required>';
 				$super_constitution_applies = doesSuperConstitutionApply($input, $character_super_stats);
-				if ($super_constitution_applies && !empty($input[CHARACTER_SUPER_CONSTITUTION])) {
+				if ($super_constitution_applies) {
 					echo '/&nbsp;';
 					$character_super_constitution = $input[CHARACTER_SUPER_CONSTITUTION] ?? '';
 					echo '<input type="number" style="text-align: center;" class="' . $input_class . '" id="' . CHARACTER_SUPER_CONSTITUTION .'" name="' . CHARACTER_SUPER_CONSTITUTION . '" min="0" max="100" value="' . $character_super_constitution . '"' . $read_only . ' required>';
