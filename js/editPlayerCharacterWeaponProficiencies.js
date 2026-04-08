@@ -3,23 +3,26 @@ import { submitAddSkillForm, confirmPlayerCharacterSkillDelete } from './candida
 
 const initialWeaponSelectPrompt = "[Select a Weapon]";
 
-export function populateWeaponList(weaponListName, playerName, characterName, weaponSearchTextboxName) {
-    const weaponQueryPattern = '#' + weaponSearchTextboxName;
-    const weaponList = "#" + weaponListName;
+export function populateWeaponList(weaponListId, playerName, characterName, weaponSearchTextboxName) {
+    let jqWeaponQueryPattern = $('#' + weaponSearchTextboxName);
+    const jqWeaponListid = "#" + weaponListId;
+
     let weaponQueryAPI = buildDbioDirURL('getWeaponProficienciesAvailableForPlayerCharacter');
     weaponQueryAPI = addParameter(weaponQueryAPI, 'playerName', playerName);
     weaponQueryAPI = addParameter(weaponQueryAPI, 'characterName', characterName);
-    weaponQueryAPI = addParameter(weaponQueryAPI, 'textInput', $(weaponQueryPattern).val());
-    $(weaponList).empty();
+    weaponQueryAPI = addParameter(weaponQueryAPI, 'textInput', jqWeaponQueryPattern.val());
+
+    $(jqWeaponListid).empty();
     $.getJSON(weaponQueryAPI,
         function(data, textStatus, jqXHR) {
-            $(weaponList).append(new Option(initialWeaponSelectPrompt, 0));
+            $(jqWeaponListid).append(new Option(initialWeaponSelectPrompt, 0));
             $.each(data, function(i, weapon_proficiency_object) {
-                $(weaponList).append(new Option(weapon_proficiency_object.weapon_proficiency_name, weapon_proficiency_object.weapon_proficiency_id));
+                $(jqWeaponListid).append(new Option(weapon_proficiency_object.weapon_proficiency_name, weapon_proficiency_object.weapon_proficiency_id));
             });
         }
     );
-    $(weaponList).show();
+
+    $(jqWeaponListid).show();
 }
 
 export function weaponListChanged(selectWeaponButtonName, weaponListName) {
@@ -39,6 +42,7 @@ export function confirmPlayerCharacterWeaponProficiencyDelete(formId, playerChar
         alert("'Fist' cannot be deleted");
         return false;
     }
+
     if (confirm("Are you sure you want to delete the weapon proficiency for '" + weaponDescription + "'") == false) {
         return false;
     }
@@ -50,9 +54,38 @@ export function confirmPlayerCharacterWeaponProficiencyDelete(formId, playerChar
     $(jqFormId).submit();
 }
 
+export function submitAddPreferredWeaponProficiencyForm(formId, preferredWeaponListId, preferredWeaponProficiencyElementId) {
+    let jqForm = $('#' + formId);
+    const jqPreferredWeaponList = $('#' + preferredWeaponListId);
+    let preferredWeaponProficiencyElement = $('#' + preferredWeaponProficiencyElementId);
+
+    const jqPreferredWeaponid = jqPreferredWeaponList.val();
+    preferredWeaponProficiencyElement.val(jqPreferredWeaponid);
+    
+    jqForm.submit();
+}
+
+export function preferredWeaponChange(preferredWeaponListId, addPreferredWeaponButtonId, preferredWeaponProficiencyElementId) {
+    const jqWeaponList = $('#' + preferredWeaponListId);
+    let jqPreferredWeaponProficiencyElement = $('#' + preferredWeaponProficiencyElementId);
+    let jqPreferredButton = $('#' + addPreferredWeaponButtonId);
+
+    const jqSelectedWeaponId = jqWeaponList.val();
+
+    if (jqSelectedWeaponId == 0) {
+        jqPreferredButton.hide();
+    } else {
+        jqPreferredWeaponProficiencyElement.val(jqSelectedWeaponId);
+        jqPreferredButton.show();
+    }
+}
+
 window.populateWeaponList = populateWeaponList;
 window.weaponListChanged = weaponListChanged;
 window.confirmPlayerCharacterWeaponProficiencyDelete = confirmPlayerCharacterWeaponProficiencyDelete;
 
 window.submitAddSkillForm = submitAddSkillForm;
 window.confirmPlayerCharacterSkillDelete = confirmPlayerCharacterSkillDelete;
+
+window.submitAddPreferredWeaponProficiencyForm = submitAddPreferredWeaponProficiencyForm;
+window.preferredWeaponChange = preferredWeaponChange;

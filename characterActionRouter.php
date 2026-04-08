@@ -19,6 +19,7 @@ require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/characterClassName.php';
+require_once __DIR__ . '/webio/characterClassId.php';
 require_once __DIR__ . '/webio/characterLevel.php';
 require_once __DIR__ . '/webio/pageAction.php';
 require_once __DIR__ . '/webio/spellCatalogId.php';
@@ -900,6 +901,20 @@ switch($character_action) {
 			$errors[] = $result;
 			die(json_encode($errors));
 		}
+	case CHARACTER_ACTION_BROWSE_PLAYER_CHARACTER_WEAPON_PROFICIENCIES:
+		// Get player name
+		getPlayerName($errors, $input);
+
+		// Get character name	
+		getCharacterName($errors, $input);
+
+		// Get raw text from web page
+		getTextInput($errors, $input);
+
+		$location_header = buildBrowseWeaponProficienciesRedirect($input);
+		header($location_header);
+
+		break;
 
 	case CHARACTER_ACTION_EDIT_PLAYER_CHARACTER_WEAPON_PROFICIENCIES:
 		// Get player name
@@ -1054,7 +1069,7 @@ switch($character_action) {
 		$raw_result = CurlHelper::performGetRequest($url_add_talent, $params_add_talent);
 		$result = json_decode($raw_result);
 		if (str_starts_with($result[0], "SUCCESS|")) {
-			$location_header = buildEditWeaponTalentsRedirect($input);
+			$location_header = buildPlayerCharacterEditWeaponProficienciesRedirect($input);
 			header($location_header);
 			exit;
 		} else {
@@ -1085,6 +1100,39 @@ switch($character_action) {
 		$result = json_decode($raw_result);
 		if (str_starts_with($result[0], "SUCCESS|")) {
 			$location_header = buildEditWeaponTalentsRedirect($input);
+			header($location_header);
+			exit;
+		} else {
+			RestHeaderHelper::emitRestHeaders();
+			$errors[] = "Execution Error|";
+			$errors[] = $character_action . "|";
+			$errors[] = __FILE__ . "|";
+			$errors[] = $result;
+			die(json_encode($errors));
+		}
+
+	case CHARACTER_ACTION_ADD_PREFERRED_WEAPON_PROFICIENCY:
+		// Get player name
+		getPlayerName($errors, $input);
+
+		// Get character name	
+		getCharacterName($errors, $input);
+
+		// Get the PRIMARY class ID (Cavalier, Elven Cavalier)
+		getCharacterClassId($errors, $input);
+
+		// Get the character level
+		getCharacterLevel($errors, $input);
+
+		// Get the preferred weapon proficiency ID
+		getWeaponProficiencyId($errors, $input);
+
+		$url_preferred_proficiency = CurlHelper::buildUrlDbioDirectory('addPreferredWeaponProficiency');
+		$params_preferred_proficiency = buildAddPreferredWeaponProficiencyParams($input);
+		$raw_result = CurlHelper::performGetRequest($url_preferred_proficiency, $params_preferred_proficiency);
+		$result = json_decode($raw_result);
+		if (str_starts_with($result[0], "SUCCESS|")) {
+			$location_header = buildPlayerCharacterEditWeaponProficienciesRedirect($input);
 			header($location_header);
 			exit;
 		} else {
@@ -1301,8 +1349,17 @@ function buildPlayerCharacterEditWeaponProficienciesRedirect($input) {
 	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
+function buildBrowseWeaponProficienciesRedirect($input) {
+	$redirect_url = CurlHelper::buildUrl('browsePlayerCharacterWeaponProficiencies');
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
+	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
+	$redirect_url = CurlHelper::addParameter($redirect_url, TEXT_INPUT, $input[TEXT_INPUT]);
+
+	return CurlHelper::buildLocationHeader($redirect_url);
+}
+
 function buildUpdateSpellPoolParams($input) {
-	$parmas = [];
+	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[SPELL_CATALOG_ID] = $input[SPELL_CATALOG_ID];
 	$params[SPELL_POOL_SLOT_ID] = $input[SPELL_POOL_SLOT_ID];
@@ -1312,7 +1369,7 @@ function buildUpdateSpellPoolParams($input) {
 }
 
 function buildUpdateReadySlotParams($input) {
-	$parmas = [];
+	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[SPELL_CATALOG_ID] = $input[SPELL_CATALOG_ID];
 	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
@@ -1322,7 +1379,7 @@ function buildUpdateReadySlotParams($input) {
 }
 
 function buildAllocateCantripsParams($input) {
-	$parmas = [];
+	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[SPELL_SLOT_ID] = $input[SPELL_SLOT_ID];
@@ -1560,6 +1617,17 @@ function buildDeleteWeaponTalentParams($input) {
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
 	$params[PLAYER_CHARACTER_SKILL_ID] = $input[PLAYER_CHARACTER_SKILL_ID];
 	
+	return $params;
+}
+
+function buildAddPreferredWeaponProficiencyParams($input) {
+	$params = [];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
+	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
+	$params[WEAPON_PROFICIENCY_ID] = $input[WEAPON_PROFICIENCY_ID];
+	$params[CHARACTER_CLASS_ID] = $input[CHARACTER_CLASS_ID];
+	$params[CHARACTER_LEVEL] = $input[CHARACTER_LEVEL];
+
 	return $params;
 }
 
