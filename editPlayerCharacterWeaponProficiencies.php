@@ -99,6 +99,9 @@ if (count($errors) > 0) {
 
 $weapon_proficiency_skills = $player_character_skill_set->getAllSkillInstances(WEAPON_PROFICIENCY);
 
+$debug_output .= print_r($weapon_proficiency_skills, true) . PHP_EOL;
+$debug_output .= 'Proficient with dagger: ' . var_export(isProficientWithWeapon($weapon_proficiency_skills, DAGGER), true) . PHP_EOL;
+
 $cavalier_level = -1;
 $cavalier_preferred_level3_weapon_needed = false;
 $cavalier_preferred_level5_weapon_needed = false;
@@ -106,7 +109,7 @@ $cavalier_preferred_level5_weapon_needed = false;
 $debug_output .= 'Class: ' . $primary_class->getClassId() . PHP_EOL;
 $debug_output .= 'Level: ' . $primary_class->getClassLevel() . PHP_EOL;
 
-if ($primary_class->getClassId() == CAVALIER) {
+if ($primary_class->getClassId() == CAVALIER || $primary_class->getClassId() == PALADIN) {
     if ($primary_class->getClassLevel() >= 3) {
         // Check for level 3 preferred weapon
         $cavalier_preferred_level3_weapon_needed = true;
@@ -211,7 +214,7 @@ echo $html_header;
         <input type="hidden" name="<?= WEAPON_PROFICIENCY_ID ?>" id="<?= WEAPON_PROFICIENCY_ID ?>" value="">
         <input type="hidden" name="<?= WEAPON2_PROFICIENCY_ID ?>" id="<?= WEAPON2_PROFICIENCY_ID ?>" value="">
     </form>
-    <?php if ($primary_class->getClassId() == CAVALIER || $primary_class->getClassId() == ELVEN_CAVALIER): ?>
+    <?php if ($primary_class->getClassId() == CAVALIER || $primary_class->getClassId() == PALADIN || $primary_class->getClassId() == ELVEN_CAVALIER): ?>
     <form name="<?= $preferred_weapon_proficiency_form_id ?>" id="<?= $preferred_weapon_proficiency_form_id ?>" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl() ?>">
         <input type="hidden" name="<?= CHARACTER_ACTION ?>" value="<?= CHARACTER_ACTION_ADD_PREFERRED_WEAPON_PROFICIENCY ?>">
         <input type="hidden" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
@@ -222,6 +225,7 @@ echo $html_header;
     </form>
     <?php endif ?>
     <div style="width: 100%; margin-bottom: 3px;"><span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span></div>
+    <div>&nbsp;</div>
     <div class="togglePanel">
         <a href="#">
             <span class="fa fa-plus"></span> Add a weapon proficiency
@@ -250,12 +254,16 @@ echo $html_header;
     </div>
     <div>&nbsp;</div>
     <?php endif ?>
-    <h3>Weapon Proficiencies</h3>
+    <h3>Current Weapon Proficiencies for <?= $input[CHARACTER_NAME] ?></h3>
     <?php if (count($weapon_proficiency_list) == 0): ?>
         <span style="font-size: 18px;">No weapons available</span>
     <?php else: ?>
         <table>
+            <?php if ($primary_class->getClassId() == CAVALIER || $primary_class->getClassId() == ELVEN_CAVALIER || $primary_class->getClassId() == PALADIN): ?>
             <tr><th>&nbsp;</th><th>Description</th><th>Preferred</th></tr>
+            <?php else: ?>
+            <tr><th>&nbsp;</th><th>Description</th></tr>
+            <?php endif ?>
             <?php
                 foreach($weapon_proficiency_list AS $weapon_proficiency) {
                     $preferred_weapon_text = "&nbsp;";
@@ -266,13 +274,15 @@ echo $html_header;
                     } else if (!empty($weapon_proficiency['is_preferred_elven_cavalier_level4'])) {
                         $preferred_weapon_text = "Preferred (4th)";
                     } else if ($weapon_proficiency['is_preferred_elven_cavalier_level6']) {
-                        $preferred_weapon_text = "Preferred (4th)";
+                        $preferred_weapon_text = "Preferred (6th)";
                     }
                     $weapon_desc = str_replace("'", "", html_entity_decode($weapon_proficiency['weapon_proficiency_description']));
                     $output_row  = '<tr>';
                     $output_row .= '<td>' . buildDeletePlayerCharacterWeaponProficiencyIcon($delete_weapon_proficiency_form_id, $weapon_desc, $weapon_proficiency['player_weapon_proficiency_id']) . '</td>';
                     $output_row .= '<td>' . buildWeaponNameCell($input[PLAYER_NAME], $input[CHARACTER_NAME], $weapon_proficiency) . '</td>';
-                    $output_row .= '<td>' . $preferred_weapon_text . '</td>';
+                    if ($primary_class->getClassId() == CAVALIER || $primary_class->getClassId() == ELVEN_CAVALIER || $primary_class->getClassId() == PALADIN) {
+                        $output_row .= '<td>' . $preferred_weapon_text . '</td>';
+                    }
                     $output_row .= '</tr>' . PHP_EOL;
                     echo $output_row;
                 }
@@ -423,7 +433,7 @@ function buildElvenCavalierPreferredWeaponList($weapon_proficiency_skills) {
 
 function isProficientWithWeapon($weapon_proficiency_skills, $weapon_proficiency_id) {
     foreach($weapon_proficiency_skills AS $weapon_proficiency_skill) {
-        if ($weapon_proficiency_skill->getWeaponProficiencyId == $weapon_proficiency_id) {
+        if ($weapon_proficiency_skill->getWeaponProficiencyId() == $weapon_proficiency_id) {
             return true;
         }
     }

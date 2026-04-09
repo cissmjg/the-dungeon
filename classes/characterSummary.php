@@ -11,6 +11,7 @@ class CharacterSummary implements JsonSerializable
 	private $dexterity;
 	private $super_dexterity;
 	private $constitution;
+	private $super_constitution;
 	private $charisma;
 	private $comeliness;
 	private $armor_class;
@@ -35,6 +36,7 @@ class CharacterSummary implements JsonSerializable
 		$this->dexterity = $character_stats['dexterity'];
 		$this->super_dexterity = $character_stats['super_dexterity'];
 		$this->constitution = $character_stats['constitution'];
+		$this->super_constitution = $character_stats['super_constitution'];
 		$this->charisma = $character_stats['charisma'];
 		$this->comeliness = $character_stats['comeliness'];
 		$this->armor_class = $character_stats['armor_class'];
@@ -151,6 +153,10 @@ class CharacterSummary implements JsonSerializable
 		return $this->constitution;
 	}
 
+	public function getSuperConstitution() {
+		return $this->super_constitution;
+	}
+
 	public function getCharisma() {
 		return $this->charisma;
 	}
@@ -185,7 +191,7 @@ class CharacterSummary implements JsonSerializable
 			if ($this->getSuperStrength() == 100) {
 				$output .= '/00';
 			} else {
-				$output .= '/' . $this->getSuperStrength();
+				$output .= '/' . sprintf("%02d", $this->getSuperStrength());
 			}
 		}
 
@@ -198,7 +204,7 @@ class CharacterSummary implements JsonSerializable
 			if ($this->getSuperIntelligence() == 100) {
 				$output .= '/00';
 			} else {
-				$output .= '/' . $this->getSuperIntelligence();
+				$output .= '/' . sprintf("%02d", $this->getSuperIntelligence());
 			}
 		}
 
@@ -211,7 +217,7 @@ class CharacterSummary implements JsonSerializable
 			if ($this->getSuperWisdom() == 100) {
 				$output .= '/00';
 			} else {
-				$output .= '/' . $this->getSuperWisdom();
+				$output .= '/' . sprintf("%02d", $this->getSuperWisdom());
 			}
 		}
 
@@ -224,10 +230,21 @@ class CharacterSummary implements JsonSerializable
 			if ($this->getSuperDexterity() == 100) {
 				$output .= '/00';
 			} else {
-				$output .= '/' . $this->getSuperDexterity();
+				$output .= '/' . sprintf("%02d", $this->getSuperDexterity());
 			}
 		}
 
         return $output;
     }
+
+	public function formatConstitution() {
+		$output = $this->getConstitution();
+		if ($this->getSuperConstitution() != null) {
+			if ($this->getSuperConstitution() == 100) {
+				$output .= '/00';
+			} else {
+				$output .= '/' . sprintf("%02d", $this->getSuperConstitution());
+			}
+		}
+	}
 }

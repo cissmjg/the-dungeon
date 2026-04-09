@@ -23,9 +23,12 @@ require_once __DIR__ . '/helper/SqlExecHelper.php';
 require_once __DIR__ . '/classes/characterDetails.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 
+require_once __DIR__ . '/fa/faNewIcon.php';
+
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/textInput.php';
+require_once __DIR__ . '/webio/weaponProficiencyId.php';
 
 getPlayerName($errors, $input);
 getCharacterName($errors, $input);
@@ -49,6 +52,10 @@ $filtered_text = SqlExecHelper::filterSqlVerbs($input[TEXT_INPUT]);
 // Get Weapons matching the pattern
 $available_weapon_proficiencies = getWeaponProficienciesAvailableForPlayerCharacter($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $filtered_text, $errors);
 
+$form_id = "addWeaponProficiency";
+$weapon_proficiency_element_id = $form_id . '-' . WEAPON_PROFICIENCY_ID;
+
+
 $page_title = 'Browse Weapon Proficiencies';
 $site_css_file = 'dnd-default.css';
 $page_specific_js = 'browsePlayerCharacterWeaponProficiencies.js';
@@ -60,6 +67,11 @@ echo $html_header;
 
 ?>
 <body>
+    <form id="<?= $form_id ?>" name="<?= $form_id ?>" method="POST" action="<?= CurlHelper::buildUrlDbioDirectory('addWeaponProficiencyToPlayerCharacter') ?>">
+        <input type="hidden" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
+        <input type="hidden" name="<?= WEAPON_PROFICIENCY_ID ?>" id="<?= $weapon_proficiency_element_id ?>" value="">
+    </form>
     <div style="width: 100%; margin-bottom: 3px;"><span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span></div>
     <div style="background-color: Aquamarine; text-align:center; border-radius: 10px;">Select Weapon</div>
     <div style="text-align: center;">
@@ -74,19 +86,21 @@ echo $html_header;
     <?php if (empty($available_weapon_proficiencies)): ?>
     <h3 style="text-align:center;">Please enter a weapon name to begin</h3>
     <?php else: ?>
-        <table>
-            <tr><th>&nbsp;</th><th>Weapon Name</th></tr>
-        <?php
-            foreach($available_weapon_proficiencies AS $available_weapon_proficiency) {
-                $weapon_proficiency_id = $available_weapon_proficiency->weapon_proficiency_id;
-                $weapon_proficiency_name = $available_weapon_proficiency->weapon_proficiency_name;
-                echo '<tr>';
-                echo '<td>' . "&nbsp;" . '</td>';
-                echo '<td>' . $weapon_proficiency_name . '</td>';
-                echo '</tr>' . PHP_EOL;
-            }
-        ?>
-        </table>
+        <h3>Weapon proficiencies available for <?= $input[CHARACTER_NAME] ?></h3>
+    <table>
+        <tr><th>&nbsp;</th><th>Weapon Name</th></tr>
+    <?php
+        foreach($available_weapon_proficiencies AS $available_weapon_proficiency) {
+            $weapon_proficiency_id = $available_weapon_proficiency['weapon_proficiency_id'];
+            $weapon_proficiency_name = $available_weapon_proficiency['weapon_proficiency_name'];
+            echo '<tr>';
+            $add_weapon_proficiency_icon =  buildAddPlayerCharacterWeaponProficiencyIcon($form_id, $weapon_proficiency_element_id, $weapon_proficiency_id);
+            echo '<td>' . $add_weapon_proficiency_icon . '</td>';
+            echo '<td>' . $weapon_proficiency_name . '</td>';
+            echo '</tr>' . PHP_EOL;
+        }
+    ?>
+    </table>
     <?php endif ?>
 </body>
 </html>
@@ -117,4 +131,17 @@ function buildActionBar($player_name, $character_name) {
 
     return $output_html;
 }
+
+function buildAddPlayerCharacterWeaponProficiencyIcon($form_id, $weapon_proficiency_element_Id, $weapon_proficiency_Id) {
+    $new_icon = new FaNewIcon();
+    $new_icon->setOnClickJsFunction('submitAddWeaponProficiencyForm');
+    $new_icon->addOnclickJsParameter($form_id);
+    $new_icon->addOnclickJsParameter($weapon_proficiency_element_Id);
+    $new_icon->addOnclickJsParameter($weapon_proficiency_Id);
+    $new_icon->addStyle("padding-right: 10px;");
+    $new_icon->addStyle("padding-left: 5px;");
+
+    return $new_icon->build();
+}
+
 ?>

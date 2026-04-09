@@ -28,7 +28,7 @@ class CharacterSummaryRenderer
         $output_html .= '</strong>';
 
         $output_html .= ' | <strong>';
-        $output_html .= 'Cn: ' . $character_summary->getConstitution();
+        $output_html .= 'Cn: ' . $character_summary->formatConstitution();
         $output_html .= '</strong>';
 
         $output_html .= ' | <strong>';
@@ -64,7 +64,7 @@ class CharacterSummaryRenderer
         $output_html .= '</strong>';
 
         $output_html .= ' | <strong>';
-        $output_html .= 'Cn: ' . $character_details->getCharacterConstitution();
+        $output_html .= 'Cn: ' . $character_details->formatConstitution();
         $output_html .= '</strong>';
 
         $output_html .= ' | <strong>';

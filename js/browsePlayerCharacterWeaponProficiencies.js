@@ -1,12 +1,10 @@
-export function submitAddPreferredWeaponProficiencyForm(formId, preferredWeaponListId, preferredWeaponProficiencyElementId) {
-    let jqForm = $('#' + formId);
-    const jqPreferredWeaponList = $('#' + preferredWeaponListId);
-    let preferredWeaponProficiencyElement = $('#' + preferredWeaponProficiencyElementId);
 
-    const jqPreferredWeaponid = jqPreferredWeaponList.val();
-    preferredWeaponProficiencyElement.val(jqPreferredWeaponid);
-    
+export function submitAddWeaponProficiencyForm(formId, weaponProficiencyElementId, weaponProficiencyId) {
+    let jqForm = $('#' + formId);
+    let jqWeaponProficiencyElement = $('#' + weaponProficiencyElementId);
+    jqWeaponProficiencyElement.val(weaponProficiencyId);
+
     jqForm.submit();
 }
 
-window.submitAddPreferredWeaponProficiencyForm = submitAddPreferredWeaponProficiencyForm;
+window.submitAddWeaponProficiencyForm = submitAddWeaponProficiencyForm;

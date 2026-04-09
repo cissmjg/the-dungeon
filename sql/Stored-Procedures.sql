@@ -1021,7 +1021,7 @@ CREATE PROCEDURE getCharacterSummary
 BEGIN
 	SELECT strength, super_strength, intelligence, super_intelligence,
            wisdom, super_wisdom, dexterity, super_dexterity,
-           constitution, charisma, comeliness, armor_class, hit_points, spell_points
+           constitution, super_constitution, charisma, comeliness, armor_class, hit_points, spell_points
 	FROM player_character
 	JOIN player ON player.id = player_character.player_id
 	WHERE player_character.name = characterName
