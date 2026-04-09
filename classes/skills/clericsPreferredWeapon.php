@@ -24,7 +24,7 @@
             $this->clerics_preferred_weapons = $clerics_preferred_weapon;
         }
 
-        protected function isCharacterQualified(\CharacterDetails $character_details, \PlayerCharacterSkillSet $player_character_skill_set) {
+        public function isCharacterQualified(\CharacterDetails $character_details, \PlayerCharacterSkillSet $player_character_skill_set) {
             $base_qualified = parent::isCharacterQualified($character_details, $player_character_skill_set);
             $this->base_qualified = $base_qualified;
 

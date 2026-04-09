@@ -1146,6 +1146,52 @@ BEGIN
 	WHERE player_character_weapon.id = playerCharacterWeaponId;
 END
 
+CREATE PROCEDURE getPlayerCharacterWeaponList
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64))
+BEGIN
+	SELECT
+		player_character_weapon.id AS player_character_weapon_id,
+		player_character_weapon_mode.weapon_type AS player_character_weapon_type,
+		player_character_weapon_mode.weapon_subtype  AS player_character_weapon_subtype,
+		player_character_weapon.craft_status AS player_character_weapon_craft_status,
+		player_character_weapon.weapon_proficiency_id AS player_character_weapon_proficiency_id, 
+		player_character_weapon.description AS player_character_weapon_description,
+		player_character_weapon.is_preferred AS player_character_weapon_is_preferred,
+		player_character_weapon.is_ready AS player_character_weapon_is_ready,
+		player_character_weapon.location AS player_character_weapon_location,
+		player_character_weapon.player_note1 AS player_character_weapon_player_note1,
+		player_character_weapon.player_note2 AS player_character_weapon_player_note2,
+		player_character_weapon.player_note3 AS player_character_weapon_player_note3,
+		player_character_weapon.strength_bonus_available AS player_character_weapon_strength_bonus_available,
+		player_character_weapon_mode.speed AS player_character_weapon_speed,
+		player_character_weapon_mode.base_damage AS player_character_weapon_damage,
+		player_character_weapon_mode.attacks_per_round AS player_character_weapon_attacks_per_round,
+		player_character_weapon_mode.number_of_hands AS player_character_weapon_number_of_hands,
+		player_character_weapon_mode.hit_bonus AS player_character_weapon_hit_bonus,
+		player_character_weapon_mode.damage_bonus AS player_character_weapon_damage_bonus,
+		player_character_weapon_mode.mastercraft_hit_description AS player_character_weapon_mastercraft_hit_description,
+		player_character_weapon_mode.mastercraft_damage_description AS player_character_weapon_mastercraft_damage_description,
+		player_character_weapon_mode.spec1_hit_bonus AS player_character_weapon_spec1_hit_bonus,
+		player_character_weapon_mode.spec1_damage_bonus AS player_character_weapon_spec1_damage_bonus,
+		player_character_weapon_mode.spec1_description AS player_character_weapon_spec1_description,
+		player_character_weapon_mode.spec2_hit_bonus AS player_character_weapon_spec2_hit_bonus,
+		player_character_weapon_mode.spec2_damage_bonus AS player_character_weapon_spec2_damage_bonus,
+		player_character_weapon_mode.spec2_description AS player_character_weapon_spec2_description,
+		player_character_weapon_mode.spec3_hit_bonus AS player_character_weapon_spec3_hit_bonus,
+		player_character_weapon_mode.spec3_damage_bonus AS player_character_weapon_spec3_damage_bonus,
+		player_character_weapon_mode.spec3_description AS player_character_weapon_spec3_description,
+		player_character_weapon_mode.short_range AS player_character_weapon_short_range,
+		player_character_weapon_mode.medium_range AS player_character_weapon_medium_range,
+		player_character_weapon_mode.long_range AS player_character_weapon_long_range,
+		player_character_weapon_mode.additional_text AS player_character_weapon_additional_text
+	FROM player_character_weapon
+	JOIN player_character_weapon_mode ON player_character_weapon_mode.player_character_weapon_id = player_character_weapon.id
+	JOIN player_character ON player_character.id = player_character_weapon.player_character_id
+	JOIN player ON player.id = player_character.player_id
+	WHERE player.name = playerName AND player_character.name = characterName;
+END
+
 CREATE PROCEDURE getReadySpells
 (IN playerName VARCHAR(32),
  IN characterName VARCHAR(64),
@@ -1736,6 +1782,7 @@ BEGIN
 
 	SELECT
 		id AS player_character_weapon_id,
+		weapon_proficiency_id,
 		description AS weapon_description, 
 		location AS weapon_location, 
 		craft_status AS weapon_craft_status

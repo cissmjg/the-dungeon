@@ -1,3 +1,5 @@
+
+text/x-generic editPlayerCharacterWeaponProficiencies.php ( PHP script, ASCII text, with CRLF line terminators )
 <?php
 
 $errors = [];

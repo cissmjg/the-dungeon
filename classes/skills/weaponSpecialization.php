@@ -32,7 +32,7 @@
             // Archer(-Ranger) Melee only
             $this->archer_melee_only_satisfied = true;
             if ($character_details->containsClassId(ARCHER) || $character_details->containsClassId(ARCHER_RANGER)) {
-                if($this->weapon_detail->getMeleeWeaponType == WEAPON_TYPE_MELEE) {
+                if($this->weapon_detail->getMeleeWeaponType() == WEAPON_TYPE_MELEE) {
                     $this->archer_melee_only_satisfied = true;
                 } else {
                     $this->archer_melee_only_satisfied = false;
