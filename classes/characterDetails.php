@@ -180,7 +180,7 @@ class CharacterDetails implements JsonSerializable
 			if ($this->getCharacterSuperStrength() == 100) {
 				$output .= '/00';
 			} else {
-				$output .= '/' . $this->getCharacterSuperStrength();
+				$output .= '/' . sprintf("%02d", $this->getCharacterSuperStrength());
 			}
 		}
 
@@ -201,7 +201,7 @@ class CharacterDetails implements JsonSerializable
 			if ($this->getCharacterSuperIntelligence() == 100) {
 				$output .= '/00';
 			} else {
-				$output .= '/' . $this->getCharacterSuperIntelligence();
+				$output .= '/' . sprintf("%02d", $this->getCharacterSuperIntelligence());
 			}
 		}
 
@@ -222,7 +222,7 @@ class CharacterDetails implements JsonSerializable
 			if ($this->getCharacterSuperWisdom() == 100) {
 				$output .= '/00';
 			} else {
-				$output .= '/' . $this->getCharacterSuperWisdom();
+				$output .= '/' . sprintf("%02d", $this->getCharacterSuperWisdom());
 			}
 		}
 
@@ -243,7 +243,7 @@ class CharacterDetails implements JsonSerializable
 			if ($this->getCharacterSuperDexterity() == 100) {
 				$output .= '/00';
 			} else {
-				$output .= '/' . $this->getCharacterSuperDexterity();
+				$output .= '/' . sprintf("%02d", $this->getCharacterSuperDexterity());
 			}
 		}
 
@@ -256,6 +256,19 @@ class CharacterDetails implements JsonSerializable
 
 	public function getCharacterSuperConstitution() {
 		return $this->characterSuperConstitution;
+	}
+
+	public function formatConstitution() {
+		$output = $this->getCharacterDexterity();
+		if ($this->getCharacterSuperConstitution() != null) {
+			if ($this->getCharacterSuperConstitution() == 100) {
+				$output .= '/00';
+			} else {
+				$output .= '/' . sprintf("%02d", $this->getCharacterSuperConstitution());
+			}
+		}
+
+		return $output;
 	}
 
 	public function getCharacterCharisma() {
@@ -452,6 +465,10 @@ class CharacterDetails implements JsonSerializable
 		}
 
 		return $level;
+	}
+
+	public function getPrimaryClass() {
+		return $this->character_classes[CHARACTER_PRIMARY_CLASS];
 	}
 
 	public function isHalfElf() {

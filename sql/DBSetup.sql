@@ -69,6 +69,7 @@ INSERT INTO character_class (name, spell_type_1, spell_type_2, spell_type_1_offs
 INSERT INTO character_class (name, spell_type_1, spell_type_2, spell_type_1_offset, spell_type_2_offset, is_active, icon_file_name) VALUES ('Bard', NULL, NULL, NULL, NULL, 1, 'Bard3.png');
 INSERT INTO character_class (name, spell_type_1, spell_type_2, spell_type_1_offset, spell_type_2_offset, is_active, icon_file_name) VALUES ('New Bard', 5, 2, 4, 1, 1, 'Bard2.png');
 INSERT INTO character_class (name, spell_type_1, spell_type_2, spell_type_1_offset, spell_type_2_offset, is_active, icon_file_name) VALUES ('Archer-Ranger', 4, 2, 8, 7, 1, 'Ranger2.png');
+INSERT INTO character_class (name, spell_type_1, spell_type_2, spell_type_1_offset, spell_type_2_offset, is_active, icon_file_name) VALUES ('Elven Cavalier', NULL, NULL, NULL, NULL, 1, 'Cavalier3.png');
 
 -- Character Race
 INSERT INTO character_race (name, generic_race_id, is_active) VALUES ('NONE', 1, 0);

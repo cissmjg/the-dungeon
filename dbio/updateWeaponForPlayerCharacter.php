@@ -18,7 +18,6 @@ require_once __DIR__ . '/../webio/playerCharacterWeaponId.php';
 require_once __DIR__ . '/../webio/weaponDescription.php';
 require_once __DIR__ . '/../webio/weaponLocation.php';
 require_once __DIR__ . '/../webio/isReady.php';
-require_once __DIR__ . '/../webio/isPreferred.php';
 require_once __DIR__ . '/../webio/craftStatus.php';
 require_once __DIR__ . '/../webio/strengthBonusAvailable.php';
 require_once __DIR__ . '/../webio/playerNote1.php';
@@ -74,7 +73,6 @@ getPlayerCharacterWeaponId($errors, $input);
 getWeaponDescription($errors, $input);
 getWeaponLocation($errors, $input, OPTIONAL_STRING_PARAMETER);
 getIsReady($errors, $input);
-getIsPreferred($errors, $input);
 getCraftStatus($errors, $input);
 getStrengthBonusAvailable($errors, $input);
 getPlayerNote1($errors, $input, OPTIONAL_STRING_PARAMETER);
@@ -139,7 +137,7 @@ $location_header = CurlHelper::buildLocationHeader($url);
 header($location_header);
 
 function updateWeaponForPlayerCharacter(\PDO $pdo, $input, &$errors, &$log) {
-	$sql_exec = "CALL updateWeaponForPlayerCharacter(:weaponId, :weaponDescription, :weaponLocation, :isReady, :isPreferred, :craftStatus, :strengthBonusAvailable, :playerNote1, :playerNote2, :playerNote3, :mastercraftHitDescription, :mastercraftDamageDescription, :meleeWeaponSpeed, :meleeWeaponDamage, :meleeAttacksPerRound, :meleeNumberOfHands, :meleeAdditionalText, :meleeHitBonus, :meleeDamageBonus, :meleeSpec1HitBonus, :meleeSpec1DamageBonus, :meleeSpec1Description, :meleeSpec2HitBonus, :meleeSpec2DamageBonus, :meleeSpec2Description, :meleeSpec3HitBonus, :meleeSpec3DamageBonus, :meleeSpec3Description, :missileWeaponSpeed, :missileWeaponDamage, :missileAttacksPerRound, :missileAdditionalText, :missileHitBonus, :missileDamageBonus, :missileSpec1HitBonus, :missileSpec1DamageBonus, :missileSpec1Description, :missileSpec2HitBonus, :missileSpec2DamageBonus, :missileSpec2Description, :missileSpec3HitBonus, :missileSpec3DamageBonus, :missileSpec3Description, :missileShortRange, :missileMediumRange, :missileLongRange)";
+	$sql_exec = "CALL updateWeaponForPlayerCharacter(:weaponId, :weaponDescription, :weaponLocation, :isReady, :craftStatus, :strengthBonusAvailable, :playerNote1, :playerNote2, :playerNote3, :mastercraftHitDescription, :mastercraftDamageDescription, :meleeWeaponSpeed, :meleeWeaponDamage, :meleeAttacksPerRound, :meleeNumberOfHands, :meleeAdditionalText, :meleeHitBonus, :meleeDamageBonus, :meleeSpec1HitBonus, :meleeSpec1DamageBonus, :meleeSpec1Description, :meleeSpec2HitBonus, :meleeSpec2DamageBonus, :meleeSpec2Description, :meleeSpec3HitBonus, :meleeSpec3DamageBonus, :meleeSpec3Description, :missileWeaponSpeed, :missileWeaponDamage, :missileAttacksPerRound, :missileAdditionalText, :missileHitBonus, :missileDamageBonus, :missileSpec1HitBonus, :missileSpec1DamageBonus, :missileSpec1Description, :missileSpec2HitBonus, :missileSpec2DamageBonus, :missileSpec2Description, :missileSpec3HitBonus, :missileSpec3DamageBonus, :missileSpec3Description, :missileShortRange, :missileMediumRange, :missileLongRange)";
 
     $null_value = NULL;
     $true_value = true;
@@ -170,14 +168,6 @@ function updateWeaponForPlayerCharacter(\PDO $pdo, $input, &$errors, &$log) {
     } else {
         $statement->bindParam(':isReady', $false_value, PDO::PARAM_BOOL);
         $log[] = 'isReady: ' . $input[IS_READY];
-    }
-
-    if (strcasecmp($input[IS_PREFERRED], 'YES') == 0) {
-        $statement->bindParam(':isPreferred', $true_value, PDO::PARAM_BOOL);
-        $log[] = 'isPreferred: ' . $input[IS_PREFERRED];
-    } else {
-        $statement->bindParam(':isPreferred', $false_value, PDO::PARAM_BOOL);
-        $log[] = 'isPreferred: ' . $input[IS_PREFERRED];
     }
 
     $statement->bindParam(':craftStatus', $input[CRAFT_STATUS], PDO::PARAM_INT);

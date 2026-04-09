@@ -32,6 +32,9 @@ $sql_verbs[] = "TRANSACTION";
 $sql_verbs[] = "GRANT";
 $sql_verbs[] = "REVOKE";
 $sql_verbs[] = "SELECT";
+$sql_verbs[] = "CALL ";
+$sql_verbs[] = "EXECUTE ";
+ 
 
 getPlayerName($errors, $input);
 getCharacterName($errors, $input);

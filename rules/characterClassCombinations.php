@@ -84,7 +84,6 @@ $class_combinations[RACE_DARK_ELF]["Assassin"] = array();
 $class_combinations[RACE_DARK_ELF]["Assassin"][] = "Cleric";
 $class_combinations[RACE_DARK_ELF]["Assassin"][] = "Fighter";
 $class_combinations[RACE_DARK_ELF]["Assassin"][] = "Magic-User";
-$class_combinations[RACE_DARK_ELF][] = "Cavalier";
 $class_combinations[RACE_DARK_ELF][] = "Greater Mage";
 $class_combinations[RACE_DARK_ELF][] = "Healer";
 $class_combinations[RACE_DARK_ELF][] = "New Bard";
@@ -211,6 +210,7 @@ $class_combinations[RACE_GRAY_ELF]["Archer"] = [];
 $class_combinations[RACE_GRAY_ELF]["Archer"][] = "Magic-User";
 
 $class_combinations[RACE_GRAY_ELF][] = "Cavalier";
+$class_combinations[RACE_GRAY_ELF][] = "Elven Cavalier";
 $class_combinations[RACE_GRAY_ELF][] = "Greater Mage";
 $class_combinations[RACE_GRAY_ELF][] = "Healer";
 $class_combinations[RACE_GRAY_ELF][] = "New Bard";
@@ -569,6 +569,7 @@ $class_combinations[RACE_HIGH_ELF]["Archer"] = [];
 $class_combinations[RACE_HIGH_ELF]["Archer"][] = "Magic-User";
 
 $class_combinations[RACE_HIGH_ELF][] = "Cavalier";
+$class_combinations[RACE_HIGH_ELF][] = "Elven Cavalier";
 $class_combinations[RACE_HIGH_ELF][] = "Greater Mage";
 $class_combinations[RACE_HIGH_ELF][] = "Healer";
 $class_combinations[RACE_HIGH_ELF][] = "New Bard";
@@ -914,6 +915,7 @@ $class_combinations[RACE_VALLEY_ELF]["Archer"] = [];
 $class_combinations[RACE_VALLEY_ELF]["Archer"][] = "Magic-User";
 
 $class_combinations[RACE_VALLEY_ELF][] = "Cavalier";
+$class_combinations[RACE_VALLEY_ELF][] = "Elven Cavalier";
 $class_combinations[RACE_VALLEY_ELF][] = "Greater Mage";
 $class_combinations[RACE_VALLEY_ELF][] = "Healer";
 $class_combinations[RACE_VALLEY_ELF][] = "New Bard";
@@ -1023,6 +1025,7 @@ $class_combinations[RACE_WOOD_ELF]["Archer"] = [];
 $class_combinations[RACE_WOOD_ELF]["Archer"][] = "Magic-User";
 
 $class_combinations[RACE_WOOD_ELF][] = "Cavalier";
+$class_combinations[RACE_WOOD_ELF][] = "Elven Cavalier";
 $class_combinations[RACE_WOOD_ELF][] = "Greater Mage";
 $class_combinations[RACE_WOOD_ELF][] = "Healer";
 $class_combinations[RACE_WOOD_ELF][] = "New Bard";

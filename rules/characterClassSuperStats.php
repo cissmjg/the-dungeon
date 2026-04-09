@@ -41,6 +41,11 @@ $character_super_stats[CAVALIER][] = CHARACTER_STRENGTH;
 $character_super_stats[CAVALIER][] = CHARACTER_DEXTERITY;
 $character_super_stats[CAVALIER][] = CHARACTER_CONSTITUTION;
 
+$character_super_stats[ELVEN_CAVALIER] = [];
+$character_super_stats[ELVEN_CAVALIER][] = CHARACTER_STRENGTH;
+$character_super_stats[ELVEN_CAVALIER][] = CHARACTER_DEXTERITY;
+$character_super_stats[ELVEN_CAVALIER][] = CHARACTER_CONSTITUTION;
+
 $character_super_stats[BARBARIAN] = [];
 $character_super_stats[BARBARIAN][] = CHARACTER_STRENGTH;
 

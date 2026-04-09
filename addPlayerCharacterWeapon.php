@@ -17,7 +17,6 @@ require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 require_once __DIR__ . '/helper/ActionBarHelper.php';
 require_once __DIR__ . '/webio/craftStatus.php';
-require_once __DIR__ . '/webio/isPreferred.php';
 require_once __DIR__ . '/webio/isProficient.php';
 require_once __DIR__ . '/webio/isReady.php';
 require_once __DIR__ . '/webio/mastercraftDamageDescription.php';
@@ -167,14 +166,6 @@ echo $html_header;
                 <option value="NO">No</option>
                 <option value="YES">Yes</option>
             </select></div>
-            <?php if (isCavalier($character_summary->getCharacterClasses())): ?>
-                <div class="inputRow"><label for="isPreferred">Preferred weapon? </label><select name="<?= IS_PREFERRED ?>" id="<?= IS_PREFERRED ?>">
-                    <option value="NO">No</option>
-                    <option value="YES">Yes</option>
-                </select></div>
-            <?php else: ?>
-                <input type="hidden" name="<?= IS_PREFERRED ?>" id="<?= IS_PREFERRED ?>" value="NO">
-            <?php endif ?>
             <?php
                 if(!empty($input[CRAFT_STATUS])) {
                     $craft_status = $input[CRAFT_STATUS];

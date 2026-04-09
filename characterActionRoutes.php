@@ -32,9 +32,11 @@
     const CHARACTER_ACTION_DELETE_PLAYER_CHARACTER_WEAPON = 'deletePlayerCharacterWeapon';
     const CHARACTER_ACTION_DELETE_PLAYER_CHARACTER_WEAPON_PROFICIENCY = 'deletePlayerCharacterWeaponProficiency';
     const CHARACTER_ACTION_EDIT_PLAYER_CHARACTER_WEAPON_PROFICIENCIES = 'editPlayerCharacterWeaponProficiencies';
+    const CHARACTER_ACTION_BROWSE_PLAYER_CHARACTER_WEAPON_PROFICIENCIES = 'browsePlayerCharacterWeaponProficiencies';
     const CHARACTER_ACTION_ADD_WEAPON_TALENT = 'addPlayerCharacterWeaponTalent';
     const CHARACTER_ACTION_EDIT_WEAPON_TALENTS = 'editWeaponTalents';
     const CHARACTER_ACTION_DELETE_WEAPON_TALENT = 'deletePlayerCharacterWeaponTalent';
     const CHARACTER_ACTION_ADD_ATTRIBUTE_WEAPON_SKILL = 'addAttribiteWeaponSkill';
     const CHARACTER_ACTION_DELETE_ATTRIBUTE_WEAPON_SKILL = 'deleteAttributeWeaponSkill';
+    const CHARACTER_ACTION_ADD_PREFERRED_WEAPON_PROFICIENCY = 'addPreferredWeaponProficiency';
 ?>

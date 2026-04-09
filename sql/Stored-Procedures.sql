@@ -74,6 +74,80 @@ CREATE PROCEDURE addWeaponProficiency
 	Call addWeaponProficiencyToPlayerCharacter(playerName, characterName, weaponProficiencyId, playerCharacterSkillId);
  END
 
+CREATE PROCEDURE addPreferredWeaponForCavalier
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64),
+ IN characterLevel INT,
+ IN weaponProficiencyId INT)
+BEGIN
+	
+	DECLARE weaponProficiencySkillId INT DEFAULT 179;
+	DECLARE playerCharacterId INT DEFAULT 0;
+	DECLARE level3PreferredWeapon BOOLEAN DEFAULT 0;	
+	DECLARE level5PreferredWeapon BOOLEAN DEFAULT 0;	
+
+	SELECT id
+	INTO weaponProficiencySkillId
+	FROM skill_catalog
+	WHERE name = 'Weapon Proficiency';
+	
+	SELECT player_character.id 
+	INTO playerCharacterId
+	FROM player_character
+	JOIN player ON player.id = player_character.player_id
+	WHERE player.name = playerName AND player_character.name = characterName;
+
+	IF characterLevel = 3 THEN
+		SET level3PreferredWeapon = TRUE;
+	END IF;
+
+	IF characterLevel = 5 THEN
+		SET level5PreferredWeapon = TRUE;
+	END IF;
+	
+	INSERT INTO player_character_skill
+		(player_character_id, skill_catalog_id, is_skill_focus, weapon_proficiency_id, is_preferred_cavalier_level3, is_preferred_cavalier_level5)
+	VALUES
+		(playerCharacterId, weaponProficiencySkillId, FALSE, weaponProficiencyId, level3PreferredWeapon, level5PreferredWeapon);
+END
+
+CREATE PROCEDURE addPreferredWeaponForElvenCavalier
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64),
+ IN characterLevel INT,
+ IN weaponProficiencyId INT)
+BEGIN
+	
+	DECLARE weaponProficiencySkillId INT DEFAULT 179;
+	DECLARE playerCharacterId INT DEFAULT 0;
+	DECLARE level4PreferredWeapon BOOLEAN DEFAULT 0;	
+	DECLARE level6PreferredWeapon BOOLEAN DEFAULT 0;	
+
+	SELECT id
+	INTO weaponProficiencySkillId
+	FROM skill_catalog
+	WHERE name = 'Weapon Proficiency';
+	
+	SELECT player_character.id 
+	INTO playerCharacterId
+	FROM player_character
+	JOIN player ON player.id = player_character.player_id
+	WHERE player.name = playerName AND player_character.name = characterName;
+
+	IF characterLevel = 4 THEN
+		SET level4PreferredWeapon = TRUE;
+	END IF;
+
+	IF characterLevel = 6 THEN
+		SET level6PreferredWeapon = TRUE;
+	END IF;
+	
+	INSERT INTO player_character_skill
+		(player_character_id, skill_catalog_id, is_skill_focus, weapon_proficiency_id, is_preferred_elven_cavalier_level4, 	is_preferred_elven_cavalier_level6)
+	VALUES
+		(playerCharacterId, weaponProficiencySkillId, FALSE, weaponProficiencyId, level4PreferredWeapon, level6PreferredWeapon);
+END
+
 CREATE PROCEDURE addWeaponToPlayerCharacter
 (IN playerName VARCHAR(32),
  IN characterName VARCHAR(64),
@@ -82,7 +156,6 @@ CREATE PROCEDURE addWeaponToPlayerCharacter
  IN weaponLocation VARCHAR(32),
  IN isProficient BOOLEAN,
  IN isReady BOOLEAN,
- IN isPreferred BOOLEAN,
  IN craftStatus INT,
  IN strengthBonusAvailable BOOLEAN,
  IN playerNote1 VARCHAR(32),
@@ -176,7 +249,6 @@ BEGIN
 			description,
 			location,
 			is_ready,
-			is_preferred,
 			craft_status,
 			strength_bonus_available,
 			player_note1,
@@ -189,7 +261,6 @@ BEGIN
 			weaponDescription,
 			weaponLocation,
 			isReady,
-			isPreferred,
 			craftStatus,
 			strengthBonusAvailable,
 			playerNote1,
@@ -950,7 +1021,7 @@ CREATE PROCEDURE getCharacterSummary
 BEGIN
 	SELECT strength, super_strength, intelligence, super_intelligence,
            wisdom, super_wisdom, dexterity, super_dexterity,
-           constitution, charisma, comeliness, armor_class, hit_points, spell_points
+           constitution, super_constitution, charisma, comeliness, armor_class, hit_points, spell_points
 	FROM player_character
 	JOIN player ON player.id = player_character.player_id
 	WHERE player_character.name = characterName
@@ -1043,7 +1114,6 @@ BEGIN
 		player_character_weapon.craft_status AS player_character_weapon_craft_status,
 		player_character_weapon.weapon_proficiency_id AS player_character_weapon_proficiency_id, 
 		player_character_weapon.description AS player_character_weapon_description,
-		player_character_weapon.is_preferred AS player_character_weapon_is_preferred,
 		player_character_weapon.is_ready AS player_character_weapon_is_ready,
 		player_character_weapon.location AS player_character_weapon_location,
 		player_character_weapon.player_note1 AS player_character_weapon_player_note1,
@@ -1209,7 +1279,11 @@ BEGIN
 		IFNULL(player_character_skill.player_character_skill_name,skill_catalog.name) AS skill_name,
 		player_character_skill.is_skill_focus AS player_character_skill_is_skill_focus,
 		player_character_skill.weapon_proficiency_id AS player_character_weapon_proficiency_id,
-		player_character_skill.weapon2_proficiency_id AS player_character_weapon2_proficiency_id
+		player_character_skill.weapon2_proficiency_id AS player_character_weapon2_proficiency_id,
+		is_preferred_cavalier_level3 AS player_character_cavalier_level3_preferred,
+		is_preferred_cavalier_level5 AS player_character_cavalier_level5_preferred,
+		is_preferred_elven_cavalier_level4 AS player_character_elven_cavalier_level4_preferred,
+		is_preferred_elven_cavalier_level6 AS player_character_elven_cavalier_level6_preferred
 	FROM player_character_skill
 	JOIN skill_catalog ON skill_catalog.id = player_character_skill.skill_catalog_id
 	JOIN player_character ON player_character.id = player_character_skill.player_character_id
@@ -1540,7 +1614,11 @@ BEGIN
 	SELECT
 		player_character_skill.id AS player_weapon_proficiency_id,
 		weapon_proficiency.id AS weapon_proficiency_id,
-		weapon_proficiency.name AS weapon_proficiency_description
+		weapon_proficiency.name AS weapon_proficiency_description,
+		is_preferred_cavalier_level3,
+		is_preferred_cavalier_level5,
+		is_preferred_elven_cavalier_level4,
+		is_preferred_elven_cavalier_level6
 	FROM player_character_skill
 	JOIN weapon_proficiency ON weapon_proficiency.id = player_character_skill.weapon_proficiency_id
 	WHERE
@@ -1773,6 +1851,7 @@ CREATE PROCEDURE resetPlayerCharacter
  IN characterName VARCHAR(64))
 BEGIN
 	DECLARE playerCharacterId INT DEFAULT 0;
+	DECLARE fistWeaponProficiencyId INT DEFAULT 118;
 	
 	SELECT player_character.id
 	INTO playerCharacterId
@@ -1802,6 +1881,14 @@ BEGIN
 	DELETE FROM player_character_weapon WHERE player_character_weapon.player_character_id = playerCharacterId;
 	DELETE FROM player_character_weapon_mode WHERE player_character_weapon_mode.id IN (SELECT id FROM playerCharacterWeaponModeIds);
 	UPDATE player_character_class SET character_level = 0 WHERE player_character_class.id IN (SELECT id FROM ids);
+
+	-- Reinsert FIST proficiency
+	SELECT id
+	INTO fistWeaponProficiencyId
+	FROM weapon_proficiency
+	WHERE name = 'Fist';
+
+	CALL addWeaponProficiency(playerName, characterName, fistWeaponProficiencyId);
 	COMMIT;
 	
 	DROP TEMPORARY TABLE ids;
@@ -2038,7 +2125,6 @@ CREATE PROCEDURE updateWeaponForPlayerCharacter
  IN weaponDescription VARCHAR(32),
  IN weaponLocation VARCHAR(32),
  IN isReady BOOLEAN,
- IN isPreferred BOOLEAN,
  IN craftStatus INT,
  IN strengthBonusAvailable BOOLEAN,
  IN playerNote1 VARCHAR(32),
@@ -2100,7 +2186,6 @@ BEGIN
 			SET description = weaponDescription,
 				location = weaponLocation,
 				is_ready = isReady,
-				is_preferred = isPreferred,
 				craft_status = craftStatus,
 				strength_bonus_available = strengthBonusAvailable,
 				player_note1 = playerNote1,
