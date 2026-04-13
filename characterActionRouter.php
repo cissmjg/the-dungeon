@@ -35,7 +35,6 @@ require_once __DIR__ . '/webio/playerCharacterWeaponId.php';
 require_once __DIR__ . '/webio/spellSlotLevel.php';
 require_once __DIR__ . '/webio/spellTypeId.php';
 require_once __DIR__ . '/webio/hoursOfSleep.php';
-require_once __DIR__ . '/webio/playerCharacterWeaponId.php';
 require_once __DIR__ . '/webio/playerCharacterSkillId.php';
 require_once __DIR__ . '/webio/playerCharacterWeaponSkillId.php';
 require_once __DIR__ . '/webio/playerCharacterWeaponTalentId.php';
@@ -43,6 +42,8 @@ require_once __DIR__ . '/webio/skillCatalogId.php';
 require_once __DIR__ . '/webio/playerCharacterSkillName.php';
 require_once __DIR__ . '/webio/isSkillFocus.php';
 require_once __DIR__ . '/webio/weapon2ProficiencyId.php';
+require_once __DIR__ . '/webio/twoWeaponConfigurationId.php';
+require_once __DIR__ . '/webio/playerCharacterWeapon2Id.php';
 
 require_once __DIR__ . '/webio/weaponProficiencyId.php';
 require_once __DIR__ . '/webio/weaponDescription.php';
@@ -1144,6 +1145,63 @@ switch($character_action) {
 			die(json_encode($errors));
 		}
 
+	case CHARACTER_ACTION_DELETE_TWO_WEAPON_CONFIG:
+		// Get player name
+		getPlayerName($errors, $input);
+
+		// Get character name	
+		getCharacterName($errors, $input);
+
+		// Get the ID for the Two Weapon Configuration
+		getTwoWeaponConfigurationId($errors, $input);
+
+		$url_delete_two_weapon_config = CurlHelper::buildUrlDbioDirectory('deletePlayerCharacterTwoWeaponConfiguration');
+		$params_delete_two_weapon_config = buildDeleteTwoWeaponConfigParams($input);
+		$raw_result = CurlHelper::performGetRequest($url_delete_two_weapon_config, $params_delete_two_weapon_config);
+		$result = json_decode($raw_result);
+		if (str_starts_with($result[0], "SUCCESS|")) {
+			$location_header = buildEditTwoWeaponConfigurations($input);
+			header($location_header);
+			exit;
+		} else {
+			RestHeaderHelper::emitRestHeaders();
+			$errors[] = "Execution Error|";
+			$errors[] = $character_action . "|";
+			$errors[] = __FILE__ . "|";
+			$errors[] = $result;
+			die(json_encode($errors));
+		}
+
+	case CHARACTER_ACTION_ADD_TWO_WEAPON_CONFIG:
+		// Get player name
+		getPlayerName($errors, $input);
+
+		// Get character name	
+		getCharacterName($errors, $input);
+
+		// Get the mainhand weapon ID for the Two Weapon Configuration
+		getPlayerCharacterWeaponId($errors, $input);
+
+		// Get the offhand weapon ID for the Two Weapon Configuration
+		getPlayerCharacterWeapon2Id($errors, $input);
+
+		$url_add_two_weapon_config = CurlHelper::buildUrlDbioDirectory('addTwoWeaponConfiguration');
+		$params_add_two_weapon_config = buildAddTwoWeaponConfigParams($input);
+		$raw_result = CurlHelper::performGetRequest($url_add_two_weapon_config, $params_add_two_weapon_config);
+		$result = json_decode($raw_result);
+		if (str_starts_with($result[0], "SUCCESS|")) {
+			$location_header = buildEditTwoWeaponConfigurations($input);
+			header($location_header);
+			exit;
+		} else {
+			RestHeaderHelper::emitRestHeaders();
+			$errors[] = "Execution Error|";
+			$errors[] = $character_action . "|";
+			$errors[] = __FILE__ . "|";
+			$errors[] = $result;
+			die(json_encode($errors));
+		}
+
 	default:
 		RestHeaderHelper::emitRestHeaders();
 		$errors[] = "Input Error|";
@@ -1354,6 +1412,14 @@ function buildBrowseWeaponProficienciesRedirect($input) {
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, TEXT_INPUT, $input[TEXT_INPUT]);
+
+	return CurlHelper::buildLocationHeader($redirect_url);
+}
+
+function buildEditTwoWeaponConfigurations($input) {
+	$redirect_url = CurlHelper::buildUrl('editPlayerCharacterTwoWeaponConfigurations');
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
+	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
 	return CurlHelper::buildLocationHeader($redirect_url);
 }
@@ -1627,6 +1693,24 @@ function buildAddPreferredWeaponProficiencyParams($input) {
 	$params[WEAPON_PROFICIENCY_ID] = $input[WEAPON_PROFICIENCY_ID];
 	$params[CHARACTER_CLASS_ID] = $input[CHARACTER_CLASS_ID];
 	$params[CHARACTER_LEVEL] = $input[CHARACTER_LEVEL];
+
+	return $params;
+}
+
+function buildDeleteTwoWeaponConfigParams($input) {
+	$params = [];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
+	$params[TWO_WEAPON_CONFIGURATION_ID] = $input[TWO_WEAPON_CONFIGURATION_ID];
+
+	return $params;
+}
+
+function buildAddTwoWeaponConfigParams($input) {
+	$params = [];
+	$params[PLAYER_NAME] = $input[PLAYER_NAME];
+	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
+	$params[PLAYER_CHARACTER_WEAPON_ID] = $input[PLAYER_CHARACTER_WEAPON_ID];
+	$params[PLAYER_CHARACTER_WEAPON2_ID] = $input[PLAYER_CHARACTER_WEAPON2_ID];
 
 	return $params;
 }
