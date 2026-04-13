@@ -7,6 +7,12 @@ require_once __DIR__ . '/env.php';
 require_once __DIR__ . '/webio/playerName.php';
 
 function validateSessionCredentials(\PDO $pdo) {
+
+    if (SITE_STATUS == SITE_STATUS_DOWN) {
+        $url_site_down = buildSiteDownRedirect();
+        header($url_site_down);
+    }
+
     // Only validate credentials in Production
     if (ENVIRONMENT == PROD_ENVIRONMENT) {
 
@@ -83,4 +89,8 @@ function buildLoginRedirect() {
 	return CurlHelper::buildLocationHeader($redirect_url);
 }
 
+function buildSiteDownRedirect() {
+    $redirect_url = STARTING_URL . 'site-down.html';
+    return CurlHelper::buildLocationHeader($redirect_url);
+}
 ?>
