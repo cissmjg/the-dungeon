@@ -597,6 +597,24 @@ class AttributeMetadata {
         return $armor_class_adjustment;
     }
 
+    public function getTwoWeaponDexterityPenalty() {
+        if (!empty($this->character_details->getCharacterSuperDexterity()) && $this->character_details->getCharacterDexterity() == 18) {
+            return -1;
+        }
+
+        if ($this->character_details->getCharacterDexterity() == 19) {
+            return 0;
+        }
+
+        if ($this->character_details->getCharacterDexterity() == 18) {
+            return -2;
+        }
+
+        if ($this->character_details->getCharacterDexterity() == 17) {
+            return -3;
+        }
+    }
+
     public function getConstitutionMetadata() {
         $hp_adj = sprintf("%+.0f", $this->getHitPointAdjustment());
         $ss_rs = $this->constitution_ss_rs[$this->character_details->getCharacterConstitution()];

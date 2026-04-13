@@ -48,6 +48,8 @@ require_once __DIR__ . '/classes/skills/zenArchery.php';
 
 const SELECT_PROMPT = '[Select a Weapon]';
 const SELECT_WEAPON_OPTION = '<option value="0">' . SELECT_PROMPT . '</option>' . PHP_EOL;
+
+$locale = 'en_US';
 $nf = new NumberFormatter($locale, NumberFormatter::ORDINAL);
 
 // Populate player and character names in $input

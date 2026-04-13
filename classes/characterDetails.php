@@ -23,6 +23,7 @@ class CharacterDetails implements JsonSerializable
 	private $characterCharisma;
 	private $characterComeliness;
 	private $armorClass;
+	private $armorBulkFactor;
 	private $hitPoints;
 	private $genderIn;
 	private $movement;
@@ -40,6 +41,7 @@ class CharacterDetails implements JsonSerializable
 	private $hair;
 	private $eyes;
 	private $siblings;
+	private $parents_married;
     private $character_classes = [];
 
 	public function init(\PDO $pdo, $player_name, $character_name, &$errors) {
@@ -130,6 +132,7 @@ class CharacterDetails implements JsonSerializable
 		$this->characterCharisma = $character_stats_class['player_character_charisma'];
 		$this->characterComeliness = $character_stats_class['player_character_comeliness'];
 		$this->armorClass = $character_stats_class['player_character_armor_class'];
+		$this->armorBulkFactor = $character_stats_class['player_character_armor_bulk_factor'];
 		$this->hitPoints = $character_stats_class['player_character_hit_points'];
 		$this->genderIn = $character_stats_class['player_character_gender'];
 		$this->movement = $character_stats_class['player_character_movement'];
@@ -147,6 +150,7 @@ class CharacterDetails implements JsonSerializable
 		$this->hair = $character_stats_class['player_character_hair'];
 		$this->eyes = $character_stats_class['player_character_eyes'];
 		$this->siblings = $character_stats_class['player_character_siblings'];
+		$this->parents_married = $character_stats_class['player_character_parents_married'];
     }
 
 	// function called when encoded with json_encode
@@ -259,7 +263,7 @@ class CharacterDetails implements JsonSerializable
 	}
 
 	public function formatConstitution() {
-		$output = $this->getCharacterDexterity();
+		$output = $this->getCharacterConstitution();
 		if ($this->getCharacterSuperConstitution() != null) {
 			if ($this->getCharacterSuperConstitution() == 100) {
 				$output .= '/00';
@@ -324,6 +328,10 @@ class CharacterDetails implements JsonSerializable
 
 	public function getArmorClass() {
 		return $this->armorClass;
+	}
+
+	public function getArmorBulkFactor() {
+		return $this->armorBulkFactor;
 	}
 
 	public function getHitPoints() {
@@ -392,6 +400,10 @@ class CharacterDetails implements JsonSerializable
 
 	public function getSiblings() {
 		return $this->siblings;
+	}
+
+	public function getParentsMarried() {
+		return $this->parents_married;
 	}
 
 	public function getCharacterClasses() {

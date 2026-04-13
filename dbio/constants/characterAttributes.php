@@ -34,8 +34,9 @@
     const CHARACTER_HEIGHT = 'height';
     const CHARACTER_WEIGHT = 'weight';
     const CHARACTER_HAIR = 'hair';
-    CONST CHARACTER_EYES = 'eyes';
-    CONST CHARACTER_SIBLINGS = 'siblings';
+    const CHARACTER_EYES = 'eyes';
+    const CHARACTER_SIBLINGS = 'siblings';
+    const CHARACTER_PARENTS_MARRIED = 'parents_married';
 
     const CHARACTER_CLASSES = 'character_classes';
     const CHARACTER_PRIMARY_CLASS = 'characterClass1';
@@ -43,5 +44,6 @@
     const CHARACTER_TERTIARY_CLASS = 'characterClass3';
 
     const CHARACTER_ARMOR_CLASS = 'armorClass';
+    const CHARACTER_ARMOR_BULK_FACTOR = 'armorBulkFactor';
     const CHARACTER_HIT_POINTS = 'hitPoints';
 ?>

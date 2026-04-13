@@ -6,74 +6,6 @@ BEGIN
 	VALUES (playerCharacterId, characterClassId, 0, 0);
 END
 
-CREATE PROCEDURE addSkill
-(IN playerName VARCHAR(32),
- IN characterName VARCHAR(64),
- IN skillCatalogId INT,
- IN playerSkillName VARCHAR(64),
- IN isSkillFocus BOOLEAN,
- IN weaponProficiencyId INT,
- IN weapon2ProficiencyId INT)
- BEGIN
-	DECLARE playerCharacterSkillId INT DEFAULT 0;
-	
-	CALL addSkillToPlayerCharacter(playerName, characterName, skillCatalogId, playerSkillName, isSkillFocus, weaponProficiencyId, weapon2ProficiencyId, playerCharacterSkillId);
-	SELECT playerCharacterSkillId as player_character_skill_id;
- END
-
-CREATE PROCEDURE addSkillToPlayerCharacter
-(IN playerName VARCHAR(32),
- IN characterName VARCHAR(64),
- IN skillCatalogId INT,
- IN playerSkillName VARCHAR(64),
- IN isSkillFocus BOOLEAN,
- IN weaponProficiencyId INT,
- IN weapon2ProficiencyId INT,
- OUT playerCharacterSkillId INT)
-BEGIN
-	DECLARE playerCharacterId INT DEFAULT 0;
-	
-	SELECT player_character.id 
-	INTO playerCharacterId
-	FROM player_character
-	JOIN player ON player.id = player_character.player_id
-	WHERE player.name = playerName AND player_character.name = characterName;
-	
-	INSERT INTO player_character_skill(player_character_id, skill_catalog_id, player_character_skill_name, is_skill_focus, weapon_proficiency_id, weapon2_proficiency_id)
-	VALUES(playerCharacterId, skillCatalogId, playerSkillName, isSkillFocus, weaponProficiencyId, weapon2ProficiencyId);
-
-	SELECT LAST_INSERT_ID()
-	INTO playerCharacterSkillId;
-END
-
-CREATE PROCEDURE addWeaponProficiencyToPlayerCharacter
-(IN playerName VARCHAR(32),
- IN characterName VARCHAR(64),
- IN weaponProficiencyId INT,
- INOUT playerCharacterWeaponProficiencyId INT)
- BEGIN
-	
-	DECLARE weaponProficiencySkillId INT DEFAULT 179;
-
-	SELECT id
-	INTO weaponProficiencySkillId
-	FROM skill_catalog
-	WHERE name = 'Weapon Proficiency';
-
-	CALL addSkillToPlayerCharacter(playerName, characterName, weaponProficiencySkillId, NULL, false, weaponProficiencyId, NULL, playerCharacterWeaponProficiencyId);
- END
-
-CREATE PROCEDURE addWeaponProficiency
-(IN playerName VARCHAR(32),
- IN characterName VARCHAR(64),
- IN weaponProficiencyId INT)
- BEGIN
-	
-	DECLARE playerCharacterSkillId INT DEFAULT 0;
-
-	Call addWeaponProficiencyToPlayerCharacter(playerName, characterName, weaponProficiencyId, playerCharacterSkillId);
- END
-
 CREATE PROCEDURE addPreferredWeaponForCavalier
 (IN playerName VARCHAR(32),
  IN characterName VARCHAR(64),
@@ -147,6 +79,92 @@ BEGIN
 	VALUES
 		(playerCharacterId, weaponProficiencySkillId, FALSE, weaponProficiencyId, level4PreferredWeapon, level6PreferredWeapon);
 END
+
+CREATE PROCEDURE addSkill
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64),
+ IN skillCatalogId INT,
+ IN playerSkillName VARCHAR(64),
+ IN isSkillFocus BOOLEAN,
+ IN weaponProficiencyId INT,
+ IN weapon2ProficiencyId INT)
+ BEGIN
+	DECLARE playerCharacterSkillId INT DEFAULT 0;
+	
+	CALL addSkillToPlayerCharacter(playerName, characterName, skillCatalogId, playerSkillName, isSkillFocus, weaponProficiencyId, weapon2ProficiencyId, playerCharacterSkillId);
+	SELECT playerCharacterSkillId as player_character_skill_id;
+ END
+
+CREATE PROCEDURE addSkillToPlayerCharacter
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64),
+ IN skillCatalogId INT,
+ IN playerSkillName VARCHAR(64),
+ IN isSkillFocus BOOLEAN,
+ IN weaponProficiencyId INT,
+ IN weapon2ProficiencyId INT,
+ OUT playerCharacterSkillId INT)
+BEGIN
+	DECLARE playerCharacterId INT DEFAULT 0;
+	
+	SELECT player_character.id 
+	INTO playerCharacterId
+	FROM player_character
+	JOIN player ON player.id = player_character.player_id
+	WHERE player.name = playerName AND player_character.name = characterName;
+	
+	INSERT INTO player_character_skill(player_character_id, skill_catalog_id, player_character_skill_name, is_skill_focus, weapon_proficiency_id, weapon2_proficiency_id)
+	VALUES(playerCharacterId, skillCatalogId, playerSkillName, isSkillFocus, weaponProficiencyId, weapon2ProficiencyId);
+
+	SELECT LAST_INSERT_ID()
+	INTO playerCharacterSkillId;
+END
+
+CREATE PROCEDURE addTwoWeaponConfiguration
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64),
+ IN weapon1Id INT,
+ IN weapon2Id INT)
+BEGIN
+	DECLARE playerCharacterId INT DEFAULT 0;
+	
+	SELECT player_character.id 
+	INTO playerCharacterId
+	FROM player_character
+	JOIN player ON player.id = player_character.player_id
+	WHERE player.name = playerName AND player_character.name = characterName;
+
+	INSERT INTO player_character_two_weapon_fighting(player_character_id, player_character_weapon1_id, player_character_weapon2_id)
+	VALUES(playerCharacterId, weapon1Id, weapon2Id);
+END
+
+CREATE PROCEDURE addWeaponProficiencyToPlayerCharacter
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64),
+ IN weaponProficiencyId INT,
+ INOUT playerCharacterWeaponProficiencyId INT)
+ BEGIN
+	
+	DECLARE weaponProficiencySkillId INT DEFAULT 179;
+
+	SELECT id
+	INTO weaponProficiencySkillId
+	FROM skill_catalog
+	WHERE name = 'Weapon Proficiency';
+
+	CALL addSkillToPlayerCharacter(playerName, characterName, weaponProficiencySkillId, NULL, false, weaponProficiencyId, NULL, playerCharacterWeaponProficiencyId);
+ END
+
+CREATE PROCEDURE addWeaponProficiency
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64),
+ IN weaponProficiencyId INT)
+ BEGIN
+	
+	DECLARE playerCharacterSkillId INT DEFAULT 0;
+
+	Call addWeaponProficiencyToPlayerCharacter(playerName, characterName, weaponProficiencyId, playerCharacterSkillId);
+ END
 
 CREATE PROCEDURE addWeaponToPlayerCharacter
 (IN playerName VARCHAR(32),
@@ -780,6 +798,7 @@ BEGIN
 		DELETE FROM player_character_skill  WHERE player_character_skill.player_character_id  = playerCharacterId;
 		DELETE FROM player_character_weapon WHERE player_character_weapon.player_character_id = playerCharacterId;
 		DELETE FROM player_character_weapon_mode WHERE player_character_weapon_mode.id IN (SELECT id FROM playerCharacterWeaponModeIds);
+		DELETE FROM player_character_two_weapon_fighting WHERE player_character_two_weapon_fighting.player_character_id = playerCharacterId;
 
 		DELETE FROM player_character_class WHERE player_character_class.id IN (SELECT id FROM ids);
 		DELETE FROM player_character WHERE player_character.name = characterName;
@@ -805,12 +824,21 @@ BEGIN
 	DELETE FROM player_character_skill WHERE id = playerCharacterSkillId;
 END
 
+CREATE PROCEDURE deleteTwoWeaponConfiguration
+(IN playerCharacterTwoWeaponConfigId INT)
+BEGIN
+	DELETE FROM player_character_two_weapon_fighting WHERE id = playerCharacterTwoWeaponConfigId;
+END
+
 CREATE PROCEDURE deleteWeaponForPlayerCharacter
 (IN characterWeaponId INT)
 BEGIN
 	START TRANSACTION;
 		DELETE FROM player_character_weapon_mode WHERE player_character_weapon_id = characterWeaponId;
 		DELETE FROM player_character_weapon WHERE id = characterWeaponId;
+		DELETE FROM player_character_two_weapon_fighting 
+			WHERE player_character_two_weapon_fighting.player_character_weapon1_id = characterWeaponId OR 
+			      player_character_two_weapon_fighting.player_character_weapon2_id = characterWeaponId;
 	COMMIT;
 END
 
@@ -959,6 +987,7 @@ CREATE PROCEDURE getCharacterDetails
 BEGIN
 	SELECT 
 		player_character.armor_class AS player_character_armor_class,
+		player_character.armor_bulk_factor AS player_character_armor_bulk_factor,
 		player_character.charisma AS player_character_charisma,
 		player_character.comeliness AS player_character_comeliness,
 		player_character.constitution AS player_character_constitution,
@@ -989,6 +1018,7 @@ BEGIN
 		player_character.hair AS player_character_hair,
 		player_character.eyes AS player_character_eyes,
 		player_character.siblings AS player_character_siblings,
+		player_character.parents_married as player_character_parents_married,
 		character_race.name AS player_character_race,
 		player_character_class.character_level AS player_character_class_level,
 		player_character_class.number_of_experience_points AS player_character_class_experience_points,
@@ -1144,6 +1174,30 @@ BEGIN
 	FROM player_character_weapon
 	JOIN player_character_weapon_mode ON player_character_weapon_mode.player_character_weapon_id = player_character_weapon.id
 	WHERE player_character_weapon.id = playerCharacterWeaponId;
+END
+
+CREATE PROCEDURE getPlayerCharacterTwoWeaponConfigurations
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64))
+BEGIN
+	DECLARE playerCharacterId INT DEFAULT 0;
+
+	SELECT player_character.id 
+	INTO playerCharacterId
+	FROM player_character
+	JOIN player ON player.id = player_character.player_id
+	WHERE player.name = playerName AND player_character.name = characterName;
+
+	SELECT 
+		player_character_two_weapon_fighting.id AS player_character_two_weapon_fighting_id,
+		w1.description AS player_character_weapon1_description,
+		w1.location AS player_character_weapon1_location,
+		w2.description AS player_character_weapon2_description,
+		w2.location AS player_character_weapon2_location
+	FROM player_character_two_weapon_fighting
+	JOIN player_character_weapon w1 ON w1.id = player_character_two_weapon_fighting.player_character_weapon1_id
+	JOIN player_character_weapon w2 ON w2.id = player_character_two_weapon_fighting.player_character_weapon2_id
+	WHERE player_character_two_weapon_fighting.player_character_id = playerCharacterId;
 END
 
 CREATE PROCEDURE getReadySpells
@@ -1744,6 +1798,77 @@ BEGIN
 	ORDER BY is_ready, description;
 END
 
+CREATE PROCEDURE getWeaponsForPlayerCharacterByProficiency
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64),
+ IN weaponProficiencyId INT)
+BEGIN
+	DECLARE playerCharacterId INT DEFAULT 0;
+	DECLARE longSwordProficiencyId INT DEFAULT 117;
+	DECLARE shortSwordProficiencyId INT DEFAULT 100;
+	DECLARE twoHandedSwordProficiencyId INT DEFAULT 101;
+	DECLARE associatedWeaponProficiency INT DEFAULT 0;
+
+	SELECT weapon_proficiency.id
+	INTO longSwordProficiencyId
+	FROM weapon_proficiency
+	WHERE weapon_proficiency.name = 'Long Sword';
+
+	SELECT weapon_proficiency.id
+	INTO shortSwordProficiencyId
+	FROM weapon_proficiency
+	WHERE weapon_proficiency.name = 'Short Sword';
+
+	SELECT weapon_proficiency.id
+	INTO twoHandedSwordProficiencyId
+	FROM weapon_proficiency
+	WHERE weapon_proficiency.name = 'Two-Handed Sword';
+
+	-- Assume no 'associated' weapon proficiency
+	SET associatedWeaponProficiency = weaponProficiencyId;
+
+	-- Check for Long Sword
+	IF weaponProficiencyId = longSwordProficiencyId THEN
+		SELECT weapon_proficiency.id
+		INTO associatedWeaponProficiency
+		FROM weapon_proficiency
+		WHERE weapon_proficiency.name = 'Elven Thin Blade';
+	END IF;
+
+	-- Check for Short Sword
+	IF weaponProficiencyId = shortSwordProficiencyId THEN
+		SELECT weapon_proficiency.id
+		INTO associatedWeaponProficiency
+		FROM weapon_proficiency
+		WHERE weapon_proficiency.name = 'Elven Lightblade';
+	END IF;
+
+	-- Check for Two-Handed Sword
+	IF weaponProficiencyId = twoHandedSwordProficiencyId THEN
+		SELECT weapon_proficiency.id
+		INTO associatedWeaponProficiency
+		FROM weapon_proficiency
+		WHERE weapon_proficiency.name = 'Elven Court Blade';
+	END IF;
+	
+	SELECT player_character.id
+	INTO playerCharacterId
+	FROM player_character
+	JOIN player ON player.id = player_character.player_id
+	WHERE player.name = playerName AND player_character.name = characterName;
+
+	SELECT 
+		player_character_weapon.id AS player_character_weapon_id,
+		player_character_weapon.description AS player_character_weapon_description,
+		player_character_weapon.location AS player_character_weapon_location,
+		player_character_weapon.craft_status AS player_character_weapon_craft_status
+	FROM player_character_weapon 
+	WHERE 
+		player_character_weapon.player_character_id = playerCharacterId AND
+		(player_character_weapon.weapon_proficiency_id = weaponProficiencyId OR
+		 player_character_weapon.weapon_proficiency_id = associatedWeaponProficiency);
+END
+
 CREATE PROCEDURE getUnallocatedSpellsForSpellBook
 (IN playerName VARCHAR(32),
  IN characterName VARCHAR(64),
@@ -1880,6 +2005,7 @@ BEGIN
 	DELETE FROM player_character_skill  WHERE player_character_skill.player_character_id  = playerCharacterId;
 	DELETE FROM player_character_weapon WHERE player_character_weapon.player_character_id = playerCharacterId;
 	DELETE FROM player_character_weapon_mode WHERE player_character_weapon_mode.id IN (SELECT id FROM playerCharacterWeaponModeIds);
+	DELETE FROM player_character_two_weapon_fighting WHERE player_character_two_weapon_fighting.player_character_id = playerCharacterId;
 	UPDATE player_character_class SET character_level = 0 WHERE player_character_class.id IN (SELECT id FROM ids);
 
 	-- Reinsert FIST proficiency
@@ -1968,6 +2094,7 @@ CREATE PROCEDURE updateBaseCharacter
  IN characterComeliness INT,
  IN raceId INT,
  IN armorClass INT,
+ IN armorBulkFactor INT,
  IN hitPoints INT,
  IN genderIn CHAR(1))
 BEGIN
@@ -1982,7 +2109,7 @@ BEGIN
 		SET strength = characterStrength, super_strength = characterSuperStrength, intelligence = characterIntelligence, super_intelligence = characterSuperIntelligence, 
             wisdom = characterWisdom, super_wisdom = characterSuperWisdom, dexterity = characterDexterity, super_dexterity = characterSuperDexterity,
 			constitution = characterConstitution, super_constitution = characterSuperConstitution, charisma = characterCharisma, comeliness = characterComeliness, 
-			race_id = raceId, armor_class = armorClass, hit_points = hitPoints, gender = genderIn
+			race_id = raceId, armor_class = armorClass, armor_bulk_factor = armorBulkFactor, hit_points = hitPoints, gender = genderIn
 	WHERE player_id = playerId AND name = characterName; 
 END
 
@@ -2038,7 +2165,8 @@ CREATE PROCEDURE updateOptionalCharacterData
  IN weightIn VARCHAR(32),
  IN hairIn VARCHAR(32),
  IN eyesIn VARCHAR(32),
- IN siblingsIn INT)
+ IN siblingsIn INT,
+ IN parents_marriedIn BOOLEAN)
 BEGIN
 	DECLARE playerId INT DEFAULT 0;
 	
@@ -2062,7 +2190,8 @@ BEGIN
 			weight = weightIn,
 			hair = hairIn,
 			eyes = eyesIn,
-			siblings = siblingsIn
+			siblings = siblingsIn,
+			parents_married = parents_marriedIn
 	WHERE player_id = playerId AND name = characterName;
 END
 
