@@ -246,5 +246,7 @@ class CharacterSummary implements JsonSerializable
 				$output .= '/' . sprintf("%02d", $this->getSuperConstitution());
 			}
 		}
+
+		return $output;
 	}
 }

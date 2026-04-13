@@ -11,6 +11,7 @@ require_once __DIR__ . '/../webio/pageAction.php';
 require_once __DIR__ . '/../webio/playerName.php';
 require_once __DIR__ . '/../webio/characterName.php';
 require_once __DIR__ . '/constants/characterAttributes.php';
+require_once __DIR__ . '/constants/armorBulkFactor.php';
 
 $errors = [];
 $input = [];
@@ -32,6 +33,7 @@ filterAndSanitizeSuperConstitution($input, $errors);
 filterAndSanitizeCharisma($input, $errors);
 filterAndSanitizeComeliness($input, $errors);
 filterAndSanitizeArmorClass($input, $errors);
+filterAndSanitizeArmorBulkFactor($input, $errors);
 filterAndSanitizeHitPoints($input, $errors);
 filterAndSanitizeRaceId($input, $errors);
 filterAndSanitizeGender($input, $errors);
@@ -55,6 +57,7 @@ filterAndSanitizeWeight($input, $errors);
 filterAndSanitizeHair($input, $errors);
 filterAndSanitizeEyes($input, $errors);
 filterAndSanitizeSiblings($input, $errors);
+filterAndSanitizeParentsMarried($input, $errors);
 
 updateBaseCharacter($pdo, $input, $errors);
 if (count($errors) > 0) {
@@ -97,7 +100,7 @@ exit;
 function updateBaseCharacter(\PDO $pdo, $input, &$errors) {
 
 	$null_value = NULL;
-	$sql_exec = "CALL updateBaseCharacter(:playerName, :characterName, :characterStrength, :characterSuperStrength, :characterIntelligence, :characterSuperIntelligence, :characterWisdom, :characterSuperWisdom, :characterDexterity, :characterSuperDexterity, :characterConstitution, :characterSuperConstitution, :characterCharisma, :characterComeliness, :raceId, :armorClass, :hitPoints, :genderIn)";
+	$sql_exec = "CALL updateBaseCharacter(:playerName, :characterName, :characterStrength, :characterSuperStrength, :characterIntelligence, :characterSuperIntelligence, :characterWisdom, :characterSuperWisdom, :characterDexterity, :characterSuperDexterity, :characterConstitution, :characterSuperConstitution, :characterCharisma, :characterComeliness, :raceId, :armorClass, :armorBulkFactor, :hitPoints, :genderIn)";
 
 	$statement = $pdo->prepare($sql_exec);
 	$statement->bindParam(':playerName', $input[PLAYER_NAME], PDO::PARAM_STR);
@@ -136,6 +139,7 @@ function updateBaseCharacter(\PDO $pdo, $input, &$errors) {
 	$statement->bindParam(':characterComeliness', $input[CHARACTER_COMELINESS], PDO::PARAM_INT);
 	$statement->bindParam(':raceId', $input[CHARACTER_RACE_ID], PDO::PARAM_INT);
 	$statement->bindParam(':armorClass', $input[CHARACTER_ARMOR_CLASS], PDO::PARAM_INT);
+	$statement->bindParam(':armorBulkFactor', $input[CHARACTER_ARMOR_BULK_FACTOR], PDO::PARAM_INT);
 	$statement->bindParam(':hitPoints', $input[CHARACTER_HIT_POINTS], PDO::PARAM_INT);
 	$statement->bindParam(':genderIn', $input[CHARACTER_GENDER], PDO::PARAM_STR);
 	
@@ -181,7 +185,7 @@ function updateCharacterClass(\PDO $pdo, $player_name, $character_name, $charact
 
 function updateOptionalCharacterData(\PDO $pdo, $input, &$errors) {
 	$null_value = NULL;
-	$sql_exec = "CALL updateOptionalCharacterData(:playerName, :characterName, :movementIn, :alignmentIn, :religionIn, :deityIn, :hometownIn, :hit_dieIn, :ageIn, :apparent_ageIn, :unnatural_ageIn, :social_classIn, :heightIn, :weightIn, :hairIn, :eyesIn, :siblingsIn)";
+	$sql_exec = "CALL updateOptionalCharacterData(:playerName, :characterName, :movementIn, :alignmentIn, :religionIn, :deityIn, :hometownIn, :hit_dieIn, :ageIn, :apparent_ageIn, :unnatural_ageIn, :social_classIn, :heightIn, :weightIn, :hairIn, :eyesIn, :siblingsIn, :parents_marriedIn)";
 
 	$statement = $pdo->prepare($sql_exec);
 	$statement->bindParam(':playerName', $input[PLAYER_NAME], PDO::PARAM_STR);
@@ -276,6 +280,12 @@ function updateOptionalCharacterData(\PDO $pdo, $input, &$errors) {
 	} else {
 		$statement->bindParam(':siblingsIn', $null_value, PDO::PARAM_NULL);
 	}
+
+	if (!empty($input[CHARACTER_PARENTS_MARRIED])) {
+		$statement->bindParam(':parents_marriedIn', $input[CHARACTER_PARENTS_MARRIED], PDO::PARAM_BOOL);
+	} else {
+		$statement->bindParam(':parents_marriedIn', $null_value, PDO::PARAM_NULL);
+	}
 	
 	try {
 		$statement->execute();
@@ -334,6 +344,13 @@ function filterAndSanitizeComeliness(&$input, &$errors) {
 
 function filterAndSanitizeArmorClass(&$input, &$errors) {
 	filterAndSantizeIntegerFormField($input, $errors, CHARACTER_ARMOR_CLASS);
+}
+
+function filterAndSanitizeArmorBulkFactor(&$input, &$errors) {
+	filterAndSantizeOptionalIntegerFormField($input, $errors, CHARACTER_ARMOR_BULK_FACTOR);
+	if (empty($input[CHARACTER_ARMOR_BULK_FACTOR])) {
+		$input[CHARACTER_ARMOR_BULK_FACTOR] = BULKY_FULL;
+	}
 }
 
 function filterAndSanitizeHitPoints(&$input, &$errors) {
@@ -421,6 +438,10 @@ function filterAndSanitizeEyes(&$input, &$errors) {
 
 function filterAndSanitizeSiblings(&$input, &$errors) {
 	filterAndSantizeOptionalStringFormField($input, $errors, CHARACTER_SIBLINGS);
+}
+
+function filterAndSanitizeParentsMarried(&$input, &$errors) {
+	filterAndSantizeOptionalIntegerFormField($input, $errors, CHARACTER_PARENTS_MARRIED);
 }
 
 function filterAndSantizeStringFormField(&$input, &$errors, $form_field_name) {

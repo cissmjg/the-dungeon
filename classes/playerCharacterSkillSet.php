@@ -11,7 +11,7 @@
         public function init(\PDO $pdo, $player_name, $character_name, $errors) {
             $player_character_skills_db = $this->getSkillsForPlayerCharacter($pdo, $player_name, $character_name, $errors);
             if (count($errors) > 0) {
-                return;
+                die(json_encode($errors));
             }
 
             foreach($player_character_skills_db AS $player_character_skill_db) {

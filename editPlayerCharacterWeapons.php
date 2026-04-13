@@ -20,6 +20,7 @@ require_once __DIR__ . '/helper/ActionBarHelper.php';
 require_once __DIR__ . '/webio/craftStatus.php';
 require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/weaponProficiencyId.php';
+require_once __DIR__ . '/classes/playerCharacterSkillSet.php';
 require_once __DIR__ . '/dbio/constants/skills.php';
 
 require_once __DIR__ . '/fa/faDeleteIcon.php';
@@ -39,6 +40,9 @@ $character_summary_renderer = new CharacterSummaryRenderer($input[CHARACTER_NAME
 $character_summary_stats = $character_summary_renderer->render($character_summary);
 
 $action_bar = ActionBarHelper::buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
+
+$player_character_skill_set = new PlayerCharacterSkillSet();
+$player_character_skill_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
 
 $weapon_list = getWeaponSummaryForPlayerCharacter($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
 if (count($errors) > 0) {
@@ -71,6 +75,7 @@ echo $html_header;
         <input type="hidden" name="<?= PLAYER_CHARACTER_WEAPON_ID ?>" id="<?= PLAYER_CHARACTER_WEAPON_ID ?>" value="">
     </form>
     <div style="width: 100%; margin-bottom: 3px;"><span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span></div>
+    <div>&nbsp;</div>
     <div class="togglePanel">
         <a href="#">
             <span class="fa fa-plus"></span> Add a weapon
@@ -114,7 +119,17 @@ echo $html_header;
             ?>
         </table>
     <?php endif ?>
-<div>
+    <?php
+        echo '<div>&nbsp;</div>' . PHP_EOL;
+        if (count($player_character_skill_set->getAllSkillInstances(TWO_WEAPON_FIGHTING)) > 0) {
+            $url = CurlHelper::buildUrl('editPlayerCharacterTwoWeaponConfigurations');
+            $url = CurlHelper::addParameter($url, PLAYER_NAME, $input[PLAYER_NAME]);
+            $url = CurlHelper::addParameter($url, CHARACTER_NAME, $input[CHARACTER_NAME]);
+            echo '<div>' . PHP_EOL;
+            echo '    <a style="padding-left: 5px;" href="' . $url . '"><span class="fa-solid fa-gear" style="cursor: pointer; color: SeaGreen;"></span> Set up two weapon fighting configurations</a>' . PHP_EOL; 
+            echo '</div>' . PHP_EOL;
+        }
+    ?>
 </body>
 </html>
 

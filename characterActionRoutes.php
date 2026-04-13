@@ -39,4 +39,6 @@
     const CHARACTER_ACTION_ADD_ATTRIBUTE_WEAPON_SKILL = 'addAttribiteWeaponSkill';
     const CHARACTER_ACTION_DELETE_ATTRIBUTE_WEAPON_SKILL = 'deleteAttributeWeaponSkill';
     const CHARACTER_ACTION_ADD_PREFERRED_WEAPON_PROFICIENCY = 'addPreferredWeaponProficiency';
+    const CHARACTER_ACTION_DELETE_TWO_WEAPON_CONFIG = 'deleteTwoWeaponConfig';
+    const CHARACTER_ACTION_ADD_TWO_WEAPON_CONFIG = 'addTwoWeaponConfig';
 ?>

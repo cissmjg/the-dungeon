@@ -21,6 +21,7 @@ require_once __DIR__ . '/webio/raceId.php';
 
 require_once __DIR__ . '/dbio/constants/characterAttributes.php';
 require_once __DIR__ . '/dbio/constants/characterClasses.php';
+require_once __DIR__ . '/dbio/constants/armorBulkFactor.php';
 require_once __DIR__ . '/rules/characterClassSuperStats.php';
 require_once __DIR__ . '/rules/characterClassRestrictions.php';
 
@@ -459,6 +460,34 @@ echo $html_header;
 		<?php endif ?>
 	</tr>
 	<tr>
+		<td colspan="2" id="armorBulkFactorLabel">Armor Bulk Factor</td>
+		<td>
+		<?php
+			if ($page_action == PAGE_UPDATE) {
+				$character_armor_bulk_factor = $input[CHARACTER_ARMOR_BULK_FACTOR] ?? '';
+				echo '<select class="' . $input_class .'" id="' . CHARACTER_ARMOR_BULK_FACTOR .'" name="' . CHARACTER_ARMOR_BULK_FACTOR .'" required>' . PHP_EOL;
+				echo buildArmorBulkOptions($input[CHARACTER_ARMOR_BULK_FACTOR]);
+				echo '</select>' . PHP_EOL;
+			} else {
+				$character_armor_class = $input[CHARACTER_ARMOR_CLASS];
+				echo '<input type="hidden"'  . '" id="' . CHARACTER_ARMOR_CLASS .'" name="' . CHARACTER_ARMOR_CLASS .'" value="'. $character_armor_class .'">';
+				echo $character_armor_class;
+			}
+		?>
+		</td>
+		<?php if ($page_action == PAGE_UPDATE): ?>
+			<td>
+			<?php
+				if (!empty($errors[CHARACTER_ARMOR_CLASS])) {
+					echo buildThumbsDownIcon($errors[CHARACTER_ARMOR_CLASS]);
+				} else {
+					echo buildThumbsUpIcon();
+				}
+			?>
+		</td>
+		<?php endif ?>
+	</tr>
+	<tr style="background-color: lightgray;">
 		<td colspan="2" id="hitPointsLabel">Hit Points</td>
 		<td>
 		<?php
@@ -484,8 +513,7 @@ echo $html_header;
 		</td>
 		<?php endif ?>
 	</tr>
-
-	<tr style="background-color: lightgray;">
+	<tr>
 		<td colspan="2" id="characterMovementLabel">Movement</td>
 		<td>
 		<?php
@@ -498,8 +526,7 @@ echo $html_header;
 		?>
 		</td>
 	</tr>
-
-	<tr>
+	<tr style="background-color: lightgray;">
 		<td colspan="2" id="characterAlignmentLabel">Alignment</td>
 		<td>
 		<?php
@@ -534,8 +561,7 @@ echo $html_header;
 		?>
 		</td>
 	</tr>
-
-	<tr style="background-color: lightgray;">
+	<tr>
 		<td colspan="2" id="characterReligionLabel">Religion</td>
 		<td>
 		<?php
@@ -548,8 +574,7 @@ echo $html_header;
 		?>
 		</td>
 	</tr>
-
-	<tr>
+	<tr style="background-color: lightgray;">
 		<td colspan="2" id="characterDeityLabel">Deity</td>
 		<td>
 		<?php
@@ -562,8 +587,7 @@ echo $html_header;
 		?>
 		</td>
 	</tr>
-
-	<tr style="background-color: lightgray;">
+	<tr>
 		<td colspan="2" id="characterHometownLabel">Hometown</td>
 		<td>
 		<?php
@@ -576,8 +600,7 @@ echo $html_header;
 		?>
 		</td>
 	</tr>
-
-	<tr>
+	<tr style="background-color: lightgray;">
 		<td colspan="2" id="characterHitDieLabel">Hit Die</td>
 		<td>
 		<?php
@@ -590,8 +613,7 @@ echo $html_header;
 		?>
 		</td>
 	</tr>
-
-	<tr style="background-color: lightgray;">
+	<tr>
 		<td colspan="2" id="characterAgeLabel">Age</td>
 		<td>
 		<?php
@@ -604,8 +626,7 @@ echo $html_header;
 		?>
 		</td>
 	</tr>
-
-	<tr>
+	<tr style="background-color: lightgray;">
 		<td colspan="2" id="characterApparentAgeLabel">Apparent Age</td>
 		<td>
 		<?php
@@ -618,8 +639,7 @@ echo $html_header;
 		?>
 		</td>
 	</tr>
-
-	<tr style="background-color: lightgray;">
+	<tr>
 		<td colspan="2" id="characterUnnaturalAgeLabel">Unnatural Age</td>
 		<td>
 		<?php
@@ -632,8 +652,7 @@ echo $html_header;
 		?>
 		</td>
 	</tr>
-
-	<tr>
+	<tr style="background-color: lightgray;">
 		<td colspan="2" id="characterSocialClassLabel">Social Class</td>
 		<td>
 		<?php
@@ -669,8 +688,7 @@ echo $html_header;
 		?>
 		</td>
 	</tr>
-
-	<tr style="background-color: lightgray;">
+	<tr>
 		<td colspan="2" id="characterHeightLabel">Height</td>
 		<td>
 		<?php
@@ -683,8 +701,7 @@ echo $html_header;
 		?>
 		</td>
 	</tr>
-
-	<tr>
+	<tr style="background-color: lightgray;">
 		<td colspan="2" id="characterWeightLabel">Weight</td>
 		<td>
 		<?php
@@ -697,8 +714,7 @@ echo $html_header;
 		?>
 		</td>
 	</tr>
-
-	<tr style="background-color: lightgray;">
+	<tr>
 		<td colspan="2" id="characterHairLabel">Hair</td>
 		<td>
 		<?php
@@ -711,8 +727,7 @@ echo $html_header;
 		?>
 		</td>
 	</tr>
-
-	<tr>
+	<tr style="background-color: lightgray;">
 		<td colspan="2" id="characterEyesLabel">Eyes</td>
 		<td>
 		<?php
@@ -726,7 +741,7 @@ echo $html_header;
 		</td>
 	</tr>
 
-	<tr style="background-color: lightgray;">
+	<tr>
 		<td colspan="2" id="characterSiblingsLabel">Siblings</td>
 		<td>
 		<?php
@@ -740,8 +755,27 @@ echo $html_header;
 		</td>
 	</tr>
 
+	<tr style="background-color: lightgray;">
+		<td colspan="2" id="characterParentsMarriedLabel">Parents Married</td>
+		<td>
+		<?php
+			$character_parents_married = $input[CHARACTER_PARENTS_MARRIED] ?? 0;
+			if ($page_action == PAGE_UPDATE) {
+				echo '<select style="text-align: center;" class="' . $input_class . '" id="' . CHARACTER_PARENTS_MARRIED .'" name="' . CHARACTER_PARENTS_MARRIED . '">' . PHP_EOL;
+				$selected = $character_parents_married ? " selected" : "";
+				echo '<option value="1"' . $selected . '>Yes</option>' . PHP_EOL;
+				$selected = !$character_parents_married ? " selected" : "";
+				echo '<option value="0"' . $selected . '>No</option>' . PHP_EOL;
+				echo '</select>' . PHP_EOL;
+			} else {
+				echo $character_parents_married ? "Yes" : "No";
+			}
+		?>
+		</td>
+	</tr>
+
 	<?php
-			echo '<tr style="background-color: lightgray;"><td>Class</td><td style="text-align: center;">Level</td><td>XP</td></tr>' . PHP_EOL;
+			echo '<tr><td>Class</td><td style="text-align: center;">Level</td><td>XP</td></tr>' . PHP_EOL;
 			echo formatClassesForEdit($input[CHARACTER_CLASSES]->characterClass1, CHARACTER_PRIMARY_CLASS, $read_only, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input_class, $page_action, $classes_that_know_spells);
 			if (!empty($input[CHARACTER_CLASSES]->characterClass2)) {
 				echo formatClassesForEdit($input[CHARACTER_CLASSES]->characterClass2, CHARACTER_SECONDARY_CLASS, $read_only, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input_class, $page_action, $classes_that_know_spells);
@@ -767,24 +801,6 @@ echo $html_header;
 </body>
 </html>
 <?php
-
-/*				
-    const  = 'movement';
-    const CHARACTER_ALIGNMENT = 'alignment';
-    const CHARACTER_RELIGION = 'religion';
-    const CHARACTER_DEITY = 'deity';
-    const CHARACTER_HOMETOWN = 'hometown';
-    const CHARACTER_HIT_DIE = 'hit_die';
-    const CHARACTER_AGE = 'age';
-    const CHARACTER_APPARENT_AGE = 'apparent_age';
-    const CHARACTER_UNNATURAL_AGE = 'unnatural_age';
-    const CHARACTER_SOCIAL_CLASS = 'social_class';
-    const CHARACTER_HEIGHT = 'height';
-    const CHARACTER_WEIGHT = 'weight';
-    const CHARACTER_HAIR = 'hair';
-    CONST CHARACTER_EYES = 'eyes';
-    CONST CHARACTER_SIBLINGS = 'siblings';
-*/
 
 function formatClassesForEdit($character_class, $form_field_id, $read_only, $player_name, $character_name, $input_class, $page_action, $classes_that_know_spells) {
     $form_field_id_for_XP = $form_field_id . 'XP';
@@ -1132,4 +1148,22 @@ function getCharacterClassId($character_class_list, $character_class_name) {
 	return NO_CHARACTER_CLASS_ID;
 }
 
+function buildArmorBulkOptions($character_armor_bulk) {
+	$selected = $character_armor_bulk == BULKY_NON ? " selected" : "";
+	$output_html = '<option value="' . BULKY_NON . '"' . $selected . '>' . getArmorBulkDescription(BULKY_NON) . '</option>' . PHP_EOL;
+
+	$selected = $character_armor_bulk == BULKY_FAIRLY ? " selected" : "";
+	$output_html .= '<option value="' . BULKY_FAIRLY . '"' . $selected . '>' . getArmorBulkDescription(BULKY_FAIRLY) . '</option>' . PHP_EOL;
+
+	$selected = $character_armor_bulk == BULKY_FULL ? " selected" : "";
+	$output_html .= '<option value="' . BULKY_FULL . '"' . $selected . '>' . getArmorBulkDescription(BULKY_FULL) . '</option>' . PHP_EOL;
+
+	$selected = $character_armor_bulk == BULKY_MAGICAL ? " selected" : "";
+	$output_html .= '<option value="' . BULKY_MAGICAL . '"' . $selected . '>' . getArmorBulkDescription(BULKY_MAGICAL) . '</option>' . PHP_EOL;
+
+	$selected = $character_armor_bulk == BULKY_SPELL ? " selected" : "";
+	$output_html .= '<option value="' . BULKY_SPELL . '"' . $selected . '>' . getArmorBulkDescription(BULKY_SPELL) . '</option>' . PHP_EOL;
+
+	return $output_html;
+}
 ?>
