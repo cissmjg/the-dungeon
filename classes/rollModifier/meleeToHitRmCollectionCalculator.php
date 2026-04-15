@@ -1,6 +1,7 @@
 <?php
     require_once 'rmFactor.php';
     require_once 'rmCollection.php';
+    require_once 'rmCategory.php';
     require_once 'clericsPreferredWeapon.php';
     require_once 'formIdLookup.php';
     require_once 'skillCatalog.php';
@@ -10,12 +11,9 @@
     require_once __DIR__ . '/../../dbio/constants/weaponType.php';
     require_once __DIR__ . '/../../dbio/constants/characterRaces.php';
 
-
-    require_once __DIR__ . '/../../rules/clericsPreferredWeapons.php';
-
     class meleeToHitRmCollectionCalculator extends RmCollectionCalculator {
 
-        private $rm_weapon_collection;
+        protected $rm_weapon_collection;
         public function getWeaponCollection() {
             return $this->rm_weapon_collection;
         }
@@ -26,7 +24,6 @@
 
         protected function gather(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
 
-            // Refactor to single function passing collection and weapon
             // Attributes
             $rm_strength_bonus = $this->getRmStrengthBonus($player_character_skill_set, $attribute_metadata, $player_character_weapon);
             $this->rm_weapon_collection->add($rm_strength_bonus);
@@ -42,6 +39,7 @@
                  // Check for non-proficiency
                  if (!$player_character_weapon->getIsCombatProficient()) {
                     $rm_non_proficient = new RmFactor("Non Proficiency Penalty", $character_details->getNonProficienyPenalty());
+                    $rm_non_proficient->setRmCategory(ROLL_MODIFIER_PENALTY);
                     $this->rm_weapon_collection->add($rm_non_proficient);
                  }
             }
@@ -51,8 +49,6 @@
             if (!empty($rm_race_bonus)) {
                 $this->rm_weapon_collection->add($rm_race_bonus);
             }
-
-            // Class
 
             // Weapon
             $rm_weapon = $this->getWeaponBonus($player_character_weapon);
@@ -67,6 +63,8 @@
 
             // If the character has 'Weapon Finesse' and it is a melee weapon and the weapon is 1 handed, then apply dexterity reaction/missile bonus
             if ($has_weapon_finesse && $player_character_weapon->getMeleeWeaponType() = WEAPON_TYPE_MELEE && $player_character_weapon->getMeleeNumberOfHands() == 1) {
+                $rm_strength_to_hit = new RmFactor("Weapon Finesse", $attribute_metadata->getReactionMissileAdjustment());
+            } else if ($has_weapon_finesse && $player_character_weapon->getWeaponProficiencyId() == ELVEN_COURT_BLADE) {
                 $rm_strength_to_hit = new RmFactor("Weapon Finesse", $attribute_metadata->getReactionMissileAdjustment());
             } else {
                 $rm_strength_to_hit = new RmFactor("Strength", $attribute_metadata->getStrengthHitAdjustment());
@@ -108,6 +106,7 @@
                 $rm_collection->add($rm_weapon_specialization);
             }
 
+            // Double Specialization
             $rm_double_weapon_specialization = $this->getWeaponDoubleSpecialization($player_character_skill_set, $player_character_weapon);
             if (!empty($rm_double_weapon_specialization)) {
                 $rm_collection->add($rm_double_weapon_specialization);
@@ -242,48 +241,12 @@
             if ($player_character_weapon->getMeleeHitBonus() != 0) {
                 $rm_weapon_desc = "Magic Bonus";
                 $rm_weapon_modifier = $player_character_weapon->getMeleeHitBonus();
+                if ($rm_weapon_modifier < 0) {
+                    $rm_weapon_modifier->setRmCategory(ROLL_MODIFIER_PENALTY);
+                }
                 $rm_weapon = new RmFactor($rm_weapon_desc, $rm_weapon_modifier);
             }
             return $rm_weapon;
         }
     }
 ?>
-
-    # Dirty Fighting                    melee 'To Hit' for FIST
-
-    # Cleric's Preferred Weapon         melee 'To Hit' for preferred weapon
-
-    # Specialization                    melee 'To Hit' for specialized weapon
-    # Double Specialization             melee 'To Hit' for specialized weapon
-
-    # Weapon Focus (Accuracy)           melee 'To Hit' for focussed weapon
-    # Weapon Focus Greater (Accuracy)   melee 'To Hit' for focussed weapon
-
-    # Non-proficiency
-
-    # Weapon Finesse                    Use your dexterity bonus (Reaction/Attacking Adjustment)
-
-Skill-based Weapons
-    * Circle Kick                       (1) (Skill: Improved Unarmed Strike)
-    * Mantis Leap                       (1) (Skill: Jump)
-    * Two Weapon Fighting               affects 'To Hit' for current weapon
-
-Missile
-    * Brutal Throw                      (1)
-        - Use STR rather than DEX for thrown weapon attacks for To Hit modifier. Removed STR modifier for damage.
-    * Power Attack                      (1)
-        - Move attack 'To Hit' bonus to Damage, no 'To Hit' bonus for the specified attack.
-    * Power Throw                       (1) (Skill: Brutal Throw), (Skill: Power attack)
-        - Power attack with thrown weapons.  Allows use of STR bonus for both To Hit and Damage modifiers. (Missile Strength Bonus ?)
-    * Zen Archery   
-        - Ability to use your intuition when using a ranged weapon.  Add WISDOM bonus (Magical Attack Adjustment) to hit roll instead of Dexterity.
-
-Damage
-
-    * Fist of Iron                      melee 'Damage' for FIST
-    * Weapon Focus (Technique)          melee 'Damage'
-    * Weapon Focus Greater (Technique)  melee 'Damage'
-
-Other
-    * Improved Critical                 
-    * Quick Draw                       

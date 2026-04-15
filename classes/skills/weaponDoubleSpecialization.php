@@ -24,6 +24,11 @@
         private $archer_melee_only_satisfied;
 
         public function classAndLevelSatisfied(\SkillDetail $skill_detail, \CharacterDetails $character_details) {
+            if ($character_details->containsClassId(BARBARIAN)) {
+                $this->class_and_level_satisfied = false;
+                return;
+            }
+
             $fighter_level = $character_details->getFighterTypeLevel();
             if (empty($fighter_level)) {
                 $this->class_and_level_satisfied = false;
