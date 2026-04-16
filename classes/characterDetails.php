@@ -468,6 +468,17 @@ class CharacterDetails implements JsonSerializable
 		return false;		
 	}
 
+	public function getFighterTypeClassId() {
+		$level = 0;
+		foreach($this->character_classes AS $character_class) {
+			if (isCharacterFighterType($character_class->getClassId())) {
+				return $character_class->getClassId();
+			}
+		}
+
+		return $level;
+	}
+
 	public function getFighterTypeLevel() {
 		$level = 0;
 		foreach($this->character_classes AS $character_class) {
