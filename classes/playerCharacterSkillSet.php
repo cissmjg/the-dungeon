@@ -5,6 +5,9 @@
     class PlayerCharacterSkillSet implements JsonSerializable {
 
         private $player_character_skills = [];
+        public function getPlayerCharacterSkills() {
+            return $this->player_character_skills;
+        }
 
         private $skill_catalog_ids = [];
 

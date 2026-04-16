@@ -12,6 +12,9 @@ require_once __DIR__ . '/../webio/playerName.php';
 require_once __DIR__ . '/../webio/characterName.php';
 require_once __DIR__ . '/../classes/playerCharacterSkillSet.php';
 
+getPlayerName($errors, $input);
+getCharacterName($errors, $input);
+
 $player_character_skill_set = new PlayerCharacterSkillSet();
 $player_character_skill_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
 if(count($errors) > 0) {
@@ -19,6 +22,6 @@ if(count($errors) > 0) {
 }
 
 RestHeaderHelper::emitRestHeaders();
-echo json_encode($player_character_skill_set);
+echo json_encode($player_character_skill_set->getPlayerCharacterSkills());
 
 ?>

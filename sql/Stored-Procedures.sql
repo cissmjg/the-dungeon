@@ -1187,7 +1187,6 @@ BEGIN
 		player_character_weapon.craft_status AS player_character_weapon_craft_status,
 		player_character_weapon.weapon_proficiency_id AS player_character_weapon_proficiency_id, 
 		player_character_weapon.description AS player_character_weapon_description,
-		player_character_weapon.is_preferred AS player_character_weapon_is_preferred,
 		player_character_weapon.is_ready AS player_character_weapon_is_ready,
 		player_character_weapon.location AS player_character_weapon_location,
 		player_character_weapon.player_note1 AS player_character_weapon_player_note1,
