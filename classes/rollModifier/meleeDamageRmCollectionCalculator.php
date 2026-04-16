@@ -27,7 +27,7 @@
             $this->rm_weapon_collection->add($rm_strength_bonus);
 
             // Skills
-            $rm_skill_collection = $this->getRmSkills($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
+            $rm_skill_collection = $this->getRmSkills($player_character_skill_set, $player_character_weapon);
             $this->rm_weapon_collection->addAll($rm_skill_collection);
 
             // Weapon
@@ -37,7 +37,7 @@
             }
         }
 
-        private function getRmSkills(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
+        private function getRmSkills(PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon) {
             $rm_collection = new RmCollection();
 
             // Fist of Iron
