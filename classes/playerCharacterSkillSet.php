@@ -26,6 +26,31 @@
             }
         }
 
+        public function fromJSON($player_character_skill_set_json) {
+            echo 'Count: ' . count($player_character_skill_set_json) . PHP_EOL;
+            for ($i = 0; $i < count($player_character_skill_set_json); $i++) {
+                $player_character_skill_json = $player_character_skill_set_json[$i];
+                // echo $player_character_skill_json->player_character_skill_name . PHP_EOL;
+                $player_character_skill = new PlayerCharacterSkill();
+                $player_character_skill->fromJSON($player_character_skill_json);
+                $skill_id = $player_character_skill->getSkillCatalogId();
+                $this->player_character_skills[] = $player_character_skill;
+                $this->skill_catalog_ids[] = $skill_id;
+            }
+            /*
+                $player_character_skill = $player_character_skill_set_json[$i];
+                echo $player_character_skill->player_character_skill_name . PHP_EOL;
+
+            foreach($player_character_skill_set_json AS $player_character_skill_json) {
+                $player_character_skill = new PlayerCharacterSkill();
+                $player_character_skill->init($player_character_skill_json);
+                $skill_id = $player_character_skill_set_json->skill_catalog_id;
+                $this->player_character_skills[] = $player_character_skill;
+                $this->skill_catalog_ids[] = $skill_id;
+            }
+            */
+        }
+
         private function getSkillsForPlayerCharacter(\PDO $pdo, $player_name, $character_name, &$errors) {
             $sql_exec = "CALL getSkillsForPlayerCharacter(:playerName, :characterName)";
             
@@ -42,7 +67,7 @@
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        public function jsonSerialize() {
+        public function jsonSerialize(): mixed {
             return get_object_vars($this);
         }
 

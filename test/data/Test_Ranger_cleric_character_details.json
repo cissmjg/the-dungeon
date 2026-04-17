@@ -1,0 +1,59 @@
+{
+  "characterName": "Test Ranger Cleric",
+  "race": "Half-Elf (High)",
+  "characterStrength": 17,
+  "characterSuperStrength": null,
+  "characterIntelligence": 17,
+  "characterSuperIntelligence": null,
+  "characterWisdom": 17,
+  "characterSuperWisdom": null,
+  "characterDexterity": 17,
+  "characterSuperDexterity": null,
+  "characterConstitution": 17,
+  "characterSuperConstitution": null,
+  "characterCharisma": 17,
+  "characterComeliness": 17,
+  "armorClass": 10,
+  "armorBulkFactor": 3,
+  "hitPoints": 0,
+  "genderIn": "M",
+  "movement": null,
+  "alignment": null,
+  "religion": null,
+  "deity": null,
+  "hometown": null,
+  "hit_die": null,
+  "age": null,
+  "apparent_age": null,
+  "unnatural_age": null,
+  "social_class": null,
+  "height": null,
+  "weight": null,
+  "hair": null,
+  "eyes": null,
+  "siblings": null,
+  "parents_married": null,
+  "character_classes": {
+    "characterClass1": {
+      "class_name": "Ranger",
+      "class_level": 0,
+      "class_id": 6,
+      "number_of_experience_points": 0,
+      "spell_classes": [
+        "Magic-User",
+        "Druid"
+      ],
+      "class_icon_file_location": null
+    },
+    "characterClass2": {
+      "class_name": "Cleric",
+      "class_level": 0,
+      "class_id": 2,
+      "number_of_experience_points": 0,
+      "spell_classes": [
+        "Cleric"
+      ],
+      "class_icon_file_location": null
+    }
+  }
+}
