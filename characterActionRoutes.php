@@ -28,8 +28,10 @@
     const CHARACTER_ACTION_DEALLOCATE_EXTRA_SLOT = 'deallocateExtraSlot';
     const CHARACTER_ACTION_ALLOCATE_EXTRA_SLOT = 'allocateExtraSlot';
     const CHARACTER_ACTION_EDIT_PLAYER_CHARACTER_WEAPONS = 'editCharacterWeapons';
+    const CHARACTER_ACTION_ADD_PLAYER_CHARACTER_WEAPON = 'addCharacterWeapon';
     const CHARACTER_ACTION_UPDATE_PLAYER_CHARACTER_WEAPON = 'updatePlayerCharacterWeapon';
     const CHARACTER_ACTION_DELETE_PLAYER_CHARACTER_WEAPON = 'deletePlayerCharacterWeapon';
+    const CHARACTER_ACTION_BROWSE_PLAYER_CHARACTER_WEAPONS = 'browsePlayerCharacterWeapons';
     const CHARACTER_ACTION_DELETE_PLAYER_CHARACTER_WEAPON_PROFICIENCY = 'deletePlayerCharacterWeaponProficiency';
     const CHARACTER_ACTION_EDIT_PLAYER_CHARACTER_WEAPON_PROFICIENCIES = 'editPlayerCharacterWeaponProficiencies';
     const CHARACTER_ACTION_BROWSE_PLAYER_CHARACTER_WEAPON_PROFICIENCIES = 'browsePlayerCharacterWeaponProficiencies';
