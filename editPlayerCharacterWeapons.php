@@ -27,6 +27,7 @@ require_once __DIR__ . '/fa/faDeleteIcon.php';
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/webio/playerCharacterWeaponId.php';
+require_once __DIR__ . '/webio/textInput.php';
 
 // Populate player and character names in $input
 getPlayerName($errors, $input);
@@ -73,15 +74,12 @@ echo $html_header;
         <div class="togglePanelContent">
             <div style="background-color: Aquamarine; text-align:center; border-radius: 10px;">Select Weapon</div>
             <div style="text-align: center;">
-                <form name="selectWeapon" id="selectWeapon" method="POST" action="<?= CurlHelper::buildUrl('addPlayerCharacterWeapon') ?>">
+                <form name="selectWeapon" id="selectWeapon" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl() ?>">
                     <label for="weaponNamePattern">Weapon Name</label><br>
+                    <input type="hidden" name="<?= CHARACTER_ACTION ?>" value="<?= CHARACTER_ACTION_BROWSE_PLAYER_CHARACTER_WEAPONS ?>">
                     <input type="hidden" name="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
                     <input type="hidden" name="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
-                    <input type="text" id="weaponNamePattern" maxlength="32"><button type="button" onclick="populateWeaponList('<?= WEAPON_PROFICIENCY_ID ?>', 'weaponNamePattern');"><span class="fa-solid fa-magnifying-glass"></span></button><br>
-                    <select name="<?= WEAPON_PROFICIENCY_ID?>" id="<?= WEAPON_PROFICIENCY_ID?>" onchange="weaponListChanged('selectWeaponButton', '<?= WEAPON_PROFICIENCY_ID ?>');" hidden>
-                    </select>
-                    <br><br>
-                    <button id="selectWeaponButton" type="submit" hidden>Weapon Details &gt; &gt;</button>
+                    <input type="text" name="<?= TEXT_INPUT ?>" maxlength="32"><button type="submit"><span class="fa-solid fa-magnifying-glass"></span></button><br>
                 </form>
             </div>
         </div>
