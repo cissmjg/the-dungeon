@@ -397,6 +397,79 @@ BEGIN
 	SELECT playerCharacterWeaponId;
 END
 
+CREATE PROCEDURE addWeaponFistToPlayerCharacter
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64))
+BEGIN
+
+	DECLARE fistWeaponProficiencyId INT DEFAULT 118;
+	DECLARE weaponType INT DEFAULT 1;
+	DECLARE weaponSubtype INT DEFAULT 1;
+	DECLARE weaponSpeed VARCHAR(32) DEFAULT '1';
+	DECLARE weaponDamage VARCHAR(32) DEFAULT ' ';
+	DECLARE weaponNumberOfHands VARCHAR(32) DEFAULT ' ';
+
+	SELECT weapon_proficiency.id, weapon_catalog.type, weapon_catalog.subtype, weapon_catalog.speed, weapon_catalog.damage, weapon_catalog.number_of_hands
+	INTO fistWeaponProficiencyId, weaponType, weaponSubtype, weaponSpeed, weaponDamage, weaponNumberOfHands
+	FROM weapon_proficiency
+	JOIN weapon_catalog ON weapon_catalog.weapon_proficiency_id = weapon_proficiency.id
+	WHERE weapon_proficiency.name = 'Fist';
+
+	CALL addWeaponToPlayerCharacter(
+		playerName,					-- playerName
+ 		characterName,				-- characterName
+		fistWeaponProficiencyId,	-- weaponProficiencyId
+		'FIST',						-- weaponDescription
+		NULL,						-- weaponLocation
+		TRUE,						-- isProficient
+		FALSE,						-- isReady
+		0,							-- craftStatus
+		FALSE,						-- strengthBonusAvailable
+		NULL,						-- playerNote1
+		NULL,						-- playerNote2
+		NULL,						-- playerNote3
+		NULL,						-- mastercraftHitDescription
+		NULL,						-- mastercraftDamageDescription
+		weaponType,					-- meleeWeaponType
+		weaponSubtype,				-- meleeWeaponSubtype
+		weaponSpeed,				-- meleeWeaponSpeed
+		weaponDamage,				-- meleeWeaponDamage
+		' ',						-- meleeAttacksPerRound
+		weaponNumberOfHands,		-- meleeNumberOfHands
+		NULL,						-- meleeAdditionalText
+		0,							-- meleeHitBonus
+		0,							-- meleeDamageBonus
+		0,							-- meleeSpec1HitBonus
+		0,							-- meleeSpec1DamageBonus
+		NULL,						-- meleeSpec1Description
+		0,							-- meleeSpec2HitBonus
+		0,							-- meleeSpec2DamageBonus
+		NULL,						-- meleeSpec2Description
+		0,							-- meleeSpec3HitBonus
+		0,							-- meleeSpec3DamageBonus
+		NULL,						-- meleeSpec3Description
+		0,							-- missileWeaponType
+		0,							-- missileWeaponSubtype
+		NULL,						-- missileWeaponSpeed
+		NULL,						-- missileWeaponDamage
+		' ',						-- missileAttacksPerRound
+		NULL,						-- missileAdditionalText
+		0,							-- missileHitBonus
+		0,							-- missileDamageBonus
+		0,							-- missileSpec1HitBonus
+		0,							-- missileSpec1DamageBonus
+		NULL,						-- missileSpec1Description
+		0,							-- missileSpec2HitBonus
+		0,							-- missileSpec2DamageBonus
+		NULL,						-- missileSpec2Description
+		0,							-- missileSpec3HitBonus
+		0,							-- missileSpec3DamageBonus
+		NULL,						-- missileSpec3Description
+		NULL,						-- missileShortRange
+		NULL,						-- missileMediumRange
+		NULL);						-- missileLongRange
+END
+
 CREATE PROCEDURE adjustSpellPoints
 (IN playerName VARCHAR(32),
  IN characterName VARCHAR(64),
@@ -718,7 +791,8 @@ BEGIN
 	
 	SELECT playerID, playerCharacterId;
 
-	Call addWeaponProficiencyToPlayerCharacter(playerName, characterName, fistWeaponProficiencyId, playerCharacterSkillId);
+	CALL addWeaponProficiencyToPlayerCharacter(playerName, characterName, fistWeaponProficiencyId, playerCharacterSkillId);
+	CALL addWeaponFistToPlayerCharacter(playerName, characterName);
 	COMMIT;
 END
 
@@ -2061,6 +2135,7 @@ BEGIN
 	WHERE name = 'Fist';
 
 	CALL addWeaponProficiency(playerName, characterName, fistWeaponProficiencyId);
+	CALL addWeaponFistToPlayerCharacter(playerName, characterName);
 	COMMIT;
 	
 	DROP TEMPORARY TABLE ids;

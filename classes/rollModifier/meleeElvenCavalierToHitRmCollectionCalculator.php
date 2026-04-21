@@ -1,13 +1,20 @@
 <?php
+    require_once 'rmFactor.php';
+    require_once 'rmCollection.php';
+    require_once __DIR__ . '/../../dbio/constants/weapons.php';
+    require_once __DIR__ . '/../../dbio/constants/skills.php';
 
-require_once 'rmFactor';
-require_once 'rmCollection.php';
-require_once __DIR__ . '/../../dbio/constants/weapons.php';
-require_once __DIR__ . '/../../dbio/constants/skills.php';
+class MeleeElvenCavalierToHitRmCollectionCalculator  extends meleeToHitRmCollectionCalculator {
+    public function aggregate() {
+        $rmFactorResult = 0;
+        foreach($this->rm_weapon_collection AS $rmFactor) {
+            $rmFactorResult += $rmFactor->getRMData();
+        }
 
-class meleeElvenCavalierToHitRmCollectionCalculator  extends meleeToHitRmCollectionCalculator {
+        return $rmFactorResult;
+    }
 
-    protected function gather(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
+    public function gather(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
         parent::gather($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
         $this->calculateWeaponSpecificBonus($character_details, $player_character_skill_set, $player_character_weapon);
     }
@@ -17,8 +24,8 @@ class meleeElvenCavalierToHitRmCollectionCalculator  extends meleeToHitRmCollect
         $character_level = $primary_class->getClassLevel();
 
         // Check for elven blade equivalents for Long Sword and Short Sword
-        $is_long_sword = isWeaponEquivalent(LONG_SWORD, $player_character_weapon->getWeaponProficiencyId());
-        $is_short_sword = isWeaponEquivalent(SHORT_SWORD, $player_character_weapon->getWeaponProficiencyId());
+        $is_long_sword = LONG_SWORD == $player_character_weapon->getWeaponProficiencyId();
+        $is_short_sword = SHORT_SWORD == $player_character_weapon->getWeaponProficiencyId();
 
         if ($is_long_sword) {
             $this->calculateLongSwordBonus($character_level);
@@ -58,7 +65,7 @@ class meleeElvenCavalierToHitRmCollectionCalculator  extends meleeToHitRmCollect
                 $this->rm_weapon_collection->add($rm_factor);
             }
 
-            if ($character_level >= 6 && character_level < 12) {
+            if ($character_level >= 6 && $character_level < 12) {
                 $rm_factor = new RmFactor("Cavalier Level", 2);
                 $this->rm_weapon_collection->add($rm_factor);
             }

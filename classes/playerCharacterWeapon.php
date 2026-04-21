@@ -12,7 +12,7 @@ class PlayerCharacterWeapon implements JsonSerializable {
     private $weaponDescription;
     private $weaponLocation;
     private $isReady;
-    private $isCombatProficient = false;
+    private $isProficient = false;
     private $craftStatus;
     private $strengthBonusAvailable;
     private $playerNote1;
@@ -140,7 +140,79 @@ class PlayerCharacterWeapon implements JsonSerializable {
             $this->missileLongRange             = $weapon_detail['player_character_weapon_long_range'];
         }
 
-        $this->isCombatProficient = $this->determineIsCombatProficient($player_character_skill_set);
+        $this->isProficient = $this->determineIsProficient($player_character_skill_set);
+    }
+
+    public function fromJSON($weapon_detail_json, $player_character_skill_set) {
+        if ($weapon_detail_json->meleeWeaponType == WEAPON_TYPE_MELEE) {
+            $this->meleeWeaponType              = $weapon_detail_json->meleeWeaponType;
+            $this->meleeWeaponSubtype           = $weapon_detail_json->meleeWeaponSubtype;
+            $this->weaponId                     = $weapon_detail_json->weaponId;
+            $this->weaponProficiencyId          = $weapon_detail_json->weaponProficiencyId;
+            $this->craftStatus                  = $weapon_detail_json->craftStatus;
+            $this->weaponDescription            = $weapon_detail_json->weaponDescription;
+            $this->isReady                      = $weapon_detail_json->isReady;
+            $this->weaponLocation               = $weapon_detail_json->weaponLocation;
+            $this->playerNote1                  = $weapon_detail_json->playerNote1;
+            $this->playerNote2                  = $weapon_detail_json->playerNote2;
+            $this->playerNote3                  = $weapon_detail_json->playerNote3;
+            $this->strengthBonusAvailable       = $weapon_detail_json->strengthBonusAvailable;
+            $this->meleeWeaponSpeed             = $weapon_detail_json->meleeWeaponSpeed;
+            $this->meleeWeaponDamage            = $weapon_detail_json->meleeWeaponDamage;
+            $this->meleeAttacksPerRound         = $weapon_detail_json->meleeAttacksPerRound;
+            $this->meleeNumberOfHands           = $weapon_detail_json->meleeNumberOfHands;
+            $this->meleeHitBonus                = $weapon_detail_json->meleeHitBonus;
+            $this->meleeDamageBonus             = $weapon_detail_json->meleeDamageBonus;
+            $this->mastercraftHitDescription    = $weapon_detail_json->mastercraftHitDescription;
+            $this->mastercraftDamageDescription = $weapon_detail_json->mastercraftDamageDescription;
+            $this->meleeSpec1HitBonus           = $weapon_detail_json->meleeSpec1HitBonus;
+            $this->meleeSpec1DamageBonus        = $weapon_detail_json->meleeSpec1DamageBonus;
+            $this->meleeSpec1Description        = $weapon_detail_json->meleeSpec1Description;
+            $this->meleeSpec2HitBonus           = $weapon_detail_json->meleeSpec2HitBonus;
+            $this->meleeSpec2DamageBonus        = $weapon_detail_json->meleeSpec2DamageBonus;
+            $this->meleeSpec2Description        = $weapon_detail_json->meleeSpec2Description;
+            $this->meleeSpec3HitBonus           = $weapon_detail_json->meleeSpec3HitBonus;
+            $this->meleeSpec3DamageBonus        = $weapon_detail_json->meleeSpec3DamageBonus;
+            $this->meleeSpec3Description        = $weapon_detail_json->meleeSpec3Description;
+            $this->meleeAdditionalText          = $weapon_detail_json->meleeAdditionalText;
+        }
+
+        if ($weapon_detail_json->missileWeaponType == WEAPON_TYPE_MISSILE) {
+            $this->missileWeaponType            = $weapon_detail_json->missileWeaponType;
+            $this->missileWeaponSubtype         = $weapon_detail_json->missileWeaponSubtype;
+            $this->weaponId                     = $weapon_detail_json->weaponId;
+            $this->weaponProficiencyId          = $weapon_detail_json->weaponProficiencyId;
+            $this->craftStatus                  = $weapon_detail_json->craftStatus;
+            $this->weaponDescription            = $weapon_detail_json->weaponDescription;
+            $this->isReady                      = $weapon_detail_json->isReady;
+            $this->weaponLocation               = $weapon_detail_json->weaponLocation;
+            $this->playerNote1                  = $weapon_detail_json->playerNote1;
+            $this->playerNote2                  = $weapon_detail_json->playerNote2;
+            $this->playerNote3                  = $weapon_detail_json->playerNote3;
+            $this->strengthBonusAvailable       = $weapon_detail_json->strengthBonusAvailable;
+            $this->missileWeaponSpeed           = $weapon_detail_json->missileWeaponSpeed;
+            $this->missileWeaponDamage          = $weapon_detail_json->missileWeaponDamage;
+            $this->missileAttacksPerRound       = $weapon_detail_json->missileAttacksPerRound;
+            $this->missileHitBonus              = $weapon_detail_json->missileHitBonus;
+            $this->missileDamageBonus           = $weapon_detail_json->missileDamageBonus;
+            $this->mastercraftHitDescription    = $weapon_detail_json->mastercraftHitDescription;
+            $this->mastercraftDamageDescription = $weapon_detail_json->mastercraftDamageDescription;
+            $this->missileSpec1HitBonus         = $weapon_detail_json->missileSpec1HitBonus;
+            $this->missileSpec1DamageBonus      = $weapon_detail_json->missileSpec1DamageBonus;
+            $this->missileSpec1Description      = $weapon_detail_json->missileSpec1Description;
+            $this->missileSpec2HitBonus         = $weapon_detail_json->missileSpec2HitBonus;
+            $this->missileSpec2DamageBonus      = $weapon_detail_json->missileSpec2DamageBonus;
+            $this->missileSpec2Description      = $weapon_detail_json->missileSpec2Description;
+            $this->missileSpec3HitBonus         = $weapon_detail_json->missileSpec3HitBonus;
+            $this->missileSpec3DamageBonus      = $weapon_detail_json->missileSpec3DamageBonus;
+            $this->missileSpec3Description      = $weapon_detail_json->missileSpec3Description;
+            $this->missileAdditionalText        = $weapon_detail_json->missileAdditionalText;
+            $this->missileShortRange            = $weapon_detail_json->missileShortRange;
+            $this->missileMediumRange           = $weapon_detail_json->missileMediumRange;
+            $this->missileLongRange             = $weapon_detail_json->missileLongRange;
+        }
+
+        $this->isProficient = $this->determineIsProficient($player_character_skill_set);
     }
 
     public function getPlayerCharacterWeapon(\PDO $pdo, $player_character_weapon_id, &$errors) {
@@ -157,8 +229,8 @@ class PlayerCharacterWeapon implements JsonSerializable {
 		return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    private function determineIsCombatProficient(PlayerCharacterSkillSet $player_character_skill_set) {
-        if ($this->isSkillProficient($this->getWeaponProficiencyId(), $player_character_skill_set)) {
+    private function determineIsProficient(PlayerCharacterSkillSet $player_character_skill_set) {
+        if ($player_character_skill_set->isProficientWithWeapon($this->getWeaponProficiencyId())) {
             return true;
         }
 
@@ -359,32 +431,8 @@ class PlayerCharacterWeapon implements JsonSerializable {
         return false;
     }
 
-    public static function isSkillProficient($weapon_proficiency_id, PlayerCharacterSkillSet $player_character_skill_set) {
-        if ($player_character_skill_set->isProficientWithWeapon($weapon_proficiency_id)) {
-            return true;
-        }
-
-        // Look at weapon equivalents (Elven Thin Blade<=>Long Sword ... )
-        switch($weapon_proficiency_id) {
-            case LONG_SWORD:
-                return $player_character_skill_set->isProficientWithWeapon(ELVEN_THIN_BLADE);
-            case SHORT_SWORD:
-                return $player_character_skill_set->isProficientWithWeapon(ELVEN_LIGHTBLADE);
-            case TWO_HANDED_SWORD:
-                return $player_character_skill_set->isProficientWithWeapon(ELVEN_COURT_BLADE);
-            case ELVEN_THIN_BLADE:
-                return $player_character_skill_set->isProficientWithWeapon(LONG_SWORD);
-            case ELVEN_LIGHTBLADE:
-                return $player_character_skill_set->isProficientWithWeapon(SHORT_SWORD);
-            case ELVEN_COURT_BLADE:
-                return $player_character_skill_set->isProficientWithWeapon(TWO_HANDED_SWORD);
-            default:
-                return false;
-        }
-    }
-
 	// function called when encoded with json_encode
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return get_object_vars($this);
     }
@@ -409,8 +457,8 @@ class PlayerCharacterWeapon implements JsonSerializable {
         return $this->isReady;
     }
 
-    public function getIsCombatProficient() {
-        return $this->isCombatProficient;
+    public function getIsProficient() {
+        return $this->isProficient;
     }
 
     public function getCraftStatus() {

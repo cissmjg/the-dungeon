@@ -22,6 +22,7 @@ require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/weaponProficiencyId.php';
 require_once __DIR__ . '/classes/playerCharacterSkillSet.php';
 require_once __DIR__ . '/dbio/constants/skills.php';
+require_once __DIR__ . '/dbio/constants/weapons.php';
 
 require_once __DIR__ . '/fa/faDeleteIcon.php';
 
@@ -106,7 +107,11 @@ echo $html_header;
                     $weapon_proficiency_id = $weapon['weapon_proficiency_id'];
                     $is_proficient = $player_character_skill_set->isProficientWithWeapon($weapon_proficiency_id) ? "Yes" : "No";
                     $output_row  = '<tr>';
-                    $output_row .= '<td>' . buildDeletePlayerCharacterWeaponIcon($form_id, $weapon_desc, $weapon['player_character_weapon_id']) . '</td>';
+                    if ($weapon['weapon_proficiency_id'] == FIST) {
+                        $output_row .= '<td>&nbsp;</td>';
+                    } else {
+                        $output_row .= '<td>' . buildDeletePlayerCharacterWeaponIcon($form_id, $weapon_desc, $weapon['player_character_weapon_id']) . '</td>';
+                    }
                     $output_row .= '<td>' . buildWeaponNameCell($input[PLAYER_NAME], $input[CHARACTER_NAME], $weapon) . '</td>';
                     $output_row .= '<td>' . $weapon['weapon_location'] . '</td>';
                     $output_row .= '<td>' . $is_proficient . '</td>';
@@ -151,9 +156,14 @@ function buildWeaponNameCell($player_name, $character_name, $weapon) {
     $weapon_desc = $weapon['weapon_description'];
     $player_character_weapon_id = $weapon['player_character_weapon_id'];
     $output_html  = $weapon_desc;
-    $output_html .= '<span style="float: right; margin-left: 15px;">';
-    $output_html .= ActionBarHelper::buildEditPlayerCharacterWeapon($player_name, $character_name, $player_character_weapon_id);
-    $output_html .= '</span>';
+    if ($weapon['weapon_proficiency_id'] == FIST) {
+        $output_html .= '&nbsp;';
+    }
+    else {
+        $output_html .= '<span style="float: right; margin-left: 15px;">';
+        $output_html .= ActionBarHelper::buildEditPlayerCharacterWeapon($player_name, $character_name, $player_character_weapon_id);
+        $output_html .= '</span>';
+    }
 
     return $output_html;
 }

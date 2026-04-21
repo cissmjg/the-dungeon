@@ -567,4 +567,40 @@ class CharacterDetails implements JsonSerializable
 
 		return $character_non_proficiency_penalty;
 	}
+
+	public function getBestMeleeClassId() {
+		$character_non_proficiency_penalty = -10;
+		$best_melee_class_id = 0;
+		foreach($this->character_classes AS $character_class) {
+			$current_non_proficiency = getNonProficiencyPenalty($character_class->getClassId());
+			if($current_non_proficiency > $character_non_proficiency_penalty) {
+				$character_non_proficiency_penalty = $current_non_proficiency;
+				$best_melee_class_id = $character_class->getClassId();
+			}
+		}
+
+		return $best_melee_class_id;
+	}
+
+	public function getLevelForClass($class_id) {
+		$character_level = -1;
+		foreach($this->character_classes AS $character_class) {
+			if ($character_class->getClassId() == $class_id) {
+				return $character_class->getClassLevel();
+			}
+		}
+
+		return $character_level;
+	}
+
+	public function getDescriptionForClassId($class_id) {
+		$class_description = '';
+		foreach($this->character_classes AS $character_class) {
+			if ($character_class->getClassId() == $class_id) {
+				return $character_class->getClassName();
+			}
+		}
+
+		return $class_description;
+	}
 }

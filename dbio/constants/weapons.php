@@ -243,36 +243,4 @@ function getWeaponDescriptionFromProficiencyId($weapon_proficiency_id) {
     }
 }
 
-function isWeaponEquivalent($weapon1_id, $weapon2_id) {
-    if ($weapon1_id == $weapon2_id) {
-        return true;
-    }
-
-    if ($weapon1_id == LONG_SWORD && $weapon2_id == ELVEN_THIN_BLADE) {
-        return true;
-    }
-
-    if ($weapon1_id == ELVEN_THIN_BLADE && $weapon2_id == LONG_SWORD) {
-        return true;
-    }
-
-    if ($weapon1_id == SHORT_SWORD && $weapon2_id == ELVEN_LIGHTBLADE) {
-        return true;
-    }
-
-    if ($weapon1_id == ELVEN_LIGHTBLADE && $weapon2_id == SHORT_SWORD) {
-        return true;
-    }
-
-    if ($weapon1_id == TWO_HANDED_SWORD && $weapon2_id == ELVEN_COURT_BLADE) {
-        return true;
-    }
-
-    if ($weapon1_id == ELVEN_COURT_BLADE && $weapon2_id == TWO_HANDED_SWORD) {
-        return true;
-    }
-
-    return false;
-}
-
 ?>

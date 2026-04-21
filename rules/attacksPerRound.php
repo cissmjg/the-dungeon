@@ -50,7 +50,7 @@ const ATTACKS_PER_ROUND_5_FOR_1 = 7;
 const ATTACKS_PER_ROUND_5_FOR_2 = 8;
 const ATTACKS_PER_ROUND_6_FOR_1 = 9;
 
-function getAttacksPerRound($class_id, $character_level) {
+function getAttacksPerRound($class_id, $character_level, $is_weapon_preferred, $is_mounted) {
     if ($class_id == FIGHTER || $class_id == BERSERKER || $class_id == MARINER || $class_id == SENTINAL) {
         return getFighterAttacksPerRound($character_level);
     }
@@ -68,7 +68,7 @@ function getAttacksPerRound($class_id, $character_level) {
     }
 
     if ($class_id == CAVALIER || $class_id == ELVEN_CAVALIER) {
-        return getCavalierAttacksPerRound($character_level);
+        return getCavalierAttacksPerRound($character_level, $is_weapon_preferred, $is_mounted);
     }
 
     if ($class_id == PALADIN) {
@@ -159,7 +159,11 @@ function getArcherAttacksPerRound($character_level) {
     }
 }
 
-function getCavalierAttacksPerRound($character_level) {
+function getCavalierAttacksPerRound($character_level, $is_weapon_preferred, $is_mounted) {
+    if ($is_weapon_preferred && $is_mounted) {
+        $character_level += 5;
+    }
+
     if ($character_level >= 1 && $character_level < 6) {
         return ATTACKS_PER_ROUND_1_FOR_1;
     }

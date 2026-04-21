@@ -1,5 +1,6 @@
 <?php
 require_once 'playerCharacterWeapon.php';
+require_once 'playerCharacterSkillSet.php';
 
 class playerCharacterWeaponSet implements IteratorAggregate, JsonSerializable {
 
@@ -12,8 +13,32 @@ class playerCharacterWeaponSet implements IteratorAggregate, JsonSerializable {
         }
 
         foreach($weapon_list AS $weapon) {
-            $player_character_weapon = new PlayerCharacterWeapon();
+            $player_character_weapon = null;
+            $existing_weapon = $this->getWeaponById($weapon['player_character_weapon_id']);
+            if (empty($existing_weapon)) {
+                $player_character_weapon = new PlayerCharacterWeapon();
+                $this->add($player_character_weapon);
+            } else {
+                $player_character_weapon = $existing_weapon;
+            }
+
             $player_character_weapon->populate($weapon, $player_character_skill_set);
+        }
+    }
+
+    public function fromJSON($player_character_weapon_set_json, PlayerCharacterSkillSet $player_character_skill_set) {
+        for ($i = 0; $i < count($player_character_weapon_set_json); $i++) {
+            $player_character_weapon_json = $player_character_weapon_set_json[$i];
+
+            $player_character_weapon = null;
+            $existing_weapon = $this->getWeaponById($player_character_weapon_json->weaponId);
+            if (empty($existing_weapon)) {
+                $player_character_weapon = new PlayerCharacterWeapon();
+            } else {
+                $player_character_weapon = $existing_weapon;
+            }
+
+            $player_character_weapon->fromJSON($player_character_weapon_json, $player_character_skill_set);
             $this->add($player_character_weapon);
         }
     }
@@ -33,7 +58,7 @@ class playerCharacterWeaponSet implements IteratorAggregate, JsonSerializable {
 		return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize(): mixed {
         return get_object_vars($this);
     }
 
@@ -48,5 +73,15 @@ class playerCharacterWeaponSet implements IteratorAggregate, JsonSerializable {
 
     public function getIterator(): Traversable {
         return new ArrayIterator($this->playerCharacterWeaponList);
+    }
+
+    private function getWeaponById($weapon_id) {
+        foreach($this->playerCharacterWeaponList AS $player_character_weapon) {
+            if ($player_character_weapon->getWeaponId() == $weapon_id) {
+                return $player_character_weapon;
+            }
+        }
+
+        return null;
     }
 }

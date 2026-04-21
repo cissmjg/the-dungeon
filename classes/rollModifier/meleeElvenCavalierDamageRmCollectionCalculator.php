@@ -1,12 +1,19 @@
 <?php
+    require_once 'rmFactor.php';
+    require_once 'rmCollection.php';
+    require_once __DIR__ . '/../../dbio/constants/cavalierCombatMode.php';
+    require_once __DIR__ . '/../../dbio/constants/weapons.php';
+    require_once __DIR__ . '/../../dbio/constants/skills.php';
 
-require_once 'rmFactor';
-require_once 'rmCollection.php';
-require_once __DIR__ . '/../../dbio/constants/cavalierCombatMode.php';
-require_once __DIR__ . '/../../dbio/constants/weapons.php';
-require_once __DIR__ . '/../../dbio/constants/skills.php';
+class MeleeElvenCavalierDamageRmCollectionCalculator  extends meleeDamageRmCollectionCalculator {
+    public function aggregate() {
+        $rmFactorResult = 0;
+        foreach($this->rm_weapon_collection AS $rmFactor) {
+            $rmFactorResult += $rmFactor->getRMData();
+        }
 
-class meleeElvenCavalierDamageRmCollectionCalculator  extends meleeDamageRmCollectionCalculator {
+        return $rmFactorResult;
+    }
 
     private $combat_mode;
     public function getCombatMode() {
@@ -17,15 +24,14 @@ class meleeElvenCavalierDamageRmCollectionCalculator  extends meleeDamageRmColle
         $this->combat_mode = $combat_mode;
     }
 
-    protected function gather(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
+    public function gather(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
         parent::gather($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
 
-        $is_long_sword = isWeaponEquivalent(LONG_SWORD, $player_character_weapon->getWeaponProficiencyId());
-        if (!$is_long_sword) {
+        if (LONG_SWORD != $player_character_weapon->getWeaponProficiencyId()){
             return;
         }
 
-        $rm_cavalier_damage_desc = "Cavalier Bonus";
+        $rm_cavalier_damage_desc = "Cavalier Level Bonus";
         $rm_cavalier_damage_modifier = 0;
         if ($this->combat_mode == UNMOUNTED) {
             $rm_cavalier_damage_modifier = 1;

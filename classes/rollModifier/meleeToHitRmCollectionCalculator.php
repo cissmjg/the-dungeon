@@ -2,34 +2,45 @@
     require_once 'rmFactor.php';
     require_once 'rmCollection.php';
     require_once 'rmCategory.php';
-    require_once 'clericsPreferredWeapon.php';
-    require_once 'formIdLookup.php';
-    require_once 'skillCatalog.php';
+    require_once 'rmCollectionCalculator.php';
+    require_once __DIR__ . '/../characterDetails.php';
+    require_once __DIR__ . '/../playerCharacterSkillSet.php';
+    require_once __DIR__ . '/../playerCharacterWeapon.php';
+    require_once __DIR__ . '/../attributeMetadata.php';
 
     require_once __DIR__ . '/../../dbio/constants/skills.php';
     require_once __DIR__ . '/../../dbio/constants/weapons.php';
     require_once __DIR__ . '/../../dbio/constants/weaponType.php';
     require_once __DIR__ . '/../../dbio/constants/characterRaces.php';
+    require_once __DIR__ . '/../../webio/craftStatus.php';
 
-    class meleeToHitRmCollectionCalculator extends RmCollectionCalculator {
+    class MeleeToHitRmCollectionCalculator extends RmCollectionCalculator {
 
         protected $rm_weapon_collection;
         public function getWeaponCollection() {
             return $this->rm_weapon_collection;
+        }
+        public function aggregate() {
+            $rmFactorResult = 0;
+            foreach($this->rm_weapon_collection AS $rmFactor) {
+                $rmFactorResult += $rmFactor->getRMData();
+            }
+
+            return $rmFactorResult;
         }
 
         public function __construct() {
             $this->rm_weapon_collection = new RmCollection();
         }
 
-        protected function gather(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
+        public function gather(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
 
             // Attributes
             $rm_strength_bonus = $this->getRmStrengthBonus($player_character_skill_set, $attribute_metadata, $player_character_weapon);
             $this->rm_weapon_collection->add($rm_strength_bonus);
 
             // Proficiency check
-            if (PlayerCharacterWeapon::isSkillProficient($player_character_weapon->getWeaponProficiencyId(), $player_character_skill_set)) {
+            if ($player_character_skill_set->isProficientWithWeapon($player_character_weapon->getWeaponProficiencyId())) {
 
                 // Skills
                 $rm_skill_collection = $this->getRmSkills($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
@@ -37,7 +48,7 @@
 
             } else {
                  // Check for non-proficiency
-                 if (!$player_character_weapon->getIsCombatProficient()) {
+                 if (!$player_character_weapon->getIsProficient()) {
                     $rm_non_proficient = new RmFactor("Non Proficiency Penalty", $character_details->getNonProficienyPenalty());
                     $rm_non_proficient->setRmCategory(ROLL_MODIFIER_PENALTY);
                     $this->rm_weapon_collection->add($rm_non_proficient);
@@ -62,7 +73,7 @@
             $rm_strength_to_hit = null;
 
             // If the character has 'Weapon Finesse' and it is a melee weapon and the weapon is 1 handed, then apply dexterity reaction/missile bonus
-            if ($has_weapon_finesse && $player_character_weapon->getMeleeWeaponType() = WEAPON_TYPE_MELEE && $player_character_weapon->getMeleeNumberOfHands() == 1) {
+            if ($has_weapon_finesse && $player_character_weapon->getMeleeWeaponType() == WEAPON_TYPE_MELEE && $player_character_weapon->getMeleeNumberOfHands() == 1) {
                 $rm_strength_to_hit = new RmFactor("Weapon Finesse", $attribute_metadata->getReactionMissileAdjustment());
             } else if ($has_weapon_finesse && $player_character_weapon->getWeaponProficiencyId() == ELVEN_COURT_BLADE) {
                 $rm_strength_to_hit = new RmFactor("Weapon Finesse", $attribute_metadata->getReactionMissileAdjustment());
@@ -137,8 +148,7 @@
             $has_clerics_preferred_weapon = $count_clerics_preferred_weapon > 0;
             if ($has_clerics_preferred_weapon) {
                 $first_clerics_preferred_weapon = $existing_clerics_preferred_weapon[0];
-                $is_equivalent = isWeaponEquivalent($first_clerics_preferred_weapon->getWeaponProficiencyId(), $player_character_weapon->getWeaponProficiencyId());
-                if ($is_equivalent) {
+                if ($first_clerics_preferred_weapon->getWeaponProficiencyId() == $player_character_weapon->getWeaponProficiencyId()) {
                      $rm_clerics_preferred_weapon_desc = sprintf("Cleric's preferred Weapon (%d)", $count_clerics_preferred_weapon);
                      $rm_clerics_preferred_weapon_modifier = $count_clerics_preferred_weapon - 1;
                      $rm_clerics_preferred_weapon = new RmFactor($rm_clerics_preferred_weapon_desc, $rm_clerics_preferred_weapon_modifier);
@@ -154,8 +164,7 @@
             $has_weapon_focus_accuracy = count($existing_weapon_focus_accuracy) > 0;
             if ($has_weapon_focus_accuracy) {
                 $first_weapon_focus_accuracy = $existing_weapon_focus_accuracy[0];
-                $is_equivalent = isWeaponEquivalent($first_weapon_focus_accuracy->getWeaponProficiencyId(), $player_character_weapon->getWeaponProficiencyId());
-                if ($is_equivalent) {
+                if ($first_weapon_focus_accuracy->getWeaponProficiencyId() == $player_character_weapon->getWeaponProficiencyId()) {
                     $rm_weapon_focus_accuracy_desc = "Weapon Focus Accuracy";
                     $rm_weapon_focus_accuracy_modifier = 1;
                     $rm_weapon_focus_accuracy = new RmFactor($rm_weapon_focus_accuracy_desc, $rm_weapon_focus_accuracy_modifier);
@@ -170,8 +179,7 @@
             $has_weapon_focus_greater_accuracy = count($existing_weapon_focus_greater_accuracy) > 0;
             if ($has_weapon_focus_greater_accuracy) {
                 $first_weapon_focus_greater_accuracy = $existing_weapon_focus_greater_accuracy[0];
-                $is_equivalent = isWeaponEquivalent($first_weapon_focus_greater_accuracy->getWeaponProficiencyId(), $player_character_weapon->getWeaponProficiencyId());
-                if ($is_equivalent) {
+                if ($first_weapon_focus_greater_accuracy->getWeaponProficiencyId() == $player_character_weapon->getWeaponProficiencyId()) {
                     $rm_weapon_focus_greater_accuracy_desc = "Weapon Focus (Greater) Accuracy";
                     $rm_weapon_focus_greater_accuracy_modifier = 1;
                     $rm_weapon_focus_greater_accuracy = new RmFactor($rm_weapon_focus_greater_accuracy_desc, $rm_weapon_focus_greater_accuracy_modifier);
@@ -187,8 +195,7 @@
             $has_weapon_specialization = count($existing_weapon_specialization) > 0;
             if ($has_weapon_specialization) {
                 $first_weapon_specialization = $existing_weapon_specialization[0];
-                $is_equivalent = isWeaponEquivalent($first_weapon_specialization->getWeaponProficiencyId(), $player_character_weapon->getWeaponProficiencyId());
-                if ($is_equivalent) {
+                if ($first_weapon_specialization->getWeaponProficiencyId() == $player_character_weapon->getWeaponProficiencyId()) {
                     $rm_weapon_specialization_desc = "Specialization";
                     $rm_weapon_specialization_modifier = 1;
                     $rm_weapon_specialization = new RmFactor($rm_weapon_specialization_desc, $rm_weapon_specialization_modifier);
@@ -204,8 +211,7 @@
             $has_weapon_double_specialization = count($exising_weapon_double_specialization) > 0;
             if ($has_weapon_double_specialization) {
                 $first_weapon_double_specialization = $exising_weapon_double_specialization[0];
-                $is_equivalent = isWeaponEquivalent($first_weapon_double_specialization->getWeaponProficiencyId(), $player_character_weapon->getWeaponProficiencyId());
-                if ($is_equivalent) {
+                if ($first_weapon_double_specialization->getWeaponProficiencyId() == $player_character_weapon->getWeaponProficiencyId()) {
                     $rm_weapon_double_specialization_desc = "Double Specialization";
                     $rm_weapon_double_specialization_modifier = 3;
                     $rm_weapon_double_specialization = new RmFactor($rm_weapon_double_specialization_desc, $rm_weapon_double_specialization_modifier);
@@ -223,10 +229,8 @@
                 $character_details->getRaceId() == RACE_VALLEY_ELF || $character_details->getRaceId() == RACE_WILD_ELF ||
                 $character_details->getRaceId() == RACE_WOOD_ELF
                ) {
-                if (
-                    isWeaponEquivalent($player_character_weapon->getWeaponProficiencyId(), LONG_SWORD) ||
-                    isWeaponEquivalent($player_character_weapon->getWeaponProficiencyId(), SHORT_SWORD)
-                   ) {
+                if ($player_character_weapon->getWeaponProficiencyId() ==  LONG_SWORD ||
+                    $player_character_weapon->getWeaponProficiencyId() == SHORT_SWORD) {
                         $rm_racial_desc = "Elven racial bonus";
                         $rm_racial_modifier = 1;
                         $rm_racial = new RmFactor($rm_racial_desc, $rm_racial_modifier);
@@ -238,13 +242,19 @@
 
         private function getWeaponBonus(PlayerCharacterWeapon $player_character_weapon) {
             $rm_weapon = null;
+            $rm_weapon_desc = '';
             if ($player_character_weapon->getMeleeHitBonus() != 0) {
-                $rm_weapon_desc = "Magic Bonus";
-                $rm_weapon_modifier = $player_character_weapon->getMeleeHitBonus();
-                if ($rm_weapon_modifier < 0) {
-                    $rm_weapon_modifier->setRmCategory(ROLL_MODIFIER_PENALTY);
+                if ($player_character_weapon->getCraftStatus() == CRAFT_STATUS_MASTERCRAFT) {
+                    $rm_weapon_desc = 'Mastercraft Bonus';
+                } else if ($player_character_weapon->getCraftStatus() == CRAFT_STATUS_MAGIC) {
+                    $rm_weapon_desc = 'Magic Bonus';
                 }
+                
+                $rm_weapon_modifier = $player_character_weapon->getMeleeHitBonus();
                 $rm_weapon = new RmFactor($rm_weapon_desc, $rm_weapon_modifier);
+                if ($rm_weapon_modifier < 0) {
+                    $rm_weapon->setRmCategory(ROLL_MODIFIER_PENALTY);
+                }
             }
             return $rm_weapon;
         }
