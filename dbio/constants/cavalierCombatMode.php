@@ -1,15 +1,15 @@
 <?php
-    const UNKNOWN = 0;
-    const MOUNTED = 1;
-    const UNMOUNTED = 2;
+    const COMBAT_MODE_UNKNOWN = 0;
+    const COMBAT_MODE_MOUNTED = 1;
+    const COMBAT_MODE_UNMOUNTED = 2;
 
     function getCavalierCombatModeScription($combat_mode) {
         switch($combat_mode) {
-            case MOUNTED:
+            case COMBAT_MODE_MOUNTED:
                 return "Mounted";
-            case UNMOUNTED:
+            case COMBAT_MODE_UNMOUNTED:
                 return "Unmounted";
-            case UNKNOWN:
+            case COMBAT_MODE_UNKNOWN:
                 return "Unknown";
             default:
                 return "Unknown";

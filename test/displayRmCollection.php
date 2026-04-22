@@ -9,6 +9,7 @@
     require_once __DIR__ . '/../classes/rollModifier/meleeDamageRmCollectionCalculator.php';
     require_once __DIR__ . '/../classes/rollModifier/meleeElvenCavalierToHitRmCollectionCalculator.php';
     require_once __DIR__ . '/../classes/rollModifier/meleeElvenCavalierDamageRmCollectionCalculator.php';
+    require_once __DIR__ . '/../classes/rollModifier/rmUIContainer.php';
     require_once __DIR__ . '/../dbio/constants/skills.php';
     require_once __DIR__ . '/../dbio/constants/weaponType.php';
     require_once __DIR__ . '/../dbio/constants/weaponSubtype.php';
@@ -56,7 +57,7 @@
                 $mounted_melee_to_hit_modification = $mounted_melee_rm_hit_calculator->aggregate();
 
                 $mounted_melee_rm_damage_calculator = new meleeElvenCavalierDamageRmCollectionCalculator();
-                $mounted_melee_rm_damage_calculator->setCombatMode(MOUNTED);
+                $mounted_melee_rm_damage_calculator->setCombatMode(COMBAT_MODE_MOUNTED);
                 $mounted_melee_rm_damage_calculator->gather($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
                 $mounted_melee_damage_modification = $mounted_melee_rm_damage_calculator->aggregate();
 
@@ -88,7 +89,7 @@
                 $mounted_melee_to_hit_modification = $mounted_melee_rm_hit_calculator->aggregate();
 
                 $mounted_melee_rm_damage_calculator = new meleeElvenCavalierDamageRmCollectionCalculator();
-                $mounted_melee_rm_damage_calculator->setCombatMode(UNMOUNTED);
+                $mounted_melee_rm_damage_calculator->setCombatMode(COMBAT_MODE_UNMOUNTED);
                 $mounted_melee_rm_damage_calculator->gather($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
                 $mounted_melee_damage_modification = $mounted_melee_rm_damage_calculator->aggregate();
 
@@ -147,10 +148,16 @@
                 echo '    ' . $melee_rm_hit->getRMDescription() . ' ' . $melee_rm_hit->getRMData() . PHP_EOL;
             }
 
+            $rm_ui_hit_container = new RmUIContainer($melee_rm_hit_calculator->getWeaponCollection(), 'To Hit');
+            echo $rm_ui_hit_container->render();
+
             echo 'Damage Bonuses' . PHP_EOL;
             foreach($melee_rm_damage_calculator->getWeaponCollection() AS $melee_rm_damage) {
                 echo '    ' . $melee_rm_damage->getRMDescription() . ' ' . $melee_rm_damage->getRMData() . PHP_EOL;
             }
+
+            $rm_ui_damage_container = new RmUIContainer($melee_rm_damage_calculator->getWeaponCollection(), 'Damage');
+            echo $rm_ui_damage_container->render();
         }
     }
 }

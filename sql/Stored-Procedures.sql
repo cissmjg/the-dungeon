@@ -1924,52 +1924,6 @@ CREATE PROCEDURE getWeaponsForPlayerCharacterByProficiency
  IN weaponProficiencyId INT)
 BEGIN
 	DECLARE playerCharacterId INT DEFAULT 0;
-	DECLARE longSwordProficiencyId INT DEFAULT 117;
-	DECLARE shortSwordProficiencyId INT DEFAULT 100;
-	DECLARE twoHandedSwordProficiencyId INT DEFAULT 101;
-	DECLARE associatedWeaponProficiency INT DEFAULT 0;
-
-	SELECT weapon_proficiency.id
-	INTO longSwordProficiencyId
-	FROM weapon_proficiency
-	WHERE weapon_proficiency.name = 'Long Sword';
-
-	SELECT weapon_proficiency.id
-	INTO shortSwordProficiencyId
-	FROM weapon_proficiency
-	WHERE weapon_proficiency.name = 'Short Sword';
-
-	SELECT weapon_proficiency.id
-	INTO twoHandedSwordProficiencyId
-	FROM weapon_proficiency
-	WHERE weapon_proficiency.name = 'Two-Handed Sword';
-
-	-- Assume no 'associated' weapon proficiency
-	SET associatedWeaponProficiency = weaponProficiencyId;
-
-	-- Check for Long Sword
-	IF weaponProficiencyId = longSwordProficiencyId THEN
-		SELECT weapon_proficiency.id
-		INTO associatedWeaponProficiency
-		FROM weapon_proficiency
-		WHERE weapon_proficiency.name = 'Elven Thin Blade';
-	END IF;
-
-	-- Check for Short Sword
-	IF weaponProficiencyId = shortSwordProficiencyId THEN
-		SELECT weapon_proficiency.id
-		INTO associatedWeaponProficiency
-		FROM weapon_proficiency
-		WHERE weapon_proficiency.name = 'Elven Lightblade';
-	END IF;
-
-	-- Check for Two-Handed Sword
-	IF weaponProficiencyId = twoHandedSwordProficiencyId THEN
-		SELECT weapon_proficiency.id
-		INTO associatedWeaponProficiency
-		FROM weapon_proficiency
-		WHERE weapon_proficiency.name = 'Elven Court Blade';
-	END IF;
 	
 	SELECT player_character.id
 	INTO playerCharacterId
@@ -1985,8 +1939,7 @@ BEGIN
 	FROM player_character_weapon 
 	WHERE 
 		player_character_weapon.player_character_id = playerCharacterId AND
-		(player_character_weapon.weapon_proficiency_id = weaponProficiencyId OR
-		 player_character_weapon.weapon_proficiency_id = associatedWeaponProficiency);
+		player_character_weapon.weapon_proficiency_id = weaponProficiencyId;
 END
 
 CREATE PROCEDURE getUnallocatedSpellsForSpellBook

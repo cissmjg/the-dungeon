@@ -33,7 +33,7 @@ class MeleeElvenCavalierDamageRmCollectionCalculator  extends meleeDamageRmColle
 
         $rm_cavalier_damage_desc = "Cavalier Level Bonus";
         $rm_cavalier_damage_modifier = 0;
-        if ($this->combat_mode == UNMOUNTED) {
+        if ($this->combat_mode == COMBAT_MODE_UNMOUNTED) {
             $rm_cavalier_damage_modifier = 1;
         } else {
             $primary_class = $character_details->getPrimaryClass();

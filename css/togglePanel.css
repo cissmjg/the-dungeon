@@ -5,3 +5,9 @@
 .togglePanelContent {
     display: none;
 }
+
+.toggleHeader {
+	padding:0.5pt 5.4pt 0.5pt 5.4pt;
+	font-size: 1.25em;
+	font-weight: bold;
+}

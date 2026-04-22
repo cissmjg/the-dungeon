@@ -21,6 +21,15 @@ abstract class FaActionIcon {
         $this->is_hidden = $is_hidden;
     }
 
+    private $icon_id = '';
+    public function getIconId() {
+        return $this->icon_id;
+    }
+
+    public function setIconId($icon_id) {
+        $this->icon_id = $icon_id;
+    }
+
     private $onclick_js_function;
     public function getOnClickJsFunction() {
         return $this->onclick_js_function;
@@ -65,6 +74,7 @@ abstract class FaActionIcon {
         $fa_class = $this->buildFaClass();
         $style_list = $this->buildStyles();
         $hover_text = $this->buildHoverText();
+        $icon_id = $this->buildIconId();
 
         $output_html = '';
         if (!empty($this->getElementId())) {
@@ -75,7 +85,7 @@ abstract class FaActionIcon {
             $output_html .= '>';
         }
 
-        $output_html .=  '<span' . $fa_class . $style_list . $onclick . $hover_text . '></span>';
+        $output_html .=  '<span' . $icon_id . $fa_class . $style_list . $onclick . $hover_text . '></span>';
         
         if (!empty($this->getElementId())) {
             $output_html .= '</span>';
@@ -118,6 +128,15 @@ abstract class FaActionIcon {
         $output_html .= '(';
         $output_html .= $parameter_list;
         $output_html .= ');"';
+
+        return $output_html;
+    }
+
+    private function buildIconId() {
+        $output_html = '';
+        if (strlen($this->getIconId()) > 0) {
+            $output_html .= ' id="' . $this->icon_id . '"';
+        }
 
         return $output_html;
     }
