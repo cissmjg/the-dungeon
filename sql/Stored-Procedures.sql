@@ -1309,6 +1309,8 @@ BEGIN
 
 	SELECT 
 		player_character_two_weapon_fighting.id AS player_character_two_weapon_fighting_id,
+		player_character_two_weapon_fighting.player_character_weapon1_id AS player_character_weapon1_id,
+		player_character_two_weapon_fighting.player_character_weapon2_id AS player_character_weapon2_id,
 		w1.description AS player_character_weapon1_description,
 		w1.location AS player_character_weapon1_location,
 		w2.description AS player_character_weapon2_description,

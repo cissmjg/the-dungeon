@@ -229,8 +229,10 @@
                 $character_details->getRaceId() == RACE_VALLEY_ELF || $character_details->getRaceId() == RACE_WILD_ELF ||
                 $character_details->getRaceId() == RACE_WOOD_ELF
                ) {
-                if ($player_character_weapon->getWeaponProficiencyId() ==  LONG_SWORD ||
-                    $player_character_weapon->getWeaponProficiencyId() == SHORT_SWORD) {
+                if ($player_character_weapon->getWeaponProficiencyId() == LONG_SWORD ||
+                    $player_character_weapon->getWeaponProficiencyId() == ELVEN_THIN_BLADE ||
+                    $player_character_weapon->getWeaponProficiencyId() == SHORT_SWORD ||
+                    $player_character_weapon->getWeaponProficiencyId() == ELVEN_LIGHTBLADE) {
                         $rm_racial_desc = "Elven racial bonus";
                         $rm_racial_modifier = 1;
                         $rm_racial = new RmFactor($rm_racial_desc, $rm_racial_modifier);

@@ -100,7 +100,7 @@ class playerCharacterWeaponSet implements IteratorAggregate, JsonSerializable {
         return new ArrayIterator($this->playerCharacterWeaponList);
     }
 
-    private function getWeaponById($weapon_id) {
+    public function getWeaponById($weapon_id) {
         foreach($this->playerCharacterWeaponList AS $player_character_weapon) {
             if ($player_character_weapon->getWeaponId() == $weapon_id) {
                 return $player_character_weapon;

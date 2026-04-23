@@ -110,8 +110,8 @@ class PlayerCharacterWeapon implements JsonSerializable {
             $this->meleeSpec2Description        = $weapon_detail['player_character_weapon_spec2_description'];
             $this->meleeSpec3HitBonus           = $weapon_detail['player_character_weapon_spec3_hit_bonus'];
             $this->meleeSpec3DamageBonus        = $weapon_detail['player_character_weapon_spec3_damage_bonus'];
-            $this->meleeSpec3Description      = $weapon_detail['player_character_weapon_spec3_description'];
-            $this->meleeAdditionalText          = $weapon_detail['player_character_weapon_short_range'];
+            $this->meleeSpec3Description        = $weapon_detail['player_character_weapon_spec3_description'];
+            $this->meleeAdditionalText          = $weapon_detail['player_character_weapon_additional_text'];
         }
 
         if ($weapon_detail['player_character_weapon_type'] == WEAPON_TYPE_MISSILE) {

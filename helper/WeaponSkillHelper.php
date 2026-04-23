@@ -19,11 +19,12 @@ class WeaponSkillHelper {
         $weapon_detail['player_character_weapon_player_note1'] = '';
         $weapon_detail['player_character_weapon_player_note2'] = '';
         $weapon_detail['player_character_weapon_player_note3'] = '';
-        $weapon_detail['player_character_weapon_strength_bonus_available'];
+        $weapon_detail['player_character_weapon_strength_bonus_available'] = false;
         $weapon_detail['player_character_weapon_speed'] = '2/3/4';
         $weapon_detail['player_character_weapon_damage'] = 'd4+1';
         $weapon_detail['player_character_weapon_attacks_per_round'] = 1;
         $weapon_detail['player_character_weapon_number_of_hands'] = 1;
+        $weapon_detail['player_character_weapon_additional_text'] = '';
 
         WeaponSkillHelper::buildNonMagicalProperties($weapon_detail);
 
@@ -42,11 +43,12 @@ class WeaponSkillHelper {
         $weapon_detail['player_character_weapon_player_note1'] = '';
         $weapon_detail['player_character_weapon_player_note2'] = '';
         $weapon_detail['player_character_weapon_player_note3'] = '';
-        $weapon_detail['player_character_weapon_strength_bonus_available'];
+        $weapon_detail['player_character_weapon_strength_bonus_available'] = '';
         $weapon_detail['player_character_weapon_speed'] = 'EoM';
         $weapon_detail['player_character_weapon_damage'] = 'd3/d3 * 1.5';
         $weapon_detail['player_character_weapon_attacks_per_round'] = 1;
         $weapon_detail['player_character_weapon_number_of_hands'] = 1;
+        $weapon_detail['player_character_weapon_additional_text'] = '';
 
         WeaponSkillHelper::buildNonMagicalProperties($weapon_detail);
 
