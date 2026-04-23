@@ -2,6 +2,9 @@
 require_once 'playerCharacterWeapon.php';
 require_once 'playerCharacterSkillSet.php';
 
+require_once __DIR__ . '/../dbio/constants/skills.php';
+require_once __DIR__ . '/../helper/WeaponSkillHelper.php';
+
 class playerCharacterWeaponSet implements IteratorAggregate, JsonSerializable {
 
     /** @var PlayerCharacterWeapon[] */
@@ -24,6 +27,8 @@ class playerCharacterWeaponSet implements IteratorAggregate, JsonSerializable {
 
             $player_character_weapon->populate($weapon, $player_character_skill_set);
         }
+
+        $this->addSkillBasedWeapons($player_character_skill_set);
     }
 
     public function fromJSON($player_character_weapon_set_json, PlayerCharacterSkillSet $player_character_skill_set) {
@@ -41,6 +46,8 @@ class playerCharacterWeaponSet implements IteratorAggregate, JsonSerializable {
             $player_character_weapon->fromJSON($player_character_weapon_json, $player_character_skill_set);
             $this->add($player_character_weapon);
         }
+
+        $this->addSkillBasedWeapons($player_character_skill_set);
     }
 
     private function getPlayerCharacterWeaponList(\PDO $pdo, $player_name, $character_name, &$errors) {
@@ -56,6 +63,24 @@ class playerCharacterWeaponSet implements IteratorAggregate, JsonSerializable {
         }
 
 		return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    private function addSkillBasedWeapons(PlayerCharacterSkillSet $player_character_skill_set) {
+        $has_circle_kick = count($player_character_skill_set->getAllSkillInstances(CIRCLE_KICK)) > 0;
+        if ($has_circle_kick) {
+            $player_character_weapon_properties = WeaponSkillHelper::buildCircleKickWeapon();
+            $player_character_weapon = New PlayerCharacterWeapon();
+            $player_character_weapon->populate($player_character_weapon_properties, $player_character_skill_set);
+            $this->add($player_character_weapon);
+        }
+
+        $has_mantis_leap = count($player_character_skill_set->getAllSkillInstances(MANTIS_LEAP)) > 0;
+        if ($has_mantis_leap) {
+            $player_character_weapon_properties = WeaponSkillHelper::buildMantisLeapWeapon();
+            $player_character_weapon = New PlayerCharacterWeapon();
+            $player_character_weapon->populate($player_character_weapon_properties, $player_character_skill_set);
+            $this->add($player_character_weapon);
+        }
     }
 
     public function jsonSerialize(): mixed {

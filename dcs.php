@@ -108,16 +108,28 @@ echo $html_header;
 <?php
 $index = 1;
 if ($primary_class->getClassId() == ELVEN_CAVALIER) {
+	echo '<div class="togglePanel">' . PHP_EOL;
+	echo '<a href="#">' . PHP_EOL;
+	echo '    <span class="fa fa-plus"></span> Mounted' . PHP_EOL;
+	echo '</a>' . PHP_EOL;
+	echo '<div class="togglePanelContent">' . PHP_EOL;
 	foreach($player_character_weapon_set->getAll() AS $player_character_weapon) {
 		echo buildCompleteWeaponPanel($player_character_weapon, $player_character_skill_set, $character_details, $attribute_metadata, COMBAT_MODE_MOUNTED, $index);		
 		$index++;
 	}
-	echo '<hr>';
+
+	echo '</div>' . PHP_EOL;
+	echo '<div>&nbsp;</div>' . PHP_EOL;
+	echo '<div class="togglePanel">' . PHP_EOL;
+	echo '<a href="#">' . PHP_EOL;
+	echo '    <span class="fa fa-plus"></span> Unmounted' . PHP_EOL;
+	echo '</a>' . PHP_EOL;
+	echo '<div class="togglePanelContent"\>' . PHP_EOL;
 	foreach($player_character_weapon_set->getAll() AS $player_character_weapon) {
 		echo buildCompleteWeaponPanel($player_character_weapon, $player_character_skill_set, $character_details, $attribute_metadata, COMBAT_MODE_UNMOUNTED, $index);		
 		$index++;
 	}
-
+	echo '</div>' . PHP_EOL;
 } else {
 	foreach($player_character_weapon_set->getAll() AS $player_character_weapon) {
 		echo buildCompleteWeaponPanel($player_character_weapon, $player_character_skill_set, $character_details, $attribute_metadata, COMBAT_MODE_UNKNOWN, $index);		
