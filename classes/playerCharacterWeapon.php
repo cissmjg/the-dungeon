@@ -3,7 +3,10 @@
 require_once __DIR__ . '/../dbio/constants/weaponType.php';
 require_once __DIR__ . '/../dbio/constants/weaponSubtype.php';
 require_once __DIR__ . '/../dbio/constants/weapons.php';
+require_once __DIR__ . '/../dbio/constants/skills.php';
+
 require_once 'playerCharacterSkillSet.php';
+require_once __DIR__ . '/skills/fistOfIron.php';
 
 class PlayerCharacterWeapon implements JsonSerializable {
 
@@ -86,7 +89,13 @@ class PlayerCharacterWeapon implements JsonSerializable {
             $this->playerNote3                  = $weapon_detail['player_character_weapon_player_note3'];
             $this->strengthBonusAvailable       = $weapon_detail['player_character_weapon_strength_bonus_available'];
             $this->meleeWeaponSpeed             = $weapon_detail['player_character_weapon_speed'];
+
             $this->meleeWeaponDamage            = $weapon_detail['player_character_weapon_damage'];
+            $count_fist_of_iron = count($player_character_skill_set->getAllSkillInstances(FIST_OF_IRON));
+            if ($this->weaponProficiencyId == FIST && $count_fist_of_iron > 0) {
+                $this->meleeWeaponDamage .= ' ' . FistOfIron::formatFistOfIronDamage($count_fist_of_iron);
+            }
+
             $this->meleeAttacksPerRound         = $weapon_detail['player_character_weapon_attacks_per_round'];
             $this->meleeNumberOfHands           = $weapon_detail['player_character_weapon_number_of_hands'];
             $this->meleeHitBonus                = $weapon_detail['player_character_weapon_hit_bonus'];

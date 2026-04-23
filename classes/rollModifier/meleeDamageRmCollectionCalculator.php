@@ -3,6 +3,7 @@
     require_once 'rmCollection.php';
     require_once 'rmCategory.php';
     require_once 'rmCollectionCalculator.php';
+    require_once __DIR__ . '/../skills/fistOfIron.php';
     require_once __DIR__ . '/../characterDetails.php';
     require_once __DIR__ . '/../playerCharacterSkillSet.php';
     require_once __DIR__ . '/../playerCharacterWeapon.php';
@@ -89,7 +90,7 @@
                 $count_fist_of_iron = count($player_character_skill_set->getAllSkillInstances(FIST_OF_IRON));
                 $has_fist_of_iron = $count_fist_of_iron > 0;
                 if ($has_fist_of_iron) {
-                    $rm_fist_of_iron_desc = sprintf("Fist of Iron +%dd4", $count_fist_of_iron);
+                    $rm_fist_of_iron_desc = 'Fist Of Iron ' . FistOfIron::formatFistOfIronDamage($count_fist_of_iron);
                     $rm_fist_of_iron_modifier = 0;
                     $rm_fist_of_iron = new RmFactor($rm_fist_of_iron_desc, $rm_fist_of_iron_modifier);
                 }
