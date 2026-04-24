@@ -5,24 +5,33 @@ const initialWeaponSelectPrompt = "[Select a Weapon]";
 
 export function populateWeaponList(weaponListId, playerName, characterName, weaponSearchTextboxName) {
     let jqWeaponQueryPattern = $('#' + weaponSearchTextboxName);
-    const jqWeaponListid = "#" + weaponListId;
+    let jqWeaponList = $("#" + weaponListId);
 
     let weaponQueryAPI = buildDbioDirURL('getWeaponProficienciesAvailableForPlayerCharacter');
     weaponQueryAPI = addParameter(weaponQueryAPI, 'playerName', playerName);
     weaponQueryAPI = addParameter(weaponQueryAPI, 'characterName', characterName);
     weaponQueryAPI = addParameter(weaponQueryAPI, 'textInput', jqWeaponQueryPattern.val());
 
-    $(jqWeaponListid).empty();
-    $.getJSON(weaponQueryAPI,
-        function(data, textStatus, jqXHR) {
-            $(jqWeaponListid).append(new Option(initialWeaponSelectPrompt, 0));
-            $.each(data, function(i, weapon_proficiency_object) {
-                $(jqWeaponListid).append(new Option(weapon_proficiency_object.weapon_proficiency_name, weapon_proficiency_object.weapon_proficiency_id));
-            });
-        }
-    );
-
-    $(jqWeaponListid).show();
+    jqWeaponList.empty();
+    $.getJSON(weaponQueryAPI)
+        .done(function(data) {
+            if (Array.isArray(data)) {
+                jqWeaponList.append(new Option(initialWeaponSelectPrompt, 0));
+                $.each(data, function(i, weapon_proficiency_object) {
+                    let weapon_name = weapon_proficiency_object.weapon_proficiency_name;
+                    let weapon_id = weapon_proficiency_object.weapon_proficiency_id;
+                    jqWeaponList.append(new Option(weapon_name, weapon_id));
+                })
+            }
+        })
+        .fail(function (jqxhr, textStatus, error) {
+            // Handle errors
+            const errMsg = `Request Failed: ${textStatus}, ${error}`;
+            console.error(errMsg);
+            jqWeaponList.append(new Option(errMsg), 0);
+        });
+ 
+    jqWeaponList.show();
 }
 
 export function weaponListChanged(selectWeaponButtonName, weaponListName) {

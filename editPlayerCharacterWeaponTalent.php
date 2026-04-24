@@ -41,6 +41,7 @@ require_once __DIR__ . '/classes/skills/fistOfIron.php';
 require_once __DIR__ . '/classes/skills/improvedUnarmedStrike.php';
 require_once __DIR__ . '/classes/skills/jump.php';
 require_once __DIR__ . '/classes/skills/mantisLeap.php';
+require_once __DIR__ . '/classes/skills/circleKick.php';
 require_once __DIR__ . '/classes/skills/clericsPreferredWeapon.php';
 require_once __DIR__ . '/classes/skills/improvedCritical.php';
 require_once __DIR__ . '/classes/skills/weaponFocusAccuracy.php';
@@ -152,14 +153,19 @@ $action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
             $mantis_leap = new MantisLeap($the_skill_catalog, $form_id_lookup);
             $mantis_leap->setWeaponProficiencyValue($current_weapon_proficiency_id);
 
+            $circle_kick = new CircleKick($the_skill_catalog, $form_id_lookup);
+            $circle_kick->setWeaponProficiencyValue($current_weapon_proficiency_id);
+
             echo $dirty_fighting->render($character_details, $player_character_skill_set);
             echo $fist_of_iron->render($character_details, $player_character_skill_set);
             echo $mantis_leap->render($character_details, $player_character_skill_set);
+            echo $circle_kick->render($character_details, $player_character_skill_set);
 
             if ($debug_skills) {
                 $debug_output .= $dirty_fighting->dump();
                 $debug_output .= $fist_of_iron->dump();
                 $debug_output .= $mantis_leap->dump();
+                $debug_output .= $circle_kick->dump();
             }
         } else {
 

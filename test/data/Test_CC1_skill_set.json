@@ -1,0 +1,62 @@
+[
+  {
+    "id": 68,
+    "skill_catalog_id": 179,
+    "player_character_skill_name": "Weapon Proficiency",
+    "is_skill_focus": 0,
+    "weapon_proficiency_id": 118,
+    "weapon2_proficiency_id": null,
+    "is_preferred_cavalier_level3": null,
+    "is_preferred_cavalier_level5": null,
+    "is_preferred_elven_cavalier_level4": null,
+    "is_preferred_elven_cavalier_level6": null
+  },
+  {
+    "id": 256,
+    "skill_catalog_id": 179,
+    "player_character_skill_name": "Weapon Proficiency",
+    "is_skill_focus": 0,
+    "weapon_proficiency_id": 16,
+    "weapon2_proficiency_id": null,
+    "is_preferred_cavalier_level3": null,
+    "is_preferred_cavalier_level5": null,
+    "is_preferred_elven_cavalier_level4": null,
+    "is_preferred_elven_cavalier_level6": null
+  },
+  {
+    "id": 257,
+    "skill_catalog_id": 179,
+    "player_character_skill_name": "Weapon Proficiency",
+    "is_skill_focus": 0,
+    "weapon_proficiency_id": 117,
+    "weapon2_proficiency_id": null,
+    "is_preferred_cavalier_level3": null,
+    "is_preferred_cavalier_level5": null,
+    "is_preferred_elven_cavalier_level4": null,
+    "is_preferred_elven_cavalier_level6": null
+  },
+  {
+    "id": 258,
+    "skill_catalog_id": 53,
+    "player_character_skill_name": "Specialization",
+    "is_skill_focus": 0,
+    "weapon_proficiency_id": 117,
+    "weapon2_proficiency_id": 117,
+    "is_preferred_cavalier_level3": null,
+    "is_preferred_cavalier_level5": null,
+    "is_preferred_elven_cavalier_level4": null,
+    "is_preferred_elven_cavalier_level6": null
+  },
+  {
+    "id": 259,
+    "skill_catalog_id": 179,
+    "player_character_skill_name": "Weapon Proficiency",
+    "is_skill_focus": 0,
+    "weapon_proficiency_id": 29,
+    "weapon2_proficiency_id": null,
+    "is_preferred_cavalier_level3": null,
+    "is_preferred_cavalier_level5": null,
+    "is_preferred_elven_cavalier_level4": null,
+    "is_preferred_elven_cavalier_level6": null
+  }
+]

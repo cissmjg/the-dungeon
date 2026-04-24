@@ -16,6 +16,25 @@ require_once __DIR__ . '/dbio/constants/characterClasses.php';
 require_once __DIR__ . '/classes/attributeMetadata.php';
 require_once __DIR__ . '/classes/characterDetails.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
+require_once __DIR__ . '/classes/playerCharacterSkillSet.php';
+require_once __DIR__ . '/classes/playerCharacterWeaponSet.php';
+require_once __DIR__ . '/classes/playerCharacterMeleeWeaponRenderer.php';
+require_once __DIR__ . '/classes/playerCharacterMeleeElvenCavalierWeaponRenderer.php';
+require_once __DIR__ . '/classes/twoWeaponFightingRenderer.php';
+require_once __DIR__ . '/classes/twoWeaponFightingConfiguration.php';
+require_once __DIR__ . '/classes/twoWeaponFightingConfigurationSet.php';
+require_once __DIR__ . '/classes/rollModifier/meleeToHitRmCollectionCalculator.php';
+require_once __DIR__ . '/classes/rollModifier/meleeDamageRmCollectionCalculator.php';
+require_once __DIR__ . '/classes/rollModifier/meleeElvenCavalierToHitRmCollectionCalculator.php';
+require_once __DIR__ . '/classes/rollModifier/meleeElvenCavalierDamageRmCollectionCalculator.php';
+require_once __DIR__ . '/classes/rollModifier/rmUIContainer.php';
+require_once __DIR__ . '/rules/attacksPerRound.php';
+require_once __DIR__ . '/fa/faChevronIcon.php';
+
+require_once __DIR__ . '/dbio/constants/skills.php';
+require_once __DIR__ . '/dbio/constants/weaponType.php';
+require_once __DIR__ . '/dbio/constants/characterClasses.php';
+require_once __DIR__ . '/dbio/constants/cavalierCombatMode.php';
 
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
@@ -32,12 +51,17 @@ $character_name = $input[CHARACTER_NAME];
 
 $character_details = new CharacterDetails();
 $character_details->init($pdo, $player_name, $character_name, $errors);
-if (count($errors) > 0) {
-	die(json_encode($errors));
-}
+
+$primary_class = $character_details->getPrimaryClass();
 
 $character_summary_renderer = new CharacterSummaryRenderer($character_name);
 $character_summary_stats = $character_summary_renderer->renderCharacterDetails($character_details);
+
+$player_character_skill_set = new PlayerCharacterSkillSet();
+$player_character_skill_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+
+$player_character_weapon_set = New PlayerCharacterWeaponSet();
+$player_character_weapon_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $player_character_skill_set, $errors);
 
 $attribute_metadata = new AttributeMetadata($character_details);
 
@@ -57,37 +81,115 @@ echo $html_header;
 ?>
 <body>
 <span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span>
+<table cellspacing="0" class="tableLayout">
+	<tr>
+		<td colspan="12" class="tableHeader"><?= $character_name ?></td>
+	</tr>
+	<tr>
+		<td class="titleAttributeLiteral">Armor Class</td>
+		<td class="titleAttributeValue"><?= $character_details->getArmorClass() ?></td>
+		<td class="titleAttributeLiteral">Hit Points</td>
+		<td class="titleAttributeValue"><?= $character_details->getHitPoints() ?></td>
+		<td class="titleAttributeLiteral">Movement</td>
+		<td class="titleAttributeValue"><?= formatMovement($character_details->getMovement()); ?></td>
+		<td class="titleAttributeLiteral">Class</td>
+		<td class="titleAttributeValue"><?= formatClasses($character_details) ?></td>
+		<td class="titleAttributeLiteral">Level</td>
+		<td class="titleAttributeValue"><?= formatLevels($character_details, $nf) ?></td>
+		<td class="titleAttributeLiteral">Level</td>
+		<td class="titleAttributeValue"><?= $character_details->getRace() ?></td>
+	</tr>
+</table>
+<div>&nbsp;</div>
+<span style="font-weight: bold;">Combat Summary</span>
+<?php
+$index = 1;
+if ($primary_class->getClassId() == ELVEN_CAVALIER) {
+	echo '<div class="togglePanel">' . PHP_EOL;
+	echo '<a href="#">' . PHP_EOL;
+	echo '    <span class="fa fa-plus"></span> Mounted' . PHP_EOL;
+	echo '</a>' . PHP_EOL;
+	echo '<div class="togglePanelContent">' . PHP_EOL;
+	echo '  <div class="rmWeaponContainer">' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Weapon</div>' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Spd</div>' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Att</div>' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Dmg</div>' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Range</div>' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Bonus</div>' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Notes</div>' . PHP_EOL;
+	echo '  </div>' . PHP_EOL;
+
+	foreach($player_character_weapon_set->getAll() AS $player_character_weapon) {
+		$player_character_melee_weapon_renderer = new PlayerCharacterMeleeElvenCavalierWeaponRenderer($player_character_weapon, $player_character_skill_set, $character_details, $attribute_metadata);
+		$background_style = $index % 2 == 0 ? 'rmWeaponContainerAltBackground' : '';
+		$player_character_melee_weapon_renderer->setWeaponContainerBackgroundStyle($background_style);
+		$player_character_melee_weapon_renderer->setCombatMode(COMBAT_MODE_MOUNTED);
+		echo $player_character_melee_weapon_renderer->render();
+
+		$index++;
+	}
+
+	echo '</div>' . PHP_EOL;
+	echo '<div>&nbsp;</div>' . PHP_EOL;
+	echo '<div class="togglePanel">' . PHP_EOL;
+	echo '<a href="#">' . PHP_EOL;
+	echo '    <span class="fa fa-plus"></span> Unmounted' . PHP_EOL;
+	echo '</a>' . PHP_EOL;
+	echo '<div class="togglePanelContent"\>' . PHP_EOL;
+	echo '  <div class="rmWeaponContainer">' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Weapon</div>' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Spd</div>' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Att</div>' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Dmg</div>' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Range</div>' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Bonus</div>' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Notes</div>' . PHP_EOL;
+	echo '  </div>' . PHP_EOL;
+	foreach($player_character_weapon_set->getAll() AS $player_character_weapon) {
+		$player_character_melee_weapon_renderer = new PlayerCharacterMeleeElvenCavalierWeaponRenderer($player_character_weapon, $player_character_skill_set, $character_details, $attribute_metadata);
+		$background_style = $index % 2 == 0 ? 'rmWeaponContainerAltBackground' : '';
+		$player_character_melee_weapon_renderer->setWeaponContainerBackgroundStyle($background_style);
+		$player_character_melee_weapon_renderer->setCombatMode(COMBAT_MODE_UNMOUNTED);
+		echo $player_character_melee_weapon_renderer->render();
+
+		$index++;
+	}
+	echo '</div>' . PHP_EOL;
+} else {
+	// If the character has Two Weapon Fighting, Format the display area
+	// $index++;
+	echo '  <div class="rmWeaponContainer">' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Weapon</div>' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Spd</div>' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Att</div>' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Dmg</div>' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Range</div>' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Bonus</div>' . PHP_EOL;
+	echo '    <div class="rmWeaponHeaderItem">Notes</div>' . PHP_EOL;
+	echo '  </div>' . PHP_EOL;
+	if (count($player_character_skill_set->getAllSkillInstances(TWO_WEAPON_FIGHTING)) > 0) {
+		$two_weapon_fighting_configs = new TwoWeaponFightingConfigurationSet();
+		$two_weapon_fighting_configs->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+		foreach($two_weapon_fighting_configs AS $two_weapon_fighting_config) {
+			$two_weapon_renderer = new TwoWeaponFightingRenderer($two_weapon_fighting_config, $player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata);
+			$background_style = $index % 2 == 0 ? 'rmWeaponContainerAltBackground' : '';
+			$two_weapon_renderer->setWeaponContainerBackgroundStyle($background_style);
+			echo $two_weapon_renderer->render();
+			$index++;
+		}
+	}
+	foreach($player_character_weapon_set->getAll() AS $player_character_weapon) {
+		$player_character_melee_weapon_renderer = new PlayerCharacterMeleeWeaponRenderer($player_character_weapon, $player_character_skill_set, $character_details, $attribute_metadata);
+		$background_style = $index % 2 == 0 ? 'rmWeaponContainerAltBackground' : '';
+		$player_character_melee_weapon_renderer->setWeaponContainerBackgroundStyle($background_style);
+		echo $player_character_melee_weapon_renderer->render();
+		$index++;
+	}
+}
+?>
 <div class="characterSheetContainer">
 	<div class="characterSheetColumn">
-		<table cellspacing="0" class="tableLayout">
-			<tr>
-				<td colspan="6" class="tableHeader"><?= $character_name ?></td>
-			</tr>
-			<tr>
-				<td class="titleAttributeLiteral">Armor Class</td>
-				<td class="titleAttributeValue"><?= $character_details->getArmorClass() ?></td>
-				<td class="titleAttributeLiteral">Hit Points</td>
-				<td class="titleAttributeValue"><?= $character_details->getHitPoints() ?></td>
-				<td class="titleAttributeLiteral">Movement</td>
-				<td class="titleAttributeValue"><?= formatMovement($character_details->getMovement()); ?></td>
-			</tr>
-		</table>
-		<div>&nbsp;</div>
-		<div class="togglePanel">
-			<a href="#"><span class="fa fa-plus" style="padding-right: 5px;"></span></a><span class="toggleHeader">Combat Summary</span>
-			<table class="togglePanelContent tableHeader">
-				<tr>
-					<td class="combatSummaryHeader">Weapon</td>
-					<td class="combatSummaryHeader">Spd</td>
-					<td class="combatSummaryHeader">Dmg</td>
-					<td class="combatSummaryHeader">Range</td>
-					<td class="combatSummaryHeader">Hit Adj.</td>
-					<td class="combatSummaryHeader">Dam. Adj.</td>
-					<td class="combatSummaryHeader">Notes</td>
-				</tr>
-			</table>
-		</div>
-		<div>&nbsp;</div>
 		<table cellspacing="0" class="tableLayout">
 			<tr>
 				<td colspan="2" class="tableHeader">Class Abilities</td>
@@ -295,6 +397,7 @@ echo $html_header;
 			</table>
 		</div>
 	</div>
+</div>
 </body>
 </html>
 <?php
@@ -362,4 +465,6 @@ function formatExperiencePoints(\CharacterDetails $character_details) {
 
 	return $xp_list;
 }
+
 ?>
+

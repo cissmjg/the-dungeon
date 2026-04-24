@@ -21,6 +21,53 @@ const FONT_AWESOME_LIB = "https://kit.fontawesome.com/4295d6f264.js";
 
         return $hidden_tag;
     }
+
+    public static function buildDivTag($class, $content) {
+        return HtmlHelper::buildDivTagWithId('', $class, $content);
+    }
+
+    public static function buildDivTagWithId($id, $class, $content) {
+        $div_tag  = '<div';
+        if (!empty($id)) {
+            $div_tag .= ' id="' . $id . '"';
+        }
+
+        if (!empty($class)) {
+            $div_tag .= ' class="' . $class . '"';
+        }
+
+        $div_tag .= '>' . $content . '</div>';
+
+        return $div_tag;
+    }
+
+    public static function buildDivStartTag($class) {
+        return HtmlHelper::buildDivStartTagWithId($class, '', false);
+    }
+
+    public static function buildDivStartTagWithId($class, $id, $hidden) {
+        $div_tag  = '<div';
+        if (!empty($class)) {
+             $div_tag .= ' class="' . $class . '"';
+        }
+
+        if (!empty($id)) {
+            $div_tag .= ' id="' . $id . '"';
+        }
+
+        if ($hidden) {
+            $div_tag .= ' hidden';
+        }
+
+        $div_tag .= '>';
+
+        return $div_tag;
+    }
+
+    public static function buildDivEndTag() {
+        return '</div>';
+    }
+
     public static function formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels) {
         $output_html  = '<!DOCTYPE html>' . PHP_EOL;
         $output_html .= '<html lang="en">' . PHP_EOL;

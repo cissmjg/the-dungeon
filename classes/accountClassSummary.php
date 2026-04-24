@@ -52,7 +52,7 @@ class AccountClassSummary implements JsonSerializable, Stringable {
 	}
 
 	// function called when encoded with json_encode
-    public function jsonSerialize() {
+    public function jsonSerialize(): mixed {
         return get_object_vars($this);
     }
 	

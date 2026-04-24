@@ -1,9 +1,13 @@
 <?php
     require_once 'playerCharacterSkill.php';
+    require_once __DIR__ . '/../dbio/constants/skills.php';
 
     class PlayerCharacterSkillSet implements JsonSerializable {
 
         private $player_character_skills = [];
+        public function getPlayerCharacterSkills() {
+            return $this->player_character_skills;
+        }
 
         private $skill_catalog_ids = [];
 
@@ -17,6 +21,17 @@
                 $player_character_skill = new PlayerCharacterSkill();
                 $player_character_skill->init($player_character_skill_db);
                 $skill_id = $player_character_skill_db['skill_catalog_id'];
+                $this->player_character_skills[] = $player_character_skill;
+                $this->skill_catalog_ids[] = $skill_id;
+            }
+        }
+
+        public function fromJSON($player_character_skill_set_json) {
+            for ($i = 0; $i < count($player_character_skill_set_json); $i++) {
+                $player_character_skill_json = $player_character_skill_set_json[$i];
+                $player_character_skill = new PlayerCharacterSkill();
+                $player_character_skill->fromJSON($player_character_skill_json);
+                $skill_id = $player_character_skill->getSkillCatalogId();
                 $this->player_character_skills[] = $player_character_skill;
                 $this->skill_catalog_ids[] = $skill_id;
             }
@@ -38,7 +53,7 @@
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        public function jsonSerialize() {
+        public function jsonSerialize(): mixed {
             return get_object_vars($this);
         }
 
@@ -66,6 +81,34 @@
             }
 
             return $specific_skill_list;
+        }
+
+        public function getWeaponProficiencyForWeapon($weapon_proficiency_id) {
+            $weapon_proficiencies = $this->getAllSkillInstances(WEAPON_PROFICIENCY);
+
+            foreach($weapon_proficiencies AS $weapon_proficiency) {
+                if ($weapon_proficiency->getWeaponProficiencyId() == $weapon_proficiency_id) {
+                    return $weapon_proficiency;
+                }
+            }
+
+            return null;
+        }
+
+        public function isWeaponPreferred($weapon_proficiency_id) {
+            $is_preferred = false;
+            $weapon_proficiency = $this->getWeaponProficiencyForWeapon($weapon_proficiency_id);
+            if (!empty($weapon_proficiency)) {
+                $is_preferred = 
+                    $weapon_proficiency->getIsPreferredCavalierLevel3() || $weapon_proficiency->getIsPreferredCavalierLevel5() || 
+                    $weapon_proficiency->getIsPreferredElvenCavalierLevel4() || $weapon_proficiency->getIsPreferredElvenCavalierLevel6();
+            }
+
+            return $is_preferred;
+        }
+
+        public function isProficientWithWeapon($weapon_proficiency_id) {
+            return count($this->getAllSkillInstancesForWeapon(WEAPON_PROFICIENCY, $weapon_proficiency_id)) > 0;
         }
     }
 ?>

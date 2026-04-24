@@ -27,7 +27,20 @@
             $this->is_preferred_elven_cavalier_level6 = $skill['player_character_elven_cavalier_level6_preferred'];
         }
 
-        public function jsonSerialize() {
+        public function fromJSON($skill_json) {
+            $this->id = $skill_json->id;
+            $this->skill_catalog_id = $skill_json->skill_catalog_id;
+            $this->player_character_skill_name = $skill_json->player_character_skill_name;
+            $this->is_skill_focus = $skill_json->is_skill_focus;
+            $this->weapon_proficiency_id = $skill_json->weapon_proficiency_id;
+            $this->weapon2_proficiency_id = $skill_json->weapon2_proficiency_id;
+            $this->is_preferred_cavalier_level3 = $skill_json->is_preferred_cavalier_level3;
+            $this->is_preferred_cavalier_level5 = $skill_json->is_preferred_cavalier_level5;
+            $this->is_preferred_elven_cavalier_level4 = $skill_json->is_preferred_elven_cavalier_level4;
+            $this->is_preferred_elven_cavalier_level6 = $skill_json->is_preferred_elven_cavalier_level6;
+        }
+ 
+        public function jsonSerialize(): mixed {
             return get_object_vars($this);
         }
 

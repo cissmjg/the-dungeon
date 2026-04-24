@@ -397,6 +397,79 @@ BEGIN
 	SELECT playerCharacterWeaponId;
 END
 
+CREATE PROCEDURE addWeaponFistToPlayerCharacter
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64))
+BEGIN
+
+	DECLARE fistWeaponProficiencyId INT DEFAULT 118;
+	DECLARE weaponType INT DEFAULT 1;
+	DECLARE weaponSubtype INT DEFAULT 1;
+	DECLARE weaponSpeed VARCHAR(32) DEFAULT '1';
+	DECLARE weaponDamage VARCHAR(32) DEFAULT ' ';
+	DECLARE weaponNumberOfHands VARCHAR(32) DEFAULT ' ';
+
+	SELECT weapon_proficiency.id, weapon_catalog.type, weapon_catalog.subtype, weapon_catalog.speed, weapon_catalog.damage, weapon_catalog.number_of_hands
+	INTO fistWeaponProficiencyId, weaponType, weaponSubtype, weaponSpeed, weaponDamage, weaponNumberOfHands
+	FROM weapon_proficiency
+	JOIN weapon_catalog ON weapon_catalog.weapon_proficiency_id = weapon_proficiency.id
+	WHERE weapon_proficiency.name = 'Fist';
+
+	CALL addWeaponToPlayerCharacter(
+		playerName,					-- playerName
+ 		characterName,				-- characterName
+		fistWeaponProficiencyId,	-- weaponProficiencyId
+		'FIST',						-- weaponDescription
+		NULL,						-- weaponLocation
+		TRUE,						-- isProficient
+		FALSE,						-- isReady
+		0,							-- craftStatus
+		FALSE,						-- strengthBonusAvailable
+		NULL,						-- playerNote1
+		NULL,						-- playerNote2
+		NULL,						-- playerNote3
+		NULL,						-- mastercraftHitDescription
+		NULL,						-- mastercraftDamageDescription
+		weaponType,					-- meleeWeaponType
+		weaponSubtype,				-- meleeWeaponSubtype
+		weaponSpeed,				-- meleeWeaponSpeed
+		weaponDamage,				-- meleeWeaponDamage
+		' ',						-- meleeAttacksPerRound
+		weaponNumberOfHands,		-- meleeNumberOfHands
+		NULL,						-- meleeAdditionalText
+		0,							-- meleeHitBonus
+		0,							-- meleeDamageBonus
+		0,							-- meleeSpec1HitBonus
+		0,							-- meleeSpec1DamageBonus
+		NULL,						-- meleeSpec1Description
+		0,							-- meleeSpec2HitBonus
+		0,							-- meleeSpec2DamageBonus
+		NULL,						-- meleeSpec2Description
+		0,							-- meleeSpec3HitBonus
+		0,							-- meleeSpec3DamageBonus
+		NULL,						-- meleeSpec3Description
+		0,							-- missileWeaponType
+		0,							-- missileWeaponSubtype
+		NULL,						-- missileWeaponSpeed
+		NULL,						-- missileWeaponDamage
+		' ',						-- missileAttacksPerRound
+		NULL,						-- missileAdditionalText
+		0,							-- missileHitBonus
+		0,							-- missileDamageBonus
+		0,							-- missileSpec1HitBonus
+		0,							-- missileSpec1DamageBonus
+		NULL,						-- missileSpec1Description
+		0,							-- missileSpec2HitBonus
+		0,							-- missileSpec2DamageBonus
+		NULL,						-- missileSpec2Description
+		0,							-- missileSpec3HitBonus
+		0,							-- missileSpec3DamageBonus
+		NULL,						-- missileSpec3Description
+		NULL,						-- missileShortRange
+		NULL,						-- missileMediumRange
+		NULL);						-- missileLongRange
+END
+
 CREATE PROCEDURE adjustSpellPoints
 (IN playerName VARCHAR(32),
  IN characterName VARCHAR(64),
@@ -718,7 +791,8 @@ BEGIN
 	
 	SELECT playerID, playerCharacterId;
 
-	Call addWeaponProficiencyToPlayerCharacter(playerName, characterName, fistWeaponProficiencyId, playerCharacterSkillId);
+	CALL addWeaponProficiencyToPlayerCharacter(playerName, characterName, fistWeaponProficiencyId, playerCharacterSkillId);
+	CALL addWeaponFistToPlayerCharacter(playerName, characterName);
 	COMMIT;
 END
 
@@ -1176,6 +1250,51 @@ BEGIN
 	WHERE player_character_weapon.id = playerCharacterWeaponId;
 END
 
+CREATE PROCEDURE getPlayerCharacterWeaponList
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64))
+BEGIN
+	SELECT
+		player_character_weapon.id AS player_character_weapon_id,
+		player_character_weapon_mode.weapon_type AS player_character_weapon_type,
+		player_character_weapon_mode.weapon_subtype  AS player_character_weapon_subtype,
+		player_character_weapon.craft_status AS player_character_weapon_craft_status,
+		player_character_weapon.weapon_proficiency_id AS player_character_weapon_proficiency_id, 
+		player_character_weapon.description AS player_character_weapon_description,
+		player_character_weapon.is_ready AS player_character_weapon_is_ready,
+		player_character_weapon.location AS player_character_weapon_location,
+		player_character_weapon.player_note1 AS player_character_weapon_player_note1,
+		player_character_weapon.player_note2 AS player_character_weapon_player_note2,
+		player_character_weapon.player_note3 AS player_character_weapon_player_note3,
+		player_character_weapon.strength_bonus_available AS player_character_weapon_strength_bonus_available,
+		player_character_weapon_mode.speed AS player_character_weapon_speed,
+		player_character_weapon_mode.base_damage AS player_character_weapon_damage,
+		player_character_weapon_mode.attacks_per_round AS player_character_weapon_attacks_per_round,
+		player_character_weapon_mode.number_of_hands AS player_character_weapon_number_of_hands,
+		player_character_weapon_mode.hit_bonus AS player_character_weapon_hit_bonus,
+		player_character_weapon_mode.damage_bonus AS player_character_weapon_damage_bonus,
+		player_character_weapon_mode.mastercraft_hit_description AS player_character_weapon_mastercraft_hit_description,
+		player_character_weapon_mode.mastercraft_damage_description AS player_character_weapon_mastercraft_damage_description,
+		player_character_weapon_mode.spec1_hit_bonus AS player_character_weapon_spec1_hit_bonus,
+		player_character_weapon_mode.spec1_damage_bonus AS player_character_weapon_spec1_damage_bonus,
+		player_character_weapon_mode.spec1_description AS player_character_weapon_spec1_description,
+		player_character_weapon_mode.spec2_hit_bonus AS player_character_weapon_spec2_hit_bonus,
+		player_character_weapon_mode.spec2_damage_bonus AS player_character_weapon_spec2_damage_bonus,
+		player_character_weapon_mode.spec2_description AS player_character_weapon_spec2_description,
+		player_character_weapon_mode.spec3_hit_bonus AS player_character_weapon_spec3_hit_bonus,
+		player_character_weapon_mode.spec3_damage_bonus AS player_character_weapon_spec3_damage_bonus,
+		player_character_weapon_mode.spec3_description AS player_character_weapon_spec3_description,
+		player_character_weapon_mode.short_range AS player_character_weapon_short_range,
+		player_character_weapon_mode.medium_range AS player_character_weapon_medium_range,
+		player_character_weapon_mode.long_range AS player_character_weapon_long_range,
+		player_character_weapon_mode.additional_text AS player_character_weapon_additional_text
+	FROM player_character_weapon
+	JOIN player_character_weapon_mode ON player_character_weapon_mode.player_character_weapon_id = player_character_weapon.id
+	JOIN player_character ON player_character.id = player_character_weapon.player_character_id
+	JOIN player ON player.id = player_character.player_id
+	WHERE player.name = playerName AND player_character.name = characterName;
+END
+
 CREATE PROCEDURE getPlayerCharacterTwoWeaponConfigurations
 (IN playerName VARCHAR(32),
  IN characterName VARCHAR(64))
@@ -1190,6 +1309,8 @@ BEGIN
 
 	SELECT 
 		player_character_two_weapon_fighting.id AS player_character_two_weapon_fighting_id,
+		player_character_two_weapon_fighting.player_character_weapon1_id AS player_character_weapon1_id,
+		player_character_two_weapon_fighting.player_character_weapon2_id AS player_character_weapon2_id,
 		w1.description AS player_character_weapon1_description,
 		w1.location AS player_character_weapon1_location,
 		w2.description AS player_character_weapon2_description,
@@ -1790,6 +1911,7 @@ BEGIN
 
 	SELECT
 		id AS player_character_weapon_id,
+		weapon_proficiency_id,
 		description AS weapon_description, 
 		location AS weapon_location, 
 		craft_status AS weapon_craft_status
@@ -1804,52 +1926,6 @@ CREATE PROCEDURE getWeaponsForPlayerCharacterByProficiency
  IN weaponProficiencyId INT)
 BEGIN
 	DECLARE playerCharacterId INT DEFAULT 0;
-	DECLARE longSwordProficiencyId INT DEFAULT 117;
-	DECLARE shortSwordProficiencyId INT DEFAULT 100;
-	DECLARE twoHandedSwordProficiencyId INT DEFAULT 101;
-	DECLARE associatedWeaponProficiency INT DEFAULT 0;
-
-	SELECT weapon_proficiency.id
-	INTO longSwordProficiencyId
-	FROM weapon_proficiency
-	WHERE weapon_proficiency.name = 'Long Sword';
-
-	SELECT weapon_proficiency.id
-	INTO shortSwordProficiencyId
-	FROM weapon_proficiency
-	WHERE weapon_proficiency.name = 'Short Sword';
-
-	SELECT weapon_proficiency.id
-	INTO twoHandedSwordProficiencyId
-	FROM weapon_proficiency
-	WHERE weapon_proficiency.name = 'Two-Handed Sword';
-
-	-- Assume no 'associated' weapon proficiency
-	SET associatedWeaponProficiency = weaponProficiencyId;
-
-	-- Check for Long Sword
-	IF weaponProficiencyId = longSwordProficiencyId THEN
-		SELECT weapon_proficiency.id
-		INTO associatedWeaponProficiency
-		FROM weapon_proficiency
-		WHERE weapon_proficiency.name = 'Elven Thin Blade';
-	END IF;
-
-	-- Check for Short Sword
-	IF weaponProficiencyId = shortSwordProficiencyId THEN
-		SELECT weapon_proficiency.id
-		INTO associatedWeaponProficiency
-		FROM weapon_proficiency
-		WHERE weapon_proficiency.name = 'Elven Lightblade';
-	END IF;
-
-	-- Check for Two-Handed Sword
-	IF weaponProficiencyId = twoHandedSwordProficiencyId THEN
-		SELECT weapon_proficiency.id
-		INTO associatedWeaponProficiency
-		FROM weapon_proficiency
-		WHERE weapon_proficiency.name = 'Elven Court Blade';
-	END IF;
 	
 	SELECT player_character.id
 	INTO playerCharacterId
@@ -1865,8 +1941,7 @@ BEGIN
 	FROM player_character_weapon 
 	WHERE 
 		player_character_weapon.player_character_id = playerCharacterId AND
-		(player_character_weapon.weapon_proficiency_id = weaponProficiencyId OR
-		 player_character_weapon.weapon_proficiency_id = associatedWeaponProficiency);
+		player_character_weapon.weapon_proficiency_id = weaponProficiencyId;
 END
 
 CREATE PROCEDURE getUnallocatedSpellsForSpellBook
@@ -2015,6 +2090,7 @@ BEGIN
 	WHERE name = 'Fist';
 
 	CALL addWeaponProficiency(playerName, characterName, fistWeaponProficiencyId);
+	CALL addWeaponFistToPlayerCharacter(playerName, characterName);
 	COMMIT;
 	
 	DROP TEMPORARY TABLE ids;

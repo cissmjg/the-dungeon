@@ -26,12 +26,6 @@
 	width: 100%
 }
 
-.toggleHeader {
-	padding:0.5pt 5.4pt 0.5pt 5.4pt;
-	font-size: 1.25em;
-	font-weight: bold;
-}
-
 .tableHeader {
 	padding:0.0000pt 5.4pt 0.0000pt 5.4pt;
 	border:1px solid;
@@ -43,7 +37,6 @@
 }
 
 .titleAttributeLiteral {
-	width:12%;
 	border:1pt solid;
 	text-align:center;
 	font-weight: bold;
@@ -51,7 +44,6 @@
 }
 
 .titleAttributeValue {
-	width:12%;
 	padding:0.0000pt 5.4pt 0.0000pt 5.4pt;
 	border:1pt solid;
 	border-collapse: collapse;
@@ -92,17 +84,6 @@
 	text-align:center;
 }
 
-.rmEntryDefaultDesc {
-	text-align: left;
-}
-
-.rmEntryDefaultData {
-	text-align: center;
-}
-.rmRowDefault {
-	background-color: lightgray;
-}
-
 .attributeMetaData {
 	background-color: aliceblue;
 	display: flex;
@@ -114,4 +95,83 @@
 	border: 1px solid navy;
 	border-radius: 5px;
 	padding: 3px;
+}
+
+/* Roll Modifiers */
+.rmModifierContainer {
+	display: grid;
+	width: 50%;
+	grid-template-columns: 4fr 1fr;
+	align-items: center;
+}
+
+.rmModifierContainerTitleStyle {
+	text-align: left;
+	font-weight: bold;
+}
+
+.rmEntryDesc {
+	text-align: left;
+	width: 85%
+}
+
+.rmEntryData {
+	text-align: center;
+	width: 15%
+}
+
+.rmTotal {
+	font-weight: bold;
+}
+
+.rmEntryBonus {
+	background-color: lightgreen;
+	color: green;
+}
+
+.rmEntryPenalty {
+	background-color: lightpink;
+	color: red;
+}
+
+.rmRowDefault {
+	background-color: White;
+}
+
+.rmWeaponContainer {
+	display: grid;
+	grid-template-columns: 3fr 1fr 1fr 2fr 1fr 1fr 3fr;
+	align-items: center;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.rmWeaponContainerAltBackground {
+	background-color: LightSteelBlue;
+}
+
+.rmWeaponContainerIsReadyBackground {
+	background-color: lightskyblue;
+}
+
+.rmWeaponHeaderItem {
+	background-color: lightgray;
+	text-align: center;
+	font-weight: bold;
+}
+
+.rmWeaponDetailLeft {
+	text-align: left;
+}
+
+.rmWeaponDetailCenter {
+	text-align: center;
+}
+
+.rm-chevron {
+	padding-right: 5px;
+}
+
+.rm-indented-chevron {
+	padding-right: 5px; padding-left: 5px;
 }

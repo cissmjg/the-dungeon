@@ -242,4 +242,5 @@ function getWeaponDescriptionFromProficiencyId($weapon_proficiency_id) {
         default : return "UNKNOWN";
     }
 }
+
 ?>

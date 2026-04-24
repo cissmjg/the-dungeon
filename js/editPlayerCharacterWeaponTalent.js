@@ -1,4 +1,4 @@
-import { confirmPlayerCharacterSkillDelete } from './candidateSkill.js';
+import { confirmPlayerCharacterSkillDelete, submitAddSkillForm } from './candidateSkill.js';
 
 export function submitAddWeaponTalentForm(form_id, skill_catalog_element_id, skill_catalog_value, weapon2_element_id) {
 
@@ -30,3 +30,4 @@ export function updateOffhandWeaponProficiencyId(weapon2ProficiencyId, oneHandWe
 window.confirmPlayerCharacterSkillDelete = confirmPlayerCharacterSkillDelete;
 window.submitAddWeaponTalentForm = submitAddWeaponTalentForm;
 window.updateOffhandWeaponProficiencyId = updateOffhandWeaponProficiencyId;
+window.submitAddSkillForm = submitAddSkillForm

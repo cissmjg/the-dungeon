@@ -51,6 +51,7 @@ class CharacterDetails implements JsonSerializable
 		if (count($errors) > 0) {
 			die(json_encode($errors));
 		}
+
         foreach ($character_stats AS $character_stats_class) {                    
             if ($i == 0) {
                  $this->populateBaseStats($character_stats_class);
@@ -83,6 +84,63 @@ class CharacterDetails implements JsonSerializable
 			}
         }
     }
+
+	public function fromJSON($character_details_json) {
+		$this->characterName = $character_details_json->characterName;
+		$this->race = $character_details_json->race;
+		$this->characterStrength = $character_details_json->characterStrength;
+		$this->characterSuperStrength = $character_details_json->characterSuperStrength;
+		$this->characterIntelligence = $character_details_json->characterIntelligence;
+		$this->characterSuperIntelligence = $character_details_json->characterSuperIntelligence;
+		$this->characterWisdom = $character_details_json->characterWisdom;
+		$this->characterSuperWisdom = $character_details_json->characterSuperWisdom;
+		$this->characterDexterity = $character_details_json->characterDexterity;
+		$this->characterSuperDexterity = $character_details_json->characterSuperDexterity;
+		$this->characterConstitution = $character_details_json->characterConstitution;
+		$this->characterSuperConstitution = $character_details_json->characterSuperConstitution;
+		$this->characterCharisma = $character_details_json->characterCharisma;
+		$this->characterComeliness = $character_details_json->characterComeliness;
+		$this->armorClass = $character_details_json->armorClass;
+		$this->armorBulkFactor = $character_details_json->armorBulkFactor;
+		$this->hitPoints = $character_details_json->hitPoints;
+		$this->genderIn = $character_details_json->genderIn;
+		$this->movement = $character_details_json->movement;
+		$this->alignment = $character_details_json->alignment;
+		$this->religion = $character_details_json->religion;
+		$this->deity = $character_details_json->deity;
+		$this->hometown = $character_details_json->hometown;
+		$this->hit_die = $character_details_json->hit_die;
+		$this->age = $character_details_json->age;
+		$this->apparent_age = $character_details_json->apparent_age;
+		$this->unnatural_age = $character_details_json->unnatural_age;
+		$this->social_class = $character_details_json->social_class;
+		$this->height = $character_details_json->height;
+		$this->weight = $character_details_json->weight;
+		$this->hair = $character_details_json->hair;
+		$this->eyes = $character_details_json->eyes;
+		$this->siblings = $character_details_json->siblings;
+		$this->parents_married  = $character_details_json->parents_married;
+		$i = 1;
+		foreach ($character_details_json->character_classes AS $character_class) {       
+			$current_spell_classes = [];
+			foreach($character_class->spell_classes AS $spell_class) {
+				$current_spell_classes[] = $spell_class;
+			}
+
+			$account_class_summary = new AccountClassSummary($character_class->class_name, $character_class->class_level, $current_spell_classes);
+			$account_class_summary->setNumberOfExperiencePoints($character_class->number_of_experience_points);
+			$account_class_summary->setClassId($character_class->class_id);
+			if ($i == 1) {
+				$this->character_classes[CHARACTER_PRIMARY_CLASS] = $account_class_summary;
+			} else if ($i == 2) {
+				$this->character_classes[CHARACTER_SECONDARY_CLASS] = $account_class_summary;
+			} else if ($i == 3) {
+				$this->character_classes[CHARACTER_TERTIARY_CLASS] = $account_class_summary;
+			}
+
+			$i++;
+		}
+	}
 	
 	private function getCharacterDetails(\PDO $pdo, $player_name, $character_name, &$errors) {
 		$sql_exec = "CALL getCharacterDetails(:playerName, :characterName)";
@@ -154,7 +212,7 @@ class CharacterDetails implements JsonSerializable
     }
 
 	// function called when encoded with json_encode
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return get_object_vars($this);
     }
@@ -468,6 +526,17 @@ class CharacterDetails implements JsonSerializable
 		return false;		
 	}
 
+	public function getFighterTypeClassId() {
+		$level = 0;
+		foreach($this->character_classes AS $character_class) {
+			if (isCharacterFighterType($character_class->getClassId())) {
+				return $character_class->getClassId();
+			}
+		}
+
+		return $level;
+	}
+
 	public function getFighterTypeLevel() {
 		$level = 0;
 		foreach($this->character_classes AS $character_class) {
@@ -497,5 +566,41 @@ class CharacterDetails implements JsonSerializable
 		}
 
 		return $character_non_proficiency_penalty;
+	}
+
+	public function getBestMeleeClassId() {
+		$character_non_proficiency_penalty = -10;
+		$best_melee_class_id = 0;
+		foreach($this->character_classes AS $character_class) {
+			$current_non_proficiency = getNonProficiencyPenalty($character_class->getClassId());
+			if($current_non_proficiency > $character_non_proficiency_penalty) {
+				$character_non_proficiency_penalty = $current_non_proficiency;
+				$best_melee_class_id = $character_class->getClassId();
+			}
+		}
+
+		return $best_melee_class_id;
+	}
+
+	public function getLevelForClass($class_id) {
+		$character_level = -1;
+		foreach($this->character_classes AS $character_class) {
+			if ($character_class->getClassId() == $class_id) {
+				return $character_class->getClassLevel();
+			}
+		}
+
+		return $character_level;
+	}
+
+	public function getDescriptionForClassId($class_id) {
+		$class_description = '';
+		foreach($this->character_classes AS $character_class) {
+			if ($character_class->getClassId() == $class_id) {
+				return $character_class->getClassName();
+			}
+		}
+
+		return $class_description;
 	}
 }

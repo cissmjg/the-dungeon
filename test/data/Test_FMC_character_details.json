@@ -1,0 +1,66 @@
+{
+  "characterName": "Test FMC",
+  "race": "High Elf",
+  "characterStrength": 18,
+  "characterSuperStrength": 100,
+  "characterIntelligence": 18,
+  "characterSuperIntelligence": null,
+  "characterWisdom": 18,
+  "characterSuperWisdom": null,
+  "characterDexterity": 18,
+  "characterSuperDexterity": null,
+  "characterConstitution": 18,
+  "characterSuperConstitution": null,
+  "characterCharisma": 16,
+  "characterComeliness": 16,
+  "armorClass": 4,
+  "armorBulkFactor": 3,
+  "hitPoints": 10,
+  "genderIn": "F",
+  "movement": 15,
+  "alignment": "Neutral Good",
+  "religion": "Elven",
+  "deity": "Corellon Larethian",
+  "hometown": "Teluna",
+  "hit_die": "(d4 + d8 + d10) / 3",
+  "age": 210,
+  "apparent_age": 26,
+  "unnatural_age": "10 weeks",
+  "social_class": "UUC",
+  "height": "5&#39;0",
+  "weight": "90",
+  "hair": "Silver",
+  "eyes": "Blue",
+  "siblings": 2,
+  "parents_married": null,
+  "character_classes": {
+    "characterClass1": {
+      "class_name": "Fighter",
+      "class_level": 8,
+      "class_id": 4,
+      "number_of_experience_points": 1000,
+      "spell_classes": [],
+      "class_icon_file_location": null
+    },
+    "characterClass2": {
+      "class_name": "Magic-User",
+      "class_level": 9,
+      "class_id": 7,
+      "number_of_experience_points": 2000,
+      "spell_classes": [
+        "Magic-User"
+      ],
+      "class_icon_file_location": null
+    },
+    "characterClass3": {
+      "class_name": "Cleric",
+      "class_level": 8,
+      "class_id": 2,
+      "number_of_experience_points": 3000,
+      "spell_classes": [
+        "Cleric"
+      ],
+      "class_icon_file_location": null
+    }
+  }
+}

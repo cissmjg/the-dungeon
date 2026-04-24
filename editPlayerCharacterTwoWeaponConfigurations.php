@@ -27,6 +27,9 @@ require_once __DIR__ . '/webio/twoWeaponConfigurationId.php';
 require_once __DIR__ . '/webio/playerCharacterWeaponId.php';
 require_once __DIR__ . '/webio/playerCharacterWeapon2Id.php';
 
+require_once __DIR__ . '/classes/twoWeaponFightingConfiguration.php';
+require_once __DIR__ . '/classes/twoWeaponFightingConfigurationSet.php';
+
 $errors = [];
 $input = [];
 $log = [];
@@ -96,9 +99,9 @@ echo $html_header;
         <?php
         foreach($existing_two_weapon_configs AS $existing_two_weapon_config) {
             echo '<tr>';
-            echo '<td>' . buildDeleteTwoWeaponConfigIcon($delete_form_id, $delete_two_weapon_config_element_id, $existing_two_weapon_config['player_character_two_weapon_fighting_id']) . '</td>';
-            echo '<td style="text-align:center;">' . $existing_two_weapon_config['player_character_weapon1_description'] . ' ' . $existing_two_weapon_config['player_character_weapon1_location'] . '</td>';
-            echo '<td style="text-align:center;">' . $existing_two_weapon_config['player_character_weapon2_description'] . ' ' . $existing_two_weapon_config['player_character_weapon2_location'] . '</td>';
+            echo '<td>' . buildDeleteTwoWeaponConfigIcon($delete_form_id, $delete_two_weapon_config_element_id, $existing_two_weapon_config->getTwoWeaponConfigurationId()) . '</td>';
+            echo '<td style="text-align:center;">' . $existing_two_weapon_config->getWeapon1Description() . ' ' . $existing_two_weapon_config->getWeapon1Location() . '</td>';
+            echo '<td style="text-align:center;">' . $existing_two_weapon_config->getWeapon2Description() . ' ' . $existing_two_weapon_config->getWeapon2Location() . '</td>';
             echo '</tr>' . PHP_EOL;
         }
         ?>
@@ -128,19 +131,10 @@ echo $html_header;
 
 <?php
 function getPlayerCharacterTwoWeaponConfigurations(\PDO $pdo, $player_name, $character_name, &$errors) {
-	$sql_exec = "CALL getPlayerCharacterTwoWeaponConfigurations(:playerName, :characterName)";
+    $two_weapon_configurations = new TwoWeaponFightingConfigurationSet();
+    $two_weapon_configurations->init($pdo, $player_name, $character_name, $errors);
 
-    $statement = $pdo->prepare($sql_exec);
-    $statement->bindParam(':playerName', $player_name, PDO::PARAM_STR);
-    $statement->bindParam(':characterName', $character_name, PDO::PARAM_STR);
-
-    try {
-		$statement->execute();
-	} catch(Exception $e) {
-		$errors[] = "Exception in getPlayerCharacterTwoWeaponConfigurations : " . $e->getMessage();
-	}
-
-    return $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $two_weapon_configurations->getAll();
 }
 
 function buildWeaponListOptions(\PDO $pdo, $player_name, $chracter_name, $weapon_proficiency_id, &$errors) {

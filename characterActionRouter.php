@@ -1099,7 +1099,7 @@ switch($character_action) {
 		$raw_result = CurlHelper::performGetRequest($url_add_talent, $params_add_talent);
 		$result = json_decode($raw_result);
 		if (str_starts_with($result[0], "SUCCESS|")) {
-			$location_header = buildPlayerCharacterEditWeaponProficienciesRedirect($input);
+			$location_header = buildEditWeaponTalentsRedirect($input);
 			header($location_header);
 			exit;
 		} else {

@@ -19,6 +19,7 @@ require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 
 require_once __DIR__ . '/classes/playerCharacterWeapon.php';
+require_once __DIR__ . '/classes/playerCharacterSkillSet.php';
 require_once __DIR__ . '/dbio/constants/weaponType.php';
 require_once __DIR__ . '/dbio/constants/weaponSubtype.php';
 require_once __DIR__ . '/dbio/constants/characterClasses.php';
@@ -85,7 +86,13 @@ getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 getPlayerCharacterWeaponId($errors, $input);
 
-$playerCharacterWeapon = getPlayerCharacterWeapon($pdo, $input[PLAYER_CHARACTER_WEAPON_ID], $errors);
+$player_character_skill_set = new PlayerCharacterSkillSet();
+$player_character_skill_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+if(count($errors) > 0) {
+    die(json_encode($errors));
+}
+
+$playerCharacterWeapon = getPlayerCharacterWeapon($pdo, $input[PLAYER_CHARACTER_WEAPON_ID], $player_character_skill_set, $errors);
 
 if(!empty($errors)) {
     die($errors);
@@ -380,9 +387,9 @@ echo $html_header;
 </html>
 <?php
 
-function getPlayerCharacterWeapon(\PDO $pdo, $player_character_weapon_id, &$errors) {
+function getPlayerCharacterWeapon(\PDO $pdo, $player_character_weapon_id, PlayerCharacterSkillSet $player_character_skill_set, &$errors) {
     $player_character_weapon = new PlayerCharacterWeapon();
-    $player_character_weapon->init($pdo, $player_character_weapon_id, $errors);
+    $player_character_weapon->init($pdo, $player_character_weapon_id, $player_character_skill_set, $errors);
 
     if(!empty($errors)) {
         die($errors);

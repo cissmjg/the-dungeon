@@ -1,0 +1,48 @@
+{
+  "characterName": "Agamemnon",
+  "race": "Human",
+  "characterStrength": 17,
+  "characterSuperStrength": null,
+  "characterIntelligence": 12,
+  "characterSuperIntelligence": null,
+  "characterWisdom": 18,
+  "characterSuperWisdom": 92,
+  "characterDexterity": 18,
+  "characterSuperDexterity": null,
+  "characterConstitution": 15,
+  "characterSuperConstitution": null,
+  "characterCharisma": 13,
+  "characterComeliness": 16,
+  "armorClass": 0,
+  "armorBulkFactor": 3,
+  "hitPoints": 67,
+  "genderIn": "M",
+  "movement": 9,
+  "alignment": "Chaotic Good",
+  "religion": "Norse",
+  "deity": "Thor",
+  "hometown": "Glain",
+  "hit_die": "d8",
+  "age": 24,
+  "apparent_age": 24,
+  "unnatural_age": null,
+  "social_class": "LUC",
+  "height": "6&#39;2&#34;",
+  "weight": "175",
+  "hair": "Brown",
+  "eyes": "Green",
+  "siblings": 3,
+  "parents_married": 1,
+  "character_classes": {
+    "characterClass1": {
+      "class_name": "Cleric",
+      "class_level": 9,
+      "class_id": 2,
+      "number_of_experience_points": 403110,
+      "spell_classes": [
+        "Cleric"
+      ],
+      "class_icon_file_location": null
+    }
+  }
+}

@@ -24,6 +24,11 @@
         private $archer_melee_only_satisfied;
 
         public function classAndLevelSatisfied(\SkillDetail $skill_detail, \CharacterDetails $character_details) {
+            if ($character_details->containsClassId(BARBARIAN)) {
+                $this->class_and_level_satisfied = false;
+                return;
+            }
+
             $fighter_level = $character_details->getFighterTypeLevel();
             if (empty($fighter_level)) {
                 $this->class_and_level_satisfied = false;
@@ -33,7 +38,7 @@
             // Archer(-Ranger) Melee only
             $this->archer_melee_only_satisfied = true;
             if ($character_details->containsClassId(ARCHER) || $character_details->containsClassId(ARCHER_RANGER)) {
-                if($this->weapon_detail->getMeleeWeaponType == WEAPON_TYPE_MELEE) {
+                if($this->weapon_detail->getMeleeWeaponType() == WEAPON_TYPE_MELEE) {
                     $this->archer_melee_only_satisfied = true;
                 } else {
                     $this->archer_melee_only_satisfied = false;

@@ -15,6 +15,7 @@ require_once __DIR__ . '/helper/HtmlHelper.php';
 require_once __DIR__ . '/helper/SqlExecHelper.php';
 require_once __DIR__ . '/helper/ActionBarHelper.php';
 require_once __DIR__ . '/characterActionRoutes.php';
+require_once __DIR__ . '/dbio/constants/weapons.php';
 
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
@@ -88,10 +89,12 @@ echo $html_header;
         <tr><th>&nbsp;</th><th>Weapon Name</th></tr>
         <?php
             foreach($available_weapons AS $available_weapon) {
-                echo '<tr>';
-                echo '<td>' . buildAddWeaponIcon($form_id, $weapon_element_id, $available_weapon['weapon_proficiency_id']) . '</td>';
-                echo '<td>' . $available_weapon['weapon_proficiency_name'] . '</td>';
-                echo '<tr>' . PHP_EOL;
+                if ($available_weapon['weapon_proficiency_id'] != FIST) {
+                    echo '<tr>';
+                    echo '<td>' . buildAddWeaponIcon($form_id, $weapon_element_id, $available_weapon['weapon_proficiency_id']) . '</td>';
+                    echo '<td>' . $available_weapon['weapon_proficiency_name'] . '</td>';
+                    echo '<tr>' . PHP_EOL;
+                }
             }
         ?>
     </table>

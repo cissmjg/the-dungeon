@@ -22,6 +22,11 @@ export function attributeDetailPanelClick(attributePanelId, attributePanelIconId
     }
 }
 
+export function rmChevronClick(attributePanelId, attributePanelIconId, closedIconClass, openIconClass) {
+    attributeDetailPanelClick(attributePanelId, attributePanelIconId, closedIconClass, openIconClass);
+}
+
 window.DEFAULT_CLOSED_ICON_CLASS = DEFAULT_CLOSED_ICON_CLASS;
 window.DEFAULT_OPEN_ICON_CLASS = DEFAULT_OPEN_ICON_CLASS;
 window.attributeDetailPanelClick = attributeDetailPanelClick;
+window.rmChevronClick = rmChevronClick;
