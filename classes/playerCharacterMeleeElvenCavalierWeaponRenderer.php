@@ -9,6 +9,11 @@ require_once __DIR__ . '/../helper/HtmlHelper.php';
 
 class PlayerCharacterMeleeElvenCavalierWeaponRenderer {
 
+    private $ready_weapon_style = 'rmWeaponContainerIsReadyBackground';
+    public function getReadyWeaponStyle() {
+        return $this->ready_weapon_style;
+    }
+
     private $player_character_weapon;
     public function getPlayerCharacterWeapon() {
         return $this->player_character_weapon;
@@ -54,7 +59,9 @@ class PlayerCharacterMeleeElvenCavalierWeaponRenderer {
 
     public function formatCellStyle() {
         $cell_style = $this->weapon_container_style;
-        if (strlen($this->weapon_container_background_style) > 0) {
+        if ($this->player_character_weapon->getIsReady()) {
+            $cell_style .= ' ' . $this->ready_weapon_style;
+        } else if (strlen($this->weapon_container_background_style) > 0) {
             $cell_style .= ' ' . $this->weapon_container_background_style;
         }
 

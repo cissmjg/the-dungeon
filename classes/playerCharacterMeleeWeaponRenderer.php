@@ -9,6 +9,15 @@ require_once __DIR__ . '/../helper/HtmlHelper.php';
 
 class PlayerCharacterMeleeWeaponRenderer {
 
+    private $ready_weapon_style = 'rmWeaponContainerIsReadyBackground';
+    public function getReadyWeaponStyle() {
+        return $this->ready_weapon_style;
+    }
+
+    public function setReadyWeaponStyle($ready_weapon_style) {
+        $this->ready_weapon_style = $ready_weapon_style;
+    }
+
     private $player_character_weapon;
     public function getPlayerCharacterWeapon() {
         return $this->player_character_weapon;
@@ -45,7 +54,9 @@ class PlayerCharacterMeleeWeaponRenderer {
 
     public function formatCellStyle() {
         $cell_style = $this->weapon_container_style;
-        if (strlen($this->weapon_container_background_style) > 0) {
+        if ($this->player_character_weapon->getIsReady()) {
+            $cell_style .= ' ' . $this->ready_weapon_style;
+        } else if (strlen($this->weapon_container_background_style) > 0) {
             $cell_style .= ' ' . $this->weapon_container_background_style;
         }
 
@@ -121,13 +132,13 @@ class PlayerCharacterMeleeWeaponRenderer {
 
     function buildRmWeaponPanel(MeleeToHitRmCollectionCalculator $melee_to_hit_calculator, MeleeDamageRmCollectionCalculator $melee_damage_calculator, $weapon_panel_name) {
 
-	$output_html  = HtmlHelper::buildDivStartTagWithId('', $weapon_panel_name, true) . PHP_EOL;
-	$output_html .= $this->buildUIHitRmCollection($melee_to_hit_calculator);
-	$output_html .= HtmlHelper::buildDivTag('', '&nbsp;');
-	$output_html .= $this->buildUIDamageRmCollection($melee_damage_calculator);
-	$output_html .= HtmlHelper::buildDivEndTag() . PHP_EOL;
+        $output_html  = HtmlHelper::buildDivStartTagWithId('', $weapon_panel_name, true) . PHP_EOL;
+        $output_html .= $this->buildUIHitRmCollection($melee_to_hit_calculator);
+        $output_html .= HtmlHelper::buildDivTag('', '&nbsp;');
+        $output_html .= $this->buildUIDamageRmCollection($melee_damage_calculator);
+        $output_html .= HtmlHelper::buildDivEndTag() . PHP_EOL;
 
-	return $output_html;
+        return $output_html;
     }
 
     function calculateHitAdj(MeleeToHitRmCollectionCalculator $melee_to_hit_calculator) {

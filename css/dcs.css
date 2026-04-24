@@ -150,6 +150,10 @@
 	background-color: LightSteelBlue;
 }
 
+.rmWeaponContainerIsReadyBackground {
+	background-color: lightskyblue;
+}
+
 .rmWeaponHeaderItem {
 	background-color: lightgray;
 	text-align: center;

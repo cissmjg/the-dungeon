@@ -31,7 +31,15 @@ class RmCollection implements IteratorAggregate {
         }
 
         return $rmFactorResult;
+    }
 
+    public static function clone(RmCollection $other_rm_collection) {
+        $rm_clone = new RmCollection();
+        foreach($other_rm_collection->getAll() AS $other_rm_factor) {
+            $rm_clone->add($other_rm_factor);
+        }
+
+        return $rm_clone;
     }
 }
 ?>
