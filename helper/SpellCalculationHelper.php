@@ -10,24 +10,35 @@ const MONTH = 7;
 const YEAR = 8;
 const SECOND = 9;
 class SpellCalculationHelper {
-    public static function calculateDurationInRounds($character_level, $time_fixed, $time_fixed_uom, $time_per_level, $time_per_level_uom, $spell_duration_level_factor) {
+    public static function calculateDurationInRounds($character_level, $time_fixed, $time_fixed_uom, $time_per_level, $time_per_level_uom, $spell_duration_level_factor, $cast_time_exceeds_round) {
         if($time_fixed_uom == NULL && $time_per_level_uom == NULL) {
             return 0;
         }
 
+        /*-
+            In the following logic if $cast_time_exceeds_round is true, 1 is added to the duration of the spell.
+
+            This is to compensate for the fact that the following sequence occurs :
+            (1) Spell is cast at EoR (end of round). 1st level cleric spell 'Bless' is an example.
+            (2) End of Round occurs and the Stored procedure 'updateForEndOfRoundForSlots' executes.
+            (3) 'updateForEndOfRoundForSlots' subtracts 1 round for all running spells.
+
+            This sequence erroneously shortens the duration of the spell by 1 round.
+        -*/
+        $spell_extension = $cast_time_exceeds_round ? 1 : 0;
         if($time_fixed_uom != NULL && $time_per_level_uom == NULL) {
-            return SpellCalculationHelper::calculationFixedDuration($time_fixed_uom, $time_fixed);
+            return SpellCalculationHelper::calculationFixedDuration($time_fixed_uom, $time_fixed) + $spell_extension;
         }
 
         $final_character_level = SpellCalculationHelper::adjustLevelBasedOnDurationLevel($character_level, $spell_duration_level_factor);
         if($time_fixed_uom == NULL && $time_per_level_uom != NULL) {
-            return SpellCalculationHelper::calculatePerLevelDuration($final_character_level, $time_per_level, $time_per_level_uom);
+            return SpellCalculationHelper::calculatePerLevelDuration($final_character_level, $time_per_level, $time_per_level_uom) + $spell_extension;
         }
 
         $fixed_duration = SpellCalculationHelper::calculationFixedDuration($time_fixed_uom, $time_fixed);
         $per_level_duration = SpellCalculationHelper::calculatePerLevelDuration($final_character_level, $time_per_level, $time_per_level_uom);
 
-        return $fixed_duration + $per_level_duration;
+        return $fixed_duration + $per_level_duration + $spell_extension;
     }
 
     public static function calculationFixedDuration($time_fixed_uom, $time_fixed) {
