@@ -129,8 +129,8 @@ if (count($new_spell_levels_available) > 0) {
 			}
 		}
 
-		// Spell_type Healer, Magic-User, Illusionist, Wu Jen
-		if ($spell_type == SPELL_TYPE_HEALER || $spell_type == SPELL_TYPE_MAGIC_USER || $spell_type == SPELL_TYPE_ILLUSIONIST || $spell_type == SPELL_TYPE_WU_JEN) {
+		// Spell_type Healer, Magic-User, Illusionist, Wu Jen, Archer
+		if ($spell_type == SPELL_TYPE_HEALER || $spell_type == SPELL_TYPE_MAGIC_USER || $spell_type == SPELL_TYPE_ILLUSIONIST || $spell_type == SPELL_TYPE_WU_JEN || $spell_type == SPELL_TYPE_ARCHER) {
 			$number_of_slots = $attribute_metadata->getMaxNumberMUSpellSlots();
 			$log[] = "allocateNewMUSpellPoolSlot: " . $player_character_class_id . ", " . $spell_level . ", " . $number_of_slots;
 			allocateNewMUSpellPoolSlot($pdo, $player_character_class_id, $spell_level, $number_of_slots, $errors);

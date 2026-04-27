@@ -493,19 +493,21 @@ function buildOptionsForSpellList($spellListByLevel, $spellLevel, $nf) {
         $optionList .= '</optgroup>' . PHP_EOL;
     } else {
         for($i = $spellLevel; $i > 0; $i--) {
-            $optionList .= '<optgroup label="' . $nf->format($i) . ' level">' . PHP_EOL;
+            if (!empty($spellListByLevel[$i])) {
+                $optionList .= '<optgroup label="' . $nf->format($i) . ' level">' . PHP_EOL;
 
-            // spell list by level
-            $spells = $spellListByLevel[$i];
-            foreach($spells AS $spell) {
-                $optionList .= '<option value="' . $spell->spell_catalog_id .'">' . $spell->spell_name . "</option>" . PHP_EOL;
+                // spell list by level
+                $spells = $spellListByLevel[$i];
+                foreach($spells AS $spell) {
+                    $optionList .= '<option value="' . $spell->spell_catalog_id .'">' . $spell->spell_name . "</option>" . PHP_EOL;
+                }
+
+                if ($spellLevel > 0) {
+                    $optionList .= '<option value="' . CANTRIP_SLOT_SPELL_CATALOG_ID . '">' . CANTRIP_SLOT_SPELL_NAME . '</option>' . PHP_EOL;
+                }
+
+                $optionList .= '</optgroup>' . PHP_EOL;
             }
-
-            if ($spellLevel > 0) {
-                $optionList .= '<option value="' . CANTRIP_SLOT_SPELL_CATALOG_ID . '">' . CANTRIP_SLOT_SPELL_NAME . '</option>' . PHP_EOL;
-            }
-
-            $optionList .= '</optgroup>' . PHP_EOL;
         }
     }
 

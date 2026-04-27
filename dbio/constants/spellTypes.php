@@ -9,6 +9,7 @@
     const SPELL_TYPE_CANTRIP = 8;	
     const SPELL_TYPE_SHUKENJA = 9;	
     const SPELL_TYPE_WU_JEN = 10;
+    const SPELL_TYPE_ARCHER = 11;
     const SPELL_TYPE_UNDEFINED = -1;
 
 function getSpellTypeIDFromName($spell_type_name) {
@@ -31,6 +32,8 @@ function getSpellTypeIDFromName($spell_type_name) {
             return SPELL_TYPE_SHUKENJA;	
         case "Wu Jen":
             return SPELL_TYPE_WU_JEN;
+        case "Archer":
+            return SPELL_TYPE_ARCHER;
         default:
             return SPELL_TYPE_UNDEFINED;
     }
@@ -55,7 +58,9 @@ function getSpellTypeDesc($spell_type_id) {
         case SPELL_TYPE_SHUKENJA:	
             return "Shukenja";	
         case SPELL_TYPE_WU_JEN:	
-            return "Wu Jen";	
+            return "Wu Jen";
+        case SPELL_TYPE_ARCHER:
+            return "Archer";
         default:
             return "UNDEFINED";
     }
