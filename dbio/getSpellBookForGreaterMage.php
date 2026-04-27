@@ -71,8 +71,9 @@ function normalizeSpells($spells_for_class, $character_level) {
 		$normalized_spell_for_class['spell_duration'] = SpellCalculationHelper::getSpellDuration($spell_for_class, $character_level);
 		$normalized_spell_for_class['spell_area_of_effect'] = $spell_for_class['spell_area_of_effect'];
 
+		$cast_time_exceeds_round = $spell_for_class['spell_casting_time_in_rounds'] != NULL;
         // Calculate spell duration in terms of rounds 
-        $spell_duration_in_rounds = SpellCalculationHelper::calculateDurationInRounds($character_level, $spell_for_class['spell_duration_time_fixed'], $spell_for_class['spell_duration_time_fixed_uom'], $spell_for_class['spell_duration_time_per_level'], $spell_for_class['spell_duration_time_per_level_uom'], $spell_for_class['spell_duration_level_factor']);
+        $spell_duration_in_rounds = SpellCalculationHelper::calculateDurationInRounds($character_level, $spell_for_class['spell_duration_time_fixed'], $spell_for_class['spell_duration_time_fixed_uom'], $spell_for_class['spell_duration_time_per_level'], $spell_for_class['spell_duration_time_per_level_uom'], $spell_for_class['spell_duration_level_factor'], $cast_time_exceeds_round);
         if($spell_duration_in_rounds != 0) {
             $normalized_spell_for_class['spell_duration_in_rounds'] = $spell_duration_in_rounds;
         }

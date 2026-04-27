@@ -44,6 +44,8 @@ require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 
 require_once __DIR__ . '/dbio/constants/emptySpellSlot.php';
 require_once __DIR__ . '/dbio/constants/cantripSpellSlot.php';
+require_once __DIR__ . '/dbio/constants/characterClasses.php';
+require_once __DIR__ . '/dbio/constants/spellTypes.php';
 
 // Populate player and character names in $input
 getPlayerName($errors, $input);
@@ -116,19 +118,20 @@ echo $html_header;
         echo '<table class="ready_spells">' . PHP_EOL;
         foreach($readySpells AS $spellCollectionForClass) {
             foreach($spellCollectionForClass AS $readySpell) {
+                $character_class_id = getClassID($readySpell->character_class_name);
                 if ($readySpell->spell_type != $prevSpellType) {
                     $prevSpellType = $readySpell->spell_type;
                     $prevSlotLevel = -1;
                     $spellListByClassAndLevel[$readySpell->character_class_name] = array();
                     $spellType_header = buildSpellTypeHeader($readySpell->spell_type);
                     echo $spellType_header . PHP_EOL;
-                    $spellLevel_header = buildSpellLevelHeader($readySpell->player_slot_level, $nf);
+                    $spellLevel_header = buildSpellLevelHeader($readySpell->spell_type, $readySpell->player_slot_level, $nf, $character_class_id);
                     echo $spellLevel_header . PHP_EOL;
                 }
 
                 if ($readySpell->player_slot_level !=  $prevSlotLevel) {
                     if ($prevSlotLevel != -1) {
-                        $spellLevel_header = buildSpellLevelHeader($readySpell->player_slot_level, $nf);
+                        $spellLevel_header = buildSpellLevelHeader($readySpell->spell_type, $readySpell->player_slot_level, $nf, $character_class_id);
                         echo $spellLevel_header . PHP_EOL;
                     }
 
@@ -220,7 +223,8 @@ function buildSlotChangeForm($playerName, $characterName, $characterClassName, $
 
     $spellNameTag = '<span>' . $spellName . '</span>&nbsp;';
     $leftArrowHtml = buildLeftArrowHtml() . '&nbsp;';
-    $formSpellList = buildCandidateOptionsForTypeAndLevel($spellListByLevel,  $spellType, $spellLevel, $nf);
+    $character_class_id = getClassID($characterClassName);
+    $formSpellList = buildCandidateOptionsForTypeAndLevel($spellListByLevel,  $spellType, $spellLevel, $nf, $character_class_id);
     $spellActionIcon = buildClassSpecificSpellIcon($spellType, $formId, $characterActionId) . '&nbsp;';
     $faCancelIcon = buildCancelChangeFormIcon($readySpell);
     
@@ -257,10 +261,15 @@ function buildSpellTypeHeader($spellType) {
     return $header;
 }
 
-function buildSpellLevelHeader($spellLevel, $nf) {
-    $spellLevelDesc = 'Cantrips';
-    if ($spellLevel > 0) {
+function buildSpellLevelHeader($spell_type, $spellLevel, $nf, $character_class_id) {
+    $is_archer_mu_spells = isArcherMuSpells($character_class_id, $spell_type);
+    $spellLevelDesc = '';
+    if ($is_archer_mu_spells) {
+        $spellLevelDesc = 'Spells';
+    } else if ($spellLevel > 0) {
         $spellLevelDesc = $nf->format($spellLevel) . ' level';
+    } else {
+        $spellLevelDesc = 'Cantrips';
     }
 
     $header = '<tr><th>' . $spellLevelDesc . '</th><th>Name</th><th>&nbsp;</th><th>CT</th><th>Rng</th><th>Dur</th><th>AoE</th></tr>';
@@ -469,17 +478,17 @@ function buildReclaimCantripIcon($formId, $characterActionId) {
     return $reclaimCantripIcon->build();
 }
 
-function buildCandidateOptionsForTypeAndLevel($spellListByLevel, $spellType, $spellLevel, $nf) {
+function buildCandidateOptionsForTypeAndLevel($spellListByLevel, $spellType, $spellLevel, $nf, $character_class_id) {
     $spellCatalogFormId = buildUpdateSpellCatalogId($spellType, $spellLevel);
 
     $tagName = SPELL_CATALOG_ID;
     $selectTag = '<select id="' . $spellCatalogFormId . '" name="' .  $tagName . '" ' . ' style="font-size: 18px;">' . PHP_EOL;
-    $optionList = buildOptionsForSpellList($spellListByLevel, $spellLevel, $nf);
+    $optionList = buildOptionsForSpellList($spellListByLevel, $spellLevel, $nf, $character_class_id);
 
     return $selectTag . $optionList . '</select>' . PHP_EOL;
 }
 
-function buildOptionsForSpellList($spellListByLevel, $spellLevel, $nf) {
+function buildOptionsForSpellList($spellListByLevel, $spellLevel, $nf, $character_class_id) {
     $optionList = '';
     if ($spellLevel == 0) {
         $optionList .= '<optgroup label="Cantrips">' . PHP_EOL;
@@ -494,15 +503,21 @@ function buildOptionsForSpellList($spellListByLevel, $spellLevel, $nf) {
     } else {
         for($i = $spellLevel; $i > 0; $i--) {
             if (!empty($spellListByLevel[$i])) {
-                $optionList .= '<optgroup label="' . $nf->format($i) . ' level">' . PHP_EOL;
-
                 // spell list by level
                 $spells = $spellListByLevel[$i];
+
+                $is_archer_mu_spells = isArcherMuSpells($character_class_id, $spells[0]->spell_type_name);
+                if ($is_archer_mu_spells) {
+                    $optionList .= '<optgroup label="Spells">' . PHP_EOL;
+                } else {
+                    $optionList .= '<optgroup label="' . $nf->format($i) . ' level">' . PHP_EOL;
+                }
+
                 foreach($spells AS $spell) {
                     $optionList .= '<option value="' . $spell->spell_catalog_id .'">' . $spell->spell_name . "</option>" . PHP_EOL;
                 }
 
-                if ($spellLevel > 0) {
+                if ($spellLevel > 0 && !$is_archer_mu_spells) {
                     $optionList .= '<option value="' . CANTRIP_SLOT_SPELL_CATALOG_ID . '">' . CANTRIP_SLOT_SPELL_NAME . '</option>' . PHP_EOL;
                 }
 
@@ -512,6 +527,11 @@ function buildOptionsForSpellList($spellListByLevel, $spellLevel, $nf) {
     }
 
     return $optionList;
+}
+
+function isArcherMuSpells($character_class_id, $spell_type_name) {
+    $spell_type_id = getSpellTypeIDFromName($spell_type_name);
+    return ($character_class_id == ARCHER || $character_class_id == ARCHER_RANGER && $spell_type_id == SPELL_TYPE_MAGIC_USER);
 }
 
 function buildLeftArrowHtml() {
