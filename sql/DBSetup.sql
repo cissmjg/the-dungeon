@@ -8,6 +8,8 @@ INSERT INTO spell_type (name) VALUES ('N/A');
 INSERT INTO spell_type (name) VALUES ('CANTRIP')
 INSERT INTO spell_type (name) VALUES ('Shukenja')
 INSERT INTO spell_type (name) VALUES ('Wu Jen')
+INSERT INTO spell_type (name) VALUES ('Archer')
+
 
 -- Character Class
 
@@ -21,6 +23,7 @@ INSERT INTO spell_type (name) VALUES ('Wu Jen')
 -- 8	CANTRIP
 -- 9	Shukenja
 -- 10	Wu Jen
+-- 11	Archer
 
 INSERT INTO character_class (name, spell_type_1, spell_type_2, spell_type_1_offset, spell_type_2_offset, is_active, icon_file_name) VALUES ('NONE', NULL, NULL, NULL, NULL, 0, NULL);
 INSERT INTO character_class (name, spell_type_1, spell_type_2, spell_type_1_offset, spell_type_2_offset, is_active, icon_file_name) VALUES ('Cleric', 1, NULL, NULL, NULL, 1, 'Cleric1.png');
@@ -5700,11 +5703,7 @@ WHERE spell_type.name = 'Cleric' AND spell_catalog.name IN ('Aspiration', 'Candl
 -- Archer (character_class_id = 26) Magic-User Spell Pool
 INSERT INTO spell_pool (character_class_id, spell_catalog_id, level)
 SELECT 26, spell_catalog.id, 1 FROM spell_catalog
-WHERE spell_catalog.name IN ('Magic Missile', 'Shield')
-
-INSERT INTO spell_pool (character_class_id, spell_catalog_id, level)
-SELECT 26, spell_catalog.id, 2 FROM spell_catalog
-WHERE spell_catalog.name IN ('Strength')
+WHERE spell_catalog.name IN ('Magic Missile', 'Shield') AND spell_catalog.spell_type_id = 4
 
 INSERT INTO spell_pool (character_class_id, spell_catalog_id, level)
 SELECT 26, spell_catalog.id, 3 FROM spell_catalog
@@ -5719,6 +5718,26 @@ SELECT 26, spell_catalog.id, 2 FROM spell_catalog
 JOIN spell_type ON spell_type.id = spell_catalog.spell_type_id
 WHERE spell_type.name = 'Magic-User' AND spell_catalog.name = 'Mirror Image';
 
+INSERT INTO spell_pool (character_class_id, spell_catalog_id, level)
+SELECT 26, spell_catalog.id, 2 FROM spell_catalog
+WHERE spell_catalog.name IN ('Rael\'s Cover', 'Rael\'s Disintegrating Arrow', 'Rael\'s Enlarging Arrow', 'Rael\'s Enraging Arrow', 'Rael\'s Sleep Arrow', 'Rael\'s Weighty Arrowhead')
+
+INSERT INTO spell_pool (character_class_id, spell_catalog_id, level)
+SELECT 26, spell_catalog.id, 3 FROM spell_catalog
+WHERE spell_catalog.name IN ('Rael\'s Acid Arrow', 'Rael\'s Armorpiercing Arrow', 'Rael\'s Arrow of Angling', 'Rael\'s Blinding Arrow', 'Rael\'s Draining Arrow', 'Rael\'s Enchanted Arrow')
+
+INSERT INTO spell_pool (character_class_id, spell_catalog_id, level)
+SELECT 26, spell_catalog.id, 3 FROM spell_catalog
+WHERE spell_catalog.name IN ('Rael\'s Enfeeblementing Arrow', 'Rael\'s Ice Arrow', 'Rael\'s Illusionary Arrow', 'Rael\'s Silent Arrow')
+
+INSERT INTO spell_pool (character_class_id, spell_catalog_id, level)
+SELECT 26, spell_catalog.id, 4 FROM spell_catalog
+WHERE spell_catalog.name IN ('Rael\'s Arrow of Distance', 'Rael\'s Charming Arrow', 'Rael\'s Dispelling Arrow', 'Rael\'s Explosive Arrowhead', 'Rael\'s Immovable Arrowhead', 'Rael\'s Multiplying Arrow')
+
+INSERT INTO spell_pool (character_class_id, spell_catalog_id, level)
+SELECT 26, spell_catalog.id, 4 FROM spell_catalog
+WHERE spell_catalog.name IN ('Rael\'s Numbing Arrow', 'Rael\'s Silencing Arrow')
+
 -- Archer-Ranger (character_class_id = 47) Druid spells
 INSERT INTO spell_pool (character_class_id, spell_catalog_id, level)
 SELECT 47, spell_catalog.id, spell_catalog.level FROM spell_catalog
@@ -5728,11 +5747,7 @@ WHERE spell_type.name = 'Druid' AND spell_catalog.level <= 3
 -- Archer-Ranger (character_class_id = 47) Magic-User spells
 INSERT INTO spell_pool (character_class_id, spell_catalog_id, level)
 SELECT 47, spell_catalog.id, 1 FROM spell_catalog
-WHERE spell_catalog.name IN ('Magic Missile', 'Shield')
-
-INSERT INTO spell_pool (character_class_id, spell_catalog_id, level)
-SELECT 47, spell_catalog.id, 2 FROM spell_catalog
-WHERE spell_catalog.name IN ('Strength')
+WHERE spell_catalog.name IN ('Magic Missile', 'Shield') AND spell_catalog.spell_type_id = 4
 
 INSERT INTO spell_pool (character_class_id, spell_catalog_id, level)
 SELECT 47, spell_catalog.id, 3 FROM spell_catalog
@@ -5746,6 +5761,26 @@ INSERT INTO spell_pool (character_class_id, spell_catalog_id, level)
 SELECT 47, spell_catalog.id, 2 FROM spell_catalog
 JOIN spell_type ON spell_type.id = spell_catalog.spell_type_id
 WHERE spell_type.name = 'Magic-User' AND spell_catalog.name = 'Mirror Image';
+
+INSERT INTO spell_pool (character_class_id, spell_catalog_id, level)
+SELECT 47, spell_catalog.id, 2 FROM spell_catalog
+WHERE spell_catalog.name IN ('Rael\'s Cover', 'Rael\'s Disintegrating Arrow', 'Rael\'s Enlarging Arrow', 'Rael\'s Enraging Arrow', 'Rael\'s Sleep Arrow', 'Rael\'s Weighty Arrowhead')
+
+INSERT INTO spell_pool (character_class_id, spell_catalog_id, level)
+SELECT 47, spell_catalog.id, 3 FROM spell_catalog
+WHERE spell_catalog.name IN ('Rael\'s Acid Arrow', 'Rael\'s Armorpiercing Arrow', 'Rael\'s Arrow of Angling', 'Rael\'s Blinding Arrow', 'Rael\'s Draining Arrow', 'Rael\'s Enchanted Arrow')
+
+INSERT INTO spell_pool (character_class_id, spell_catalog_id, level)
+SELECT 47, spell_catalog.id, 3 FROM spell_catalog
+WHERE spell_catalog.name IN ('Rael\'s Enfeeblementing Arrow', 'Rael\'s Ice Arrow', 'Rael\'s Illusionary Arrow', 'Rael\'s Silent Arrow')
+
+INSERT INTO spell_pool (character_class_id, spell_catalog_id, level)
+SELECT 47, spell_catalog.id, 4 FROM spell_catalog
+WHERE spell_catalog.name IN ('Rael\'s Arrow of Distance', 'Rael\'s Charming Arrow', 'Rael\'s Dispelling Arrow', 'Rael\'s Explosive Arrowhead', 'Rael\'s Immovable Arrowhead', 'Rael\'s Multiplying Arrow')
+
+INSERT INTO spell_pool (character_class_id, spell_catalog_id, level)
+SELECT 47, spell_catalog.id, 4 FROM spell_catalog
+WHERE spell_catalog.name IN ('Rael\'s Numbing Arrow', 'Rael\'s Silencing Arrow')
 
 -- Shukenja (character_class_id = 21) Shukenja spells
 INSERT INTO spell_pool (character_class_id, spell_catalog_id, level)
@@ -6317,37 +6352,38 @@ INSERT INTO character_class_spell_count (character_class_id, spell_type_id, char
 VALUES(43, 3, 25, 9, 8, 8, 8, 7, 7, 7, 0, 0);
 
 -- Archer (Archer spells are not restricted to spell level. All available spells in all slots. E.g. a 2nd level spell can show in a 1st level slot.
+-- Archer (character_class_id = 26) Archer type spells (spell_type = 4)
 INSERT INTO character_class_spell_count (character_class_id, spell_type_id, character_level, number_level_1, number_level_2, number_level_3, number_level_4, number_level_5, number_level_6, number_level_7, number_level_8, number_level_9)
-VALUES(26, 4,  7, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+VALUES(26, 4,  7, 0, 0, 0, 1, 0, 0, 0, 0, 0);
 INSERT INTO character_class_spell_count (character_class_id, spell_type_id, character_level, number_level_1, number_level_2, number_level_3, number_level_4, number_level_5, number_level_6, number_level_7, number_level_8, number_level_9)
-VALUES(26, 4,  8, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+VALUES(26, 4,  8, 0, 0, 0, 1, 0, 0, 0, 0, 0);
 INSERT INTO character_class_spell_count (character_class_id, spell_type_id, character_level, number_level_1, number_level_2, number_level_3, number_level_4, number_level_5, number_level_6, number_level_7, number_level_8, number_level_9)
-VALUES(26, 4,  9, 1, 1, 0, 0, 0, 0, 0, 0, 0);
+VALUES(26, 4,  9, 0, 0, 0, 2, 0, 0, 0, 0, 0);
 INSERT INTO character_class_spell_count (character_class_id, spell_type_id, character_level, number_level_1, number_level_2, number_level_3, number_level_4, number_level_5, number_level_6, number_level_7, number_level_8, number_level_9)
-VALUES(26, 4, 10, 1, 1, 0, 0, 0, 0, 0, 0, 0);
+VALUES(26, 4, 10, 0, 0, 0, 2, 0, 0, 0, 0, 0);
 INSERT INTO character_class_spell_count (character_class_id, spell_type_id, character_level, number_level_1, number_level_2, number_level_3, number_level_4, number_level_5, number_level_6, number_level_7, number_level_8, number_level_9)
-VALUES(26, 4, 11, 1, 1, 1, 0, 0, 0, 0, 0, 0);
+VALUES(26, 4, 11, 0, 0, 0, 3, 0, 0, 0, 0, 0);
 INSERT INTO character_class_spell_count (character_class_id, spell_type_id, character_level, number_level_1, number_level_2, number_level_3, number_level_4, number_level_5, number_level_6, number_level_7, number_level_8, number_level_9)
-VALUES(26, 4, 12, 1, 1, 1, 0, 0, 0, 0, 0, 0);
+VALUES(26, 4, 12, 0, 0, 0, 3, 0, 0, 0, 0, 0);
 INSERT INTO character_class_spell_count (character_class_id, spell_type_id, character_level, number_level_1, number_level_2, number_level_3, number_level_4, number_level_5, number_level_6, number_level_7, number_level_8, number_level_9)
-VALUES(26, 4, 13, 1, 1, 1, 1, 0, 0, 0, 0, 0);
+VALUES(26, 4, 13, 0, 0, 0, 4, 0, 0, 0, 0, 0);
 
 -- Archer-Ranger
 -- Archer-Ranger (Archer-Ranger spells are not restricted to spell level. All available spells in all slots. E.g. a 2nd level spell can show in a 1st level slot.
 INSERT INTO character_class_spell_count (character_class_id, spell_type_id, character_level, number_level_1, number_level_2, number_level_3, number_level_4, number_level_5, number_level_6, number_level_7, number_level_8, number_level_9)
-VALUES(47, 4,  7, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+VALUES(47, 4,  7, 0, 0, 0, 1, 0, 0, 0, 0, 0);
 INSERT INTO character_class_spell_count (character_class_id, spell_type_id, character_level, number_level_1, number_level_2, number_level_3, number_level_4, number_level_5, number_level_6, number_level_7, number_level_8, number_level_9)
-VALUES(47, 4,  8, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+VALUES(47, 4,  8, 0, 0, 0, 1, 0, 0, 0, 0, 0);
 INSERT INTO character_class_spell_count (character_class_id, spell_type_id, character_level, number_level_1, number_level_2, number_level_3, number_level_4, number_level_5, number_level_6, number_level_7, number_level_8, number_level_9)
-VALUES(47, 4,  9, 1, 1, 0, 0, 0, 0, 0, 0, 0);
+VALUES(47, 4,  9, 0, 0, 0, 2, 0, 0, 0, 0, 0);
 INSERT INTO character_class_spell_count (character_class_id, spell_type_id, character_level, number_level_1, number_level_2, number_level_3, number_level_4, number_level_5, number_level_6, number_level_7, number_level_8, number_level_9)
-VALUES(47, 4, 10, 1, 1, 0, 0, 0, 0, 0, 0, 0);
+VALUES(47, 4, 10, 0, 0, 0, 2, 0, 0, 0, 0, 0);
 INSERT INTO character_class_spell_count (character_class_id, spell_type_id, character_level, number_level_1, number_level_2, number_level_3, number_level_4, number_level_5, number_level_6, number_level_7, number_level_8, number_level_9)
-VALUES(47, 4, 11, 1, 1, 1, 0, 0, 0, 0, 0, 0);
+VALUES(47, 4, 11, 0, 0, 0, 3, 0, 0, 0, 0, 0);
 INSERT INTO character_class_spell_count (character_class_id, spell_type_id, character_level, number_level_1, number_level_2, number_level_3, number_level_4, number_level_5, number_level_6, number_level_7, number_level_8, number_level_9)
-VALUES(47, 4, 12, 1, 1, 1, 0, 0, 0, 0, 0, 0);
+VALUES(47, 4, 12, 0, 0, 0, 3, 0, 0, 0, 0, 0);
 INSERT INTO character_class_spell_count (character_class_id, spell_type_id, character_level, number_level_1, number_level_2, number_level_3, number_level_4, number_level_5, number_level_6, number_level_7, number_level_8, number_level_9)
-VALUES(47, 4, 13, 1, 1, 1, 1, 0, 0, 0, 0, 0);
+VALUES(47, 4, 13, 0, 0, 0, 4, 0, 0, 0, 0, 0);
 
 -- Archer-Ranger (Druid)
 INSERT INTO character_class_spell_count (character_class_id, spell_type_id, character_level, number_level_1, number_level_2, number_level_3, number_level_4, number_level_5, number_level_6, number_level_7, number_level_8, number_level_9)

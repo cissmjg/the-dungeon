@@ -66,7 +66,7 @@ const PAGE_DELETE = "delete";
 const PAGE_VIEW = "view";
 const NO_CHARACTER_CLASS_ID = 0;
 
-$classes_that_know_spells = array('Magic-User', 'Illusionist', 'Healer', 'Wu Jen');
+$classes_that_know_spells = array('Magic-User', 'Illusionist', 'Healer', 'Wu Jen', 'Archer', 'Archer-Ranger');
 
 getPageAction($errors, $input);
 $page_action = $input[PAGE_ACTION];
@@ -846,7 +846,12 @@ function buildClassNameCell($label_field_id_for_XP, $character_class, $classes_t
 	if ($character_class->spell_classes != null && count($character_class->spell_classes) > 0) {
 		$output_html .= buildReadySpellsIcon($character_class, $classes_that_know_spells, $player_name, $character_name);
 		$output_html .= buildSpellBookIcon($character_class, $classes_that_know_spells, $player_name, $character_name);
-		$output_html .= buildEditExtraSlotIcon($player_name, $character_name);
+
+		$not_an_archer = !($character_class->class_id == ARCHER || $character_class->class_id == ARCHER_RANGER);
+
+		if ($not_an_archer) {
+			$output_html .= buildEditExtraSlotIcon($player_name, $character_name);
+		}
 	}
 	
 	$output_html .= '</td>';

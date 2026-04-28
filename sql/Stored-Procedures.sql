@@ -1589,21 +1589,39 @@ CREATE PROCEDURE getSpellPoolForPlayerCharacter
  IN characterClassName VARCHAR(32),
  IN spellLevel INT)
 BEGIN
-	SELECT 
-		spell_type.name AS spell_type_name, 
-		player_spell_pool.id AS spell_pool_id, 
-		spell_catalog.id AS spell_catalog_id, 
-		spell_catalog.name AS spell_name, 
-		spell_catalog.link AS spell_link, 
-		player_spell_pool.spell_level AS spell_level from spell_catalog
-	JOIN player_spell_pool ON player_spell_pool.spell_catalog_id = spell_catalog.id
-    JOIN player_character_class ON player_character_class.id = player_spell_pool.player_character_class_id
-    JOIN character_class ON character_class.id = player_character_class.character_class_id
-	JOIN player_character ON player_character.id = player_character_class.player_character_id
-	JOIN player ON player.id = player_character.player_id
-	JOIN spell_type ON spell_type.id = spell_catalog.spell_type_id
-    WHERE player.name = playerName AND player_character.name = characterName AND character_class.name = characterClassName AND player_spell_pool.spell_level = spellLevel
-    ORDER BY spell_type.id, player_spell_pool.spell_level, spell_catalog.name;
+	IF characterClassName = 'Archer' THEN
+		SELECT 
+			spell_type.name AS spell_type_name, 
+			player_spell_pool.id AS spell_pool_id, 
+			spell_catalog.id AS spell_catalog_id, 
+			spell_catalog.name AS spell_name, 
+			spell_catalog.link AS spell_link, 
+			player_spell_pool.spell_level AS spell_level from spell_catalog
+		JOIN player_spell_pool ON player_spell_pool.spell_catalog_id = spell_catalog.id
+		JOIN player_character_class ON player_character_class.id = player_spell_pool.player_character_class_id
+		JOIN character_class ON character_class.id = player_character_class.character_class_id
+		JOIN player_character ON player_character.id = player_character_class.player_character_id
+		JOIN player ON player.id = player_character.player_id
+		JOIN spell_type ON spell_type.id = spell_catalog.spell_type_id
+		WHERE player.name = playerName AND player_character.name = characterName AND character_class.name = characterClassName
+		ORDER BY spell_type.id, player_spell_pool.spell_level, spell_catalog.name;
+	ELSE
+		SELECT 
+			spell_type.name AS spell_type_name, 
+			player_spell_pool.id AS spell_pool_id, 
+			spell_catalog.id AS spell_catalog_id, 
+			spell_catalog.name AS spell_name, 
+			spell_catalog.link AS spell_link, 
+			player_spell_pool.spell_level AS spell_level from spell_catalog
+		JOIN player_spell_pool ON player_spell_pool.spell_catalog_id = spell_catalog.id
+		JOIN player_character_class ON player_character_class.id = player_spell_pool.player_character_class_id
+		JOIN character_class ON character_class.id = player_character_class.character_class_id
+		JOIN player_character ON player_character.id = player_character_class.player_character_id
+		JOIN player ON player.id = player_character.player_id
+		JOIN spell_type ON spell_type.id = spell_catalog.spell_type_id
+		WHERE player.name = playerName AND player_character.name = characterName AND character_class.name = characterClassName AND player_spell_pool.spell_level = spellLevel
+		ORDER BY spell_type.id, player_spell_pool.spell_level, spell_catalog.name;
+	END IF;
 END
 
 CREATE PROCEDURE getSpellPoolByClass 
