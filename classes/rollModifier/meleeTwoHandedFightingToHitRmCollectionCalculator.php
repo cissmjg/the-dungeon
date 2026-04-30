@@ -10,7 +10,7 @@
     class MeleeTwoWeaponFightingToHitRmCollectionCalculator extends MeleeToHitRmCollectionCalculator {
 
         protected $rm_weapon_collection;
-        public function getWeaponCollection() {
+        public function getRmCollection() {
             return $this->rm_weapon_collection;
         }
 
@@ -33,7 +33,7 @@
         }
 
         public function getMainHandRmCollection() {
-            return $this->getWeaponCollection();
+            return $this->getRmCollection();
         }
 
         private $rm_offhand_collection;

@@ -124,7 +124,7 @@ class PlayerCharacterMeleeWeaponRenderer {
         } else {
             $class_id = $character_details->getBestMeleeClassId();
             $class_level = $character_details->getLevelForClass($class_id);
-            $attacks_per_round = getAttacksPerRound($class_id, $class_level, false, false);
+            $attacks_per_round = getAttacksPerRound($class_id, $class_level, false, false, $player_character_weapon->getWeaponProficiencyId());
         }
 
         return getAttacksPerRoundDescription($attacks_per_round);
@@ -152,12 +152,12 @@ class PlayerCharacterMeleeWeaponRenderer {
     }
 
     function buildUIHitRmCollection(MeleeToHitRmCollectionCalculator $melee_to_hit_calculator) {
-        $rm_ui_hit_container = new RmUIContainer($melee_to_hit_calculator->getWeaponCollection(), 'To Hit');
+        $rm_ui_hit_container = new RmUIContainer($melee_to_hit_calculator->getRmCollection(), 'To Hit');
         return $rm_ui_hit_container->render();
     }
 
     function buildUIDamageRmCollection(MeleeDamageRmCollectionCalculator $melee_damage_calculator) {
-        $rm_ui_dmg_container = new RmUIContainer($melee_damage_calculator->getWeaponCollection(), 'Damage');
+        $rm_ui_dmg_container = new RmUIContainer($melee_damage_calculator->getRmCollection(), 'Damage');
         return $rm_ui_dmg_container->render();
     }
 

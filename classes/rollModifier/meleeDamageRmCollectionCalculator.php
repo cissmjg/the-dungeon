@@ -15,7 +15,7 @@
     class MeleeDamageRmCollectionCalculator extends RmCollectionCalculator {
 
         protected $rm_weapon_collection;
-        public function getWeaponCollection() {
+        public function getRmCollection() {
             return $this->rm_weapon_collection;
         }
         public function aggregate() {

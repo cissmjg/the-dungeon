@@ -62,19 +62,19 @@
                 $mounted_melee_damage_modification = $mounted_melee_rm_damage_calculator->aggregate();
 
                 $is_preferred = $player_character_weapon->getWeaponProficiencyId() == LONG_SWORD || $player_character_skill_set->isWeaponPreferred($player_character_weapon->getWeaponProficiencyId());
-                $attacks_per_round = getAttacksPerRound($class_id, $class_level, $is_preferred, true);
+                $attacks_per_round = getAttacksPerRound($class_id, $class_level, $is_preferred, true, $player_character_weapon->getWeaponProficiencyId());
 
                 $attacks_per_round_description = getAttacksPerRoundDescription($attacks_per_round);
                 $full_weapon_description = sprintf("Weapon : [%s] [%d] to hit [%d] damage [%s] attacks/round", $player_character_weapon->getWeaponDescription(), $mounted_melee_to_hit_modification, $mounted_melee_damage_modification, $attacks_per_round_description);
                 echo '==================================================================================================' . PHP_EOL;
                 echo $full_weapon_description . PHP_EOL;
                 echo 'Hit Bonuses' . PHP_EOL;
-                foreach($mounted_melee_rm_hit_calculator->getWeaponCollection() AS $melee_rm_hit) {
+                foreach($mounted_melee_rm_hit_calculator->getRmCollection() AS $melee_rm_hit) {
                     echo '    ' . $melee_rm_hit->getRMDescription() . ' ' . $melee_rm_hit->getRMData() . PHP_EOL;
                 }
 
                 echo 'Damage Bonuses' . PHP_EOL;
-                foreach($mounted_melee_rm_damage_calculator->getWeaponCollection() AS $melee_rm_damage) {
+                foreach($mounted_melee_rm_damage_calculator->getRmCollection() AS $melee_rm_damage) {
                     echo '    ' . $melee_rm_damage->getRMDescription() . ' ' . $melee_rm_damage->getRMData() . PHP_EOL;
                 }
             }
@@ -94,19 +94,19 @@
                 $mounted_melee_damage_modification = $mounted_melee_rm_damage_calculator->aggregate();
 
                 $is_preferred = $player_character_weapon->getWeaponProficiencyId() == LONG_SWORD || $player_character_skill_set->isWeaponPreferred($player_character_weapon->getWeaponProficiencyId());
-                $attacks_per_round = getAttacksPerRound($class_id, $class_level, $is_preferred, false);
+                $attacks_per_round = getAttacksPerRound($class_id, $class_level, $is_preferred, false, $player_character_weapon->getWeaponProficiencyId());
 
                 $attacks_per_round_description = getAttacksPerRoundDescription($attacks_per_round);
                 $full_weapon_description = sprintf("Weapon : [%s] [%d] to hit [%d] damage [%s] attacks/round", $player_character_weapon->getWeaponDescription(), $mounted_melee_to_hit_modification, $mounted_melee_damage_modification, $attacks_per_round_description, $attacks_per_round_description);
                 echo '==================================================================================================' . PHP_EOL;
                 echo $full_weapon_description . PHP_EOL;
                 echo 'Hit Bonuses' . PHP_EOL;
-                foreach($mounted_melee_rm_hit_calculator->getWeaponCollection() AS $melee_rm_hit) {
+                foreach($mounted_melee_rm_hit_calculator->getRmCollection() AS $melee_rm_hit) {
                     echo '    ' . $melee_rm_hit->getRMDescription() . ' ' . $melee_rm_hit->getRMData() . PHP_EOL;
                 }
 
                 echo 'Damage Bonuses' . PHP_EOL;
-                foreach($mounted_melee_rm_damage_calculator->getWeaponCollection() AS $melee_rm_damage) {
+                foreach($mounted_melee_rm_damage_calculator->getRmCollection() AS $melee_rm_damage) {
                     echo '    ' . $melee_rm_damage->getRMDescription() . ' ' . $melee_rm_damage->getRMData() . PHP_EOL;
                 }
             }
@@ -136,7 +136,7 @@
             } else {
                 $class_id = $character_details->getBestMeleeClassId();
                 $class_level = $character_details->getLevelForClass($class_id);
-                $attacks_per_round = getAttacksPerRound($class_id, $class_level, false, false);
+                $attacks_per_round = getAttacksPerRound($class_id, $class_level, false, false, $player_character_weapon->getWeaponProficiencyId());
             }
 
             $attacks_per_round_description = getAttacksPerRoundDescription($attacks_per_round);
@@ -144,19 +144,19 @@
             echo '==================================================================================================' . PHP_EOL;
             echo $full_weapon_description . PHP_EOL;
             echo 'Hit Bonuses' . PHP_EOL;
-            foreach($melee_rm_hit_calculator->getWeaponCollection() AS $melee_rm_hit) {
+            foreach($melee_rm_hit_calculator->getRmCollection() AS $melee_rm_hit) {
                 echo '    ' . $melee_rm_hit->getRMDescription() . ' ' . $melee_rm_hit->getRMData() . PHP_EOL;
             }
 
-            $rm_ui_hit_container = new RmUIContainer($melee_rm_hit_calculator->getWeaponCollection(), 'To Hit');
+            $rm_ui_hit_container = new RmUIContainer($melee_rm_hit_calculator->getRmCollection(), 'To Hit');
             echo $rm_ui_hit_container->render();
 
             echo 'Damage Bonuses' . PHP_EOL;
-            foreach($melee_rm_damage_calculator->getWeaponCollection() AS $melee_rm_damage) {
+            foreach($melee_rm_damage_calculator->getRmCollection() AS $melee_rm_damage) {
                 echo '    ' . $melee_rm_damage->getRMDescription() . ' ' . $melee_rm_damage->getRMData() . PHP_EOL;
             }
 
-            $rm_ui_damage_container = new RmUIContainer($melee_rm_damage_calculator->getWeaponCollection(), 'Damage');
+            $rm_ui_damage_container = new RmUIContainer($melee_rm_damage_calculator->getRmCollection(), 'Damage');
             echo $rm_ui_damage_container->render();
         }
     }

@@ -14,7 +14,7 @@
         public function prerequisiteSkillsSatisfied(\PlayerCharacterSkillSet $player_character_skill_set, \SkillDetail $skill_detail) {
             $this->skill_count_satisfied = parent::skillCountSatisfied($player_character_skill_set, $skill_detail);
 
-            $this->skill_prereq_satisfied = $this->isSubset($skill_detail->getPrerequisiteSKillIds(), $player_character_skill_set->getPlayerCharacterSkillIds());
+            $this->skill_prereq_satisfied = $this->isSubset($skill_detail->getPrerequisiteSkillIds(), $player_character_skill_set->getPlayerCharacterSkillIds());
 
             $this->specialization_obtained = count($player_character_skill_set->getAllSkillInstancesForWeapon(SPECIALIZATION, $this->getWeaponProficiencyValue())) > 0 ? true : false;
             $this->double_specialization_obtained = count($player_character_skill_set->getAllSkillInstancesForWeapon(DOUBLE_SPECIALIZATION, $this->getWeaponProficiencyValue())) > 0 ? true : false;

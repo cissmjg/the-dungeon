@@ -50,7 +50,7 @@ const ATTACKS_PER_ROUND_5_FOR_1 = 7;
 const ATTACKS_PER_ROUND_5_FOR_2 = 8;
 const ATTACKS_PER_ROUND_6_FOR_1 = 9;
 
-function getAttacksPerRound($class_id, $character_level, $is_weapon_preferred, $is_mounted) {
+function getAttacksPerRound($class_id, $character_level, $is_weapon_preferred, $is_mounted, $weapon_proficiency_id) {
     if ($class_id == FIGHTER || $class_id == BERSERKER || $class_id == MARINER || $class_id == SENTINAL) {
         return getFighterAttacksPerRound($character_level);
     }
@@ -68,7 +68,7 @@ function getAttacksPerRound($class_id, $character_level, $is_weapon_preferred, $
     }
 
     if ($class_id == CAVALIER || $class_id == ELVEN_CAVALIER) {
-        return getCavalierAttacksPerRound($character_level, $is_weapon_preferred, $is_mounted);
+        return getCavalierAttacksPerRound($character_level, $is_weapon_preferred, $is_mounted, $weapon_proficiency_id);
     }
 
     if ($class_id == PALADIN) {
@@ -159,26 +159,41 @@ function getArcherAttacksPerRound($character_level) {
     }
 }
 
-function getCavalierAttacksPerRound($character_level, $is_weapon_preferred, $is_mounted) {
+function getCavalierAttacksPerRound($character_level, $is_weapon_preferred, $is_mounted, $weapon_proficiency_id) {
     if ($is_weapon_preferred && $is_mounted) {
         $character_level += 5;
     }
 
-    if ($character_level >= 1 && $character_level < 6) {
-        return ATTACKS_PER_ROUND_1_FOR_1;
+    if ($weapon_proficiency_id == SHORT_BOW) {
+        if (character_level >= 1 && $character_level < 6) {
+            return ATTACKS_PER_ROUND_1_FOR_1;
+        }
+
+        if ($character_level >= 6 && $character_level < 11) {
+            return ATTACKS_PER_ROUND_3_FOR_2;
+        }
+
+        if ($character_level >= 11 && $character_level < 16) {
+            return ATTACKS_PER_ROUND_2_FOR_1;
+        }
+    } else {
+        if ($character_level >= 1 && $character_level < 6) {
+            return ATTACKS_PER_ROUND_1_FOR_1;
+        }
+
+        if ($character_level >= 6 && $character_level < 11) {
+            return ATTACKS_PER_ROUND_3_FOR_2;
+        }
+
+        if ($character_level >= 11 && $character_level < 16) {
+            return ATTACKS_PER_ROUND_2_FOR_1;
+        }
+
+        if ($character_level >= 16) {
+            return ATTACKS_PER_ROUND_5_FOR_2;
+        }
     }
 
-    if ($character_level >= 6 && $character_level < 11) {
-        return ATTACKS_PER_ROUND_3_FOR_2;
-    }
-
-    if ($character_level >= 11 && $character_level < 16) {
-        return ATTACKS_PER_ROUND_2_FOR_1;
-    }
-
-    if ($character_level >= 16) {
-        return ATTACKS_PER_ROUND_5_FOR_2;
-    }
 }
 
 function getPaladinAttacksPerRound($character_level) {
@@ -294,6 +309,12 @@ Level of Specialist     Melee Weapon    Bow     Light Crossbow  Heavy Crossbow  
 13+                     5/2             4/1     2/1             3/2             2/1                     5/1             6/1             5/2
 
  At 7th level and above all Archers can fire three arrows per round instead of just two. 
+
+ Elven Cavalier mounted using a Short Bow :
+1-6                                     1/1
+7-12                                    3/2
+13+                                     2/1
+
 */
 
 ?>
