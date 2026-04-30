@@ -79,8 +79,7 @@ class TwoWeaponFightingRenderer {
     }
 
     public function render() {
-
-
+        
         // Main Hand To Hit calculator
         $main_hand_melee_to_hit_calculator = new MeleeTwoWeaponFightingToHitRmCollectionCalculator();
         $main_hand_melee_to_hit_calculator->setTwoWeaponFightingHand(TWO_WEAPON_FIGHTING_MAIN_HAND);

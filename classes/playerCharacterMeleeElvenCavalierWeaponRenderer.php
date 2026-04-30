@@ -6,6 +6,7 @@ require_once __DIR__ . '/rollModifier/meleeToHitRmCollectionCalculator.php';
 require_once __DIR__ . '/rollModifier/meleeDamageRmCollectionCalculator.php';
 
 require_once __DIR__ . '/../helper/HtmlHelper.php';
+require_once __DIR__ . '/../dbio/constants/cavalierCombatMode.php';
 
 class PlayerCharacterMeleeElvenCavalierWeaponRenderer {
 
@@ -84,12 +85,14 @@ class PlayerCharacterMeleeElvenCavalierWeaponRenderer {
         $melee_to_hit_calculator->gather($this->character_details, $this->player_character_skill_set, $this->player_character_weapon, $this->attribute_metadata);
 
         $melee_rm_dmg_calculator = new MeleeElvenCavalierDamageRmCollectionCalculator();
+        $melee_rm_dmg_calculator->setCombatMode($this->getCombatMode());
         $melee_rm_dmg_calculator->gather($this->character_details, $this->player_character_skill_set, $this->player_character_weapon, $this->attribute_metadata);
 
         $attacks_per_round = $this->calculateAttacksPerRound($this->player_character_skill_set, $this->player_character_weapon, $this->character_details);
 
-        $weapon_panel_name = 'weapon-' . $this->player_character_weapon->getWeaponId();
-		$weapon_panel_icon_name = 'weapon-icon-' . $this->player_character_weapon->getWeaponId();
+        $weapon_panel_section_name = $this->combat_mode == COMBAT_MODE_MOUNTED ? "mounted-" : "unmounted-";
+        $weapon_panel_name = 'weapon-' . $weapon_panel_section_name . $this->player_character_weapon->getWeaponId();
+		$weapon_panel_icon_name = 'weapon-icon-' . $weapon_panel_section_name . $this->player_character_weapon->getWeaponId();
         
         $weapon_panel  = $this->buildWeaponDetailEntry($this->player_character_weapon, $melee_to_hit_calculator, $melee_rm_dmg_calculator, $attacks_per_round, $weapon_panel_name, $weapon_panel_icon_name);
         $weapon_panel .= $this->buildRmWeaponPanel($melee_to_hit_calculator, $melee_rm_dmg_calculator, $weapon_panel_name);
@@ -140,14 +143,14 @@ class PlayerCharacterMeleeElvenCavalierWeaponRenderer {
 
     function buildRmWeaponPanel(MeleeToHitRmCollectionCalculator $melee_to_hit_calculator, MeleeDamageRmCollectionCalculator $melee_damage_calculator, $weapon_panel_name) {
 
-	$output_html  = HtmlHelper::buildDivStartTagWithId('', $weapon_panel_name, true) . PHP_EOL;
-	$output_html .= $this->buildUIHitRmCollection($melee_to_hit_calculator);
-	$output_html .= HtmlHelper::buildDivTag('', '&nbsp;');
-	$output_html .= $this->buildUIDamageRmCollection($melee_damage_calculator);
-	$output_html .= HtmlHelper::buildDivEndTag() . PHP_EOL;
+        $output_html  = HtmlHelper::buildDivStartTagWithId('', $weapon_panel_name, true) . PHP_EOL;
+        $output_html .= $this->buildUIHitRmCollection($melee_to_hit_calculator);
+        $output_html .= HtmlHelper::buildDivTag('', '&nbsp;');
+        $output_html .= $this->buildUIDamageRmCollection($melee_damage_calculator);
+        $output_html .= HtmlHelper::buildDivEndTag() . PHP_EOL;
 
-	return $output_html;
-}
+        return $output_html;
+    }
 
     function buildUIHitRmCollection(MeleeToHitRmCollectionCalculator $melee_to_hit_calculator) {
         $rm_ui_hit_container = new RmUIContainer($melee_to_hit_calculator->getRmCollection(), 'To Hit');

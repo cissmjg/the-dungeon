@@ -243,4 +243,19 @@ function getWeaponDescriptionFromProficiencyId($weapon_proficiency_id) {
     }
 }
 
+function isWeaponHurled($weapon_proficiency_id) {
+    switch($weapon_proficiency_id) {
+        case DAGGER:
+        case BATTLE_AXE:
+        case HAND_AXE:
+        case SPEAR:
+        case HAMMER:
+        case DWARVEN_THROWING_HAMMER:
+        case JAVELIN:
+            return true;
+        default:
+            return false;
+    }
+}
+
 ?>

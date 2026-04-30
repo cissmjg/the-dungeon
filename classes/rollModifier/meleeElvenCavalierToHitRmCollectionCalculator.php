@@ -5,14 +5,6 @@
     require_once __DIR__ . '/../../dbio/constants/skills.php';
 
 class MeleeElvenCavalierToHitRmCollectionCalculator  extends meleeToHitRmCollectionCalculator {
-    public function aggregate() {
-        $rmFactorResult = 0;
-        foreach($this->rm_weapon_collection AS $rmFactor) {
-            $rmFactorResult += $rmFactor->getRMData();
-        }
-
-        return $rmFactorResult;
-    }
 
     public function gather(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
         parent::gather($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
@@ -62,17 +54,17 @@ class MeleeElvenCavalierToHitRmCollectionCalculator  extends meleeToHitRmCollect
     private function calculateLongSwordBonus($character_level) {
             if ($character_level >= 2 && $character_level < 6) {
                 $rm_factor = new RmFactor("Cavalier Level", 1);
-                $this->rm_weapon_collection->add($rm_factor);
+                $this->rm_melee_to_hit_collection->add($rm_factor);
             }
 
             if ($character_level >= 6 && $character_level < 12) {
                 $rm_factor = new RmFactor("Cavalier Level", 2);
-                $this->rm_weapon_collection->add($rm_factor);
+                $this->rm_melee_to_hit_collection->add($rm_factor);
             }
 
             if ($character_level >= 12) {
                 $rm_factor = new RmFactor("Cavalier Level", 3);
-                $this->rm_weapon_collection->add($rm_factor);
+                $this->rm_melee_to_hit_collection->add($rm_factor);
             }
     }
 
@@ -92,12 +84,12 @@ class MeleeElvenCavalierToHitRmCollectionCalculator  extends meleeToHitRmCollect
     private function calculate4thLevelPreferredWeaponBonus($character_level) {
         if ($character_level >= 4 && $character_level < 8) {
             $rm_factor = new RmFactor("4th Level Preferred", 1);
-            $this->rm_weapon_collection->add($rm_factor);
+            $this->rm_melee_to_hit_collection->add($rm_factor);
         }
 
         if ($character_level >= 8) {
             $rm_factor = new RmFactor("4th Level Preferred", 2);
-            $this->rm_weapon_collection->add($rm_factor);
+            $this->rm_melee_to_hit_collection->add($rm_factor);
         }
     }
 
@@ -117,12 +109,12 @@ class MeleeElvenCavalierToHitRmCollectionCalculator  extends meleeToHitRmCollect
     private function calculate6thLevelPreferredWeaponBonus($character_level) {
         if ($character_level >= 6 && $character_level < 10) {
             $rm_factor = new RmFactor("6th Level Preferred", 1);
-            $this->rm_weapon_collection->add($rm_factor);
+            $this->rm_melee_to_hit_collection->add($rm_factor);
         }
 
         if ($character_level >= 10) {
             $rm_factor = new RmFactor("6th Level Preferred", 2);
-            $this->rm_weapon_collection->add($rm_factor);
+            $this->rm_melee_to_hit_collection->add($rm_factor);
         }
     }
 }

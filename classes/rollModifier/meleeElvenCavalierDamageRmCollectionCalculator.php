@@ -6,14 +6,6 @@
     require_once __DIR__ . '/../../dbio/constants/skills.php';
 
 class MeleeElvenCavalierDamageRmCollectionCalculator  extends meleeDamageRmCollectionCalculator {
-    public function aggregate() {
-        $rmFactorResult = 0;
-        foreach($this->rm_weapon_collection AS $rmFactor) {
-            $rmFactorResult += $rmFactor->getRMData();
-        }
-
-        return $rmFactorResult;
-    }
 
     private $combat_mode;
     public function getCombatMode() {
@@ -41,7 +33,7 @@ class MeleeElvenCavalierDamageRmCollectionCalculator  extends meleeDamageRmColle
         }
 
         $rm_cavalier_damage = new RmFactor($rm_cavalier_damage_desc, $rm_cavalier_damage_modifier);
-        $this->rm_weapon_collection->add($rm_cavalier_damage);
+        $this->rm_melee_dmg_collection->add($rm_cavalier_damage);
     }
 }
 

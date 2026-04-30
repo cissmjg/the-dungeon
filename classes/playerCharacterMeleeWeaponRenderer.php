@@ -172,6 +172,5 @@ class PlayerCharacterMeleeWeaponRenderer {
 
         return $chevron_icon->build();
     }
-
 }
 ?>

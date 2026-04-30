@@ -359,24 +359,7 @@ function isMasterCraftDamageEligible($weapon_subtype) {
 }
 
 function isStrengthBonusAvailable($weapon_proficiency_id) {
-    switch($weapon_proficiency_id) {
-        case DAGGER:
-            return "YES";
-        case BATTLE_AXE:
-            return "YES";
-        case HAND_AXE:
-            return "YES";
-        case SPEAR:
-            return "YES";
-        case HAMMER:
-            return "YES";
-        case DWARVEN_THROWING_HAMMER:
-            return "YES";
-        case JAVELIN:
-            return "YES";
-        default:
-            return "NO";
-    }
+    return isWeaponHurled($weapon_proficiency_id) ? "YES" : "NO";
 }
 
 function buildActionBar($player_name, $character_name) {

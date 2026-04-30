@@ -14,37 +14,29 @@
 
     class MeleeDamageRmCollectionCalculator extends RmCollectionCalculator {
 
-        protected $rm_weapon_collection;
+        protected $rm_melee_dmg_collection;
         public function getRmCollection() {
-            return $this->rm_weapon_collection;
-        }
-        public function aggregate() {
-            $rmFactorResult = 0;
-            foreach($this->rm_weapon_collection AS $rmFactor) {
-                $rmFactorResult += $rmFactor->getRMData();
-            }
-
-            return $rmFactorResult;
+            return $this->rm_melee_dmg_collection;
         }
 
         public function __construct() {
-            $this->rm_weapon_collection = new RmCollection();
+            $this->rm_melee_dmg_collection = new RmCollection();
         }
 
         public function gather(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
 
             // Attributes
             $rm_strength_bonus = new RmFactor("Strength", $attribute_metadata->getStrengthDamageAdjustment());
-            $this->rm_weapon_collection->add($rm_strength_bonus);
+            $this->rm_melee_dmg_collection->add($rm_strength_bonus);
 
             // Skills
             $rm_skill_collection = $this->getRmSkills($player_character_skill_set, $player_character_weapon);
-            $this->rm_weapon_collection->addAll($rm_skill_collection);
+            $this->rm_melee_dmg_collection->addAll($rm_skill_collection);
 
             // Weapon
             $rm_weapon = $this->getWeaponBonus($player_character_weapon);
             if (!empty($rm_weapon)) {
-                $this->rm_weapon_collection->add($rm_weapon);
+                $this->rm_melee_dmg_collection->add($rm_weapon);
             }
         }
 
