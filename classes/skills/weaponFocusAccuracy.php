@@ -10,6 +10,17 @@
         private $restricted_skills_satisfied;
         private $specialization_obtained;
         private $double_specialization_obtained;
+        private $archer_melee_only_satisfied;
+        private $weapon_detail;
+        private $parent_class_and_level_satisfied;
+
+        public function getWeaponDetail() {
+            return $this->weapon_detail;
+        }
+
+        public function setWeaponDetail($weapon_detail) {
+            $this->weapon_detail = $weapon_detail;
+        }
 
         public function prerequisiteSkillsSatisfied(\PlayerCharacterSkillSet $player_character_skill_set, \SkillDetail $skill_detail) {
             $this->skill_count_satisfied = parent::skillCountSatisfied($player_character_skill_set, $skill_detail);
@@ -28,11 +39,29 @@
             return $this->skill_count_satisfied && $this->skill_prereq_satisfied && $this->restricted_skills_satisfied;
         }
 
+        public function classAndLevelSatisfied(\SkillDetail $skill_detail, \CharacterDetails $character_details) {
+            parent::classAndLevelSatisfied($skill_detail, $character_details);
+            $this->parent_class_and_level_satisfied = $this->class_and_level_satisfied;
+
+            $this->archer_melee_only_satisfied = true;
+            if ($character_details->containsClassId(ARCHER) || $character_details->containsClassId(ARCHER_RANGER)) {
+                if($this->weapon_detail->getMeleeWeaponType() == WEAPON_TYPE_MELEE) {
+                    $this->archer_melee_only_satisfied = true;
+                } else {
+                    $this->archer_melee_only_satisfied = false;
+                }
+            }
+
+            $this->class_and_level_satisfied = $this->parent_class_and_level_satisfied && $this->archer_melee_only_satisfied;
+        }
+
         public function dump() {
             $output  = parent::dump();
             $output .= 'Specialization obtained : ' . var_export($this->specialization_obtained, true) . PHP_EOL;
             $output .= 'Double Specialization obtained : ' . var_export($this->double_specialization_obtained, true) . PHP_EOL;
             $output .= 'Restricted skills satisfied : ' . var_export($this->restricted_skills_satisfied, true) . PHP_EOL;
+            $output .= 'Archer Melee only : ' . var_export($this->archer_melee_only_satisfied, true) . PHP_EOL;
+            $output .= 'Parent Class and Level : ' . var_export($this->parent_class_and_level_satisfied, true) . PHP_EOL;
             
             return $output;
         }

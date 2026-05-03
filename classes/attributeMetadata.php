@@ -557,6 +557,38 @@ class AttributeMetadata {
         return 0;
     }
 
+    public function getMagicalAttackAdjustment() {
+        $character_wisdom = $this->character_details->getCharacterWisdom();
+        switch($character_wisdom) {
+            case 3:
+                return -3;
+            case 4:
+                return -2;
+            case 5:
+            case 6:
+            case 7:
+                return -1;
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+            case 13:
+            case 14:
+                return 0;
+            case 15:
+                return 1;
+            case 16:
+                return 2;
+            case 17:
+                return 3;
+            case 18:
+                return 4;
+            default:
+                return 0;
+        }
+    }
+
     public function getDexterityMetadata() {
         $reaction_missile_adj = sprintf("%+.0f", $this->getReactionMissileAdjustment());
         $armor_class_adj = sprintf("%+.0f", $this->getArmorClassAdjustment());

@@ -7137,7 +7137,7 @@ VALUES (1, 1, '3', 'd4/d3', '1', NULL, NULL, NULL, NULL, 58);
 
 -- 'Javelin'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (2, 1, '7', 'd6/d6', '1', '4', '8', '12', NULL, 59);
+VALUES (2, 2, '7', 'd6/d6', '1', '4', '8', '12', NULL, 59);
 
 -- 'Jo Stick'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
@@ -7161,7 +7161,7 @@ VALUES (1, 1, '2', 'd3/d2', '1', NULL, NULL, NULL, NULL, 64);
 
 -- 'Knife'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (1, 2, '2/6', 'd3/d2', '1', NULL, NULL, NULL, NULL, 65);
+VALUES (1, 1, '2/6', 'd3/d2', '1', NULL, NULL, NULL, NULL, 65);
 
 -- 'Knife'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
