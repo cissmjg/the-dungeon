@@ -102,9 +102,7 @@ if (count($errors) > 0) {
 }
 
 $weapon_proficiency_skills = $player_character_skill_set->getAllSkillInstances(WEAPON_PROFICIENCY);
-
 $debug_output .= print_r($weapon_proficiency_skills, true) . PHP_EOL;
-$debug_output .= 'Proficient with dagger: ' . var_export(isProficientWithWeapon($weapon_proficiency_skills, DAGGER), true) . PHP_EOL;
 
 $cavalier_level = -1;
 $cavalier_preferred_level3_weapon_needed = false;

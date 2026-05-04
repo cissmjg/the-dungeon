@@ -44,16 +44,16 @@
             $this->rm_short_collection->add($rm_attribute_bonus);
 
             // Proficiency check
-            if ($player_character_skill_set->isProficientWithWeapon($player_character_weapon->getWeaponProficiencyId())) {
+            if ($player_character_weapon->getIsProficient()) {
 
                 // Skills
                 $rm_skill_collection = $this->getRmSkills($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
                 $this->rm_short_collection->addAll($rm_skill_collection);
 
                 // Bow (Strength bonus for weapon)
-                if ($player_character_weapon->getMeleeWeaponSubtype() == WEAPON_SUBTYPE_BOW && $player_character_weapon->getStrengthBonusAvailable()) {
-                    $rm_strength_bonus = $this->getWeaponStrengthBonus($attribute_metadata);
-                    $this->rm_short_collection->add($rm_strength_bonus);
+                $rm_composite_bow_bonus = $this->getCompositeBowBonus($player_character_weapon, $attribute_metadata);
+                if (!empty($rm_composite_bow_bonus)) {
+                    $this->rm_short_collection->add($rm_composite_bow_bonus);
                 }
 
                 // Check for strength bonus on hurled weapons
@@ -63,11 +63,8 @@
                 }
 
             } else {
-                 // Check for non-proficiency
-                 if (!$player_character_weapon->getIsProficient()) {
-                    $rm_non_proficient = $this->getNonProficiencyPenalty($character_details);
-                    $this->rm_short_collection->add($rm_non_proficient);
-                 }
+                $rm_non_proficient = $this->getNonProficiencyPenalty($character_details);
+                $this->rm_short_collection->add($rm_non_proficient);
             }
 
             // Race
@@ -94,22 +91,22 @@
         private function getAttributeModifier(PlayerCharacterSkillSet $player_character_skill_set, AttributeMetadata $attribute_metadata, PlayerCharacterWeapon $player_character_weapon) {
             $has_zen_archery = count($player_character_skill_set->getAllSkillInstances(ZEN_ARCHERY)) > 0;
             $has_brutal_throw = count($player_character_skill_set->getAllSkillInstances(BRUTAL_THROW)) > 0;
-            $rm_attribute_to_hit = null;
 
+            $rm_attribute_to_hit = null;
             $rm_attribute_desc = '';
             $rm_attribute_modifier = 0;
 
             // If the character has Zen Archery, then apply wisdom magical attack bonus
             if ($has_zen_archery) {
-                $rm_attribute_desc = "Zen Archery";
+                $rm_attribute_desc = 'Zen Archery';
                 $rm_attribute_modifier = $attribute_metadata->getMagicalAttackAdjustment();
-            // If the character has Brutal Throw, then apply strength hit bonus
-            } else if (isWeaponHurled($player_character_weapon->getWeaponProficiencyId()) && $has_brutal_throw) {
-                $rm_attribute_desc = "Brutal Throw";
+            // If the character has Brutal Throw, then apply strength hit bonus for hurled weapons
+            } else if ($has_brutal_throw && isWeaponHurled($player_character_weapon->getWeaponProficiencyId())) {
+                $rm_attribute_desc = 'Brutal Throw';
                 $rm_attribute_modifier = $attribute_metadata->getStrengthHitAdjustment();
             // Use dexterity Reaction/Missile adjustment
             } else {
-                $rm_attribute_desc = "Dexterity";
+                $rm_attribute_desc = 'Dexterity';
                 $rm_attribute_modifier = $attribute_metadata->getReactionMissileAdjustment();
             }
 
@@ -234,14 +231,6 @@
             return $rm_non_proficient;
         }
 
-        private function getWeaponStrengthBonus(AttributeMetadata $attribute_metadata) {
-            $rm_strength_bonus_desc = "Strength Weapon";
-            $rm_strength_bonus_modifier = $attribute_metadata->getStrengthHitAdjustment();
-            $rm_strength_bonus = new RmFactor($rm_strength_bonus_desc, $rm_strength_bonus_modifier);
-
-            return $rm_strength_bonus;
-        }
-
         private function getHurledWeaponBonus(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
             $is_hurled_weapon = isWeaponHurled($player_character_weapon->getWeaponProficiencyId());
             $is_not_arcane_spellcaster = !$character_details->isArcaneSpellcaster();
@@ -259,6 +248,17 @@
             }
 
             return $rm_hurled_weapon;
+        }
+
+        private function getCompositeBowBonus(PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
+            $rm_composite_bow = null;
+            if ($player_character_weapon->getWeaponProficiencyId() == LONG_COMPOSITE_BOW || $player_character_weapon->getWeaponProficiencyId() == SHORT_COMPOSITE_BOW) {
+                $rm_composite_bow_desc = "Strength Weapon";
+                $rm_composite_bow_modifier = $attribute_metadata->getStrengthHitAdjustment();
+                $rm_composite_bow = new RmFactor($rm_composite_bow_desc, $rm_composite_bow_modifier);
+            }
+
+            return $rm_composite_bow;
         }
     }
 ?>

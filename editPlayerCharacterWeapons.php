@@ -21,6 +21,7 @@ require_once __DIR__ . '/webio/craftStatus.php';
 require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/webio/weaponProficiencyId.php';
 require_once __DIR__ . '/classes/playerCharacterSkillSet.php';
+require_once __DIR__ . '/classes/playerCharacterWeaponSet.php';
 require_once __DIR__ . '/dbio/constants/skills.php';
 require_once __DIR__ . '/dbio/constants/weapons.php';
 
@@ -46,16 +47,11 @@ $action_bar = ActionBarHelper::buildActionBar($input[PLAYER_NAME], $input[CHARAC
 $player_character_skill_set = new PlayerCharacterSkillSet();
 $player_character_skill_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
 
-$weapon_list = getWeaponSummaryForPlayerCharacter($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
-if (count($errors) > 0) {
-    die(json_encode($errors));
-}
+$weapon_list = new playerCharacterWeaponSet();
+$weapon_list->init($pdo, $player_name, $character_name, $player_character_skill_set, $errors);
 
 $player_character_skill_set = new PlayerCharacterSkillSet();
 $player_character_skill_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
-if (count($errors) > 0) {
-    die(json_encode($errors));
-}
 
 $form_id = 'deleteWeapon';
 
@@ -96,26 +92,26 @@ echo $html_header;
         </div>
     </div>
     <h3>Weapon List</h3>
-    <?php if (count($weapon_list) == 0): ?>
+    <?php if (empty($weapon_list)): ?>
         <span style="font-size: 18px;">No weapons available</span>
     <?php else: ?>
         <table>
             <tr><th>&nbsp;</th><th>Description</th><th>Location</th><th>Proficient</th></th><th>Craft Status</th></tr>
             <?php
-                foreach($weapon_list AS $weapon) {
-                    $weapon_desc = str_replace("'", "", html_entity_decode($weapon['weapon_description']));
-                    $weapon_proficiency_id = $weapon['weapon_proficiency_id'];
-                    $is_proficient = $player_character_skill_set->isProficientWithWeapon($weapon_proficiency_id) ? "Yes" : "No";
+                foreach($weapon_list->getAll() AS $weapon) {
+                    $weapon_desc = str_replace("'", "", html_entity_decode($weapon->getWeaponDescription()));
+                    $weapon_proficiency_id = $weapon->getWeaponProficiencyId();
+                    $is_proficient = $weapon->getIsProficient() ? "Yes" : "No";
                     $output_row  = '<tr>';
-                    if ($weapon['weapon_proficiency_id'] == FIST) {
+                    if ($weapon->getWeaponProficiencyId() == FIST) {
                         $output_row .= '<td>&nbsp;</td>';
                     } else {
-                        $output_row .= '<td>' . buildDeletePlayerCharacterWeaponIcon($form_id, $weapon_desc, $weapon['player_character_weapon_id']) . '</td>';
+                        $output_row .= '<td>' . buildDeletePlayerCharacterWeaponIcon($form_id, $weapon_desc, $weapon->getWeaponId()) . '</td>';
                     }
                     $output_row .= '<td>' . buildWeaponNameCell($input[PLAYER_NAME], $input[CHARACTER_NAME], $weapon) . '</td>';
-                    $output_row .= '<td>' . $weapon['weapon_location'] . '</td>';
+                    $output_row .= '<td>' . $weapon->getWeaponLocation() . '</td>';
                     $output_row .= '<td>' . $is_proficient . '</td>';
-                    $output_row .= '<td>' . getCraftStatusDescription($weapon['weapon_craft_status']) . '</td>';
+                    $output_row .= '<td>' . getCraftStatusDescription($weapon->getCraftStatus()) . '</td>';
                     $output_row .= '</tr>' . PHP_EOL;
                     echo $output_row;
                 }
@@ -137,26 +133,11 @@ echo $html_header;
 </html>
 
 <?php
-function getWeaponSummaryForPlayerCharacter(\PDO $pdo, $player_name, $character_name, &$errors) {
-    $sql_exec = "CALL getWeaponSummaryForPlayerCharacter(:playerName, :characterName)";
-	
-	$statement = $pdo->prepare($sql_exec);
-	$statement->bindParam(':playerName', $player_name, PDO::PARAM_STR);
-	$statement->bindParam(':characterName', $character_name, PDO::PARAM_STR);
-	try {
-		$statement->execute();
-	} catch(Exception $e) {
-		$errors[] = "Exception in getWeaponSummaryForPlayerCharacter : " . $e->getMessage();
-	}
-
-	return $statement->fetchAll(PDO::FETCH_ASSOC);
-}
-
-function buildWeaponNameCell($player_name, $character_name, $weapon) {
-    $weapon_desc = $weapon['weapon_description'];
-    $player_character_weapon_id = $weapon['player_character_weapon_id'];
+function buildWeaponNameCell($player_name, $character_name, PlayerCharacterWeapon $weapon) {
+    $weapon_desc = $weapon->getWeaponDescription();
+    $player_character_weapon_id = $weapon->getWeaponId();
     $output_html  = $weapon_desc;
-    if ($weapon['weapon_proficiency_id'] == FIST) {
+    if ($weapon->getWeaponProficiencyId() == FIST) {
         $output_html .= '&nbsp;';
     }
     else {

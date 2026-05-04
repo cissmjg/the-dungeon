@@ -32,7 +32,7 @@
             $this->rm_melee_to_hit_collection->add($rm_strength_bonus);
 
             // Proficiency check
-            if ($player_character_skill_set->isProficientWithWeapon($player_character_weapon->getWeaponProficiencyId())) {
+            if ($player_character_weapon->getIsProficient()) {
 
                 // Skills
                 $rm_skill_collection = $this->getRmSkills($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
@@ -40,10 +40,8 @@
 
             } else {
                  // Check for non-proficiency
-                 if (!$player_character_weapon->getIsProficient()) {
-                    $rm_non_proficient = $this->getNonProficiencyPenalty($character_details);
-                    $this->rm_melee_to_hit_collection->add($rm_non_proficient);
-                 }
+                $rm_non_proficient = $this->getNonProficiencyPenalty($character_details);
+                $this->rm_melee_to_hit_collection->add($rm_non_proficient);
             }
 
             // Race

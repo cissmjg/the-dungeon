@@ -32,19 +32,16 @@
             $this->rm_pb_collection->add($rm_strength_bonus);
 
             // Proficiency check
-            if ($player_character_skill_set->isProficientWithWeapon($player_character_weapon->getWeaponProficiencyId())) {
+            if ($player_character_weapon->getIsProficient()) {
 
                 // Skills
                 $rm_skill_collection = $this->getRmSkills($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
                 $this->rm_pb_collection->addAll($rm_skill_collection);
 
             } else {
-                 // Check for non-proficiency
-                 if (!$player_character_weapon->getIsProficient()) {
-                    $rm_non_proficient = new RmFactor("Non Proficiency Penalty", $character_details->getNonProficienyPenalty());
-                    $rm_non_proficient->setRmCategory(ROLL_MODIFIER_PENALTY);
-                    $this->rm_pb_collection->add($rm_non_proficient);
-                 }
+                $rm_non_proficient = new RmFactor("Non Proficiency Penalty", $character_details->getNonProficienyPenalty());
+                $rm_non_proficient->setRmCategory(ROLL_MODIFIER_PENALTY);
+                $this->rm_pb_collection->add($rm_non_proficient);
             }
 
             // Race
