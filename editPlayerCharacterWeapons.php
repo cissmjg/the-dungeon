@@ -48,7 +48,7 @@ $player_character_skill_set = new PlayerCharacterSkillSet();
 $player_character_skill_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
 
 $weapon_list = new playerCharacterWeaponSet();
-$weapon_list->init($pdo, $player_name, $character_name, $player_character_skill_set, $errors);
+$weapon_list->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $player_character_skill_set, $errors);
 
 $player_character_skill_set = new PlayerCharacterSkillSet();
 $player_character_skill_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
