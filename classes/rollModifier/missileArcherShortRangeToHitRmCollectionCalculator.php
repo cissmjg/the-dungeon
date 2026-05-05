@@ -13,7 +13,7 @@
         private $to_hit_bonus = [];
 
         public function __construct() {
-            $this->rm_short_collection = new RmCollection();
+            parent::__construct();
 
             // Short Range To Hit modifiers
             $this->to_hit_bonus[1] = 0;

@@ -61,16 +61,16 @@
                 $rm_collection->add($rm_weapon_focus_greater_technique);
             }
 
-            // Specialization
-            $rm_weapon_specialization = $this->getWeaponSpecialization($player_character_skill_set, $player_character_weapon);
-            if (!empty($rm_weapon_specialization)) {
-                $rm_collection->add($rm_weapon_specialization);
-            }
-
             // Double Specialization
             $rm_double_weapon_specialization = $this->getWeaponDoubleSpecialization($player_character_skill_set, $player_character_weapon);
             if (!empty($rm_double_weapon_specialization)) {
                 $rm_collection->add($rm_double_weapon_specialization);
+            } else {
+                // Specialization
+                $rm_weapon_specialization = $this->getWeaponSpecialization($player_character_skill_set, $player_character_weapon);
+                if (!empty($rm_weapon_specialization)) {
+                    $rm_collection->add($rm_weapon_specialization);
+                }
             }
 
             return $rm_collection;

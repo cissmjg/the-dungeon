@@ -13,6 +13,7 @@
     require_once __DIR__ . '/../../dbio/constants/weaponType.php';
     require_once __DIR__ . '/../../dbio/constants/weaponSubtype.php';
     require_once __DIR__ . '/../../dbio/constants/characterRaces.php';
+    require_once __DIR__ . '/../../dbio/constants/characterClasses.php';
     require_once __DIR__ . '/../../webio/craftStatus.php';
 
     class MissileShortRangeToHitRmCollectionCalculator extends RmCollectionCalculator {
@@ -30,11 +31,6 @@
 
         public function gather(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
             
-            // Check for missile weapons
-            if(!$player_character_weapon->getMissileWeaponType() != WEAPON_TYPE_MISSILE) {
-                return;
-            }
-
             // Short range penalty
             $rm_short_range = $this->getRmShortRangePenalty();
             $this->rm_short_collection->add($rm_short_range);
@@ -84,6 +80,7 @@
             $rm_short_range_penalty_desc = "Short Range";
             $rm_short_range_penalty_modified = MissileShortRangeToHitRmCollectionCalculator::SHORT_RANGE_PENALTY;
             $rm_short_range = new RmFactor($rm_short_range_penalty_desc, $rm_short_range_penalty_modified);
+            $rm_short_range->setRmCategory(ROLL_MODIFIER_PENALTY);
 
             return $rm_short_range;
         }
@@ -178,12 +175,22 @@
                 $first_weapon_specialization = $existing_weapon_specialization[0];
                 if ($first_weapon_specialization->getWeaponProficiencyId() == $player_character_weapon->getWeaponProficiencyId()) {
                     $rm_weapon_specialization_desc = "Specialization";
-                    $rm_weapon_specialization_modifier = 1;
+                    $rm_weapon_specialization_modifier = $this->getWeaponSpecializationModifier($player_character_weapon);
                     $rm_weapon_specialization = new RmFactor($rm_weapon_specialization_desc, $rm_weapon_specialization_modifier);
                 }
             }
 
             return $rm_weapon_specialization;
+        }
+
+        private function getWeaponSpecializationModifier(PlayerCharacterWeapon $player_character_weapon) {
+            if ($player_character_weapon->getMissileWeaponSubtype() == WEAPON_SUBTYPE_BOW) {
+                return 2;
+            } else if ($player_character_weapon->getMissileWeaponSubtype() == WEAPON_SUBTYPE_CROSSBOW) {
+                return 2;
+            } else {
+                return 1;
+            }
         }
 
         private function getRacialBonus(CharacterDetails $character_details, PlayerCharacterWeapon $player_character_weapon) {

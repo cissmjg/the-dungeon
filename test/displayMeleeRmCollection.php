@@ -56,7 +56,7 @@
                 $mounted_melee_rm_hit_calculator->gather($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
                 $mounted_melee_to_hit_modification = $mounted_melee_rm_hit_calculator->aggregate();
 
-                $mounted_melee_rm_damage_calculator = new meleeElvenCavalierDamageRmCollectionCalculator();
+                $mounted_melee_rm_damage_calculator = new MeleeElvenCavalierDamageRmCollectionCalculator();
                 $mounted_melee_rm_damage_calculator->setCombatMode(COMBAT_MODE_MOUNTED);
                 $mounted_melee_rm_damage_calculator->gather($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
                 $mounted_melee_damage_modification = $mounted_melee_rm_damage_calculator->aggregate();

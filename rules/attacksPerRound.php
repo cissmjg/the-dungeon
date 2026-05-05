@@ -165,7 +165,7 @@ function getCavalierAttacksPerRound($character_level, $is_weapon_preferred, $is_
     }
 
     if ($weapon_proficiency_id == SHORT_BOW) {
-        if (character_level >= 1 && $character_level < 6) {
+        if ($character_level >= 1 && $character_level < 6) {
             return ATTACKS_PER_ROUND_1_FOR_1;
         }
 
