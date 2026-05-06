@@ -9,11 +9,16 @@
     require_once __DIR__ . '/../classes/rollModifier/missilePointBlankDamageRmCollectionCalculator.php';
     require_once __DIR__ . '/../classes/rollModifier/missileShortRangeToHitRmCollectionCalculator.php';
     require_once __DIR__ . '/../classes/rollModifier/missileShortRangeDamageRmCollectionCalculator.php';
+    require_once __DIR__ . '/../classes/rollModifier/missileMediumRangeToHitRmCollectionCalculator.php';
+    require_once __DIR__ . '/../classes/rollModifier/missileMediumRangeDamageRmCollectionCalculator.php';
     require_once __DIR__ . '/../classes/rollModifier/missileElvenCavalierShortRangeToHitRmCollectionCalculator.php';
+    require_once __DIR__ . '/../classes/rollModifier/missileElvenCavalierMediumRangeToHitRmCollectionCalculator.php';
     require_once __DIR__ . '/../classes/rollModifier/missileArcherPointBlankToHitRmCollectionCalculator.php';
     require_once __DIR__ . '/../classes/rollModifier/missileArcherPointBlankDamageRmCollectionCalculator.php';
     require_once __DIR__ . '/../classes/rollModifier/missileArcherShortRangeToHitRmCollectionCalculator.php';
     require_once __DIR__ . '/../classes/rollModifier/missileArcherShortRangeDamageRmCollectionCalculator.php';
+    require_once __DIR__ . '/../classes/rollModifier/missileArcherMediumRangeToHitRmCollectionCalculator.php';
+    require_once __DIR__ . '/../classes/rollModifier/missileArcherMediumRangeDamageRmCollectionCalculator.php';
     require_once __DIR__ . '/../classes/rollModifier/rmUIContainer.php';
     require_once __DIR__ . '/../dbio/constants/skills.php';
     require_once __DIR__ . '/../dbio/constants/weaponType.php';
@@ -53,15 +58,15 @@
     if ($primary_class->getClassId() == ELVEN_CAVALIER) {
         $class_id = $character_details->getBestMeleeClassId();
         $class_level = $character_details->getLevelForClass($class_id);
-        echo '========================================= Missile Mounted Short ==========================================' . PHP_EOL;
+        echo '========================================= Missile Mounted Medium ==========================================' . PHP_EOL;
         echo 'Missile Class: [' . $character_details->getDescriptionForClassId($class_id) . '] Level: [' . $class_level . ']' . PHP_EOL;
         foreach($player_character_weapon_set->getAll() AS $player_character_weapon) {
             if ($player_character_weapon->getMissileWeaponType() == WEAPON_TYPE_MISSILE) {
-                $mounted_missile_rm_hit_calculator = new MissileElvenCavalierShortRangeToHitRmCollectionCalculator();
+                $mounted_missile_rm_hit_calculator = new MissileElvenCavalierMediumRangeToHitRmCollectionCalculator();
                 $mounted_missile_rm_hit_calculator->gather($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
                 $mounted_missile_to_hit_modification = $mounted_missile_rm_hit_calculator->aggregate();
 
-                $mounted_missile_rm_damage_calculator = new MissileShortRangeDamageRmCollectionCalculator();
+                $mounted_missile_rm_damage_calculator = new MissileMediumRangeDamageRmCollectionCalculator();
                 $mounted_missile_rm_damage_calculator->gather($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
                 $mounted_missile_damage_modification = $mounted_missile_rm_damage_calculator->aggregate();
 
@@ -84,15 +89,15 @@
             }
         }
 
-        echo '========================================= Missile Unmounted Short ========================================' . PHP_EOL;
+        echo '========================================= Missile Unmounted Medium ========================================' . PHP_EOL;
         echo 'Melee Class: [' . $character_details->getDescriptionForClassId($class_id) . '] Level: [' . $class_level . ']' . PHP_EOL;
         foreach($player_character_weapon_set->getAll() AS $player_character_weapon) {
             if ($player_character_weapon->getMissileWeaponType() == WEAPON_TYPE_MISSILE) {
-                $mounted_missile_rm_hit_calculator = new MissileElvenCavalierShortRangeToHitRmCollectionCalculator();
+                $mounted_missile_rm_hit_calculator = new MissileElvenCavalierMediumRangeToHitRmCollectionCalculator();
                 $mounted_missile_rm_hit_calculator->gather($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
                 $mounted_missile_to_hit_modification = $mounted_missile_rm_hit_calculator->aggregate();
 
-                $mounted_missile_rm_damage_calculator = new MissileShortRangeDamageRmCollectionCalculator();
+                $mounted_missile_rm_damage_calculator = new MissileMediumRangeDamageRmCollectionCalculator();
                 $mounted_missile_rm_damage_calculator->gather($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
                 $mounted_missile_damage_modification = $mounted_missile_rm_damage_calculator->aggregate();
 
@@ -117,16 +122,16 @@
     } else if ($character_details->containsClassId(ARCHER) || $character_details->containsClassId(ARCHER_RANGER)) {
         $class_id = $character_details->getBestMeleeClassId();
         $class_level = $character_details->getLevelForClass($class_id);
-        echo '========================================= Archer Missile Point Blank ==================================================' . PHP_EOL;
+        echo '========================================= Archer Missile Medium ==================================================' . PHP_EOL;
         echo 'Missile Class: [' . $character_details->getDescriptionForClassId($class_id) . '] Level: [' . $class_level . ']' . PHP_EOL;
 
         foreach($player_character_weapon_set->getAll() AS $player_character_weapon) {
             if ($player_character_weapon->getMissileWeaponType() == WEAPON_TYPE_MISSILE) {
-                $missile_rm_hit_calculator = new MissileArcherPointBlankToHitRmCollectionCalculator();
+                $missile_rm_hit_calculator = new MissileArcherMediumRangeToHitRmCollectionCalculator();
                 $missile_rm_hit_calculator->gather($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
                 $missile_to_hit_modification = $missile_rm_hit_calculator->aggregate();
 
-                $missile_rm_damage_calculator = new MissileArcherPointBlankDamageRmCollectionCalculator();
+                $missile_rm_damage_calculator = new MissileArcherMediumRangeDamageRmCollectionCalculator();
                 $missile_rm_damage_calculator->gather($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
                 $missile_damage_modification = $missile_rm_damage_calculator->aggregate();
 
@@ -158,15 +163,15 @@
     } else {
         $class_id = $character_details->getBestMeleeClassId();
         $class_level = $character_details->getLevelForClass($class_id);
-        echo '========================================= Missile Point Blank ==================================================' . PHP_EOL;
+        echo '========================================= Missile Medium ==================================================' . PHP_EOL;
         echo 'Missile Class: [' . $character_details->getDescriptionForClassId($class_id) . '] Level: [' . $class_level . ']' . PHP_EOL;
         foreach($player_character_weapon_set->getAll() AS $player_character_weapon) {
             if ($player_character_weapon->getMissileWeaponType() == WEAPON_TYPE_MISSILE) {
-                $missile_rm_hit_calculator = new MissilePointBlankToHitRmCollectionCalculator();
+                $missile_rm_hit_calculator = new MissileMediumRangeToHitRmCollectionCalculator();
                 $missile_rm_hit_calculator->gather($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
                 $missile_to_hit_modification = $missile_rm_hit_calculator->aggregate();
 
-                $missile_rm_damage_calculator = new MissilePointBlankDamageRmCollectionCalculator();
+                $missile_rm_damage_calculator = new MissileMediumRangeDamageRmCollectionCalculator();
                 $missile_rm_damage_calculator->gather($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
                 $missile_damage_modification = $missile_rm_damage_calculator->aggregate();
 

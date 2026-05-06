@@ -17,6 +17,8 @@
 
     class MissilePointBlankToHitRmCollectionCalculator extends RmCollectionCalculator {
 
+        const POINT_BLANK_PENALTY = 0;
+
         protected $rm_pb_collection;
         public function getRmCollection() {
             return $this->rm_pb_collection;
@@ -33,6 +35,10 @@
             if (!$point_blank_available) {
                 return;
             }
+            
+            // Point Blank penalty
+            $rm_point_blank = $this->getRmPointBlankPenalty();
+            $this->rm_pb_collection->add($rm_point_blank);
 
             // Attributes
             $rm_attribute_bonus = $this->getAttributeModifier($character_details, $player_character_skill_set, $attribute_metadata, $player_character_weapon);
@@ -97,6 +103,16 @@
 
             return false;
         }
+        
+        private function getRmPointBlankPenalty() {
+            $rm_point_blank_penalty_desc = "Point Blank";
+            $rm_point_blank_penalty_modified = MissilePointBlankToHitRmCollectionCalculator::POINT_BLANK_PENALTY;
+            $rm_point_blank = new RmFactor($rm_point_blank_penalty_desc, $rm_point_blank_penalty_modified);
+            $rm_point_blank->setRmCategory(ROLL_MODIFIER_PENALTY);
+
+            return $rm_point_blank;
+        }
+
         private function getAttributeModifier(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, AttributeMetadata $attribute_metadata, PlayerCharacterWeapon $player_character_weapon) {
             $has_zen_archery = count($player_character_skill_set->getAllSkillInstances(ZEN_ARCHERY)) > 0;
 
