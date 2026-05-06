@@ -185,9 +185,9 @@
 
         private function getWeaponSpecializationModifier(PlayerCharacterWeapon $player_character_weapon) {
             if ($player_character_weapon->getMissileWeaponSubtype() == WEAPON_SUBTYPE_BOW) {
-                return 2;
+                return 1;
             } else if ($player_character_weapon->getMissileWeaponSubtype() == WEAPON_SUBTYPE_CROSSBOW) {
-                return 2;
+                return 1;
             } else {
                 return 1;
             }

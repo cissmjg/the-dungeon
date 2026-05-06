@@ -119,12 +119,21 @@
                 $first_weapon_specialization = $existing_weapon_specialization[0];
                 if ($first_weapon_specialization->getWeaponProficiencyId() == $player_character_weapon->getWeaponProficiencyId()) {
                     $rm_weapon_specialization_desc = "Specialization";
-                    $rm_weapon_specialization_modifier = 2;
+                    $rm_weapon_specialization_modifier = $this->getWeaponSpecializationModifier($player_character_weapon);
                     $rm_weapon_specialization = new RmFactor($rm_weapon_specialization_desc, $rm_weapon_specialization_modifier);
                 }
             }
 
             return $rm_weapon_specialization;
+        }
+        private function getWeaponSpecializationModifier(PlayerCharacterWeapon $player_character_weapon) {
+            if ($player_character_weapon->getMissileWeaponSubtype() == WEAPON_SUBTYPE_BOW) {
+                return 1;
+            } else if ($player_character_weapon->getMissileWeaponSubtype() == WEAPON_SUBTYPE_CROSSBOW) {
+                return 1;
+            } else {
+                return 2;
+            }
         }
 
         private function getWeaponBonus(PlayerCharacterWeapon $player_character_weapon) {
