@@ -15,15 +15,15 @@
     require_once __DIR__ . '/../../dbio/constants/characterRaces.php';
     require_once __DIR__ . '/../../webio/craftStatus.php';
 
-    class MissileMediumRangeDamageRmCollectionCalculator extends RmCollectionCalculator {
+    class MissileLongRangeDamageRmCollectionCalculator extends RmCollectionCalculator {
 
-        protected $rm_medium_collection;
+        protected $rm_long_collection;
         public function getRmCollection() {
-            return $this->rm_medium_collection;
+            return $this->rm_long_collection;
         }
 
         public function __construct() {
-            $this->rm_medium_collection = new RmCollection();
+            $this->rm_long_collection = new RmCollection();
         }
 
         public function gather(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
@@ -33,14 +33,14 @@
 
                 // Skills
                 $rm_skill_collection = $this->getRmSkills($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
-                $this->rm_medium_collection->addAll($rm_skill_collection);
+                $this->rm_long_collection->addAll($rm_skill_collection);
                 
             }
 
             // Weapon
             $rm_weapon = $this->getWeaponBonus($player_character_weapon);
             if (!empty($rm_weapon)) {
-                $this->rm_medium_collection->add($rm_weapon);
+                $this->rm_long_collection->add($rm_weapon);
             }
         }
 
