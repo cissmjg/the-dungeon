@@ -9,6 +9,7 @@
     require_once __DIR__ . '/../attributeMetadata.php';
 
     require_once __DIR__ . '/../../dbio/constants/skills.php';
+    require_once __DIR__ . '/../../dbio/constants/mountedCombatMode.php';
     require_once __DIR__ . '/../../dbio/constants/weapons.php';
     require_once __DIR__ . '/../../dbio/constants/weaponType.php';
     require_once __DIR__ . '/../../dbio/constants/characterRaces.php';
@@ -19,6 +20,15 @@
         protected $rm_melee_to_hit_collection;
         public function getRmCollection() {
             return $this->rm_melee_to_hit_collection;
+        }
+
+        protected $combat_mode = COMBAT_MODE_UNMOUNTED;
+        public function getCombatMode() {
+            return $this->combat_mode;
+        }
+
+        public function setCombatMode($combat_mode) {
+            $this->combat_mode = $combat_mode;
         }
 
         public function __construct() {
@@ -42,6 +52,12 @@
                  // Check for non-proficiency
                 $rm_non_proficient = $this->getNonProficiencyPenalty($character_details);
                 $this->rm_melee_to_hit_collection->add($rm_non_proficient);
+            }
+
+            // Mounted Combat Specialist
+            $rm_mounted_attack_specialist = $this->getMountAttackSpecialistBonus($player_character_skill_set);
+            if (!empty($rm_mounted_attack_specialist)) {
+                $this->rm_melee_to_hit_collection->add($rm_mounted_attack_specialist);
             }
 
             // Race
@@ -251,6 +267,18 @@
             return $rm_weapon;
         }
 
+        private function getMountAttackSpecialistBonus(PlayerCharacterSkillSet $player_character_skill_set) {
+            $rm_mounted_attack_specialist = null;
+            $has_mounted_attack_specialist = count($player_character_skill_set->getAllSkillInstances(MOUNTED_ATTACK_SPECIALIST));
+
+            if ($has_mounted_attack_specialist && $this->combat_mode == COMBAT_MODE_MOUNTED) {
+                $rm_mounted_attack_specialist_desc = "Mounted Attack Specialist";
+                $rm_mounted_attack_specialist_modifier = 2;
+                $rm_mounted_attack_specialist = new RmFactor($rm_mounted_attack_specialist_desc, $rm_mounted_attack_specialist_modifier);
+            }
+
+            return $rm_mounted_attack_specialist;
+        }
         private function getNonProficiencyPenalty(CharacterDetails $character_details) {
             $rm_non_proficiency_desc = "Non Proficiency Penalty";
             $rm_non_proficient = new RmFactor($rm_non_proficiency_desc, $character_details->getNonProficienyPenalty());

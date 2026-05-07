@@ -11,6 +11,7 @@
 
     require_once __DIR__ . '/../../dbio/constants/skills.php';
     require_once __DIR__ . '/../../dbio/constants/weapons.php';
+    require_once __DIR__ . '/../../dbio/constants/mountedCombatMode.php';
 
     class MeleeDamageRmCollectionCalculator extends RmCollectionCalculator {
 
@@ -19,6 +20,14 @@
             return $this->rm_melee_dmg_collection;
         }
 
+        protected $combat_mode = COMBAT_MODE_UNMOUNTED;
+        public function getCombatMode() {
+            return $this->combat_mode;
+        }
+
+        public function setCombatMode($combat_mode) {
+            $this->combat_mode = $combat_mode;
+        }
         public function __construct() {
             $this->rm_melee_dmg_collection = new RmCollection();
         }

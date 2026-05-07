@@ -7,15 +7,6 @@
 
 class MeleeElvenCavalierDamageRmCollectionCalculator  extends meleeDamageRmCollectionCalculator {
 
-    private $combat_mode;
-    public function getCombatMode() {
-        return $this->combat_mode;
-    }
-
-    public function setCombatMode($combat_mode) {
-        $this->combat_mode = $combat_mode;
-    }
-
     public function gather(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
         parent::gather($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
 
