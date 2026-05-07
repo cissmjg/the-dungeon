@@ -7,7 +7,7 @@ require_once __DIR__ . '/rollModifier/meleeToHitRmCollectionCalculator.php';
 require_once __DIR__ . '/rollModifier/meleeDamageRmCollectionCalculator.php';
 
 require_once __DIR__ . '/../helper/HtmlHelper.php';
-require_once __DIR__ . '/../dbio/constants/cavalierCombatMode.php';
+require_once __DIR__ . '/../dbio/constants/mountedCombatMode.php';
 
 class PlayerCharacterMeleeElvenCavalierWeaponRenderer extends PlayerCharacterMeleeWeaponRenderer {
 

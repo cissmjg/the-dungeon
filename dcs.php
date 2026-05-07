@@ -34,7 +34,7 @@ require_once __DIR__ . '/fa/faChevronIcon.php';
 require_once __DIR__ . '/dbio/constants/skills.php';
 require_once __DIR__ . '/dbio/constants/weaponType.php';
 require_once __DIR__ . '/dbio/constants/characterClasses.php';
-require_once __DIR__ . '/dbio/constants/cavalierCombatMode.php';
+require_once __DIR__ . '/dbio/constants/mountedCombatMode.php';
 
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';

@@ -3,7 +3,7 @@
     const COMBAT_MODE_MOUNTED = 1;
     const COMBAT_MODE_UNMOUNTED = 2;
 
-    function getCavalierCombatModeScription($combat_mode) {
+    function getMountedCombatModeDescription($combat_mode) {
         switch($combat_mode) {
             case COMBAT_MODE_MOUNTED:
                 return "Mounted";

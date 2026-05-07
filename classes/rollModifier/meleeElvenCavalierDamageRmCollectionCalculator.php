@@ -1,7 +1,7 @@
 <?php
     require_once 'rmFactor.php';
     require_once 'rmCollection.php';
-    require_once __DIR__ . '/../../dbio/constants/cavalierCombatMode.php';
+    require_once __DIR__ . '/../../dbio/constants/mountedCombatMode.php';
     require_once __DIR__ . '/../../dbio/constants/weapons.php';
     require_once __DIR__ . '/../../dbio/constants/skills.php';
 
