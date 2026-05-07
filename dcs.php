@@ -110,15 +110,7 @@ if ($primary_class->getClassId() == ELVEN_CAVALIER) {
 	echo '    <span class="fa fa-plus"></span> Mounted' . PHP_EOL;
 	echo '</a>' . PHP_EOL;
 	echo '<div class="togglePanelContent">' . PHP_EOL;
-	echo '  <div class="rmWeaponContainer">' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Weapon</div>' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Spd</div>' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Att</div>' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Dmg</div>' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Range</div>' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Bonus</div>' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Notes</div>' . PHP_EOL;
-	echo '  </div>' . PHP_EOL;
+	echo formatCombatSummaryHeader();
 
 	foreach($player_character_weapon_set->getAll() AS $player_character_weapon) {
 		$player_character_melee_weapon_renderer = new PlayerCharacterMeleeElvenCavalierWeaponRenderer($player_character_weapon, $player_character_skill_set, $character_details, $attribute_metadata);
@@ -136,16 +128,9 @@ if ($primary_class->getClassId() == ELVEN_CAVALIER) {
 	echo '<a href="#">' . PHP_EOL;
 	echo '    <span class="fa fa-plus"></span> Unmounted' . PHP_EOL;
 	echo '</a>' . PHP_EOL;
-	echo '<div class="togglePanelContent"\>' . PHP_EOL;
-	echo '  <div class="rmWeaponContainer">' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Weapon</div>' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Spd</div>' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Att</div>' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Dmg</div>' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Range</div>' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Bonus</div>' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Notes</div>' . PHP_EOL;
-	echo '  </div>' . PHP_EOL;
+	echo '<div class="togglePanelContent">' . PHP_EOL;
+	echo formatCombatSummaryHeader();
+	
 	foreach($player_character_weapon_set->getAll() AS $player_character_weapon) {
 		$player_character_melee_weapon_renderer = new PlayerCharacterMeleeElvenCavalierWeaponRenderer($player_character_weapon, $player_character_skill_set, $character_details, $attribute_metadata);
 		$background_style = $index % 2 == 0 ? 'rmWeaponContainerAltBackground' : '';
@@ -159,15 +144,7 @@ if ($primary_class->getClassId() == ELVEN_CAVALIER) {
 } else {
 	// If the character has Two Weapon Fighting, Format the display area
 	// $index++;
-	echo '  <div class="rmWeaponContainer">' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Weapon</div>' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Spd</div>' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Att</div>' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Dmg</div>' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Range</div>' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Bonus</div>' . PHP_EOL;
-	echo '    <div class="rmWeaponHeaderItem">Notes</div>' . PHP_EOL;
-	echo '  </div>' . PHP_EOL;
+	echo formatCombatSummaryHeader();
 	if (count($player_character_skill_set->getAllSkillInstances(TWO_WEAPON_FIGHTING)) > 0) {
 		$two_weapon_fighting_configs = new TwoWeaponFightingConfigurationSet();
 		$two_weapon_fighting_configs->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
@@ -465,6 +442,19 @@ function formatExperiencePoints(\CharacterDetails $character_details) {
 
 	return $xp_list;
 }
+function formatCombatSummaryHeader() {
 
+	$output_html  = '  <div class="rmWeaponContainer">' . PHP_EOL;
+	$output_html .= '<div class="rmWeaponHeaderItem">Weapon</div>';
+	$output_html .= '<div class="rmWeaponHeaderItem">Spd</div>';
+	$output_html .= '<div class="rmWeaponHeaderItem">Att</div>';
+	$output_html .= '<div class="rmWeaponHeaderItem">Dmg</div>';
+	$output_html .= '<div class="rmWeaponHeaderItem">Range</div>';
+	$output_html .= '<div class="rmWeaponHeaderItem">Bonus</div>';
+	$output_html .= '<div class="rmWeaponHeaderItem">Notes</div>';
+	$output_html .= '</div>' . PHP_EOL;
+
+	return $output_html;
+}
 ?>
 

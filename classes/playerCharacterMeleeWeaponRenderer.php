@@ -9,7 +9,7 @@ require_once __DIR__ . '/../helper/HtmlHelper.php';
 
 class PlayerCharacterMeleeWeaponRenderer {
 
-    private $ready_weapon_style = 'rmWeaponContainerIsReadyBackground';
+    protected $ready_weapon_style = 'rmWeaponContainerIsReadyBackground';
     public function getReadyWeaponStyle() {
         return $this->ready_weapon_style;
     }
@@ -18,32 +18,32 @@ class PlayerCharacterMeleeWeaponRenderer {
         $this->ready_weapon_style = $ready_weapon_style;
     }
 
-    private $player_character_weapon;
+    protected $player_character_weapon;
     public function getPlayerCharacterWeapon() {
         return $this->player_character_weapon;
     }
 
-    private $player_character_skill_set;
+    protected $player_character_skill_set;
     public function getPlayerCharacterSkillSet() {
         return $this->player_character_skill_set;
     }
 
-    private $character_details;
+    protected $character_details;
     public function getCharacterDetails() {
         return $this->character_details;
     }
 
-    private $attribute_metadata;
+    protected $attribute_metadata;
     public function getAttributeMetadata() {
         return $this->attribute_metadata;
     }
 
-    private $weapon_container_style = 'rmWeaponContainer';
+    protected $weapon_container_style = 'rmWeaponContainer';
     public function getWeaponContainerStyle() {
         return $this->weapon_container_style;
     }
 
-    private $weapon_container_background_style = '';
+    protected $weapon_container_background_style = '';
     public function getWeaponContainerBackgroundStyle() {
         return $this->weapon_container_background_style;
     }
@@ -92,7 +92,7 @@ class PlayerCharacterMeleeWeaponRenderer {
         return $weapon_panel;
     }
 
-    function buildWeaponDetailEntry(PlayerCharacterWeapon $player_character_weapon, MeleeToHitRmCollectionCalculator $melee_to_hit_calculator, MeleeDamageRmCollectionCalculator $melee_damage_calculator, $attacks_per_round, $weapon_panel_name, $weapon_panel_icon_name) {
+    protected function buildWeaponDetailEntry(PlayerCharacterWeapon $player_character_weapon, MeleeToHitRmCollectionCalculator $melee_to_hit_calculator, MeleeDamageRmCollectionCalculator $melee_damage_calculator, $attacks_per_round, $weapon_panel_name, $weapon_panel_icon_name) {
 
         $hit_adj = $this->calculateHitAdj($melee_to_hit_calculator);
         $dmg_adj = $this->calculateDmgAdj($melee_damage_calculator);
@@ -113,7 +113,7 @@ class PlayerCharacterMeleeWeaponRenderer {
         return $weapon_detail_entry;
     }
 
-    function calculateAttacksPerRound(PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, CharacterDetails $character_details) {
+    protected function calculateAttacksPerRound(PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, CharacterDetails $character_details) {
         $attacks_per_round = ATTACKS_PER_ROUND_1_FOR_1;
         $is_specialized = $player_character_skill_set->getAllSkillInstancesForWeapon(SPECIALIZATION,$player_character_weapon->getWeaponProficiencyId());
         if ($is_specialized) {
@@ -130,7 +130,7 @@ class PlayerCharacterMeleeWeaponRenderer {
         return getAttacksPerRoundDescription($attacks_per_round);
     }
 
-    function buildRmWeaponPanel(MeleeToHitRmCollectionCalculator $melee_to_hit_calculator, MeleeDamageRmCollectionCalculator $melee_damage_calculator, $weapon_panel_name) {
+    protected function buildRmWeaponPanel(MeleeToHitRmCollectionCalculator $melee_to_hit_calculator, MeleeDamageRmCollectionCalculator $melee_damage_calculator, $weapon_panel_name) {
 
         $output_html  = HtmlHelper::buildDivStartTagWithId('', $weapon_panel_name, true) . PHP_EOL;
         $output_html .= $this->buildUIHitRmCollection($melee_to_hit_calculator);
@@ -141,27 +141,27 @@ class PlayerCharacterMeleeWeaponRenderer {
         return $output_html;
     }
 
-    function calculateHitAdj(MeleeToHitRmCollectionCalculator $melee_to_hit_calculator) {
+    protected function calculateHitAdj(MeleeToHitRmCollectionCalculator $melee_to_hit_calculator) {
 
         return sprintf("%+d", $melee_to_hit_calculator->aggregate());
     }
 
-    function calculateDmgAdj(MeleeDamageRmCollectionCalculator $melee_damage_calculator) {
+    protected function calculateDmgAdj(MeleeDamageRmCollectionCalculator $melee_damage_calculator) {
 
         return sprintf("%+d", $melee_damage_calculator->aggregate());
     }
 
-    function buildUIHitRmCollection(MeleeToHitRmCollectionCalculator $melee_to_hit_calculator) {
+    protected function buildUIHitRmCollection(MeleeToHitRmCollectionCalculator $melee_to_hit_calculator) {
         $rm_ui_hit_container = new RmUIContainer($melee_to_hit_calculator->getRmCollection(), 'To Hit');
         return $rm_ui_hit_container->render();
     }
 
-    function buildUIDamageRmCollection(MeleeDamageRmCollectionCalculator $melee_damage_calculator) {
+    protected function buildUIDamageRmCollection(MeleeDamageRmCollectionCalculator $melee_damage_calculator) {
         $rm_ui_dmg_container = new RmUIContainer($melee_damage_calculator->getRmCollection(), 'Damage');
         return $rm_ui_dmg_container->render();
     }
 
-    function buildRmChevronClickIcon($rm_panel_id, $rm_panel_icon_id, $rm_icon_id) {
+    protected function buildRmChevronClickIcon($rm_panel_id, $rm_panel_icon_id, $rm_icon_id) {
         $chevron_icon = new FaChevronIcon();
         $chevron_icon->setOnClickJsFunction('rmChevronClick');
         $chevron_icon->addOnclickJsParameter($rm_panel_id);
