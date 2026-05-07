@@ -83,7 +83,7 @@ abstract class PlayerCharacterWeaponRenderer {
 
     abstract function render();
 
-    abstract function buildWeaponDetailEntry(PlayerCharacterWeapon $player_character_weapon, MeleeToHitRmCollectionCalculator $melee_to_hit_calculator, MeleeDamageRmCollectionCalculator $melee_damage_calculator, $attacks_per_round, $weapon_panel_name, $weapon_panel_icon_name);
+    abstract function buildWeaponDetailEntry(PlayerCharacterWeapon $player_character_weapon, RmCollectionCalculator $to_hit_calculator, RmCollectionCalculator $damage_calculator, $attacks_per_round, $weapon_panel_name, $weapon_panel_icon_name);
 
     abstract function calculateAttacksPerRound(PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, CharacterDetails $character_details);
 
