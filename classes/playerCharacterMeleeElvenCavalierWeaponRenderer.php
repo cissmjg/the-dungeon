@@ -17,6 +17,7 @@ class PlayerCharacterMeleeElvenCavalierWeaponRenderer extends PlayerCharacterMel
         }
 
         $melee_to_hit_calculator = new MeleeElvenCavalierToHitRmCollectionCalculator();
+        $melee_to_hit_calculator->setCombatMode($this->getCombatMode());
         $melee_to_hit_calculator->gather($this->character_details, $this->player_character_skill_set, $this->player_character_weapon, $this->attribute_metadata);
 
         $melee_rm_dmg_calculator = new MeleeElvenCavalierDamageRmCollectionCalculator();
