@@ -18,4 +18,11 @@
                 return 'UNKNOWN';
         }
     }
+
+    enum MissileRange {
+        case PointBlank;
+        case Short;
+        case Medium;
+        case Long;
+    }
 ?>

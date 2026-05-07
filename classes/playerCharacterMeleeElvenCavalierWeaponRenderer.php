@@ -11,15 +11,6 @@ require_once __DIR__ . '/../dbio/constants/mountedCombatMode.php';
 
 class PlayerCharacterMeleeElvenCavalierWeaponRenderer extends PlayerCharacterMeleeWeaponRenderer {
 
-    private $combat_mode;
-    public function getCombatMode() {
-        return $this->combat_mode;
-    }
-
-    public function setCombatMode($combat_mode) {
-        $this->combat_mode = $combat_mode;
-    }
-
     public function render() {
         if (!$this->player_character_weapon->getMeleeWeaponType() == WEAPON_TYPE_MELEE) {
             return '';
@@ -44,7 +35,7 @@ class PlayerCharacterMeleeElvenCavalierWeaponRenderer extends PlayerCharacterMel
         return $weapon_panel;
     }
 
-    protected function calculateAttacksPerRound(PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, CharacterDetails $character_details) {
+    public function calculateAttacksPerRound(PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, CharacterDetails $character_details) {
         $attacks_per_round = ATTACKS_PER_ROUND_1_FOR_1;
         $primary_class = $character_details->getPrimaryClass();
 
