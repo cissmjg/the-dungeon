@@ -40,7 +40,7 @@ class PlayerCharacterMeleeElvenCavalierWeaponRenderer extends PlayerCharacterMel
         $primary_class = $character_details->getPrimaryClass();
 
         $is_preferred = $player_character_weapon->getWeaponProficiencyId() == LONG_SWORD || $player_character_skill_set->isWeaponPreferred($player_character_weapon->getWeaponProficiencyId());
-        $attacks_per_round = getAttacksPerRound($primary_class->getClassId(), $primary_class->getClassLevel(), $is_preferred, $this->combat_mode == COMBAT_MODE_MOUNTED, $player_character_weapon->getWeaponProficiencyId());
+        $attacks_per_round = getAttacksPerRound($primary_class->getClassId(), $primary_class->getClassLevel(), $is_preferred, $this->getCombatMode() == COMBAT_MODE_MOUNTED, $player_character_weapon->getWeaponProficiencyId());
 
         return getAttacksPerRoundDescription($attacks_per_round);
     }
