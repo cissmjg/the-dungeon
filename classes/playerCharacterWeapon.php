@@ -161,7 +161,8 @@ class PlayerCharacterWeapon implements JsonSerializable {
             }
         }
 
-        $this->isProficient = WeaponProficiencyHelper::isProficient($this->meleeWeaponSubtype, $this->weaponProficiencyId, $player_character_skill_set);
+        $weapon_subtype = $this->meleeWeaponSubtype != 0 ? $this->meleeWeaponSubtype : $this->missileWeaponSubtype;
+        $this->isProficient = WeaponProficiencyHelper::isProficient($weapon_subtype, $this->weaponProficiencyId, $player_character_skill_set);
     }
 
     public function fromJSON($weapon_detail_json, $player_character_skill_set) {
