@@ -130,7 +130,11 @@ class PlayerCharacterWeapon implements JsonSerializable {
             $this->playerNote3                  = $weapon_detail['player_character_weapon_player_note3'];
             $this->strengthBonusAvailable       = $weapon_detail['player_character_weapon_strength_bonus_available'];
             $this->missileWeaponSpeed           = $weapon_detail['player_character_weapon_speed'];
-            $this->missileWeaponDamage          = $weapon_detail['player_character_weapon_damage'];
+            if ($this->getWeaponProficiencyId() == SLING) {
+                $this->missileWeaponDamage          = '2d4/2d4+1';
+            } else {
+                $this->missileWeaponDamage          = $weapon_detail['player_character_weapon_damage'];
+            }
             $this->missileAttacksPerRound       = $weapon_detail['player_character_weapon_attacks_per_round'];
             $this->missileHitBonus              = $weapon_detail['player_character_weapon_hit_bonus'];
             $this->missileDamageBonus           = $weapon_detail['player_character_weapon_damage_bonus'];
@@ -146,9 +150,15 @@ class PlayerCharacterWeapon implements JsonSerializable {
             $this->missileSpec3DamageBonus      = $weapon_detail['player_character_weapon_spec3_damage_bonus'];
             $this->missileSpec3Description      = $weapon_detail['player_character_weapon_spec3_description'];
             $this->missileAdditionalText        = $weapon_detail['player_character_weapon_additional_text'];
-            $this->missileShortRange            = $weapon_detail['player_character_weapon_short_range'];
-            $this->missileMediumRange           = $weapon_detail['player_character_weapon_medium_range'];
-            $this->missileLongRange             = $weapon_detail['player_character_weapon_long_range'];
+            if ($this->getWeaponProficiencyId() == SLING) {
+                $this->missileShortRange            = '10';
+                $this->missileMediumRange           = '20';
+                $this->missileLongRange             = '40';
+            } else {
+                $this->missileShortRange            = $weapon_detail['player_character_weapon_short_range'];
+                $this->missileMediumRange           = $weapon_detail['player_character_weapon_medium_range'];
+                $this->missileLongRange             = $weapon_detail['player_character_weapon_long_range'];
+            }
         }
 
         $this->isProficient = WeaponProficiencyHelper::isProficient($this->meleeWeaponSubtype, $this->weaponProficiencyId, $player_character_skill_set);

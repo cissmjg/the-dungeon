@@ -68,7 +68,7 @@ class playerCharacterWeaponSet implements IteratorAggregate, JsonSerializable {
     private function addSkillBasedWeapons(PlayerCharacterSkillSet $player_character_skill_set) {
         $has_circle_kick = count($player_character_skill_set->getAllSkillInstances(CIRCLE_KICK)) > 0;
         if ($has_circle_kick) {
-            $player_character_weapon_properties = WeaponSkillHelper::buildCircleKickWeapon();
+            $player_character_weapon_properties = WeaponSkillHelper::buildCircleKickWeapon($this);
             $player_character_weapon = New PlayerCharacterWeapon();
             $player_character_weapon->populate($player_character_weapon_properties, $player_character_skill_set);
             $this->add($player_character_weapon);
@@ -76,7 +76,7 @@ class playerCharacterWeaponSet implements IteratorAggregate, JsonSerializable {
 
         $has_mantis_leap = count($player_character_skill_set->getAllSkillInstances(MANTIS_LEAP)) > 0;
         if ($has_mantis_leap) {
-            $player_character_weapon_properties = WeaponSkillHelper::buildMantisLeapWeapon();
+            $player_character_weapon_properties = WeaponSkillHelper::buildMantisLeapWeapon($this);
             $player_character_weapon = New PlayerCharacterWeapon();
             $player_character_weapon->populate($player_character_weapon_properties, $player_character_skill_set);
             $this->add($player_character_weapon);

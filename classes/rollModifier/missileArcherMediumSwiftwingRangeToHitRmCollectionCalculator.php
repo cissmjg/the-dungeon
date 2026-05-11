@@ -1,6 +1,6 @@
 <?php
     require_once 'rmFactor.php';
-    require_once 'missilePointBlankToHitRmCollectionCalculator.php';
+    require_once 'missileMediumSwiftwingRangeToHitRmCollectionCalculator.php';
 
     require_once __DIR__ . '/../characterDetails.php';
     require_once __DIR__ . '/../playerCharacterSkillSet.php';
@@ -9,28 +9,28 @@
 
     require_once __DIR__ . '/../../dbio/constants/characterClasses.php';
 
-    class MissileArcherPointBlankToHitRmCollectionCalculator extends MissilePointBlankToHitRmCollectionCalculator {
+    class MissileArcherMediumSwiftwingRangeToHitRmCollectionCalculator extends MissileMediumSwiftwingRangeToHitRmCollectionCalculator {
 
         private $to_hit_bonus = [];
 
         public function __construct() {
             parent::__construct();
 
-            // Point Blank To Hit modifiers
-            $this->to_hit_bonus[1] = 1;
-            $this->to_hit_bonus[2] = 1;
-            $this->to_hit_bonus[3] = 2;
-            $this->to_hit_bonus[4] = 2;
-            $this->to_hit_bonus[5] = 2;
-            $this->to_hit_bonus[6] = 2;
-            $this->to_hit_bonus[7] = 2;
-            $this->to_hit_bonus[8] = 2;
-            $this->to_hit_bonus[9] = 2;
-            $this->to_hit_bonus[10] = 3;
-            $this->to_hit_bonus[11] = 3;
-            $this->to_hit_bonus[12] = 3;
-            $this->to_hit_bonus[13] = 3;
-            $this->to_hit_bonus[14] = 3;
+            // Medium Range To Hit modifiers
+            $this->to_hit_bonus[1] = 0;
+            $this->to_hit_bonus[2] = 0;
+            $this->to_hit_bonus[3] = 0;
+            $this->to_hit_bonus[4] = 0;
+            $this->to_hit_bonus[5] = 0;
+            $this->to_hit_bonus[6] = 1;
+            $this->to_hit_bonus[7] = 1;
+            $this->to_hit_bonus[8] = 1;
+            $this->to_hit_bonus[9] = 1;
+            $this->to_hit_bonus[10] = 1;
+            $this->to_hit_bonus[11] = 2;
+            $this->to_hit_bonus[12] = 2;
+            $this->to_hit_bonus[13] = 2;
+            $this->to_hit_bonus[14] = 2;
         }
 
         public function gather(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
@@ -39,7 +39,7 @@
             $archer_level = $character_details->getLevelForClass(ARCHER);
             $archer_level = $archer_level == 0 ? $character_details->getLevelForClass(ARCHER_RANGER) : $archer_level;
             $rm_to_hit = $this->getToHitBonus($archer_level);
-            $this->rm_pb_collection->add($rm_to_hit);
+            $this->rm_medium_collection->add($rm_to_hit);
         }
 
         private function getToHitBonus($archer_level) {

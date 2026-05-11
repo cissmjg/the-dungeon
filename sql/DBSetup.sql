@@ -6873,7 +6873,7 @@ VALUES (1, 1, '7/5', 'd8/d8', '1/2', NULL, NULL, NULL, NULL, 3);
 
 -- 'Battle Axe'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (2, 2, '7', 'd8/d8', '2', '1', '2', '3', NULL, 3);
+VALUES (2, 2, '7', 'd8/d8', '2', '2', '4', '6', NULL, 3);
 
 -- 'Hand Axe'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)

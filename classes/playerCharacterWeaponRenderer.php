@@ -1,13 +1,23 @@
 <?php
+
+require_once __DIR__ . '/../dbio/constants/weapons.php';
 require_once __DIR__ . '/../dbio/constants/weaponType.php';
 require_once __DIR__ . '/../dbio/constants/weaponSubtype.php';
+require_once __DIR__ . '/../dbio/constants/characterClasses.php';
 require_once __DIR__ . '/../dbio/constants/mountedCombatMode.php';
+require_once __DIR__ . '/../dbio/constants/missileRanges.php';
 
+require_once __DIR__ . '/rollModifier/rmUIContainer.php';
 require_once __DIR__ . '/rollModifier/meleeToHitRmCollectionCalculator.php';
 require_once __DIR__ . '/rollModifier/meleeDamageRmCollectionCalculator.php';
 
 require_once __DIR__ . '/../helper/HtmlHelper.php';
 require_once __DIR__ . '/../fa/faChevronIcon.php';
+require_once __DIR__ . '/../fa/faChevronIndentedIcon.php';
+
+require_once 'playerCharacterWeapon.php';
+require_once 'playerCharacterSkillSet.php';
+require_once 'rowClassManager.php';
 
 abstract class PlayerCharacterWeaponRenderer {
 
@@ -63,36 +73,50 @@ abstract class PlayerCharacterWeaponRenderer {
         $this->weapon_container_background_style = $weapon_container_background_style;
     }
 
-    public function formatCellStyle() {
+    public function formatCellStyle($use_previous_class) {
         $cell_style = $this->weapon_container_style;
-        if ($this->player_character_weapon->getIsReady()) {
-            $cell_style .= ' ' . $this->ready_weapon_style;
-        } else if (strlen($this->weapon_container_background_style) > 0) {
-            $cell_style .= ' ' . $this->weapon_container_background_style;
-        }
 
+        $cell_style .= ' ' . $this->getRowClassManager()->getClassName();
         return $cell_style;
     }
 
-    public function __construct(PlayerCharacterWeapon $player_character_weapon, PlayerCharacterSkillSet $player_character_skill_set, CharacterDetails $character_details, AttributeMetadata $attribute_metadata) {
+    protected $row_class_manager;
+    public function getRowClassManager() {
+        return $this->row_class_manager;
+    }
+
+    public function __construct(PlayerCharacterWeapon $player_character_weapon, PlayerCharacterSkillSet $player_character_skill_set, CharacterDetails $character_details, AttributeMetadata $attribute_metadata, RowClassManager $row_class_manager) {
         $this->player_character_weapon = $player_character_weapon;
         $this->player_character_skill_set = $player_character_skill_set;
         $this->character_details = $character_details;
         $this->attribute_metadata = $attribute_metadata;
+        $this->row_class_manager = $row_class_manager;
     }
 
     abstract function render();
 
-    abstract function buildWeaponDetailEntry(PlayerCharacterWeapon $player_character_weapon, RmCollectionCalculator $to_hit_calculator, RmCollectionCalculator $damage_calculator, $attacks_per_round, $weapon_panel_name, $weapon_panel_icon_name);
+    abstract function buildWeaponDetailEntry(PlayerCharacterWeapon $player_character_weapon, RmCollectionCalculator $to_hit_calculator, RmCollectionCalculator $damage_calculator, $attacks_per_round, $weapon_panel_name, $weapon_panel_icon_name, MissileRange $missile_range);
 
     abstract function calculateAttacksPerRound(PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, CharacterDetails $character_details);
 
     protected function buildRmWeaponPanel(RmCollectionCalculator $to_hit_calculator, RmCollectionCalculator $damage_calculator, $weapon_panel_name) {
 
+        if ($to_hit_calculator->getRmCollection()->empty() && $damage_calculator->getRmCollection()->empty()) {
+            return '';
+        }
+
         $output_html  = HtmlHelper::buildDivStartTagWithId('', $weapon_panel_name, true) . PHP_EOL;
-        $output_html .= $this->buildUIHitRmCollection($to_hit_calculator);
-        $output_html .= HtmlHelper::buildDivTag('', '&nbsp;');
-        $output_html .= $this->buildUIDamageRmCollection($damage_calculator);
+        if (!$to_hit_calculator->getRmCollection()->empty()) {
+            $output_html .= $this->buildUIHitRmCollection($to_hit_calculator);
+            if (!$damage_calculator->getRmCollection()->empty()) {
+                $output_html .= HtmlHelper::buildDivTag('', '&nbsp;');
+            }
+        }
+
+        if (!$damage_calculator->getRmCollection()->empty()) {
+            $output_html .= $this->buildUIDamageRmCollection($damage_calculator);
+        }
+        
         $output_html .= HtmlHelper::buildDivEndTag() . PHP_EOL;
 
         return $output_html;
@@ -120,6 +144,18 @@ abstract class PlayerCharacterWeaponRenderer {
 
     protected function buildRmChevronClickIcon($rm_panel_id, $rm_panel_icon_id, $rm_icon_id) {
         $chevron_icon = new FaChevronIcon();
+        $this->decorateChevron($chevron_icon, $rm_panel_id, $rm_panel_icon_id, $rm_icon_id);
+
+        return $chevron_icon->build();
+    }
+
+    protected function buildRmChevronIndentedClickIcon($rm_panel_id, $rm_panel_icon_id, $rm_icon_id) {
+        $chevron_icon = new FaChevronIndentedIcon();
+        $this->decorateChevron($chevron_icon, $rm_panel_id, $rm_panel_icon_id, $rm_icon_id);
+
+        return $chevron_icon->build();
+    }
+    private function decorateChevron(FaActionIcon $chevron_icon, $rm_panel_id, $rm_panel_icon_id, $rm_icon_id) {
         $chevron_icon->setOnClickJsFunction('rmChevronClick');
         $chevron_icon->addOnclickJsParameter($rm_panel_id);
         $chevron_icon->addOnclickJsParameter($rm_panel_icon_id);
@@ -127,7 +163,19 @@ abstract class PlayerCharacterWeaponRenderer {
         $chevron_icon->addUnquotedOnclickJsParameter('DEFAULT_OPEN_ICON_CLASS');	// Javascript constant NOT PHP constant
         $chevron_icon->setIconId($rm_icon_id);
 
-        return $chevron_icon->build();
+        return $chevron_icon;
+    }
+
+    protected function isPreferred(PlayerCharacterWeapon $player_character_weapon, PlayerCharacterSkillSet $player_character_skill_set, CharacterDetails $character_details) {
+        if (!$character_details->isCavalierType()) {
+            return false;
+        }
+
+        $is_long_sword = $player_character_weapon->getWeaponProficiencyId() == LONG_SWORD || $player_character_weapon->getWeaponProficiencyId() == ELVEN_THIN_BLADE;
+        $is_short_bow = $player_character_weapon->getWeaponProficiencyId() == SHORT_BOW;
+        $is_preferred_cavalier_level = $player_character_skill_set->isWeaponPreferred($player_character_weapon->getWeaponProficiencyId());
+        
+        return $is_long_sword || $is_short_bow || $is_preferred_cavalier_level;
     }
 }
 ?>

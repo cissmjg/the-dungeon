@@ -144,6 +144,9 @@ function isDivineSpellcaster($class_id) {
 
 function isCharacterFighterType($class_id) {
     return ($class_id == FIGHTER || $class_id == BARBARIAN || $class_id == RANGER || $class_id == ARCHER || $class_id == ARCHER_RANGER || $class_id == BERSERKER || $class_id == MARINER || $class_id == SENTINAL);
+}
 
+function isCavalierType($class_id) {
+    return ($class_id == CAVALIER || $class_id == PALADIN || $class_id == ELVEN_CAVALIER);
 }
 ?>

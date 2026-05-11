@@ -23,13 +23,7 @@ require_once __DIR__ . '/classes/playerCharacterMeleeElvenCavalierWeaponRenderer
 require_once __DIR__ . '/classes/twoWeaponFightingRenderer.php';
 require_once __DIR__ . '/classes/twoWeaponFightingConfiguration.php';
 require_once __DIR__ . '/classes/twoWeaponFightingConfigurationSet.php';
-require_once __DIR__ . '/classes/rollModifier/meleeToHitRmCollectionCalculator.php';
-require_once __DIR__ . '/classes/rollModifier/meleeDamageRmCollectionCalculator.php';
-require_once __DIR__ . '/classes/rollModifier/meleeElvenCavalierToHitRmCollectionCalculator.php';
-require_once __DIR__ . '/classes/rollModifier/meleeElvenCavalierDamageRmCollectionCalculator.php';
-require_once __DIR__ . '/classes/rollModifier/rmUIContainer.php';
-require_once __DIR__ . '/rules/attacksPerRound.php';
-require_once __DIR__ . '/fa/faChevronIcon.php';
+require_once __DIR__ . '/classes/combatSummaryRenderer.php';
 
 require_once __DIR__ . '/dbio/constants/skills.php';
 require_once __DIR__ . '/dbio/constants/weaponType.php';
@@ -103,67 +97,10 @@ echo $html_header;
 <div>&nbsp;</div>
 <span style="font-weight: bold;">Combat Summary</span>
 <?php
-$index = 1;
-if ($primary_class->getClassId() == ELVEN_CAVALIER) {
-	echo '<div class="togglePanel">' . PHP_EOL;
-	echo '<a href="#">' . PHP_EOL;
-	echo '    <span class="fa fa-plus"></span> Mounted' . PHP_EOL;
-	echo '</a>' . PHP_EOL;
-	echo '<div class="togglePanelContent">' . PHP_EOL;
-	echo formatCombatSummaryHeader();
-
-	foreach($player_character_weapon_set->getAll() AS $player_character_weapon) {
-		$player_character_melee_weapon_renderer = new PlayerCharacterMeleeElvenCavalierWeaponRenderer($player_character_weapon, $player_character_skill_set, $character_details, $attribute_metadata);
-		$background_style = $index % 2 == 0 ? 'rmWeaponContainerAltBackground' : '';
-		$player_character_melee_weapon_renderer->setWeaponContainerBackgroundStyle($background_style);
-		$player_character_melee_weapon_renderer->setCombatMode(COMBAT_MODE_MOUNTED);
-		echo $player_character_melee_weapon_renderer->render();
-
-		$index++;
-	}
-
-	echo '</div>' . PHP_EOL;
-	echo '<div>&nbsp;</div>' . PHP_EOL;
-	echo '<div class="togglePanel">' . PHP_EOL;
-	echo '<a href="#">' . PHP_EOL;
-	echo '    <span class="fa fa-plus"></span> Unmounted' . PHP_EOL;
-	echo '</a>' . PHP_EOL;
-	echo '<div class="togglePanelContent">' . PHP_EOL;
-	echo formatCombatSummaryHeader();
-	
-	foreach($player_character_weapon_set->getAll() AS $player_character_weapon) {
-		$player_character_melee_weapon_renderer = new PlayerCharacterMeleeElvenCavalierWeaponRenderer($player_character_weapon, $player_character_skill_set, $character_details, $attribute_metadata);
-		$background_style = $index % 2 == 0 ? 'rmWeaponContainerAltBackground' : '';
-		$player_character_melee_weapon_renderer->setWeaponContainerBackgroundStyle($background_style);
-		$player_character_melee_weapon_renderer->setCombatMode(COMBAT_MODE_UNMOUNTED);
-		echo $player_character_melee_weapon_renderer->render();
-
-		$index++;
-	}
-	echo '</div>' . PHP_EOL;
-} else {
-	// If the character has Two Weapon Fighting, Format the display area
-	// $index++;
-	echo formatCombatSummaryHeader();
-	if (count($player_character_skill_set->getAllSkillInstances(TWO_WEAPON_FIGHTING)) > 0) {
-		$two_weapon_fighting_configs = new TwoWeaponFightingConfigurationSet();
-		$two_weapon_fighting_configs->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
-		foreach($two_weapon_fighting_configs AS $two_weapon_fighting_config) {
-			$two_weapon_renderer = new TwoWeaponFightingRenderer($two_weapon_fighting_config, $player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata);
-			$background_style = $index % 2 == 0 ? 'rmWeaponContainerAltBackground' : '';
-			$two_weapon_renderer->setWeaponContainerBackgroundStyle($background_style);
-			echo $two_weapon_renderer->render();
-			$index++;
-		}
-	}
-	foreach($player_character_weapon_set->getAll() AS $player_character_weapon) {
-		$player_character_melee_weapon_renderer = new PlayerCharacterMeleeWeaponRenderer($player_character_weapon, $player_character_skill_set, $character_details, $attribute_metadata);
-		$background_style = $index % 2 == 0 ? 'rmWeaponContainerAltBackground' : '';
-		$player_character_melee_weapon_renderer->setWeaponContainerBackgroundStyle($background_style);
-		echo $player_character_melee_weapon_renderer->render();
-		$index++;
-	}
-}
+    $combat_summary_renderer = new CombatSummaryRenderer($player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata);
+	$combat_summary_renderer->setPdo($pdo);
+	$combat_summary_renderer->setPlayerName($input[PLAYER_NAME]);
+    $combat_summary_renderer->render();
 ?>
 <div class="characterSheetContainer">
 	<div class="characterSheetColumn">

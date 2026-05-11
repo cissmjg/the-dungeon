@@ -30,7 +30,7 @@ class PlayerCharacterMeleeElvenCavalierWeaponRenderer extends PlayerCharacterMel
         $weapon_panel_name = 'weapon-' . $weapon_panel_section_name . $this->player_character_weapon->getWeaponId();
 		$weapon_panel_icon_name = 'weapon-icon-' . $weapon_panel_section_name . $this->player_character_weapon->getWeaponId();
         
-        $weapon_panel  = $this->buildWeaponDetailEntry($this->player_character_weapon, $melee_to_hit_calculator, $melee_rm_dmg_calculator, $attacks_per_round, $weapon_panel_name, $weapon_panel_icon_name);
+        $weapon_panel  = $this->buildWeaponDetailEntry($this->player_character_weapon, $melee_to_hit_calculator, $melee_rm_dmg_calculator, $attacks_per_round, $weapon_panel_name, $weapon_panel_icon_name, '');
         $weapon_panel .= $this->buildRmWeaponPanel($melee_to_hit_calculator, $melee_rm_dmg_calculator, $weapon_panel_name);
 
         return $weapon_panel;

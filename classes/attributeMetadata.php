@@ -509,6 +509,7 @@ class AttributeMetadata {
 
     public function calculateWisdomBonus($new_spell_level) {
         $character_wisdom = $this->character_details->getCharacterWisdom();
+        $has_exceptional_wisdom = !empty($this->character_details->getCharacterSuperWisdom());
 
         if ($new_spell_level == 1) {
             if ($character_wisdom < 13) {
@@ -539,18 +540,34 @@ class AttributeMetadata {
         }
         
         if ($new_spell_level == 3) {
-            if ($character_wisdom >= 17) {
+            if ($character_wisdom < 17) {
+                return 0;
+            }
+
+            if ($character_wisdom == 17) {
                 return 1;
+            }
+
+            if ($character_wisdom == 18) {
+                if ($has_exceptional_wisdom) {
+                    return 2;
+                } else {
+                    return 1;
+                }
             }
         }
 
         if ($new_spell_level == 4) {
-            if ($character_wisdom == 18) {
-                return 1;
+            if ($character_wisdom < 18) {
+                return 0;
             }
 
-            if ($character_wisdom == 19) {
-                return 2;
+            if ($character_wisdom == 18) {
+                if ($has_exceptional_wisdom) {
+                    return 2;
+                } else {
+                    return 1;
+                }
             }
         }
         

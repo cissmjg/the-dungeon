@@ -150,6 +150,10 @@
 	background-color: LightSteelBlue;
 }
 
+.rmWeaponContainerDefaultBackground {
+	background-color: white;
+}
+
 .rmWeaponContainerIsReadyBackground {
 	background-color: lightskyblue;
 }

@@ -19,10 +19,13 @@
         }
     }
 
-    enum MissileRange {
-        case PointBlank;
-        case Short;
-        case Medium;
-        case Long;
+    enum MissileRange: string {
+        case PointBlank = 'PointBlank';
+        case Short = 'Short';
+        case Medium = 'Medium';
+        case MediumSwiftwing = 'Medium-Swiftwing';
+        case Long = 'Long';
+        case LongSwiftwing = 'Long-Swiftwing';
+        case Other = 'Other';
     }
 ?>

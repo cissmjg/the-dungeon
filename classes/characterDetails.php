@@ -552,6 +552,11 @@ class CharacterDetails implements JsonSerializable
 		return $this->character_classes[CHARACTER_PRIMARY_CLASS];
 	}
 
+	public function isCavalierType() {
+		$class_id = $this->getPrimaryClass()->getClassId();
+		return isCavalierType($class_id);
+	}
+
 	public function isHalfElf() {
 		return isHalfElf($this->getRace());
 	}

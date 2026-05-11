@@ -1,5 +1,6 @@
 <?php
     require_once 'rmFactor.php';
+    require_once 'missileMediumRangeToHitRmCollectionCalculator.php';
 
     require_once __DIR__ . '/../characterDetails.php';
     require_once __DIR__ . '/../playerCharacterSkillSet.php';

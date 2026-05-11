@@ -1,12 +1,12 @@
 <?php
     require_once 'elvenCavalierPreferredWeaponHelper.php';
-    require_once 'missileLongRangeToHitRmCollectionCalculator.php';
+    require_once 'missileLongSwiftwingRangeToHitRmCollectionCalculator.php';
 
     require_once __DIR__ . '/../characterDetails.php';
     require_once __DIR__ . '/../playerCharacterSkillSet.php';
     require_once __DIR__ . '/../playerCharacterWeapon.php';
 
-    class MissileElvenCavalierLongRangeToHitRmCollectionCalculator extends MissileLongRangeToHitRmCollectionCalculator {
+    class MissileElvenCavalierLongSwiftwingRangeToHitRmCollectionCalculator extends MissileLongSwiftwingRangeToHitRmCollectionCalculator {
         public function gather(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
             parent::gather($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
             

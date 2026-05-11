@@ -1,30 +1,30 @@
 <?php
     require_once 'elvenCavalierPreferredWeaponHelper.php';
-    require_once 'missileLongRangeToHitRmCollectionCalculator.php';
+    require_once 'missileMediumSwiftwingRangeToHitRmCollectionCalculator.php';
 
     require_once __DIR__ . '/../characterDetails.php';
     require_once __DIR__ . '/../playerCharacterSkillSet.php';
     require_once __DIR__ . '/../playerCharacterWeapon.php';
 
-    class MissileElvenCavalierLongRangeToHitRmCollectionCalculator extends MissileLongRangeToHitRmCollectionCalculator {
+    class MissileElvenCavalierMediumSwiftwingRangeToHitRmCollectionCalculator extends MissileMediumSwiftwingRangeToHitRmCollectionCalculator {
         public function gather(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
             parent::gather($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
             
             // Check to see if a 4th level preferred weapon is present
             $rm_4th_level_preferred_weapon = ElvenCavalierPreferredWeaponHelper::get4thLevelPreferredWeaponRm($character_details, $player_character_skill_set, $player_character_weapon);
             if (!empty($rm_4th_level_preferred_weapon)) {
-                $this->rm_long_collection->add($rm_4th_level_preferred_weapon);
+                $this->rm_medium_collection->add($rm_4th_level_preferred_weapon);
             }
 
             // Check to see if a 6th level preferred weapon is present
             $rm_6th_level_preferred_weapon = ElvenCavalierPreferredWeaponHelper::get6thLevelPreferredWeaponRm($character_details, $player_character_skill_set, $player_character_weapon);
             if (!empty($rm_6th_level_preferred_weapon)) {
-                $this->rm_long_collection->add($rm_6th_level_preferred_weapon);
+                $this->rm_medium_collection->add($rm_6th_level_preferred_weapon);
             }
 
             $rm_short_bow = $this->getElvenCavalierShortBowBonus($character_details, $player_character_skill_set, $player_character_weapon);
             if (!empty($rm_short_bow)) {
-                $this->rm_long_collection->add($rm_short_bow);
+                $this->rm_medium_collection->add($rm_short_bow);
             }
         }
 

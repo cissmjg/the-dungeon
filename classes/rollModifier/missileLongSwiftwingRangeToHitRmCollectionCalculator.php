@@ -7,7 +7,7 @@
     require_once __DIR__ . '/../playerCharacterSkillSet.php';
     require_once __DIR__ . '/../playerCharacterWeapon.php';
     require_once __DIR__ . '/../attributeMetadata.php';
-    require_once 'missileMediumRangeToHitBaseRmCollectionCalculator.php';
+    require_once 'missileLongRangeToHitBaseRmCollectionCalculator.php';
 
     require_once __DIR__ . '/../../dbio/constants/skills.php';
     require_once __DIR__ . '/../../dbio/constants/weapons.php';
@@ -17,17 +17,17 @@
     require_once __DIR__ . '/../../dbio/constants/characterClasses.php';
     require_once __DIR__ . '/../../webio/craftStatus.php';
 
-    class MissileMediumRangeToHitRmCollectionCalculator extends MissileMediumRangeToHitBaseRmCollectionCalculator {
+    class MissileLongSwiftwingRangeToHitRmCollectionCalculator extends MissileLongRangeToHitBaseRmCollectionCalculator {
 
-        private const MEDIUM_RANGE_PENALTY = -2;
+        private const LONG_RANGE_PENALTY = -3;
 
-        protected function getRmMediumRangePenalty() {
-            $rm_medium_range_penalty_desc = "Medium Range";
-            $rm_medium_range_penalty_modified = MissileMediumRangeToHitRmCollectionCalculator::MEDIUM_RANGE_PENALTY;
-            $rm_medium_range = new RmFactor($rm_medium_range_penalty_desc, $rm_medium_range_penalty_modified);
-            $rm_medium_range->setRmCategory(ROLL_MODIFIER_PENALTY);
+        protected function getRmLongRangePenalty() {
+            $rm_long_range_penalty_desc = "Long Range";
+            $rm_long_range_penalty_modified = MissileLongSwiftwingRangeToHitRmCollectionCalculator::LONG_RANGE_PENALTY;
+            $rm_long_range = new RmFactor($rm_long_range_penalty_desc, $rm_long_range_penalty_modified);
+            $rm_long_range->setRmCategory(ROLL_MODIFIER_PENALTY);
 
-            return $rm_medium_range;
+            return $rm_long_range;
         }
     }
 ?>

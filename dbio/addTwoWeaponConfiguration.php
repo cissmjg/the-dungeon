@@ -17,6 +17,7 @@ require_once __DIR__ . '/../webio/playerCharacterWeaponId.php';
 require_once __DIR__ . '/../webio/playerCharacterWeapon2Id.php';
 
 require_once __DIR__ . '/../classes/playerCharacterWeapon.php';
+require_once __DIR__ . '/../classes/playerCharacterSkillSet.php';
 
 $input = [];
 $log = [];
@@ -27,11 +28,14 @@ getCharacterName($errors, $input);
 getPlayerCharacterWeaponId($errors, $input);
 getPlayerCharacterWeapon2Id($errors, $input);
 
+$player_character_skill_set = new PlayerCharacterSkillSet();
+$player_character_skill_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+
 $player_character_weapon1 = new PlayerCharacterWeapon();
-$player_character_weapon1->init($pdo, $input[PLAYER_CHARACTER_WEAPON_ID], $errors);
+$player_character_weapon1->init($pdo, $input[PLAYER_CHARACTER_WEAPON_ID], $player_character_skill_set, $errors);
 
 $player_character_weapon2 = new PlayerCharacterWeapon();
-$player_character_weapon2->init($pdo, $input[PLAYER_CHARACTER_WEAPON2_ID], $errors);
+$player_character_weapon2->init($pdo, $input[PLAYER_CHARACTER_WEAPON2_ID], $player_character_skill_set, $errors);
 
 $weapon1_melee_speed = 100;
 $weapon2_melee_speed = 100;

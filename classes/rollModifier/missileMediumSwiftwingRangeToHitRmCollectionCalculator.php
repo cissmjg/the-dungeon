@@ -17,13 +17,13 @@
     require_once __DIR__ . '/../../dbio/constants/characterClasses.php';
     require_once __DIR__ . '/../../webio/craftStatus.php';
 
-    class MissileMediumRangeToHitRmCollectionCalculator extends MissileMediumRangeToHitBaseRmCollectionCalculator {
+    class MissileMediumSwiftwingRangeToHitRmCollectionCalculator extends MissileMediumRangeToHitBaseRmCollectionCalculator {
 
-        private const MEDIUM_RANGE_PENALTY = -2;
+        private const MEDIUM_SWIFTWING_RANGE_PENALTY = -1;
 
         protected function getRmMediumRangePenalty() {
-            $rm_medium_range_penalty_desc = "Medium Range";
-            $rm_medium_range_penalty_modified = MissileMediumRangeToHitRmCollectionCalculator::MEDIUM_RANGE_PENALTY;
+            $rm_medium_range_penalty_desc = "Medium Range Swiftwing";
+            $rm_medium_range_penalty_modified = MissileMediumSwiftwingRangeToHitRmCollectionCalculator::MEDIUM_SWIFTWING_RANGE_PENALTY;
             $rm_medium_range = new RmFactor($rm_medium_range_penalty_desc, $rm_medium_range_penalty_modified);
             $rm_medium_range->setRmCategory(ROLL_MODIFIER_PENALTY);
 
