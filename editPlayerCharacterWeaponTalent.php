@@ -175,6 +175,7 @@ $action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
             $weapon_focus_accuracy = new WeaponFocusAccuracy($the_skill_catalog, $form_id_lookup);
             $weapon_focus_accuracy->setWeaponProficiencyValue($current_weapon_proficiency_id);
+            $weapon_focus_accuracy->setWeaponDetail($weapon_detail);
             echo $weapon_focus_accuracy->render($character_details, $player_character_skill_set);
 
             $weapon_focus_greater_accuracy = new WeaponFocusGreaterAccuracy($the_skill_catalog, $form_id_lookup);
@@ -184,6 +185,7 @@ $action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
             $weapon_focus_technique = new WeaponFocusTechnique($the_skill_catalog, $form_id_lookup);
             $weapon_focus_technique->setWeaponProficiencyValue($current_weapon_proficiency_id);
+            $weapon_focus_technique->setWeaponDetail($weapon_detail);
             echo $weapon_focus_technique->render($character_details, $player_character_skill_set);
 
             $weapon_focus_greater_technique = new WeaponFocusGreaterTechnique($the_skill_catalog, $form_id_lookup);

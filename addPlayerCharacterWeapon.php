@@ -15,6 +15,7 @@ require_once __DIR__ . '/helper/HtmlHelper.php';
 
 require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
+require_once __DIR__ . '/classes/playerCharacterSkillSet.php';
 require_once __DIR__ . '/helper/ActionBarHelper.php';
 require_once __DIR__ . '/webio/craftStatus.php';
 require_once __DIR__ . '/webio/isProficient.php';
@@ -74,6 +75,7 @@ require_once __DIR__ . '/dbio/constants/weaponSubtype.php';
 require_once __DIR__ . '/dbio/constants/characterClasses.php';
 require_once __DIR__ . '/dbio/constants/weapons.php';
 require_once __DIR__ . '/helper/WebParameterHelper.php';
+require_once __DIR__ . '/helper/WeaponProficiencyHelper.php';
 
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
@@ -84,11 +86,14 @@ getPlayerName($errors, $input);
 getCharacterName($errors, $input);
 getWeaponProficiencyId($errors, $input);
 
-$weaponDetail = getWeaponDetail($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input[WEAPON_PROFICIENCY_ID], $errors);
+$weaponDetail = new WeaponDetail();
+$weaponDetail->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $input[WEAPON_PROFICIENCY_ID], $errors);
 
-if(!empty($errors)) {
-    die($errors);
-}
+$player_character_skill_set = new PlayerCharacterSkillSet();
+$player_character_skill_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+
+$weapon_subtype = $weaponDetail->getMeleeWeaponSubtype() != 0 ? $weaponDetail->getMeleeWeaponSubtype() : $weaponDetail->getMissileWeaponSubtype();
+$is_proficient_with_weapon = WeaponProficiencyHelper::isProficient($weapon_subtype, $weaponDetail->getWeaponProficiencyId(), $player_character_skill_set);
 
 $character_summary = new CharacterSummary();
 $character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
@@ -153,14 +158,14 @@ echo $html_header;
                 <option value="Backpack">Backpack</option>
             </select></div>
             <!-- Check for proficiency ID and set dropdown appropriately -->
-            <?php if ($weaponDetail->getPlayerCharacterWeaponSkillId() == 0): ?>
+            <?php if ($is_proficient_with_weapon): ?>
+            <div class="inputRow"><label style="font-weight: bold; margin-right: 10px;">Proficient with <?= $weaponDetail->getWeaponName() ?> </label>
+            <input type="hidden" name="<?= IS_PROFICIENT ?>" value="YES">
+            <?php else: ?>
             <div class="inputRow"><label for="isProficient">Proficient with <?= $weaponDetail->getWeaponName() ?> </label><select id="<?= IS_PROFICIENT ?>" name="<?= IS_PROFICIENT ?>">
                 <option value="NO">No</option>
                 <option value="YES">Yes</option>
             </select>
-            <?php else: ?>
-            <div class="inputRow"><label style="font-weight: bold; margin-right: 10px;">Proficient with <?= $weaponDetail->getWeaponName() ?> </label>
-            <input type="hidden" name="<?= IS_PROFICIENT ?>" value="YES">
             <?php endif ?>
             <label for="isReady">Ready weapon? </label><select name="<?= IS_READY ?>" id="<?= IS_READY ?>">
                 <option value="NO">No</option>
@@ -325,33 +330,6 @@ echo $html_header;
 </body>
 </html>
 <?php
-
-function getWeaponDetail(\PDO $pdo, $player_name, $character_name, $weapon_id, &$errors) {
-    $weapon_detail = new WeaponDetail();
-    $weapon_detail->init($pdo, $player_name, $character_name, $weapon_id, $errors);
-
-    if(!empty($errors)) {
-        die($errors);
-    }
-
-    return $weapon_detail;
-}
-
-function isCavalier($character_classes) {
-    foreach($character_classes AS $character_class) {
-        if (getClassID($character_class['class_name']) == CAVALIER) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-}
-
-function isRanged($weapon_subtype) {
-    return  ($weapon_subtype == WEAPON_SUBTYPE_MISC_MISSILE) || ($weapon_subtype == WEAPON_SUBTYPE_BOW) || ($weapon_subtype == WEAPON_SUBTYPE_CROSSBOW) ||  
-            ($weapon_subtype == WEAPON_SUBTYPE_AXE) || ($weapon_subtype ==  WEAPON_SUBTYPE_HAMMER) || ($weapon_subtype == WEAPON_SUBTYPE_SLING);
-}
-
 function isMasterCraftDamageEligible($weapon_subtype) {
     return  ($weapon_subtype == WEAPON_SUBTYPE_MISC_MELEE) || ($weapon_subtype == WEAPON_SUBTYPE_AXE) || ($weapon_subtype == WEAPON_SUBTYPE_POLE_ARM) || 
             ($weapon_subtype == WEAPON_SUBTYPE_CLUB) || ($weapon_subtype == WEAPON_SUBTYPE_ONE_HANDED_SWORD) || ($weapon_subtype == WEAPON_SUBTYPE_HAMMER) || 
@@ -359,24 +337,7 @@ function isMasterCraftDamageEligible($weapon_subtype) {
 }
 
 function isStrengthBonusAvailable($weapon_proficiency_id) {
-    switch($weapon_proficiency_id) {
-        case DAGGER:
-            return "YES";
-        case BATTLE_AXE:
-            return "YES";
-        case HAND_AXE:
-            return "YES";
-        case SPEAR:
-            return "YES";
-        case HAMMER:
-            return "YES";
-        case DWARVEN_THROWING_HAMMER:
-            return "YES";
-        case JAVELIN:
-            return "YES";
-        default:
-            return "NO";
-    }
+    return isWeaponHurled($weapon_proficiency_id) ? "YES" : "NO";
 }
 
 function buildActionBar($player_name, $character_name) {

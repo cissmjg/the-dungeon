@@ -509,6 +509,7 @@ class AttributeMetadata {
 
     public function calculateWisdomBonus($new_spell_level) {
         $character_wisdom = $this->character_details->getCharacterWisdom();
+        $has_exceptional_wisdom = !empty($this->character_details->getCharacterSuperWisdom());
 
         if ($new_spell_level == 1) {
             if ($character_wisdom < 13) {
@@ -539,22 +540,70 @@ class AttributeMetadata {
         }
         
         if ($new_spell_level == 3) {
-            if ($character_wisdom >= 17) {
+            if ($character_wisdom < 17) {
+                return 0;
+            }
+
+            if ($character_wisdom == 17) {
                 return 1;
+            }
+
+            if ($character_wisdom == 18) {
+                if ($has_exceptional_wisdom) {
+                    return 2;
+                } else {
+                    return 1;
+                }
             }
         }
 
         if ($new_spell_level == 4) {
-            if ($character_wisdom == 18) {
-                return 1;
+            if ($character_wisdom < 18) {
+                return 0;
             }
 
-            if ($character_wisdom == 19) {
-                return 2;
+            if ($character_wisdom == 18) {
+                if ($has_exceptional_wisdom) {
+                    return 2;
+                } else {
+                    return 1;
+                }
             }
         }
         
         return 0;
+    }
+
+    public function getMagicalAttackAdjustment() {
+        $character_wisdom = $this->character_details->getCharacterWisdom();
+        switch($character_wisdom) {
+            case 3:
+                return -3;
+            case 4:
+                return -2;
+            case 5:
+            case 6:
+            case 7:
+                return -1;
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+            case 13:
+            case 14:
+                return 0;
+            case 15:
+                return 1;
+            case 16:
+                return 2;
+            case 17:
+                return 3;
+            case 18:
+                return 4;
+            default:
+                return 0;
+        }
     }
 
     public function getDexterityMetadata() {

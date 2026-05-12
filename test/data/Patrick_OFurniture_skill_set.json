@@ -1,0 +1,62 @@
+[
+  {
+    "id": 152,
+    "skill_catalog_id": 179,
+    "player_character_skill_name": "Weapon Proficiency",
+    "is_skill_focus": 0,
+    "weapon_proficiency_id": 118,
+    "weapon2_proficiency_id": null,
+    "is_preferred_cavalier_level3": null,
+    "is_preferred_cavalier_level5": null,
+    "is_preferred_elven_cavalier_level4": null,
+    "is_preferred_elven_cavalier_level6": null
+  },
+  {
+    "id": 153,
+    "skill_catalog_id": 179,
+    "player_character_skill_name": "Weapon Proficiency",
+    "is_skill_focus": 0,
+    "weapon_proficiency_id": 117,
+    "weapon2_proficiency_id": null,
+    "is_preferred_cavalier_level3": null,
+    "is_preferred_cavalier_level5": null,
+    "is_preferred_elven_cavalier_level4": null,
+    "is_preferred_elven_cavalier_level6": null
+  },
+  {
+    "id": 154,
+    "skill_catalog_id": 179,
+    "player_character_skill_name": "Weapon Proficiency",
+    "is_skill_focus": 0,
+    "weapon_proficiency_id": 14,
+    "weapon2_proficiency_id": null,
+    "is_preferred_cavalier_level3": null,
+    "is_preferred_cavalier_level5": null,
+    "is_preferred_elven_cavalier_level4": null,
+    "is_preferred_elven_cavalier_level6": null
+  },
+  {
+    "id": 155,
+    "skill_catalog_id": 132,
+    "player_character_skill_name": "Quick Draw",
+    "is_skill_focus": 0,
+    "weapon_proficiency_id": 117,
+    "weapon2_proficiency_id": 117,
+    "is_preferred_cavalier_level3": null,
+    "is_preferred_cavalier_level5": null,
+    "is_preferred_elven_cavalier_level4": null,
+    "is_preferred_elven_cavalier_level6": null
+  },
+  {
+    "id": 315,
+    "skill_catalog_id": 49,
+    "player_character_skill_name": "Dirty Fighting",
+    "is_skill_focus": 0,
+    "weapon_proficiency_id": 118,
+    "weapon2_proficiency_id": 117,
+    "is_preferred_cavalier_level3": null,
+    "is_preferred_cavalier_level5": null,
+    "is_preferred_elven_cavalier_level4": null,
+    "is_preferred_elven_cavalier_level6": null
+  }
+]

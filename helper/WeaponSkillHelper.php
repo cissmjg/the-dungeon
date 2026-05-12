@@ -4,13 +4,20 @@ require_once __DIR__ . '/../dbio/constants/weapons.php';
 require_once __DIR__ . '/../dbio/constants/weaponType.php';
 require_once __DIR__ . '/../dbio/constants/weaponSubtype.php';
 
+require_once __DIR__ . '/../classes/playerCharacterWeaponSet.php';
+
 class WeaponSkillHelper {
 
-    public static function buildCircleKickWeapon() {
+    public static function buildCircleKickWeapon(PlayerCharacterWeaponSet $player_character_weapon_set) {
+
+        // Circle Kick will be 1 more than the maximum weapon weaponId
+        // Mantis Leap will be 2 more than the maximum weapon weaponId
+        $max_weapon_id = WeaponSkillHelper::getMaxWeaponId($player_character_weapon_set);
+
         $weapon_detail = [];
         $weapon_detail['player_character_weapon_type'] = WEAPON_TYPE_MELEE;
         $weapon_detail['player_character_weapon_subtype'] = WEAPON_SUBTYPE_MISC_MELEE;
-        $weapon_detail['player_character_weapon_id'] = PHP_INT_MAX - 1;
+        $weapon_detail['player_character_weapon_id'] =  $max_weapon_id + 1;
         $weapon_detail['player_character_weapon_proficiency_id'] = FIST;
         $weapon_detail['player_character_weapon_craft_status'] = CRAFT_STATUS_ARTISAN;
         $weapon_detail['player_character_weapon_description'] = 'Circle Kick';
@@ -31,10 +38,16 @@ class WeaponSkillHelper {
         return $weapon_detail;
     }
 
-    public static function buildMantisLeapWeapon() {
+    public static function buildMantisLeapWeapon(PlayerCharacterWeaponSet $player_character_weapon_set) {
+
+        // Circle Kick will be 1 more than the maximum weapon weaponId
+        // Mantis Leap will be 2 more than the maximum weapon weaponId
+        $max_weapon_id = WeaponSkillHelper::getMaxWeaponId($player_character_weapon_set);
+
+        $weapon_detail = [];
         $weapon_detail['player_character_weapon_type'] = WEAPON_TYPE_MELEE;
         $weapon_detail['player_character_weapon_subtype'] = WEAPON_SUBTYPE_MISC_MELEE;
-        $weapon_detail['player_character_weapon_id'] = PHP_INT_MAX;
+        $weapon_detail['player_character_weapon_id'] = $max_weapon_id + 2;
         $weapon_detail['player_character_weapon_proficiency_id'] = FIST;
         $weapon_detail['player_character_weapon_craft_status'] = CRAFT_STATUS_ARTISAN;
         $weapon_detail['player_character_weapon_description'] = 'Mantis Leap';
@@ -69,6 +82,17 @@ class WeaponSkillHelper {
         $weapon_detail['player_character_weapon_spec3_hit_bonus'] = 0;
         $weapon_detail['player_character_weapon_spec3_damage_bonus'] = 0;
         $weapon_detail['player_character_weapon_spec3_description'] = '';
+    }
+
+    private static function getMaxWeaponId(PlayerCharacterWeaponSet $player_character_weapon_set) {
+        $max_weapon_id = PHP_INT_MIN;
+        foreach($player_character_weapon_set->getAll() AS $player_character_weapon) {
+            if ($player_character_weapon->getWeaponId() > $max_weapon_id) {
+                $max_weapon_id = $player_character_weapon->getWeaponId();
+            }
+        }
+
+        return $max_weapon_id;
     }
 }
 

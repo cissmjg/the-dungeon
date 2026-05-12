@@ -9,6 +9,7 @@
     require_once __DIR__ . '/../attributeMetadata.php';
 
     require_once __DIR__ . '/../../dbio/constants/skills.php';
+    require_once __DIR__ . '/../../dbio/constants/mountedCombatMode.php';
     require_once __DIR__ . '/../../dbio/constants/weapons.php';
     require_once __DIR__ . '/../../dbio/constants/weaponType.php';
     require_once __DIR__ . '/../../dbio/constants/characterRaces.php';
@@ -16,55 +17,59 @@
 
     class MeleeToHitRmCollectionCalculator extends RmCollectionCalculator {
 
-        protected $rm_weapon_collection;
-        public function getWeaponCollection() {
-            return $this->rm_weapon_collection;
+        protected $rm_melee_to_hit_collection;
+        public function getRmCollection() {
+            return $this->rm_melee_to_hit_collection;
         }
-        public function aggregate() {
-            $rmFactorResult = 0;
-            foreach($this->rm_weapon_collection AS $rmFactor) {
-                $rmFactorResult += $rmFactor->getRMData();
-            }
 
-            return $rmFactorResult;
+        protected $combat_mode = COMBAT_MODE_UNMOUNTED;
+        public function getCombatMode() {
+            return $this->combat_mode;
+        }
+
+        public function setCombatMode($combat_mode) {
+            $this->combat_mode = $combat_mode;
         }
 
         public function __construct() {
-            $this->rm_weapon_collection = new RmCollection();
+            $this->rm_melee_to_hit_collection = new RmCollection();
         }
 
         public function gather(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
 
             // Attributes
             $rm_strength_bonus = $this->getRmStrengthBonus($player_character_skill_set, $attribute_metadata, $player_character_weapon);
-            $this->rm_weapon_collection->add($rm_strength_bonus);
+            $this->rm_melee_to_hit_collection->add($rm_strength_bonus);
 
             // Proficiency check
-            if ($player_character_skill_set->isProficientWithWeapon($player_character_weapon->getWeaponProficiencyId())) {
+            if ($player_character_weapon->getIsProficient()) {
 
                 // Skills
                 $rm_skill_collection = $this->getRmSkills($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
-                $this->rm_weapon_collection->addAll($rm_skill_collection);
+                $this->rm_melee_to_hit_collection->addAll($rm_skill_collection);
 
             } else {
                  // Check for non-proficiency
-                 if (!$player_character_weapon->getIsProficient()) {
-                    $rm_non_proficient = new RmFactor("Non Proficiency Penalty", $character_details->getNonProficienyPenalty());
-                    $rm_non_proficient->setRmCategory(ROLL_MODIFIER_PENALTY);
-                    $this->rm_weapon_collection->add($rm_non_proficient);
-                 }
+                $rm_non_proficient = $this->getNonProficiencyPenalty($character_details);
+                $this->rm_melee_to_hit_collection->add($rm_non_proficient);
+            }
+
+            // Mounted Combat Specialist
+            $rm_mounted_attack_specialist = $this->getMountAttackSpecialistBonus($player_character_skill_set);
+            if (!empty($rm_mounted_attack_specialist)) {
+                $this->rm_melee_to_hit_collection->add($rm_mounted_attack_specialist);
             }
 
             // Race
             $rm_race_bonus = $this->getRacialBonus($character_details, $player_character_weapon);
             if (!empty($rm_race_bonus)) {
-                $this->rm_weapon_collection->add($rm_race_bonus);
+                $this->rm_melee_to_hit_collection->add($rm_race_bonus);
             }
 
             // Weapon
             $rm_weapon = $this->getWeaponBonus($player_character_weapon);
             if (!empty($rm_weapon)) {
-                $this->rm_weapon_collection->add($rm_weapon);
+                $this->rm_melee_to_hit_collection->add($rm_weapon);
             }
         }
 
@@ -111,17 +116,18 @@
                 $rm_collection->add($rm_weapon_focus_greater_accuracy);
             }
 
-            // Specialization
-            $rm_weapon_specialization = $this->getWeaponSpecialization($player_character_skill_set, $player_character_weapon);
-            if (!empty($rm_weapon_specialization)) {
-                $rm_collection->add($rm_weapon_specialization);
-            }
-
             // Double Specialization
             $rm_double_weapon_specialization = $this->getWeaponDoubleSpecialization($player_character_skill_set, $player_character_weapon);
             if (!empty($rm_double_weapon_specialization)) {
                 $rm_collection->add($rm_double_weapon_specialization);
+            } else {
+                // Specialization
+                $rm_weapon_specialization = $this->getWeaponSpecialization($player_character_skill_set, $player_character_weapon);
+                if (!empty($rm_weapon_specialization)) {
+                    $rm_collection->add($rm_weapon_specialization);
+                }
             }
+
 
             return $rm_collection;
         }
@@ -259,6 +265,26 @@
                 }
             }
             return $rm_weapon;
+        }
+
+        private function getMountAttackSpecialistBonus(PlayerCharacterSkillSet $player_character_skill_set) {
+            $rm_mounted_attack_specialist = null;
+            $has_mounted_attack_specialist = count($player_character_skill_set->getAllSkillInstances(MOUNTED_ATTACK_SPECIALIST));
+
+            if ($has_mounted_attack_specialist && $this->combat_mode == COMBAT_MODE_MOUNTED) {
+                $rm_mounted_attack_specialist_desc = "Mounted Attack Specialist";
+                $rm_mounted_attack_specialist_modifier = 2;
+                $rm_mounted_attack_specialist = new RmFactor($rm_mounted_attack_specialist_desc, $rm_mounted_attack_specialist_modifier);
+            }
+
+            return $rm_mounted_attack_specialist;
+        }
+        private function getNonProficiencyPenalty(CharacterDetails $character_details) {
+            $rm_non_proficiency_desc = "Non Proficiency Penalty";
+            $rm_non_proficient = new RmFactor($rm_non_proficiency_desc, $character_details->getNonProficienyPenalty());
+            $rm_non_proficient->setRmCategory(ROLL_MODIFIER_PENALTY);
+
+            return $rm_non_proficient;
         }
     }
 ?>

@@ -11,40 +11,41 @@
 
     require_once __DIR__ . '/../../dbio/constants/skills.php';
     require_once __DIR__ . '/../../dbio/constants/weapons.php';
+    require_once __DIR__ . '/../../dbio/constants/mountedCombatMode.php';
 
     class MeleeDamageRmCollectionCalculator extends RmCollectionCalculator {
 
-        protected $rm_weapon_collection;
-        public function getWeaponCollection() {
-            return $this->rm_weapon_collection;
-        }
-        public function aggregate() {
-            $rmFactorResult = 0;
-            foreach($this->rm_weapon_collection AS $rmFactor) {
-                $rmFactorResult += $rmFactor->getRMData();
-            }
-
-            return $rmFactorResult;
+        protected $rm_melee_dmg_collection;
+        public function getRmCollection() {
+            return $this->rm_melee_dmg_collection;
         }
 
+        protected $combat_mode = COMBAT_MODE_UNMOUNTED;
+        public function getCombatMode() {
+            return $this->combat_mode;
+        }
+
+        public function setCombatMode($combat_mode) {
+            $this->combat_mode = $combat_mode;
+        }
         public function __construct() {
-            $this->rm_weapon_collection = new RmCollection();
+            $this->rm_melee_dmg_collection = new RmCollection();
         }
 
         public function gather(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
 
             // Attributes
             $rm_strength_bonus = new RmFactor("Strength", $attribute_metadata->getStrengthDamageAdjustment());
-            $this->rm_weapon_collection->add($rm_strength_bonus);
+            $this->rm_melee_dmg_collection->add($rm_strength_bonus);
 
             // Skills
             $rm_skill_collection = $this->getRmSkills($player_character_skill_set, $player_character_weapon);
-            $this->rm_weapon_collection->addAll($rm_skill_collection);
+            $this->rm_melee_dmg_collection->addAll($rm_skill_collection);
 
             // Weapon
             $rm_weapon = $this->getWeaponBonus($player_character_weapon);
             if (!empty($rm_weapon)) {
-                $this->rm_weapon_collection->add($rm_weapon);
+                $this->rm_melee_dmg_collection->add($rm_weapon);
             }
         }
 
@@ -69,16 +70,16 @@
                 $rm_collection->add($rm_weapon_focus_greater_technique);
             }
 
-            // Specialization
-            $rm_weapon_specialization = $this->getWeaponSpecialization($player_character_skill_set, $player_character_weapon);
-            if (!empty($rm_weapon_specialization)) {
-                $rm_collection->add($rm_weapon_specialization);
-            }
-
             // Double Specialization
             $rm_double_weapon_specialization = $this->getWeaponDoubleSpecialization($player_character_skill_set, $player_character_weapon);
             if (!empty($rm_double_weapon_specialization)) {
                 $rm_collection->add($rm_double_weapon_specialization);
+            } else {
+                // Specialization
+                $rm_weapon_specialization = $this->getWeaponSpecialization($player_character_skill_set, $player_character_weapon);
+                if (!empty($rm_weapon_specialization)) {
+                    $rm_collection->add($rm_weapon_specialization);
+                }
             }
 
             return $rm_collection;

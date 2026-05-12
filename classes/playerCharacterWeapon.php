@@ -5,6 +5,8 @@ require_once __DIR__ . '/../dbio/constants/weaponSubtype.php';
 require_once __DIR__ . '/../dbio/constants/weapons.php';
 require_once __DIR__ . '/../dbio/constants/skills.php';
 
+require_once __DIR__ . '/../helper/WeaponProficiencyHelper.php';
+
 require_once 'playerCharacterSkillSet.php';
 require_once __DIR__ . '/skills/fistOfIron.php';
 
@@ -128,7 +130,11 @@ class PlayerCharacterWeapon implements JsonSerializable {
             $this->playerNote3                  = $weapon_detail['player_character_weapon_player_note3'];
             $this->strengthBonusAvailable       = $weapon_detail['player_character_weapon_strength_bonus_available'];
             $this->missileWeaponSpeed           = $weapon_detail['player_character_weapon_speed'];
-            $this->missileWeaponDamage          = $weapon_detail['player_character_weapon_damage'];
+            if ($this->getWeaponProficiencyId() == SLING) {
+                $this->missileWeaponDamage          = '2d4/2d4+1';
+            } else {
+                $this->missileWeaponDamage          = $weapon_detail['player_character_weapon_damage'];
+            }
             $this->missileAttacksPerRound       = $weapon_detail['player_character_weapon_attacks_per_round'];
             $this->missileHitBonus              = $weapon_detail['player_character_weapon_hit_bonus'];
             $this->missileDamageBonus           = $weapon_detail['player_character_weapon_damage_bonus'];
@@ -144,12 +150,19 @@ class PlayerCharacterWeapon implements JsonSerializable {
             $this->missileSpec3DamageBonus      = $weapon_detail['player_character_weapon_spec3_damage_bonus'];
             $this->missileSpec3Description      = $weapon_detail['player_character_weapon_spec3_description'];
             $this->missileAdditionalText        = $weapon_detail['player_character_weapon_additional_text'];
-            $this->missileShortRange            = $weapon_detail['player_character_weapon_short_range'];
-            $this->missileMediumRange           = $weapon_detail['player_character_weapon_medium_range'];
-            $this->missileLongRange             = $weapon_detail['player_character_weapon_long_range'];
+            if ($this->getWeaponProficiencyId() == SLING) {
+                $this->missileShortRange            = '10';
+                $this->missileMediumRange           = '20';
+                $this->missileLongRange             = '40';
+            } else {
+                $this->missileShortRange            = $weapon_detail['player_character_weapon_short_range'];
+                $this->missileMediumRange           = $weapon_detail['player_character_weapon_medium_range'];
+                $this->missileLongRange             = $weapon_detail['player_character_weapon_long_range'];
+            }
         }
 
-        $this->isProficient = $this->determineIsProficient($player_character_skill_set);
+        $weapon_subtype = $this->meleeWeaponSubtype != 0 ? $this->meleeWeaponSubtype : $this->missileWeaponSubtype;
+        $this->isProficient = WeaponProficiencyHelper::isProficient($weapon_subtype, $this->weaponProficiencyId, $player_character_skill_set);
     }
 
     public function fromJSON($weapon_detail_json, $player_character_skill_set) {
@@ -221,7 +234,8 @@ class PlayerCharacterWeapon implements JsonSerializable {
             $this->missileLongRange             = $weapon_detail_json->missileLongRange;
         }
 
-        $this->isProficient = $this->determineIsProficient($player_character_skill_set);
+        $weapon_subtype = $this->meleeWeaponSubtype != 0 ? $this->meleeWeaponSubtype : $this->missileWeaponSubtype;
+        $this->isProficient = WeaponProficiencyHelper::isProficient($weapon_subtype, $this->weaponProficiencyId, $player_character_skill_set);
     }
 
     public function getPlayerCharacterWeapon(\PDO $pdo, $player_character_weapon_id, &$errors) {
@@ -236,208 +250,6 @@ class PlayerCharacterWeapon implements JsonSerializable {
         }
 
 		return $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    private function determineIsProficient(PlayerCharacterSkillSet $player_character_skill_set) {
-        if ($player_character_skill_set->isProficientWithWeapon($this->getWeaponProficiencyId())) {
-            return true;
-        }
-
-        /*- Look at weapon subtypes -*/
-
-        // Individual weapon proficiencies
-        if ($this->meleeWeaponSubtype == WEAPON_SUBTYPE_MISC_MELEE) {
-            return false;
-        }
-
-        if ($this->missileWeaponSubtype == WEAPON_SUBTYPE_MISC_MISSILE) {
-            return false;
-        }
-
-        if ($this->meleeWeaponSubtype == WEAPON_SUBTYPE_POLE_ARM) {
-            return false;
-        }
-
-        if ($this->meleeWeaponSubtype ==  WEAPON_SUBTYPE_CLUB) {
-            return false;
-        }
-
-        if ($this->meleeWeaponSubtype == WEAPON_SUBTYPE_HAMMER) {
-            return false;
-        }
-
-        if ($this->meleeWeaponSubtype == WEAPON_SUBTYPE_SLING) {
-            return false;
-        }
-
-        if ($this->meleeWeaponSubtype == WEAPON_SUBTYPE_BLOW_GUN) {
-            return false;
-        }
-
-        if ($this->meleeWeaponSubtype == WEAPON_SUBTYPE_ONE_HANDED_SWORD) {
-            return $this->isProficientWithOneHandedSword($player_character_skill_set);
-        }
-
-        if ($this->meleeWeaponSubtype == WEAPON_SUBTYPE_TWO_HANDED_SWORD) {
-            return $this->isProficientWithTwoHandedSword($player_character_skill_set);
-        }
-
-        if ($this->missileWeaponSubtype == WEAPON_SUBTYPE_BOW) {
-            return $this->isProficientWithStringedBow($player_character_skill_set);
-        }
-
-        if ($this->missileWeaponSubtype == WEAPON_SUBTYPE_CROSSBOW) {
-            return $this->isProficientWithMechanicalBow($player_character_skill_set);
-        }
-
-        if ($this->missileWeaponSubtype == WEAPON_SUBTYPE_LANCE) {
-            return $this->isProficientWithLance($player_character_skill_set);
-        }
-
-        return false;
-    }
-
-    private function isProficientWithOneHandedSword(PlayerCharacterSkillSet $player_character_skill_set) {
-        if ($player_character_skill_set->isProficientWithWeapon(LONG_SWORD)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(SHORT_SWORD)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(SCIMITAR)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(BROAD_SWORD)) {
-            return true;
-        }
-        
-        if ($player_character_skill_set->isProficientWithWeapon(KHOPESH_SWORD)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(SHORT_SWORD)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(SABRE)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(MARINERS_SWORD)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(PIERCER_SWORD)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(ELVEN_LIGHTBLADE)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(ELVEN_THIN_BLADE)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    private function isProficientWithTwoHandedSword(PlayerCharacterSkillSet $player_character_skill_set) {
-
-        if ($player_character_skill_set->isProficientWithWeapon(TWO_HANDED_SWORD)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(FLAMBERGE_SWORD)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(BASTARD_SWORD)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(FALCHION_SWORD)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(ELVEN_COURT_BLADE)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(DWARVEN_CLAYMORE)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(FALCHION_SWORD)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    private function isProficientWithStringedBow(PlayerCharacterSkillSet $player_character_skill_set){
-
-        if ($player_character_skill_set->isProficientWithWeapon(LONG_BOW)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(LONG_COMPOSITE_BOW)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(SHORT_BOW)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(SHORT_COMPOSITE_BOW)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(ELVEN_CRAFT_BOW)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    private function isProficientWithMechanicalBow(PlayerCharacterSkillSet $player_character_skill_set) {
-
-        if ($player_character_skill_set->isProficientWithWeapon(LIGHT_CROSSBOW)) {
-            return true;
-        }
-        if ($player_character_skill_set->isProficientWithWeapon(HEAVY_CROSSBOW)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(GREAT_CROSSBOW)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(DOKYU)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    private function isProficientWithLance(PlayerCharacterSkillSet $player_character_skill_set) {
-
-        if ($player_character_skill_set->isProficientWithWeapon(LIGHT_LANCE)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(MEDIUM_LANCE)) {
-            return true;
-        }
-
-        if ($player_character_skill_set->isProficientWithWeapon(HEAVY_LANCE)) {
-            return true;
-        }
-
-        return false;
     }
 
 	// function called when encoded with json_encode

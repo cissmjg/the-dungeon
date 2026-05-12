@@ -24,6 +24,10 @@ class RmCollection implements IteratorAggregate {
         return new ArrayIterator($this->rmFactorList);
     }
 
+    public function empty() {
+        return count($this->rmFactorList) == 0;
+    }
+
     public function aggregate() {
         $rmFactorResult = 0;
         foreach($this->rmFactorList AS $rmFactor) {

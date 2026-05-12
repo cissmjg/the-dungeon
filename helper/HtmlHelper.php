@@ -56,7 +56,7 @@ const FONT_AWESOME_LIB = "https://kit.fontawesome.com/4295d6f264.js";
         }
 
         if ($hidden) {
-            $div_tag .= ' hidden';
+            $div_tag .= ' style="display: none;"';
         }
 
         $div_tag .= '>';
@@ -66,6 +66,10 @@ const FONT_AWESOME_LIB = "https://kit.fontawesome.com/4295d6f264.js";
 
     public static function buildDivEndTag() {
         return '</div>';
+    }
+
+    public static function buildSpacerDivTag() {
+        return HtmlHelper::buildDivTag('', '&nbsp;');
     }
 
     public static function formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels) {

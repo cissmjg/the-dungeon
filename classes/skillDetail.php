@@ -93,7 +93,7 @@
             return $this->attribute_bonus;
         }
 
-        public function getPrerequisiteSKillIds() {
+        public function getPrerequisiteSkillIds() {
             return $this->skill_prerequisite_ids;
         }
 

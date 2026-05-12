@@ -1,0 +1,48 @@
+{
+  "characterName": "Patrick OFurniture",
+  "race": "High Elf",
+  "characterStrength": 18,
+  "characterSuperStrength": 14,
+  "characterIntelligence": 17,
+  "characterSuperIntelligence": null,
+  "characterWisdom": 14,
+  "characterSuperWisdom": null,
+  "characterDexterity": 19,
+  "characterSuperDexterity": null,
+  "characterConstitution": 15,
+  "characterSuperConstitution": null,
+  "characterCharisma": 13,
+  "characterComeliness": 15,
+  "armorClass": 3,
+  "armorBulkFactor": 3,
+  "hitPoints": 58,
+  "genderIn": "M",
+  "movement": 12,
+  "alignment": "Chaotic Good",
+  "religion": "Elven",
+  "deity": "Corellon Larethian",
+  "hometown": "Midway",
+  "hit_die": "d8",
+  "age": 130,
+  "apparent_age": 20,
+  "unnatural_age": null,
+  "social_class": "UMC",
+  "height": "5&#39;2&#34;",
+  "weight": "90",
+  "hair": "Gold",
+  "eyes": "Blue",
+  "siblings": 12,
+  "parents_married": null,
+  "character_classes": {
+    "characterClass1": {
+      "class_name": "Archer",
+      "class_level": 6,
+      "class_id": 26,
+      "number_of_experience_points": 59695,
+      "spell_classes": [
+        "Magic-User"
+      ],
+      "class_icon_file_location": null
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "characterName": "Test CC13",
+  "race": "High Elf",
+  "characterStrength": 18,
+  "characterSuperStrength": 75,
+  "characterIntelligence": 15,
+  "characterSuperIntelligence": null,
+  "characterWisdom": 15,
+  "characterSuperWisdom": null,
+  "characterDexterity": 16,
+  "characterSuperDexterity": null,
+  "characterConstitution": 14,
+  "characterSuperConstitution": null,
+  "characterCharisma": 14,
+  "characterComeliness": 14,
+  "armorClass": 6,
+  "armorBulkFactor": 1,
+  "hitPoints": 18,
+  "genderIn": "F",
+  "movement": 12,
+  "alignment": "Neutral Good",
+  "religion": null,
+  "deity": null,
+  "hometown": null,
+  "hit_die": "d8",
+  "age": 24,
+  "apparent_age": null,
+  "unnatural_age": null,
+  "social_class": "MMC",
+  "height": "5&#39; 7&#34;",
+  "weight": "150",
+  "hair": "Brown",
+  "eyes": "Blue",
+  "siblings": null,
+  "parents_married": null,
+  "character_classes": {
+    "characterClass1": {
+      "class_name": "Ranger",
+      "class_level": 4,
+      "class_id": 6,
+      "number_of_experience_points": 0,
+      "spell_classes": [
+        "Magic-User",
+        "Druid"
+      ],
+      "class_icon_file_location": null
+    }
+  }
+}

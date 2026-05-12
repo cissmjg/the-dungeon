@@ -5,8 +5,6 @@ require_once __DIR__ . '/../../helper/HtmlHelper.php';
 
 class RmUIContainer {
 
-    private const RM_CONTAINER_STYLE = 'rmModifierContainer';
-
     private $rmCollection;
     public function getRmCollection() {
         return $this->rmCollection;

@@ -89,7 +89,7 @@
         protected function prerequisiteSkillsSatisfied(\PlayerCharacterSkillSet $player_character_skill_set, \SkillDetail $skill_detail) {
             $this->skill_count_satisfied = $this->skillCountSatisfied($player_character_skill_set, $skill_detail);
 
-            $this->skill_prereq_satisfied = $this->isSubset($skill_detail->getPrerequisiteSKillIds(), $player_character_skill_set->getPlayerCharacterSkillIds());
+            $this->skill_prereq_satisfied = $this->isSubset($skill_detail->getPrerequisiteSkillIds(), $player_character_skill_set->getPlayerCharacterSkillIds());
             
             return $this->skill_count_satisfied && $this->skill_prereq_satisfied;
         }
@@ -236,7 +236,7 @@
             $output .= 'Class/Level satisfied : ' . var_export($this->class_and_level_satisfied, true) . PHP_EOL;
             $output .= 'Skill count satisfied : ' . var_export($this->skill_count_satisfied, true) . PHP_EOL;
             $output .= 'Skill prereq satisfied : ' . var_export($this->skill_prereq_satisfied, true) . PHP_EOL;
-            $output .= '    Skill Prereq IDs : ' . var_export($this->skill->getPrerequisiteSKillIds(), true) . PHP_EOL;
+            $output .= '    Skill Prereq IDs : ' . var_export($this->skill->getPrerequisiteSkillIds(), true) . PHP_EOL;
             $output .= '    Character Skills : ' . var_export($this->player_character_skill_set->getPlayerCharacterSkillIds(), true) . PHP_EOL;
             $output .= 'Skill instance count : ' . $this->count_skill_instances . PHP_EOL;
             if (count($this->log) > 0) {
