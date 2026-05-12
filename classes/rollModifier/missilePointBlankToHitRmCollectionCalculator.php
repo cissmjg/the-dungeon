@@ -239,14 +239,14 @@
         private function getWeaponBonus(PlayerCharacterWeapon $player_character_weapon) {
             $rm_weapon = null;
             $rm_weapon_desc = '';
-            if ($player_character_weapon->getMeleeHitBonus() != 0) {
+            if ($player_character_weapon->getMissileHitBonus() != 0) {
                 if ($player_character_weapon->getCraftStatus() == CRAFT_STATUS_MASTERCRAFT) {
                     $rm_weapon_desc = 'Mastercraft Bonus';
                 } else if ($player_character_weapon->getCraftStatus() == CRAFT_STATUS_MAGIC) {
                     $rm_weapon_desc = 'Magic Bonus';
                 }
                 
-                $rm_weapon_modifier = $player_character_weapon->getMeleeHitBonus();
+                $rm_weapon_modifier = $player_character_weapon->getMissileHitBonus();
                 $rm_weapon = new RmFactor($rm_weapon_desc, $rm_weapon_modifier);
                 if ($rm_weapon_modifier < 0) {
                     $rm_weapon->setRmCategory(ROLL_MODIFIER_PENALTY);

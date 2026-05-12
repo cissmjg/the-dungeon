@@ -5,6 +5,7 @@
     require_once __DIR__ . '/../classes/PlayerCharacterWeapon.php';
     require_once __DIR__ . '/../classes/playerCharacterWeaponSet.php';
     require_once __DIR__ . '/../classes/attributeMetadata.php';
+    require_once __DIR__ . '/../classes/TwoWeaponFightingConfigurationSet.php';
 
     require_once __DIR__ . '/../classes/playerCharacterMeleeWeaponRenderer.php';
     require_once __DIR__ . '/../classes/playerCharacterMissileWeaponRenderer.php';

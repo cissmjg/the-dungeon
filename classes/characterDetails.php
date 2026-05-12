@@ -526,6 +526,11 @@ class CharacterDetails implements JsonSerializable
 		return false;		
 	}
 
+	public function isArcherType() {
+		$fighter_class_id = $this->getFighterTypeClassId();
+		return isArcherType($fighter_class_id);
+	}
+
 	public function getFighterTypeClassId() {
 		$level = 0;
 		foreach($this->character_classes AS $character_class) {

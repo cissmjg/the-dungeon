@@ -36,8 +36,12 @@
         public function gather(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
             parent::gather($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
             
-            $archer_level = $character_details->getLevelForClass(ARCHER);
-            $archer_level = $archer_level == 0 ? $character_details->getLevelForClass(ARCHER_RANGER) : $archer_level;
+            // Archer bonuses only apply to Bow type weapons
+            if ($player_character_weapon->getMissileWeaponSubtype() != WEAPON_SUBTYPE_BOW) {
+                return;
+            }
+
+            $archer_level = $character_details->getFighterTypeLevel();
             $rm_damage = $this->getDamageBonus($archer_level);
             $this->rm_medium_collection->add($rm_damage);
         }
