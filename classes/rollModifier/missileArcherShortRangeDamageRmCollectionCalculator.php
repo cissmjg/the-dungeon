@@ -6,8 +6,9 @@
     require_once __DIR__ . '/../playerCharacterSkillSet.php';
     require_once __DIR__ . '/../playerCharacterWeapon.php';
     require_once __DIR__ . '/../attributeMetadata.php';
-
-    require_once __DIR__ . '/../../dbio/constants/characterClasses.php';
+    
+    require_once __DIR__ . '/../../dbio/constants/weapons.php';
+    require_once __DIR__ . '/../../dbio/constants/weaponSubtype.php';
 
     class MissileArcherShortRangeDamageRmCollectionCalculator extends MissileShortRangeDamageRmCollectionCalculator {
 
@@ -36,8 +37,8 @@
         public function gather(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
             parent::gather($character_details, $player_character_skill_set, $player_character_weapon, $attribute_metadata);
             
-            // Archer bonuses only apply to Bow type weapons
-            if ($player_character_weapon->getMissileWeaponSubtype() != WEAPON_SUBTYPE_BOW) {
+            // Archer bonuses only apply to Bow type weapons but not short bow
+            if ($player_character_weapon->getMissileWeaponSubtype() != WEAPON_SUBTYPE_BOW || $player_character_weapon->getWeaponProficiencyId() == SHORT_BOW) {
                 return;
             }
 
