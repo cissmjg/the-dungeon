@@ -6877,7 +6877,7 @@ VALUES (2, 2, '7', 'd8/d8', '2', '2', '4', '6', NULL, 3);
 
 -- 'Hand Axe'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (1, 1, '7', 'd6/d4', '1', NULL, NULL, NULL, NULL, 4);
+VALUES (1, 1, '4', 'd6/d4', '1', NULL, NULL, NULL, NULL, 4);
 
 -- 'Hand Axe'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
@@ -10192,7 +10192,7 @@ COMMIT;
 START TRANSACTION;
 
 INSERT INTO skill_catalog (name, attribute, skill_focus, max_count, required_class, required_race, required_level, minimum_charisma, minimum_dexterity, minimum_intelligence, roll_name, ability_text, attribute_bonus, is_active)
-VALUES('Weapon Focus Greater Technique','None', False, -1, 0, 0, 0, 0, 0, 0, NULL, 'Provides a +1 damage with one specific weapon', 0, False);
+VALUES('Weapon Focus Greater Technique','None', False, 1, 0, 0, 0, 0, 0, 0, NULL, 'Provides a +1 damage with one specific weapon', 0, False);
 
 -- SELECT skill_catalog.id FROM skill_catalog WHERE name = 'Weapon Focus Technique';
 -- 'Weapon Focus Technique' ID = 171

@@ -149,4 +149,8 @@ function isCharacterFighterType($class_id) {
 function isCavalierType($class_id) {
     return ($class_id == CAVALIER || $class_id == PALADIN || $class_id == ELVEN_CAVALIER);
 }
+
+function isArcherType($class_id) {
+    return ($class_id == ARCHER || ARCHER_RANGER);
+}
 ?>
