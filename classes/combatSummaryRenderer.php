@@ -3,6 +3,8 @@
     require_once 'playerCharacterMissileWeaponRenderer.php';
     require_once 'playerCharacterSkillSet.php';
     require_once 'playerCharacterWeaponSet.php';
+    require_once 'twoWeaponFightingConfigurationSet.php';
+    require_once 'twoWeaponFightingRenderer.php';
     require_once 'characterDetails.php';
     require_once 'attributeMetadata.php';
     require_once 'rowClassManager.php';
@@ -14,24 +16,6 @@
     require_once __DIR__ . '/../helper/HtmlHelper.php';
 
     class CombatSummaryRenderer {
-
-    private $pdo;
-    public function getPdo() {
-        return $this->pdo;
-    }
-
-    public function setPdo($pdo) {
-        $this->pdo = $pdo;
-    }
-
-    private $player_name;
-    public function getPlayerName() {
-        return $this->player_name;
-    }
-
-    public function setPlayerName($player_name) {
-        $this->player_name = $player_name;
-    }
 
     protected $player_character_weapon_set;
     public function getPlayerCharacterWeaponSet() {
@@ -53,16 +37,22 @@
         return $this->attribute_metadata;
     }
 
+    protected $two_weapon_fighting_configuration_set;
+    public function getTwoWeaponFightingConfigurationSet() {
+        return $this->two_weapon_fighting_configuration_set;
+    }
+
     private $row_class_manager;
     protected function getRowClassManager() {
         return $this->row_class_manager;
     }
 
-    public function __construct(PlayerCharacterWeaponSet $player_character_weapon_set, PlayerCharacterSkillSet $player_character_skill_set, CharacterDetails $character_details, AttributeMetadata $attribute_metadata) {
+    public function __construct(PlayerCharacterWeaponSet $player_character_weapon_set, PlayerCharacterSkillSet $player_character_skill_set, CharacterDetails $character_details, AttributeMetadata $attribute_metadata, TwoWeaponFightingConfigurationSet $two_weapon_fighting_configuration_set) {
         $this->player_character_weapon_set = $player_character_weapon_set;
         $this->player_character_skill_set = $player_character_skill_set;
         $this->character_details = $character_details;
         $this->attribute_metadata = $attribute_metadata;
+        $this->two_weapon_fighting_configuration_set = $two_weapon_fighting_configuration_set;
         $this->row_class_manager = new RowClassManager();
     }
 
@@ -98,13 +88,9 @@
     private function renderSection($combat_mode) {
         if ($combat_mode == COMBAT_MODE_UNMOUNTED) {
             if (count($this->getPlayerCharacterSkillSet()->getAllSkillInstances(TWO_WEAPON_FIGHTING)) > 0) {
-                $errors = [];
-                $two_weapon_fighting_configs = new TwoWeaponFightingConfigurationSet();
-                $two_weapon_fighting_configs->init($this->getPdo(), $this->getPlayerName(), $this->getCharacterDetails()->getCharacterName(), $errors);
-                foreach($two_weapon_fighting_configs AS $two_weapon_fighting_config) {
+                foreach($this->getTwoWeaponFightingConfigurationSet() AS $two_weapon_fighting_config) {
                     $two_weapon_renderer = new TwoWeaponFightingRenderer($two_weapon_fighting_config, $this->getPlayerCharacterWeaponSet(), $this->getPlayerCharacterSkillSet(), $this->getCharacterDetails(), $this->getAttributeMetadata(), $this->getRowClassManager());
                     echo $two_weapon_renderer->render();
-                    $index++;
                 }
             }
         }

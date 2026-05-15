@@ -1,18 +1,6 @@
 [
     {
-        "id": 18,
-        "skill_catalog_id": 179,
-        "player_character_skill_name": "Weapon Proficiency",
-        "is_skill_focus": 0,
-        "weapon_proficiency_id": 29,
-        "weapon2_proficiency_id": null,
-        "is_preferred_cavalier_level3": null,
-        "is_preferred_cavalier_level5": null,
-        "is_preferred_elven_cavalier_level4": null,
-        "is_preferred_elven_cavalier_level6": null
-    },
-    {
-        "id": 30,
+        "id": 32,
         "skill_catalog_id": 179,
         "player_character_skill_name": "Weapon Proficiency",
         "is_skill_focus": 0,
@@ -24,11 +12,11 @@
         "is_preferred_elven_cavalier_level6": null
     },
     {
-        "id": 87,
+        "id": 70,
         "skill_catalog_id": 179,
         "player_character_skill_name": "Weapon Proficiency",
         "is_skill_focus": 0,
-        "weapon_proficiency_id": 117,
+        "weapon_proficiency_id": 3,
         "weapon2_proficiency_id": null,
         "is_preferred_cavalier_level3": null,
         "is_preferred_cavalier_level5": null,
@@ -36,7 +24,19 @@
         "is_preferred_elven_cavalier_level6": null
     },
     {
-        "id": 90,
+        "id": 74,
+        "skill_catalog_id": 179,
+        "player_character_skill_name": "Weapon Proficiency",
+        "is_skill_focus": 0,
+        "weapon_proficiency_id": 102,
+        "weapon2_proficiency_id": null,
+        "is_preferred_cavalier_level3": null,
+        "is_preferred_cavalier_level5": null,
+        "is_preferred_elven_cavalier_level4": null,
+        "is_preferred_elven_cavalier_level6": null
+    },
+    {
+        "id": 92,
         "skill_catalog_id": 28,
         "player_character_skill_name": "Improved Unarmed Strike",
         "is_skill_focus": 0,
@@ -48,7 +48,7 @@
         "is_preferred_elven_cavalier_level6": null
     },
     {
-        "id": 91,
+        "id": 93,
         "skill_catalog_id": 98,
         "player_character_skill_name": "Jump",
         "is_skill_focus": 0,
@@ -60,35 +60,11 @@
         "is_preferred_elven_cavalier_level6": null
     },
     {
-        "id": 113,
-        "skill_catalog_id": 171,
-        "player_character_skill_name": "Weapon Focus Technique",
-        "is_skill_focus": 0,
-        "weapon_proficiency_id": 29,
-        "weapon2_proficiency_id": null,
-        "is_preferred_cavalier_level3": null,
-        "is_preferred_cavalier_level5": null,
-        "is_preferred_elven_cavalier_level4": null,
-        "is_preferred_elven_cavalier_level6": null
-    },
-    {
-        "id": 128,
-        "skill_catalog_id": 162,
-        "player_character_skill_name": "Two Weapon Fighting",
-        "is_skill_focus": 0,
-        "weapon_proficiency_id": 29,
-        "weapon2_proficiency_id": 117,
-        "is_preferred_cavalier_level3": null,
-        "is_preferred_cavalier_level5": null,
-        "is_preferred_elven_cavalier_level4": null,
-        "is_preferred_elven_cavalier_level6": null
-    },
-    {
-        "id": 130,
+        "id": 164,
         "skill_catalog_id": 179,
         "player_character_skill_name": "Weapon Proficiency",
         "is_skill_focus": 0,
-        "weapon_proficiency_id": 16,
+        "weapon_proficiency_id": 71,
         "weapon2_proficiency_id": null,
         "is_preferred_cavalier_level3": null,
         "is_preferred_cavalier_level5": null,
@@ -96,23 +72,11 @@
         "is_preferred_elven_cavalier_level6": null
     },
     {
-        "id": 168,
-        "skill_catalog_id": 49,
-        "player_character_skill_name": "Dirty Fighting",
-        "is_skill_focus": 0,
-        "weapon_proficiency_id": 118,
-        "weapon2_proficiency_id": null,
-        "is_preferred_cavalier_level3": null,
-        "is_preferred_cavalier_level5": null,
-        "is_preferred_elven_cavalier_level4": null,
-        "is_preferred_elven_cavalier_level6": null
-    },
-    {
-        "id": 169,
+        "id": 165,
         "skill_catalog_id": 132,
         "player_character_skill_name": "Quick Draw",
         "is_skill_focus": 0,
-        "weapon_proficiency_id": 29,
+        "weapon_proficiency_id": 71,
         "weapon2_proficiency_id": null,
         "is_preferred_cavalier_level3": null,
         "is_preferred_cavalier_level5": null,
@@ -120,11 +84,11 @@
         "is_preferred_elven_cavalier_level6": null
     },
     {
-        "id": 170,
-        "skill_catalog_id": 168,
-        "player_character_skill_name": "Weapon Focus Accuracy",
+        "id": 166,
+        "skill_catalog_id": 132,
+        "player_character_skill_name": "Quick Draw",
         "is_skill_focus": 0,
-        "weapon_proficiency_id": 29,
+        "weapon_proficiency_id": 102,
         "weapon2_proficiency_id": null,
         "is_preferred_cavalier_level3": null,
         "is_preferred_cavalier_level5": null,
@@ -132,11 +96,11 @@
         "is_preferred_elven_cavalier_level6": null
     },
     {
-        "id": 171,
+        "id": 167,
         "skill_catalog_id": 177,
         "player_character_skill_name": "Cleric's Preferred Weapon",
         "is_skill_focus": 0,
-        "weapon_proficiency_id": 117,
+        "weapon_proficiency_id": 102,
         "weapon2_proficiency_id": null,
         "is_preferred_cavalier_level3": null,
         "is_preferred_cavalier_level5": null,
@@ -144,7 +108,19 @@
         "is_preferred_elven_cavalier_level6": null
     },
     {
-        "id": 183,
+        "id": 195,
+        "skill_catalog_id": 179,
+        "player_character_skill_name": "Weapon Proficiency",
+        "is_skill_focus": 0,
+        "weapon_proficiency_id": 50,
+        "weapon2_proficiency_id": null,
+        "is_preferred_cavalier_level3": null,
+        "is_preferred_cavalier_level5": null,
+        "is_preferred_elven_cavalier_level4": null,
+        "is_preferred_elven_cavalier_level6": null
+    },
+    {
+        "id": 196,
         "skill_catalog_id": 22,
         "player_character_skill_name": "Brutal Throw",
         "is_skill_focus": 0,
@@ -156,7 +132,7 @@
         "is_preferred_elven_cavalier_level6": null
     },
     {
-        "id": 184,
+        "id": 197,
         "skill_catalog_id": 127,
         "player_character_skill_name": "Power Attack",
         "is_skill_focus": 0,
@@ -168,11 +144,11 @@
         "is_preferred_elven_cavalier_level6": null
     },
     {
-        "id": 260,
+        "id": 231,
         "skill_catalog_id": 179,
         "player_character_skill_name": "Weapon Proficiency",
         "is_skill_focus": 0,
-        "weapon_proficiency_id": 38,
+        "weapon_proficiency_id": 17,
         "weapon2_proficiency_id": null,
         "is_preferred_cavalier_level3": null,
         "is_preferred_cavalier_level5": null,
@@ -180,11 +156,11 @@
         "is_preferred_elven_cavalier_level6": null
     },
     {
-        "id": 261,
-        "skill_catalog_id": 132,
-        "player_character_skill_name": "Quick Draw",
+        "id": 232,
+        "skill_catalog_id": 179,
+        "player_character_skill_name": "Weapon Proficiency",
         "is_skill_focus": 0,
-        "weapon_proficiency_id": 38,
+        "weapon_proficiency_id": 117,
         "weapon2_proficiency_id": null,
         "is_preferred_cavalier_level3": null,
         "is_preferred_cavalier_level5": null,
@@ -192,11 +168,11 @@
         "is_preferred_elven_cavalier_level6": null
     },
     {
-        "id": 264,
-        "skill_catalog_id": 106,
-        "player_character_skill_name": "Mantis Leap",
+        "id": 233,
+        "skill_catalog_id": 179,
+        "player_character_skill_name": "Weapon Proficiency",
         "is_skill_focus": 0,
-        "weapon_proficiency_id": 118,
+        "weapon_proficiency_id": 77,
         "weapon2_proficiency_id": null,
         "is_preferred_cavalier_level3": null,
         "is_preferred_cavalier_level5": null,
@@ -204,31 +180,19 @@
         "is_preferred_elven_cavalier_level6": null
     },
     {
-        "id": 265,
-        "skill_catalog_id": 29,
-        "player_character_skill_name": "Circle Kick",
+        "id": 253,
+        "skill_catalog_id": 162,
+        "player_character_skill_name": "Two Weapon Fighting",
         "is_skill_focus": 0,
-        "weapon_proficiency_id": 118,
-        "weapon2_proficiency_id": null,
+        "weapon_proficiency_id": 71,
+        "weapon2_proficiency_id": 117,
         "is_preferred_cavalier_level3": null,
         "is_preferred_cavalier_level5": null,
         "is_preferred_elven_cavalier_level4": null,
         "is_preferred_elven_cavalier_level6": null
     },
     {
-        "id": 267,
-        "skill_catalog_id": 69,
-        "player_character_skill_name": "Fist of Iron",
-        "is_skill_focus": 0,
-        "weapon_proficiency_id": 118,
-        "weapon2_proficiency_id": null,
-        "is_preferred_cavalier_level3": null,
-        "is_preferred_cavalier_level5": null,
-        "is_preferred_elven_cavalier_level4": null,
-        "is_preferred_elven_cavalier_level6": null
-    },
-    {
-        "id": 268,
+        "id": 280,
         "skill_catalog_id": 49,
         "player_character_skill_name": "Dirty Fighting",
         "is_skill_focus": 0,
@@ -240,11 +204,11 @@
         "is_preferred_elven_cavalier_level6": null
     },
     {
-        "id": 269,
-        "skill_catalog_id": 69,
-        "player_character_skill_name": "Fist of Iron",
+        "id": 306,
+        "skill_catalog_id": 179,
+        "player_character_skill_name": "Weapon Proficiency",
         "is_skill_focus": 0,
-        "weapon_proficiency_id": 118,
+        "weapon_proficiency_id": 95,
         "weapon2_proficiency_id": null,
         "is_preferred_cavalier_level3": null,
         "is_preferred_cavalier_level5": null,
@@ -252,11 +216,11 @@
         "is_preferred_elven_cavalier_level6": null
     },
     {
-        "id": 282,
-        "skill_catalog_id": 128,
-        "player_character_skill_name": "Power Throw",
+        "id": 395,
+        "skill_catalog_id": 171,
+        "player_character_skill_name": "Weapon Focus Technique",
         "is_skill_focus": 0,
-        "weapon_proficiency_id": null,
+        "weapon_proficiency_id": 3,
         "weapon2_proficiency_id": null,
         "is_preferred_cavalier_level3": null,
         "is_preferred_cavalier_level5": null,
@@ -264,11 +228,59 @@
         "is_preferred_elven_cavalier_level6": null
     },
     {
-        "id": 283,
+        "id": 396,
         "skill_catalog_id": 172,
         "player_character_skill_name": "Weapon Focus Greater Technique",
         "is_skill_focus": 0,
-        "weapon_proficiency_id": 29,
+        "weapon_proficiency_id": 3,
+        "weapon2_proficiency_id": null,
+        "is_preferred_cavalier_level3": null,
+        "is_preferred_cavalier_level5": null,
+        "is_preferred_elven_cavalier_level4": null,
+        "is_preferred_elven_cavalier_level6": null
+    },
+    {
+        "id": 397,
+        "skill_catalog_id": 172,
+        "player_character_skill_name": "Weapon Focus Greater Technique",
+        "is_skill_focus": 0,
+        "weapon_proficiency_id": 3,
+        "weapon2_proficiency_id": null,
+        "is_preferred_cavalier_level3": null,
+        "is_preferred_cavalier_level5": null,
+        "is_preferred_elven_cavalier_level4": null,
+        "is_preferred_elven_cavalier_level6": null
+    },
+    {
+        "id": 398,
+        "skill_catalog_id": 172,
+        "player_character_skill_name": "Weapon Focus Greater Technique",
+        "is_skill_focus": 0,
+        "weapon_proficiency_id": 3,
+        "weapon2_proficiency_id": null,
+        "is_preferred_cavalier_level3": null,
+        "is_preferred_cavalier_level5": null,
+        "is_preferred_elven_cavalier_level4": null,
+        "is_preferred_elven_cavalier_level6": null
+    },
+    {
+        "id": 399,
+        "skill_catalog_id": 168,
+        "player_character_skill_name": "Weapon Focus Accuracy",
+        "is_skill_focus": 0,
+        "weapon_proficiency_id": 3,
+        "weapon2_proficiency_id": null,
+        "is_preferred_cavalier_level3": null,
+        "is_preferred_cavalier_level5": null,
+        "is_preferred_elven_cavalier_level4": null,
+        "is_preferred_elven_cavalier_level6": null
+    },
+    {
+        "id": 400,
+        "skill_catalog_id": 169,
+        "player_character_skill_name": "Weapon Focus Greater Accuracy",
+        "is_skill_focus": 0,
+        "weapon_proficiency_id": 3,
         "weapon2_proficiency_id": null,
         "is_preferred_cavalier_level3": null,
         "is_preferred_cavalier_level5": null,

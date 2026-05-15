@@ -1,5 +1,7 @@
 <?php
 
+require_once 'twoWeaponFightingConfiguration.php';
+
 class TwoWeaponFightingConfigurationSet implements IteratorAggregate, JsonSerializable {
     /** @var TwoWeaponFightingConfiguration[] */
     private array $twoWeaponFightingConfigurationList = [];
@@ -11,6 +13,26 @@ class TwoWeaponFightingConfigurationSet implements IteratorAggregate, JsonSerial
         }
 
         foreach($two_weapon_fighting_configuration_list AS $two_weapon_configuration) {
+            $two_weapon_fighting_configuration = new TwoWeaponFightingConfiguration();
+            $two_weapon_fighting_configuration->init($two_weapon_configuration);
+            $this->add($two_weapon_fighting_configuration);
+        }
+    }
+
+    public function fromJSON($two_weapon_fighting_configuration_set_json) {
+        $two_weapon_config_list = $two_weapon_fighting_configuration_set_json->twoWeaponFightingConfigurationList;
+        for ($i = 0; $i < count($two_weapon_config_list); $i++) {
+            $two_weapon_fighting_configuration_json = $two_weapon_config_list[$i];
+
+            $two_weapon_configuration = [];
+            $two_weapon_configuration['player_character_two_weapon_fighting_id'] = $two_weapon_fighting_configuration_json->two_weapon_fighting_id;
+            $two_weapon_configuration['player_character_weapon1_id'] = $two_weapon_fighting_configuration_json->player_character_weapon1_id;
+            $two_weapon_configuration['player_character_weapon2_id'] = $two_weapon_fighting_configuration_json->player_character_weapon2_id;
+            $two_weapon_configuration['player_character_weapon1_description'] = $two_weapon_fighting_configuration_json->weapon1_description;
+            $two_weapon_configuration['player_character_weapon1_location'] = $two_weapon_fighting_configuration_json->weapon1_location;
+            $two_weapon_configuration['player_character_weapon2_description'] = $two_weapon_fighting_configuration_json->weapon2_description;
+            $two_weapon_configuration['player_character_weapon2_location'] = $two_weapon_fighting_configuration_json->weapon2_location;
+
             $two_weapon_fighting_configuration = new TwoWeaponFightingConfiguration();
             $two_weapon_fighting_configuration->init($two_weapon_configuration);
             $this->add($two_weapon_fighting_configuration);
@@ -42,7 +64,6 @@ class TwoWeaponFightingConfigurationSet implements IteratorAggregate, JsonSerial
     }
 
     /** @return TwoWeaponFightingConfiguration[] */
-
     public function getAll(): array {
         return $this->twoWeaponFightingConfigurationList;
     }

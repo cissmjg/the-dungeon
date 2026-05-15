@@ -73,10 +73,21 @@
     $player_character_weapon_set = new playerCharacterWeaponSet();
     $player_character_weapon_set->fromJSON($weapon_set_json->playerCharacterWeaponList, $player_character_skill_set);
 
+    $two_weapon_config_file_name = sprintf("data/%s_two_weapon_configuration_set.json", $character_name);
+    $two_weapon_config_file = file_get_contents($two_weapon_config_file_name);
+    echo 'JSON valid: [' . var_export(json_validate($two_weapon_config_file), true) . ']' . PHP_EOL;
+    $two_weapon_config_json = json_decode($two_weapon_config_file);
+    $two_weapon_fighting_configuration_set = new TwoWeaponFightingConfigurationSet();
+    $two_weapon_fighting_configuration_set->fromJSON($two_weapon_config_json);
+
     // AttributeMetadata
     $attribute_metadata = new AttributeMetadata($character_details);
 
-    $combat_summary_renderer = new CombatSummaryRenderer($player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata);
+    $combat_summary_renderer = new CombatSummaryRenderer($player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata, $two_weapon_fighting_configuration_set);
     $combat_summary_renderer->render();
 
+    function json_validate($data) {
+        json_decode($data);
+        return (json_last_error() === JSON_ERROR_NONE);
+    }
 ?>

@@ -59,6 +59,9 @@ $player_character_weapon_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_N
 
 $attribute_metadata = new AttributeMetadata($character_details);
 
+$two_weapon_fighting_configuration_set = new TwoWeaponFightingConfigurationSet();
+$two_weapon_fighting_configuration_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+
 $action_bar = buildActionBar($player_name, $character_name, $character_details);
 
 $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
@@ -97,9 +100,7 @@ echo $html_header;
 <div>&nbsp;</div>
 <span style="font-weight: bold;">Combat Summary</span>
 <?php
-    $combat_summary_renderer = new CombatSummaryRenderer($player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata);
-	$combat_summary_renderer->setPdo($pdo);
-	$combat_summary_renderer->setPlayerName($input[PLAYER_NAME]);
+    $combat_summary_renderer = new CombatSummaryRenderer($player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata, $two_weapon_fighting_configuration_set);
     $combat_summary_renderer->render();
 ?>
 <div class="characterSheetContainer">

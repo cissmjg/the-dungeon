@@ -5,7 +5,7 @@
     $CharacterName
  )
 
- $UriBase = "https://www.themikegsite.com/dnd/dbio/"
+ $UriBase = "https://www.themikegsite.com/dandd/dbio/"
  $NormalizedCharacterName = $CharacterName.Replace(' ', '_')
  
  ### Character Details ###
@@ -17,7 +17,7 @@
  Write-Output $FullUri
  Write-Output $OutputFileName
 
- Invoke-WebRequest -Uri $FullUri -OutFile $OutputFileName
+ Invoke-WebRequest -UseBasicParsing -Uri $FullUri -OutFile $OutputFileName
 
  ### Character Skills ###
  $UriCharacterSkills = "getPlayerCharacterSkillSet.php?playerName={0}&characterName={1}" -f $PlayerName, $CharacterName
@@ -28,7 +28,7 @@
  Write-Output $FullUri
  Write-Output $OutputFileName
 
- Invoke-WebRequest -Uri $FullUri -OutFile $OutputFileName
+ Invoke-WebRequest -UseBasicParsing -Uri $FullUri -OutFile $OutputFileName
 
  ### Character Weapons ###
  $UriCharacterWeapons = "getPlayerCharacterWeapons.php?playerName={0}&characterName={1}" -f $PlayerName, $CharacterName
@@ -39,4 +39,15 @@
  Write-Output $FullUri
  Write-Output $OutputFileName
 
- Invoke-WebRequest -Uri $FullUri -OutFile $OutputFileName
+ Invoke-WebRequest -UseBasicParsing -Uri $FullUri -OutFile $OutputFileName
+
+ ### Two Weapon Configurations ###
+ $UriTwoWeaponConfigs = "getTwoWeaponFightingConfigurationSet.php?playerName={0}&characterName={1}" -f $PlayerName, $CharacterName
+ $FullUri = $UriBase + $UriTwoWeaponConfigs
+
+ $OutputFileName = "C:\\Projects\\the-dungeon\\test\\data\\{0}_two_weapon_configuration_set.json" -f $NormalizedCharacterName
+
+ Write-Output $FullUri
+ Write-Output $OutputFileName
+
+ Invoke-WebRequest -UseBasicParsing -Uri $FullUri -OutFile $OutputFileName
