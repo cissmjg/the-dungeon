@@ -1,0 +1,56 @@
+{
+    "characterName": "Dwarf FC",
+    "race": "Hill Dwarf",
+    "characterStrength": 18,
+    "characterSuperStrength": 21,
+    "characterIntelligence": 12,
+    "characterSuperIntelligence": null,
+    "characterWisdom": 16,
+    "characterSuperWisdom": null,
+    "characterDexterity": 17,
+    "characterSuperDexterity": null,
+    "characterConstitution": 18,
+    "characterSuperConstitution": null,
+    "characterCharisma": 13,
+    "characterComeliness": 13,
+    "armorClass": 4,
+    "armorBulkFactor": 2,
+    "hitPoints": 10,
+    "genderIn": "M",
+    "movement": 9,
+    "alignment": "Chaotic Good",
+    "religion": null,
+    "deity": "Brigit",
+    "hometown": "Al-Alin",
+    "hit_die": null,
+    "age": null,
+    "apparent_age": null,
+    "unnatural_age": null,
+    "social_class": "MMC",
+    "height": null,
+    "weight": null,
+    "hair": null,
+    "eyes": null,
+    "siblings": 4,
+    "parents_married": 1,
+    "character_classes": {
+        "characterClass1": {
+            "class_name": "Fighter",
+            "class_level": 5,
+            "class_id": 4,
+            "number_of_experience_points": 1000,
+            "spell_classes": [],
+            "class_icon_file_location": null
+        },
+        "characterClass2": {
+            "class_name": "Cleric",
+            "class_level": 6,
+            "class_id": 2,
+            "number_of_experience_points": 1500,
+            "spell_classes": [
+                "Cleric"
+            ],
+            "class_icon_file_location": null
+        }
+    }
+}

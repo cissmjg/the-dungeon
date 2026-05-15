@@ -1,0 +1,22 @@
+{
+    "twoWeaponFightingConfigurationList": [
+        {
+            "two_weapon_fighting_id": 7,
+            "player_character_weapon1_id": 49,
+            "player_character_weapon2_id": 57,
+            "weapon1_description": "Footman&#39;s Mace",
+            "weapon1_location": "Left Belt",
+            "weapon2_description": "Long Sword",
+            "weapon2_location": "Right Belt"
+        },
+        {
+            "two_weapon_fighting_id": 9,
+            "player_character_weapon1_id": 59,
+            "player_character_weapon2_id": 58,
+            "weapon1_description": "Footman&#39;s Mace",
+            "weapon1_location": "Back Left",
+            "weapon2_description": "Long Sword",
+            "weapon2_location": "Back Right"
+        }
+    ]
+}

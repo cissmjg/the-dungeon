@@ -1,6 +1,6 @@
 <?php
 
-class TwoWeaponFightingConfiguration {
+class TwoWeaponFightingConfiguration implements JsonSerializable {
     private $two_weapon_fighting_id;
     private $player_character_weapon1_id;
     private $player_character_weapon2_id;
@@ -17,6 +17,12 @@ class TwoWeaponFightingConfiguration {
 		$this->weapon1_location = $two_weapon_configuration['player_character_weapon1_location'];
 		$this->weapon2_description = $two_weapon_configuration['player_character_weapon2_description'];
 		$this->weapon2_location = $two_weapon_configuration['player_character_weapon2_location'];
+    }
+
+	// function called when encoded with json_encode
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     public function getTwoWeaponConfigurationId() {

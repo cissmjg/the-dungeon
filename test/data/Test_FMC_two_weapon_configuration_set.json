@@ -1,0 +1,13 @@
+{
+    "twoWeaponFightingConfigurationList": [
+        {
+            "two_weapon_fighting_id": 10,
+            "player_character_weapon1_id": 60,
+            "player_character_weapon2_id": 28,
+            "weapon1_description": "Elven Thin Blade",
+            "weapon1_location": "Back Right",
+            "weapon2_description": "Dagger",
+            "weapon2_location": "Left Belt"
+        }
+    ]
+}
