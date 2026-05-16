@@ -45,6 +45,7 @@ require_once __DIR__ . '/webio/textInput.php';
 require_once __DIR__ . '/classes/skills/brutalThrow.php';
 require_once __DIR__ . '/classes/skills/powerAttack.php';
 require_once __DIR__ . '/classes/skills/powerThrow.php';
+require_once __DIR__ . '/classes/skills/rapidReload.php';
 require_once __DIR__ . '/classes/skills/weaponFinesse.php';
 require_once __DIR__ . '/classes/skills/zenArchery.php';
 
@@ -303,6 +304,9 @@ echo $html_header;
     $power_throw = new PowerThrow($the_skill_catalog, $form_id_lookup);
     echo $power_throw->render($character_details, $player_character_skill_set);
 
+    $rapid_reload = new RapidReload($the_skill_catalog, $form_id_lookup);
+    echo $rapid_reload->render($character_details, $player_character_skill_set);
+
     $weapon_finesse = new WeaponFinesse($the_skill_catalog, $form_id_lookup);
     echo $weapon_finesse->render($character_details, $player_character_skill_set);
 
@@ -313,6 +317,7 @@ echo $html_header;
         $debug_output .= $brutal_throw->dump();
         $debug_output .= $power_attack->dump();
         $debug_output .= $power_throw->dump();
+        $debug_output .= $rapid_reload->dump();
         $debug_output .= $weapon_finesse->dump();
         $debug_output .= $zen_archery->dump();
     }
