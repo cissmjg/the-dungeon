@@ -118,6 +118,7 @@ const YAWARA = 115;
 const KHOPESH_SWORD = 116;	
 const LONG_SWORD = 117;	
 const FIST = 118;
+const PISTOL_GRIP_CROSSBOW =  119;
 
 function getWeaponDescriptionFromProficiencyId($weapon_proficiency_id) {
     switch($weapon_proficiency_id) {
@@ -239,6 +240,7 @@ function getWeaponDescriptionFromProficiencyId($weapon_proficiency_id) {
         case KHOPESH_SWORD: return 'Khopesh Sword';	
         case LONG_SWORD: return 'Long Sword';	
         case FIST: return 'Fist';	
+        case PISTOL_GRIP_CROSSBOW: return 'Pistol Grip Crossbow';
         default : return "UNKNOWN";
     }
 }

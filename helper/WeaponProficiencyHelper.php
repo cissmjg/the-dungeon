@@ -181,10 +181,6 @@ class WeaponProficiencyHelper {
             return true;
         }
 
-        if ($player_character_skill_set->isProficientWithWeapon(DOKYU)) {
-            return true;
-        }
-
         return false;
     }
 

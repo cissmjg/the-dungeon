@@ -151,6 +151,6 @@ function isCavalierType($class_id) {
 }
 
 function isArcherType($class_id) {
-    return ($class_id == ARCHER || ARCHER_RANGER);
+    return ($class_id == ARCHER || $class_id == ARCHER_RANGER);
 }
 ?>

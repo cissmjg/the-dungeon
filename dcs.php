@@ -18,11 +18,6 @@ require_once __DIR__ . '/classes/characterDetails.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 require_once __DIR__ . '/classes/playerCharacterSkillSet.php';
 require_once __DIR__ . '/classes/playerCharacterWeaponSet.php';
-require_once __DIR__ . '/classes/playerCharacterMeleeWeaponRenderer.php';
-require_once __DIR__ . '/classes/playerCharacterMeleeElvenCavalierWeaponRenderer.php';
-require_once __DIR__ . '/classes/twoWeaponFightingRenderer.php';
-require_once __DIR__ . '/classes/twoWeaponFightingConfiguration.php';
-require_once __DIR__ . '/classes/twoWeaponFightingConfigurationSet.php';
 require_once __DIR__ . '/classes/combatSummaryRenderer.php';
 
 require_once __DIR__ . '/dbio/constants/skills.php';

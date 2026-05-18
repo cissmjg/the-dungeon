@@ -47,7 +47,6 @@
     require_once __DIR__ . '/../dbio/constants/weaponSubtype.php';
     require_once __DIR__ . '/../dbio/constants/characterClasses.php';
     require_once __DIR__ . '/../dbio/constants/mountedCombatMode.php';
-    require_once __DIR__ . '/../rules/attacksPerRound.php';
 
     $character_name = $argv[1];
     if (empty($character_name)) {

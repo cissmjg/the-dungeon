@@ -6817,6 +6817,7 @@ INSERT INTO weapon_proficiency (name) VALUES ('Yawara');
 INSERT INTO weapon_proficiency (name) VALUES ('Khopesh Sword');
 INSERT INTO weapon_proficiency (name) VALUES ('Long Sword');
 INSERT INTO weapon_proficiency (name) VALUES ('Fist');
+INSERT INTO weapon_proficiency (name) VALUES ('Pistol Grip Crossbow');
 
 -- Weapon Catalog
 -- '[TALENT]' 
@@ -7398,6 +7399,11 @@ VALUES (1, 1, '6', 'd2/1', '1', NULL, NULL, NULL, NULL, 114);
 -- 'Yawara'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
 VALUES (1, 1, '1', '2X hand dam', '1', NULL, NULL, NULL, NULL, 115);
+
+-- Pistol Grip crossbow
+INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
+VALUES (2, 4, '2', 'd4/d4', '1', '8', '14', '20', NULL, 119);
+
 
 -- Class Weapon proficiencies
 
