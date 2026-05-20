@@ -88,6 +88,12 @@ $class_combinations[RACE_DARK_ELF][] = "Greater Mage";
 $class_combinations[RACE_DARK_ELF][] = "Healer";
 $class_combinations[RACE_DARK_ELF][] = "New Bard";
 
+$class_combinations[RACE_DARK_ELF][] = "Archer";
+$class_combinations[RACE_DARK_ELF]["Archer"] = [];
+$class_combinations[RACE_DARK_ELF]["Archer"][] = "Magic-User";
+$class_combinations[RACE_DARK_ELF]["Archer"][] = "Cleric";
+$class_combinations[RACE_DARK_ELF]["Archer"][] = "Thief";
+
 // Gray Dwarf
 $class_combinations[RACE_GRAY_DWARF] = array();
 $class_combinations[RACE_GRAY_DWARF][] = "Fighter";
@@ -208,6 +214,9 @@ $class_combinations[RACE_GRAY_ELF]["Druid"][] = "Thief";
 $class_combinations[RACE_GRAY_ELF][] = "Archer";
 $class_combinations[RACE_GRAY_ELF]["Archer"] = [];
 $class_combinations[RACE_GRAY_ELF]["Archer"][] = "Magic-User";
+$class_combinations[RACE_GRAY_ELF]["Archer"][] = "Cleric";
+$class_combinations[RACE_GRAY_ELF]["Archer"][] = "Druid";
+$class_combinations[RACE_GRAY_ELF]["Archer"][] = "Thief";
 
 $class_combinations[RACE_GRAY_ELF][] = "Cavalier";
 $class_combinations[RACE_GRAY_ELF][] = "Elven Cavalier";
@@ -337,6 +346,12 @@ $class_combinations[RACE_HALF_DROW][] = "Merchant";
 $class_combinations[RACE_HALF_DROW][] = "Bard";
 $class_combinations[RACE_HALF_DROW][] = "New Bard";
 
+$class_combinations[RACE_HALF_DROW][] = "Archer";
+$class_combinations[RACE_HALF_DROW]["Archer"] = [];
+$class_combinations[RACE_HALF_DROW]["Archer"][] = "Magic-User";
+$class_combinations[RACE_HALF_DROW]["Archer"][] = "Cleric";
+$class_combinations[RACE_DARK_ELF]["Archer"][] = "Thief";
+
 // Half Elf (High)
 $class_combinations[RACE_HALF_ELF] = array();
 $class_combinations[RACE_HALF_ELF][] = "Cleric";
@@ -410,6 +425,9 @@ $class_combinations[RACE_HALF_ELF]["Thief"]["Magic-User"] = "Fighter";
 $class_combinations[RACE_HALF_ELF][] = "Archer";
 $class_combinations[RACE_HALF_ELF]["Archer"] = [];
 $class_combinations[RACE_HALF_ELF]["Archer"][] = "Magic-User";
+$class_combinations[RACE_HALF_ELF]["Archer"][] = "Cleric";
+$class_combinations[RACE_HALF_ELF]["Archer"][] = "Druid";
+$class_combinations[RACE_HALF_ELF]["Archer"][] = "Thief";
 
 $class_combinations[RACE_HALF_ELF][] = "Assassin";
 $class_combinations[RACE_HALF_ELF][] = "Cavalier";
@@ -420,6 +438,7 @@ $class_combinations[RACE_HALF_ELF][] = "Healer";
 $class_combinations[RACE_HALF_ELF][] = "Merchant";
 $class_combinations[RACE_HALF_ELF][] = "Bard";
 $class_combinations[RACE_HALF_ELF][] = "New Bard";
+$class_combinations[RACE_HALF_ELF][] = "Archer-Ranger";
 
 // Half Orc
 $class_combinations[RACE_HALF_ORC] = array();
@@ -564,9 +583,12 @@ $class_combinations[RACE_HIGH_ELF]["Druid"][] = "Ranger";
 $class_combinations[RACE_HIGH_ELF]["Druid"][] = "Magic-User";
 $class_combinations[RACE_HIGH_ELF]["Druid"][] = "Thief";
 
-$class_combinations[RACE_HIGH_ELF][] = "Archer";
-$class_combinations[RACE_HIGH_ELF]["Archer"] = [];
-$class_combinations[RACE_HIGH_ELF]["Archer"][] = "Magic-User";
+$class_combinations[RACE_GRAY_ELF][] = "Archer";
+$class_combinations[RACE_GRAY_ELF]["Archer"] = [];
+$class_combinations[RACE_GRAY_ELF]["Archer"][] = "Magic-User";
+$class_combinations[RACE_GRAY_ELF]["Archer"][] = "Cleric";
+$class_combinations[RACE_GRAY_ELF]["Archer"][] = "Druid";
+$class_combinations[RACE_GRAY_ELF]["Archer"][] = "Thief";
 
 $class_combinations[RACE_HIGH_ELF][] = "Cavalier";
 $class_combinations[RACE_HIGH_ELF][] = "Elven Cavalier";
@@ -913,6 +935,9 @@ $class_combinations[RACE_VALLEY_ELF]["Druid"][] = "Thief";
 $class_combinations[RACE_VALLEY_ELF][] = "Archer";
 $class_combinations[RACE_VALLEY_ELF]["Archer"] = [];
 $class_combinations[RACE_VALLEY_ELF]["Archer"][] = "Magic-User";
+$class_combinations[RACE_VALLEY_ELF]["Archer"][] = "Cleric";
+$class_combinations[RACE_VALLEY_ELF]["Archer"][] = "Druid";
+$class_combinations[RACE_VALLEY_ELF]["Archer"][] = "Thief";
 
 $class_combinations[RACE_VALLEY_ELF][] = "Cavalier";
 $class_combinations[RACE_VALLEY_ELF][] = "Elven Cavalier";
@@ -1023,6 +1048,9 @@ $class_combinations[RACE_WOOD_ELF]["Druid"][] = "Thief";
 $class_combinations[RACE_WOOD_ELF][] = "Archer";
 $class_combinations[RACE_WOOD_ELF]["Archer"] = [];
 $class_combinations[RACE_WOOD_ELF]["Archer"][] = "Magic-User";
+$class_combinations[RACE_WOOD_ELF]["Archer"][] = "Cleric";
+$class_combinations[RACE_WOOD_ELF]["Archer"][] = "Druid";
+$class_combinations[RACE_WOOD_ELF]["Archer"][] = "Thief";
 
 $class_combinations[RACE_WOOD_ELF][] = "Cavalier";
 $class_combinations[RACE_WOOD_ELF][] = "Elven Cavalier";
@@ -1123,6 +1151,9 @@ $class_combinations[RACE_HALF_ELF_GRAY]["Druid"][] = "Thief";
 $class_combinations[RACE_HALF_ELF_GRAY][] = "Archer";
 $class_combinations[RACE_HALF_ELF_GRAY]["Archer"] = [];
 $class_combinations[RACE_HALF_ELF_GRAY]["Archer"][] = "Magic-User";
+$class_combinations[RACE_HALF_ELF_GRAY]["Archer"][] = "Cleric";
+$class_combinations[RACE_HALF_ELF_GRAY]["Archer"][] = "Druid";
+$class_combinations[RACE_HALF_ELF_GRAY]["Archer"][] = "Thief";
 
 $class_combinations[RACE_HALF_ELF_GRAY][] = "Cavalier";
 $class_combinations[RACE_HALF_ELF_GRAY][] = "Greater Mage";
@@ -1224,6 +1255,9 @@ $class_combinations[RACE_HALF_ELF_VALLEY]["Druid"][] = "Thief";
 $class_combinations[RACE_HALF_ELF_VALLEY][] = "Archer";
 $class_combinations[RACE_HALF_ELF_VALLEY]["Archer"] = [];
 $class_combinations[RACE_HALF_ELF_VALLEY]["Archer"][] = "Magic-User";
+$class_combinations[RACE_HALF_ELF_VALLEY]["Archer"][] = "Cleric";
+$class_combinations[RACE_HALF_ELF_VALLEY]["Archer"][] = "Druid";
+$class_combinations[RACE_HALF_ELF_VALLEY]["Archer"][] = "Thief";
 
 $class_combinations[RACE_HALF_ELF_VALLEY][] = "Cavalier";
 $class_combinations[RACE_HALF_ELF_VALLEY][] = "Greater Mage";
@@ -1334,6 +1368,9 @@ $class_combinations[RACE_HALF_ELF_WOOD]["Druid"][] = "Thief";
 $class_combinations[RACE_HALF_ELF_WOOD][] = "Archer";
 $class_combinations[RACE_HALF_ELF_WOOD]["Archer"] = [];
 $class_combinations[RACE_HALF_ELF_WOOD]["Archer"][] = "Magic-User";
+$class_combinations[RACE_HALF_ELF_WOOD]["Archer"][] = "Cleric";
+$class_combinations[RACE_HALF_ELF_WOOD]["Archer"][] = "Druid";
+$class_combinations[RACE_HALF_ELF_WOOD]["Archer"][] = "Thief";
 
 $class_combinations[RACE_HALF_ELF_WOOD][] = "Cavalier";
 $class_combinations[RACE_HALF_ELF_WOOD][] = "Greater Mage";
