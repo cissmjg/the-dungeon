@@ -208,9 +208,11 @@ class PlayerCharacterMissileWeaponRenderer extends PlayerCharacterWeaponRenderer
         }
 
         $attacks_per_round = $attacks_per_round_calculator->getAttacksPerRound(WEAPON_TYPE_MISSILE);
+        $weapon_speed = $this->calculateWeaponSpeed($player_character_weapon->getMissileWeaponSpeed(), $attacks_per_round, false, $player_character_weapon->getMissileWeaponSubtype(), '2', $player_character_weapon->getWeaponProficiencyId());
+
         $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailLeft', $weapon_desc);
         if ($render_header) {
-            $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', $player_character_weapon->getMissileWeaponSpeed());
+            $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', $weapon_speed);
             $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', $attacks_per_round->value);
             $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', $this->formatDamage($player_character_weapon));
         } else {

@@ -6,6 +6,8 @@ require_once __DIR__ . '/../dbio/constants/weaponSubtype.php';
 require_once __DIR__ . '/../dbio/constants/characterClasses.php';
 require_once __DIR__ . '/../dbio/constants/mountedCombatMode.php';
 require_once __DIR__ . '/../dbio/constants/missileRanges.php';
+require_once __DIR__ . '/../dbio/constants/attacksPerRound.php';
+require_once __DIR__ . '/../dbio/constants/weaponSubtype.php';
 
 require_once __DIR__ . '/rollModifier/rmUIContainer.php';
 require_once __DIR__ . '/rollModifier/RmCollectionCalculator.php';
@@ -166,16 +168,135 @@ abstract class PlayerCharacterWeaponRenderer {
         return $chevron_icon;
     }
 
-    protected function isPreferred(PlayerCharacterWeapon $player_character_weapon, PlayerCharacterSkillSet $player_character_skill_set, CharacterDetails $character_details) {
-        if (!$character_details->isCavalierType()) {
-            return false;
+    protected function calculateWeaponSpeed($weapon_speed, AttacksPerRound $attacks_per_round, $has_rapid_reload, $weapon_subtype, $number_of_hands, $weapon_proficiency_id) {
+
+        $physical_weapon_style_2_attacks = false;
+        $physical_weapon_style_1_attack = false;
+
+        if (str_contains($weapon_speed, '/') && $number_of_hands != '1/2') {
+            if ($weapon_proficiency_id != CALTROP) {
+                $physical_weapon_style_2_attacks = true;
+            } else {
+                $physical_weapon_style_1_attack = true;
+            }
+        } else {
+            $physical_weapon_style_1_attack = true;
         }
 
-        $is_long_sword = $player_character_weapon->getWeaponProficiencyId() == LONG_SWORD || $player_character_weapon->getWeaponProficiencyId() == ELVEN_THIN_BLADE;
-        $is_short_bow = $player_character_weapon->getWeaponProficiencyId() == SHORT_BOW;
-        $is_preferred_cavalier_level = $player_character_skill_set->isWeaponPreferred($player_character_weapon->getWeaponProficiencyId());
-        
-        return $is_long_sword || $is_short_bow || $is_preferred_cavalier_level;
+        $weapon_speed_final = '';
+        switch ($attacks_per_round) {
+            case AttacksPerRound::OneEvery3:
+                $weapon_speed_final = $weapon_speed;
+                break;
+
+            case AttacksPerRound::OneEvery2:
+                $weapon_speed_final = $weapon_speed;
+                break;
+
+            case AttacksPerRound::One:
+                $weapon_speed_final = $weapon_speed;
+                break;
+
+            case AttacksPerRound::ThreeEvery2:
+                if ($physical_weapon_style_1_attack) {
+                    $weapon_speed_final = $weapon_speed . '/(EoR)';
+                }
+
+                break;
+
+            case AttacksPerRound::Two:
+                if ($has_rapid_reload && $weapon_subtype == WEAPON_SUBTYPE_CROSSBOW) {
+                    $weapon_speed_final = $weapon_speed . '/8';
+                } else if ($physical_weapon_style_1_attack) {
+                    $weapon_speed_final = $weapon_speed . '/EoR';
+                } else if ($physical_weapon_style_2_attacks) {
+                    $weapon_speed_final = $weapon_speed;
+                }
+
+                break;
+
+            case AttacksPerRound::FiveEvery2:
+                if ($has_rapid_reload && $weapon_subtype == WEAPON_SUBTYPE_CROSSBOW) {
+                    $weapon_speed_final = $weapon_speed . '/8/(EoR)';
+                } else if ($physical_weapon_style_1_attack) {
+                    $weapon_speed_final = $weapon_speed . '/?/(EoR)';
+                } else if ($physical_weapon_style_2_attacks) {
+                    $weapon_speed_final = $weapon_speed . '/(EoR)';
+                }
+
+                break;
+
+            case AttacksPerRound::Three:
+                if ($physical_weapon_style_1_attack) {
+                    $weapon_speed_final = $weapon_speed . '/?/EoR';
+                }
+                
+                if ($physical_weapon_style_2_attacks) {
+                    $weapon_speed_final = $weapon_speed . '/EoR';
+                }
+
+                break;
+
+            case AttacksPerRound::SevenEvery2:
+                if ($physical_weapon_style_1_attack) {
+                    $weapon_speed_final = $weapon_speed . '/?/?/(EoR)';
+                }
+                
+                if ($physical_weapon_style_2_attacks) {
+                    $weapon_speed_final = $weapon_speed . '/?/(EoR)';
+                }
+
+                break;
+
+            case AttacksPerRound::Four:
+                if ($physical_weapon_style_1_attack) {
+                    $weapon_speed_final = $weapon_speed . '/?/?/EoR';
+                }
+                
+                if ($physical_weapon_style_2_attacks) {
+                    $weapon_speed_final = $weapon_speed . '/?/EoR';
+                }
+
+                break;
+
+            case AttacksPerRound::NineEvery2:
+                if ($physical_weapon_style_1_attack) {
+                    $weapon_speed_final = $weapon_speed . '/?/?/?/(EoR)';
+                }
+                
+                if ($physical_weapon_style_2_attacks) {
+                    $weapon_speed_final = $weapon_speed . '/?/?/(EoR)';
+                }
+
+                break;
+                
+            case AttacksPerRound::Five:
+                if ($physical_weapon_style_1_attack) {
+                    $weapon_speed_final = $weapon_speed . '/?/?/?/EoR';
+                }
+                
+                if ($physical_weapon_style_2_attacks) {
+                    $weapon_speed_final = $weapon_speed . '/?/?/EoR';
+                }
+
+                break;
+
+            case AttacksPerRound::Six:
+                if ($physical_weapon_style_1_attack) {
+                    $weapon_speed_final = $weapon_speed . '/?/?/?/?/EoR';
+                }
+                
+                if ($physical_weapon_style_2_attacks) {
+                    $weapon_speed_final = $weapon_speed . '/?/?/?/EoR';
+                }
+
+                break;
+
+            default:
+                $weapon_speed_final = $weapon_speed;
+        }
+
+        return $weapon_speed_final;
     }
 }
 ?>

@@ -1,1 +1,58 @@
-{"characterName":"Tyrade Stormrage","race":"Gray Elf","characterStrength":18,"characterSuperStrength":79,"characterIntelligence":19,"characterSuperIntelligence":null,"characterWisdom":16,"characterSuperWisdom":null,"characterDexterity":18,"characterSuperDexterity":null,"characterConstitution":16,"characterSuperConstitution":null,"characterCharisma":12,"characterComeliness":12,"armorClass":1,"armorBulkFactor":1,"hitPoints":57,"genderIn":"M","movement":12,"alignment":"Chaotic Good","religion":null,"deity":"Solonar Thelandira","hometown":"Elven Hills","hit_die":"D8 \/ D4","age":169,"apparent_age":null,"unnatural_age":null,"social_class":"ULC","height":"5\u2019 4\u201d","weight":"99","hair":"Blonde","eyes":"Green","siblings":1,"parents_married":1,"character_classes":{"characterClass1":{"class_name":"Archer","class_level":6,"class_id":26,"number_of_experience_points":91048,"spell_classes":["Magic-User"],"class_icon_file_location":null},"characterClass2":{"class_name":"Magic-User","class_level":8,"class_id":7,"number_of_experience_points":91048,"spell_classes":["Magic-User"],"class_icon_file_location":null}}}
+{
+    "characterName": "Tyrade Stormrage",
+    "race": "Gray Elf",
+    "characterStrength": 18,
+    "characterSuperStrength": 79,
+    "characterIntelligence": 19,
+    "characterSuperIntelligence": null,
+    "characterWisdom": 16,
+    "characterSuperWisdom": null,
+    "characterDexterity": 18,
+    "characterSuperDexterity": null,
+    "characterConstitution": 16,
+    "characterSuperConstitution": null,
+    "characterCharisma": 12,
+    "characterComeliness": 12,
+    "armorClass": 1,
+    "armorBulkFactor": 1,
+    "hitPoints": 57,
+    "genderIn": "M",
+    "movement": 12,
+    "alignment": "Chaotic Good",
+    "religion": null,
+    "deity": "Solonar Thelandira",
+    "hometown": "Elven Hills",
+    "hit_die": "D8 \/ D4",
+    "age": 169,
+    "apparent_age": null,
+    "unnatural_age": null,
+    "social_class": "ULC",
+    "height": "5\u2019 4\u201d",
+    "weight": "99",
+    "hair": "Blonde",
+    "eyes": "Green",
+    "siblings": 1,
+    "parents_married": 1,
+    "character_classes": {
+        "characterClass1": {
+            "class_name": "Archer",
+            "class_level": 6,
+            "class_id": 26,
+            "number_of_experience_points": 91048,
+            "spell_classes": [
+                "Magic-User"
+            ],
+            "class_icon_file_location": null
+        },
+        "characterClass2": {
+            "class_name": "Magic-User",
+            "class_level": 8,
+            "class_id": 7,
+            "number_of_experience_points": 91048,
+            "spell_classes": [
+                "Magic-User"
+            ],
+            "class_icon_file_location": null
+        }
+    }
+}

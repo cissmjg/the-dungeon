@@ -92,7 +92,7 @@
                 
                 $weapon_proficiency_id = $this->getPlayerCharacterWeapon()->getWeaponProficiencyId();
                 $is_lance = $this->getPlayerCharacterWeapon()->getMeleeWeaponSubtype() == WEAPON_SUBTYPE_LANCE;
-                $is_preferred = $this->getPlayerCharacterSkillSet()->isWeaponPreferred($weapon_proficiency_id) || $is_lance;
+                $is_preferred = $this->getPlayerCharacterWeapon()->getIsPreferred();
 
                 $character_level = $this->getCharacterDetails()->getPrimaryClass()->getClassLevel();
                 if ($is_preferred) {
@@ -150,7 +150,7 @@
             } else if ($this->getCharacterDetails()->getPrimaryClass()->getClassId() == ELVEN_CAVALIER) {
                 $level_progression_table = [1, 7, 13];
                 $character_level = $this->getCharacterDetails()->getPrimaryClass()->getClassLevel();
-                $is_preferred = $this->getPlayerCharacterWeapon()->getWeaponProficiencyId() == SHORT_BOW;
+                $is_preferred = $this->getPlayerCharacterWeapon()->getIsPreferred();
 
                 if ($is_preferred) {
                     $character_level += 4;
@@ -308,10 +308,10 @@
                 $best_melee_class_id = $this->getCharacterDetails()->getBestMeleeClassId();
                 $character_level = $this->getCharacterDetails()->getLevelForClass($best_melee_class_id);
                 $attacks_per_round = $this->getShortBowHalfRateAttacksPerRound($level_progression_table, $character_level);
-            } else if ($this->getCharacterDetails()->getPrimaryClass() == ELVEN_CAVALIER) {
+            } else if ($this->getCharacterDetails()->getPrimaryClass()->getClassId() == ELVEN_CAVALIER) {
                 $level_progression_table = [1, 7, 13];
                 $character_level = $this->getCharacterDetails()->getPrimaryClass()->getClassLevel();
-                $is_preferred = $this->getPlayerCharacterWeapon()->getWeaponProficiencyId() == SHORT_BOW;
+                $is_preferred = $this->getPlayerCharacterWeapon()->getIsPreferred();
 
                 if ($is_preferred) {
                     $character_level += 4;

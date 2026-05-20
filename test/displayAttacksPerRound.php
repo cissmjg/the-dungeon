@@ -47,7 +47,10 @@
     $class_description = $character_details->getDescriptionForClassId($best_melee_class_id);
     $character_level = $character_details->getLevelForClass($best_melee_class_id);
 
-    $header = sprintf("\n%' 32s %s %d level\n", $character_name, $class_description, $character_level);
+    $combat_mode = COMBAT_MODE_UNMOUNTED;
+    $combat_mode_desc = $combat_mode == COMBAT_MODE_UNMOUNTED ? "Unmounted" : "Mounted";
+
+    $header = sprintf("\n%' 32s %s %d level %s\n", $character_name, $class_description, $character_level, $combat_mode_desc);
     echo $header;
     echo str_repeat("-", 80) . PHP_EOL;
 
@@ -55,7 +58,7 @@
         if ($player_character_weapon->getWeaponId() != 0) {
             $is_specialized = count($player_character_skill_set->getAllSkillInstancesForWeapon(SPECIALIZATION, $player_character_weapon->getWeaponProficiencyId())) > 0;
             $spec_display = $is_specialized ? 'Y' : 'N';
-            $attacks_per_round_calculator = new AttacksPerRoundCalculator($character_details, $player_character_skill_set, $player_character_weapon, COMBAT_MODE_UNMOUNTED);
+            $attacks_per_round_calculator = new AttacksPerRoundCalculator($character_details, $player_character_skill_set, $player_character_weapon, $combat_mode);
 
             try{
                 if ($player_character_weapon->getMeleeWeaponType() == WEAPON_TYPE_MELEE) {

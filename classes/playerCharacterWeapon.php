@@ -18,6 +18,7 @@ class PlayerCharacterWeapon implements JsonSerializable {
     private $weaponLocation;
     private $isReady;
     private $isProficient = false;
+    private $isPreferred = false;
     private $craftStatus;
     private $strengthBonusAvailable;
     private $playerNote1;
@@ -163,6 +164,7 @@ class PlayerCharacterWeapon implements JsonSerializable {
 
         $weapon_subtype = $this->meleeWeaponSubtype != 0 ? $this->meleeWeaponSubtype : $this->missileWeaponSubtype;
         $this->isProficient = WeaponProficiencyHelper::isProficient($weapon_subtype, $this->weaponProficiencyId, $player_character_skill_set);
+        $this->isPreferred = WeaponProficiencyHelper::isPreferred($this->weaponProficiencyId, $player_character_skill_set);
     }
 
     public function fromJSON($weapon_detail_json, $player_character_skill_set) {
@@ -236,6 +238,8 @@ class PlayerCharacterWeapon implements JsonSerializable {
 
         $weapon_subtype = $this->meleeWeaponSubtype != 0 ? $this->meleeWeaponSubtype : $this->missileWeaponSubtype;
         $this->isProficient = WeaponProficiencyHelper::isProficient($weapon_subtype, $this->weaponProficiencyId, $player_character_skill_set);
+        $this->isPreferred = WeaponProficiencyHelper::isPreferred($this->weaponProficiencyId, $player_character_skill_set);
+
     }
 
     public function getPlayerCharacterWeapon(\PDO $pdo, $player_character_weapon_id, &$errors) {
@@ -280,6 +284,10 @@ class PlayerCharacterWeapon implements JsonSerializable {
 
     public function getIsProficient() {
         return $this->isProficient;
+    }
+
+    public function getIsPreferred() {
+        return $this->isPreferred;
     }
 
     public function getCraftStatus() {

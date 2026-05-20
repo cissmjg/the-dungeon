@@ -59,10 +59,11 @@ class PlayerCharacterMeleeWeaponRenderer extends PlayerCharacterWeaponRenderer {
 
         $weapon_desc = $this->buildRmChevronClickIcon($weapon_panel_name, $weapon_panel_icon_name, $weapon_panel_icon_name) . $player_character_weapon->getWeaponDescription();
         $attacks_per_round = $attacks_per_round_calculator->getAttacksPerRound(WEAPON_TYPE_MELEE);
+        $weapon_speed = $this->calculateWeaponSpeed($player_character_weapon->getMeleeWeaponSpeed(), $attacks_per_round, false, $player_character_weapon->getMeleeWeaponSubtype(), $player_character_weapon->getMeleeNumberOfHands(), $player_character_weapon->getWeaponProficiencyId());
 
         $weapon_detail_entry  = HtmlHelper::buildDivStartTag($this->formatCellStyle(false));
         $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailLeft', $weapon_desc);
-        $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', $player_character_weapon->getMeleeWeaponSpeed());
+        $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', $weapon_speed);
         $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', $attacks_per_round->value);
         $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', $player_character_weapon->getMeleeWeaponDamage());
         $weapon_detail_entry .= HtmlHelper::buildDivTag('', '&nbsp;');
