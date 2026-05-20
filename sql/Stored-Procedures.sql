@@ -1292,7 +1292,8 @@ BEGIN
 	JOIN player_character_weapon_mode ON player_character_weapon_mode.player_character_weapon_id = player_character_weapon.id
 	JOIN player_character ON player_character.id = player_character_weapon.player_character_id
 	JOIN player ON player.id = player_character.player_id
-	WHERE player.name = playerName AND player_character.name = characterName;
+	WHERE player.name = playerName AND player_character.name = characterName
+	ORDER BY player_character_weapon.is_ready DESC, player_character_weapon.description;
 END
 
 CREATE PROCEDURE getPlayerCharacterTwoWeaponConfigurations

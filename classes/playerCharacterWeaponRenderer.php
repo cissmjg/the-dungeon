@@ -10,7 +10,7 @@ require_once __DIR__ . '/../dbio/constants/attacksPerRound.php';
 require_once __DIR__ . '/../dbio/constants/weaponSubtype.php';
 
 require_once __DIR__ . '/rollModifier/rmUIContainer.php';
-require_once __DIR__ . '/rollModifier/RmCollectionCalculator.php';
+require_once __DIR__ . '/rollModifier/rmCollectionCalculator.php';
 
 require_once __DIR__ . '/../helper/HtmlHelper.php';
 require_once __DIR__ . '/../fa/faChevronIcon.php';
