@@ -1,8 +1,15 @@
 <?php
 require_once 'playerCharacterWeaponRenderer.php';
+require_once 'playerCharacterWeapon.php';
+require_once 'playerCharacterSkillSet.php';
+require_once 'characterDetails.php';
+require_once 'attributeMetadata.php';
+require_once 'attacksPerRoundCalculator.php';
 require_once 'rowClassManager.php';
 
+
 require_once __DIR__ . '/../dbio/constants/skills.php';
+require_once __DIR__ . '/../dbio/constants/attacksPerRound.php';
 require_once __DIR__ . '/../dbio/constants/missileRanges.php';
 require_once __DIR__ . '/../dbio/constants/arrowTypes.php';
 require_once __DIR__ . '/../dbio/constants/characterClasses.php';
@@ -59,11 +66,16 @@ class PlayerCharacterMissileWeaponRenderer extends PlayerCharacterWeaponRenderer
         if ($this->player_character_weapon->getMissileWeaponType() != WEAPON_TYPE_MISSILE) {
             return '';
         }
+
+        // The only missile weapon available while mounted is short bow
+        if ($this->getCombatMode() == COMBAT_MODE_MOUNTED && $this->getPlayerCharacterWeapon()->getWeaponProficiencyId() != SHORT_BOW) {
+            return '';
+        }
         
-        $attacks_per_round = $this->calculateAttacksPerRound($this->player_character_skill_set, $this->player_character_weapon, $this->character_details);
+        $attacks_per_round_calculator = new AttacksPerRoundCalculator($this->getCharacterDetails(), $this->getPlayerCharacterSkillSet(), $this->getPlayerCharacterWeapon(), $this->getCombatMode());
 
         $weapon_panel = '';
-        $weapon_panel_section_name = $this->combat_mode == COMBAT_MODE_MOUNTED ? "mounted-" : "unmounted-";
+        $weapon_panel_section_name = $this->getCombatMode() == COMBAT_MODE_MOUNTED ? "mounted-" : "unmounted-";
 
         $this->uses_point_blank_range = $this->usesPointBlankRange($this->getCharacterDetails(), $this->getPlayerCharacterSkillSet(), $this->getPlayerCharacterWeapon());
         $this->uses_short_range = $this->usesShortRange($this->getPlayerCharacterWeapon());
@@ -78,7 +90,7 @@ class PlayerCharacterMissileWeaponRenderer extends PlayerCharacterWeaponRenderer
             $point_blank_damage_calculator = $this->getPointBlankDamageCalculator($this->getCharacterDetails(), $this->getPlayerCharacterSkillSet(), $this->getPlayerCharacterWeapon());
             $weapon_panel_name = 'weapon-pb-' . $weapon_panel_section_name . $this->player_character_weapon->getWeaponId();
             $weapon_panel_icon_name = 'weapon-pb-icon-' . $weapon_panel_section_name . $this->player_character_weapon->getWeaponId();
-            $weapon_panel .= $this->renderPanel(MissileRange::PointBlank, $point_blank_to_hit_calculator, $point_blank_damage_calculator, $attacks_per_round, $weapon_panel_name, $weapon_panel_icon_name);
+            $weapon_panel .= $this->renderPanel(MissileRange::PointBlank, $point_blank_to_hit_calculator, $point_blank_damage_calculator, $attacks_per_round_calculator, $weapon_panel_name, $weapon_panel_icon_name);
         }
 
         // Short Range
@@ -87,7 +99,7 @@ class PlayerCharacterMissileWeaponRenderer extends PlayerCharacterWeaponRenderer
             $short_range_damage_calculator = $this->getShortRangeDamageCalculator($this->getCharacterDetails());
             $weapon_panel_name = 'weapon-short-' . $weapon_panel_section_name . $this->player_character_weapon->getWeaponId();
             $weapon_panel_icon_name = 'weapon-short-icon-' . $weapon_panel_section_name . $this->player_character_weapon->getWeaponId();
-            $weapon_panel .= $this->renderPanel(MissileRange::Short, $short_range_to_hit_calculator, $short_range_damage_calculator, $attacks_per_round, $weapon_panel_name, $weapon_panel_icon_name);
+            $weapon_panel .= $this->renderPanel(MissileRange::Short, $short_range_to_hit_calculator, $short_range_damage_calculator, $attacks_per_round_calculator, $weapon_panel_name, $weapon_panel_icon_name);
         }
 
         // Medium Range
@@ -96,7 +108,7 @@ class PlayerCharacterMissileWeaponRenderer extends PlayerCharacterWeaponRenderer
             $medium_range_damage_calculator = $this->getMediumRangeDamageCalculator($this->getCharacterDetails());
             $weapon_panel_name = 'weapon-med-' . $weapon_panel_section_name . $this->player_character_weapon->getWeaponId();
             $weapon_panel_icon_name = 'weapon-med-icon-' . $weapon_panel_section_name . $this->player_character_weapon->getWeaponId();
-            $weapon_panel .= $this->renderPanel(MissileRange::Medium, $medium_range_to_hit_calculator, $medium_range_damage_calculator, $attacks_per_round, $weapon_panel_name, $weapon_panel_icon_name);
+            $weapon_panel .= $this->renderPanel(MissileRange::Medium, $medium_range_to_hit_calculator, $medium_range_damage_calculator, $attacks_per_round_calculator, $weapon_panel_name, $weapon_panel_icon_name);
         }
 
         // If Bow, format Swiftwing panel for Medium Range, panel is hidden initially
@@ -105,7 +117,7 @@ class PlayerCharacterMissileWeaponRenderer extends PlayerCharacterWeaponRenderer
             $medium_range_damage_calculator = $this->getMediumRangeDamageCalculator($this->getCharacterDetails());
             $weapon_panel_name = 'weapon-med-sw-' . $weapon_panel_section_name . $this->player_character_weapon->getWeaponId();
             $weapon_panel_icon_name = 'weapon-med-sw-icon-' . $weapon_panel_section_name . $this->player_character_weapon->getWeaponId();
-            $weapon_panel .= $this->renderPanel(MissileRange::MediumSwiftwing, $medium_range_swiftwing_to_hit_calculator, $medium_range_damage_calculator, $attacks_per_round, $weapon_panel_name, $weapon_panel_icon_name);
+            $weapon_panel .= $this->renderPanel(MissileRange::MediumSwiftwing, $medium_range_swiftwing_to_hit_calculator, $medium_range_damage_calculator, $attacks_per_round_calculator, $weapon_panel_name, $weapon_panel_icon_name);
         }
 
         if ($this->uses_long_range) {
@@ -113,7 +125,7 @@ class PlayerCharacterMissileWeaponRenderer extends PlayerCharacterWeaponRenderer
             $long_range_damage_calculator = $this->getLongRangeDamageCalculator($this->getCharacterDetails());
             $weapon_panel_name = 'weapon-long-' . $weapon_panel_section_name . $this->player_character_weapon->getWeaponId();
             $weapon_panel_icon_name = 'weapon-long-icon-' . $weapon_panel_section_name . $this->player_character_weapon->getWeaponId();
-            $weapon_panel .= $this->renderPanel(MissileRange::Long, $long_range_to_hit_calculator, $long_range_damage_calculator, $attacks_per_round, $weapon_panel_name, $weapon_panel_icon_name);
+            $weapon_panel .= $this->renderPanel(MissileRange::Long, $long_range_to_hit_calculator, $long_range_damage_calculator, $attacks_per_round_calculator, $weapon_panel_name, $weapon_panel_icon_name);
         }
 
         // If Bow, format Swiftwing panel for Long Range, panel is hidden initially
@@ -122,23 +134,23 @@ class PlayerCharacterMissileWeaponRenderer extends PlayerCharacterWeaponRenderer
             $long_range_damage_calculator = $this->getLongRangeDamageCalculator($this->getCharacterDetails());
             $weapon_panel_name = 'weapon-long-sw-' . $weapon_panel_section_name . $this->player_character_weapon->getWeaponId();
             $weapon_panel_icon_name = 'weapon-long-sw-icon-' . $weapon_panel_section_name . $this->player_character_weapon->getWeaponId();
-            $weapon_panel .= $this->renderPanel(MissileRange::LongSwiftwing, $long_swiftwing_to_hit_calculator, $long_range_damage_calculator, $attacks_per_round, $weapon_panel_name, $weapon_panel_icon_name);
+            $weapon_panel .= $this->renderPanel(MissileRange::LongSwiftwing, $long_swiftwing_to_hit_calculator, $long_range_damage_calculator, $attacks_per_round_calculator, $weapon_panel_name, $weapon_panel_icon_name);
         }
 
         return $weapon_panel;
     }
 
-    private function renderPanel(MissileRange $missile_range, RmCollectionCalculator $to_hit_calculator, RmCollectionCalculator $damage_calculator, $attacks_per_round, $weapon_panel_name, $weapon_panel_icon_name) {
+    private function renderPanel(MissileRange $missile_range, RmCollectionCalculator $to_hit_calculator, RmCollectionCalculator $damage_calculator, AttacksPerRoundCalculator $attacks_per_round_calculator, $weapon_panel_name, $weapon_panel_icon_name) {
         $to_hit_calculator->gather($this->character_details, $this->player_character_skill_set, $this->player_character_weapon, $this->attribute_metadata);
         $damage_calculator->gather($this->character_details, $this->player_character_skill_set, $this->player_character_weapon, $this->attribute_metadata);
 
-        $weapon_panel  = $this->buildWeaponDetailEntry($this->player_character_weapon, $to_hit_calculator, $damage_calculator, $attacks_per_round, $weapon_panel_name, $weapon_panel_icon_name, $missile_range);
+        $weapon_panel  = $this->buildWeaponDetailEntry($this->player_character_weapon, $to_hit_calculator, $damage_calculator, $attacks_per_round_calculator, $weapon_panel_name, $weapon_panel_icon_name, $missile_range);
         $weapon_panel .= $this->buildRmWeaponPanel($to_hit_calculator, $damage_calculator, $weapon_panel_name);
 
         return $weapon_panel;
     }
 
-    public function buildWeaponDetailEntry(PlayerCharacterWeapon $player_character_weapon, RmCollectionCalculator $melee_to_hit_calculator, RmCollectionCalculator $melee_damage_calculator, $attacks_per_round, $weapon_panel_name, $weapon_panel_icon_name, MissileRange $missile_range) {
+    public function buildWeaponDetailEntry(PlayerCharacterWeapon $player_character_weapon, RmCollectionCalculator $melee_to_hit_calculator, RmCollectionCalculator $melee_damage_calculator, AttacksPerRoundCalculator $attacks_per_round_calculator, $weapon_panel_name, $weapon_panel_icon_name, MissileRange $missile_range) {
 
         $hit_adj = $this->calculateHitAdj($melee_to_hit_calculator);
         $dmg_adj = $this->calculateDmgAdj($melee_damage_calculator);
@@ -194,10 +206,14 @@ class PlayerCharacterMissileWeaponRenderer extends PlayerCharacterWeaponRenderer
         } else {
             $weapon_detail_entry .= HtmlHelper::buildDivStartTagWithId($cell_style, $row_id, false);
         }
+
+        $attacks_per_round = $attacks_per_round_calculator->getAttacksPerRound(WEAPON_TYPE_MISSILE);
+        $weapon_speed = $this->calculateWeaponSpeed($player_character_weapon->getMissileWeaponSpeed(), $attacks_per_round, false, $player_character_weapon->getMissileWeaponSubtype(), '2', $player_character_weapon->getWeaponProficiencyId());
+
         $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailLeft', $weapon_desc);
         if ($render_header) {
-            $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', $player_character_weapon->getMissileWeaponSpeed());
-            $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', $attacks_per_round);
+            $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', $weapon_speed);
+            $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', $attacks_per_round->value);
             $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', $this->formatDamage($player_character_weapon));
         } else {
             $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', '&nbsp;');
@@ -211,24 +227,6 @@ class PlayerCharacterMissileWeaponRenderer extends PlayerCharacterWeaponRenderer
         $weapon_detail_entry .= HtmlHelper::buildDivEndTag() . PHP_EOL;
 
         return $weapon_detail_entry;
-    }
-
-    public function calculateAttacksPerRound(PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, CharacterDetails $character_details) {
-        $is_preferred = $this->isPreferred($player_character_weapon, $player_character_skill_set, $character_details);
-        $attacks_per_round = ATTACKS_PER_ROUND_1_FOR_1;
-        $is_specialized = $player_character_skill_set->getAllSkillInstancesForWeapon(SPECIALIZATION,$player_character_weapon->getWeaponProficiencyId());
-        if ($is_specialized) {
-            $character_level = $character_details->getPrimaryClass()->getClassLevel();
-            $weapon_subtype = $player_character_weapon->getMeleeWeaponSubtype();
-            $weapon_proficiency_id = $player_character_weapon->getWeaponProficiencyId();
-            $attacks_per_round = getSpecializedAttacksPerRound($character_level, WEAPON_TYPE_MELEE, $weapon_subtype, $weapon_proficiency_id);
-        } else {
-            $class_id = $character_details->getBestMeleeClassId();
-            $class_level = $character_details->getLevelForClass($class_id);
-            $attacks_per_round = getAttacksPerRound($class_id, $class_level, $is_preferred, $this->getCombatMode() == COMBAT_MODE_MOUNTED, $player_character_weapon->getWeaponProficiencyId());
-        }
-
-        return getAttacksPerRoundDescription($attacks_per_round);
     }
 
     private function getPointBlankToHitCalculator(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon) {

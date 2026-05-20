@@ -36,7 +36,7 @@
     "character_classes": {
         "characterClass1": {
             "class_name": "Fighter",
-            "class_level": 5,
+            "class_level": 7,
             "class_id": 4,
             "number_of_experience_points": 1000,
             "spell_classes": [],

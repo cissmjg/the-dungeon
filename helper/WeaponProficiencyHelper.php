@@ -1,5 +1,9 @@
 <?php
+
 require_once __DIR__ . '/../classes/playerCharacterSkillSet.php';
+require_once __DIR__ . '/../dbio/constants/characterClasses.php';
+require_once __DIR__ . '/../dbio/constants/weapons.php';
+
 class WeaponProficiencyHelper {
 
     public static function isProficient($weapon_subtype, $weapon_proficiency_id, PlayerCharacterSkillSet $player_character_skill_set) {
@@ -181,10 +185,6 @@ class WeaponProficiencyHelper {
             return true;
         }
 
-        if ($player_character_skill_set->isProficientWithWeapon(DOKYU)) {
-            return true;
-        }
-
         return false;
     }
 
@@ -203,6 +203,27 @@ class WeaponProficiencyHelper {
         }
 
         return false;
+    }
+
+    public static function isPreferred($weaponProficiencyId, PlayerCharacterSkillSet $player_character_skill_set) {
+        // Note this function only works for Elven Cavaliers
+        return WeaponProficiencyHelper::calculateIsPreferred(ELVEN_CAVALIER, $weaponProficiencyId, $player_character_skill_set);
+    }
+
+    private static function calculateIsPreferred($class_id, $weapon_proficiency_id, PlayerCharacterSkillSet $player_character_skill_set) {
+        $is_preferred = false;
+
+        if ($class_id == ELVEN_CAVALIER) {
+            $is_long_sword_or_short_bow = ($weapon_proficiency_id == LONG_SWORD || $weapon_proficiency_id == ELVEN_THIN_BLADE || $weapon_proficiency_id == SHORT_BOW);
+            $is_trained_preferred = $player_character_skill_set->isWeaponPreferred($weapon_proficiency_id);
+            $is_preferred = $is_long_sword_or_short_bow || $is_trained_preferred;
+        } else if ($class_id == CAVALIER || $class_id == PALADIN) {
+            $is_lance = ($weapon_proficiency_id == LIGHT_LANCE || $weapon_proficiency_id == MEDIUM_LANCE || $weapon_proficiency_id == HEAVY_LANCE);
+            $is_trained_preferred = $player_character_skill_set->isWeaponPreferred($weapon_proficiency_id);
+            $is_preferred = $is_lance || $is_trained_preferred;
+        }
+
+        return $is_preferred;
     }
 }
 ?>

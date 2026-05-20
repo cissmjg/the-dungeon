@@ -47,7 +47,6 @@
     require_once __DIR__ . '/../dbio/constants/weaponSubtype.php';
     require_once __DIR__ . '/../dbio/constants/characterClasses.php';
     require_once __DIR__ . '/../dbio/constants/mountedCombatMode.php';
-    require_once __DIR__ . '/../rules/attacksPerRound.php';
 
     $character_name = $argv[1];
     if (empty($character_name)) {
@@ -75,7 +74,6 @@
 
     $two_weapon_config_file_name = sprintf("data/%s_two_weapon_configuration_set.json", $character_name);
     $two_weapon_config_file = file_get_contents($two_weapon_config_file_name);
-    echo 'JSON valid: [' . var_export(json_validate($two_weapon_config_file), true) . ']' . PHP_EOL;
     $two_weapon_config_json = json_decode($two_weapon_config_file);
     $two_weapon_fighting_configuration_set = new TwoWeaponFightingConfigurationSet();
     $two_weapon_fighting_configuration_set->fromJSON($two_weapon_config_json);

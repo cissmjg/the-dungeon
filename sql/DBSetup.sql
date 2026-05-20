@@ -6817,6 +6817,7 @@ INSERT INTO weapon_proficiency (name) VALUES ('Yawara');
 INSERT INTO weapon_proficiency (name) VALUES ('Khopesh Sword');
 INSERT INTO weapon_proficiency (name) VALUES ('Long Sword');
 INSERT INTO weapon_proficiency (name) VALUES ('Fist');
+INSERT INTO weapon_proficiency (name) VALUES ('Pistol Grip Crossbow');
 
 -- Weapon Catalog
 -- '[TALENT]' 
@@ -7398,6 +7399,11 @@ VALUES (1, 1, '6', 'd2/1', '1', NULL, NULL, NULL, NULL, 114);
 -- 'Yawara'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
 VALUES (1, 1, '1', '2X hand dam', '1', NULL, NULL, NULL, NULL, 115);
+
+-- Pistol Grip crossbow
+INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
+VALUES (2, 4, '2', 'd4/d4', '1', '8', '14', '20', NULL, 119);
+
 
 -- Class Weapon proficiencies
 
@@ -9661,7 +9667,7 @@ COMMIT;
 START TRANSACTION;
 
 INSERT INTO skill_catalog (name, attribute, skill_focus, max_count, required_class, required_race, required_level, minimum_charisma, minimum_dexterity, minimum_intelligence, roll_name, ability_text, attribute_bonus, is_active)
-VALUES('Rapid Reload','Dex', True, 1, 0, 0, 0, 0, 0, 0, 'Rapid Reload', 'Load a crossbow at 1/2 the normal rate', 0, True);
+VALUES('Rapid Reload','Dex', False, 1, 0, 0, 0, 0, 0, 0, 'Rapid Reload', 'Load a crossbow at double the normal rate', 0, True);
 
 -- SELECT skill_catalog.id FROM skill_catalog WHERE name = 'No PreRequisite';
 -- 'No PreRequisite' ID = 1
