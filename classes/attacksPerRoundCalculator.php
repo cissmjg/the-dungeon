@@ -143,7 +143,7 @@
                 $best_melee_class_id = $this->getCharacterDetails()->getBestMeleeClassId();
                 $character_level = $this->getCharacterDetails()->getLevelForClass($best_melee_class_id);
                 $attacks_per_round = $this->getSpecializedMissileAttacksPerRound($character_level);
-            } else if ($this->getCharacterDetails()->isArcherType() && $this->getPlayerCharacterWeapon()->getMissileWeaponSubtype() == WEAPON_SUBTYPE_ARROW && $this->getPlayerCharacterWeapon()->getWeaponProficiencyId() != SHORT_BOW) {
+            } else if ($this->getCharacterDetails()->isArcherType() && $this->getPlayerCharacterWeapon()->getMissileWeaponSubtype() == WEAPON_SUBTYPE_BOW && $this->getPlayerCharacterWeapon()->getWeaponProficiencyId() != SHORT_BOW) {
                 $level_progression_table = [1, 7, 13];
                 $character_level = $this->getCharacterDetails()->getFighterTypeLevel();
                 $attacks_per_round = $this->getArcherBowAttacksPerRound($level_progression_table, $character_level);

@@ -1111,7 +1111,15 @@ CREATE PROCEDURE getCharacterIds
  IN characterName VARCHAR(64),
  IN characterClassName VARCHAR(32))
 BEGIN
-	SELECT player_character_class.id as player_character_class_id, player_character_class.character_class_id AS player_character_class_character_class_id, player_character.id AS player_character_id, player_character.race_id AS player_character_race_id, character_race.generic_race_id AS generic_race_id, player.id AS player_id, character_class.spell_type_1 AS spell_type_id_1, character_class.spell_type_2 AS spell_type_id_2 FROM player
+	SELECT 
+		player_character_class.id as player_character_class_id, 
+		player_character_class.character_class_id AS player_character_class_character_class_id, 
+		player_character.id AS player_character_id, 
+		player_character.race_id AS player_character_race_id, 
+		character_race.generic_race_id AS generic_race_id, 
+		player.id AS player_id, 
+		character_class.spell_type_1 AS spell_type_id_1, 
+		character_class.spell_type_2 AS spell_type_id_2 FROM player
 	JOIN player_character ON player_character.player_id = player.id
 	JOIN character_race ON character_race.id = player_character.race_id
 	JOIN player_character_class ON player_character_class.player_character_id = player_character.id
