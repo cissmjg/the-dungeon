@@ -1,0 +1,2705 @@
+{
+  "playerCharacterPoolSpellList": [
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7858,
+      "spell_catalog_id": 1,
+      "spell_name": "Aspiration",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7859,
+      "spell_catalog_id": 2,
+      "spell_name": "Benediction",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7860,
+      "spell_catalog_id": 3,
+      "spell_name": "Candle",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7861,
+      "spell_catalog_id": 4,
+      "spell_name": "Canticle",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7862,
+      "spell_catalog_id": 5,
+      "spell_name": "Ceremony: Oath",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7863,
+      "spell_catalog_id": 6,
+      "spell_name": "Cure Minor Wounds",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7864,
+      "spell_catalog_id": 7,
+      "spell_name": "Find a Stray",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7865,
+      "spell_catalog_id": 8,
+      "spell_name": "Malediction",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7866,
+      "spell_catalog_id": 9,
+      "spell_name": "Meditation",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7867,
+      "spell_catalog_id": 10,
+      "spell_name": "Petition",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7868,
+      "spell_catalog_id": 11,
+      "spell_name": "Warding",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7873,
+      "spell_catalog_id": 13,
+      "spell_name": "Bless",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7874,
+      "spell_catalog_id": 14,
+      "spell_name": "Ceremony",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7875,
+      "spell_catalog_id": 15,
+      "spell_name": "Combine",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7876,
+      "spell_catalog_id": 16,
+      "spell_name": "Command",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7877,
+      "spell_catalog_id": 17,
+      "spell_name": "Create Water",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7878,
+      "spell_catalog_id": 18,
+      "spell_name": "Cure Light Wounds",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7879,
+      "spell_catalog_id": 19,
+      "spell_name": "Detect Evil",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7880,
+      "spell_catalog_id": 22,
+      "spell_name": "Detect Magic",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7881,
+      "spell_catalog_id": 23,
+      "spell_name": "Endure Cold/Endure Heat",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7882,
+      "spell_catalog_id": 24,
+      "spell_name": "Flamehand",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7883,
+      "spell_catalog_id": 25,
+      "spell_name": "Invisibility to Undead",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7884,
+      "spell_catalog_id": 26,
+      "spell_name": "Light",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7885,
+      "spell_catalog_id": 27,
+      "spell_name": "Magic Stone",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7886,
+      "spell_catalog_id": 28,
+      "spell_name": "Penetrate Disguise",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7887,
+      "spell_catalog_id": 29,
+      "spell_name": "Portent",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7889,
+      "spell_catalog_id": 31,
+      "spell_name": "Precipitation",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7888,
+      "spell_catalog_id": 30,
+      "spell_name": "Precipitation",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7890,
+      "spell_catalog_id": 32,
+      "spell_name": "Protection From Evil",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7891,
+      "spell_catalog_id": 33,
+      "spell_name": "Purify Food & Drink",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7892,
+      "spell_catalog_id": 34,
+      "spell_name": "Rainshield",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7893,
+      "spell_catalog_id": 36,
+      "spell_name": "Regenerate Light Wounds",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7894,
+      "spell_catalog_id": 37,
+      "spell_name": "Remove Fear",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7895,
+      "spell_catalog_id": 38,
+      "spell_name": "Resist Cold",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7896,
+      "spell_catalog_id": 39,
+      "spell_name": "Resist Poison",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7897,
+      "spell_catalog_id": 40,
+      "spell_name": "Sanctuary",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 7898,
+      "spell_catalog_id": 42,
+      "spell_name": "SPIRITUAL WHIP",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9175,
+      "spell_catalog_id": 44,
+      "spell_name": "Aid",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9176,
+      "spell_catalog_id": 45,
+      "spell_name": "Augury",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9177,
+      "spell_catalog_id": 46,
+      "spell_name": "Blesssed Aim",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9178,
+      "spell_catalog_id": 48,
+      "spell_name": "Chant",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9179,
+      "spell_catalog_id": 49,
+      "spell_name": "Detect Charm",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9180,
+      "spell_catalog_id": 50,
+      "spell_name": "Detect Life",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9181,
+      "spell_catalog_id": 51,
+      "spell_name": "Dust Devil",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9182,
+      "spell_catalog_id": 53,
+      "spell_name": "Enthrall",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9183,
+      "spell_catalog_id": 55,
+      "spell_name": "Find Traps",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9184,
+      "spell_catalog_id": 56,
+      "spell_name": "Float",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9185,
+      "spell_catalog_id": 58,
+      "spell_name": "Hold Person",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9186,
+      "spell_catalog_id": 59,
+      "spell_name": "Holy Symbol",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9187,
+      "spell_catalog_id": 60,
+      "spell_name": "Know Alignment",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9188,
+      "spell_catalog_id": 62,
+      "spell_name": "Messenger",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9189,
+      "spell_catalog_id": 63,
+      "spell_name": "Recurring Cure Minor Wounds",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9190,
+      "spell_catalog_id": 64,
+      "spell_name": "Resist Fire",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9191,
+      "spell_catalog_id": 65,
+      "spell_name": "Silence, 15' Radius",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9192,
+      "spell_catalog_id": 66,
+      "spell_name": "Siren Song",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9193,
+      "spell_catalog_id": 67,
+      "spell_name": "Slow Poison",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9194,
+      "spell_catalog_id": 68,
+      "spell_name": "Snake Charm",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9195,
+      "spell_catalog_id": 69,
+      "spell_name": "Speak With Animals",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9196,
+      "spell_catalog_id": 70,
+      "spell_name": "Spiritual Hammer",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9197,
+      "spell_catalog_id": 71,
+      "spell_name": "Swim",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9198,
+      "spell_catalog_id": 72,
+      "spell_name": "Wave",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9199,
+      "spell_catalog_id": 74,
+      "spell_name": "Withdraw",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9200,
+      "spell_catalog_id": 75,
+      "spell_name": "Wyvern Watch",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9206,
+      "spell_catalog_id": 78,
+      "spell_name": "Animate Dead",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9207,
+      "spell_catalog_id": 79,
+      "spell_name": "Automaton",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9208,
+      "spell_catalog_id": 80,
+      "spell_name": "Cloudburst",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9209,
+      "spell_catalog_id": 81,
+      "spell_name": "Cloudburst",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9210,
+      "spell_catalog_id": 82,
+      "spell_name": "Continual Light",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9211,
+      "spell_catalog_id": 83,
+      "spell_name": "Create Food & Water",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9212,
+      "spell_catalog_id": 84,
+      "spell_name": "Cure Blindness",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9213,
+      "spell_catalog_id": 85,
+      "spell_name": "Cure Disease",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9214,
+      "spell_catalog_id": 86,
+      "spell_name": "Dark Fire",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9215,
+      "spell_catalog_id": 87,
+      "spell_name": "Death's Door",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9216,
+      "spell_catalog_id": 88,
+      "spell_name": "DEFORM",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9217,
+      "spell_catalog_id": 89,
+      "spell_name": "Dispel Magic",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9218,
+      "spell_catalog_id": 91,
+      "spell_name": "Exaltation",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9219,
+      "spell_catalog_id": 92,
+      "spell_name": "Feign Death",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9220,
+      "spell_catalog_id": 93,
+      "spell_name": "Flame Walk",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9221,
+      "spell_catalog_id": 94,
+      "spell_name": "Forceward",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9222,
+      "spell_catalog_id": 95,
+      "spell_name": "Glyph of Warding",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9223,
+      "spell_catalog_id": 96,
+      "spell_name": "Holy Flail",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9224,
+      "spell_catalog_id": 97,
+      "spell_name": "Home port",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9225,
+      "spell_catalog_id": 98,
+      "spell_name": "Improved Resist Poison",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9226,
+      "spell_catalog_id": 99,
+      "spell_name": "Inkjet",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9227,
+      "spell_catalog_id": 101,
+      "spell_name": "Locate Amulet",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9228,
+      "spell_catalog_id": 102,
+      "spell_name": "Locate Object",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9229,
+      "spell_catalog_id": 103,
+      "spell_name": "Mace of Odo",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9230,
+      "spell_catalog_id": 104,
+      "spell_name": "Magical Vestment",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9231,
+      "spell_catalog_id": 105,
+      "spell_name": "Meld Into Stone",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9232,
+      "spell_catalog_id": 106,
+      "spell_name": "MINERVA'S IRRITATING ITCH",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9233,
+      "spell_catalog_id": 107,
+      "spell_name": "Negative Plane Protection",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9234,
+      "spell_catalog_id": 108,
+      "spell_name": "Prayer",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9235,
+      "spell_catalog_id": 110,
+      "spell_name": "Ranged Cure Light Wounds",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9236,
+      "spell_catalog_id": 111,
+      "spell_name": "Remove Curse",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9237,
+      "spell_catalog_id": 112,
+      "spell_name": "Remove Paralysis",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9238,
+      "spell_catalog_id": 113,
+      "spell_name": "Resist Mind Control",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9239,
+      "spell_catalog_id": 114,
+      "spell_name": "Speak With The Dead",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9240,
+      "spell_catalog_id": 116,
+      "spell_name": "Surf",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9241,
+      "spell_catalog_id": 117,
+      "spell_name": "Warmth",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9242,
+      "spell_catalog_id": 118,
+      "spell_name": "Water Walk",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9243,
+      "spell_catalog_id": 119,
+      "spell_name": "Windbearer",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9269,
+      "spell_catalog_id": 120,
+      "spell_name": "Abjure",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9270,
+      "spell_catalog_id": 121,
+      "spell_name": "Aid, Mass",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9271,
+      "spell_catalog_id": 122,
+      "spell_name": "Animate statue",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9272,
+      "spell_catalog_id": 125,
+      "spell_name": "Calm winds",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9273,
+      "spell_catalog_id": 126,
+      "spell_name": "Clear air",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9274,
+      "spell_catalog_id": 127,
+      "spell_name": "Cloak of Fear",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9275,
+      "spell_catalog_id": 129,
+      "spell_name": "Cure Serious Wounds",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9276,
+      "spell_catalog_id": 130,
+      "spell_name": "Detect Lie",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9277,
+      "spell_catalog_id": 131,
+      "spell_name": "Divination",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9278,
+      "spell_catalog_id": 132,
+      "spell_name": "Elemental control",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9279,
+      "spell_catalog_id": 133,
+      "spell_name": "Exorcise",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9280,
+      "spell_catalog_id": 134,
+      "spell_name": "Giant Insect",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9281,
+      "spell_catalog_id": 135,
+      "spell_name": "Hold wave",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9282,
+      "spell_catalog_id": 136,
+      "spell_name": "Imbue With Spell Ability",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9283,
+      "spell_catalog_id": 137,
+      "spell_name": "Lesser guardian seal",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9284,
+      "spell_catalog_id": 138,
+      "spell_name": "Lower Water",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9285,
+      "spell_catalog_id": 139,
+      "spell_name": "Minor Surgery",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9286,
+      "spell_catalog_id": 140,
+      "spell_name": "Neutralize Poison",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9287,
+      "spell_catalog_id": 142,
+      "spell_name": "Protection Prom Evil, 10' Radius",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9291,
+      "spell_catalog_id": 148,
+      "spell_name": "Recurring Cure Major Wounds",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9288,
+      "spell_catalog_id": 143,
+      "spell_name": "Regenerate Serious Wounds",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9289,
+      "spell_catalog_id": 145,
+      "spell_name": "Reveal",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9290,
+      "spell_catalog_id": 146,
+      "spell_name": "Sea form",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9292,
+      "spell_catalog_id": 149,
+      "spell_name": "Speak With Plants",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9293,
+      "spell_catalog_id": 150,
+      "spell_name": "Spell Immunity",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9294,
+      "spell_catalog_id": 151,
+      "spell_name": "Spike Growth",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9295,
+      "spell_catalog_id": 152,
+      "spell_name": "Sticks To Snakes",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9296,
+      "spell_catalog_id": 153,
+      "spell_name": "Sunburst",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9297,
+      "spell_catalog_id": 154,
+      "spell_name": "Tongues",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9300,
+      "spell_catalog_id": 155,
+      "spell_name": "Air Walk",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9301,
+      "spell_catalog_id": 156,
+      "spell_name": "Animate Dead Monsters",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9302,
+      "spell_catalog_id": 157,
+      "spell_name": "Atonement",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9303,
+      "spell_catalog_id": 159,
+      "spell_name": "Clutch of Might",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9304,
+      "spell_catalog_id": 160,
+      "spell_name": "Commune",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9305,
+      "spell_catalog_id": 162,
+      "spell_name": "Cure Critical Wounds",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9306,
+      "spell_catalog_id": 163,
+      "spell_name": "Dispel Evil",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9307,
+      "spell_catalog_id": 165,
+      "spell_name": "Flame Strike",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9308,
+      "spell_catalog_id": 166,
+      "spell_name": "Golem",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9309,
+      "spell_catalog_id": 167,
+      "spell_name": "Inquisition",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9310,
+      "spell_catalog_id": 168,
+      "spell_name": "Insect Plague",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9311,
+      "spell_catalog_id": 169,
+      "spell_name": "Magic Font",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9312,
+      "spell_catalog_id": 172,
+      "spell_name": "Plane Shift",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9313,
+      "spell_catalog_id": 173,
+      "spell_name": "Quest",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9314,
+      "spell_catalog_id": 174,
+      "spell_name": "Rainbow",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9315,
+      "spell_catalog_id": 175,
+      "spell_name": "Raise Dead",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9316,
+      "spell_catalog_id": 176,
+      "spell_name": "Regenerate Critical Wounds",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9317,
+      "spell_catalog_id": 177,
+      "spell_name": "Spike Stones",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Cleric"
+    },
+    {
+      "spell_type_name": "Cleric",
+      "spell_pool_id": 9318,
+      "spell_catalog_id": 178,
+      "spell_name": "True Seeing",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Cleric"
+    }
+  ],
+  "remove_empty": true,
+  "spellMap": {
+    "Cleric": {
+      "Cleric": {
+        "Cantrip": [
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7858,
+            "spell_catalog_id": 1,
+            "spell_name": "Aspiration",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7859,
+            "spell_catalog_id": 2,
+            "spell_name": "Benediction",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7860,
+            "spell_catalog_id": 3,
+            "spell_name": "Candle",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7861,
+            "spell_catalog_id": 4,
+            "spell_name": "Canticle",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7862,
+            "spell_catalog_id": 5,
+            "spell_name": "Ceremony: Oath",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7863,
+            "spell_catalog_id": 6,
+            "spell_name": "Cure Minor Wounds",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7864,
+            "spell_catalog_id": 7,
+            "spell_name": "Find a Stray",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7865,
+            "spell_catalog_id": 8,
+            "spell_name": "Malediction",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7866,
+            "spell_catalog_id": 9,
+            "spell_name": "Meditation",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7867,
+            "spell_catalog_id": 10,
+            "spell_name": "Petition",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7868,
+            "spell_catalog_id": 11,
+            "spell_name": "Warding",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Cleric"
+          }
+        ],
+        "1": [
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7873,
+            "spell_catalog_id": 13,
+            "spell_name": "Bless",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7874,
+            "spell_catalog_id": 14,
+            "spell_name": "Ceremony",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7875,
+            "spell_catalog_id": 15,
+            "spell_name": "Combine",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7876,
+            "spell_catalog_id": 16,
+            "spell_name": "Command",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7877,
+            "spell_catalog_id": 17,
+            "spell_name": "Create Water",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7878,
+            "spell_catalog_id": 18,
+            "spell_name": "Cure Light Wounds",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7879,
+            "spell_catalog_id": 19,
+            "spell_name": "Detect Evil",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7880,
+            "spell_catalog_id": 22,
+            "spell_name": "Detect Magic",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7881,
+            "spell_catalog_id": 23,
+            "spell_name": "Endure Cold/Endure Heat",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7882,
+            "spell_catalog_id": 24,
+            "spell_name": "Flamehand",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7883,
+            "spell_catalog_id": 25,
+            "spell_name": "Invisibility to Undead",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7884,
+            "spell_catalog_id": 26,
+            "spell_name": "Light",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7885,
+            "spell_catalog_id": 27,
+            "spell_name": "Magic Stone",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7886,
+            "spell_catalog_id": 28,
+            "spell_name": "Penetrate Disguise",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7887,
+            "spell_catalog_id": 29,
+            "spell_name": "Portent",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7889,
+            "spell_catalog_id": 31,
+            "spell_name": "Precipitation",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7888,
+            "spell_catalog_id": 30,
+            "spell_name": "Precipitation",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7890,
+            "spell_catalog_id": 32,
+            "spell_name": "Protection From Evil",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7891,
+            "spell_catalog_id": 33,
+            "spell_name": "Purify Food & Drink",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7892,
+            "spell_catalog_id": 34,
+            "spell_name": "Rainshield",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7893,
+            "spell_catalog_id": 36,
+            "spell_name": "Regenerate Light Wounds",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7894,
+            "spell_catalog_id": 37,
+            "spell_name": "Remove Fear",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7895,
+            "spell_catalog_id": 38,
+            "spell_name": "Resist Cold",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7896,
+            "spell_catalog_id": 39,
+            "spell_name": "Resist Poison",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7897,
+            "spell_catalog_id": 40,
+            "spell_name": "Sanctuary",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 7898,
+            "spell_catalog_id": 42,
+            "spell_name": "SPIRITUAL WHIP",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Cleric"
+          }
+        ],
+        "2": [
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9175,
+            "spell_catalog_id": 44,
+            "spell_name": "Aid",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9176,
+            "spell_catalog_id": 45,
+            "spell_name": "Augury",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9177,
+            "spell_catalog_id": 46,
+            "spell_name": "Blesssed Aim",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9178,
+            "spell_catalog_id": 48,
+            "spell_name": "Chant",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9179,
+            "spell_catalog_id": 49,
+            "spell_name": "Detect Charm",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9180,
+            "spell_catalog_id": 50,
+            "spell_name": "Detect Life",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9181,
+            "spell_catalog_id": 51,
+            "spell_name": "Dust Devil",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9182,
+            "spell_catalog_id": 53,
+            "spell_name": "Enthrall",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9183,
+            "spell_catalog_id": 55,
+            "spell_name": "Find Traps",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9184,
+            "spell_catalog_id": 56,
+            "spell_name": "Float",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9185,
+            "spell_catalog_id": 58,
+            "spell_name": "Hold Person",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9186,
+            "spell_catalog_id": 59,
+            "spell_name": "Holy Symbol",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9187,
+            "spell_catalog_id": 60,
+            "spell_name": "Know Alignment",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9188,
+            "spell_catalog_id": 62,
+            "spell_name": "Messenger",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9189,
+            "spell_catalog_id": 63,
+            "spell_name": "Recurring Cure Minor Wounds",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9190,
+            "spell_catalog_id": 64,
+            "spell_name": "Resist Fire",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9191,
+            "spell_catalog_id": 65,
+            "spell_name": "Silence, 15' Radius",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9192,
+            "spell_catalog_id": 66,
+            "spell_name": "Siren Song",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9193,
+            "spell_catalog_id": 67,
+            "spell_name": "Slow Poison",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9194,
+            "spell_catalog_id": 68,
+            "spell_name": "Snake Charm",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9195,
+            "spell_catalog_id": 69,
+            "spell_name": "Speak With Animals",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9196,
+            "spell_catalog_id": 70,
+            "spell_name": "Spiritual Hammer",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9197,
+            "spell_catalog_id": 71,
+            "spell_name": "Swim",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9198,
+            "spell_catalog_id": 72,
+            "spell_name": "Wave",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9199,
+            "spell_catalog_id": 74,
+            "spell_name": "Withdraw",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9200,
+            "spell_catalog_id": 75,
+            "spell_name": "Wyvern Watch",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Cleric"
+          }
+        ],
+        "3": [
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9206,
+            "spell_catalog_id": 78,
+            "spell_name": "Animate Dead",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9207,
+            "spell_catalog_id": 79,
+            "spell_name": "Automaton",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9208,
+            "spell_catalog_id": 80,
+            "spell_name": "Cloudburst",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9209,
+            "spell_catalog_id": 81,
+            "spell_name": "Cloudburst",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9210,
+            "spell_catalog_id": 82,
+            "spell_name": "Continual Light",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9211,
+            "spell_catalog_id": 83,
+            "spell_name": "Create Food & Water",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9212,
+            "spell_catalog_id": 84,
+            "spell_name": "Cure Blindness",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9213,
+            "spell_catalog_id": 85,
+            "spell_name": "Cure Disease",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9214,
+            "spell_catalog_id": 86,
+            "spell_name": "Dark Fire",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9215,
+            "spell_catalog_id": 87,
+            "spell_name": "Death's Door",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9216,
+            "spell_catalog_id": 88,
+            "spell_name": "DEFORM",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9217,
+            "spell_catalog_id": 89,
+            "spell_name": "Dispel Magic",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9218,
+            "spell_catalog_id": 91,
+            "spell_name": "Exaltation",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9219,
+            "spell_catalog_id": 92,
+            "spell_name": "Feign Death",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9220,
+            "spell_catalog_id": 93,
+            "spell_name": "Flame Walk",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9221,
+            "spell_catalog_id": 94,
+            "spell_name": "Forceward",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9222,
+            "spell_catalog_id": 95,
+            "spell_name": "Glyph of Warding",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9223,
+            "spell_catalog_id": 96,
+            "spell_name": "Holy Flail",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9224,
+            "spell_catalog_id": 97,
+            "spell_name": "Home port",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9225,
+            "spell_catalog_id": 98,
+            "spell_name": "Improved Resist Poison",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9226,
+            "spell_catalog_id": 99,
+            "spell_name": "Inkjet",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9227,
+            "spell_catalog_id": 101,
+            "spell_name": "Locate Amulet",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9228,
+            "spell_catalog_id": 102,
+            "spell_name": "Locate Object",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9229,
+            "spell_catalog_id": 103,
+            "spell_name": "Mace of Odo",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9230,
+            "spell_catalog_id": 104,
+            "spell_name": "Magical Vestment",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9231,
+            "spell_catalog_id": 105,
+            "spell_name": "Meld Into Stone",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9232,
+            "spell_catalog_id": 106,
+            "spell_name": "MINERVA'S IRRITATING ITCH",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9233,
+            "spell_catalog_id": 107,
+            "spell_name": "Negative Plane Protection",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9234,
+            "spell_catalog_id": 108,
+            "spell_name": "Prayer",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9235,
+            "spell_catalog_id": 110,
+            "spell_name": "Ranged Cure Light Wounds",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9236,
+            "spell_catalog_id": 111,
+            "spell_name": "Remove Curse",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9237,
+            "spell_catalog_id": 112,
+            "spell_name": "Remove Paralysis",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9238,
+            "spell_catalog_id": 113,
+            "spell_name": "Resist Mind Control",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9239,
+            "spell_catalog_id": 114,
+            "spell_name": "Speak With The Dead",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9240,
+            "spell_catalog_id": 116,
+            "spell_name": "Surf",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9241,
+            "spell_catalog_id": 117,
+            "spell_name": "Warmth",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9242,
+            "spell_catalog_id": 118,
+            "spell_name": "Water Walk",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9243,
+            "spell_catalog_id": 119,
+            "spell_name": "Windbearer",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Cleric"
+          }
+        ],
+        "4": [
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9269,
+            "spell_catalog_id": 120,
+            "spell_name": "Abjure",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9270,
+            "spell_catalog_id": 121,
+            "spell_name": "Aid, Mass",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9271,
+            "spell_catalog_id": 122,
+            "spell_name": "Animate statue",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9272,
+            "spell_catalog_id": 125,
+            "spell_name": "Calm winds",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9273,
+            "spell_catalog_id": 126,
+            "spell_name": "Clear air",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9274,
+            "spell_catalog_id": 127,
+            "spell_name": "Cloak of Fear",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9275,
+            "spell_catalog_id": 129,
+            "spell_name": "Cure Serious Wounds",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9276,
+            "spell_catalog_id": 130,
+            "spell_name": "Detect Lie",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9277,
+            "spell_catalog_id": 131,
+            "spell_name": "Divination",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9278,
+            "spell_catalog_id": 132,
+            "spell_name": "Elemental control",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9279,
+            "spell_catalog_id": 133,
+            "spell_name": "Exorcise",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9280,
+            "spell_catalog_id": 134,
+            "spell_name": "Giant Insect",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9281,
+            "spell_catalog_id": 135,
+            "spell_name": "Hold wave",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9282,
+            "spell_catalog_id": 136,
+            "spell_name": "Imbue With Spell Ability",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9283,
+            "spell_catalog_id": 137,
+            "spell_name": "Lesser guardian seal",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9284,
+            "spell_catalog_id": 138,
+            "spell_name": "Lower Water",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9285,
+            "spell_catalog_id": 139,
+            "spell_name": "Minor Surgery",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9286,
+            "spell_catalog_id": 140,
+            "spell_name": "Neutralize Poison",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9287,
+            "spell_catalog_id": 142,
+            "spell_name": "Protection Prom Evil, 10' Radius",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9291,
+            "spell_catalog_id": 148,
+            "spell_name": "Recurring Cure Major Wounds",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9288,
+            "spell_catalog_id": 143,
+            "spell_name": "Regenerate Serious Wounds",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9289,
+            "spell_catalog_id": 145,
+            "spell_name": "Reveal",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9290,
+            "spell_catalog_id": 146,
+            "spell_name": "Sea form",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9292,
+            "spell_catalog_id": 149,
+            "spell_name": "Speak With Plants",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9293,
+            "spell_catalog_id": 150,
+            "spell_name": "Spell Immunity",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9294,
+            "spell_catalog_id": 151,
+            "spell_name": "Spike Growth",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9295,
+            "spell_catalog_id": 152,
+            "spell_name": "Sticks To Snakes",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9296,
+            "spell_catalog_id": 153,
+            "spell_name": "Sunburst",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9297,
+            "spell_catalog_id": 154,
+            "spell_name": "Tongues",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Cleric"
+          }
+        ],
+        "5": [
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9300,
+            "spell_catalog_id": 155,
+            "spell_name": "Air Walk",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9301,
+            "spell_catalog_id": 156,
+            "spell_name": "Animate Dead Monsters",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9302,
+            "spell_catalog_id": 157,
+            "spell_name": "Atonement",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9303,
+            "spell_catalog_id": 159,
+            "spell_name": "Clutch of Might",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9304,
+            "spell_catalog_id": 160,
+            "spell_name": "Commune",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9305,
+            "spell_catalog_id": 162,
+            "spell_name": "Cure Critical Wounds",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9306,
+            "spell_catalog_id": 163,
+            "spell_name": "Dispel Evil",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9307,
+            "spell_catalog_id": 165,
+            "spell_name": "Flame Strike",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9308,
+            "spell_catalog_id": 166,
+            "spell_name": "Golem",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9309,
+            "spell_catalog_id": 167,
+            "spell_name": "Inquisition",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9310,
+            "spell_catalog_id": 168,
+            "spell_name": "Insect Plague",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9311,
+            "spell_catalog_id": 169,
+            "spell_name": "Magic Font",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9312,
+            "spell_catalog_id": 172,
+            "spell_name": "Plane Shift",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9313,
+            "spell_catalog_id": 173,
+            "spell_name": "Quest",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9314,
+            "spell_catalog_id": 174,
+            "spell_name": "Rainbow",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9315,
+            "spell_catalog_id": 175,
+            "spell_name": "Raise Dead",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9316,
+            "spell_catalog_id": 176,
+            "spell_name": "Regenerate Critical Wounds",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9317,
+            "spell_catalog_id": 177,
+            "spell_name": "Spike Stones",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Cleric"
+          },
+          {
+            "spell_type_name": "Cleric",
+            "spell_pool_id": 9318,
+            "spell_catalog_id": 178,
+            "spell_name": "True Seeing",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Cleric"
+          }
+        ]
+      }
+    }
+  }
+}

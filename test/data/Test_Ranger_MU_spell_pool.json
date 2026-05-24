@@ -1,0 +1,4159 @@
+{
+  "playerCharacterPoolSpellList": [
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22464,
+      "spell_catalog_id": 228,
+      "spell_name": "Animal",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22465,
+      "spell_catalog_id": 229,
+      "spell_name": "Animal command",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22466,
+      "spell_catalog_id": 230,
+      "spell_name": "Bird call",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22467,
+      "spell_catalog_id": 231,
+      "spell_name": "Bless meal",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22468,
+      "spell_catalog_id": 232,
+      "spell_name": "Cause rash",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22469,
+      "spell_catalog_id": 233,
+      "spell_name": "Consecrate",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22470,
+      "spell_catalog_id": 234,
+      "spell_name": "Disguise scent",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22471,
+      "spell_catalog_id": 235,
+      "spell_name": "Disinfect",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22472,
+      "spell_catalog_id": 236,
+      "spell_name": "Drywood",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22473,
+      "spell_catalog_id": 237,
+      "spell_name": "Edible plant",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22474,
+      "spell_catalog_id": 238,
+      "spell_name": "Elemental shield",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22475,
+      "spell_catalog_id": 239,
+      "spell_name": "Find water",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22476,
+      "spell_catalog_id": 240,
+      "spell_name": "Flame finger",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22477,
+      "spell_catalog_id": 241,
+      "spell_name": "Haze",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22478,
+      "spell_catalog_id": 242,
+      "spell_name": "Heal rash",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22479,
+      "spell_catalog_id": 243,
+      "spell_name": "Holy dart",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22480,
+      "spell_catalog_id": 244,
+      "spell_name": "Horn",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22481,
+      "spell_catalog_id": 245,
+      "spell_name": "Humidity",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22482,
+      "spell_catalog_id": 246,
+      "spell_name": "Judgment",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22483,
+      "spell_catalog_id": 247,
+      "spell_name": "Listen",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22484,
+      "spell_catalog_id": 248,
+      "spell_name": "Liven",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22485,
+      "spell_catalog_id": 249,
+      "spell_name": "Mark path",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22486,
+      "spell_catalog_id": 250,
+      "spell_name": "Parch",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22487,
+      "spell_catalog_id": 251,
+      "spell_name": "Pet",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22488,
+      "spell_catalog_id": 252,
+      "spell_name": "Preserve",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22489,
+      "spell_catalog_id": 253,
+      "spell_name": "Prod",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22490,
+      "spell_catalog_id": 254,
+      "spell_name": "Quench",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22491,
+      "spell_catalog_id": 255,
+      "spell_name": "Remove pain",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22492,
+      "spell_catalog_id": 256,
+      "spell_name": "Repel insect",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22493,
+      "spell_catalog_id": 257,
+      "spell_name": "Restful sleep",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22494,
+      "spell_catalog_id": 258,
+      "spell_name": "Ripen",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22495,
+      "spell_catalog_id": 259,
+      "spell_name": "Scorch",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22496,
+      "spell_catalog_id": 260,
+      "spell_name": "Smokeball",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22497,
+      "spell_catalog_id": 261,
+      "spell_name": "Temperature",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22498,
+      "spell_catalog_id": 262,
+      "spell_name": "Test soil",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22499,
+      "spell_catalog_id": 263,
+      "spell_name": "Watch",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22527,
+      "spell_catalog_id": 264,
+      "spell_name": "Animal Friendship",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22528,
+      "spell_catalog_id": 265,
+      "spell_name": "Animal/Bird Call",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22529,
+      "spell_catalog_id": 266,
+      "spell_name": "Camouflage",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22530,
+      "spell_catalog_id": 267,
+      "spell_name": "Ceremony",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22531,
+      "spell_catalog_id": 268,
+      "spell_name": "Coalstone",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22532,
+      "spell_catalog_id": 269,
+      "spell_name": "Detect Balance",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22533,
+      "spell_catalog_id": 270,
+      "spell_name": "Detect Magic",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22534,
+      "spell_catalog_id": 271,
+      "spell_name": "Detect Poison",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22535,
+      "spell_catalog_id": 272,
+      "spell_name": "Detect Snares & Pits",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22536,
+      "spell_catalog_id": 273,
+      "spell_name": "Entangle",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22537,
+      "spell_catalog_id": 274,
+      "spell_name": "Faerie Fire",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22538,
+      "spell_catalog_id": 275,
+      "spell_name": "Ferment",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22539,
+      "spell_catalog_id": 276,
+      "spell_name": "Fertility",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22540,
+      "spell_catalog_id": 277,
+      "spell_name": "Find Water",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22541,
+      "spell_catalog_id": 278,
+      "spell_name": "Find Woodland Familiar",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22542,
+      "spell_catalog_id": 279,
+      "spell_name": "Heal plants",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22543,
+      "spell_catalog_id": 280,
+      "spell_name": "Hibernate",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22544,
+      "spell_catalog_id": 281,
+      "spell_name": "Invisibility To Animals",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22545,
+      "spell_catalog_id": 282,
+      "spell_name": "Locate Animals",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22546,
+      "spell_catalog_id": 283,
+      "spell_name": "Nectar",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22547,
+      "spell_catalog_id": 284,
+      "spell_name": "Pass Without Trace",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22548,
+      "spell_catalog_id": 285,
+      "spell_name": "Precipitation",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22549,
+      "spell_catalog_id": 286,
+      "spell_name": "Predict Weather",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22550,
+      "spell_catalog_id": 287,
+      "spell_name": "Purify Water",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22551,
+      "spell_catalog_id": 288,
+      "spell_name": "Ripen",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22552,
+      "spell_catalog_id": 289,
+      "spell_name": "Sense Direction",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22553,
+      "spell_catalog_id": 290,
+      "spell_name": "Shillelagh",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22554,
+      "spell_catalog_id": 291,
+      "spell_name": "Speak With Animals",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22555,
+      "spell_catalog_id": 292,
+      "spell_name": "Wailing Wind",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22620,
+      "spell_catalog_id": 502,
+      "spell_name": "Bee",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22610,
+      "spell_catalog_id": 492,
+      "spell_name": "Belch",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22611,
+      "spell_catalog_id": 493,
+      "spell_name": "Blink",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22621,
+      "spell_catalog_id": 503,
+      "spell_name": "Bluelight",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22622,
+      "spell_catalog_id": 504,
+      "spell_name": "Bug",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22638,
+      "spell_catalog_id": 520,
+      "spell_name": "Catfeet",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22604,
+      "spell_catalog_id": 486,
+      "spell_name": "Change",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22572,
+      "spell_catalog_id": 454,
+      "spell_name": "Chill",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22573,
+      "spell_catalog_id": 455,
+      "spell_name": "Clean",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22574,
+      "spell_catalog_id": 456,
+      "spell_name": "Color",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22612,
+      "spell_catalog_id": 494,
+      "spell_name": "Cough",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22630,
+      "spell_catalog_id": 512,
+      "spell_name": "Creak",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22592,
+      "spell_catalog_id": 474,
+      "spell_name": "Curdle",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22639,
+      "spell_catalog_id": 521,
+      "spell_name": "Cut",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22575,
+      "spell_catalog_id": 457,
+      "spell_name": "Dampen",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22593,
+      "spell_catalog_id": 475,
+      "spell_name": "Dirty",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22605,
+      "spell_catalog_id": 487,
+      "spell_name": "Distract",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22576,
+      "spell_catalog_id": 458,
+      "spell_name": "Dry",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22577,
+      "spell_catalog_id": 459,
+      "spell_name": "Dust",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22594,
+      "spell_catalog_id": 476,
+      "spell_name": "Dusty",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22578,
+      "spell_catalog_id": 460,
+      "spell_name": "Exterminate",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22623,
+      "spell_catalog_id": 505,
+      "spell_name": "Firefinger",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22579,
+      "spell_catalog_id": 461,
+      "spell_name": "Flavor",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22631,
+      "spell_catalog_id": 513,
+      "spell_name": "Footfall",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22580,
+      "spell_catalog_id": 462,
+      "spell_name": "Freshen",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22640,
+      "spell_catalog_id": 522,
+      "spell_name": "Gallop",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22581,
+      "spell_catalog_id": 463,
+      "spell_name": "Gather",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22613,
+      "spell_catalog_id": 495,
+      "spell_name": "Giggle",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22624,
+      "spell_catalog_id": 506,
+      "spell_name": "Gnats",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22632,
+      "spell_catalog_id": 514,
+      "spell_name": "Groan",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22595,
+      "spell_catalog_id": 477,
+      "spell_name": "Hairy",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22606,
+      "spell_catalog_id": 488,
+      "spell_name": "Hide",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22596,
+      "spell_catalog_id": 478,
+      "spell_name": "Knot",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22633,
+      "spell_catalog_id": 515,
+      "spell_name": "Moan",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22625,
+      "spell_catalog_id": 507,
+      "spell_name": "Mouse",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22607,
+      "spell_catalog_id": 489,
+      "spell_name": "Mute",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22614,
+      "spell_catalog_id": 496,
+      "spell_name": "Nod",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22608,
+      "spell_catalog_id": 490,
+      "spell_name": "Palm",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22582,
+      "spell_catalog_id": 464,
+      "spell_name": "Polish",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22609,
+      "spell_catalog_id": 491,
+      "spell_name": "Present",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22634,
+      "spell_catalog_id": 516,
+      "spell_name": "Rattle",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22597,
+      "spell_catalog_id": 479,
+      "spell_name": "Ravel",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22583,
+      "spell_catalog_id": 465,
+      "spell_name": "Salt",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22615,
+      "spell_catalog_id": 497,
+      "spell_name": "Scratch",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22584,
+      "spell_catalog_id": 466,
+      "spell_name": "Shine",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22626,
+      "spell_catalog_id": 508,
+      "spell_name": "Smokepuff",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22641,
+      "spell_catalog_id": 523,
+      "spell_name": "Snatch",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22616,
+      "spell_catalog_id": 498,
+      "spell_name": "Sneeze",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22598,
+      "spell_catalog_id": 480,
+      "spell_name": "Sour",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22642,
+      "spell_catalog_id": 524,
+      "spell_name": "Spark",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22585,
+      "spell_catalog_id": 467,
+      "spell_name": "Spice",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22627,
+      "spell_catalog_id": 509,
+      "spell_name": "Spider",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22599,
+      "spell_catalog_id": 481,
+      "spell_name": "Spill",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22586,
+      "spell_catalog_id": 468,
+      "spell_name": "Sprout",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22643,
+      "spell_catalog_id": 525,
+      "spell_name": "Sting",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22587,
+      "spell_catalog_id": 469,
+      "spell_name": "Stitch",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22588,
+      "spell_catalog_id": 470,
+      "spell_name": "Sweeten",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22600,
+      "spell_catalog_id": 482,
+      "spell_name": "Tangle",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22635,
+      "spell_catalog_id": 517,
+      "spell_name": "Tap",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22601,
+      "spell_catalog_id": 483,
+      "spell_name": "Tarnish",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22636,
+      "spell_catalog_id": 518,
+      "spell_name": "Thump",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22589,
+      "spell_catalog_id": 471,
+      "spell_name": "Tie",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22644,
+      "spell_catalog_id": 526,
+      "spell_name": "Time",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22628,
+      "spell_catalog_id": 510,
+      "spell_name": "Tweak",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22617,
+      "spell_catalog_id": 499,
+      "spell_name": "Twitch",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22629,
+      "spell_catalog_id": 511,
+      "spell_name": "Unlock",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22602,
+      "spell_catalog_id": 484,
+      "spell_name": "Untie",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22590,
+      "spell_catalog_id": 472,
+      "spell_name": "Warm",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22637,
+      "spell_catalog_id": 519,
+      "spell_name": "Whistle",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22603,
+      "spell_catalog_id": 485,
+      "spell_name": "Wilt",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22618,
+      "spell_catalog_id": 500,
+      "spell_name": "Wink",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22591,
+      "spell_catalog_id": 473,
+      "spell_name": "Wrap",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22619,
+      "spell_catalog_id": 501,
+      "spell_name": "Yawn",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22699,
+      "spell_catalog_id": 541,
+      "spell_name": "Comprehend Languages",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22709,
+      "spell_catalog_id": 592,
+      "spell_name": "Rael's Cover",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22704,
+      "spell_catalog_id": 594,
+      "spell_name": "Rael's Enlarging Arrow",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22329,
+      "spell_catalog_id": 502,
+      "spell_name": "Bee",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22319,
+      "spell_catalog_id": 492,
+      "spell_name": "Belch",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22320,
+      "spell_catalog_id": 493,
+      "spell_name": "Blink",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22330,
+      "spell_catalog_id": 503,
+      "spell_name": "Bluelight",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22331,
+      "spell_catalog_id": 504,
+      "spell_name": "Bug",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22347,
+      "spell_catalog_id": 520,
+      "spell_name": "Catfeet",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22313,
+      "spell_catalog_id": 486,
+      "spell_name": "Change",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22281,
+      "spell_catalog_id": 454,
+      "spell_name": "Chill",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22282,
+      "spell_catalog_id": 455,
+      "spell_name": "Clean",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22283,
+      "spell_catalog_id": 456,
+      "spell_name": "Color",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22321,
+      "spell_catalog_id": 494,
+      "spell_name": "Cough",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22339,
+      "spell_catalog_id": 512,
+      "spell_name": "Creak",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22301,
+      "spell_catalog_id": 474,
+      "spell_name": "Curdle",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22348,
+      "spell_catalog_id": 521,
+      "spell_name": "Cut",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22284,
+      "spell_catalog_id": 457,
+      "spell_name": "Dampen",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22302,
+      "spell_catalog_id": 475,
+      "spell_name": "Dirty",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22314,
+      "spell_catalog_id": 487,
+      "spell_name": "Distract",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22285,
+      "spell_catalog_id": 458,
+      "spell_name": "Dry",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22286,
+      "spell_catalog_id": 459,
+      "spell_name": "Dust",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22303,
+      "spell_catalog_id": 476,
+      "spell_name": "Dusty",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22287,
+      "spell_catalog_id": 460,
+      "spell_name": "Exterminate",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22332,
+      "spell_catalog_id": 505,
+      "spell_name": "Firefinger",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22288,
+      "spell_catalog_id": 461,
+      "spell_name": "Flavor",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22340,
+      "spell_catalog_id": 513,
+      "spell_name": "Footfall",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22289,
+      "spell_catalog_id": 462,
+      "spell_name": "Freshen",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22349,
+      "spell_catalog_id": 522,
+      "spell_name": "Gallop",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22290,
+      "spell_catalog_id": 463,
+      "spell_name": "Gather",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22322,
+      "spell_catalog_id": 495,
+      "spell_name": "Giggle",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22333,
+      "spell_catalog_id": 506,
+      "spell_name": "Gnats",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22341,
+      "spell_catalog_id": 514,
+      "spell_name": "Groan",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22304,
+      "spell_catalog_id": 477,
+      "spell_name": "Hairy",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22315,
+      "spell_catalog_id": 488,
+      "spell_name": "Hide",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22305,
+      "spell_catalog_id": 478,
+      "spell_name": "Knot",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22342,
+      "spell_catalog_id": 515,
+      "spell_name": "Moan",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22334,
+      "spell_catalog_id": 507,
+      "spell_name": "Mouse",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22316,
+      "spell_catalog_id": 489,
+      "spell_name": "Mute",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22323,
+      "spell_catalog_id": 496,
+      "spell_name": "Nod",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22317,
+      "spell_catalog_id": 490,
+      "spell_name": "Palm",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22291,
+      "spell_catalog_id": 464,
+      "spell_name": "Polish",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22318,
+      "spell_catalog_id": 491,
+      "spell_name": "Present",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22343,
+      "spell_catalog_id": 516,
+      "spell_name": "Rattle",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22306,
+      "spell_catalog_id": 479,
+      "spell_name": "Ravel",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22292,
+      "spell_catalog_id": 465,
+      "spell_name": "Salt",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22324,
+      "spell_catalog_id": 497,
+      "spell_name": "Scratch",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22293,
+      "spell_catalog_id": 466,
+      "spell_name": "Shine",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22335,
+      "spell_catalog_id": 508,
+      "spell_name": "Smokepuff",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22350,
+      "spell_catalog_id": 523,
+      "spell_name": "Snatch",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22325,
+      "spell_catalog_id": 498,
+      "spell_name": "Sneeze",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22307,
+      "spell_catalog_id": 480,
+      "spell_name": "Sour",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22351,
+      "spell_catalog_id": 524,
+      "spell_name": "Spark",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22294,
+      "spell_catalog_id": 467,
+      "spell_name": "Spice",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22336,
+      "spell_catalog_id": 509,
+      "spell_name": "Spider",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22308,
+      "spell_catalog_id": 481,
+      "spell_name": "Spill",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22295,
+      "spell_catalog_id": 468,
+      "spell_name": "Sprout",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22352,
+      "spell_catalog_id": 525,
+      "spell_name": "Sting",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22296,
+      "spell_catalog_id": 469,
+      "spell_name": "Stitch",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22297,
+      "spell_catalog_id": 470,
+      "spell_name": "Sweeten",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22309,
+      "spell_catalog_id": 482,
+      "spell_name": "Tangle",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22344,
+      "spell_catalog_id": 517,
+      "spell_name": "Tap",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22310,
+      "spell_catalog_id": 483,
+      "spell_name": "Tarnish",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22345,
+      "spell_catalog_id": 518,
+      "spell_name": "Thump",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22298,
+      "spell_catalog_id": 471,
+      "spell_name": "Tie",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22353,
+      "spell_catalog_id": 526,
+      "spell_name": "Time",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22337,
+      "spell_catalog_id": 510,
+      "spell_name": "Tweak",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22326,
+      "spell_catalog_id": 499,
+      "spell_name": "Twitch",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22338,
+      "spell_catalog_id": 511,
+      "spell_name": "Unlock",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22311,
+      "spell_catalog_id": 484,
+      "spell_name": "Untie",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22299,
+      "spell_catalog_id": 472,
+      "spell_name": "Warm",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22346,
+      "spell_catalog_id": 519,
+      "spell_name": "Whistle",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22312,
+      "spell_catalog_id": 485,
+      "spell_name": "Wilt",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22327,
+      "spell_catalog_id": 500,
+      "spell_name": "Wink",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22300,
+      "spell_catalog_id": 473,
+      "spell_name": "Wrap",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22328,
+      "spell_catalog_id": 501,
+      "spell_name": "Yawn",
+      "spell_link": 0,
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22413,
+      "spell_catalog_id": 532,
+      "spell_name": "Arctic Spray",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22408,
+      "spell_catalog_id": 562,
+      "spell_name": "Icy Missile",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22418,
+      "spell_catalog_id": 598,
+      "spell_name": "Read Magic",
+      "spell_link": 1,
+      "spell_level": 1,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22434,
+      "spell_catalog_id": 626,
+      "spell_name": "Agannavar's Scorcher",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22429,
+      "spell_catalog_id": 683,
+      "spell_name": "Invisibility",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22424,
+      "spell_catalog_id": 722,
+      "spell_name": "SD's Improved Armor II",
+      "spell_link": 2,
+      "spell_level": 2,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22445,
+      "spell_catalog_id": 763,
+      "spell_name": "Crew of Phantoms",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22440,
+      "spell_catalog_id": 781,
+      "spell_name": "Fireball",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22446,
+      "spell_catalog_id": 806,
+      "spell_name": "Lightning Bolt",
+      "spell_link": 3,
+      "spell_level": 3,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22461,
+      "spell_catalog_id": 858,
+      "spell_name": "Acid bolts",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22450,
+      "spell_catalog_id": 869,
+      "spell_name": "Dimension Door",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22456,
+      "spell_catalog_id": 871,
+      "spell_name": "DOUBLE BARREL MAGIC MISSILE",
+      "spell_link": 4,
+      "spell_level": 4,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22571,
+      "spell_catalog_id": 955,
+      "spell_name": "Cone Of Cold",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22560,
+      "spell_catalog_id": 956,
+      "spell_name": "Conjure Elemental",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22566,
+      "spell_catalog_id": 1001,
+      "spell_name": "Teleport",
+      "spell_link": 5,
+      "spell_level": 5,
+      "character_class_name": "Magic-User"
+    }
+  ],
+  "remove_empty": true,
+  "spellMap": {
+    "Ranger": {
+      "Druid": {
+        "Cantrip": [
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22464,
+            "spell_catalog_id": 228,
+            "spell_name": "Animal",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22465,
+            "spell_catalog_id": 229,
+            "spell_name": "Animal command",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22466,
+            "spell_catalog_id": 230,
+            "spell_name": "Bird call",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22467,
+            "spell_catalog_id": 231,
+            "spell_name": "Bless meal",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22468,
+            "spell_catalog_id": 232,
+            "spell_name": "Cause rash",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22469,
+            "spell_catalog_id": 233,
+            "spell_name": "Consecrate",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22470,
+            "spell_catalog_id": 234,
+            "spell_name": "Disguise scent",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22471,
+            "spell_catalog_id": 235,
+            "spell_name": "Disinfect",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22472,
+            "spell_catalog_id": 236,
+            "spell_name": "Drywood",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22473,
+            "spell_catalog_id": 237,
+            "spell_name": "Edible plant",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22474,
+            "spell_catalog_id": 238,
+            "spell_name": "Elemental shield",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22475,
+            "spell_catalog_id": 239,
+            "spell_name": "Find water",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22476,
+            "spell_catalog_id": 240,
+            "spell_name": "Flame finger",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22477,
+            "spell_catalog_id": 241,
+            "spell_name": "Haze",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22478,
+            "spell_catalog_id": 242,
+            "spell_name": "Heal rash",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22479,
+            "spell_catalog_id": 243,
+            "spell_name": "Holy dart",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22480,
+            "spell_catalog_id": 244,
+            "spell_name": "Horn",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22481,
+            "spell_catalog_id": 245,
+            "spell_name": "Humidity",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22482,
+            "spell_catalog_id": 246,
+            "spell_name": "Judgment",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22483,
+            "spell_catalog_id": 247,
+            "spell_name": "Listen",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22484,
+            "spell_catalog_id": 248,
+            "spell_name": "Liven",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22485,
+            "spell_catalog_id": 249,
+            "spell_name": "Mark path",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22486,
+            "spell_catalog_id": 250,
+            "spell_name": "Parch",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22487,
+            "spell_catalog_id": 251,
+            "spell_name": "Pet",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22488,
+            "spell_catalog_id": 252,
+            "spell_name": "Preserve",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22489,
+            "spell_catalog_id": 253,
+            "spell_name": "Prod",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22490,
+            "spell_catalog_id": 254,
+            "spell_name": "Quench",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22491,
+            "spell_catalog_id": 255,
+            "spell_name": "Remove pain",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22492,
+            "spell_catalog_id": 256,
+            "spell_name": "Repel insect",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22493,
+            "spell_catalog_id": 257,
+            "spell_name": "Restful sleep",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22494,
+            "spell_catalog_id": 258,
+            "spell_name": "Ripen",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22495,
+            "spell_catalog_id": 259,
+            "spell_name": "Scorch",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22496,
+            "spell_catalog_id": 260,
+            "spell_name": "Smokeball",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22497,
+            "spell_catalog_id": 261,
+            "spell_name": "Temperature",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22498,
+            "spell_catalog_id": 262,
+            "spell_name": "Test soil",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22499,
+            "spell_catalog_id": 263,
+            "spell_name": "Watch",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          }
+        ],
+        "1": [
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22527,
+            "spell_catalog_id": 264,
+            "spell_name": "Animal Friendship",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22528,
+            "spell_catalog_id": 265,
+            "spell_name": "Animal/Bird Call",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22529,
+            "spell_catalog_id": 266,
+            "spell_name": "Camouflage",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22530,
+            "spell_catalog_id": 267,
+            "spell_name": "Ceremony",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22531,
+            "spell_catalog_id": 268,
+            "spell_name": "Coalstone",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22532,
+            "spell_catalog_id": 269,
+            "spell_name": "Detect Balance",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22533,
+            "spell_catalog_id": 270,
+            "spell_name": "Detect Magic",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22534,
+            "spell_catalog_id": 271,
+            "spell_name": "Detect Poison",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22535,
+            "spell_catalog_id": 272,
+            "spell_name": "Detect Snares & Pits",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22536,
+            "spell_catalog_id": 273,
+            "spell_name": "Entangle",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22537,
+            "spell_catalog_id": 274,
+            "spell_name": "Faerie Fire",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22538,
+            "spell_catalog_id": 275,
+            "spell_name": "Ferment",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22539,
+            "spell_catalog_id": 276,
+            "spell_name": "Fertility",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22540,
+            "spell_catalog_id": 277,
+            "spell_name": "Find Water",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22541,
+            "spell_catalog_id": 278,
+            "spell_name": "Find Woodland Familiar",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22542,
+            "spell_catalog_id": 279,
+            "spell_name": "Heal plants",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22543,
+            "spell_catalog_id": 280,
+            "spell_name": "Hibernate",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22544,
+            "spell_catalog_id": 281,
+            "spell_name": "Invisibility To Animals",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22545,
+            "spell_catalog_id": 282,
+            "spell_name": "Locate Animals",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22546,
+            "spell_catalog_id": 283,
+            "spell_name": "Nectar",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22547,
+            "spell_catalog_id": 284,
+            "spell_name": "Pass Without Trace",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22548,
+            "spell_catalog_id": 285,
+            "spell_name": "Precipitation",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22549,
+            "spell_catalog_id": 286,
+            "spell_name": "Predict Weather",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22550,
+            "spell_catalog_id": 287,
+            "spell_name": "Purify Water",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22551,
+            "spell_catalog_id": 288,
+            "spell_name": "Ripen",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22552,
+            "spell_catalog_id": 289,
+            "spell_name": "Sense Direction",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22553,
+            "spell_catalog_id": 290,
+            "spell_name": "Shillelagh",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22554,
+            "spell_catalog_id": 291,
+            "spell_name": "Speak With Animals",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22555,
+            "spell_catalog_id": 292,
+            "spell_name": "Wailing Wind",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          }
+        ]
+      },
+      "Magic-User": {
+        "Cantrip": [
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22620,
+            "spell_catalog_id": 502,
+            "spell_name": "Bee",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22610,
+            "spell_catalog_id": 492,
+            "spell_name": "Belch",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22611,
+            "spell_catalog_id": 493,
+            "spell_name": "Blink",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22621,
+            "spell_catalog_id": 503,
+            "spell_name": "Bluelight",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22622,
+            "spell_catalog_id": 504,
+            "spell_name": "Bug",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22638,
+            "spell_catalog_id": 520,
+            "spell_name": "Catfeet",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22604,
+            "spell_catalog_id": 486,
+            "spell_name": "Change",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22572,
+            "spell_catalog_id": 454,
+            "spell_name": "Chill",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22573,
+            "spell_catalog_id": 455,
+            "spell_name": "Clean",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22574,
+            "spell_catalog_id": 456,
+            "spell_name": "Color",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22612,
+            "spell_catalog_id": 494,
+            "spell_name": "Cough",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22630,
+            "spell_catalog_id": 512,
+            "spell_name": "Creak",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22592,
+            "spell_catalog_id": 474,
+            "spell_name": "Curdle",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22639,
+            "spell_catalog_id": 521,
+            "spell_name": "Cut",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22575,
+            "spell_catalog_id": 457,
+            "spell_name": "Dampen",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22593,
+            "spell_catalog_id": 475,
+            "spell_name": "Dirty",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22605,
+            "spell_catalog_id": 487,
+            "spell_name": "Distract",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22576,
+            "spell_catalog_id": 458,
+            "spell_name": "Dry",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22577,
+            "spell_catalog_id": 459,
+            "spell_name": "Dust",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22594,
+            "spell_catalog_id": 476,
+            "spell_name": "Dusty",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22578,
+            "spell_catalog_id": 460,
+            "spell_name": "Exterminate",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22623,
+            "spell_catalog_id": 505,
+            "spell_name": "Firefinger",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22579,
+            "spell_catalog_id": 461,
+            "spell_name": "Flavor",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22631,
+            "spell_catalog_id": 513,
+            "spell_name": "Footfall",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22580,
+            "spell_catalog_id": 462,
+            "spell_name": "Freshen",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22640,
+            "spell_catalog_id": 522,
+            "spell_name": "Gallop",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22581,
+            "spell_catalog_id": 463,
+            "spell_name": "Gather",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22613,
+            "spell_catalog_id": 495,
+            "spell_name": "Giggle",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22624,
+            "spell_catalog_id": 506,
+            "spell_name": "Gnats",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22632,
+            "spell_catalog_id": 514,
+            "spell_name": "Groan",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22595,
+            "spell_catalog_id": 477,
+            "spell_name": "Hairy",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22606,
+            "spell_catalog_id": 488,
+            "spell_name": "Hide",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22596,
+            "spell_catalog_id": 478,
+            "spell_name": "Knot",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22633,
+            "spell_catalog_id": 515,
+            "spell_name": "Moan",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22625,
+            "spell_catalog_id": 507,
+            "spell_name": "Mouse",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22607,
+            "spell_catalog_id": 489,
+            "spell_name": "Mute",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22614,
+            "spell_catalog_id": 496,
+            "spell_name": "Nod",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22608,
+            "spell_catalog_id": 490,
+            "spell_name": "Palm",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22582,
+            "spell_catalog_id": 464,
+            "spell_name": "Polish",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22609,
+            "spell_catalog_id": 491,
+            "spell_name": "Present",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22634,
+            "spell_catalog_id": 516,
+            "spell_name": "Rattle",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22597,
+            "spell_catalog_id": 479,
+            "spell_name": "Ravel",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22583,
+            "spell_catalog_id": 465,
+            "spell_name": "Salt",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22615,
+            "spell_catalog_id": 497,
+            "spell_name": "Scratch",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22584,
+            "spell_catalog_id": 466,
+            "spell_name": "Shine",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22626,
+            "spell_catalog_id": 508,
+            "spell_name": "Smokepuff",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22641,
+            "spell_catalog_id": 523,
+            "spell_name": "Snatch",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22616,
+            "spell_catalog_id": 498,
+            "spell_name": "Sneeze",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22598,
+            "spell_catalog_id": 480,
+            "spell_name": "Sour",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22642,
+            "spell_catalog_id": 524,
+            "spell_name": "Spark",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22585,
+            "spell_catalog_id": 467,
+            "spell_name": "Spice",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22627,
+            "spell_catalog_id": 509,
+            "spell_name": "Spider",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22599,
+            "spell_catalog_id": 481,
+            "spell_name": "Spill",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22586,
+            "spell_catalog_id": 468,
+            "spell_name": "Sprout",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22643,
+            "spell_catalog_id": 525,
+            "spell_name": "Sting",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22587,
+            "spell_catalog_id": 469,
+            "spell_name": "Stitch",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22588,
+            "spell_catalog_id": 470,
+            "spell_name": "Sweeten",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22600,
+            "spell_catalog_id": 482,
+            "spell_name": "Tangle",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22635,
+            "spell_catalog_id": 517,
+            "spell_name": "Tap",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22601,
+            "spell_catalog_id": 483,
+            "spell_name": "Tarnish",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22636,
+            "spell_catalog_id": 518,
+            "spell_name": "Thump",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22589,
+            "spell_catalog_id": 471,
+            "spell_name": "Tie",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22644,
+            "spell_catalog_id": 526,
+            "spell_name": "Time",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22628,
+            "spell_catalog_id": 510,
+            "spell_name": "Tweak",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22617,
+            "spell_catalog_id": 499,
+            "spell_name": "Twitch",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22629,
+            "spell_catalog_id": 511,
+            "spell_name": "Unlock",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22602,
+            "spell_catalog_id": 484,
+            "spell_name": "Untie",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22590,
+            "spell_catalog_id": 472,
+            "spell_name": "Warm",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22637,
+            "spell_catalog_id": 519,
+            "spell_name": "Whistle",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22603,
+            "spell_catalog_id": 485,
+            "spell_name": "Wilt",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22618,
+            "spell_catalog_id": 500,
+            "spell_name": "Wink",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22591,
+            "spell_catalog_id": 473,
+            "spell_name": "Wrap",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22619,
+            "spell_catalog_id": 501,
+            "spell_name": "Yawn",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          }
+        ],
+        "1": [
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22699,
+            "spell_catalog_id": 541,
+            "spell_name": "Comprehend Languages",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22709,
+            "spell_catalog_id": 592,
+            "spell_name": "Rael's Cover",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22704,
+            "spell_catalog_id": 594,
+            "spell_name": "Rael's Enlarging Arrow",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          }
+        ]
+      }
+    },
+    "Magic-User": {
+      "Magic-User": {
+        "Cantrip": [
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22329,
+            "spell_catalog_id": 502,
+            "spell_name": "Bee",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22319,
+            "spell_catalog_id": 492,
+            "spell_name": "Belch",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22320,
+            "spell_catalog_id": 493,
+            "spell_name": "Blink",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22330,
+            "spell_catalog_id": 503,
+            "spell_name": "Bluelight",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22331,
+            "spell_catalog_id": 504,
+            "spell_name": "Bug",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22347,
+            "spell_catalog_id": 520,
+            "spell_name": "Catfeet",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22313,
+            "spell_catalog_id": 486,
+            "spell_name": "Change",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22281,
+            "spell_catalog_id": 454,
+            "spell_name": "Chill",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22282,
+            "spell_catalog_id": 455,
+            "spell_name": "Clean",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22283,
+            "spell_catalog_id": 456,
+            "spell_name": "Color",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22321,
+            "spell_catalog_id": 494,
+            "spell_name": "Cough",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22339,
+            "spell_catalog_id": 512,
+            "spell_name": "Creak",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22301,
+            "spell_catalog_id": 474,
+            "spell_name": "Curdle",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22348,
+            "spell_catalog_id": 521,
+            "spell_name": "Cut",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22284,
+            "spell_catalog_id": 457,
+            "spell_name": "Dampen",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22302,
+            "spell_catalog_id": 475,
+            "spell_name": "Dirty",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22314,
+            "spell_catalog_id": 487,
+            "spell_name": "Distract",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22285,
+            "spell_catalog_id": 458,
+            "spell_name": "Dry",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22286,
+            "spell_catalog_id": 459,
+            "spell_name": "Dust",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22303,
+            "spell_catalog_id": 476,
+            "spell_name": "Dusty",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22287,
+            "spell_catalog_id": 460,
+            "spell_name": "Exterminate",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22332,
+            "spell_catalog_id": 505,
+            "spell_name": "Firefinger",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22288,
+            "spell_catalog_id": 461,
+            "spell_name": "Flavor",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22340,
+            "spell_catalog_id": 513,
+            "spell_name": "Footfall",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22289,
+            "spell_catalog_id": 462,
+            "spell_name": "Freshen",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22349,
+            "spell_catalog_id": 522,
+            "spell_name": "Gallop",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22290,
+            "spell_catalog_id": 463,
+            "spell_name": "Gather",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22322,
+            "spell_catalog_id": 495,
+            "spell_name": "Giggle",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22333,
+            "spell_catalog_id": 506,
+            "spell_name": "Gnats",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22341,
+            "spell_catalog_id": 514,
+            "spell_name": "Groan",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22304,
+            "spell_catalog_id": 477,
+            "spell_name": "Hairy",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22315,
+            "spell_catalog_id": 488,
+            "spell_name": "Hide",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22305,
+            "spell_catalog_id": 478,
+            "spell_name": "Knot",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22342,
+            "spell_catalog_id": 515,
+            "spell_name": "Moan",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22334,
+            "spell_catalog_id": 507,
+            "spell_name": "Mouse",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22316,
+            "spell_catalog_id": 489,
+            "spell_name": "Mute",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22323,
+            "spell_catalog_id": 496,
+            "spell_name": "Nod",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22317,
+            "spell_catalog_id": 490,
+            "spell_name": "Palm",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22291,
+            "spell_catalog_id": 464,
+            "spell_name": "Polish",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22318,
+            "spell_catalog_id": 491,
+            "spell_name": "Present",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22343,
+            "spell_catalog_id": 516,
+            "spell_name": "Rattle",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22306,
+            "spell_catalog_id": 479,
+            "spell_name": "Ravel",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22292,
+            "spell_catalog_id": 465,
+            "spell_name": "Salt",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22324,
+            "spell_catalog_id": 497,
+            "spell_name": "Scratch",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22293,
+            "spell_catalog_id": 466,
+            "spell_name": "Shine",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22335,
+            "spell_catalog_id": 508,
+            "spell_name": "Smokepuff",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22350,
+            "spell_catalog_id": 523,
+            "spell_name": "Snatch",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22325,
+            "spell_catalog_id": 498,
+            "spell_name": "Sneeze",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22307,
+            "spell_catalog_id": 480,
+            "spell_name": "Sour",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22351,
+            "spell_catalog_id": 524,
+            "spell_name": "Spark",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22294,
+            "spell_catalog_id": 467,
+            "spell_name": "Spice",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22336,
+            "spell_catalog_id": 509,
+            "spell_name": "Spider",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22308,
+            "spell_catalog_id": 481,
+            "spell_name": "Spill",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22295,
+            "spell_catalog_id": 468,
+            "spell_name": "Sprout",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22352,
+            "spell_catalog_id": 525,
+            "spell_name": "Sting",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22296,
+            "spell_catalog_id": 469,
+            "spell_name": "Stitch",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22297,
+            "spell_catalog_id": 470,
+            "spell_name": "Sweeten",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22309,
+            "spell_catalog_id": 482,
+            "spell_name": "Tangle",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22344,
+            "spell_catalog_id": 517,
+            "spell_name": "Tap",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22310,
+            "spell_catalog_id": 483,
+            "spell_name": "Tarnish",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22345,
+            "spell_catalog_id": 518,
+            "spell_name": "Thump",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22298,
+            "spell_catalog_id": 471,
+            "spell_name": "Tie",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22353,
+            "spell_catalog_id": 526,
+            "spell_name": "Time",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22337,
+            "spell_catalog_id": 510,
+            "spell_name": "Tweak",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22326,
+            "spell_catalog_id": 499,
+            "spell_name": "Twitch",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22338,
+            "spell_catalog_id": 511,
+            "spell_name": "Unlock",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22311,
+            "spell_catalog_id": 484,
+            "spell_name": "Untie",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22299,
+            "spell_catalog_id": 472,
+            "spell_name": "Warm",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22346,
+            "spell_catalog_id": 519,
+            "spell_name": "Whistle",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22312,
+            "spell_catalog_id": 485,
+            "spell_name": "Wilt",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22327,
+            "spell_catalog_id": 500,
+            "spell_name": "Wink",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22300,
+            "spell_catalog_id": 473,
+            "spell_name": "Wrap",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22328,
+            "spell_catalog_id": 501,
+            "spell_name": "Yawn",
+            "spell_link": 0,
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          }
+        ],
+        "1": [
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22413,
+            "spell_catalog_id": 532,
+            "spell_name": "Arctic Spray",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22408,
+            "spell_catalog_id": 562,
+            "spell_name": "Icy Missile",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22418,
+            "spell_catalog_id": 598,
+            "spell_name": "Read Magic",
+            "spell_link": 1,
+            "spell_level": 1,
+            "character_class_name": "Magic-User"
+          }
+        ],
+        "2": [
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22434,
+            "spell_catalog_id": 626,
+            "spell_name": "Agannavar's Scorcher",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22429,
+            "spell_catalog_id": 683,
+            "spell_name": "Invisibility",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22424,
+            "spell_catalog_id": 722,
+            "spell_name": "SD's Improved Armor II",
+            "spell_link": 2,
+            "spell_level": 2,
+            "character_class_name": "Magic-User"
+          }
+        ],
+        "3": [
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22445,
+            "spell_catalog_id": 763,
+            "spell_name": "Crew of Phantoms",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22440,
+            "spell_catalog_id": 781,
+            "spell_name": "Fireball",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22446,
+            "spell_catalog_id": 806,
+            "spell_name": "Lightning Bolt",
+            "spell_link": 3,
+            "spell_level": 3,
+            "character_class_name": "Magic-User"
+          }
+        ],
+        "4": [
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22461,
+            "spell_catalog_id": 858,
+            "spell_name": "Acid bolts",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22450,
+            "spell_catalog_id": 869,
+            "spell_name": "Dimension Door",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22456,
+            "spell_catalog_id": 871,
+            "spell_name": "DOUBLE BARREL MAGIC MISSILE",
+            "spell_link": 4,
+            "spell_level": 4,
+            "character_class_name": "Magic-User"
+          }
+        ],
+        "5": [
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22571,
+            "spell_catalog_id": 955,
+            "spell_name": "Cone Of Cold",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22560,
+            "spell_catalog_id": 956,
+            "spell_name": "Conjure Elemental",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22566,
+            "spell_catalog_id": 1001,
+            "spell_name": "Teleport",
+            "spell_link": 5,
+            "spell_level": 5,
+            "character_class_name": "Magic-User"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1506,20 +1506,48 @@ CREATE PROCEDURE getSpellBookForPlayerCharacter
  IN characterName VARCHAR(64),
  IN characterClassName VARCHAR(32))
  BEGIN
+
+	DECLARE spellTypeMagicUser INT DEFAULT 4;
+	DECLARE spellTypeIllusionist INT DEFAULT 5;
+	DECLARE spellTypeNA INT DEFAULT 7;
+	DECLARE spellTypeWuJen INT DEFAULT 10;
+	
+	SELECT id
+	INTO spellTypeMagicUser
+	FROM spell_type
+	WHERE name = 'Magic-User';
+
+	SELECT id
+	INTO spellTypeIllusionist
+	FROM spell_type
+	WHERE name = 'Illusionist';
+
+	SELECT id
+	INTO spellTypeNA
+	FROM spell_type
+	WHERE name = 'N/A';
+
+	SELECT id
+	INTO spellTypeWuJen
+	FROM spell_type
+	WHERE name = 'Wu Jen';
+
 	SELECT 
 		spell_type.name AS spell_type_name, 
 		player_spell_pool.id AS spell_pool_id, 
 		spell_catalog.id AS spell_catalog_id, 
 		spell_catalog.name AS spell_name, 
 		spell_catalog.link AS spell_link, 
-		player_spell_pool.spell_level AS spell_level from spell_catalog
+		player_spell_pool.spell_level AS spell_level FROM spell_catalog
 	JOIN player_spell_pool ON player_spell_pool.spell_catalog_id = spell_catalog.id
     JOIN player_character_class ON player_character_class.id = player_spell_pool.player_character_class_id
     JOIN character_class ON character_class.id = player_character_class.character_class_id
 	JOIN player_character ON player_character.id = player_character_class.player_character_id
 	JOIN player ON player.id = player_character.player_id
 	JOIN spell_type ON spell_type.id = spell_catalog.spell_type_id
-    WHERE player.name = playerName AND player_character.name = characterName AND character_class.name = characterClassName AND spell_catalog.spell_type_id IN (4,5,7,10) AND player_spell_pool.spell_level > 0
+    WHERE 	player.name = playerName AND player_character.name = characterName AND character_class.name = characterClassName AND 
+			spell_catalog.spell_type_id IN (spellTypeMagicUser,spellTypeIllusionist,spellTypeNA,spellTypeWuJen) AND 
+			player_spell_pool.spell_level > 0
     ORDER BY player_spell_pool.spell_level, spell_catalog.name;
 END
 
@@ -1631,6 +1659,30 @@ BEGIN
 		WHERE player.name = playerName AND player_character.name = characterName AND character_class.name = characterClassName AND player_spell_pool.spell_level = spellLevel
 		ORDER BY spell_type.id, player_spell_pool.spell_level, spell_catalog.name;
 	END IF;
+END
+
+CREATE PROCEDURE getSpellPoolFullForPlayerCharacter
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64),
+ IN characterClassName VARCHAR(32))
+BEGIN
+	SELECT 
+		spell_type.name AS spell_type_name, 
+		player_spell_pool.id AS spell_pool_id, 
+		spell_catalog.id AS spell_catalog_id, 
+		spell_catalog.name AS spell_name, 
+		spell_catalog.link AS spell_link, 
+		player_spell_pool.spell_level AS spell_level,
+		characterClassName AS character_class_name
+	FROM spell_catalog
+	JOIN player_spell_pool ON player_spell_pool.spell_catalog_id = spell_catalog.id
+	JOIN player_character_class ON player_character_class.id = player_spell_pool.player_character_class_id
+	JOIN character_class ON character_class.id = player_character_class.character_class_id
+	JOIN player_character ON player_character.id = player_character_class.player_character_id
+	JOIN player ON player.id = player_character.player_id
+	JOIN spell_type ON spell_type.id = spell_catalog.spell_type_id
+	WHERE player.name = playerName AND player_character.name = characterName AND character_class.name = characterClassName
+	ORDER BY spell_type.id, player_spell_pool.spell_level, spell_catalog.name;
 END
 
 CREATE PROCEDURE getSpellPoolByClass 
