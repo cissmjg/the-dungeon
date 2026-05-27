@@ -99,6 +99,10 @@ class PlayerCharacterReadySpellSet implements IteratorAggregate, JsonSerializabl
         return $this->playerCharacterReadySpellList;
     }
 
+    public function isEmpty() {
+        return count($this->playerCharacterReadySpellList) == 0;
+    }
+
     private function normalizeReadySpells($spell_for_class, $character_class) {
         $character_level = SpellCalculationHelper::getAdjustedCasterLevel($character_class, $character_class['character_level'], $spell_for_class['player_slot_spell_type_id']);
         $normalized_spell_for_class = [];

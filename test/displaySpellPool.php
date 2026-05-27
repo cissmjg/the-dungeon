@@ -20,9 +20,13 @@
             echo '  Spell Type: ' . $spell_type . PHP_EOL;
             foreach($spellsByClassType as $spell_level => $spellsByClassTypeLevel) {
                 echo '    Spell Level: ' . $spell_level . PHP_EOL;
-                foreach($spellsByClassTypeLevel AS $pool_spell) {
-                    echo '      Spell Name: ' . $pool_spell->getSpellName() . ' level: ' . $pool_spell->getSpellLevel() . PHP_EOL;
+                $options_for_level = $player_character_spell_pool->getOptions($character_class_name, $spell_type, $spell_level);
+                foreach($options_for_level AS $spell_pool_option) {
+                    echo $spell_pool_option;
                 }
+                // foreach($spellsByClassTypeLevel AS $pool_spell) {
+                    //echo '      Spell Name: ' . $pool_spell->getSpellName() . ' level: ' . $pool_spell->getSpellLevel() . PHP_EOL;
+                // }
             }
         }
     }

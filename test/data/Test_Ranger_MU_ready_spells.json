@@ -7,7 +7,7 @@
       "spell_name": "[NONE]",
       "spell_link": " ",
       "spell_slot_id": 1943,
-      "is_spell_cast": null,
+      "has_spell_cast": 0,
       "character_class_name": "Ranger",
       "spell_casting_time": " ",
       "spell_range": " ",
@@ -15,7 +15,9 @@
       "spell_area_of_effect": " ",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Druid",
@@ -24,7 +26,7 @@
       "spell_name": "[NONE]",
       "spell_link": " ",
       "spell_slot_id": 1944,
-      "is_spell_cast": null,
+      "has_spell_cast": 0,
       "character_class_name": "Ranger",
       "spell_casting_time": " ",
       "spell_range": " ",
@@ -32,7 +34,9 @@
       "spell_area_of_effect": " ",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Druid",
@@ -41,7 +45,7 @@
       "spell_name": "[NONE]",
       "spell_link": " ",
       "spell_slot_id": 1945,
-      "is_spell_cast": null,
+      "has_spell_cast": 0,
       "character_class_name": "Ranger",
       "spell_casting_time": " ",
       "spell_range": " ",
@@ -49,7 +53,9 @@
       "spell_area_of_effect": " ",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Magic-User",
@@ -58,7 +64,7 @@
       "spell_name": "[NONE]",
       "spell_link": " ",
       "spell_slot_id": 1947,
-      "is_spell_cast": null,
+      "has_spell_cast": 0,
       "character_class_name": "Ranger",
       "spell_casting_time": " ",
       "spell_range": " ",
@@ -66,7 +72,9 @@
       "spell_area_of_effect": " ",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Magic-User",
@@ -75,7 +83,7 @@
       "spell_name": "Arctic Spray",
       "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu1.php#Arctic Spray",
       "spell_slot_id": 1931,
-      "is_spell_cast": null,
+      "has_spell_cast": 0,
       "character_class_name": "Magic-User",
       "spell_casting_time": 1,
       "spell_range": "0",
@@ -83,7 +91,9 @@
       "spell_area_of_effect": "5'-long arc",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Magic-User",
@@ -92,7 +102,7 @@
       "spell_name": "Icy Missile",
       "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu1.php#Icy Missile",
       "spell_slot_id": 1932,
-      "is_spell_cast": null,
+      "has_spell_cast": 0,
       "character_class_name": "Magic-User",
       "spell_casting_time": 1,
       "spell_range": "100 yards",
@@ -100,7 +110,9 @@
       "spell_area_of_effect": "One creature",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Magic-User",
@@ -109,7 +121,7 @@
       "spell_name": "[NONE]",
       "spell_link": " ",
       "spell_slot_id": 1934,
-      "is_spell_cast": null,
+      "has_spell_cast": 0,
       "character_class_name": "Magic-User",
       "spell_casting_time": " ",
       "spell_range": " ",
@@ -117,7 +129,9 @@
       "spell_area_of_effect": " ",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Magic-User",
@@ -126,7 +140,7 @@
       "spell_name": "[NONE]",
       "spell_link": " ",
       "spell_slot_id": 1936,
-      "is_spell_cast": null,
+      "has_spell_cast": 0,
       "character_class_name": "Magic-User",
       "spell_casting_time": " ",
       "spell_range": " ",
@@ -134,7 +148,9 @@
       "spell_area_of_effect": " ",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Magic-User",
@@ -143,7 +159,7 @@
       "spell_name": "Agannavar's Scorcher",
       "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu2.php#Agannavar's Scorcher",
       "spell_slot_id": 1933,
-      "is_spell_cast": null,
+      "has_spell_cast": 0,
       "character_class_name": "Magic-User",
       "spell_casting_time": 6,
       "spell_range": "14",
@@ -151,7 +167,9 @@
       "spell_area_of_effect": "Special",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": 2
+      "spell_duration_in_rounds": 2,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Magic-User",
@@ -160,7 +178,7 @@
       "spell_name": "[NONE]",
       "spell_link": " ",
       "spell_slot_id": 1935,
-      "is_spell_cast": null,
+      "has_spell_cast": 0,
       "character_class_name": "Magic-User",
       "spell_casting_time": " ",
       "spell_range": " ",
@@ -168,7 +186,9 @@
       "spell_area_of_effect": " ",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Magic-User",
@@ -177,7 +197,7 @@
       "spell_name": "[NONE]",
       "spell_link": " ",
       "spell_slot_id": 1939,
-      "is_spell_cast": null,
+      "has_spell_cast": 0,
       "character_class_name": "Magic-User",
       "spell_casting_time": " ",
       "spell_range": " ",
@@ -185,7 +205,9 @@
       "spell_area_of_effect": " ",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Magic-User",
@@ -194,7 +216,7 @@
       "spell_name": "Fireball",
       "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu3.php#Fireball",
       "spell_slot_id": 1937,
-      "is_spell_cast": null,
+      "has_spell_cast": 0,
       "character_class_name": "Magic-User",
       "spell_casting_time": 6,
       "spell_range": "38 ",
@@ -202,7 +224,9 @@
       "spell_area_of_effect": "2\" radius sphere",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Magic-User",
@@ -211,7 +235,7 @@
       "spell_name": "[NONE]",
       "spell_link": " ",
       "spell_slot_id": 1938,
-      "is_spell_cast": null,
+      "has_spell_cast": 0,
       "character_class_name": "Magic-User",
       "spell_casting_time": " ",
       "spell_range": " ",
@@ -219,7 +243,9 @@
       "spell_area_of_effect": " ",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Magic-User",
@@ -228,7 +254,7 @@
       "spell_name": "[NONE]",
       "spell_link": " ",
       "spell_slot_id": 1941,
-      "is_spell_cast": null,
+      "has_spell_cast": 0,
       "character_class_name": "Magic-User",
       "spell_casting_time": " ",
       "spell_range": " ",
@@ -236,7 +262,9 @@
       "spell_area_of_effect": " ",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Magic-User",
@@ -245,7 +273,7 @@
       "spell_name": "Dimension Door",
       "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu4.php#Dimension Door",
       "spell_slot_id": 1940,
-      "is_spell_cast": null,
+      "has_spell_cast": 0,
       "character_class_name": "Magic-User",
       "spell_casting_time": 1,
       "spell_range": "0",
@@ -253,7 +281,9 @@
       "spell_area_of_effect": "Spell caster",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Magic-User",
@@ -262,7 +292,7 @@
       "spell_name": "[NONE]",
       "spell_link": " ",
       "spell_slot_id": 1942,
-      "is_spell_cast": null,
+      "has_spell_cast": 0,
       "character_class_name": "Magic-User",
       "spell_casting_time": " ",
       "spell_range": " ",
@@ -270,7 +300,9 @@
       "spell_area_of_effect": " ",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Magic-User",
@@ -279,7 +311,7 @@
       "spell_name": "Conjure Elemental",
       "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu5.php#Conjure Elemental",
       "spell_slot_id": 1946,
-      "is_spell_cast": null,
+      "has_spell_cast": 0,
       "character_class_name": "Magic-User",
       "spell_casting_time": "10r",
       "spell_range": "12",
@@ -287,7 +319,9 @@
       "spell_area_of_effect": "Special",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": 91
+      "spell_duration_in_rounds": 91,
+      "spell_casting_time_in_rounds": 10,
+      "spell_state": "Ready"
     }
   ],
   "spellMap": {
@@ -301,7 +335,7 @@
             "spell_name": "[NONE]",
             "spell_link": " ",
             "spell_slot_id": 1943,
-            "is_spell_cast": null,
+            "has_spell_cast": 0,
             "character_class_name": "Ranger",
             "spell_casting_time": " ",
             "spell_range": " ",
@@ -309,7 +343,9 @@
             "spell_area_of_effect": " ",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Druid",
@@ -318,7 +354,7 @@
             "spell_name": "[NONE]",
             "spell_link": " ",
             "spell_slot_id": 1944,
-            "is_spell_cast": null,
+            "has_spell_cast": 0,
             "character_class_name": "Ranger",
             "spell_casting_time": " ",
             "spell_range": " ",
@@ -326,7 +362,9 @@
             "spell_area_of_effect": " ",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Druid",
@@ -335,7 +373,7 @@
             "spell_name": "[NONE]",
             "spell_link": " ",
             "spell_slot_id": 1945,
-            "is_spell_cast": null,
+            "has_spell_cast": 0,
             "character_class_name": "Ranger",
             "spell_casting_time": " ",
             "spell_range": " ",
@@ -343,7 +381,9 @@
             "spell_area_of_effect": " ",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           }
         ]
       },
@@ -356,7 +396,7 @@
             "spell_name": "[NONE]",
             "spell_link": " ",
             "spell_slot_id": 1947,
-            "is_spell_cast": null,
+            "has_spell_cast": 0,
             "character_class_name": "Ranger",
             "spell_casting_time": " ",
             "spell_range": " ",
@@ -364,7 +404,9 @@
             "spell_area_of_effect": " ",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           }
         ]
       }
@@ -379,7 +421,7 @@
             "spell_name": "Arctic Spray",
             "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu1.php#Arctic Spray",
             "spell_slot_id": 1931,
-            "is_spell_cast": null,
+            "has_spell_cast": 0,
             "character_class_name": "Magic-User",
             "spell_casting_time": 1,
             "spell_range": "0",
@@ -387,7 +429,9 @@
             "spell_area_of_effect": "5'-long arc",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Magic-User",
@@ -396,7 +440,7 @@
             "spell_name": "Icy Missile",
             "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu1.php#Icy Missile",
             "spell_slot_id": 1932,
-            "is_spell_cast": null,
+            "has_spell_cast": 0,
             "character_class_name": "Magic-User",
             "spell_casting_time": 1,
             "spell_range": "100 yards",
@@ -404,7 +448,9 @@
             "spell_area_of_effect": "One creature",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Magic-User",
@@ -413,7 +459,7 @@
             "spell_name": "[NONE]",
             "spell_link": " ",
             "spell_slot_id": 1934,
-            "is_spell_cast": null,
+            "has_spell_cast": 0,
             "character_class_name": "Magic-User",
             "spell_casting_time": " ",
             "spell_range": " ",
@@ -421,7 +467,9 @@
             "spell_area_of_effect": " ",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Magic-User",
@@ -430,7 +478,7 @@
             "spell_name": "[NONE]",
             "spell_link": " ",
             "spell_slot_id": 1936,
-            "is_spell_cast": null,
+            "has_spell_cast": 0,
             "character_class_name": "Magic-User",
             "spell_casting_time": " ",
             "spell_range": " ",
@@ -438,7 +486,9 @@
             "spell_area_of_effect": " ",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           }
         ],
         "2": [
@@ -449,7 +499,7 @@
             "spell_name": "Agannavar's Scorcher",
             "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu2.php#Agannavar's Scorcher",
             "spell_slot_id": 1933,
-            "is_spell_cast": null,
+            "has_spell_cast": 0,
             "character_class_name": "Magic-User",
             "spell_casting_time": 6,
             "spell_range": "14",
@@ -457,7 +507,9 @@
             "spell_area_of_effect": "Special",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": 2
+            "spell_duration_in_rounds": 2,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Magic-User",
@@ -466,7 +518,7 @@
             "spell_name": "[NONE]",
             "spell_link": " ",
             "spell_slot_id": 1935,
-            "is_spell_cast": null,
+            "has_spell_cast": 0,
             "character_class_name": "Magic-User",
             "spell_casting_time": " ",
             "spell_range": " ",
@@ -474,7 +526,9 @@
             "spell_area_of_effect": " ",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Magic-User",
@@ -483,7 +537,7 @@
             "spell_name": "[NONE]",
             "spell_link": " ",
             "spell_slot_id": 1939,
-            "is_spell_cast": null,
+            "has_spell_cast": 0,
             "character_class_name": "Magic-User",
             "spell_casting_time": " ",
             "spell_range": " ",
@@ -491,7 +545,9 @@
             "spell_area_of_effect": " ",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           }
         ],
         "3": [
@@ -502,7 +558,7 @@
             "spell_name": "Fireball",
             "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu3.php#Fireball",
             "spell_slot_id": 1937,
-            "is_spell_cast": null,
+            "has_spell_cast": 0,
             "character_class_name": "Magic-User",
             "spell_casting_time": 6,
             "spell_range": "38 ",
@@ -510,7 +566,9 @@
             "spell_area_of_effect": "2\" radius sphere",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Magic-User",
@@ -519,7 +577,7 @@
             "spell_name": "[NONE]",
             "spell_link": " ",
             "spell_slot_id": 1938,
-            "is_spell_cast": null,
+            "has_spell_cast": 0,
             "character_class_name": "Magic-User",
             "spell_casting_time": " ",
             "spell_range": " ",
@@ -527,7 +585,9 @@
             "spell_area_of_effect": " ",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Magic-User",
@@ -536,7 +596,7 @@
             "spell_name": "[NONE]",
             "spell_link": " ",
             "spell_slot_id": 1941,
-            "is_spell_cast": null,
+            "has_spell_cast": 0,
             "character_class_name": "Magic-User",
             "spell_casting_time": " ",
             "spell_range": " ",
@@ -544,7 +604,9 @@
             "spell_area_of_effect": " ",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           }
         ],
         "4": [
@@ -555,7 +617,7 @@
             "spell_name": "Dimension Door",
             "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu4.php#Dimension Door",
             "spell_slot_id": 1940,
-            "is_spell_cast": null,
+            "has_spell_cast": 0,
             "character_class_name": "Magic-User",
             "spell_casting_time": 1,
             "spell_range": "0",
@@ -563,7 +625,9 @@
             "spell_area_of_effect": "Spell caster",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Magic-User",
@@ -572,7 +636,7 @@
             "spell_name": "[NONE]",
             "spell_link": " ",
             "spell_slot_id": 1942,
-            "is_spell_cast": null,
+            "has_spell_cast": 0,
             "character_class_name": "Magic-User",
             "spell_casting_time": " ",
             "spell_range": " ",
@@ -580,7 +644,9 @@
             "spell_area_of_effect": " ",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           }
         ],
         "5": [
@@ -591,7 +657,7 @@
             "spell_name": "Conjure Elemental",
             "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu5.php#Conjure Elemental",
             "spell_slot_id": 1946,
-            "is_spell_cast": null,
+            "has_spell_cast": 0,
             "character_class_name": "Magic-User",
             "spell_casting_time": "10r",
             "spell_range": "12",
@@ -599,7 +665,9 @@
             "spell_area_of_effect": "Special",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": 91
+            "spell_duration_in_rounds": 91,
+            "spell_casting_time_in_rounds": 10,
+            "spell_state": "Ready"
           }
         ]
       }

@@ -24,44 +24,76 @@ require_once __DIR__ . '/webio/spellDuration.php';
 require_once __DIR__ . '/webio/spellCastingTime.php';
 require_once __DIR__ . '/webio/removeEmpty.php';
 
-require_once __DIR__ . '/fa/faCancelIcon.php';
-require_once __DIR__ . '/fa/faCastSpellIcon.php';
-require_once __DIR__ . '/fa/faEditIcon.php';
-require_once __DIR__ . '/fa/faRefreshIcon.php';
-require_once __DIR__ . '/fa/faMemorizeSpellIcon.php';
-require_once __DIR__ . '/fa/faPraySpellIcon.php';
-require_once __DIR__ . '/fa/faHealSpellIcon.php';
-require_once __DIR__ . '/fa/faNatureIcon.php';
-require_once __DIR__ . '/fa/faReclaimCantripIcon.php';
-require_once __DIR__ . '/fa/faStopSpellIcon.php';
-require_once __DIR__ . '/fa/faRunSpellIcon.php';
-
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
+require_once __DIR__ . '/webio/characterClassName.php';
 
+require_once __DIR__ . '/classes/rowClassManager.php';
+require_once __DIR__ . '/classes/readySpellFormIdLookup.php';
 require_once __DIR__ . '/classes/characterSummary.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
+require_once __DIR__ . '/classes/playerCharacterPoolSpell.php';
+require_once __DIR__ . '/classes/playerCharacterSpellPool.php';
+require_once __DIR__ . '/classes/playerCharacterReadySpell.php';
+require_once __DIR__ . '/classes/playerCharacterReadySpellSet.php';
+require_once __DIR__ . '/classes/playerCharacterReadySpellRenderer.php';
 
 require_once __DIR__ . '/dbio/constants/emptySpellSlot.php';
 require_once __DIR__ . '/dbio/constants/cantripSpellSlot.php';
 require_once __DIR__ . '/dbio/constants/characterClasses.php';
 require_once __DIR__ . '/dbio/constants/spellTypes.php';
+require_once __DIR__ . '/dbio/constants/readySpellState.php';
+
+const CAST_SPELL_SLOT_FORM_ID = 'cast-spell';
+const CAST_SPELL_SLOT_ID = CAST_SPELL_SLOT_FORM_ID . '-' . SPELL_SLOT_ID;
+const CAST_SPELL_CASTING_TIME_ID = CAST_SPELL_SLOT_FORM_ID . '-' . SPELL_CASTING_TIME;
+const CAST_SPELL_DURATION_ID = CAST_SPELL_SLOT_FORM_ID . '-' . SPELL_DURATION;
+
+const UPDATE_SPELL_SLOT_FORM_ID = 'update-spell-slot';
+const UPDATE_SLOT_SPELL_SLOT_ID = UPDATE_SPELL_SLOT_FORM_ID . '-' . SPELL_SLOT_ID;
+const UPDATE_SLOT_SPELL_CATALOG_ID = UPDATE_SPELL_SLOT_FORM_ID . '-' . SPELL_CATALOG_ID;
+const UPDATE_SLOT_SPELL_CHARACTER_CLASS_NAME = UPDATE_SPELL_SLOT_FORM_ID . CHARACTER_CLASS_NAME;
+const UPDATE_SLOT_SPELL_LEVEL = UPDATE_SPELL_SLOT_FORM_ID . SPELL_LEVEL;
+
+const RECLAIM_CANTRIPS_FORM_ID = 'reclaim-cantrips';
+const RECLAIM_CANTRIPS_SLOT_ID = RECLAIM_CANTRIPS_FORM_ID . '-' . SPELL_SLOT_ID;
+
+const RESET_SLOT_FORM_ID = 'reset-slot';
+const RESET_SLOT_SPELL_SLOT_ID = RESET_SLOT_FORM_ID . '-' . SPELL_SLOT_ID;
+
+const STOP_CASTING_FORM_ID = 'stop-casting';
+const STOP_CASTING_SLOT_ID = STOP_CASTING_FORM_ID . '-' . SPELL_SLOT_ID;
+
+const STOP_RUNNING_FORM_ID = 'stop-running';
+const STOP_RUNNING_SLOT_ID = STOP_RUNNING_FORM_ID . '-' . SPELL_SLOT_ID;
+
+$ready_spell_form_id_lookup = new ReadySpellFormIdLookup();
+$ready_spell_form_id_lookup->setCastSpellSlotFormId(CAST_SPELL_SLOT_FORM_ID);
+$ready_spell_form_id_lookup->setCastSpellSlotDuration(CAST_SPELL_DURATION_ID);
+$ready_spell_form_id_lookup->setCastSpellSlotCastingTime(CAST_SPELL_CASTING_TIME_ID);
+$ready_spell_form_id_lookup->setCastSpellSlotId(CAST_SPELL_SLOT_ID);
+
+$ready_spell_form_id_lookup->setUpdateSpellSlotFormId(UPDATE_SPELL_SLOT_FORM_ID);
+$ready_spell_form_id_lookup->setUpdateSpellSlotSpellCatalogId(UPDATE_SLOT_SPELL_CATALOG_ID);
+$ready_spell_form_id_lookup->setUpdateSpellSlotId(UPDATE_SLOT_SPELL_SLOT_ID);
+$ready_spell_form_id_lookup->setUpdateSpellSlotCharacterClassName(UPDATE_SLOT_SPELL_CHARACTER_CLASS_NAME);
+$ready_spell_form_id_lookup->setUpdateSpellSlotSpellLevel(UPDATE_SLOT_SPELL_LEVEL);
+
+$ready_spell_form_id_lookup->setReclaimCantripsFormId(RECLAIM_CANTRIPS_FORM_ID);
+$ready_spell_form_id_lookup->setReclaimCantripsSlotId(RECLAIM_CANTRIPS_SLOT_ID);
+
+$ready_spell_form_id_lookup->setResetSlotFormId(RESET_SLOT_FORM_ID);
+$ready_spell_form_id_lookup->setResetSlotId(RESET_SLOT_SPELL_SLOT_ID);
+
+$ready_spell_form_id_lookup->setStopCastingSlotFormId(STOP_CASTING_FORM_ID);
+$ready_spell_form_id_lookup->setStopCastingSlotId(STOP_CASTING_SLOT_ID);
+
+$ready_spell_form_id_lookup->setStopRunningSlotFormId(STOP_RUNNING_FORM_ID);
+$ready_spell_form_id_lookup->setStopRunningSlotId(STOP_RUNNING_SLOT_ID);
 
 // Populate player and character names in $input
 getPlayerName($errors, $input);
 getCharacterName($errors, $input);
-
-$params = [];
-$params[PLAYER_NAME] = $input[PLAYER_NAME];
-$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
-$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
-
-$url = CurlHelper::buildUrlDbioDirectory('getReadySpellsForPlayerCharacter');
-$raw_results = CurlHelper::performGetRequest($url, $params);
-
-$readySpells = json_decode($raw_results);
-
-$spellListByClassAndLevel = [];
 
 $character_summary = new CharacterSummary();
 $character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
@@ -69,195 +101,113 @@ $character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $err
 $character_summary_renderer = new CharacterSummaryRenderer($input[CHARACTER_NAME]);
 $character_summary_stats = $character_summary_renderer->render($character_summary);
 
-$prev_spell_level = -1;
+$player_character_spell_pool = new PlayerCharacterSpellPool();
+$player_character_spell_pool->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+
+$player_character_ready_spell_set = new PlayerCharacterReadySpellSet();
+$player_character_ready_spell_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+
+$locale = 'en_US';
+$nf = new NumberFormatter($locale, NumberFormatter::ORDINAL);
+$action_bar = ActionBarHelper::buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
+
+$row_class_manager = new RowClassManager();
+$row_class_manager->setDefaultClassName('readySpell');
+$row_class_manager->setAlternateClassName('readySpellAlt');
 
 $page_title = $input[CHARACTER_NAME] . ' spells';
 $site_css_file = 'dnd-default.css';
 $page_specific_js = 'editReadySpells.js';
-$page_specific_css = '';
+$page_specific_css = 'editReadySpells.css';
 $enable_toggle_panels = false;
 
 $html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
 echo $html_header;
 
-/*
-    spell_type
-    player_slot_level
-    spell_name
-    spell_link
-    spell_slot_id
-	has_spell_cast
-    character_class_name
-    spell_casting_time
-    spell_range
-    spell_duration
-*/
 ?>
 <body>
-    <form name="slot-action-form" id="slot-action-form" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl()?>">
-        <input type="hidden" name="<?= PLAYER_NAME ?>" id="playerName" value="<?= $input[PLAYER_NAME] ?>">
-        <input type="hidden" name="<?= CHARACTER_NAME ?>" id="characterName" value="<?= $input[CHARACTER_NAME] ?>">
-        <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="characterAction" value="">
-        <input type="hidden" name="<?= SPELL_SLOT_ID ?>" id="spellSlotId" value="">
-        <input type="hidden" name="<?= SPELL_DURATION ?>" id="spellDuration" value="">
-        <input type="hidden" name="<?= SPELL_CASTING_TIME ?>" id="spellCastingTime" value="">
+    <form name="<?= CAST_SPELL_SLOT_FORM_ID ?>" id="<?= CAST_SPELL_SLOT_FORM_ID ?>" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl()?>">
+        <input type="hidden" name="<?= PLAYER_NAME ?>" id="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_NAME ?>" id="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="<?= CHARACTER_ACTION ?>" value="<?= CHARACTER_ACTION_CAST_SPELL_SLOT ?>">
+        <input type="hidden" name="<?= SPELL_DURATION ?>" id="<?= CAST_SPELL_DURATION_ID ?>" value="">
+        <input type="hidden" name="<?= SPELL_CASTING_TIME ?>" id="<?= CAST_SPELL_CASTING_TIME_ID ?>" value="">
+        <input type="hidden" name="<?= SPELL_SLOT_ID ?>" id="<?= CAST_SPELL_SLOT_ID ?>" value="">
+    </form>
+    <form name="<?= UPDATE_SPELL_SLOT_FORM_ID ?>" id="<?= UPDATE_SPELL_SLOT_FORM_ID ?>" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl()?>">
+        <input type="hidden" name="<?= PLAYER_NAME ?>" id="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_NAME ?>" id="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="<?= CHARACTER_ACTION ?>" value="<?= CHARACTER_ACTION_UPDATE_READY_SPELL_SLOT ?>">
+        <input type="hidden" name="<?= SPELL_CATALOG_ID ?>" id="<?= UPDATE_SLOT_SPELL_CATALOG_ID ?>" value="">
+        <input type="hidden" name="<?= SPELL_SLOT_ID ?>" id="<?= UPDATE_SLOT_SPELL_SLOT_ID ?>" value="">
+        <input type="hidden" name="<?= CHARACTER_CLASS_NAME ?>" id="<?= UPDATE_SLOT_SPELL_CHARACTER_CLASS_NAME ?>" value="">
+        <input type="hidden" name="<?= SPELL_LEVEL ?>" id="<?= UPDATE_SLOT_SPELL_LEVEL ?>" value="">
+    </form>
+    <form name="<?= RECLAIM_CANTRIPS_FORM_ID ?>" id="<?= RECLAIM_CANTRIPS_FORM_ID ?>" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl()?>">
+        <input type="hidden" name="<?= PLAYER_NAME ?>" id="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_NAME ?>" id="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="<?= CHARACTER_ACTION ?>" value="<?= CHARACTER_ACTION_RECLAIM_CANTRIP_SLOTS ?>">
+        <input type="hidden" name="<?= SPELL_SLOT_ID ?>" id="<?= RECLAIM_CANTRIPS_SLOT_ID ?>" value="">
+    </form>
+    <form name="<?= RESET_SLOT_FORM_ID ?>" id="<?= RESET_SLOT_FORM_ID ?>" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl()?>">
+        <input type="hidden" name="<?= PLAYER_NAME ?>" id="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_NAME ?>" id="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="<?= CHARACTER_ACTION ?>" value="<?= CHARACTER_ACTION_RESET_SPELL_SLOT ?>">
+        <input type="hidden" name="<?= SPELL_DURATION ?>" id="<?= RESET_SLOT_FORM_ID . '-' . SPELL_DURATION ?>" value="0">
+        <input type="hidden" name="<?= SPELL_CASTING_TIME ?>" id="<?= RESET_SLOT_FORM_ID . '-' . SPELL_CASTING_TIME ?>" value="0">
+        <input type="hidden" name="<?= SPELL_SLOT_ID ?>" id="<?= RESET_SLOT_SPELL_SLOT_ID ?>" value="">
+    </form>
+    <form name="<?= STOP_CASTING_FORM_ID ?>" id="<?= STOP_CASTING_FORM_ID ?>" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl()?>">
+        <input type="hidden" name="<?= PLAYER_NAME ?>" id="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_NAME ?>" id="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="<?= CHARACTER_ACTION ?>" value="<?= CHARACTER_ACTION_STOP_CASTING_SPELL_SLOT ?>">
+        <input type="hidden" name="<?= SPELL_DURATION ?>" id="<?= STOP_CASTING_FORM_ID . '-' . SPELL_DURATION ?>" value="0">
+        <input type="hidden" name="<?= SPELL_CASTING_TIME ?>" id="<?= STOP_CASTING_FORM_ID . '-' . SPELL_CASTING_TIME ?>" value="0">
+        <input type="hidden" name="<?= SPELL_SLOT_ID ?>" id="<?= STOP_CASTING_SLOT_ID ?>" value="">
+    </form>
+    <form name="<?= STOP_RUNNING_FORM_ID ?>" id="<?= STOP_RUNNING_FORM_ID ?>" method="POST" action="<?= CurlHelper::buildCharacterActionRouterUrl()?>">
+        <input type="hidden" name="<?= PLAYER_NAME ?>" id="<?= PLAYER_NAME ?>" value="<?= $input[PLAYER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_NAME ?>" id="<?= CHARACTER_NAME ?>" value="<?= $input[CHARACTER_NAME] ?>">
+        <input type="hidden" name="<?= CHARACTER_ACTION ?>" id="<?= CHARACTER_ACTION ?>" value="<?= CHARACTER_ACTION_STOP_RUNNING_SPELL_SLOT ?>">
+        <input type="hidden" name="<?= SPELL_DURATION ?>" id="<?= STOP_RUNNING_FORM_ID . '-' . SPELL_DURATION ?>" value="0">
+        <input type="hidden" name="<?= SPELL_CASTING_TIME ?>" id="<?= STOP_RUNNING_FORM_ID . '-' . SPELL_CASTING_TIME ?>" value="0">
+        <input type="hidden" name="<?= SPELL_SLOT_ID ?>" id="<?= STOP_RUNNING_SLOT_ID ?>" value="">
     </form>
     <?php
-    $locale = 'en_US';
-    $nf = new NumberFormatter($locale, NumberFormatter::ORDINAL);
-    $action_bar = ActionBarHelper::buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
     echo '<div style="width: 100%;"><span class="character_summary">' . $character_summary_stats . '</span><span class="action_bar">' . $action_bar . '</span></div>';
-    if (count($readySpells) == 0) {
+    if ($player_character_spell_pool->isEmpty()) {
         echo '<h3>No spells available</h3>';
     } else {
         echo '<div style="width: 100%; text-align: center; padding-bottom: 3px;"><button onclick="window.location.reload();">End Of Round</button></div>' . PHP_EOL;
-        $prevSpellType = '';
-        $prevSlotLevel = -1;
-        $spellPoolList = null;
-        $rowCounter = 0;
         echo '<table class="ready_spells">' . PHP_EOL;
-        foreach($readySpells AS $spellCollectionForClass) {
-            foreach($spellCollectionForClass AS $readySpell) {
-                $character_class_id = getClassID($readySpell->character_class_name);
-                if ($readySpell->spell_type != $prevSpellType) {
-                    $prevSpellType = $readySpell->spell_type;
-                    $prevSlotLevel = -1;
-                    $spellListByClassAndLevel[$readySpell->character_class_name] = array();
-                    $spellType_header = buildSpellTypeHeader($readySpell->spell_type);
-                    echo $spellType_header . PHP_EOL;
-                    $spellLevel_header = buildSpellLevelHeader($readySpell->spell_type, $readySpell->player_slot_level, $nf, $character_class_id);
+        foreach ($player_character_ready_spell_set->getSpellMap() as $character_class_name => $spellsByClass) {
+            foreach($spellsByClass as $spell_type => $spellsByClassType) {
+
+                $spellType_header = buildSpellTypeHeader($spell_type, $character_class_name);
+                echo $spellType_header . PHP_EOL;
+
+                foreach($spellsByClassType as $spell_level => $spellsByClassTypeLevel) {
+                    $spellLevel_header = buildSpellLevelHeader( $spell_type, $spell_level, $nf, getClassID($character_class_name));
                     echo $spellLevel_header . PHP_EOL;
-                }
 
-                if ($readySpell->player_slot_level !=  $prevSlotLevel) {
-                    if ($prevSlotLevel != -1) {
-                        $spellLevel_header = buildSpellLevelHeader($readySpell->spell_type, $readySpell->player_slot_level, $nf, $character_class_id);
-                        echo $spellLevel_header . PHP_EOL;
+                    foreach($spellsByClassTypeLevel AS $ready_spell) {
+                        $ready_spell_renderer = new PlayerCharacterReadySpellRenderer($ready_spell, $player_character_spell_pool, $ready_spell_form_id_lookup, $row_class_manager);
+                        echo $ready_spell_renderer->render();
                     }
-
-                    $prevSlotLevel = $readySpell->player_slot_level;
-                    $spellPoolList = getSpellPoolForLevelAndType($input, $readySpell->character_class_name, $readySpell->player_slot_level, $readySpell->spell_type);
-
-                    $spellListByClassAndLevel[$readySpell->character_class_name][$readySpell->player_slot_level] = $spellPoolList;
                 }
-                $slotAction_html = buildSlotActionHtml($readySpell, $input, $readySpells);
-                $backgroundColor = $rowCounter % 2 == 0 ? "white" : "lightgray";
-                echo '<tr style="background-color: '. $backgroundColor .'" id="' . buildActionSlotRowId($readySpell) . '">' . PHP_EOL . $slotAction_html . '</tr>' . PHP_EOL;
-                $slot_change_html = buildSlotChangeHtml($input[PLAYER_NAME], $input[CHARACTER_NAME], $readySpell->character_class_name, $readySpell, $spellListByClassAndLevel[$readySpell->character_class_name], $nf);
-                $backgroundStyle = getBackgroundStyle($readySpell->spell_type);
-                echo '<tr style="' . $backgroundStyle . '" id="' . buildChangeSlotRowId($readySpell) . '" hidden>' . PHP_EOL . $slot_change_html . '</tr>' . PHP_EOL;
-                $rowCounter++;
             }
         }
-
-        echo '</table>';
+        echo '</table>' . PHP_EOL;
+        
     }
-    echo '</div>';
     ?>
 </body>
 </html>
 
 <?php
-function getBackgroundStyle($spellType) {
-    if ($spellType == 'Magic-User' || $spellType == 'Illusionist'|| $spellType == 'Wu Jen') {
-        return "background-color:rgba(0, 0, 255, 0.15)";
-    } else if ($spellType == 'Healer') {
-        return "background-color:rgba(128, 0, 0, 0.25);";
-    } else if ($spellType == 'Druid') {
-        return "background-color:rgba(0, 250, 154, 0.25);";
-    } 
-    
-    return "background-color:rgba(34, 139, 34, 0.25);";
-}
 
-function buildClassSpecificSpellIcon($spellType, $updateFormId, $updateFormCharacterActionId) {
-    $spellActionIcon = null;
-    if ($spellType == 'Magic-User' || $spellType == 'Illusionist'|| $spellType == 'Wu Jen') {
-        $spellActionIcon = new FaMemorizeSpellIcon();
-    } else if ($spellType == 'Healer') {
-        $spellActionIcon = new FaHealSpellIcon();
-    } else if ($spellType == 'Druid') {
-        $spellActionIcon = new FaNatureIcon();
-    } else {
-        $spellActionIcon = new FaPraySpellIcon();
-    }
-
-    $spellActionIcon->setOnClickJsFunction('submitTheCharacterActionForm');
-    $spellActionIcon->addOnclickJsParameter($updateFormId);
-    $spellActionIcon->addOnclickJsParameter($updateFormCharacterActionId);
-    $spellActionIcon->addOnclickJsParameter(CHARACTER_ACTION_UPDATE_READY_SPELL_SLOT);
-
-    return  $spellActionIcon->build();
-}
-
-function buildSlotChangeHtml($playerName, $characterName, $characterClassName, $readySpell, $spellPoolListByLevel, $nf) {
-    $changeSlotHtml = buildSlotChangeForm($playerName, $characterName, $characterClassName, $readySpell, $spellPoolListByLevel, $nf);
-
-    return '<td colspan="7">' . $changeSlotHtml . '</td>';
-}
-
-/*
-    spell_type
-    player_slot_level
-    spell_name
-    spell_link
-    spell_slot_id
-	has_spell_cast
-    character_class_name
-    spell_casting_time
-    spell_range
-    spell_duration
-*/
-
-function buildSlotChangeForm($playerName, $characterName, $characterClassName, $readySpell, $spellListByLevel, $nf) {
-    $spellName = $readySpell->spell_name;
-    $spellSlotId = $readySpell->spell_slot_id;
-    $spellLevel = $readySpell->player_slot_level;
-    $spellType = $readySpell->spell_type;
-
-    $formId = buildSlotChangeFormId($spellSlotId);
-    $characterActionId = buildSlotChangeCharacterActionId($spellSlotId);
-    $formStartHtml = buildSlotActionFormStart($formId, $spellSlotId, $playerName, $characterName, $characterActionId);  // player, character, slot, action
-    $characterClassNameTag = HtmlHelper::buildHiddenTag(CHARACTER_CLASS_NAME, $characterClassName);
-    $spellLevelTag = HtmlHelper::buildHiddenTag(SPELL_LEVEL, $spellLevel);
-
-    $spellNameTag = '<span>' . $spellName . '</span>&nbsp;';
-    $leftArrowHtml = buildLeftArrowHtml() . '&nbsp;';
-    $character_class_id = getClassID($characterClassName);
-    $formSpellList = buildCandidateOptionsForTypeAndLevel($spellListByLevel,  $spellType, $spellLevel, $nf, $character_class_id);
-    $spellActionIcon = buildClassSpecificSpellIcon($spellType, $formId, $characterActionId) . '&nbsp;';
-    $faCancelIcon = buildCancelChangeFormIcon($readySpell);
-    
-    return $formStartHtml . $characterClassNameTag . $spellLevelTag . $spellNameTag . $leftArrowHtml . $formSpellList . '&nbsp;' . $spellActionIcon . $faCancelIcon . '</form>';
-}
-
-function buildCancelChangeFormIcon($readySpell) {
-    $spellRowId = buildActionSlotRowId($readySpell);
-    $formId = buildChangeSlotRowId($readySpell);
-    
-    $faCancelIcon = new FaCancelIcon();
-    $faCancelIcon->setOnClickJsFunction('showSpellHideChangeForm');
-    $faCancelIcon->addOnclickJsParameter($spellRowId);
-    $faCancelIcon->addOnclickJsParameter($formId);
-
-    return $faCancelIcon->build();
-}
-
-function buildShowChangeFormIcon($readySpell) {
-    $spellRowId = buildActionSlotRowId($readySpell);
-    $formId = buildChangeSlotRowId($readySpell);
-
-    $faEditIcon = new FaEditIcon();
-    $faEditIcon->setOnClickJsFunction('hideSpellShowChangeForm');
-    $faEditIcon->addOnclickJsParameter($spellRowId);
-    $faEditIcon->addOnclickJsParameter($formId);
-    $faEditIcon->setHoverText('Change Spell');
-
-    return $faEditIcon->build();
-}
-
-function buildSpellTypeHeader($spellType) {
-    $header = '<th class="spell_type_header" colspan="7">' . $spellType . ' spells' . '</th>';
+function buildSpellTypeHeader($spellType, $characterClassName) {
+    $header = '<tr><th class="spell_type_header" colspan="7">' . $spellType . ' spells' . '<span style="float: right;">(' . $characterClassName . ')</span></th></tr>';
     return $header;
 }
 
@@ -266,308 +216,19 @@ function buildSpellLevelHeader($spell_type, $spellLevel, $nf, $character_class_i
     $spellLevelDesc = '';
     if ($is_archer_mu_spells) {
         $spellLevelDesc = 'Spells';
-    } else if ($spellLevel > 0) {
-        $spellLevelDesc = $nf->format($spellLevel) . ' level';
-    } else {
+    } else if ($spellLevel == 'Cantrip') {
         $spellLevelDesc = 'Cantrips';
+    } else {
+        $spellLevelDesc = $nf->format($spellLevel) . ' level';
     }
 
     $header = '<tr><th>' . $spellLevelDesc . '</th><th>Name</th><th>&nbsp;</th><th>CT</th><th>Rng</th><th>Dur</th><th>AoE</th></tr>';
     return $header;
 }
 
-function getSpellPoolForLevelAndType($input, $characterClassName, $playerSlotLevel, $spellType) {
-
-    $playerSlotLevel = $playerSlotLevel == 0 ? -1 : $playerSlotLevel;
-    
-    $params = [];
-    $params[PLAYER_NAME] = $input[PLAYER_NAME];
-    $params[CHARACTER_NAME] = $input[CHARACTER_NAME];
-    $params[CHARACTER_CLASS_NAME] = $characterClassName;
-    $params[SPELL_LEVEL] = $playerSlotLevel;
-    $params[REMOVE_EMPTY] = true;
-    $params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
-
-    $url = CurlHelper::buildUrlDbioDirectory('getSpellPoolForPlayerCharacter');
-    $spellPool = CurlHelper::performGetRequest($url, $params);
-    $allSpellsForLevel = json_decode($spellPool);
-
-    $spellPoolList = [];
-    foreach($allSpellsForLevel AS $spellForLevel) {
-        if ($characterClassName == 'Healer') {
-            $spellPoolList[] = $spellForLevel;
-        } else {
-            if($spellForLevel->spell_type_name == $spellType) {
-                $spellPoolList[] = $spellForLevel;
-            }
-        }
-    }
-    return $spellPoolList;
-}
-
-function buildSlotActionHtml($readySpell, $input, $readySpells) {
-    if ($readySpell->spell_name == EMPTY_SLOT_SPELL_NAME) {
-        $htmlReturn = buildUpdateNoneSlot($readySpell);
-    } else if ($readySpell->spell_name == CANTRIP_SLOT_SPELL_NAME) {
-        $htmlReturn = buildReclaimCantripSlot($readySpell, $input[PLAYER_NAME], $input[CHARACTER_NAME]);
-    } else {
-        if (!$readySpell->has_spell_cast) {
-            $htmlReturn = buildCastSlotForm($readySpell->spell_slot_id, $readySpell->spell_name, $readySpell->spell_link, $input[PLAYER_NAME], $input[CHARACTER_NAME], $readySpell, $readySpells);
-        } else {
-            $slotCastingTime = $readySpell->player_slot_casting_time_remaining;
-            $slotRunningTime = $readySpell->player_slot_running_time_remaining;
-            if(($slotCastingTime == -1 && $slotRunningTime == -1) || ($slotCastingTime == 0 && $slotRunningTime == 0)) {
-                // Refresh 
-                $htmlReturn = buildResetSlotForm($readySpell->spell_slot_id, $readySpell->spell_name, $readySpell->spell_link, $readySpell);
-            }
-
-            if($slotCastingTime > 0) {
-                // Casting
-                $htmlReturn = buildCastingSlotForm($readySpell->spell_slot_id, $readySpell->spell_name, $readySpell->spell_link, $readySpell);           
-            }
-
-            if(($slotCastingTime == -1 || $slotCastingTime == 0) && $slotRunningTime > 0) {
-                // Running 
-                $htmlReturn = buildRunningSlotForm($readySpell->spell_slot_id, $readySpell->spell_name, $readySpell->spell_link, $readySpell);           
-            }
-        }
-    }
-
-    return $htmlReturn;
-}
-
-function buildUpdateNoneSlot($readySpell) {
-    $spellName = $readySpell->spell_name;
-
-    $updateNoneIcon = buildShowChangeFormIcon($readySpell);
-
-    $sourceSpellNameContainerId = buildSourceSpellNameContainer($readySpell->spell_slot_id);
-
-    return '<td>&nbsp;</td><td><span id="' . $sourceSpellNameContainerId . '" class="spell_slot_none">'. $spellName . '</span></td>' . '<td style="text-align: center;">' . $updateNoneIcon . '</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>';
-}
-
-// Refactor
-function buildReclaimCantripSlot($readySpell, $playerName, $characterName) {
-    $spellName = $readySpell->spell_name;
-
-    $formId = buildReclaimCantripFormId($readySpell->spell_slot_id);
-    $characterActionId = buildReclaimCantripCharacterActionId($readySpell->spell_slot_id);
-    $formStart = buildSlotActionFormStart($formId, $readySpell->spell_slot_id, $playerName, $characterName, $characterActionId);
-    
-    $outputHtml = '';
-    $outputHtml .= $formStart;
-    $outputHtml .= '<td>&nbsp;</td>';
-    $outputHtml .= '<td><span class="spell_slot_cantrip">' . $spellName . '</span></td>';
- 
-    $reclaimCantripIcon =  buildReclaimCantripIcon($formId, $characterActionId);
-
-    $outputHtml .= '<td style="text-align: center;">' . $reclaimCantripIcon . '</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>';
-    $outputHtml .= '</form>' . PHP_EOL;
-
-    return $outputHtml;
-}
-
-function buildCastSlotForm($spellSlotId, $spellName, $spellLink, $playerName, $characterName, $readySpell, $readySpells) {
-    $spellDurationInRounds = "0";
-    if(isset($readySpell->spell_duration_in_rounds)) {
-        $spellDurationInRounds = $readySpell->spell_duration_in_rounds;
-    }
-    
-    $spellCastingTimeInRounds = "0";
-    if(isset($readySpell->spell_casting_time_in_rounds)) {
-        $spellCastingTimeInRounds = $readySpell->spell_casting_time_in_rounds;
-    }
-
-    $updateSpellSlotIcon = buildShowChangeFormIcon($readySpell);
-    $wandCastTag = buildCastSlotButtonTag($spellSlotId, $spellDurationInRounds, $spellCastingTimeInRounds);
-
-    $spellLinkTag = '<a class="spell_slot_available" href="' . $spellLink . '" target="_blank">' . $spellName . '</a>';
-    $spellCastingTime = $readySpell->spell_casting_time;
-    $spellRange = $readySpell->spell_range;
-    $spellDuration = $readySpell->spell_duration;
-    $spellAreaOfEffect = $readySpell->spell_area_of_effect;
-    
-    return '<td class="spell_slot_available">' . $wandCastTag . '</td><td>' . $spellLinkTag . '</td><td class="spell_slot_available">' . $updateSpellSlotIcon . '</td><td class="spell_slot_available">' . $spellCastingTime . '</td><td class="spell_slot_available">' . $spellRange . '</td><td class="spell_slot_available">' . $spellDuration . '</td><td class="spell_slot_available">' . $spellAreaOfEffect . '</td>' . PHP_EOL;
-}
-
-function buildResetSlotForm($spellSlotId, $spellName, $spellLink, $readySpell) {
-    $updateSpellSlotIcon = buildShowChangeFormIcon($readySpell);
-    $refreshResetTag = buildResetSlotButtonTag($spellSlotId);
-
-    $spellDuration = "";
-    if(!isset($readySpell->spell_duration_in_rounds)) {
-        $spellDuration = $readySpell->spell_duration;
-    }
-
-    $spellLinkTag = '<a class="spell_slot_cast" href="' . $spellLink . '" target="_blank">' . $spellName . '</a>';
-    return '<td class="spell_slot_cast">' . $refreshResetTag . '</td><td>' . $spellLinkTag . '</td><td class="spell_slot_cast">' . $updateSpellSlotIcon . '</td><td>&nbsp;</td><td>&nbsp;</td><td class="spell_slot_cast">' . $spellDuration . '</td><td>&nbsp;</td>' . PHP_EOL;
-}
-
-function buildCastingSlotForm($spellSlotId, $spellName, $spellLink, $readySpell) {
-    $updateSpellSlotIcon = buildShowChangeFormIcon($readySpell);
-    $castingSlotTag = buildCastingSlotButtonTag($spellSlotId);
-    $castingTimeRemaining = $readySpell->player_slot_casting_time_remaining;
-
-    $spellDuration = $readySpell->spell_duration;
-    $spellAreaOfEffect = $readySpell->spell_area_of_effect;
-    $spellLinkTag = '<a class="spell_slot_casting" href="' . $spellLink . '" target="_blank">' . $spellName . '</a>';
-    return '<td class="spell_slot_casting">' . $castingSlotTag . '</td><td>' . $spellLinkTag . '</td><td class="spell_slot_casting">' . $updateSpellSlotIcon . '</td><td class="spell_slot_casting">' . $castingTimeRemaining . '</td><td>&nbsp;</td><td class="spell_slot_casting">' . $spellDuration . '</td><td class="spell_slot_casting">' . $spellAreaOfEffect . '</td>' . PHP_EOL;
-}
-
-function buildRunningSlotForm($spellSlotId, $spellName, $spellLink, $readySpell) {
-    $updateSpellSlotIcon = buildShowChangeFormIcon($readySpell);
-    $castingSlotTag = buildRunningSlotButtonTag($spellSlotId);
-    
-    $spellRunningTimeRemaining = $readySpell->player_slot_running_time_remaining;
-    $spellAreaOfEffect = $readySpell->spell_area_of_effect;
-    $spellLinkTag = '<a class="spell_slot_running" href="' . $spellLink . '" target="_blank">' . $spellName . '</a>';
-    return '<td class="spell_slot_running">' . $castingSlotTag . '</td><td>' . $spellLinkTag . '</td><td class="spell_slot_running">' . $updateSpellSlotIcon . '</td><td>&nbsp;</td><td>&nbsp;</td><td class="spell_slot_running">' . $spellRunningTimeRemaining . '</td><td class="spell_slot_running">' . $spellAreaOfEffect . '</td>' . PHP_EOL;
-}
-
-function buildSlotActionFormStart($formId, $spellSlotId, $playerName, $characterName, $characterActionId) {
-    $formStartTag = '<form ';
-    $formStartTag .= 'id="' . $formId . '" name="' . $formId .'" ';
-    $routerActionUrl = CurlHelper::buildCharacterActionRouterUrl();
-    $formStartTag .= 'action="' . $routerActionUrl . '" ';
-    $formStartTag .= 'method="POST">';
-    $playerNameTag = HtmlHelper::buildHiddenTag(PLAYER_NAME, $playerName);
-    $characterNameTag = HtmlHelper::buildHiddenTag(CHARACTER_NAME, $characterName);
-    $spellSlotIdTag = HtmlHelper::buildHiddenTag(SPELL_SLOT_ID, $spellSlotId);
-    $characterActionTag = HtmlHelper::buildHiddenTagWithId(CHARACTER_ACTION, $characterActionId, '');
-    return $formStartTag . $playerNameTag . $characterNameTag . $spellSlotIdTag . $characterActionTag;
-}
-
-function buildCastSlotButtonTag($spellSlotId, $spellDuration, $spellCastingTime) {
-    $castSpellIcon = new FaCastSpellIcon();
-    return buildSlotActionButtonTag($castSpellIcon, CHARACTER_ACTION_CAST_SPELL_SLOT, 'Cast Spell', $spellSlotId, $spellDuration, $spellCastingTime);
-}
-
-function buildResetSlotButtonTag($spellSlotId) {
-    $refreshSlotIcon = new FaRefreshIcon();
-    return buildSlotActionButtonTag($refreshSlotIcon, CHARACTER_ACTION_RESET_SPELL_SLOT, "Refresh spell", $spellSlotId, '0', '0');
-}
-
-function buildCastingSlotButtonTag($spellSlotId) {
-    $castingSlotIcon = new FaStopSpellIcon();
-    return buildSlotActionButtonTag($castingSlotIcon, CHARACTER_ACTION_STOP_CASTING_SPELL_SLOT, 'Stop casting spell', $spellSlotId, '0', '0');
-}
-
-function buildRunningSlotButtonTag($spellSlotId) {
-    $runningSlotIcon = new FaRunSpellIcon();
-    return buildSlotActionButtonTag($runningSlotIcon, CHARACTER_ACTION_STOP_RUNNING_SPELL_SLOT, 'Stop running spell', $spellSlotId, '0', '0');
-}
-
-function buildSlotActionButtonTag($slotActionIcon, $slotAction, $iconTitleText, $spellSlotId, $spellDuration, $spellCastingTime) {
-    $slotActionIcon->setOnClickJsFunction('submitSlotActionForm');
-    $slotActionIcon->addOnclickJsParameter($spellSlotId);
-    $slotActionIcon->addOnclickJsParameter($slotAction);
-    $slotActionIcon->addOnclickJsParameter($spellDuration);
-    $slotActionIcon->addOnclickJsParameter($spellCastingTime);
-    $slotActionIcon->setHoverText($iconTitleText);
-
-    return $slotActionIcon->build();
-}
-
-function buildReclaimCantripIcon($formId, $characterActionId) {
-    $reclaimCantripIcon = new FaReclaimCantripIcon();
-    $reclaimCantripIcon->setOnClickJsFunction('submitTheCharacterActionForm');
-    $reclaimCantripIcon->addOnclickJsParameter($formId);
-    $reclaimCantripIcon->addOnclickJsParameter($characterActionId);
-    $reclaimCantripIcon->addOnclickJsParameter(CHARACTER_ACTION_RECLAIM_CANTRIP_SLOTS);
-    
-    return $reclaimCantripIcon->build();
-}
-
-function buildCandidateOptionsForTypeAndLevel($spellListByLevel, $spellType, $spellLevel, $nf, $character_class_id) {
-    $spellCatalogFormId = buildUpdateSpellCatalogId($spellType, $spellLevel);
-
-    $tagName = SPELL_CATALOG_ID;
-    $selectTag = '<select id="' . $spellCatalogFormId . '" name="' .  $tagName . '" ' . ' style="font-size: 18px;">' . PHP_EOL;
-    $optionList = buildOptionsForSpellList($spellListByLevel, $spellLevel, $nf, $character_class_id);
-
-    return $selectTag . $optionList . '</select>' . PHP_EOL;
-}
-
-function buildOptionsForSpellList($spellListByLevel, $spellLevel, $nf, $character_class_id) {
-    $optionList = '';
-    if ($spellLevel == 0) {
-        $optionList .= '<optgroup label="Cantrips">' . PHP_EOL;
-
-        // spell list by level
-        $spells = $spellListByLevel[0];
-        foreach($spells AS $spell) {
-            $optionList .= '<option value="' . $spell->spell_catalog_id .'">' . $spell->spell_name . "</option>" . PHP_EOL;
-        }
-
-        $optionList .= '</optgroup>' . PHP_EOL;
-    } else {
-        for($i = $spellLevel; $i > 0; $i--) {
-            if (!empty($spellListByLevel[$i])) {
-                // spell list by level
-                $spells = $spellListByLevel[$i];
-
-                $is_archer_mu_spells = isArcherMuSpells($character_class_id, $spells[0]->spell_type_name);
-                if ($is_archer_mu_spells) {
-                    $optionList .= '<optgroup label="Spells">' . PHP_EOL;
-                } else {
-                    $optionList .= '<optgroup label="' . $nf->format($i) . ' level">' . PHP_EOL;
-                }
-
-                foreach($spells AS $spell) {
-                    $optionList .= '<option value="' . $spell->spell_catalog_id .'">' . $spell->spell_name . "</option>" . PHP_EOL;
-                }
-
-                if ($spellLevel > 0 && !$is_archer_mu_spells) {
-                    $optionList .= '<option value="' . CANTRIP_SLOT_SPELL_CATALOG_ID . '">' . CANTRIP_SLOT_SPELL_NAME . '</option>' . PHP_EOL;
-                }
-
-                $optionList .= '</optgroup>' . PHP_EOL;
-            }
-        }
-    }
-
-    return $optionList;
-}
-
 function isArcherMuSpells($character_class_id, $spell_type_name) {
     $spell_type_id = getSpellTypeIDFromName($spell_type_name);
-    return ($character_class_id == ARCHER || $character_class_id == ARCHER_RANGER && $spell_type_id == SPELL_TYPE_MAGIC_USER);
-}
-
-function buildLeftArrowHtml() {
-    return '<span class="fa-solid fa-arrow-left"></span>';
-}
-
-function buildSourceSpellNameContainer($spellSlotId) {
-    return 'source-spell-name-id-' . $spellSlotId;
-}
-
-function buildUpdateSpellCatalogId($spellType, $spellLevel) {
-    return 'update-spell-catalog-id-' .  $spellType . '-' . $spellLevel;
-}
-
-function buildReclaimCantripFormId($spellPoolId) {
-    return 'reclaim-cantrips-form-id-' . $spellPoolId;
-}
-
-function buildReclaimCantripCharacterActionId($spellPoolId) {
-    return 'reclaim-cantrips-character-action-id-' . $spellPoolId;
-}
-
-function buildActionSlotRowId($readySpell) {
-    return 'slot-action-row-' . $readySpell->spell_slot_id;
-}
-
-function buildChangeSlotRowId($readySpell) {
-    return 'slot-change-row-' . $readySpell->spell_slot_id;
-}
-
-function buildSlotChangeFormId($spellSlotId) {
-    return 'slot-change-form-id-' . $spellSlotId;
-}
-
-function buildSlotChangeCharacterActionId($spellSlotId) {
-    return 'slot-change-character-action-id-' . $spellSlotId;
+    return (isArcherType($character_class_id) && $spell_type_id == SPELL_TYPE_MAGIC_USER);
 }
 
 ?>

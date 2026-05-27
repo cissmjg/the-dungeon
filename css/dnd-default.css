@@ -75,14 +75,12 @@
 
 		.spell_slot_available {
 			background-color: transparent;
-			text-align: center;
 		}
 
 		.spell_slot_cast {
 			background-color: transparent;
 			text-decoration: line-through;
 			font-style: italic;
-			text-align: center;
 			color: grey;
 		}
 
@@ -90,13 +88,15 @@
 			background-color: transparent;
 			font-weight: bold;
 			color: dodgerblue;
-			text-align: center;
 		}
 
 		.spell_slot_running {
 			background-color: transparent;
 			font-weight: bold;
 			color: mediumseagreen;
+		}
+
+		.spell_slot_center {
 			text-align: center;
 		}
 

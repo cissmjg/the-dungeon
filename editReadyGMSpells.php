@@ -63,8 +63,8 @@ $raw_results = CurlHelper::performGetRequest($url, $params);
 $allRunningSpells = json_decode($raw_results);
 
 $runningSpells = [];
-if (!empty($allRunningSpells)) {
-    $runningSpells = filterByGMOnlySlotTypes($allRunningSpells[0]);
+if (!empty($allRunningSpells->playerCharacterReadySpellList)) {
+    $runningSpells = filterByGMOnlySlotTypes($allRunningSpells->playerCharacterReadySpellList[0]);
 }
 
 $character_summary = new CharacterSummary();

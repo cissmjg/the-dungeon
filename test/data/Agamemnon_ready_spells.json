@@ -15,7 +15,9 @@
       "spell_area_of_effect": "Caster",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": 60
+      "spell_duration_in_rounds": 60,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -24,15 +26,17 @@
       "spell_name": "Benediction",
       "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Benediction",
       "spell_slot_id": 2035,
-      "has_spell_cast": 0,
+      "has_spell_cast": 1,
       "character_class_name": "Cleric",
       "spell_casting_time": 4,
       "spell_range": "2",
       "spell_duration": "2 rounds",
       "spell_area_of_effect": "1\" x 1\" square",
       "player_slot_casting_time_remaining": 0,
-      "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": 2
+      "player_slot_running_time_remaining": 2,
+      "spell_duration_in_rounds": 2,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Already Cast"
     },
     {
       "spell_type": "Cleric",
@@ -49,7 +53,9 @@
       "spell_area_of_effect": "1 candle",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": 20
+      "spell_duration_in_rounds": 20,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -58,7 +64,7 @@
       "spell_name": "Canticle",
       "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Canticle",
       "spell_slot_id": 2037,
-      "has_spell_cast": 0,
+      "has_spell_cast": 1,
       "character_class_name": "Cleric",
       "spell_casting_time": "Special",
       "spell_range": "0",
@@ -66,7 +72,9 @@
       "spell_area_of_effect": "Caster",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Already Cast"
     },
     {
       "spell_type": "Cleric",
@@ -75,15 +83,17 @@
       "spell_name": "Combine",
       "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Combine",
       "spell_slot_id": 869,
-      "has_spell_cast": 0,
+      "has_spell_cast": 1,
       "character_class_name": "Cleric",
       "spell_casting_time": "1r",
       "spell_range": "Touch",
       "spell_duration": "Special",
       "spell_area_of_effect": "The circle of clerics",
-      "player_slot_casting_time_remaining": 0,
+      "player_slot_casting_time_remaining": 1,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": 1,
+      "spell_state": "Casting"
     },
     {
       "spell_type": "Cleric",
@@ -92,7 +102,7 @@
       "spell_name": "Bless",
       "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Bless Reversible",
       "spell_slot_id": 870,
-      "has_spell_cast": 0,
+      "has_spell_cast": 1,
       "character_class_name": "Cleric",
       "spell_casting_time": "1r",
       "spell_range": "12",
@@ -100,7 +110,9 @@
       "spell_area_of_effect": "5\" X 5\"",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": 7
+      "spell_duration_in_rounds": 7,
+      "spell_casting_time_in_rounds": 1,
+      "spell_state": "Already Cast"
     },
     {
       "spell_type": "Cleric",
@@ -117,7 +129,9 @@
       "spell_area_of_effect": "Creature touched",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": 27
+      "spell_duration_in_rounds": 27,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -134,7 +148,9 @@
       "spell_area_of_effect": "1 target",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -151,7 +167,9 @@
       "spell_area_of_effect": "Person Touched",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": 9
+      "spell_duration_in_rounds": 9,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -168,7 +186,9 @@
       "spell_area_of_effect": " ",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -185,7 +205,9 @@
       "spell_area_of_effect": "30' diameter sphere",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": 18
+      "spell_duration_in_rounds": 18,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -202,7 +224,9 @@
       "spell_area_of_effect": "Creature touched",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -219,7 +243,9 @@
       "spell_area_of_effect": "One person",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": 10
+      "spell_duration_in_rounds": 10,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -236,7 +262,9 @@
       "spell_area_of_effect": "Creature touched",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -253,7 +281,9 @@
       "spell_area_of_effect": "One to three creatures",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": 13
+      "spell_duration_in_rounds": 13,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -270,7 +300,9 @@
       "spell_area_of_effect": "Special",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": 10
+      "spell_duration_in_rounds": 10,
+      "spell_casting_time_in_rounds": 3,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -287,7 +319,9 @@
       "spell_area_of_effect": "One human or demi-human",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -304,7 +338,9 @@
       "spell_area_of_effect": "One human or demi-human",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -321,7 +357,9 @@
       "spell_area_of_effect": "3\" cube",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -338,7 +376,9 @@
       "spell_area_of_effect": "Creature touched",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": 10,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -355,7 +395,9 @@
       "spell_area_of_effect": "1-4 creatures in a 2\" x 2\" area",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -372,7 +414,9 @@
       "spell_area_of_effect": "6\" diameter circle",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": 10
+      "spell_duration_in_rounds": 10,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -389,7 +433,9 @@
       "spell_area_of_effect": "Creature touched or 1 cubic foot of substance/2 levels",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -406,7 +452,9 @@
       "spell_area_of_effect": "1\"",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": 11
+      "spell_duration_in_rounds": 11,
+      "spell_casting_time_in_rounds": 1,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -423,7 +471,9 @@
       "spell_area_of_effect": "individual",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": 1
+      "spell_duration_in_rounds": 1,
+      "spell_casting_time_in_rounds": null,
+      "spell_state": "Ready"
     },
     {
       "spell_type": "Cleric",
@@ -440,7 +490,9 @@
       "spell_area_of_effect": "One person",
       "player_slot_casting_time_remaining": 0,
       "player_slot_running_time_remaining": 0,
-      "spell_duration_in_rounds": null
+      "spell_duration_in_rounds": null,
+      "spell_casting_time_in_rounds": 1,
+      "spell_state": "Ready"
     }
   ],
   "spellMap": {
@@ -462,7 +514,9 @@
             "spell_area_of_effect": "Caster",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": 60
+            "spell_duration_in_rounds": 60,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Cleric",
@@ -471,15 +525,17 @@
             "spell_name": "Benediction",
             "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Benediction",
             "spell_slot_id": 2035,
-            "has_spell_cast": 0,
+            "has_spell_cast": 1,
             "character_class_name": "Cleric",
             "spell_casting_time": 4,
             "spell_range": "2",
             "spell_duration": "2 rounds",
             "spell_area_of_effect": "1\" x 1\" square",
             "player_slot_casting_time_remaining": 0,
-            "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": 2
+            "player_slot_running_time_remaining": 2,
+            "spell_duration_in_rounds": 2,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Already Cast"
           },
           {
             "spell_type": "Cleric",
@@ -496,7 +552,9 @@
             "spell_area_of_effect": "1 candle",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": 20
+            "spell_duration_in_rounds": 20,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Cleric",
@@ -505,7 +563,7 @@
             "spell_name": "Canticle",
             "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Canticle",
             "spell_slot_id": 2037,
-            "has_spell_cast": 0,
+            "has_spell_cast": 1,
             "character_class_name": "Cleric",
             "spell_casting_time": "Special",
             "spell_range": "0",
@@ -513,7 +571,9 @@
             "spell_area_of_effect": "Caster",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Already Cast"
           }
         ],
         "1": [
@@ -524,15 +584,17 @@
             "spell_name": "Combine",
             "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Combine",
             "spell_slot_id": 869,
-            "has_spell_cast": 0,
+            "has_spell_cast": 1,
             "character_class_name": "Cleric",
             "spell_casting_time": "1r",
             "spell_range": "Touch",
             "spell_duration": "Special",
             "spell_area_of_effect": "The circle of clerics",
-            "player_slot_casting_time_remaining": 0,
+            "player_slot_casting_time_remaining": 1,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": 1,
+            "spell_state": "Casting"
           },
           {
             "spell_type": "Cleric",
@@ -541,7 +603,7 @@
             "spell_name": "Bless",
             "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Bless Reversible",
             "spell_slot_id": 870,
-            "has_spell_cast": 0,
+            "has_spell_cast": 1,
             "character_class_name": "Cleric",
             "spell_casting_time": "1r",
             "spell_range": "12",
@@ -549,7 +611,9 @@
             "spell_area_of_effect": "5\" X 5\"",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": 7
+            "spell_duration_in_rounds": 7,
+            "spell_casting_time_in_rounds": 1,
+            "spell_state": "Already Cast"
           },
           {
             "spell_type": "Cleric",
@@ -566,7 +630,9 @@
             "spell_area_of_effect": "Creature touched",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": 27
+            "spell_duration_in_rounds": 27,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Cleric",
@@ -583,7 +649,9 @@
             "spell_area_of_effect": "1 target",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Cleric",
@@ -600,7 +668,9 @@
             "spell_area_of_effect": "Person Touched",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": 9
+            "spell_duration_in_rounds": 9,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Cleric",
@@ -617,7 +687,9 @@
             "spell_area_of_effect": " ",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           }
         ],
         "2": [
@@ -636,7 +708,9 @@
             "spell_area_of_effect": "30' diameter sphere",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": 18
+            "spell_duration_in_rounds": 18,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Cleric",
@@ -653,7 +727,9 @@
             "spell_area_of_effect": "Creature touched",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Cleric",
@@ -670,7 +746,9 @@
             "spell_area_of_effect": "One person",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": 10
+            "spell_duration_in_rounds": 10,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Cleric",
@@ -687,7 +765,9 @@
             "spell_area_of_effect": "Creature touched",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Cleric",
@@ -704,7 +784,9 @@
             "spell_area_of_effect": "One to three creatures",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": 13
+            "spell_duration_in_rounds": 13,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Cleric",
@@ -721,7 +803,9 @@
             "spell_area_of_effect": "Special",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": 10
+            "spell_duration_in_rounds": 10,
+            "spell_casting_time_in_rounds": 3,
+            "spell_state": "Ready"
           }
         ],
         "3": [
@@ -740,7 +824,9 @@
             "spell_area_of_effect": "One human or demi-human",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Cleric",
@@ -757,7 +843,9 @@
             "spell_area_of_effect": "One human or demi-human",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Cleric",
@@ -774,7 +862,9 @@
             "spell_area_of_effect": "3\" cube",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Cleric",
@@ -791,7 +881,9 @@
             "spell_area_of_effect": "Creature touched",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": 10,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Cleric",
@@ -808,7 +900,9 @@
             "spell_area_of_effect": "1-4 creatures in a 2\" x 2\" area",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           }
         ],
         "4": [
@@ -827,7 +921,9 @@
             "spell_area_of_effect": "6\" diameter circle",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": 10
+            "spell_duration_in_rounds": 10,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Cleric",
@@ -844,7 +940,9 @@
             "spell_area_of_effect": "Creature touched or 1 cubic foot of substance/2 levels",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Cleric",
@@ -861,7 +959,9 @@
             "spell_area_of_effect": "1\"",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": 11
+            "spell_duration_in_rounds": 11,
+            "spell_casting_time_in_rounds": 1,
+            "spell_state": "Ready"
           },
           {
             "spell_type": "Cleric",
@@ -878,7 +978,9 @@
             "spell_area_of_effect": "individual",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": 1
+            "spell_duration_in_rounds": 1,
+            "spell_casting_time_in_rounds": null,
+            "spell_state": "Ready"
           }
         ],
         "5": [
@@ -897,7 +999,9 @@
             "spell_area_of_effect": "One person",
             "player_slot_casting_time_remaining": 0,
             "player_slot_running_time_remaining": 0,
-            "spell_duration_in_rounds": null
+            "spell_duration_in_rounds": null,
+            "spell_casting_time_in_rounds": 1,
+            "spell_state": "Ready"
           }
         ]
       }

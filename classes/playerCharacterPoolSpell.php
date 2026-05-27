@@ -15,7 +15,7 @@ class PlayerCharacterPoolSpell implements JsonSerializable {
         $this->spell_pool_id = $pool_spell['spell_pool_id'];
         $this->spell_catalog_id = $pool_spell['spell_catalog_id'];
         $this->spell_name = $pool_spell['spell_name'];
-        $this->spell_link = $pool_spell['spell_level'];
+        $this->spell_link = $pool_spell['spell_link'];
         $this->spell_level = $pool_spell['spell_level'];
         $this->character_class_name = $pool_spell['character_class_name'];
     }
@@ -25,7 +25,7 @@ class PlayerCharacterPoolSpell implements JsonSerializable {
         $this->spell_pool_id = $pool_spell_json->spell_pool_id;
         $this->spell_catalog_id = $pool_spell_json->spell_catalog_id;
         $this->spell_name = $pool_spell_json->spell_name;
-        $this->spell_link = $pool_spell_json->spell_level;
+        $this->spell_link = $pool_spell_json->spell_link;
         $this->spell_level = $pool_spell_json->spell_level;
         $this->character_class_name = $pool_spell_json->character_class_name;
     }

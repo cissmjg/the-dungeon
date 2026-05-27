@@ -5,7 +5,7 @@
       "spell_pool_id": 7858,
       "spell_catalog_id": 1,
       "spell_name": "Aspiration",
-      "spell_link": 0,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Aspiration",
       "spell_level": 0,
       "character_class_name": "Cleric"
     },
@@ -14,7 +14,7 @@
       "spell_pool_id": 7859,
       "spell_catalog_id": 2,
       "spell_name": "Benediction",
-      "spell_link": 0,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Benediction",
       "spell_level": 0,
       "character_class_name": "Cleric"
     },
@@ -23,7 +23,7 @@
       "spell_pool_id": 7860,
       "spell_catalog_id": 3,
       "spell_name": "Candle",
-      "spell_link": 0,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Candle",
       "spell_level": 0,
       "character_class_name": "Cleric"
     },
@@ -32,7 +32,7 @@
       "spell_pool_id": 7861,
       "spell_catalog_id": 4,
       "spell_name": "Canticle",
-      "spell_link": 0,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Canticle",
       "spell_level": 0,
       "character_class_name": "Cleric"
     },
@@ -41,7 +41,7 @@
       "spell_pool_id": 7862,
       "spell_catalog_id": 5,
       "spell_name": "Ceremony: Oath",
-      "spell_link": 0,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Ceremony: Oath",
       "spell_level": 0,
       "character_class_name": "Cleric"
     },
@@ -50,7 +50,7 @@
       "spell_pool_id": 7863,
       "spell_catalog_id": 6,
       "spell_name": "Cure Minor Wounds",
-      "spell_link": 0,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Cure Minor Wounds",
       "spell_level": 0,
       "character_class_name": "Cleric"
     },
@@ -59,7 +59,7 @@
       "spell_pool_id": 7864,
       "spell_catalog_id": 7,
       "spell_name": "Find a Stray",
-      "spell_link": 0,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Find a Stray",
       "spell_level": 0,
       "character_class_name": "Cleric"
     },
@@ -68,7 +68,7 @@
       "spell_pool_id": 7865,
       "spell_catalog_id": 8,
       "spell_name": "Malediction",
-      "spell_link": 0,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Malediction",
       "spell_level": 0,
       "character_class_name": "Cleric"
     },
@@ -77,7 +77,7 @@
       "spell_pool_id": 7866,
       "spell_catalog_id": 9,
       "spell_name": "Meditation",
-      "spell_link": 0,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Meditation",
       "spell_level": 0,
       "character_class_name": "Cleric"
     },
@@ -86,7 +86,7 @@
       "spell_pool_id": 7867,
       "spell_catalog_id": 10,
       "spell_name": "Petition",
-      "spell_link": 0,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Petition",
       "spell_level": 0,
       "character_class_name": "Cleric"
     },
@@ -95,7 +95,7 @@
       "spell_pool_id": 7868,
       "spell_catalog_id": 11,
       "spell_name": "Warding",
-      "spell_link": 0,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Warding",
       "spell_level": 0,
       "character_class_name": "Cleric"
     },
@@ -104,7 +104,7 @@
       "spell_pool_id": 7873,
       "spell_catalog_id": 13,
       "spell_name": "Bless",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Bless Reversible",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -113,7 +113,7 @@
       "spell_pool_id": 7874,
       "spell_catalog_id": 14,
       "spell_name": "Ceremony",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Ceremony",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -122,7 +122,7 @@
       "spell_pool_id": 7875,
       "spell_catalog_id": 15,
       "spell_name": "Combine",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Combine",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -131,7 +131,7 @@
       "spell_pool_id": 7876,
       "spell_catalog_id": 16,
       "spell_name": "Command",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Command",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -140,7 +140,7 @@
       "spell_pool_id": 7877,
       "spell_catalog_id": 17,
       "spell_name": "Create Water",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Create Water",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -149,7 +149,7 @@
       "spell_pool_id": 7878,
       "spell_catalog_id": 18,
       "spell_name": "Cure Light Wounds",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Cure Light Wounds",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -158,7 +158,7 @@
       "spell_pool_id": 7879,
       "spell_catalog_id": 19,
       "spell_name": "Detect Evil",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Detect Evil",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -167,7 +167,7 @@
       "spell_pool_id": 7880,
       "spell_catalog_id": 22,
       "spell_name": "Detect Magic",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Detect Magic",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -176,7 +176,7 @@
       "spell_pool_id": 7881,
       "spell_catalog_id": 23,
       "spell_name": "Endure Cold/Endure Heat",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Endure Cold-Heat",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -185,7 +185,7 @@
       "spell_pool_id": 7882,
       "spell_catalog_id": 24,
       "spell_name": "Flamehand",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Flamehand",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -194,7 +194,7 @@
       "spell_pool_id": 7883,
       "spell_catalog_id": 25,
       "spell_name": "Invisibility to Undead",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Invisibility to Undead",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -203,7 +203,7 @@
       "spell_pool_id": 7884,
       "spell_catalog_id": 26,
       "spell_name": "Light",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Light",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -212,7 +212,7 @@
       "spell_pool_id": 7885,
       "spell_catalog_id": 27,
       "spell_name": "Magic Stone",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Magic Stone",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -221,7 +221,7 @@
       "spell_pool_id": 7886,
       "spell_catalog_id": 28,
       "spell_name": "Penetrate Disguise",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Penetrate Disguise",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -230,7 +230,7 @@
       "spell_pool_id": 7887,
       "spell_catalog_id": 29,
       "spell_name": "Portent",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Portent",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -239,7 +239,7 @@
       "spell_pool_id": 7889,
       "spell_catalog_id": 31,
       "spell_name": "Precipitation",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Precipitation v2",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -248,7 +248,7 @@
       "spell_pool_id": 7888,
       "spell_catalog_id": 30,
       "spell_name": "Precipitation",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Precipitation",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -257,7 +257,7 @@
       "spell_pool_id": 7890,
       "spell_catalog_id": 32,
       "spell_name": "Protection From Evil",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Protection From Evil",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -266,7 +266,7 @@
       "spell_pool_id": 7891,
       "spell_catalog_id": 33,
       "spell_name": "Purify Food & Drink",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Purify Food & Drink",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -275,7 +275,7 @@
       "spell_pool_id": 7892,
       "spell_catalog_id": 34,
       "spell_name": "Rainshield",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Rainshield",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -284,7 +284,7 @@
       "spell_pool_id": 7893,
       "spell_catalog_id": 36,
       "spell_name": "Regenerate Light Wounds",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Regenerate Light Wounds",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -293,7 +293,7 @@
       "spell_pool_id": 7894,
       "spell_catalog_id": 37,
       "spell_name": "Remove Fear",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Remove Fear",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -302,7 +302,7 @@
       "spell_pool_id": 7895,
       "spell_catalog_id": 38,
       "spell_name": "Resist Cold",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Resist Cold",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -311,7 +311,7 @@
       "spell_pool_id": 7896,
       "spell_catalog_id": 39,
       "spell_name": "Resist Poison",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Resist Poison",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -320,7 +320,7 @@
       "spell_pool_id": 7897,
       "spell_catalog_id": 40,
       "spell_name": "Sanctuary",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Sanctuary",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -329,7 +329,7 @@
       "spell_pool_id": 7898,
       "spell_catalog_id": 42,
       "spell_name": "SPIRITUAL WHIP",
-      "spell_link": 1,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#SPIRITUAL WHIP",
       "spell_level": 1,
       "character_class_name": "Cleric"
     },
@@ -338,7 +338,7 @@
       "spell_pool_id": 9175,
       "spell_catalog_id": 44,
       "spell_name": "Aid",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Aid",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -347,7 +347,7 @@
       "spell_pool_id": 9176,
       "spell_catalog_id": 45,
       "spell_name": "Augury",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Augury",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -356,7 +356,7 @@
       "spell_pool_id": 9177,
       "spell_catalog_id": 46,
       "spell_name": "Blesssed Aim",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Blessed Aim",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -365,7 +365,7 @@
       "spell_pool_id": 9178,
       "spell_catalog_id": 48,
       "spell_name": "Chant",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Chant",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -374,7 +374,7 @@
       "spell_pool_id": 9179,
       "spell_catalog_id": 49,
       "spell_name": "Detect Charm",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Detect Charm",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -383,7 +383,7 @@
       "spell_pool_id": 9180,
       "spell_catalog_id": 50,
       "spell_name": "Detect Life",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Detect Life",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -392,7 +392,7 @@
       "spell_pool_id": 9181,
       "spell_catalog_id": 51,
       "spell_name": "Dust Devil",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Dust Devil",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -401,7 +401,7 @@
       "spell_pool_id": 9182,
       "spell_catalog_id": 53,
       "spell_name": "Enthrall",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Enthrall",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -410,7 +410,7 @@
       "spell_pool_id": 9183,
       "spell_catalog_id": 55,
       "spell_name": "Find Traps",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Find Traps",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -419,7 +419,7 @@
       "spell_pool_id": 9184,
       "spell_catalog_id": 56,
       "spell_name": "Float",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Float",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -428,7 +428,7 @@
       "spell_pool_id": 9185,
       "spell_catalog_id": 58,
       "spell_name": "Hold Person",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Hold Person",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -437,7 +437,7 @@
       "spell_pool_id": 9186,
       "spell_catalog_id": 59,
       "spell_name": "Holy Symbol",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Holy Symbol",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -446,7 +446,7 @@
       "spell_pool_id": 9187,
       "spell_catalog_id": 60,
       "spell_name": "Know Alignment",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Know Alignment",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -455,7 +455,7 @@
       "spell_pool_id": 9188,
       "spell_catalog_id": 62,
       "spell_name": "Messenger",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Messenger",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -464,7 +464,7 @@
       "spell_pool_id": 9189,
       "spell_catalog_id": 63,
       "spell_name": "Recurring Cure Minor Wounds",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Recur Cure Minor",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -473,7 +473,7 @@
       "spell_pool_id": 9190,
       "spell_catalog_id": 64,
       "spell_name": "Resist Fire",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Resist Fire",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -482,7 +482,7 @@
       "spell_pool_id": 9191,
       "spell_catalog_id": 65,
       "spell_name": "Silence, 15' Radius",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Silence 15 Radius",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -491,7 +491,7 @@
       "spell_pool_id": 9192,
       "spell_catalog_id": 66,
       "spell_name": "Siren Song",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Siren Song",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -500,7 +500,7 @@
       "spell_pool_id": 9193,
       "spell_catalog_id": 67,
       "spell_name": "Slow Poison",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Slow Poison",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -509,7 +509,7 @@
       "spell_pool_id": 9194,
       "spell_catalog_id": 68,
       "spell_name": "Snake Charm",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Snake Charm",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -518,7 +518,7 @@
       "spell_pool_id": 9195,
       "spell_catalog_id": 69,
       "spell_name": "Speak With Animals",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Speak With Animals",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -527,7 +527,7 @@
       "spell_pool_id": 9196,
       "spell_catalog_id": 70,
       "spell_name": "Spiritual Hammer",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Spiritual Hammer",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -536,7 +536,7 @@
       "spell_pool_id": 9197,
       "spell_catalog_id": 71,
       "spell_name": "Swim",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Swim",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -545,7 +545,7 @@
       "spell_pool_id": 9198,
       "spell_catalog_id": 72,
       "spell_name": "Wave",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Wave",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -554,7 +554,7 @@
       "spell_pool_id": 9199,
       "spell_catalog_id": 74,
       "spell_name": "Withdraw",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Withdraw",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -563,7 +563,7 @@
       "spell_pool_id": 9200,
       "spell_catalog_id": 75,
       "spell_name": "Wyvern Watch",
-      "spell_link": 2,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Wyvern Watch",
       "spell_level": 2,
       "character_class_name": "Cleric"
     },
@@ -572,7 +572,7 @@
       "spell_pool_id": 9206,
       "spell_catalog_id": 78,
       "spell_name": "Animate Dead",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Animate Dead",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -581,7 +581,7 @@
       "spell_pool_id": 9207,
       "spell_catalog_id": 79,
       "spell_name": "Automaton",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Automaton",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -590,7 +590,7 @@
       "spell_pool_id": 9208,
       "spell_catalog_id": 80,
       "spell_name": "Cloudburst",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Cloudburst",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -599,7 +599,7 @@
       "spell_pool_id": 9209,
       "spell_catalog_id": 81,
       "spell_name": "Cloudburst",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Cloudburst v2",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -608,7 +608,7 @@
       "spell_pool_id": 9210,
       "spell_catalog_id": 82,
       "spell_name": "Continual Light",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Continual Light",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -617,7 +617,7 @@
       "spell_pool_id": 9211,
       "spell_catalog_id": 83,
       "spell_name": "Create Food & Water",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Create Food & Water",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -626,7 +626,7 @@
       "spell_pool_id": 9212,
       "spell_catalog_id": 84,
       "spell_name": "Cure Blindness",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Cure Blindness",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -635,7 +635,7 @@
       "spell_pool_id": 9213,
       "spell_catalog_id": 85,
       "spell_name": "Cure Disease",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Cure Disease",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -644,7 +644,7 @@
       "spell_pool_id": 9214,
       "spell_catalog_id": 86,
       "spell_name": "Dark Fire",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Dark Fire",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -653,7 +653,7 @@
       "spell_pool_id": 9215,
       "spell_catalog_id": 87,
       "spell_name": "Death's Door",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Death",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -662,7 +662,7 @@
       "spell_pool_id": 9216,
       "spell_catalog_id": 88,
       "spell_name": "DEFORM",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#DEFORM",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -671,7 +671,7 @@
       "spell_pool_id": 9217,
       "spell_catalog_id": 89,
       "spell_name": "Dispel Magic",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Dispel Magic",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -680,7 +680,7 @@
       "spell_pool_id": 9218,
       "spell_catalog_id": 91,
       "spell_name": "Exaltation",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Exaltation",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -689,7 +689,7 @@
       "spell_pool_id": 9219,
       "spell_catalog_id": 92,
       "spell_name": "Feign Death",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Feign Death",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -698,7 +698,7 @@
       "spell_pool_id": 9220,
       "spell_catalog_id": 93,
       "spell_name": "Flame Walk",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Flame Walk",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -707,7 +707,7 @@
       "spell_pool_id": 9221,
       "spell_catalog_id": 94,
       "spell_name": "Forceward",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Forceward",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -716,7 +716,7 @@
       "spell_pool_id": 9222,
       "spell_catalog_id": 95,
       "spell_name": "Glyph of Warding",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Glyph of Warding",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -725,7 +725,7 @@
       "spell_pool_id": 9223,
       "spell_catalog_id": 96,
       "spell_name": "Holy Flail",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Holy Flail",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -734,7 +734,7 @@
       "spell_pool_id": 9224,
       "spell_catalog_id": 97,
       "spell_name": "Home port",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Home port",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -743,7 +743,7 @@
       "spell_pool_id": 9225,
       "spell_catalog_id": 98,
       "spell_name": "Improved Resist Poison",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Resist Poison",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -752,7 +752,7 @@
       "spell_pool_id": 9226,
       "spell_catalog_id": 99,
       "spell_name": "Inkjet",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Inkjet",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -761,7 +761,7 @@
       "spell_pool_id": 9227,
       "spell_catalog_id": 101,
       "spell_name": "Locate Amulet",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Locate Amulet",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -770,7 +770,7 @@
       "spell_pool_id": 9228,
       "spell_catalog_id": 102,
       "spell_name": "Locate Object",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Locate Object",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -779,7 +779,7 @@
       "spell_pool_id": 9229,
       "spell_catalog_id": 103,
       "spell_name": "Mace of Odo",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Mace of Odo",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -788,7 +788,7 @@
       "spell_pool_id": 9230,
       "spell_catalog_id": 104,
       "spell_name": "Magical Vestment",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Magical Vestment",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -797,7 +797,7 @@
       "spell_pool_id": 9231,
       "spell_catalog_id": 105,
       "spell_name": "Meld Into Stone",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Meld Into Stone",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -806,7 +806,7 @@
       "spell_pool_id": 9232,
       "spell_catalog_id": 106,
       "spell_name": "MINERVA'S IRRITATING ITCH",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#MINERVA'S IRRITATING ITCH",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -815,7 +815,7 @@
       "spell_pool_id": 9233,
       "spell_catalog_id": 107,
       "spell_name": "Negative Plane Protection",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Negative Plane Protection",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -824,7 +824,7 @@
       "spell_pool_id": 9234,
       "spell_catalog_id": 108,
       "spell_name": "Prayer",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Prayer",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -833,7 +833,7 @@
       "spell_pool_id": 9235,
       "spell_catalog_id": 110,
       "spell_name": "Ranged Cure Light Wounds",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Ranged Cure Light",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -842,7 +842,7 @@
       "spell_pool_id": 9236,
       "spell_catalog_id": 111,
       "spell_name": "Remove Curse",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Remove Curse",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -851,7 +851,7 @@
       "spell_pool_id": 9237,
       "spell_catalog_id": 112,
       "spell_name": "Remove Paralysis",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Remove Paralysis",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -860,7 +860,7 @@
       "spell_pool_id": 9238,
       "spell_catalog_id": 113,
       "spell_name": "Resist Mind Control",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Resist Mind",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -869,7 +869,7 @@
       "spell_pool_id": 9239,
       "spell_catalog_id": 114,
       "spell_name": "Speak With The Dead",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Speak With The Dead",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -878,7 +878,7 @@
       "spell_pool_id": 9240,
       "spell_catalog_id": 116,
       "spell_name": "Surf",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Surf",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -887,7 +887,7 @@
       "spell_pool_id": 9241,
       "spell_catalog_id": 117,
       "spell_name": "Warmth",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Warmth",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -896,7 +896,7 @@
       "spell_pool_id": 9242,
       "spell_catalog_id": 118,
       "spell_name": "Water Walk",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Water Walk",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -905,7 +905,7 @@
       "spell_pool_id": 9243,
       "spell_catalog_id": 119,
       "spell_name": "Windbearer",
-      "spell_link": 3,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Windbearer",
       "spell_level": 3,
       "character_class_name": "Cleric"
     },
@@ -914,7 +914,7 @@
       "spell_pool_id": 9269,
       "spell_catalog_id": 120,
       "spell_name": "Abjure",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Abjure",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -923,7 +923,7 @@
       "spell_pool_id": 9270,
       "spell_catalog_id": 121,
       "spell_name": "Aid, Mass",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Aid",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -932,7 +932,7 @@
       "spell_pool_id": 9271,
       "spell_catalog_id": 122,
       "spell_name": "Animate statue",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Animate statue",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -941,7 +941,7 @@
       "spell_pool_id": 9272,
       "spell_catalog_id": 125,
       "spell_name": "Calm winds",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Calm winds",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -950,7 +950,7 @@
       "spell_pool_id": 9273,
       "spell_catalog_id": 126,
       "spell_name": "Clear air",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Clear air",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -959,7 +959,7 @@
       "spell_pool_id": 9274,
       "spell_catalog_id": 127,
       "spell_name": "Cloak of Fear",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Cloak of Fear",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -968,7 +968,7 @@
       "spell_pool_id": 9275,
       "spell_catalog_id": 129,
       "spell_name": "Cure Serious Wounds",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Cure Serious Wounds",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -977,7 +977,7 @@
       "spell_pool_id": 9276,
       "spell_catalog_id": 130,
       "spell_name": "Detect Lie",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Detect Lie",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -986,7 +986,7 @@
       "spell_pool_id": 9277,
       "spell_catalog_id": 131,
       "spell_name": "Divination",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Divination",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -995,7 +995,7 @@
       "spell_pool_id": 9278,
       "spell_catalog_id": 132,
       "spell_name": "Elemental control",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Elemental control",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -1004,7 +1004,7 @@
       "spell_pool_id": 9279,
       "spell_catalog_id": 133,
       "spell_name": "Exorcise",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Exorcise",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -1013,7 +1013,7 @@
       "spell_pool_id": 9280,
       "spell_catalog_id": 134,
       "spell_name": "Giant Insect",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Giant Insect",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -1022,7 +1022,7 @@
       "spell_pool_id": 9281,
       "spell_catalog_id": 135,
       "spell_name": "Hold wave",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Hold wave",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -1031,7 +1031,7 @@
       "spell_pool_id": 9282,
       "spell_catalog_id": 136,
       "spell_name": "Imbue With Spell Ability",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Imbue With Spell Ability",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -1040,7 +1040,7 @@
       "spell_pool_id": 9283,
       "spell_catalog_id": 137,
       "spell_name": "Lesser guardian seal",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Lesser guardian seal",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -1049,7 +1049,7 @@
       "spell_pool_id": 9284,
       "spell_catalog_id": 138,
       "spell_name": "Lower Water",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Lower Water",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -1058,7 +1058,7 @@
       "spell_pool_id": 9285,
       "spell_catalog_id": 139,
       "spell_name": "Minor Surgery",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Minor Surgery",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -1067,7 +1067,7 @@
       "spell_pool_id": 9286,
       "spell_catalog_id": 140,
       "spell_name": "Neutralize Poison",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Neutralize Poison",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -1076,7 +1076,7 @@
       "spell_pool_id": 9287,
       "spell_catalog_id": 142,
       "spell_name": "Protection Prom Evil, 10' Radius",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Protection Prom Evil, 10' Radius",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -1085,7 +1085,7 @@
       "spell_pool_id": 9291,
       "spell_catalog_id": 148,
       "spell_name": "Recurring Cure Major Wounds",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Recur Cure Major",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -1094,7 +1094,7 @@
       "spell_pool_id": 9288,
       "spell_catalog_id": 143,
       "spell_name": "Regenerate Serious Wounds",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Regenerate Serious Wounds",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -1103,7 +1103,7 @@
       "spell_pool_id": 9289,
       "spell_catalog_id": 145,
       "spell_name": "Reveal",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Reveal",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -1112,7 +1112,7 @@
       "spell_pool_id": 9290,
       "spell_catalog_id": 146,
       "spell_name": "Sea form",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Sea form",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -1121,7 +1121,7 @@
       "spell_pool_id": 9292,
       "spell_catalog_id": 149,
       "spell_name": "Speak With Plants",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Speak With Plants",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -1130,7 +1130,7 @@
       "spell_pool_id": 9293,
       "spell_catalog_id": 150,
       "spell_name": "Spell Immunity",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Spell Immunity",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -1139,7 +1139,7 @@
       "spell_pool_id": 9294,
       "spell_catalog_id": 151,
       "spell_name": "Spike Growth",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Spike Growth",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -1148,7 +1148,7 @@
       "spell_pool_id": 9295,
       "spell_catalog_id": 152,
       "spell_name": "Sticks To Snakes",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Sticks To Snakes",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -1157,7 +1157,7 @@
       "spell_pool_id": 9296,
       "spell_catalog_id": 153,
       "spell_name": "Sunburst",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Sunburst",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -1166,7 +1166,7 @@
       "spell_pool_id": 9297,
       "spell_catalog_id": 154,
       "spell_name": "Tongues",
-      "spell_link": 4,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Tongues",
       "spell_level": 4,
       "character_class_name": "Cleric"
     },
@@ -1175,7 +1175,7 @@
       "spell_pool_id": 9300,
       "spell_catalog_id": 155,
       "spell_name": "Air Walk",
-      "spell_link": 5,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Air Walk",
       "spell_level": 5,
       "character_class_name": "Cleric"
     },
@@ -1184,7 +1184,7 @@
       "spell_pool_id": 9301,
       "spell_catalog_id": 156,
       "spell_name": "Animate Dead Monsters",
-      "spell_link": 5,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Animate Dead Monsters",
       "spell_level": 5,
       "character_class_name": "Cleric"
     },
@@ -1193,7 +1193,7 @@
       "spell_pool_id": 9302,
       "spell_catalog_id": 157,
       "spell_name": "Atonement",
-      "spell_link": 5,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Atonement",
       "spell_level": 5,
       "character_class_name": "Cleric"
     },
@@ -1202,7 +1202,7 @@
       "spell_pool_id": 9303,
       "spell_catalog_id": 159,
       "spell_name": "Clutch of Might",
-      "spell_link": 5,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Clutch",
       "spell_level": 5,
       "character_class_name": "Cleric"
     },
@@ -1211,7 +1211,7 @@
       "spell_pool_id": 9304,
       "spell_catalog_id": 160,
       "spell_name": "Commune",
-      "spell_link": 5,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Commune",
       "spell_level": 5,
       "character_class_name": "Cleric"
     },
@@ -1220,7 +1220,7 @@
       "spell_pool_id": 9305,
       "spell_catalog_id": 162,
       "spell_name": "Cure Critical Wounds",
-      "spell_link": 5,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Cure Critical Wounds",
       "spell_level": 5,
       "character_class_name": "Cleric"
     },
@@ -1229,7 +1229,7 @@
       "spell_pool_id": 9306,
       "spell_catalog_id": 163,
       "spell_name": "Dispel Evil",
-      "spell_link": 5,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Dispel Evil",
       "spell_level": 5,
       "character_class_name": "Cleric"
     },
@@ -1238,7 +1238,7 @@
       "spell_pool_id": 9307,
       "spell_catalog_id": 165,
       "spell_name": "Flame Strike",
-      "spell_link": 5,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Flame Strike",
       "spell_level": 5,
       "character_class_name": "Cleric"
     },
@@ -1247,7 +1247,7 @@
       "spell_pool_id": 9308,
       "spell_catalog_id": 166,
       "spell_name": "Golem",
-      "spell_link": 5,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Golem",
       "spell_level": 5,
       "character_class_name": "Cleric"
     },
@@ -1256,7 +1256,7 @@
       "spell_pool_id": 9309,
       "spell_catalog_id": 167,
       "spell_name": "Inquisition",
-      "spell_link": 5,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Inquisition",
       "spell_level": 5,
       "character_class_name": "Cleric"
     },
@@ -1265,7 +1265,7 @@
       "spell_pool_id": 9310,
       "spell_catalog_id": 168,
       "spell_name": "Insect Plague",
-      "spell_link": 5,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Insect Plague",
       "spell_level": 5,
       "character_class_name": "Cleric"
     },
@@ -1274,7 +1274,7 @@
       "spell_pool_id": 9311,
       "spell_catalog_id": 169,
       "spell_name": "Magic Font",
-      "spell_link": 5,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Magic Font",
       "spell_level": 5,
       "character_class_name": "Cleric"
     },
@@ -1283,7 +1283,7 @@
       "spell_pool_id": 9312,
       "spell_catalog_id": 172,
       "spell_name": "Plane Shift",
-      "spell_link": 5,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Plane Shift",
       "spell_level": 5,
       "character_class_name": "Cleric"
     },
@@ -1292,7 +1292,7 @@
       "spell_pool_id": 9313,
       "spell_catalog_id": 173,
       "spell_name": "Quest",
-      "spell_link": 5,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Quest",
       "spell_level": 5,
       "character_class_name": "Cleric"
     },
@@ -1301,7 +1301,7 @@
       "spell_pool_id": 9314,
       "spell_catalog_id": 174,
       "spell_name": "Rainbow",
-      "spell_link": 5,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Rainbow",
       "spell_level": 5,
       "character_class_name": "Cleric"
     },
@@ -1310,7 +1310,7 @@
       "spell_pool_id": 9315,
       "spell_catalog_id": 175,
       "spell_name": "Raise Dead",
-      "spell_link": 5,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Raise Dead",
       "spell_level": 5,
       "character_class_name": "Cleric"
     },
@@ -1319,7 +1319,7 @@
       "spell_pool_id": 9316,
       "spell_catalog_id": 176,
       "spell_name": "Regenerate Critical Wounds",
-      "spell_link": 5,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Regenerate Critical Wounds",
       "spell_level": 5,
       "character_class_name": "Cleric"
     },
@@ -1328,7 +1328,7 @@
       "spell_pool_id": 9317,
       "spell_catalog_id": 177,
       "spell_name": "Spike Stones",
-      "spell_link": 5,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Spike Stones",
       "spell_level": 5,
       "character_class_name": "Cleric"
     },
@@ -1337,7 +1337,7 @@
       "spell_pool_id": 9318,
       "spell_catalog_id": 178,
       "spell_name": "True Seeing",
-      "spell_link": 5,
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#True Seeing",
       "spell_level": 5,
       "character_class_name": "Cleric"
     }
@@ -1352,7 +1352,7 @@
             "spell_pool_id": 7858,
             "spell_catalog_id": 1,
             "spell_name": "Aspiration",
-            "spell_link": 0,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Aspiration",
             "spell_level": 0,
             "character_class_name": "Cleric"
           },
@@ -1361,7 +1361,7 @@
             "spell_pool_id": 7859,
             "spell_catalog_id": 2,
             "spell_name": "Benediction",
-            "spell_link": 0,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Benediction",
             "spell_level": 0,
             "character_class_name": "Cleric"
           },
@@ -1370,7 +1370,7 @@
             "spell_pool_id": 7860,
             "spell_catalog_id": 3,
             "spell_name": "Candle",
-            "spell_link": 0,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Candle",
             "spell_level": 0,
             "character_class_name": "Cleric"
           },
@@ -1379,7 +1379,7 @@
             "spell_pool_id": 7861,
             "spell_catalog_id": 4,
             "spell_name": "Canticle",
-            "spell_link": 0,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Canticle",
             "spell_level": 0,
             "character_class_name": "Cleric"
           },
@@ -1388,7 +1388,7 @@
             "spell_pool_id": 7862,
             "spell_catalog_id": 5,
             "spell_name": "Ceremony: Oath",
-            "spell_link": 0,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Ceremony: Oath",
             "spell_level": 0,
             "character_class_name": "Cleric"
           },
@@ -1397,7 +1397,7 @@
             "spell_pool_id": 7863,
             "spell_catalog_id": 6,
             "spell_name": "Cure Minor Wounds",
-            "spell_link": 0,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Cure Minor Wounds",
             "spell_level": 0,
             "character_class_name": "Cleric"
           },
@@ -1406,7 +1406,7 @@
             "spell_pool_id": 7864,
             "spell_catalog_id": 7,
             "spell_name": "Find a Stray",
-            "spell_link": 0,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Find a Stray",
             "spell_level": 0,
             "character_class_name": "Cleric"
           },
@@ -1415,7 +1415,7 @@
             "spell_pool_id": 7865,
             "spell_catalog_id": 8,
             "spell_name": "Malediction",
-            "spell_link": 0,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Malediction",
             "spell_level": 0,
             "character_class_name": "Cleric"
           },
@@ -1424,7 +1424,7 @@
             "spell_pool_id": 7866,
             "spell_catalog_id": 9,
             "spell_name": "Meditation",
-            "spell_link": 0,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Meditation",
             "spell_level": 0,
             "character_class_name": "Cleric"
           },
@@ -1433,7 +1433,7 @@
             "spell_pool_id": 7867,
             "spell_catalog_id": 10,
             "spell_name": "Petition",
-            "spell_link": 0,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Petition",
             "spell_level": 0,
             "character_class_name": "Cleric"
           },
@@ -1442,7 +1442,7 @@
             "spell_pool_id": 7868,
             "spell_catalog_id": 11,
             "spell_name": "Warding",
-            "spell_link": 0,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/clc.php#Warding",
             "spell_level": 0,
             "character_class_name": "Cleric"
           }
@@ -1453,7 +1453,7 @@
             "spell_pool_id": 7873,
             "spell_catalog_id": 13,
             "spell_name": "Bless",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Bless Reversible",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1462,7 +1462,7 @@
             "spell_pool_id": 7874,
             "spell_catalog_id": 14,
             "spell_name": "Ceremony",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Ceremony",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1471,7 +1471,7 @@
             "spell_pool_id": 7875,
             "spell_catalog_id": 15,
             "spell_name": "Combine",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Combine",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1480,7 +1480,7 @@
             "spell_pool_id": 7876,
             "spell_catalog_id": 16,
             "spell_name": "Command",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Command",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1489,7 +1489,7 @@
             "spell_pool_id": 7877,
             "spell_catalog_id": 17,
             "spell_name": "Create Water",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Create Water",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1498,7 +1498,7 @@
             "spell_pool_id": 7878,
             "spell_catalog_id": 18,
             "spell_name": "Cure Light Wounds",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Cure Light Wounds",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1507,7 +1507,7 @@
             "spell_pool_id": 7879,
             "spell_catalog_id": 19,
             "spell_name": "Detect Evil",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Detect Evil",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1516,7 +1516,7 @@
             "spell_pool_id": 7880,
             "spell_catalog_id": 22,
             "spell_name": "Detect Magic",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Detect Magic",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1525,7 +1525,7 @@
             "spell_pool_id": 7881,
             "spell_catalog_id": 23,
             "spell_name": "Endure Cold/Endure Heat",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Endure Cold-Heat",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1534,7 +1534,7 @@
             "spell_pool_id": 7882,
             "spell_catalog_id": 24,
             "spell_name": "Flamehand",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Flamehand",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1543,7 +1543,7 @@
             "spell_pool_id": 7883,
             "spell_catalog_id": 25,
             "spell_name": "Invisibility to Undead",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Invisibility to Undead",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1552,7 +1552,7 @@
             "spell_pool_id": 7884,
             "spell_catalog_id": 26,
             "spell_name": "Light",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Light",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1561,7 +1561,7 @@
             "spell_pool_id": 7885,
             "spell_catalog_id": 27,
             "spell_name": "Magic Stone",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Magic Stone",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1570,7 +1570,7 @@
             "spell_pool_id": 7886,
             "spell_catalog_id": 28,
             "spell_name": "Penetrate Disguise",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Penetrate Disguise",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1579,7 +1579,7 @@
             "spell_pool_id": 7887,
             "spell_catalog_id": 29,
             "spell_name": "Portent",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Portent",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1588,7 +1588,7 @@
             "spell_pool_id": 7889,
             "spell_catalog_id": 31,
             "spell_name": "Precipitation",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Precipitation v2",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1597,7 +1597,7 @@
             "spell_pool_id": 7888,
             "spell_catalog_id": 30,
             "spell_name": "Precipitation",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Precipitation",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1606,7 +1606,7 @@
             "spell_pool_id": 7890,
             "spell_catalog_id": 32,
             "spell_name": "Protection From Evil",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Protection From Evil",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1615,7 +1615,7 @@
             "spell_pool_id": 7891,
             "spell_catalog_id": 33,
             "spell_name": "Purify Food & Drink",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Purify Food & Drink",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1624,7 +1624,7 @@
             "spell_pool_id": 7892,
             "spell_catalog_id": 34,
             "spell_name": "Rainshield",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Rainshield",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1633,7 +1633,7 @@
             "spell_pool_id": 7893,
             "spell_catalog_id": 36,
             "spell_name": "Regenerate Light Wounds",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Regenerate Light Wounds",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1642,7 +1642,7 @@
             "spell_pool_id": 7894,
             "spell_catalog_id": 37,
             "spell_name": "Remove Fear",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Remove Fear",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1651,7 +1651,7 @@
             "spell_pool_id": 7895,
             "spell_catalog_id": 38,
             "spell_name": "Resist Cold",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Resist Cold",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1660,7 +1660,7 @@
             "spell_pool_id": 7896,
             "spell_catalog_id": 39,
             "spell_name": "Resist Poison",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Resist Poison",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1669,7 +1669,7 @@
             "spell_pool_id": 7897,
             "spell_catalog_id": 40,
             "spell_name": "Sanctuary",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#Sanctuary",
             "spell_level": 1,
             "character_class_name": "Cleric"
           },
@@ -1678,7 +1678,7 @@
             "spell_pool_id": 7898,
             "spell_catalog_id": 42,
             "spell_name": "SPIRITUAL WHIP",
-            "spell_link": 1,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl1.php#SPIRITUAL WHIP",
             "spell_level": 1,
             "character_class_name": "Cleric"
           }
@@ -1689,7 +1689,7 @@
             "spell_pool_id": 9175,
             "spell_catalog_id": 44,
             "spell_name": "Aid",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Aid",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1698,7 +1698,7 @@
             "spell_pool_id": 9176,
             "spell_catalog_id": 45,
             "spell_name": "Augury",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Augury",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1707,7 +1707,7 @@
             "spell_pool_id": 9177,
             "spell_catalog_id": 46,
             "spell_name": "Blesssed Aim",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Blessed Aim",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1716,7 +1716,7 @@
             "spell_pool_id": 9178,
             "spell_catalog_id": 48,
             "spell_name": "Chant",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Chant",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1725,7 +1725,7 @@
             "spell_pool_id": 9179,
             "spell_catalog_id": 49,
             "spell_name": "Detect Charm",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Detect Charm",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1734,7 +1734,7 @@
             "spell_pool_id": 9180,
             "spell_catalog_id": 50,
             "spell_name": "Detect Life",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Detect Life",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1743,7 +1743,7 @@
             "spell_pool_id": 9181,
             "spell_catalog_id": 51,
             "spell_name": "Dust Devil",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Dust Devil",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1752,7 +1752,7 @@
             "spell_pool_id": 9182,
             "spell_catalog_id": 53,
             "spell_name": "Enthrall",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Enthrall",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1761,7 +1761,7 @@
             "spell_pool_id": 9183,
             "spell_catalog_id": 55,
             "spell_name": "Find Traps",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Find Traps",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1770,7 +1770,7 @@
             "spell_pool_id": 9184,
             "spell_catalog_id": 56,
             "spell_name": "Float",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Float",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1779,7 +1779,7 @@
             "spell_pool_id": 9185,
             "spell_catalog_id": 58,
             "spell_name": "Hold Person",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Hold Person",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1788,7 +1788,7 @@
             "spell_pool_id": 9186,
             "spell_catalog_id": 59,
             "spell_name": "Holy Symbol",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Holy Symbol",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1797,7 +1797,7 @@
             "spell_pool_id": 9187,
             "spell_catalog_id": 60,
             "spell_name": "Know Alignment",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Know Alignment",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1806,7 +1806,7 @@
             "spell_pool_id": 9188,
             "spell_catalog_id": 62,
             "spell_name": "Messenger",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Messenger",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1815,7 +1815,7 @@
             "spell_pool_id": 9189,
             "spell_catalog_id": 63,
             "spell_name": "Recurring Cure Minor Wounds",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Recur Cure Minor",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1824,7 +1824,7 @@
             "spell_pool_id": 9190,
             "spell_catalog_id": 64,
             "spell_name": "Resist Fire",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Resist Fire",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1833,7 +1833,7 @@
             "spell_pool_id": 9191,
             "spell_catalog_id": 65,
             "spell_name": "Silence, 15' Radius",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Silence 15 Radius",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1842,7 +1842,7 @@
             "spell_pool_id": 9192,
             "spell_catalog_id": 66,
             "spell_name": "Siren Song",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Siren Song",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1851,7 +1851,7 @@
             "spell_pool_id": 9193,
             "spell_catalog_id": 67,
             "spell_name": "Slow Poison",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Slow Poison",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1860,7 +1860,7 @@
             "spell_pool_id": 9194,
             "spell_catalog_id": 68,
             "spell_name": "Snake Charm",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Snake Charm",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1869,7 +1869,7 @@
             "spell_pool_id": 9195,
             "spell_catalog_id": 69,
             "spell_name": "Speak With Animals",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Speak With Animals",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1878,7 +1878,7 @@
             "spell_pool_id": 9196,
             "spell_catalog_id": 70,
             "spell_name": "Spiritual Hammer",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Spiritual Hammer",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1887,7 +1887,7 @@
             "spell_pool_id": 9197,
             "spell_catalog_id": 71,
             "spell_name": "Swim",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Swim",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1896,7 +1896,7 @@
             "spell_pool_id": 9198,
             "spell_catalog_id": 72,
             "spell_name": "Wave",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Wave",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1905,7 +1905,7 @@
             "spell_pool_id": 9199,
             "spell_catalog_id": 74,
             "spell_name": "Withdraw",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Withdraw",
             "spell_level": 2,
             "character_class_name": "Cleric"
           },
@@ -1914,7 +1914,7 @@
             "spell_pool_id": 9200,
             "spell_catalog_id": 75,
             "spell_name": "Wyvern Watch",
-            "spell_link": 2,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl2.php#Wyvern Watch",
             "spell_level": 2,
             "character_class_name": "Cleric"
           }
@@ -1925,7 +1925,7 @@
             "spell_pool_id": 9206,
             "spell_catalog_id": 78,
             "spell_name": "Animate Dead",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Animate Dead",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -1934,7 +1934,7 @@
             "spell_pool_id": 9207,
             "spell_catalog_id": 79,
             "spell_name": "Automaton",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Automaton",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -1943,7 +1943,7 @@
             "spell_pool_id": 9208,
             "spell_catalog_id": 80,
             "spell_name": "Cloudburst",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Cloudburst",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -1952,7 +1952,7 @@
             "spell_pool_id": 9209,
             "spell_catalog_id": 81,
             "spell_name": "Cloudburst",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Cloudburst v2",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -1961,7 +1961,7 @@
             "spell_pool_id": 9210,
             "spell_catalog_id": 82,
             "spell_name": "Continual Light",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Continual Light",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -1970,7 +1970,7 @@
             "spell_pool_id": 9211,
             "spell_catalog_id": 83,
             "spell_name": "Create Food & Water",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Create Food & Water",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -1979,7 +1979,7 @@
             "spell_pool_id": 9212,
             "spell_catalog_id": 84,
             "spell_name": "Cure Blindness",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Cure Blindness",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -1988,7 +1988,7 @@
             "spell_pool_id": 9213,
             "spell_catalog_id": 85,
             "spell_name": "Cure Disease",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Cure Disease",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -1997,7 +1997,7 @@
             "spell_pool_id": 9214,
             "spell_catalog_id": 86,
             "spell_name": "Dark Fire",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Dark Fire",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2006,7 +2006,7 @@
             "spell_pool_id": 9215,
             "spell_catalog_id": 87,
             "spell_name": "Death's Door",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Death",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2015,7 +2015,7 @@
             "spell_pool_id": 9216,
             "spell_catalog_id": 88,
             "spell_name": "DEFORM",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#DEFORM",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2024,7 +2024,7 @@
             "spell_pool_id": 9217,
             "spell_catalog_id": 89,
             "spell_name": "Dispel Magic",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Dispel Magic",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2033,7 +2033,7 @@
             "spell_pool_id": 9218,
             "spell_catalog_id": 91,
             "spell_name": "Exaltation",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Exaltation",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2042,7 +2042,7 @@
             "spell_pool_id": 9219,
             "spell_catalog_id": 92,
             "spell_name": "Feign Death",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Feign Death",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2051,7 +2051,7 @@
             "spell_pool_id": 9220,
             "spell_catalog_id": 93,
             "spell_name": "Flame Walk",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Flame Walk",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2060,7 +2060,7 @@
             "spell_pool_id": 9221,
             "spell_catalog_id": 94,
             "spell_name": "Forceward",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Forceward",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2069,7 +2069,7 @@
             "spell_pool_id": 9222,
             "spell_catalog_id": 95,
             "spell_name": "Glyph of Warding",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Glyph of Warding",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2078,7 +2078,7 @@
             "spell_pool_id": 9223,
             "spell_catalog_id": 96,
             "spell_name": "Holy Flail",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Holy Flail",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2087,7 +2087,7 @@
             "spell_pool_id": 9224,
             "spell_catalog_id": 97,
             "spell_name": "Home port",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Home port",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2096,7 +2096,7 @@
             "spell_pool_id": 9225,
             "spell_catalog_id": 98,
             "spell_name": "Improved Resist Poison",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Resist Poison",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2105,7 +2105,7 @@
             "spell_pool_id": 9226,
             "spell_catalog_id": 99,
             "spell_name": "Inkjet",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Inkjet",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2114,7 +2114,7 @@
             "spell_pool_id": 9227,
             "spell_catalog_id": 101,
             "spell_name": "Locate Amulet",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Locate Amulet",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2123,7 +2123,7 @@
             "spell_pool_id": 9228,
             "spell_catalog_id": 102,
             "spell_name": "Locate Object",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Locate Object",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2132,7 +2132,7 @@
             "spell_pool_id": 9229,
             "spell_catalog_id": 103,
             "spell_name": "Mace of Odo",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Mace of Odo",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2141,7 +2141,7 @@
             "spell_pool_id": 9230,
             "spell_catalog_id": 104,
             "spell_name": "Magical Vestment",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Magical Vestment",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2150,7 +2150,7 @@
             "spell_pool_id": 9231,
             "spell_catalog_id": 105,
             "spell_name": "Meld Into Stone",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Meld Into Stone",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2159,7 +2159,7 @@
             "spell_pool_id": 9232,
             "spell_catalog_id": 106,
             "spell_name": "MINERVA'S IRRITATING ITCH",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#MINERVA'S IRRITATING ITCH",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2168,7 +2168,7 @@
             "spell_pool_id": 9233,
             "spell_catalog_id": 107,
             "spell_name": "Negative Plane Protection",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Negative Plane Protection",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2177,7 +2177,7 @@
             "spell_pool_id": 9234,
             "spell_catalog_id": 108,
             "spell_name": "Prayer",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Prayer",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2186,7 +2186,7 @@
             "spell_pool_id": 9235,
             "spell_catalog_id": 110,
             "spell_name": "Ranged Cure Light Wounds",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Ranged Cure Light",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2195,7 +2195,7 @@
             "spell_pool_id": 9236,
             "spell_catalog_id": 111,
             "spell_name": "Remove Curse",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Remove Curse",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2204,7 +2204,7 @@
             "spell_pool_id": 9237,
             "spell_catalog_id": 112,
             "spell_name": "Remove Paralysis",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Remove Paralysis",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2213,7 +2213,7 @@
             "spell_pool_id": 9238,
             "spell_catalog_id": 113,
             "spell_name": "Resist Mind Control",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Resist Mind",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2222,7 +2222,7 @@
             "spell_pool_id": 9239,
             "spell_catalog_id": 114,
             "spell_name": "Speak With The Dead",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Speak With The Dead",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2231,7 +2231,7 @@
             "spell_pool_id": 9240,
             "spell_catalog_id": 116,
             "spell_name": "Surf",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Surf",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2240,7 +2240,7 @@
             "spell_pool_id": 9241,
             "spell_catalog_id": 117,
             "spell_name": "Warmth",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Warmth",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2249,7 +2249,7 @@
             "spell_pool_id": 9242,
             "spell_catalog_id": 118,
             "spell_name": "Water Walk",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Water Walk",
             "spell_level": 3,
             "character_class_name": "Cleric"
           },
@@ -2258,7 +2258,7 @@
             "spell_pool_id": 9243,
             "spell_catalog_id": 119,
             "spell_name": "Windbearer",
-            "spell_link": 3,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl3.php#Windbearer",
             "spell_level": 3,
             "character_class_name": "Cleric"
           }
@@ -2269,7 +2269,7 @@
             "spell_pool_id": 9269,
             "spell_catalog_id": 120,
             "spell_name": "Abjure",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Abjure",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2278,7 +2278,7 @@
             "spell_pool_id": 9270,
             "spell_catalog_id": 121,
             "spell_name": "Aid, Mass",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Aid",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2287,7 +2287,7 @@
             "spell_pool_id": 9271,
             "spell_catalog_id": 122,
             "spell_name": "Animate statue",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Animate statue",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2296,7 +2296,7 @@
             "spell_pool_id": 9272,
             "spell_catalog_id": 125,
             "spell_name": "Calm winds",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Calm winds",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2305,7 +2305,7 @@
             "spell_pool_id": 9273,
             "spell_catalog_id": 126,
             "spell_name": "Clear air",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Clear air",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2314,7 +2314,7 @@
             "spell_pool_id": 9274,
             "spell_catalog_id": 127,
             "spell_name": "Cloak of Fear",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Cloak of Fear",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2323,7 +2323,7 @@
             "spell_pool_id": 9275,
             "spell_catalog_id": 129,
             "spell_name": "Cure Serious Wounds",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Cure Serious Wounds",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2332,7 +2332,7 @@
             "spell_pool_id": 9276,
             "spell_catalog_id": 130,
             "spell_name": "Detect Lie",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Detect Lie",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2341,7 +2341,7 @@
             "spell_pool_id": 9277,
             "spell_catalog_id": 131,
             "spell_name": "Divination",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Divination",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2350,7 +2350,7 @@
             "spell_pool_id": 9278,
             "spell_catalog_id": 132,
             "spell_name": "Elemental control",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Elemental control",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2359,7 +2359,7 @@
             "spell_pool_id": 9279,
             "spell_catalog_id": 133,
             "spell_name": "Exorcise",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Exorcise",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2368,7 +2368,7 @@
             "spell_pool_id": 9280,
             "spell_catalog_id": 134,
             "spell_name": "Giant Insect",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Giant Insect",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2377,7 +2377,7 @@
             "spell_pool_id": 9281,
             "spell_catalog_id": 135,
             "spell_name": "Hold wave",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Hold wave",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2386,7 +2386,7 @@
             "spell_pool_id": 9282,
             "spell_catalog_id": 136,
             "spell_name": "Imbue With Spell Ability",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Imbue With Spell Ability",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2395,7 +2395,7 @@
             "spell_pool_id": 9283,
             "spell_catalog_id": 137,
             "spell_name": "Lesser guardian seal",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Lesser guardian seal",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2404,7 +2404,7 @@
             "spell_pool_id": 9284,
             "spell_catalog_id": 138,
             "spell_name": "Lower Water",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Lower Water",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2413,7 +2413,7 @@
             "spell_pool_id": 9285,
             "spell_catalog_id": 139,
             "spell_name": "Minor Surgery",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Minor Surgery",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2422,7 +2422,7 @@
             "spell_pool_id": 9286,
             "spell_catalog_id": 140,
             "spell_name": "Neutralize Poison",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Neutralize Poison",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2431,7 +2431,7 @@
             "spell_pool_id": 9287,
             "spell_catalog_id": 142,
             "spell_name": "Protection Prom Evil, 10' Radius",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Protection Prom Evil, 10' Radius",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2440,7 +2440,7 @@
             "spell_pool_id": 9291,
             "spell_catalog_id": 148,
             "spell_name": "Recurring Cure Major Wounds",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Recur Cure Major",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2449,7 +2449,7 @@
             "spell_pool_id": 9288,
             "spell_catalog_id": 143,
             "spell_name": "Regenerate Serious Wounds",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Regenerate Serious Wounds",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2458,7 +2458,7 @@
             "spell_pool_id": 9289,
             "spell_catalog_id": 145,
             "spell_name": "Reveal",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Reveal",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2467,7 +2467,7 @@
             "spell_pool_id": 9290,
             "spell_catalog_id": 146,
             "spell_name": "Sea form",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Sea form",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2476,7 +2476,7 @@
             "spell_pool_id": 9292,
             "spell_catalog_id": 149,
             "spell_name": "Speak With Plants",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Speak With Plants",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2485,7 +2485,7 @@
             "spell_pool_id": 9293,
             "spell_catalog_id": 150,
             "spell_name": "Spell Immunity",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Spell Immunity",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2494,7 +2494,7 @@
             "spell_pool_id": 9294,
             "spell_catalog_id": 151,
             "spell_name": "Spike Growth",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Spike Growth",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2503,7 +2503,7 @@
             "spell_pool_id": 9295,
             "spell_catalog_id": 152,
             "spell_name": "Sticks To Snakes",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Sticks To Snakes",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2512,7 +2512,7 @@
             "spell_pool_id": 9296,
             "spell_catalog_id": 153,
             "spell_name": "Sunburst",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Sunburst",
             "spell_level": 4,
             "character_class_name": "Cleric"
           },
@@ -2521,7 +2521,7 @@
             "spell_pool_id": 9297,
             "spell_catalog_id": 154,
             "spell_name": "Tongues",
-            "spell_link": 4,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl4.php#Tongues",
             "spell_level": 4,
             "character_class_name": "Cleric"
           }
@@ -2532,7 +2532,7 @@
             "spell_pool_id": 9300,
             "spell_catalog_id": 155,
             "spell_name": "Air Walk",
-            "spell_link": 5,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Air Walk",
             "spell_level": 5,
             "character_class_name": "Cleric"
           },
@@ -2541,7 +2541,7 @@
             "spell_pool_id": 9301,
             "spell_catalog_id": 156,
             "spell_name": "Animate Dead Monsters",
-            "spell_link": 5,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Animate Dead Monsters",
             "spell_level": 5,
             "character_class_name": "Cleric"
           },
@@ -2550,7 +2550,7 @@
             "spell_pool_id": 9302,
             "spell_catalog_id": 157,
             "spell_name": "Atonement",
-            "spell_link": 5,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Atonement",
             "spell_level": 5,
             "character_class_name": "Cleric"
           },
@@ -2559,7 +2559,7 @@
             "spell_pool_id": 9303,
             "spell_catalog_id": 159,
             "spell_name": "Clutch of Might",
-            "spell_link": 5,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Clutch",
             "spell_level": 5,
             "character_class_name": "Cleric"
           },
@@ -2568,7 +2568,7 @@
             "spell_pool_id": 9304,
             "spell_catalog_id": 160,
             "spell_name": "Commune",
-            "spell_link": 5,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Commune",
             "spell_level": 5,
             "character_class_name": "Cleric"
           },
@@ -2577,7 +2577,7 @@
             "spell_pool_id": 9305,
             "spell_catalog_id": 162,
             "spell_name": "Cure Critical Wounds",
-            "spell_link": 5,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Cure Critical Wounds",
             "spell_level": 5,
             "character_class_name": "Cleric"
           },
@@ -2586,7 +2586,7 @@
             "spell_pool_id": 9306,
             "spell_catalog_id": 163,
             "spell_name": "Dispel Evil",
-            "spell_link": 5,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Dispel Evil",
             "spell_level": 5,
             "character_class_name": "Cleric"
           },
@@ -2595,7 +2595,7 @@
             "spell_pool_id": 9307,
             "spell_catalog_id": 165,
             "spell_name": "Flame Strike",
-            "spell_link": 5,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Flame Strike",
             "spell_level": 5,
             "character_class_name": "Cleric"
           },
@@ -2604,7 +2604,7 @@
             "spell_pool_id": 9308,
             "spell_catalog_id": 166,
             "spell_name": "Golem",
-            "spell_link": 5,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Golem",
             "spell_level": 5,
             "character_class_name": "Cleric"
           },
@@ -2613,7 +2613,7 @@
             "spell_pool_id": 9309,
             "spell_catalog_id": 167,
             "spell_name": "Inquisition",
-            "spell_link": 5,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Inquisition",
             "spell_level": 5,
             "character_class_name": "Cleric"
           },
@@ -2622,7 +2622,7 @@
             "spell_pool_id": 9310,
             "spell_catalog_id": 168,
             "spell_name": "Insect Plague",
-            "spell_link": 5,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Insect Plague",
             "spell_level": 5,
             "character_class_name": "Cleric"
           },
@@ -2631,7 +2631,7 @@
             "spell_pool_id": 9311,
             "spell_catalog_id": 169,
             "spell_name": "Magic Font",
-            "spell_link": 5,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Magic Font",
             "spell_level": 5,
             "character_class_name": "Cleric"
           },
@@ -2640,7 +2640,7 @@
             "spell_pool_id": 9312,
             "spell_catalog_id": 172,
             "spell_name": "Plane Shift",
-            "spell_link": 5,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Plane Shift",
             "spell_level": 5,
             "character_class_name": "Cleric"
           },
@@ -2649,7 +2649,7 @@
             "spell_pool_id": 9313,
             "spell_catalog_id": 173,
             "spell_name": "Quest",
-            "spell_link": 5,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Quest",
             "spell_level": 5,
             "character_class_name": "Cleric"
           },
@@ -2658,7 +2658,7 @@
             "spell_pool_id": 9314,
             "spell_catalog_id": 174,
             "spell_name": "Rainbow",
-            "spell_link": 5,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Rainbow",
             "spell_level": 5,
             "character_class_name": "Cleric"
           },
@@ -2667,7 +2667,7 @@
             "spell_pool_id": 9315,
             "spell_catalog_id": 175,
             "spell_name": "Raise Dead",
-            "spell_link": 5,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Raise Dead",
             "spell_level": 5,
             "character_class_name": "Cleric"
           },
@@ -2676,7 +2676,7 @@
             "spell_pool_id": 9316,
             "spell_catalog_id": 176,
             "spell_name": "Regenerate Critical Wounds",
-            "spell_link": 5,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Regenerate Critical Wounds",
             "spell_level": 5,
             "character_class_name": "Cleric"
           },
@@ -2685,7 +2685,7 @@
             "spell_pool_id": 9317,
             "spell_catalog_id": 177,
             "spell_name": "Spike Stones",
-            "spell_link": 5,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#Spike Stones",
             "spell_level": 5,
             "character_class_name": "Cleric"
           },
@@ -2694,12 +2694,188 @@
             "spell_pool_id": 9318,
             "spell_catalog_id": 178,
             "spell_name": "True Seeing",
-            "spell_link": 5,
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/cl5.php#True Seeing",
             "spell_level": 5,
             "character_class_name": "Cleric"
           }
         ]
       }
     }
+  },
+  "optionsMap": {
+    "Cleric": {
+      "Cleric": {
+        "Cantrip": [
+          "\u003Coptgroup label=\"Cantrips\"\u003E\n",
+          "\u003Coption value=\"1\"\u003EAspiration\u003C/option\u003E\n",
+          "\u003Coption value=\"2\"\u003EBenediction\u003C/option\u003E\n",
+          "\u003Coption value=\"3\"\u003ECandle\u003C/option\u003E\n",
+          "\u003Coption value=\"4\"\u003ECanticle\u003C/option\u003E\n",
+          "\u003Coption value=\"5\"\u003ECeremony: Oath\u003C/option\u003E\n",
+          "\u003Coption value=\"6\"\u003ECure Minor Wounds\u003C/option\u003E\n",
+          "\u003Coption value=\"7\"\u003EFind a Stray\u003C/option\u003E\n",
+          "\u003Coption value=\"8\"\u003EMalediction\u003C/option\u003E\n",
+          "\u003Coption value=\"9\"\u003EMeditation\u003C/option\u003E\n",
+          "\u003Coption value=\"10\"\u003EPetition\u003C/option\u003E\n",
+          "\u003Coption value=\"11\"\u003EWarding\u003C/option\u003E\n"
+        ],
+        "1": [
+          "\u003Coptgroup label=\"1st level\"\u003E\n",
+          "\u003Coption value=\"13\"\u003EBless\u003C/option\u003E\n",
+          "\u003Coption value=\"14\"\u003ECeremony\u003C/option\u003E\n",
+          "\u003Coption value=\"15\"\u003ECombine\u003C/option\u003E\n",
+          "\u003Coption value=\"16\"\u003ECommand\u003C/option\u003E\n",
+          "\u003Coption value=\"17\"\u003ECreate Water\u003C/option\u003E\n",
+          "\u003Coption value=\"18\"\u003ECure Light Wounds\u003C/option\u003E\n",
+          "\u003Coption value=\"19\"\u003EDetect Evil\u003C/option\u003E\n",
+          "\u003Coption value=\"22\"\u003EDetect Magic\u003C/option\u003E\n",
+          "\u003Coption value=\"23\"\u003EEndure Cold/Endure Heat\u003C/option\u003E\n",
+          "\u003Coption value=\"24\"\u003EFlamehand\u003C/option\u003E\n",
+          "\u003Coption value=\"25\"\u003EInvisibility to Undead\u003C/option\u003E\n",
+          "\u003Coption value=\"26\"\u003ELight\u003C/option\u003E\n",
+          "\u003Coption value=\"27\"\u003EMagic Stone\u003C/option\u003E\n",
+          "\u003Coption value=\"28\"\u003EPenetrate Disguise\u003C/option\u003E\n",
+          "\u003Coption value=\"29\"\u003EPortent\u003C/option\u003E\n",
+          "\u003Coption value=\"31\"\u003EPrecipitation\u003C/option\u003E\n",
+          "\u003Coption value=\"30\"\u003EPrecipitation\u003C/option\u003E\n",
+          "\u003Coption value=\"32\"\u003EProtection From Evil\u003C/option\u003E\n",
+          "\u003Coption value=\"33\"\u003EPurify Food & Drink\u003C/option\u003E\n",
+          "\u003Coption value=\"34\"\u003ERainshield\u003C/option\u003E\n",
+          "\u003Coption value=\"36\"\u003ERegenerate Light Wounds\u003C/option\u003E\n",
+          "\u003Coption value=\"37\"\u003ERemove Fear\u003C/option\u003E\n",
+          "\u003Coption value=\"38\"\u003EResist Cold\u003C/option\u003E\n",
+          "\u003Coption value=\"39\"\u003EResist Poison\u003C/option\u003E\n",
+          "\u003Coption value=\"40\"\u003ESanctuary\u003C/option\u003E\n",
+          "\u003Coption value=\"42\"\u003ESPIRITUAL WHIP\u003C/option\u003E\n"
+        ],
+        "2": [
+          "\u003Coptgroup label=\"2nd level\"\u003E\n",
+          "\u003Coption value=\"44\"\u003EAid\u003C/option\u003E\n",
+          "\u003Coption value=\"45\"\u003EAugury\u003C/option\u003E\n",
+          "\u003Coption value=\"46\"\u003EBlesssed Aim\u003C/option\u003E\n",
+          "\u003Coption value=\"48\"\u003EChant\u003C/option\u003E\n",
+          "\u003Coption value=\"49\"\u003EDetect Charm\u003C/option\u003E\n",
+          "\u003Coption value=\"50\"\u003EDetect Life\u003C/option\u003E\n",
+          "\u003Coption value=\"51\"\u003EDust Devil\u003C/option\u003E\n",
+          "\u003Coption value=\"53\"\u003EEnthrall\u003C/option\u003E\n",
+          "\u003Coption value=\"55\"\u003EFind Traps\u003C/option\u003E\n",
+          "\u003Coption value=\"56\"\u003EFloat\u003C/option\u003E\n",
+          "\u003Coption value=\"58\"\u003EHold Person\u003C/option\u003E\n",
+          "\u003Coption value=\"59\"\u003EHoly Symbol\u003C/option\u003E\n",
+          "\u003Coption value=\"60\"\u003EKnow Alignment\u003C/option\u003E\n",
+          "\u003Coption value=\"62\"\u003EMessenger\u003C/option\u003E\n",
+          "\u003Coption value=\"63\"\u003ERecurring Cure Minor Wounds\u003C/option\u003E\n",
+          "\u003Coption value=\"64\"\u003EResist Fire\u003C/option\u003E\n",
+          "\u003Coption value=\"65\"\u003ESilence, 15' Radius\u003C/option\u003E\n",
+          "\u003Coption value=\"66\"\u003ESiren Song\u003C/option\u003E\n",
+          "\u003Coption value=\"67\"\u003ESlow Poison\u003C/option\u003E\n",
+          "\u003Coption value=\"68\"\u003ESnake Charm\u003C/option\u003E\n",
+          "\u003Coption value=\"69\"\u003ESpeak With Animals\u003C/option\u003E\n",
+          "\u003Coption value=\"70\"\u003ESpiritual Hammer\u003C/option\u003E\n",
+          "\u003Coption value=\"71\"\u003ESwim\u003C/option\u003E\n",
+          "\u003Coption value=\"72\"\u003EWave\u003C/option\u003E\n",
+          "\u003Coption value=\"74\"\u003EWithdraw\u003C/option\u003E\n",
+          "\u003Coption value=\"75\"\u003EWyvern Watch\u003C/option\u003E\n"
+        ],
+        "3": [
+          "\u003Coptgroup label=\"3rd level\"\u003E\n",
+          "\u003Coption value=\"78\"\u003EAnimate Dead\u003C/option\u003E\n",
+          "\u003Coption value=\"79\"\u003EAutomaton\u003C/option\u003E\n",
+          "\u003Coption value=\"80\"\u003ECloudburst\u003C/option\u003E\n",
+          "\u003Coption value=\"81\"\u003ECloudburst\u003C/option\u003E\n",
+          "\u003Coption value=\"82\"\u003EContinual Light\u003C/option\u003E\n",
+          "\u003Coption value=\"83\"\u003ECreate Food & Water\u003C/option\u003E\n",
+          "\u003Coption value=\"84\"\u003ECure Blindness\u003C/option\u003E\n",
+          "\u003Coption value=\"85\"\u003ECure Disease\u003C/option\u003E\n",
+          "\u003Coption value=\"86\"\u003EDark Fire\u003C/option\u003E\n",
+          "\u003Coption value=\"87\"\u003EDeath's Door\u003C/option\u003E\n",
+          "\u003Coption value=\"88\"\u003EDEFORM\u003C/option\u003E\n",
+          "\u003Coption value=\"89\"\u003EDispel Magic\u003C/option\u003E\n",
+          "\u003Coption value=\"91\"\u003EExaltation\u003C/option\u003E\n",
+          "\u003Coption value=\"92\"\u003EFeign Death\u003C/option\u003E\n",
+          "\u003Coption value=\"93\"\u003EFlame Walk\u003C/option\u003E\n",
+          "\u003Coption value=\"94\"\u003EForceward\u003C/option\u003E\n",
+          "\u003Coption value=\"95\"\u003EGlyph of Warding\u003C/option\u003E\n",
+          "\u003Coption value=\"96\"\u003EHoly Flail\u003C/option\u003E\n",
+          "\u003Coption value=\"97\"\u003EHome port\u003C/option\u003E\n",
+          "\u003Coption value=\"98\"\u003EImproved Resist Poison\u003C/option\u003E\n",
+          "\u003Coption value=\"99\"\u003EInkjet\u003C/option\u003E\n",
+          "\u003Coption value=\"101\"\u003ELocate Amulet\u003C/option\u003E\n",
+          "\u003Coption value=\"102\"\u003ELocate Object\u003C/option\u003E\n",
+          "\u003Coption value=\"103\"\u003EMace of Odo\u003C/option\u003E\n",
+          "\u003Coption value=\"104\"\u003EMagical Vestment\u003C/option\u003E\n",
+          "\u003Coption value=\"105\"\u003EMeld Into Stone\u003C/option\u003E\n",
+          "\u003Coption value=\"106\"\u003EMINERVA'S IRRITATING ITCH\u003C/option\u003E\n",
+          "\u003Coption value=\"107\"\u003ENegative Plane Protection\u003C/option\u003E\n",
+          "\u003Coption value=\"108\"\u003EPrayer\u003C/option\u003E\n",
+          "\u003Coption value=\"110\"\u003ERanged Cure Light Wounds\u003C/option\u003E\n",
+          "\u003Coption value=\"111\"\u003ERemove Curse\u003C/option\u003E\n",
+          "\u003Coption value=\"112\"\u003ERemove Paralysis\u003C/option\u003E\n",
+          "\u003Coption value=\"113\"\u003EResist Mind Control\u003C/option\u003E\n",
+          "\u003Coption value=\"114\"\u003ESpeak With The Dead\u003C/option\u003E\n",
+          "\u003Coption value=\"116\"\u003ESurf\u003C/option\u003E\n",
+          "\u003Coption value=\"117\"\u003EWarmth\u003C/option\u003E\n",
+          "\u003Coption value=\"118\"\u003EWater Walk\u003C/option\u003E\n",
+          "\u003Coption value=\"119\"\u003EWindbearer\u003C/option\u003E\n"
+        ],
+        "4": [
+          "\u003Coptgroup label=\"4th level\"\u003E\n",
+          "\u003Coption value=\"120\"\u003EAbjure\u003C/option\u003E\n",
+          "\u003Coption value=\"121\"\u003EAid, Mass\u003C/option\u003E\n",
+          "\u003Coption value=\"122\"\u003EAnimate statue\u003C/option\u003E\n",
+          "\u003Coption value=\"125\"\u003ECalm winds\u003C/option\u003E\n",
+          "\u003Coption value=\"126\"\u003EClear air\u003C/option\u003E\n",
+          "\u003Coption value=\"127\"\u003ECloak of Fear\u003C/option\u003E\n",
+          "\u003Coption value=\"129\"\u003ECure Serious Wounds\u003C/option\u003E\n",
+          "\u003Coption value=\"130\"\u003EDetect Lie\u003C/option\u003E\n",
+          "\u003Coption value=\"131\"\u003EDivination\u003C/option\u003E\n",
+          "\u003Coption value=\"132\"\u003EElemental control\u003C/option\u003E\n",
+          "\u003Coption value=\"133\"\u003EExorcise\u003C/option\u003E\n",
+          "\u003Coption value=\"134\"\u003EGiant Insect\u003C/option\u003E\n",
+          "\u003Coption value=\"135\"\u003EHold wave\u003C/option\u003E\n",
+          "\u003Coption value=\"136\"\u003EImbue With Spell Ability\u003C/option\u003E\n",
+          "\u003Coption value=\"137\"\u003ELesser guardian seal\u003C/option\u003E\n",
+          "\u003Coption value=\"138\"\u003ELower Water\u003C/option\u003E\n",
+          "\u003Coption value=\"139\"\u003EMinor Surgery\u003C/option\u003E\n",
+          "\u003Coption value=\"140\"\u003ENeutralize Poison\u003C/option\u003E\n",
+          "\u003Coption value=\"142\"\u003EProtection Prom Evil, 10' Radius\u003C/option\u003E\n",
+          "\u003Coption value=\"148\"\u003ERecurring Cure Major Wounds\u003C/option\u003E\n",
+          "\u003Coption value=\"143\"\u003ERegenerate Serious Wounds\u003C/option\u003E\n",
+          "\u003Coption value=\"145\"\u003EReveal\u003C/option\u003E\n",
+          "\u003Coption value=\"146\"\u003ESea form\u003C/option\u003E\n",
+          "\u003Coption value=\"149\"\u003ESpeak With Plants\u003C/option\u003E\n",
+          "\u003Coption value=\"150\"\u003ESpell Immunity\u003C/option\u003E\n",
+          "\u003Coption value=\"151\"\u003ESpike Growth\u003C/option\u003E\n",
+          "\u003Coption value=\"152\"\u003ESticks To Snakes\u003C/option\u003E\n",
+          "\u003Coption value=\"153\"\u003ESunburst\u003C/option\u003E\n",
+          "\u003Coption value=\"154\"\u003ETongues\u003C/option\u003E\n"
+        ],
+        "5": [
+          "\u003Coptgroup label=\"5th level\"\u003E\n",
+          "\u003Coption value=\"155\"\u003EAir Walk\u003C/option\u003E\n",
+          "\u003Coption value=\"156\"\u003EAnimate Dead Monsters\u003C/option\u003E\n",
+          "\u003Coption value=\"157\"\u003EAtonement\u003C/option\u003E\n",
+          "\u003Coption value=\"159\"\u003EClutch of Might\u003C/option\u003E\n",
+          "\u003Coption value=\"160\"\u003ECommune\u003C/option\u003E\n",
+          "\u003Coption value=\"162\"\u003ECure Critical Wounds\u003C/option\u003E\n",
+          "\u003Coption value=\"163\"\u003EDispel Evil\u003C/option\u003E\n",
+          "\u003Coption value=\"165\"\u003EFlame Strike\u003C/option\u003E\n",
+          "\u003Coption value=\"166\"\u003EGolem\u003C/option\u003E\n",
+          "\u003Coption value=\"167\"\u003EInquisition\u003C/option\u003E\n",
+          "\u003Coption value=\"168\"\u003EInsect Plague\u003C/option\u003E\n",
+          "\u003Coption value=\"169\"\u003EMagic Font\u003C/option\u003E\n",
+          "\u003Coption value=\"172\"\u003EPlane Shift\u003C/option\u003E\n",
+          "\u003Coption value=\"173\"\u003EQuest\u003C/option\u003E\n",
+          "\u003Coption value=\"174\"\u003ERainbow\u003C/option\u003E\n",
+          "\u003Coption value=\"175\"\u003ERaise Dead\u003C/option\u003E\n",
+          "\u003Coption value=\"176\"\u003ERegenerate Critical Wounds\u003C/option\u003E\n",
+          "\u003Coption value=\"177\"\u003ESpike Stones\u003C/option\u003E\n",
+          "\u003Coption value=\"178\"\u003ETrue Seeing\u003C/option\u003E\n"
+        ]
+      }
+    }
+  },
+  "numberFormatter": {
+
   }
 }

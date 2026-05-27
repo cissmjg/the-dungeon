@@ -1,0 +1,23 @@
+.arcaneMUBackground {
+    background-color:rgba(0, 0, 255, 0.15);
+}
+
+.healerBackground {
+    background-color:rgba(128, 0, 0, 0.25);
+}
+
+.druidBackground {
+    background-color:rgba(0, 250, 154, 0.25);
+}
+
+.divineBackground {
+    background-color:rgba(34, 139, 34, 0.25);
+}
+
+.readySpell {
+    background-color: white;
+}
+
+.readySpellAlt {
+    background-color: lightgray;
+}
