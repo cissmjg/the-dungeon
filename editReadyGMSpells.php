@@ -64,7 +64,7 @@ $allRunningSpells = json_decode($raw_results);
 
 $runningSpells = [];
 if (!empty($allRunningSpells->playerCharacterReadySpellList)) {
-    $runningSpells = filterByGMOnlySlotTypes($allRunningSpells->playerCharacterReadySpellList[0]);
+    $runningSpells = filterByGMOnlySlotTypes($allRunningSpells->playerCharacterReadySpellList);
 }
 
 $character_summary = new CharacterSummary();
@@ -254,7 +254,7 @@ function buildCastSlotForm($playerName, $characterName, $availableSpell) {
     $spellDuration = $availableSpell->spell_duration;
     $spellAreaOfEffect = $availableSpell->spell_area_of_effect;
     
-    return '<td class="spell_slot_available">' . $wandCastTag . '</td><td>' . $spellLinkTag . '</td><td class="spell_slot_available">' . $spellCastingTime . '</td><td class="spell_slot_available">' . $spellRange . '</td><td class="spell_slot_available">' . $spellDuration . '</td><td class="spell_slot_available">' . $spellAreaOfEffect . '</td>' . PHP_EOL;
+    return '<td class="spell_slot_available spell_slot_center">' . $wandCastTag . '</td><td class="spell_slot_available">' . $spellLinkTag . '</td><td class="spell_slot_available spell_slot_center">' . $spellCastingTime . '</td><td class="spell_slot_available spell_slot_center">' . $spellRange . '</td><td class="spell_slot_available spell_slot_center">' . $spellDuration . '</td><td class="spell_slot_available spell_slot_center">' . $spellAreaOfEffect . '</td>' . PHP_EOL;
 }
 
 function buildCastSlotButtonTag($spellCatalogId, $spellLevel, $spellDuration, $spellCastingTime) {
@@ -309,7 +309,7 @@ function buildCastingSlotForm($readySpell) {
     $spellDuration = $readySpell->spell_duration;
     $spellAreaOfEffect = $readySpell->spell_area_of_effect;
     $spellLinkTag = '<a class="spell_slot_casting" href="' . $spellLink . '" target="_blank">' . $spellName . '</a>';
-    return '<td class="spell_slot_casting">' . $castingSlotTag . '</td><td>' . $spellLinkTag . '</td><td class="spell_slot_casting">' . $castingTimeRemaining . '</td><td>&nbsp;</td><td class="spell_slot_casting">' . $spellDuration . '</td><td class="spell_slot_casting">' . $spellAreaOfEffect . '</td>' . PHP_EOL;
+    return '<td class="spell_slot_casting spell_slot_center">' . $castingSlotTag . '</td><td class="spell_slot_casting">' . $spellLinkTag . '</td><td class="spell_slot_casting spell_slot_center">' . $castingTimeRemaining . '</td><td>&nbsp;</td><td class="spell_slot_casting spell_slot_center">' . $spellDuration . '</td><td class="spell_slot_casting spell_slot_center">' . $spellAreaOfEffect . '</td>' . PHP_EOL;
 }
 
 function buildRunningSlotForm($readySpell) {
@@ -321,7 +321,7 @@ function buildRunningSlotForm($readySpell) {
     $spellRunningTimeRemaining = $readySpell->player_slot_running_time_remaining;
     $spellAreaOfEffect = $readySpell->spell_area_of_effect;
     $spellLinkTag = '<a class="spell_slot_running" href="' . $spellLink . '" target="_blank">' . $spellName . '</a>';
-    return '<td class="spell_slot_running">' . $castingSlotTag . '</td><td>' . $spellLinkTag . '</td><td>&nbsp;</td><td>&nbsp;</td><td class="spell_slot_running">' . $spellRunningTimeRemaining . '</td><td class="spell_slot_running">' . $spellAreaOfEffect . '</td>' . PHP_EOL;
+    return '<td class="spell_slot_running spell_slot_center">' . $castingSlotTag . '</td><td class="spell_slot_running">' . $spellLinkTag . '</td><td>&nbsp;</td><td>&nbsp;</td><td class="spell_slot_running spell_slot_center">' . $spellRunningTimeRemaining . '</td><td class="spell_slot_running spell_slot_center">' . $spellAreaOfEffect . '</td>' . PHP_EOL;
 }
 
 function buildCastingSlotButtonTag($spellSlotId) {
