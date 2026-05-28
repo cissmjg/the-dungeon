@@ -1,0 +1,4433 @@
+{
+  "playerCharacterPoolSpellList": [
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22464,
+      "spell_catalog_id": 228,
+      "spell_name": "Animal",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Animal",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22465,
+      "spell_catalog_id": 229,
+      "spell_name": "Animal command",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Animal command",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22466,
+      "spell_catalog_id": 230,
+      "spell_name": "Bird call",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Bird call",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22467,
+      "spell_catalog_id": 231,
+      "spell_name": "Bless meal",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Bless meal",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22468,
+      "spell_catalog_id": 232,
+      "spell_name": "Cause rash",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Cause rash",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22469,
+      "spell_catalog_id": 233,
+      "spell_name": "Consecrate",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Consecrate",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22470,
+      "spell_catalog_id": 234,
+      "spell_name": "Disguise scent",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Disguise scent",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22471,
+      "spell_catalog_id": 235,
+      "spell_name": "Disinfect",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Disinfect",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22472,
+      "spell_catalog_id": 236,
+      "spell_name": "Drywood",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Drywood",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22473,
+      "spell_catalog_id": 237,
+      "spell_name": "Edible plant",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Edible plant",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22474,
+      "spell_catalog_id": 238,
+      "spell_name": "Elemental shield",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Elemental shield",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22475,
+      "spell_catalog_id": 239,
+      "spell_name": "Find water",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Find water",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22476,
+      "spell_catalog_id": 240,
+      "spell_name": "Flame finger",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Flame finger",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22477,
+      "spell_catalog_id": 241,
+      "spell_name": "Haze",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Haze",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22478,
+      "spell_catalog_id": 242,
+      "spell_name": "Heal rash",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Heal rash",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22479,
+      "spell_catalog_id": 243,
+      "spell_name": "Holy dart",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Holy dart",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22480,
+      "spell_catalog_id": 244,
+      "spell_name": "Horn",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Horn",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22481,
+      "spell_catalog_id": 245,
+      "spell_name": "Humidity",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Humidity",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22482,
+      "spell_catalog_id": 246,
+      "spell_name": "Judgment",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Judgment",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22483,
+      "spell_catalog_id": 247,
+      "spell_name": "Listen",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Listen",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22484,
+      "spell_catalog_id": 248,
+      "spell_name": "Liven",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Liven",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22485,
+      "spell_catalog_id": 249,
+      "spell_name": "Mark path",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Mark path",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22486,
+      "spell_catalog_id": 250,
+      "spell_name": "Parch",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Parch",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22487,
+      "spell_catalog_id": 251,
+      "spell_name": "Pet",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Pet",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22488,
+      "spell_catalog_id": 252,
+      "spell_name": "Preserve",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Preserve",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22489,
+      "spell_catalog_id": 253,
+      "spell_name": "Prod",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Prod",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22490,
+      "spell_catalog_id": 254,
+      "spell_name": "Quench",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Quench",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22491,
+      "spell_catalog_id": 255,
+      "spell_name": "Remove pain",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Remove pain",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22492,
+      "spell_catalog_id": 256,
+      "spell_name": "Repel insect",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Repel insect",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22493,
+      "spell_catalog_id": 257,
+      "spell_name": "Restful sleep",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Restful sleep",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22494,
+      "spell_catalog_id": 258,
+      "spell_name": "Ripen",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Ripen",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22495,
+      "spell_catalog_id": 259,
+      "spell_name": "Scorch",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Scorch",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22496,
+      "spell_catalog_id": 260,
+      "spell_name": "Smokeball",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Smokeball",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22497,
+      "spell_catalog_id": 261,
+      "spell_name": "Temperature",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Temperature",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22498,
+      "spell_catalog_id": 262,
+      "spell_name": "Test soil",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Test soil",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22499,
+      "spell_catalog_id": 263,
+      "spell_name": "Watch",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Watch",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22527,
+      "spell_catalog_id": 264,
+      "spell_name": "Animal Friendship",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Animal Friendship",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22528,
+      "spell_catalog_id": 265,
+      "spell_name": "Animal/Bird Call",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Animal/Bird Call",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22529,
+      "spell_catalog_id": 266,
+      "spell_name": "Camouflage",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Camouflage",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22530,
+      "spell_catalog_id": 267,
+      "spell_name": "Ceremony",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Ceremony",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22531,
+      "spell_catalog_id": 268,
+      "spell_name": "Coalstone",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Coalstone",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22532,
+      "spell_catalog_id": 269,
+      "spell_name": "Detect Balance",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Detect Balance",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22533,
+      "spell_catalog_id": 270,
+      "spell_name": "Detect Magic",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Detect Magic",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22534,
+      "spell_catalog_id": 271,
+      "spell_name": "Detect Poison",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Detect Poison",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22535,
+      "spell_catalog_id": 272,
+      "spell_name": "Detect Snares & Pits",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Detect Snares & Pits",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22536,
+      "spell_catalog_id": 273,
+      "spell_name": "Entangle",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Entangle",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22537,
+      "spell_catalog_id": 274,
+      "spell_name": "Faerie Fire",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Faerie Fire",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22538,
+      "spell_catalog_id": 275,
+      "spell_name": "Ferment",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Ferment",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22539,
+      "spell_catalog_id": 276,
+      "spell_name": "Fertility",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Fertility",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22540,
+      "spell_catalog_id": 277,
+      "spell_name": "Find Water",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Find Water",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22541,
+      "spell_catalog_id": 278,
+      "spell_name": "Find Woodland Familiar",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Find Woodland Familiar",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22542,
+      "spell_catalog_id": 279,
+      "spell_name": "Heal plants",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Heal plants",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22543,
+      "spell_catalog_id": 280,
+      "spell_name": "Hibernate",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Hibernate",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22544,
+      "spell_catalog_id": 281,
+      "spell_name": "Invisibility To Animals",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Invisibility To Animals",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22545,
+      "spell_catalog_id": 282,
+      "spell_name": "Locate Animals",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Locate Animals",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22546,
+      "spell_catalog_id": 283,
+      "spell_name": "Nectar",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Nectar",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22547,
+      "spell_catalog_id": 284,
+      "spell_name": "Pass Without Trace",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Pass Without Trace",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22548,
+      "spell_catalog_id": 285,
+      "spell_name": "Precipitation",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Precipitation",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22549,
+      "spell_catalog_id": 286,
+      "spell_name": "Predict Weather",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Predict Weather",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22550,
+      "spell_catalog_id": 287,
+      "spell_name": "Purify Water",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Purify Water",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22551,
+      "spell_catalog_id": 288,
+      "spell_name": "Ripen",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Ripen",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22552,
+      "spell_catalog_id": 289,
+      "spell_name": "Sense Direction",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Sense Direction",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22553,
+      "spell_catalog_id": 290,
+      "spell_name": "Shillelagh",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Shillelagh",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22554,
+      "spell_catalog_id": 291,
+      "spell_name": "Speak With Animals",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Speak With Animals",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Druid",
+      "spell_pool_id": 22555,
+      "spell_catalog_id": 292,
+      "spell_name": "Wailing Wind",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Wailing Wind",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22620,
+      "spell_catalog_id": 502,
+      "spell_name": "Bee",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Bee",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22610,
+      "spell_catalog_id": 492,
+      "spell_name": "Belch",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Belch",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22611,
+      "spell_catalog_id": 493,
+      "spell_name": "Blink",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Blink",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22621,
+      "spell_catalog_id": 503,
+      "spell_name": "Bluelight",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Bluelight",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22622,
+      "spell_catalog_id": 504,
+      "spell_name": "Bug",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Bug",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22638,
+      "spell_catalog_id": 520,
+      "spell_name": "Catfeet",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Catfeet",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22604,
+      "spell_catalog_id": 486,
+      "spell_name": "Change",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Change",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22572,
+      "spell_catalog_id": 454,
+      "spell_name": "Chill",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Chill",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22573,
+      "spell_catalog_id": 455,
+      "spell_name": "Clean",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Clean",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22574,
+      "spell_catalog_id": 456,
+      "spell_name": "Color",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Color",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22612,
+      "spell_catalog_id": 494,
+      "spell_name": "Cough",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Cough",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22630,
+      "spell_catalog_id": 512,
+      "spell_name": "Creak",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Creak",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22592,
+      "spell_catalog_id": 474,
+      "spell_name": "Curdle",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Curdle",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22639,
+      "spell_catalog_id": 521,
+      "spell_name": "Cut",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Cut",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22575,
+      "spell_catalog_id": 457,
+      "spell_name": "Dampen",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Dampen",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22593,
+      "spell_catalog_id": 475,
+      "spell_name": "Dirty",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Dirty",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22605,
+      "spell_catalog_id": 487,
+      "spell_name": "Distract",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Distract",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22576,
+      "spell_catalog_id": 458,
+      "spell_name": "Dry",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Dry",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22577,
+      "spell_catalog_id": 459,
+      "spell_name": "Dust",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Dust",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22594,
+      "spell_catalog_id": 476,
+      "spell_name": "Dusty",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Dusty",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22578,
+      "spell_catalog_id": 460,
+      "spell_name": "Exterminate",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Exterminate",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22623,
+      "spell_catalog_id": 505,
+      "spell_name": "Firefinger",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Firefinger",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22579,
+      "spell_catalog_id": 461,
+      "spell_name": "Flavor",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Flavor",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22631,
+      "spell_catalog_id": 513,
+      "spell_name": "Footfall",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Footfall",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22580,
+      "spell_catalog_id": 462,
+      "spell_name": "Freshen",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Freshen",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22640,
+      "spell_catalog_id": 522,
+      "spell_name": "Gallop",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Gallop",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22581,
+      "spell_catalog_id": 463,
+      "spell_name": "Gather",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Gather",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22613,
+      "spell_catalog_id": 495,
+      "spell_name": "Giggle",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Giggle",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22624,
+      "spell_catalog_id": 506,
+      "spell_name": "Gnats",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Gnats",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22632,
+      "spell_catalog_id": 514,
+      "spell_name": "Groan",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Groan",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22595,
+      "spell_catalog_id": 477,
+      "spell_name": "Hairy",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Hairy",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22606,
+      "spell_catalog_id": 488,
+      "spell_name": "Hide",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Hide",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22596,
+      "spell_catalog_id": 478,
+      "spell_name": "Knot",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Knot",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22633,
+      "spell_catalog_id": 515,
+      "spell_name": "Moan",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Moan",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22625,
+      "spell_catalog_id": 507,
+      "spell_name": "Mouse",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Mouse",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22607,
+      "spell_catalog_id": 489,
+      "spell_name": "Mute",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Mute",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22614,
+      "spell_catalog_id": 496,
+      "spell_name": "Nod",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Nod",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22608,
+      "spell_catalog_id": 490,
+      "spell_name": "Palm",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Palm",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22582,
+      "spell_catalog_id": 464,
+      "spell_name": "Polish",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Polish",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22609,
+      "spell_catalog_id": 491,
+      "spell_name": "Present",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Present",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22634,
+      "spell_catalog_id": 516,
+      "spell_name": "Rattle",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Rattle",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22597,
+      "spell_catalog_id": 479,
+      "spell_name": "Ravel",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Ravel",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22583,
+      "spell_catalog_id": 465,
+      "spell_name": "Salt",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Salt",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22615,
+      "spell_catalog_id": 497,
+      "spell_name": "Scratch",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Scratch",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22584,
+      "spell_catalog_id": 466,
+      "spell_name": "Shine",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Shine",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22626,
+      "spell_catalog_id": 508,
+      "spell_name": "Smokepuff",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Smokepuff",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22641,
+      "spell_catalog_id": 523,
+      "spell_name": "Snatch",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Snatch",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22616,
+      "spell_catalog_id": 498,
+      "spell_name": "Sneeze",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Sneeze",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22598,
+      "spell_catalog_id": 480,
+      "spell_name": "Sour",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Sour",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22642,
+      "spell_catalog_id": 524,
+      "spell_name": "Spark",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Spark",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22585,
+      "spell_catalog_id": 467,
+      "spell_name": "Spice",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Spice",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22627,
+      "spell_catalog_id": 509,
+      "spell_name": "Spider",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Spider",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22599,
+      "spell_catalog_id": 481,
+      "spell_name": "Spill",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Spill",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22586,
+      "spell_catalog_id": 468,
+      "spell_name": "Sprout",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Sprout",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22643,
+      "spell_catalog_id": 525,
+      "spell_name": "Sting",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Sting",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22587,
+      "spell_catalog_id": 469,
+      "spell_name": "Stitch",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Stitch",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22588,
+      "spell_catalog_id": 470,
+      "spell_name": "Sweeten",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Sweeten",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22600,
+      "spell_catalog_id": 482,
+      "spell_name": "Tangle",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Tangle",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22635,
+      "spell_catalog_id": 517,
+      "spell_name": "Tap",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Tap",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22601,
+      "spell_catalog_id": 483,
+      "spell_name": "Tarnish",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Tarnish",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22636,
+      "spell_catalog_id": 518,
+      "spell_name": "Thump",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Thump",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22589,
+      "spell_catalog_id": 471,
+      "spell_name": "Tie",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Tie",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22644,
+      "spell_catalog_id": 526,
+      "spell_name": "Time",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Time",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22628,
+      "spell_catalog_id": 510,
+      "spell_name": "Tweak",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Tweak",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22617,
+      "spell_catalog_id": 499,
+      "spell_name": "Twitch",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Twitch",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22629,
+      "spell_catalog_id": 511,
+      "spell_name": "Unlock",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Unlock",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22602,
+      "spell_catalog_id": 484,
+      "spell_name": "Untie",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Untie",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22590,
+      "spell_catalog_id": 472,
+      "spell_name": "Warm",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Warm",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22637,
+      "spell_catalog_id": 519,
+      "spell_name": "Whistle",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Whistle",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22603,
+      "spell_catalog_id": 485,
+      "spell_name": "Wilt",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Wilt",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22618,
+      "spell_catalog_id": 500,
+      "spell_name": "Wink",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Wink",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22591,
+      "spell_catalog_id": 473,
+      "spell_name": "Wrap",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Wrap",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22619,
+      "spell_catalog_id": 501,
+      "spell_name": "Yawn",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Yawn",
+      "spell_level": 0,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22699,
+      "spell_catalog_id": 541,
+      "spell_name": "Comprehend Languages",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu1.php#Comprehend Languages",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22709,
+      "spell_catalog_id": 592,
+      "spell_name": "Rael's Cover",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu1.php#R Cover",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22704,
+      "spell_catalog_id": 594,
+      "spell_name": "Rael's Enlarging Arrow",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu1.php#R Enlarging Arrow",
+      "spell_level": 1,
+      "character_class_name": "Ranger"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22329,
+      "spell_catalog_id": 502,
+      "spell_name": "Bee",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Bee",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22319,
+      "spell_catalog_id": 492,
+      "spell_name": "Belch",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Belch",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22320,
+      "spell_catalog_id": 493,
+      "spell_name": "Blink",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Blink",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22330,
+      "spell_catalog_id": 503,
+      "spell_name": "Bluelight",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Bluelight",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22331,
+      "spell_catalog_id": 504,
+      "spell_name": "Bug",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Bug",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22347,
+      "spell_catalog_id": 520,
+      "spell_name": "Catfeet",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Catfeet",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22313,
+      "spell_catalog_id": 486,
+      "spell_name": "Change",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Change",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22281,
+      "spell_catalog_id": 454,
+      "spell_name": "Chill",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Chill",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22282,
+      "spell_catalog_id": 455,
+      "spell_name": "Clean",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Clean",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22283,
+      "spell_catalog_id": 456,
+      "spell_name": "Color",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Color",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22321,
+      "spell_catalog_id": 494,
+      "spell_name": "Cough",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Cough",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22339,
+      "spell_catalog_id": 512,
+      "spell_name": "Creak",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Creak",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22301,
+      "spell_catalog_id": 474,
+      "spell_name": "Curdle",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Curdle",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22348,
+      "spell_catalog_id": 521,
+      "spell_name": "Cut",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Cut",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22284,
+      "spell_catalog_id": 457,
+      "spell_name": "Dampen",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Dampen",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22302,
+      "spell_catalog_id": 475,
+      "spell_name": "Dirty",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Dirty",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22314,
+      "spell_catalog_id": 487,
+      "spell_name": "Distract",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Distract",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22285,
+      "spell_catalog_id": 458,
+      "spell_name": "Dry",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Dry",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22286,
+      "spell_catalog_id": 459,
+      "spell_name": "Dust",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Dust",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22303,
+      "spell_catalog_id": 476,
+      "spell_name": "Dusty",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Dusty",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22287,
+      "spell_catalog_id": 460,
+      "spell_name": "Exterminate",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Exterminate",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22332,
+      "spell_catalog_id": 505,
+      "spell_name": "Firefinger",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Firefinger",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22288,
+      "spell_catalog_id": 461,
+      "spell_name": "Flavor",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Flavor",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22340,
+      "spell_catalog_id": 513,
+      "spell_name": "Footfall",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Footfall",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22289,
+      "spell_catalog_id": 462,
+      "spell_name": "Freshen",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Freshen",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22349,
+      "spell_catalog_id": 522,
+      "spell_name": "Gallop",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Gallop",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22290,
+      "spell_catalog_id": 463,
+      "spell_name": "Gather",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Gather",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22322,
+      "spell_catalog_id": 495,
+      "spell_name": "Giggle",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Giggle",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22333,
+      "spell_catalog_id": 506,
+      "spell_name": "Gnats",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Gnats",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22341,
+      "spell_catalog_id": 514,
+      "spell_name": "Groan",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Groan",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22304,
+      "spell_catalog_id": 477,
+      "spell_name": "Hairy",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Hairy",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22315,
+      "spell_catalog_id": 488,
+      "spell_name": "Hide",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Hide",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22305,
+      "spell_catalog_id": 478,
+      "spell_name": "Knot",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Knot",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22342,
+      "spell_catalog_id": 515,
+      "spell_name": "Moan",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Moan",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22334,
+      "spell_catalog_id": 507,
+      "spell_name": "Mouse",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Mouse",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22316,
+      "spell_catalog_id": 489,
+      "spell_name": "Mute",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Mute",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22323,
+      "spell_catalog_id": 496,
+      "spell_name": "Nod",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Nod",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22317,
+      "spell_catalog_id": 490,
+      "spell_name": "Palm",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Palm",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22291,
+      "spell_catalog_id": 464,
+      "spell_name": "Polish",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Polish",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22318,
+      "spell_catalog_id": 491,
+      "spell_name": "Present",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Present",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22343,
+      "spell_catalog_id": 516,
+      "spell_name": "Rattle",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Rattle",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22306,
+      "spell_catalog_id": 479,
+      "spell_name": "Ravel",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Ravel",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22292,
+      "spell_catalog_id": 465,
+      "spell_name": "Salt",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Salt",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22324,
+      "spell_catalog_id": 497,
+      "spell_name": "Scratch",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Scratch",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22293,
+      "spell_catalog_id": 466,
+      "spell_name": "Shine",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Shine",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22335,
+      "spell_catalog_id": 508,
+      "spell_name": "Smokepuff",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Smokepuff",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22350,
+      "spell_catalog_id": 523,
+      "spell_name": "Snatch",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Snatch",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22325,
+      "spell_catalog_id": 498,
+      "spell_name": "Sneeze",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Sneeze",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22307,
+      "spell_catalog_id": 480,
+      "spell_name": "Sour",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Sour",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22351,
+      "spell_catalog_id": 524,
+      "spell_name": "Spark",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Spark",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22294,
+      "spell_catalog_id": 467,
+      "spell_name": "Spice",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Spice",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22336,
+      "spell_catalog_id": 509,
+      "spell_name": "Spider",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Spider",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22308,
+      "spell_catalog_id": 481,
+      "spell_name": "Spill",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Spill",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22295,
+      "spell_catalog_id": 468,
+      "spell_name": "Sprout",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Sprout",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22352,
+      "spell_catalog_id": 525,
+      "spell_name": "Sting",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Sting",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22296,
+      "spell_catalog_id": 469,
+      "spell_name": "Stitch",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Stitch",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22297,
+      "spell_catalog_id": 470,
+      "spell_name": "Sweeten",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Sweeten",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22309,
+      "spell_catalog_id": 482,
+      "spell_name": "Tangle",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Tangle",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22344,
+      "spell_catalog_id": 517,
+      "spell_name": "Tap",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Tap",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22310,
+      "spell_catalog_id": 483,
+      "spell_name": "Tarnish",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Tarnish",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22345,
+      "spell_catalog_id": 518,
+      "spell_name": "Thump",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Thump",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22298,
+      "spell_catalog_id": 471,
+      "spell_name": "Tie",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Tie",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22353,
+      "spell_catalog_id": 526,
+      "spell_name": "Time",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Time",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22337,
+      "spell_catalog_id": 510,
+      "spell_name": "Tweak",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Tweak",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22326,
+      "spell_catalog_id": 499,
+      "spell_name": "Twitch",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Twitch",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22338,
+      "spell_catalog_id": 511,
+      "spell_name": "Unlock",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Unlock",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22311,
+      "spell_catalog_id": 484,
+      "spell_name": "Untie",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Untie",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22299,
+      "spell_catalog_id": 472,
+      "spell_name": "Warm",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Warm",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22346,
+      "spell_catalog_id": 519,
+      "spell_name": "Whistle",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Whistle",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22312,
+      "spell_catalog_id": 485,
+      "spell_name": "Wilt",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Wilt",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22327,
+      "spell_catalog_id": 500,
+      "spell_name": "Wink",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Wink",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22300,
+      "spell_catalog_id": 473,
+      "spell_name": "Wrap",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Wrap",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22328,
+      "spell_catalog_id": 501,
+      "spell_name": "Yawn",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Yawn",
+      "spell_level": 0,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22413,
+      "spell_catalog_id": 532,
+      "spell_name": "Arctic Spray",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu1.php#Arctic Spray",
+      "spell_level": 1,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22408,
+      "spell_catalog_id": 562,
+      "spell_name": "Icy Missile",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu1.php#Icy Missile",
+      "spell_level": 1,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22418,
+      "spell_catalog_id": 598,
+      "spell_name": "Read Magic",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu1.php#Read Magic",
+      "spell_level": 1,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22434,
+      "spell_catalog_id": 626,
+      "spell_name": "Agannavar's Scorcher",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu2.php#Agannavar's Scorcher",
+      "spell_level": 2,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22429,
+      "spell_catalog_id": 683,
+      "spell_name": "Invisibility",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu2.php#Invisibility",
+      "spell_level": 2,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22424,
+      "spell_catalog_id": 722,
+      "spell_name": "SD's Improved Armor II",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu2.php#SD Improved Armor II",
+      "spell_level": 2,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22445,
+      "spell_catalog_id": 763,
+      "spell_name": "Crew of Phantoms",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu3.php#Crew of Phantoms",
+      "spell_level": 3,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22440,
+      "spell_catalog_id": 781,
+      "spell_name": "Fireball",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu3.php#Fireball",
+      "spell_level": 3,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22446,
+      "spell_catalog_id": 806,
+      "spell_name": "Lightning Bolt",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu3.php#Lightning Bolt",
+      "spell_level": 3,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22461,
+      "spell_catalog_id": 858,
+      "spell_name": "Acid bolts",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu4.php#Acid bolts",
+      "spell_level": 4,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22450,
+      "spell_catalog_id": 869,
+      "spell_name": "Dimension Door",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu4.php#Dimension Door",
+      "spell_level": 4,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22456,
+      "spell_catalog_id": 871,
+      "spell_name": "DOUBLE BARREL MAGIC MISSILE",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu4.php#DOUBLE BARREL MAGIC MISSILE",
+      "spell_level": 4,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22571,
+      "spell_catalog_id": 955,
+      "spell_name": "Cone Of Cold",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu5.php#Cone Of Cold",
+      "spell_level": 5,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22560,
+      "spell_catalog_id": 956,
+      "spell_name": "Conjure Elemental",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu5.php#Conjure Elemental",
+      "spell_level": 5,
+      "character_class_name": "Magic-User"
+    },
+    {
+      "spell_type_name": "Magic-User",
+      "spell_pool_id": 22566,
+      "spell_catalog_id": 1001,
+      "spell_name": "Teleport",
+      "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu5.php#Teleport",
+      "spell_level": 5,
+      "character_class_name": "Magic-User"
+    }
+  ],
+  "remove_empty": true,
+  "spellMap": {
+    "Ranger": {
+      "Druid": {
+        "Cantrip": [
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22464,
+            "spell_catalog_id": 228,
+            "spell_name": "Animal",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Animal",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22465,
+            "spell_catalog_id": 229,
+            "spell_name": "Animal command",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Animal command",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22466,
+            "spell_catalog_id": 230,
+            "spell_name": "Bird call",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Bird call",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22467,
+            "spell_catalog_id": 231,
+            "spell_name": "Bless meal",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Bless meal",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22468,
+            "spell_catalog_id": 232,
+            "spell_name": "Cause rash",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Cause rash",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22469,
+            "spell_catalog_id": 233,
+            "spell_name": "Consecrate",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Consecrate",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22470,
+            "spell_catalog_id": 234,
+            "spell_name": "Disguise scent",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Disguise scent",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22471,
+            "spell_catalog_id": 235,
+            "spell_name": "Disinfect",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Disinfect",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22472,
+            "spell_catalog_id": 236,
+            "spell_name": "Drywood",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Drywood",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22473,
+            "spell_catalog_id": 237,
+            "spell_name": "Edible plant",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Edible plant",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22474,
+            "spell_catalog_id": 238,
+            "spell_name": "Elemental shield",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Elemental shield",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22475,
+            "spell_catalog_id": 239,
+            "spell_name": "Find water",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Find water",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22476,
+            "spell_catalog_id": 240,
+            "spell_name": "Flame finger",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Flame finger",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22477,
+            "spell_catalog_id": 241,
+            "spell_name": "Haze",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Haze",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22478,
+            "spell_catalog_id": 242,
+            "spell_name": "Heal rash",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Heal rash",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22479,
+            "spell_catalog_id": 243,
+            "spell_name": "Holy dart",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Holy dart",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22480,
+            "spell_catalog_id": 244,
+            "spell_name": "Horn",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Horn",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22481,
+            "spell_catalog_id": 245,
+            "spell_name": "Humidity",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Humidity",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22482,
+            "spell_catalog_id": 246,
+            "spell_name": "Judgment",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Judgment",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22483,
+            "spell_catalog_id": 247,
+            "spell_name": "Listen",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Listen",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22484,
+            "spell_catalog_id": 248,
+            "spell_name": "Liven",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Liven",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22485,
+            "spell_catalog_id": 249,
+            "spell_name": "Mark path",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Mark path",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22486,
+            "spell_catalog_id": 250,
+            "spell_name": "Parch",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Parch",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22487,
+            "spell_catalog_id": 251,
+            "spell_name": "Pet",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Pet",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22488,
+            "spell_catalog_id": 252,
+            "spell_name": "Preserve",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Preserve",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22489,
+            "spell_catalog_id": 253,
+            "spell_name": "Prod",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Prod",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22490,
+            "spell_catalog_id": 254,
+            "spell_name": "Quench",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Quench",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22491,
+            "spell_catalog_id": 255,
+            "spell_name": "Remove pain",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Remove pain",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22492,
+            "spell_catalog_id": 256,
+            "spell_name": "Repel insect",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Repel insect",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22493,
+            "spell_catalog_id": 257,
+            "spell_name": "Restful sleep",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Restful sleep",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22494,
+            "spell_catalog_id": 258,
+            "spell_name": "Ripen",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Ripen",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22495,
+            "spell_catalog_id": 259,
+            "spell_name": "Scorch",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Scorch",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22496,
+            "spell_catalog_id": 260,
+            "spell_name": "Smokeball",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Smokeball",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22497,
+            "spell_catalog_id": 261,
+            "spell_name": "Temperature",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Temperature",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22498,
+            "spell_catalog_id": 262,
+            "spell_name": "Test soil",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Test soil",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22499,
+            "spell_catalog_id": 263,
+            "spell_name": "Watch",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/drc.php#Watch",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          }
+        ],
+        "1": [
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22527,
+            "spell_catalog_id": 264,
+            "spell_name": "Animal Friendship",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Animal Friendship",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22528,
+            "spell_catalog_id": 265,
+            "spell_name": "Animal/Bird Call",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Animal/Bird Call",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22529,
+            "spell_catalog_id": 266,
+            "spell_name": "Camouflage",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Camouflage",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22530,
+            "spell_catalog_id": 267,
+            "spell_name": "Ceremony",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Ceremony",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22531,
+            "spell_catalog_id": 268,
+            "spell_name": "Coalstone",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Coalstone",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22532,
+            "spell_catalog_id": 269,
+            "spell_name": "Detect Balance",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Detect Balance",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22533,
+            "spell_catalog_id": 270,
+            "spell_name": "Detect Magic",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Detect Magic",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22534,
+            "spell_catalog_id": 271,
+            "spell_name": "Detect Poison",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Detect Poison",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22535,
+            "spell_catalog_id": 272,
+            "spell_name": "Detect Snares & Pits",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Detect Snares & Pits",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22536,
+            "spell_catalog_id": 273,
+            "spell_name": "Entangle",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Entangle",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22537,
+            "spell_catalog_id": 274,
+            "spell_name": "Faerie Fire",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Faerie Fire",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22538,
+            "spell_catalog_id": 275,
+            "spell_name": "Ferment",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Ferment",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22539,
+            "spell_catalog_id": 276,
+            "spell_name": "Fertility",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Fertility",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22540,
+            "spell_catalog_id": 277,
+            "spell_name": "Find Water",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Find Water",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22541,
+            "spell_catalog_id": 278,
+            "spell_name": "Find Woodland Familiar",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Find Woodland Familiar",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22542,
+            "spell_catalog_id": 279,
+            "spell_name": "Heal plants",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Heal plants",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22543,
+            "spell_catalog_id": 280,
+            "spell_name": "Hibernate",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Hibernate",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22544,
+            "spell_catalog_id": 281,
+            "spell_name": "Invisibility To Animals",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Invisibility To Animals",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22545,
+            "spell_catalog_id": 282,
+            "spell_name": "Locate Animals",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Locate Animals",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22546,
+            "spell_catalog_id": 283,
+            "spell_name": "Nectar",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Nectar",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22547,
+            "spell_catalog_id": 284,
+            "spell_name": "Pass Without Trace",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Pass Without Trace",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22548,
+            "spell_catalog_id": 285,
+            "spell_name": "Precipitation",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Precipitation",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22549,
+            "spell_catalog_id": 286,
+            "spell_name": "Predict Weather",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Predict Weather",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22550,
+            "spell_catalog_id": 287,
+            "spell_name": "Purify Water",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Purify Water",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22551,
+            "spell_catalog_id": 288,
+            "spell_name": "Ripen",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Ripen",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22552,
+            "spell_catalog_id": 289,
+            "spell_name": "Sense Direction",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Sense Direction",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22553,
+            "spell_catalog_id": 290,
+            "spell_name": "Shillelagh",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Shillelagh",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22554,
+            "spell_catalog_id": 291,
+            "spell_name": "Speak With Animals",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Speak With Animals",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Druid",
+            "spell_pool_id": 22555,
+            "spell_catalog_id": 292,
+            "spell_name": "Wailing Wind",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/dr1.php#Wailing Wind",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          }
+        ]
+      },
+      "Magic-User": {
+        "Cantrip": [
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22620,
+            "spell_catalog_id": 502,
+            "spell_name": "Bee",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Bee",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22610,
+            "spell_catalog_id": 492,
+            "spell_name": "Belch",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Belch",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22611,
+            "spell_catalog_id": 493,
+            "spell_name": "Blink",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Blink",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22621,
+            "spell_catalog_id": 503,
+            "spell_name": "Bluelight",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Bluelight",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22622,
+            "spell_catalog_id": 504,
+            "spell_name": "Bug",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Bug",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22638,
+            "spell_catalog_id": 520,
+            "spell_name": "Catfeet",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Catfeet",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22604,
+            "spell_catalog_id": 486,
+            "spell_name": "Change",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Change",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22572,
+            "spell_catalog_id": 454,
+            "spell_name": "Chill",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Chill",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22573,
+            "spell_catalog_id": 455,
+            "spell_name": "Clean",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Clean",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22574,
+            "spell_catalog_id": 456,
+            "spell_name": "Color",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Color",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22612,
+            "spell_catalog_id": 494,
+            "spell_name": "Cough",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Cough",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22630,
+            "spell_catalog_id": 512,
+            "spell_name": "Creak",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Creak",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22592,
+            "spell_catalog_id": 474,
+            "spell_name": "Curdle",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Curdle",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22639,
+            "spell_catalog_id": 521,
+            "spell_name": "Cut",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Cut",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22575,
+            "spell_catalog_id": 457,
+            "spell_name": "Dampen",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Dampen",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22593,
+            "spell_catalog_id": 475,
+            "spell_name": "Dirty",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Dirty",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22605,
+            "spell_catalog_id": 487,
+            "spell_name": "Distract",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Distract",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22576,
+            "spell_catalog_id": 458,
+            "spell_name": "Dry",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Dry",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22577,
+            "spell_catalog_id": 459,
+            "spell_name": "Dust",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Dust",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22594,
+            "spell_catalog_id": 476,
+            "spell_name": "Dusty",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Dusty",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22578,
+            "spell_catalog_id": 460,
+            "spell_name": "Exterminate",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Exterminate",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22623,
+            "spell_catalog_id": 505,
+            "spell_name": "Firefinger",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Firefinger",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22579,
+            "spell_catalog_id": 461,
+            "spell_name": "Flavor",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Flavor",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22631,
+            "spell_catalog_id": 513,
+            "spell_name": "Footfall",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Footfall",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22580,
+            "spell_catalog_id": 462,
+            "spell_name": "Freshen",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Freshen",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22640,
+            "spell_catalog_id": 522,
+            "spell_name": "Gallop",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Gallop",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22581,
+            "spell_catalog_id": 463,
+            "spell_name": "Gather",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Gather",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22613,
+            "spell_catalog_id": 495,
+            "spell_name": "Giggle",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Giggle",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22624,
+            "spell_catalog_id": 506,
+            "spell_name": "Gnats",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Gnats",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22632,
+            "spell_catalog_id": 514,
+            "spell_name": "Groan",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Groan",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22595,
+            "spell_catalog_id": 477,
+            "spell_name": "Hairy",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Hairy",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22606,
+            "spell_catalog_id": 488,
+            "spell_name": "Hide",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Hide",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22596,
+            "spell_catalog_id": 478,
+            "spell_name": "Knot",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Knot",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22633,
+            "spell_catalog_id": 515,
+            "spell_name": "Moan",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Moan",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22625,
+            "spell_catalog_id": 507,
+            "spell_name": "Mouse",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Mouse",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22607,
+            "spell_catalog_id": 489,
+            "spell_name": "Mute",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Mute",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22614,
+            "spell_catalog_id": 496,
+            "spell_name": "Nod",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Nod",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22608,
+            "spell_catalog_id": 490,
+            "spell_name": "Palm",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Palm",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22582,
+            "spell_catalog_id": 464,
+            "spell_name": "Polish",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Polish",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22609,
+            "spell_catalog_id": 491,
+            "spell_name": "Present",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Present",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22634,
+            "spell_catalog_id": 516,
+            "spell_name": "Rattle",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Rattle",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22597,
+            "spell_catalog_id": 479,
+            "spell_name": "Ravel",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Ravel",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22583,
+            "spell_catalog_id": 465,
+            "spell_name": "Salt",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Salt",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22615,
+            "spell_catalog_id": 497,
+            "spell_name": "Scratch",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Scratch",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22584,
+            "spell_catalog_id": 466,
+            "spell_name": "Shine",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Shine",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22626,
+            "spell_catalog_id": 508,
+            "spell_name": "Smokepuff",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Smokepuff",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22641,
+            "spell_catalog_id": 523,
+            "spell_name": "Snatch",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Snatch",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22616,
+            "spell_catalog_id": 498,
+            "spell_name": "Sneeze",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Sneeze",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22598,
+            "spell_catalog_id": 480,
+            "spell_name": "Sour",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Sour",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22642,
+            "spell_catalog_id": 524,
+            "spell_name": "Spark",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Spark",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22585,
+            "spell_catalog_id": 467,
+            "spell_name": "Spice",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Spice",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22627,
+            "spell_catalog_id": 509,
+            "spell_name": "Spider",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Spider",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22599,
+            "spell_catalog_id": 481,
+            "spell_name": "Spill",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Spill",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22586,
+            "spell_catalog_id": 468,
+            "spell_name": "Sprout",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Sprout",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22643,
+            "spell_catalog_id": 525,
+            "spell_name": "Sting",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Sting",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22587,
+            "spell_catalog_id": 469,
+            "spell_name": "Stitch",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Stitch",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22588,
+            "spell_catalog_id": 470,
+            "spell_name": "Sweeten",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Sweeten",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22600,
+            "spell_catalog_id": 482,
+            "spell_name": "Tangle",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Tangle",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22635,
+            "spell_catalog_id": 517,
+            "spell_name": "Tap",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Tap",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22601,
+            "spell_catalog_id": 483,
+            "spell_name": "Tarnish",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Tarnish",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22636,
+            "spell_catalog_id": 518,
+            "spell_name": "Thump",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Thump",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22589,
+            "spell_catalog_id": 471,
+            "spell_name": "Tie",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Tie",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22644,
+            "spell_catalog_id": 526,
+            "spell_name": "Time",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Time",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22628,
+            "spell_catalog_id": 510,
+            "spell_name": "Tweak",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Tweak",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22617,
+            "spell_catalog_id": 499,
+            "spell_name": "Twitch",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Twitch",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22629,
+            "spell_catalog_id": 511,
+            "spell_name": "Unlock",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Unlock",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22602,
+            "spell_catalog_id": 484,
+            "spell_name": "Untie",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Untie",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22590,
+            "spell_catalog_id": 472,
+            "spell_name": "Warm",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Warm",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22637,
+            "spell_catalog_id": 519,
+            "spell_name": "Whistle",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Whistle",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22603,
+            "spell_catalog_id": 485,
+            "spell_name": "Wilt",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Wilt",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22618,
+            "spell_catalog_id": 500,
+            "spell_name": "Wink",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Wink",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22591,
+            "spell_catalog_id": 473,
+            "spell_name": "Wrap",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Wrap",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22619,
+            "spell_catalog_id": 501,
+            "spell_name": "Yawn",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Yawn",
+            "spell_level": 0,
+            "character_class_name": "Ranger"
+          }
+        ],
+        "1": [
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22699,
+            "spell_catalog_id": 541,
+            "spell_name": "Comprehend Languages",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu1.php#Comprehend Languages",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22709,
+            "spell_catalog_id": 592,
+            "spell_name": "Rael's Cover",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu1.php#R Cover",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22704,
+            "spell_catalog_id": 594,
+            "spell_name": "Rael's Enlarging Arrow",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu1.php#R Enlarging Arrow",
+            "spell_level": 1,
+            "character_class_name": "Ranger"
+          }
+        ]
+      }
+    },
+    "Magic-User": {
+      "Magic-User": {
+        "Cantrip": [
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22329,
+            "spell_catalog_id": 502,
+            "spell_name": "Bee",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Bee",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22319,
+            "spell_catalog_id": 492,
+            "spell_name": "Belch",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Belch",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22320,
+            "spell_catalog_id": 493,
+            "spell_name": "Blink",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Blink",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22330,
+            "spell_catalog_id": 503,
+            "spell_name": "Bluelight",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Bluelight",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22331,
+            "spell_catalog_id": 504,
+            "spell_name": "Bug",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Bug",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22347,
+            "spell_catalog_id": 520,
+            "spell_name": "Catfeet",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Catfeet",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22313,
+            "spell_catalog_id": 486,
+            "spell_name": "Change",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Change",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22281,
+            "spell_catalog_id": 454,
+            "spell_name": "Chill",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Chill",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22282,
+            "spell_catalog_id": 455,
+            "spell_name": "Clean",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Clean",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22283,
+            "spell_catalog_id": 456,
+            "spell_name": "Color",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Color",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22321,
+            "spell_catalog_id": 494,
+            "spell_name": "Cough",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Cough",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22339,
+            "spell_catalog_id": 512,
+            "spell_name": "Creak",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Creak",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22301,
+            "spell_catalog_id": 474,
+            "spell_name": "Curdle",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Curdle",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22348,
+            "spell_catalog_id": 521,
+            "spell_name": "Cut",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Cut",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22284,
+            "spell_catalog_id": 457,
+            "spell_name": "Dampen",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Dampen",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22302,
+            "spell_catalog_id": 475,
+            "spell_name": "Dirty",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Dirty",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22314,
+            "spell_catalog_id": 487,
+            "spell_name": "Distract",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Distract",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22285,
+            "spell_catalog_id": 458,
+            "spell_name": "Dry",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Dry",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22286,
+            "spell_catalog_id": 459,
+            "spell_name": "Dust",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Dust",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22303,
+            "spell_catalog_id": 476,
+            "spell_name": "Dusty",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Dusty",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22287,
+            "spell_catalog_id": 460,
+            "spell_name": "Exterminate",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Exterminate",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22332,
+            "spell_catalog_id": 505,
+            "spell_name": "Firefinger",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Firefinger",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22288,
+            "spell_catalog_id": 461,
+            "spell_name": "Flavor",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Flavor",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22340,
+            "spell_catalog_id": 513,
+            "spell_name": "Footfall",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Footfall",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22289,
+            "spell_catalog_id": 462,
+            "spell_name": "Freshen",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Freshen",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22349,
+            "spell_catalog_id": 522,
+            "spell_name": "Gallop",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Gallop",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22290,
+            "spell_catalog_id": 463,
+            "spell_name": "Gather",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Gather",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22322,
+            "spell_catalog_id": 495,
+            "spell_name": "Giggle",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Giggle",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22333,
+            "spell_catalog_id": 506,
+            "spell_name": "Gnats",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Gnats",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22341,
+            "spell_catalog_id": 514,
+            "spell_name": "Groan",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Groan",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22304,
+            "spell_catalog_id": 477,
+            "spell_name": "Hairy",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Hairy",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22315,
+            "spell_catalog_id": 488,
+            "spell_name": "Hide",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Hide",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22305,
+            "spell_catalog_id": 478,
+            "spell_name": "Knot",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Knot",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22342,
+            "spell_catalog_id": 515,
+            "spell_name": "Moan",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Moan",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22334,
+            "spell_catalog_id": 507,
+            "spell_name": "Mouse",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Mouse",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22316,
+            "spell_catalog_id": 489,
+            "spell_name": "Mute",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Mute",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22323,
+            "spell_catalog_id": 496,
+            "spell_name": "Nod",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Nod",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22317,
+            "spell_catalog_id": 490,
+            "spell_name": "Palm",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Palm",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22291,
+            "spell_catalog_id": 464,
+            "spell_name": "Polish",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Polish",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22318,
+            "spell_catalog_id": 491,
+            "spell_name": "Present",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Present",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22343,
+            "spell_catalog_id": 516,
+            "spell_name": "Rattle",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Rattle",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22306,
+            "spell_catalog_id": 479,
+            "spell_name": "Ravel",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Ravel",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22292,
+            "spell_catalog_id": 465,
+            "spell_name": "Salt",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Salt",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22324,
+            "spell_catalog_id": 497,
+            "spell_name": "Scratch",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Scratch",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22293,
+            "spell_catalog_id": 466,
+            "spell_name": "Shine",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Shine",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22335,
+            "spell_catalog_id": 508,
+            "spell_name": "Smokepuff",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Smokepuff",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22350,
+            "spell_catalog_id": 523,
+            "spell_name": "Snatch",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Snatch",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22325,
+            "spell_catalog_id": 498,
+            "spell_name": "Sneeze",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Sneeze",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22307,
+            "spell_catalog_id": 480,
+            "spell_name": "Sour",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Sour",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22351,
+            "spell_catalog_id": 524,
+            "spell_name": "Spark",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Spark",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22294,
+            "spell_catalog_id": 467,
+            "spell_name": "Spice",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Spice",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22336,
+            "spell_catalog_id": 509,
+            "spell_name": "Spider",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Spider",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22308,
+            "spell_catalog_id": 481,
+            "spell_name": "Spill",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Spill",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22295,
+            "spell_catalog_id": 468,
+            "spell_name": "Sprout",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Sprout",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22352,
+            "spell_catalog_id": 525,
+            "spell_name": "Sting",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Sting",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22296,
+            "spell_catalog_id": 469,
+            "spell_name": "Stitch",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Stitch",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22297,
+            "spell_catalog_id": 470,
+            "spell_name": "Sweeten",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Sweeten",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22309,
+            "spell_catalog_id": 482,
+            "spell_name": "Tangle",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Tangle",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22344,
+            "spell_catalog_id": 517,
+            "spell_name": "Tap",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Tap",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22310,
+            "spell_catalog_id": 483,
+            "spell_name": "Tarnish",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Tarnish",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22345,
+            "spell_catalog_id": 518,
+            "spell_name": "Thump",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Thump",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22298,
+            "spell_catalog_id": 471,
+            "spell_name": "Tie",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Tie",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22353,
+            "spell_catalog_id": 526,
+            "spell_name": "Time",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Time",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22337,
+            "spell_catalog_id": 510,
+            "spell_name": "Tweak",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Tweak",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22326,
+            "spell_catalog_id": 499,
+            "spell_name": "Twitch",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Twitch",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22338,
+            "spell_catalog_id": 511,
+            "spell_name": "Unlock",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Unlock",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22311,
+            "spell_catalog_id": 484,
+            "spell_name": "Untie",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Untie",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22299,
+            "spell_catalog_id": 472,
+            "spell_name": "Warm",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Warm",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22346,
+            "spell_catalog_id": 519,
+            "spell_name": "Whistle",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Whistle",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22312,
+            "spell_catalog_id": 485,
+            "spell_name": "Wilt",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Wilt",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22327,
+            "spell_catalog_id": 500,
+            "spell_name": "Wink",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Wink",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22300,
+            "spell_catalog_id": 473,
+            "spell_name": "Wrap",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Wrap",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22328,
+            "spell_catalog_id": 501,
+            "spell_name": "Yawn",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/MUC.php#Yawn",
+            "spell_level": 0,
+            "character_class_name": "Magic-User"
+          }
+        ],
+        "1": [
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22413,
+            "spell_catalog_id": 532,
+            "spell_name": "Arctic Spray",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu1.php#Arctic Spray",
+            "spell_level": 1,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22408,
+            "spell_catalog_id": 562,
+            "spell_name": "Icy Missile",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu1.php#Icy Missile",
+            "spell_level": 1,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22418,
+            "spell_catalog_id": 598,
+            "spell_name": "Read Magic",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu1.php#Read Magic",
+            "spell_level": 1,
+            "character_class_name": "Magic-User"
+          }
+        ],
+        "2": [
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22434,
+            "spell_catalog_id": 626,
+            "spell_name": "Agannavar's Scorcher",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu2.php#Agannavar's Scorcher",
+            "spell_level": 2,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22429,
+            "spell_catalog_id": 683,
+            "spell_name": "Invisibility",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu2.php#Invisibility",
+            "spell_level": 2,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22424,
+            "spell_catalog_id": 722,
+            "spell_name": "SD's Improved Armor II",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu2.php#SD Improved Armor II",
+            "spell_level": 2,
+            "character_class_name": "Magic-User"
+          }
+        ],
+        "3": [
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22445,
+            "spell_catalog_id": 763,
+            "spell_name": "Crew of Phantoms",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu3.php#Crew of Phantoms",
+            "spell_level": 3,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22440,
+            "spell_catalog_id": 781,
+            "spell_name": "Fireball",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu3.php#Fireball",
+            "spell_level": 3,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22446,
+            "spell_catalog_id": 806,
+            "spell_name": "Lightning Bolt",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu3.php#Lightning Bolt",
+            "spell_level": 3,
+            "character_class_name": "Magic-User"
+          }
+        ],
+        "4": [
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22461,
+            "spell_catalog_id": 858,
+            "spell_name": "Acid bolts",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu4.php#Acid bolts",
+            "spell_level": 4,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22450,
+            "spell_catalog_id": 869,
+            "spell_name": "Dimension Door",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu4.php#Dimension Door",
+            "spell_level": 4,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22456,
+            "spell_catalog_id": 871,
+            "spell_name": "DOUBLE BARREL MAGIC MISSILE",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu4.php#DOUBLE BARREL MAGIC MISSILE",
+            "spell_level": 4,
+            "character_class_name": "Magic-User"
+          }
+        ],
+        "5": [
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22571,
+            "spell_catalog_id": 955,
+            "spell_name": "Cone Of Cold",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu5.php#Cone Of Cold",
+            "spell_level": 5,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22560,
+            "spell_catalog_id": 956,
+            "spell_name": "Conjure Elemental",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu5.php#Conjure Elemental",
+            "spell_level": 5,
+            "character_class_name": "Magic-User"
+          },
+          {
+            "spell_type_name": "Magic-User",
+            "spell_pool_id": 22566,
+            "spell_catalog_id": 1001,
+            "spell_name": "Teleport",
+            "spell_link": "http://www.bobsenk.com/rpg/rules/spbk/mu5.php#Teleport",
+            "spell_level": 5,
+            "character_class_name": "Magic-User"
+          }
+        ]
+      }
+    }
+  },
+  "optionsMap": {
+    "Ranger": {
+      "Druid": {
+        "Cantrip": [
+          "\u003Coptgroup label=\"Cantrips\"\u003E\n",
+          "\u003Coption value=\"228\"\u003EAnimal\u003C/option\u003E\n",
+          "\u003Coption value=\"229\"\u003EAnimal command\u003C/option\u003E\n",
+          "\u003Coption value=\"230\"\u003EBird call\u003C/option\u003E\n",
+          "\u003Coption value=\"231\"\u003EBless meal\u003C/option\u003E\n",
+          "\u003Coption value=\"232\"\u003ECause rash\u003C/option\u003E\n",
+          "\u003Coption value=\"233\"\u003EConsecrate\u003C/option\u003E\n",
+          "\u003Coption value=\"234\"\u003EDisguise scent\u003C/option\u003E\n",
+          "\u003Coption value=\"235\"\u003EDisinfect\u003C/option\u003E\n",
+          "\u003Coption value=\"236\"\u003EDrywood\u003C/option\u003E\n",
+          "\u003Coption value=\"237\"\u003EEdible plant\u003C/option\u003E\n",
+          "\u003Coption value=\"238\"\u003EElemental shield\u003C/option\u003E\n",
+          "\u003Coption value=\"239\"\u003EFind water\u003C/option\u003E\n",
+          "\u003Coption value=\"240\"\u003EFlame finger\u003C/option\u003E\n",
+          "\u003Coption value=\"241\"\u003EHaze\u003C/option\u003E\n",
+          "\u003Coption value=\"242\"\u003EHeal rash\u003C/option\u003E\n",
+          "\u003Coption value=\"243\"\u003EHoly dart\u003C/option\u003E\n",
+          "\u003Coption value=\"244\"\u003EHorn\u003C/option\u003E\n",
+          "\u003Coption value=\"245\"\u003EHumidity\u003C/option\u003E\n",
+          "\u003Coption value=\"246\"\u003EJudgment\u003C/option\u003E\n",
+          "\u003Coption value=\"247\"\u003EListen\u003C/option\u003E\n",
+          "\u003Coption value=\"248\"\u003ELiven\u003C/option\u003E\n",
+          "\u003Coption value=\"249\"\u003EMark path\u003C/option\u003E\n",
+          "\u003Coption value=\"250\"\u003EParch\u003C/option\u003E\n",
+          "\u003Coption value=\"251\"\u003EPet\u003C/option\u003E\n",
+          "\u003Coption value=\"252\"\u003EPreserve\u003C/option\u003E\n",
+          "\u003Coption value=\"253\"\u003EProd\u003C/option\u003E\n",
+          "\u003Coption value=\"254\"\u003EQuench\u003C/option\u003E\n",
+          "\u003Coption value=\"255\"\u003ERemove pain\u003C/option\u003E\n",
+          "\u003Coption value=\"256\"\u003ERepel insect\u003C/option\u003E\n",
+          "\u003Coption value=\"257\"\u003ERestful sleep\u003C/option\u003E\n",
+          "\u003Coption value=\"258\"\u003ERipen\u003C/option\u003E\n",
+          "\u003Coption value=\"259\"\u003EScorch\u003C/option\u003E\n",
+          "\u003Coption value=\"260\"\u003ESmokeball\u003C/option\u003E\n",
+          "\u003Coption value=\"261\"\u003ETemperature\u003C/option\u003E\n",
+          "\u003Coption value=\"262\"\u003ETest soil\u003C/option\u003E\n",
+          "\u003Coption value=\"263\"\u003EWatch\u003C/option\u003E\n"
+        ],
+        "1": [
+          "\u003Coptgroup label=\"1st level\"\u003E\n",
+          "\u003Coption value=\"264\"\u003EAnimal Friendship\u003C/option\u003E\n",
+          "\u003Coption value=\"265\"\u003EAnimal/Bird Call\u003C/option\u003E\n",
+          "\u003Coption value=\"266\"\u003ECamouflage\u003C/option\u003E\n",
+          "\u003Coption value=\"267\"\u003ECeremony\u003C/option\u003E\n",
+          "\u003Coption value=\"268\"\u003ECoalstone\u003C/option\u003E\n",
+          "\u003Coption value=\"269\"\u003EDetect Balance\u003C/option\u003E\n",
+          "\u003Coption value=\"270\"\u003EDetect Magic\u003C/option\u003E\n",
+          "\u003Coption value=\"271\"\u003EDetect Poison\u003C/option\u003E\n",
+          "\u003Coption value=\"272\"\u003EDetect Snares & Pits\u003C/option\u003E\n",
+          "\u003Coption value=\"273\"\u003EEntangle\u003C/option\u003E\n",
+          "\u003Coption value=\"274\"\u003EFaerie Fire\u003C/option\u003E\n",
+          "\u003Coption value=\"275\"\u003EFerment\u003C/option\u003E\n",
+          "\u003Coption value=\"276\"\u003EFertility\u003C/option\u003E\n",
+          "\u003Coption value=\"277\"\u003EFind Water\u003C/option\u003E\n",
+          "\u003Coption value=\"278\"\u003EFind Woodland Familiar\u003C/option\u003E\n",
+          "\u003Coption value=\"279\"\u003EHeal plants\u003C/option\u003E\n",
+          "\u003Coption value=\"280\"\u003EHibernate\u003C/option\u003E\n",
+          "\u003Coption value=\"281\"\u003EInvisibility To Animals\u003C/option\u003E\n",
+          "\u003Coption value=\"282\"\u003ELocate Animals\u003C/option\u003E\n",
+          "\u003Coption value=\"283\"\u003ENectar\u003C/option\u003E\n",
+          "\u003Coption value=\"284\"\u003EPass Without Trace\u003C/option\u003E\n",
+          "\u003Coption value=\"285\"\u003EPrecipitation\u003C/option\u003E\n",
+          "\u003Coption value=\"286\"\u003EPredict Weather\u003C/option\u003E\n",
+          "\u003Coption value=\"287\"\u003EPurify Water\u003C/option\u003E\n",
+          "\u003Coption value=\"288\"\u003ERipen\u003C/option\u003E\n",
+          "\u003Coption value=\"289\"\u003ESense Direction\u003C/option\u003E\n",
+          "\u003Coption value=\"290\"\u003EShillelagh\u003C/option\u003E\n",
+          "\u003Coption value=\"291\"\u003ESpeak With Animals\u003C/option\u003E\n",
+          "\u003Coption value=\"292\"\u003EWailing Wind\u003C/option\u003E\n"
+        ]
+      },
+      "Magic-User": {
+        "Cantrip": [
+          "\u003Coptgroup label=\"Cantrips\"\u003E\n",
+          "\u003Coption value=\"502\"\u003EBee\u003C/option\u003E\n",
+          "\u003Coption value=\"492\"\u003EBelch\u003C/option\u003E\n",
+          "\u003Coption value=\"493\"\u003EBlink\u003C/option\u003E\n",
+          "\u003Coption value=\"503\"\u003EBluelight\u003C/option\u003E\n",
+          "\u003Coption value=\"504\"\u003EBug\u003C/option\u003E\n",
+          "\u003Coption value=\"520\"\u003ECatfeet\u003C/option\u003E\n",
+          "\u003Coption value=\"486\"\u003EChange\u003C/option\u003E\n",
+          "\u003Coption value=\"454\"\u003EChill\u003C/option\u003E\n",
+          "\u003Coption value=\"455\"\u003EClean\u003C/option\u003E\n",
+          "\u003Coption value=\"456\"\u003EColor\u003C/option\u003E\n",
+          "\u003Coption value=\"494\"\u003ECough\u003C/option\u003E\n",
+          "\u003Coption value=\"512\"\u003ECreak\u003C/option\u003E\n",
+          "\u003Coption value=\"474\"\u003ECurdle\u003C/option\u003E\n",
+          "\u003Coption value=\"521\"\u003ECut\u003C/option\u003E\n",
+          "\u003Coption value=\"457\"\u003EDampen\u003C/option\u003E\n",
+          "\u003Coption value=\"475\"\u003EDirty\u003C/option\u003E\n",
+          "\u003Coption value=\"487\"\u003EDistract\u003C/option\u003E\n",
+          "\u003Coption value=\"458\"\u003EDry\u003C/option\u003E\n",
+          "\u003Coption value=\"459\"\u003EDust\u003C/option\u003E\n",
+          "\u003Coption value=\"476\"\u003EDusty\u003C/option\u003E\n",
+          "\u003Coption value=\"460\"\u003EExterminate\u003C/option\u003E\n",
+          "\u003Coption value=\"505\"\u003EFirefinger\u003C/option\u003E\n",
+          "\u003Coption value=\"461\"\u003EFlavor\u003C/option\u003E\n",
+          "\u003Coption value=\"513\"\u003EFootfall\u003C/option\u003E\n",
+          "\u003Coption value=\"462\"\u003EFreshen\u003C/option\u003E\n",
+          "\u003Coption value=\"522\"\u003EGallop\u003C/option\u003E\n",
+          "\u003Coption value=\"463\"\u003EGather\u003C/option\u003E\n",
+          "\u003Coption value=\"495\"\u003EGiggle\u003C/option\u003E\n",
+          "\u003Coption value=\"506\"\u003EGnats\u003C/option\u003E\n",
+          "\u003Coption value=\"514\"\u003EGroan\u003C/option\u003E\n",
+          "\u003Coption value=\"477\"\u003EHairy\u003C/option\u003E\n",
+          "\u003Coption value=\"488\"\u003EHide\u003C/option\u003E\n",
+          "\u003Coption value=\"478\"\u003EKnot\u003C/option\u003E\n",
+          "\u003Coption value=\"515\"\u003EMoan\u003C/option\u003E\n",
+          "\u003Coption value=\"507\"\u003EMouse\u003C/option\u003E\n",
+          "\u003Coption value=\"489\"\u003EMute\u003C/option\u003E\n",
+          "\u003Coption value=\"496\"\u003ENod\u003C/option\u003E\n",
+          "\u003Coption value=\"490\"\u003EPalm\u003C/option\u003E\n",
+          "\u003Coption value=\"464\"\u003EPolish\u003C/option\u003E\n",
+          "\u003Coption value=\"491\"\u003EPresent\u003C/option\u003E\n",
+          "\u003Coption value=\"516\"\u003ERattle\u003C/option\u003E\n",
+          "\u003Coption value=\"479\"\u003ERavel\u003C/option\u003E\n",
+          "\u003Coption value=\"465\"\u003ESalt\u003C/option\u003E\n",
+          "\u003Coption value=\"497\"\u003EScratch\u003C/option\u003E\n",
+          "\u003Coption value=\"466\"\u003EShine\u003C/option\u003E\n",
+          "\u003Coption value=\"508\"\u003ESmokepuff\u003C/option\u003E\n",
+          "\u003Coption value=\"523\"\u003ESnatch\u003C/option\u003E\n",
+          "\u003Coption value=\"498\"\u003ESneeze\u003C/option\u003E\n",
+          "\u003Coption value=\"480\"\u003ESour\u003C/option\u003E\n",
+          "\u003Coption value=\"524\"\u003ESpark\u003C/option\u003E\n",
+          "\u003Coption value=\"467\"\u003ESpice\u003C/option\u003E\n",
+          "\u003Coption value=\"509\"\u003ESpider\u003C/option\u003E\n",
+          "\u003Coption value=\"481\"\u003ESpill\u003C/option\u003E\n",
+          "\u003Coption value=\"468\"\u003ESprout\u003C/option\u003E\n",
+          "\u003Coption value=\"525\"\u003ESting\u003C/option\u003E\n",
+          "\u003Coption value=\"469\"\u003EStitch\u003C/option\u003E\n",
+          "\u003Coption value=\"470\"\u003ESweeten\u003C/option\u003E\n",
+          "\u003Coption value=\"482\"\u003ETangle\u003C/option\u003E\n",
+          "\u003Coption value=\"517\"\u003ETap\u003C/option\u003E\n",
+          "\u003Coption value=\"483\"\u003ETarnish\u003C/option\u003E\n",
+          "\u003Coption value=\"518\"\u003EThump\u003C/option\u003E\n",
+          "\u003Coption value=\"471\"\u003ETie\u003C/option\u003E\n",
+          "\u003Coption value=\"526\"\u003ETime\u003C/option\u003E\n",
+          "\u003Coption value=\"510\"\u003ETweak\u003C/option\u003E\n",
+          "\u003Coption value=\"499\"\u003ETwitch\u003C/option\u003E\n",
+          "\u003Coption value=\"511\"\u003EUnlock\u003C/option\u003E\n",
+          "\u003Coption value=\"484\"\u003EUntie\u003C/option\u003E\n",
+          "\u003Coption value=\"472\"\u003EWarm\u003C/option\u003E\n",
+          "\u003Coption value=\"519\"\u003EWhistle\u003C/option\u003E\n",
+          "\u003Coption value=\"485\"\u003EWilt\u003C/option\u003E\n",
+          "\u003Coption value=\"500\"\u003EWink\u003C/option\u003E\n",
+          "\u003Coption value=\"473\"\u003EWrap\u003C/option\u003E\n",
+          "\u003Coption value=\"501\"\u003EYawn\u003C/option\u003E\n"
+        ],
+        "1": [
+          "\u003Coptgroup label=\"1st level\"\u003E\n",
+          "\u003Coption value=\"541\"\u003EComprehend Languages\u003C/option\u003E\n",
+          "\u003Coption value=\"592\"\u003ERael's Cover\u003C/option\u003E\n",
+          "\u003Coption value=\"594\"\u003ERael's Enlarging Arrow\u003C/option\u003E\n"
+        ]
+      }
+    },
+    "Magic-User": {
+      "Magic-User": {
+        "Cantrip": [
+          "\u003Coptgroup label=\"Cantrips\"\u003E\n",
+          "\u003Coption value=\"502\"\u003EBee\u003C/option\u003E\n",
+          "\u003Coption value=\"492\"\u003EBelch\u003C/option\u003E\n",
+          "\u003Coption value=\"493\"\u003EBlink\u003C/option\u003E\n",
+          "\u003Coption value=\"503\"\u003EBluelight\u003C/option\u003E\n",
+          "\u003Coption value=\"504\"\u003EBug\u003C/option\u003E\n",
+          "\u003Coption value=\"520\"\u003ECatfeet\u003C/option\u003E\n",
+          "\u003Coption value=\"486\"\u003EChange\u003C/option\u003E\n",
+          "\u003Coption value=\"454\"\u003EChill\u003C/option\u003E\n",
+          "\u003Coption value=\"455\"\u003EClean\u003C/option\u003E\n",
+          "\u003Coption value=\"456\"\u003EColor\u003C/option\u003E\n",
+          "\u003Coption value=\"494\"\u003ECough\u003C/option\u003E\n",
+          "\u003Coption value=\"512\"\u003ECreak\u003C/option\u003E\n",
+          "\u003Coption value=\"474\"\u003ECurdle\u003C/option\u003E\n",
+          "\u003Coption value=\"521\"\u003ECut\u003C/option\u003E\n",
+          "\u003Coption value=\"457\"\u003EDampen\u003C/option\u003E\n",
+          "\u003Coption value=\"475\"\u003EDirty\u003C/option\u003E\n",
+          "\u003Coption value=\"487\"\u003EDistract\u003C/option\u003E\n",
+          "\u003Coption value=\"458\"\u003EDry\u003C/option\u003E\n",
+          "\u003Coption value=\"459\"\u003EDust\u003C/option\u003E\n",
+          "\u003Coption value=\"476\"\u003EDusty\u003C/option\u003E\n",
+          "\u003Coption value=\"460\"\u003EExterminate\u003C/option\u003E\n",
+          "\u003Coption value=\"505\"\u003EFirefinger\u003C/option\u003E\n",
+          "\u003Coption value=\"461\"\u003EFlavor\u003C/option\u003E\n",
+          "\u003Coption value=\"513\"\u003EFootfall\u003C/option\u003E\n",
+          "\u003Coption value=\"462\"\u003EFreshen\u003C/option\u003E\n",
+          "\u003Coption value=\"522\"\u003EGallop\u003C/option\u003E\n",
+          "\u003Coption value=\"463\"\u003EGather\u003C/option\u003E\n",
+          "\u003Coption value=\"495\"\u003EGiggle\u003C/option\u003E\n",
+          "\u003Coption value=\"506\"\u003EGnats\u003C/option\u003E\n",
+          "\u003Coption value=\"514\"\u003EGroan\u003C/option\u003E\n",
+          "\u003Coption value=\"477\"\u003EHairy\u003C/option\u003E\n",
+          "\u003Coption value=\"488\"\u003EHide\u003C/option\u003E\n",
+          "\u003Coption value=\"478\"\u003EKnot\u003C/option\u003E\n",
+          "\u003Coption value=\"515\"\u003EMoan\u003C/option\u003E\n",
+          "\u003Coption value=\"507\"\u003EMouse\u003C/option\u003E\n",
+          "\u003Coption value=\"489\"\u003EMute\u003C/option\u003E\n",
+          "\u003Coption value=\"496\"\u003ENod\u003C/option\u003E\n",
+          "\u003Coption value=\"490\"\u003EPalm\u003C/option\u003E\n",
+          "\u003Coption value=\"464\"\u003EPolish\u003C/option\u003E\n",
+          "\u003Coption value=\"491\"\u003EPresent\u003C/option\u003E\n",
+          "\u003Coption value=\"516\"\u003ERattle\u003C/option\u003E\n",
+          "\u003Coption value=\"479\"\u003ERavel\u003C/option\u003E\n",
+          "\u003Coption value=\"465\"\u003ESalt\u003C/option\u003E\n",
+          "\u003Coption value=\"497\"\u003EScratch\u003C/option\u003E\n",
+          "\u003Coption value=\"466\"\u003EShine\u003C/option\u003E\n",
+          "\u003Coption value=\"508\"\u003ESmokepuff\u003C/option\u003E\n",
+          "\u003Coption value=\"523\"\u003ESnatch\u003C/option\u003E\n",
+          "\u003Coption value=\"498\"\u003ESneeze\u003C/option\u003E\n",
+          "\u003Coption value=\"480\"\u003ESour\u003C/option\u003E\n",
+          "\u003Coption value=\"524\"\u003ESpark\u003C/option\u003E\n",
+          "\u003Coption value=\"467\"\u003ESpice\u003C/option\u003E\n",
+          "\u003Coption value=\"509\"\u003ESpider\u003C/option\u003E\n",
+          "\u003Coption value=\"481\"\u003ESpill\u003C/option\u003E\n",
+          "\u003Coption value=\"468\"\u003ESprout\u003C/option\u003E\n",
+          "\u003Coption value=\"525\"\u003ESting\u003C/option\u003E\n",
+          "\u003Coption value=\"469\"\u003EStitch\u003C/option\u003E\n",
+          "\u003Coption value=\"470\"\u003ESweeten\u003C/option\u003E\n",
+          "\u003Coption value=\"482\"\u003ETangle\u003C/option\u003E\n",
+          "\u003Coption value=\"517\"\u003ETap\u003C/option\u003E\n",
+          "\u003Coption value=\"483\"\u003ETarnish\u003C/option\u003E\n",
+          "\u003Coption value=\"518\"\u003EThump\u003C/option\u003E\n",
+          "\u003Coption value=\"471\"\u003ETie\u003C/option\u003E\n",
+          "\u003Coption value=\"526\"\u003ETime\u003C/option\u003E\n",
+          "\u003Coption value=\"510\"\u003ETweak\u003C/option\u003E\n",
+          "\u003Coption value=\"499\"\u003ETwitch\u003C/option\u003E\n",
+          "\u003Coption value=\"511\"\u003EUnlock\u003C/option\u003E\n",
+          "\u003Coption value=\"484\"\u003EUntie\u003C/option\u003E\n",
+          "\u003Coption value=\"472\"\u003EWarm\u003C/option\u003E\n",
+          "\u003Coption value=\"519\"\u003EWhistle\u003C/option\u003E\n",
+          "\u003Coption value=\"485\"\u003EWilt\u003C/option\u003E\n",
+          "\u003Coption value=\"500\"\u003EWink\u003C/option\u003E\n",
+          "\u003Coption value=\"473\"\u003EWrap\u003C/option\u003E\n",
+          "\u003Coption value=\"501\"\u003EYawn\u003C/option\u003E\n"
+        ],
+        "1": [
+          "\u003Coptgroup label=\"1st level\"\u003E\n",
+          "\u003Coption value=\"532\"\u003EArctic Spray\u003C/option\u003E\n",
+          "\u003Coption value=\"562\"\u003EIcy Missile\u003C/option\u003E\n",
+          "\u003Coption value=\"598\"\u003ERead Magic\u003C/option\u003E\n"
+        ],
+        "2": [
+          "\u003Coptgroup label=\"2nd level\"\u003E\n",
+          "\u003Coption value=\"626\"\u003EAgannavar's Scorcher\u003C/option\u003E\n",
+          "\u003Coption value=\"683\"\u003EInvisibility\u003C/option\u003E\n",
+          "\u003Coption value=\"722\"\u003ESD's Improved Armor II\u003C/option\u003E\n"
+        ],
+        "3": [
+          "\u003Coptgroup label=\"3rd level\"\u003E\n",
+          "\u003Coption value=\"763\"\u003ECrew of Phantoms\u003C/option\u003E\n",
+          "\u003Coption value=\"781\"\u003EFireball\u003C/option\u003E\n",
+          "\u003Coption value=\"806\"\u003ELightning Bolt\u003C/option\u003E\n"
+        ],
+        "4": [
+          "\u003Coptgroup label=\"4th level\"\u003E\n",
+          "\u003Coption value=\"858\"\u003EAcid bolts\u003C/option\u003E\n",
+          "\u003Coption value=\"869\"\u003EDimension Door\u003C/option\u003E\n",
+          "\u003Coption value=\"871\"\u003EDOUBLE BARREL MAGIC MISSILE\u003C/option\u003E\n"
+        ],
+        "5": [
+          "\u003Coptgroup label=\"5th level\"\u003E\n",
+          "\u003Coption value=\"955\"\u003ECone Of Cold\u003C/option\u003E\n",
+          "\u003Coption value=\"956\"\u003EConjure Elemental\u003C/option\u003E\n",
+          "\u003Coption value=\"1001\"\u003ETeleport\u003C/option\u003E\n"
+        ]
+      }
+    }
+  },
+  "numberFormatter": {
+
+  }
+}
