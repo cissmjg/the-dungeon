@@ -171,4 +171,182 @@
     const CLERICS_PREFERRED_WEAPON = 177;	
     const BLINDSIGHT_5_RADIUS = 178;	
     const WEAPON_PROFICIENCY = 179;	
+
+    function getSkillDescriptionFromSkillId($skill_id) {
+        switch($skill_id) {
+            case ACROBATIC: { return "Acrobatic"; }	
+            case AGILE: { return "Agile"; }	
+            case AGILE_ATHLETE: { return "Agile Athlete"; }	
+            case ALCHEMY: { return "Alchemy"; }	
+            case ALERT: { return "Alert"; }	
+            case PERSUASIVE: { return "Persuasive"; }	
+            case TRUSTWORTHY: { return "Trustworthy"; }	
+            case ALLURING: { return "Alluring"; }	
+            case ANIMAL_DEFIANCE: { return "Animal Defiance"; }	
+            case ANIMAL_CONTROL: { return "Animal Control"; }	
+            case ANIMAL_EMPATHY: { return "Animal Empathy"; }	
+            case APPRAISE: { return "Appraise"; }	
+            case ATHLETIC: { return "Athletic"; }	
+            case BALANCE: { return "Balance"; }	
+            case BATTLE_HARDENED: { return "Battle Hardened"; }	
+            case BLIND_FIGHT: { return "Blind Fight"; }	
+            case BLUFF: { return "Bluff"; }	
+            case BOWYER: { return "Bowyer"; }	
+            case BRUTAL_THROW: { return "Brutal Throw"; }	
+            case BRACHIATION: { return "Brachiation"; }	
+            case BREW_POTION: { return "Brew Potion"; }	
+            case CHARLATAN: { return "Charlatan"; }	
+            case EXPERTISE: { return "Expertise"; }	
+            case CHINK_IN_THE_ARMOR: { return "Chink in the Armor"; }	
+            case IMPROVED_UNARMED_STRIKE: { return "Improved Unarmed Strike"; }	
+            case CIRCLE_KICK: { return "Circle Kick"; }	
+            case CLEAVE: { return "Cleave"; }	
+            case CLEVER_WRESTLING: { return "Clever Wrestling"; }	
+            case CLIMB: { return "Climb"; }	
+            case COMBAT_REFLEXES: { return "Combat Reflexes"; }	
+            case CLOSE_QUARTERS_FIGHTING: { return "Close Quarters Fighting"; }	
+            case COLD_ENDURANCE: { return "Cold Endurance"; }	
+            case COOPERATIVE_SPELL: { return "Cooperative Spell"; }	
+            case DALLAH_THAUNS_LUCK: { return "Dallah Thaun's Luck"; }	
+            case DASH: { return "Dash"; }	
+            case DECEITFUL: { return "Deceitful"; }	
+            case DECIPHER_SCRIPT: { return "Decipher Script"; }	
+            case DEFLECT_ARROWS: { return "Deflect Arrows"; }	
+            case DEFT_HANDS: { return "Deft Hands"; }	
+            case DEFT_OPPORTUNIST: { return "Deft Opportunist"; }	
+            case DELAY_SPELL: { return "Delay Spell"; }	
+            case DILIGENT: { return "Diligent"; }	
+            case DIPLOMACY: { return "Diplomacy"; }	
+            case DIRTY_FIGHTING: { return "Dirty Fighting"; }	
+            case DISABLE_DEVICE: { return "Disable Device"; }	
+            case DISGUISE: { return "Disguise"; }	
+            case DODGE: { return "Dodge"; }	
+            case SPECIALIZATION: { return "Specialization"; }	
+            case DOUBLE_SPECIALIZATION: { return "Double Specialization"; }	
+            case DUAL_STRIKE: { return "Dual Strike"; }	
+            case EAGLE_CLAW: { return "Eagle Claw"; }	
+            case EMPOWER_TURNING: { return "Empower Turning"; }	
+            case ENDURANCE: { return "Endurance"; }	
+            case ESCAPE_ARTIST: { return "Escape Artist"; }	
+            case EXPEDITIOUS_DODGE: { return "Expeditious Dodge"; }	
+            case RIDE: { return "Ride"; }	
+            case EXPERT_RIDER: { return "Expert Rider"; }	
+            case SWIM: { return "Swim"; }	
+            case EXPERT_SWIMMER: { return "Expert Swimmer"; }	
+            case EXTRA_SLOT: { return "Extra Slot"; }	
+            case EXTRA_TURNING: { return "Extra Turning"; }	
+            case EYES_IN_THE_BACK_OF_HEAD: { return "Eyes in the Back of Head"; }	
+            case FEIGN_WEAKNESS: { return "Feign Weakness"; }	
+            case FIST_OF_IRON: { return "Fist of Iron"; }	
+            case FLETCHER: { return "Fletcher"; }	
+            case FLY_BY_ATTACK: { return "Fly By Attack"; }	
+            case FORGERY: { return "Forgery"; }	
+            case GAMBLING: { return "Gambling"; }	
+            case GATHER_INFO: { return "Gather Info"; }	
+            case GNOME_FOE_KILLER: { return "Gnome Foe Killer"; }	
+            case GREAT_FORTITUDE: { return "Great Fortitude"; }	
+            case HANDLE_ANIMAL: { return "Handle Animal"; }	
+            case HEAL: { return "Heal"; }	
+            case HEAT_ENDURANCE: { return "Heat Endurance"; }	
+            case LISTEN: { return "Listen"; }	
+            case HEAR_THE_UNSEEN: { return "Hear the Unseen"; }	
+            case HIDE: { return "Hide"; }	
+            case HOLD_THE_LINE: { return "Hold the Line"; }	
+            case IMPROVED_COLD_ENDURANCE: { return "Improved Cold Endurance"; }	
+            case IMPROVED_CRITICAL: { return "Improved Critical"; }	
+            case IMPROVED_HEAT_ENDURANCE: { return "Improved Heat Endurance"; }	
+            case IMPROVED_INITIATIVE: { return "Improved Initiative"; }	
+            case SUNDER: { return "Sunder"; }	
+            case IMPROVED_SUNDER: { return "Improved Sunder"; }	
+            case IMPROVED_SWIM: { return "Improved Swim"; }	
+            case INNUENDO: { return "Innuendo"; }	
+            case INSIGHTFUL_REFLEXES: { return "Insightful Reflexes"; }	
+            case INTIMIDATE: { return "Intimidate"; }	
+            case INTUIT_DIRECTION: { return "Intuit Direction"; }	
+            case INVESTIGATOR: { return "Investigator"; }	
+            case IRON_WILL: { return "Iron Will"; }	
+            case JUMP: { return "Jump"; }	
+            case KNOCKDOWN: { return "Knockdown"; }	
+            case KNOWLEDGE: { return "Knowledge"; }	
+            case MOVE_SILENTLY: { return "Move Silently"; }	
+            case LIGHTFEET: { return "Lightfeet"; }	
+            case LIGHTNING_REFLEXES: { return "Lightning Reflexes"; }	
+            case LITERACY: { return "Literacy"; }	
+            case LONG_DISTANCE_SIGNALING: { return "Long Distance Signaling"; }	
+            case MANTIS_LEAP: { return "Mantis Leap"; }	
+            case MENACING_DEMEANOR: { return "Menacing Demeanor"; }	
+            case MOBILITY: { return "Mobility"; }	
+            case MORADINS_SMILE: { return "Moradin's Smile"; }	
+            case SURVIVAL: { return "Survival"; }	
+            case MOUNTAIN_WARRIOR: { return "Mountain Warrior"; }	
+            case MOUNTAIN_WARRIOR_GNOME: { return "Mountain Warrior (Gnome)"; }	
+            case MOUNTAINEER: { return "Mountaineer"; }	
+            case MOUNTED_ATTACK_SPECIALIST: { return "Mounted Attack Specialist"; }	
+            case NEGOTIATOR: { return "Negotiator"; }	
+            case NIMBLE_FINGERS: { return "Nimble Fingers"; }	
+            case OBSCURE_LORE: { return "Obscure Lore"; }	
+            case OPEN_LOCK: { return "Open Lock"; }	
+            case PERFORM: { return "Perform"; }	
+            case PHALANX_FIGHTING: { return "Phalanx Fighting"; }	
+            case PICK_POCKET: { return "Pick Pocket"; }	
+            case PIERCING_SIGHT: { return "Piercing Sight"; }	
+            case PIN_SHIELD: { return "Pin Shield"; }	
+            case PLANT_DEFIANCE: { return "Plant Defiance"; }	
+            case PLANT_CONTROL: { return "Plant Control"; }	
+            case PRECISE_SHOT: { return "Precise Shot"; }	
+            case POWER_ATTACK: { return "Power Attack"; }	
+            case POWER_THROW: { return "Power Throw"; }	
+            case PROFESSION: { return "Profession"; }	
+            case PRONE_ATTACK: { return "Prone Attack"; }	
+            case PYRO: { return "Pyro"; }	
+            case QUICK_DRAW: { return "Quick Draw"; }	
+            case QUICK_RECONNOITER: { return "Quick Reconnoiter"; }	
+            case QUICKER_THAN_THE_EYE: { return "Quicker than the Eye"; }	
+            case RAPID_RELOAD: { return "Rapid Reload"; }	
+            case RAPID_SWIMMER: { return "Rapid Swimmer"; }	
+            case READ_LIPS: { return "Read Lips"; }	
+            case REMAIN_CONSCIOUS: { return "Remain Conscious"; }	
+            case RESIST_DISEASE: { return "Resist Disease"; }	
+            case RESIST_POISON: { return "Resist Poison"; }	
+            case RUN: { return "Run"; }	
+            case SAILORS_BALANCE: { return "Sailor's Balance"; }	
+            case SCULPT_SPELL: { return "Sculpt Spell"; }	
+            case SEA_LEGS: { return "Sea Legs"; }	
+            case SEARCH: { return "Search"; }	
+            case SELF_SUFFICIENT: { return "Self Sufficient"; }	
+            case SENSE_MOTIVE: { return "Sense Motive"; }	
+            case SHADOW: { return "Shadow"; }	
+            case SHARP_SHOOTING: { return "Sharp Shooting"; }	
+            case SHIELD_EXPERT: { return "Shield Expert"; }	
+            case SMATTERINGS: { return "Smatterings"; }	
+            case SNARE_BUILDING: { return "Snare Building"; }	
+            case SNATCH_ARROWS: { return "Snatch Arrows"; }	
+            case SOUND_IMITATION: { return "Sound Imitation"; }	
+            case SPELL_MASTERY: { return "Spell Mastery"; }	
+            case SPOT: { return "Spot"; }	
+            case STEALTHY: { return "Stealthy"; }	
+            case THROW_ANYTHING: { return "Throw Anything"; }	
+            case TOOTHED_BLOW: { return "Toothed Blow"; }	
+            case TORTURE: { return "Torture"; }	
+            case TRACK: { return "Track"; }	
+            case TWO_WEAPON_FIGHTING: { return "Two Weapon Fighting"; }	
+            case TUMBLE: { return "Tumble"; }	
+            case URBAN_STEALTH: { return "Urban Stealth"; }	
+            case URBAN_TRACKING: { return "Urban Tracking"; }	
+            case USE_ROPE: { return "Use Rope"; }	
+            case WEAPON_FINESSE: { return "Weapon Finesse"; }	
+            case WEAPON_FOCUS_ACCURACY: { return "Weapon Focus Accuracy"; }	
+            case WEAPON_FOCUS_GREATER_ACCURACY: { return "Weapon Focus Greater Accuracy"; }	
+            case WEAPON_FOCUS_TECHNIQUE: { return "Weapon Focus Technique"; }	
+            case WEAPON_FOCUS_GREATER_TECHNIQUE: { return "Weapon Focus Greater Technique"; }	
+            case WILDERNESS_LORE: { return "Wilderness Lore"; }	
+            case WINGOVER: { return "Wingover"; }	
+            case ZEN_ARCHERY: { return "Zen Archery"; }	
+            case SKILL_FOCUS: { return "Skill Focus"; }	
+            case CLERICS_PREFERRED_WEAPON: { return "Cleric's Preferred Weapon"; }	
+            case BLINDSIGHT_5_RADIUS: { return "Blindsight 5' radius"; }	
+            case WEAPON_PROFICIENCY: { return "Weapon Proficiency"; }	
+            default : return "UNKNOWN";
+        }
+    }
 ?>

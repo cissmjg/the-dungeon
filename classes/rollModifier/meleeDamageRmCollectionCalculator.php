@@ -87,7 +87,7 @@
 
         private function getRmFistOfIron(PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon) {
             $rm_fist_of_iron = null;
-            if ($player_character_weapon->getWeaponProficiencyId() == FIST) {
+            if ($player_character_weapon->getWeaponProficiencyId() == FIST && !$player_character_weapon->isMartialSkillWeapon()) {
                 $count_fist_of_iron = count($player_character_skill_set->getAllSkillInstances(FIST_OF_IRON));
                 $has_fist_of_iron = $count_fist_of_iron > 0;
                 if ($has_fist_of_iron) {

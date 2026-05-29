@@ -134,7 +134,7 @@
 
         private function getRmDirtyFighting(PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon) {
             $rm_dirty_fighting = null;
-            if ($player_character_weapon->getWeaponProficiencyId() == FIST) {
+            if ($player_character_weapon->getWeaponProficiencyId() == FIST && !$player_character_weapon->isMartialSkillWeapon()) {
                 $count_dirty_fighting = count($player_character_skill_set->getAllSkillInstances(DIRTY_FIGHTING));
                 $has_dirty_fighting = $count_dirty_fighting > 0;
                 if ($has_dirty_fighting) {
