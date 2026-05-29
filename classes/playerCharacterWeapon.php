@@ -94,10 +94,7 @@ class PlayerCharacterWeapon implements JsonSerializable {
             $this->meleeWeaponSpeed             = $weapon_detail['player_character_weapon_speed'];
 
             $this->meleeWeaponDamage            = $weapon_detail['player_character_weapon_damage'];
-            $count_fist_of_iron = count($player_character_skill_set->getAllSkillInstances(FIST_OF_IRON));
-            if ($this->weaponProficiencyId == FIST && $count_fist_of_iron > 0) {
-                $this->meleeWeaponDamage .= ' ' . FistOfIron::formatFistOfIronDamage($count_fist_of_iron);
-            }
+            $this->updateWeaponDamage($player_character_skill_set);
 
             $this->meleeAttacksPerRound         = $weapon_detail['player_character_weapon_attacks_per_round'];
             $this->meleeNumberOfHands           = $weapon_detail['player_character_weapon_number_of_hands'];
@@ -182,7 +179,10 @@ class PlayerCharacterWeapon implements JsonSerializable {
             $this->playerNote3                  = $weapon_detail_json->playerNote3;
             $this->strengthBonusAvailable       = $weapon_detail_json->strengthBonusAvailable;
             $this->meleeWeaponSpeed             = $weapon_detail_json->meleeWeaponSpeed;
+
             $this->meleeWeaponDamage            = $weapon_detail_json->meleeWeaponDamage;
+            $this->updateWeaponDamage($player_character_skill_set);
+
             $this->meleeAttacksPerRound         = $weapon_detail_json->meleeAttacksPerRound;
             $this->meleeNumberOfHands           = $weapon_detail_json->meleeNumberOfHands;
             $this->meleeHitBonus                = $weapon_detail_json->meleeHitBonus;
@@ -254,6 +254,25 @@ class PlayerCharacterWeapon implements JsonSerializable {
         }
 
 		return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    private function updateWeaponDamage(PlayerCharacterSkillSet $player_character_skill_set) {
+        if ($this->weaponProficiencyId == FIST) {
+            $count_fist_of_iron = count($player_character_skill_set->getAllSkillInstances(FIST_OF_IRON));
+            if ($count_fist_of_iron > 0) {
+                // Fist of Iron does not apply to Mantis Leap or Circle Kick
+                if(!$this->isMartialSkillWeapon()) {
+                    $this->meleeWeaponDamage .= ' ' . FistOfIron::formatFistOfIronDamage($count_fist_of_iron);
+                }
+            }
+        }
+    }
+
+    public function isMartialSkillWeapon() {
+        $circle_kick_name = getSkillDescriptionFromSkillId(CIRCLE_KICK);
+        $mantis_leap_name = getSkillDescriptionFromSkillId(MANTIS_LEAP);
+
+        return $this->weaponDescription == $circle_kick_name || $this->weaponDescription == $mantis_leap_name;
     }
 
 	// function called when encoded with json_encode

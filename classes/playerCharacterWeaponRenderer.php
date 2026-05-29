@@ -203,7 +203,13 @@ abstract class PlayerCharacterWeaponRenderer {
 
             case AttacksPerRound::Two:
                 if ($has_rapid_reload && $weapon_subtype == WEAPON_SUBTYPE_CROSSBOW) {
-                    $weapon_speed_final = $weapon_speed . '/8';
+                    if ($physical_weapon_style_1_attack) {
+                        $weapon_speed_final = $weapon_speed . '/8';
+                    }
+
+                    if ($physical_weapon_style_2_attacks) {
+                        $weapon_speed_final = $weapon_speed;
+                    }
                 } else if ($physical_weapon_style_1_attack) {
                     $weapon_speed_final = $weapon_speed . '/EoR';
                 } else if ($physical_weapon_style_2_attacks) {

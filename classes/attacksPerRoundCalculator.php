@@ -160,13 +160,12 @@
             } else {
                 $weapon_subtype = $this->getPlayerCharacterWeapon()->getMissileWeaponSubtype();
                 $weapon_proficiency_id = $this->getPlayerCharacterWeapon()->getWeaponProficiencyId();
-                $has_rapid_reload = $this->getPlayerCharacterSkillSet()->getAllSkillInstances(RAPID_RELOAD);
 
                 if ($weapon_subtype == WEAPON_SUBTYPE_BOW) {
                     $attacks_per_round = AttacksPerRound::Two;
+                } else if ($weapon_subtype == WEAPON_SUBTYPE_CROSSBOW) {
+                    $attacks_per_round = $this->calculateNonSpecializedCrossbowAttacks($weapon_proficiency_id);
                 } else if ($weapon_proficiency_id == DAGGER) {
-                    $attacks_per_round = AttacksPerRound::Two;
-                } else if ($weapon_proficiency_id == DOKYU) {
                     $attacks_per_round = AttacksPerRound::Two;
                 } else if ($weapon_proficiency_id == KNIFE) {
                     $attacks_per_round = AttacksPerRound::Two;
@@ -174,24 +173,6 @@
                     $attacks_per_round = AttacksPerRound::Two;
                 } else if ($weapon_proficiency_id == UCHI_NE) {
                     $attacks_per_round = AttacksPerRound::Two;
-                } else if ($weapon_proficiency_id == LIGHT_CROSSBOW || $weapon_proficiency_id == HAND_CROSSBOW || $weapon_proficiency_id == PISTOL_GRIP_CROSSBOW) {
-                    if ($has_rapid_reload) {
-                        $attacks_per_round = AttacksPerRound::Two;
-                    } else {
-                        $attacks_per_round = AttacksPerRound::One;
-                    }
-                } else if ($weapon_proficiency_id == HEAVY_CROSSBOW) {
-                    if ($has_rapid_reload) {
-                        $attacks_per_round = AttacksPerRound::One;
-                    } else {
-                        $attacks_per_round = AttacksPerRound::OneEvery2;
-                    }
-                } else if ($weapon_proficiency_id == GREAT_CROSSBOW) {
-                    if ($has_rapid_reload) {
-                        $attacks_per_round = AttacksPerRound::OneEvery2;
-                    } else {
-                        $attacks_per_round = AttacksPerRound::OneEvery3;
-                    }
                 }
             }
 
@@ -204,29 +185,14 @@
             $weapon_proficiency_id = $this->getPlayerCharacterWeapon()->getWeaponProficiencyId();
             $weapon_subtype = $this->getPlayerCharacterWeapon()->getMissileWeaponSubtype();
             $weapon_type = $this->getPlayerCharacterWeapon()->getMissileWeaponType();
-            $has_rapid_reload = COUNT($this->getPlayerCharacterSkillSet()->getAllSkillInstances(RAPID_RELOAD)) > 0;
 
             if ($character_level >= 1 && $character_level < 7) {
                 if ($weapon_proficiency_id == DAGGER) {
                     $attacks_per_round = AttacksPerRound::Three;
                 } else if ($weapon_subtype == WEAPON_SUBTYPE_BOW) {
                     $attacks_per_round = AttacksPerRound::Two;
-                } else if ($weapon_proficiency_id == LIGHT_CROSSBOW || $weapon_proficiency_id == HAND_CROSSBOW || $weapon_proficiency_id == PISTOL_GRIP_CROSSBOW) {
-                    if ($has_rapid_reload) {
-                        $attacks_per_round = AttacksPerRound::Two;
-                    } else {
-                        $attacks_per_round = AttacksPerRound::One;
-                    }
-                } else if ($weapon_proficiency_id == HEAVY_CROSSBOW) {
-                    if ($has_rapid_reload) {
-                        $attacks_per_round = AttacksPerRound::One;
-                    } else {
-                        $attacks_per_round = AttacksPerRound::OneEvery2;
-                    }
-                } else if ($weapon_proficiency_id == GREAT_CROSSBOW) {
-                    $attacks_per_round = AttacksPerRound::One;
-                } else if ($weapon_proficiency_id == DOKYU) {
-                    $attacks_per_round = AttacksPerRound::Two;
+                } else if ($weapon_subtype == WEAPON_SUBTYPE_CROSSBOW) {
+                    $attacks_per_round = $this->calculateSpecializedCrossbowAttacksLevel1UpTo7($weapon_proficiency_id);
                 } else if ($weapon_proficiency_id == LASSO || $weapon_proficiency_id == STAFF_SLING) {
                     $attacks_per_round = AttacksPerRound::One;
                 } else if ($weapon_proficiency_id == DART) {
@@ -241,22 +207,8 @@
                     $attacks_per_round = AttacksPerRound::Four;
                 } else if ($weapon_subtype == WEAPON_SUBTYPE_BOW) {
                     $attacks_per_round = AttacksPerRound::Three;
-                } else if ($weapon_proficiency_id == LIGHT_CROSSBOW || $weapon_proficiency_id == HAND_CROSSBOW || $weapon_proficiency_id == PISTOL_GRIP_CROSSBOW) {
-                    if ($has_rapid_reload) {
-                        $attacks_per_round = AttacksPerRound::FiveEvery2;
-                    } else {
-                        $attacks_per_round = AttacksPerRound::ThreeEvery2;
-                    }
-                } else if ($weapon_proficiency_id == HEAVY_CROSSBOW) {
-                    if ($has_rapid_reload) {
-                        $attacks_per_round = AttacksPerRound::ThreeEvery2;
-                    } else {
-                        $attacks_per_round = AttacksPerRound::One;
-                    }
-                } else if ($weapon_proficiency_id == GREAT_CROSSBOW) {
-                    $attacks_per_round = AttacksPerRound::One;
-                } else if ($weapon_proficiency_id == DOKYU) {
-                    $attacks_per_round = AttacksPerRound::Two;
+                } else if ($weapon_subtype == WEAPON_SUBTYPE_CROSSBOW) {
+                    $attacks_per_round = $this->calculateSpecializedCrossbowAttacksLevel7UpTo13($weapon_proficiency_id);
                 } else if ($weapon_proficiency_id == LASSO || $weapon_proficiency_id == STAFF_SLING) {
                     $attacks_per_round = AttacksPerRound::ThreeEvery2;
                 } else if ($weapon_proficiency_id == DART) {
@@ -271,22 +223,8 @@
                     $attacks_per_round = AttacksPerRound::Five;
                 } else if ($weapon_subtype == WEAPON_SUBTYPE_BOW) {
                     $attacks_per_round = AttacksPerRound::Four;
-                } else if ($weapon_proficiency_id == LIGHT_CROSSBOW || $weapon_proficiency_id == HAND_CROSSBOW || $weapon_proficiency_id == PISTOL_GRIP_CROSSBOW) {
-                    if ($has_rapid_reload) {
-                        $attacks_per_round = AttacksPerRound::Three;
-                    } else {
-                        $attacks_per_round = AttacksPerRound::Two;
-                    }
-                } else if ($weapon_proficiency_id == HEAVY_CROSSBOW) {
-                    if ($has_rapid_reload) {
-                        $attacks_per_round = AttacksPerRound::Two;
-                    } else {
-                        $attacks_per_round = AttacksPerRound::ThreeEvery2;
-                    }
-                } else if ($weapon_proficiency_id == GREAT_CROSSBOW) {
-                    $attacks_per_round = AttacksPerRound::One;
-                } else if ($weapon_proficiency_id == DOKYU) {
-                    $attacks_per_round = AttacksPerRound::Two;
+                } else if ($weapon_subtype == WEAPON_SUBTYPE_CROSSBOW) {
+                    $attacks_per_round = $this->calculateSpecializedCrossbowAttacksLevel13AndOver($weapon_proficiency_id);
                 } else if ($weapon_proficiency_id == LASSO || $weapon_proficiency_id == STAFF_SLING) {
                     $attacks_per_round = AttacksPerRound::Two;
                 } else if ($weapon_proficiency_id == DART) {
@@ -325,6 +263,8 @@
 
                 if ($weapon_subtype == WEAPON_SUBTYPE_BOW) {
                     $attacks_per_round = AttacksPerRound::One;
+                } else if ($weapon_subtype == WEAPON_SUBTYPE_CROSSBOW) {
+                    $attacks_per_round = AttacksPerRound::One;
                 } else if ($weapon_proficiency_id == DAGGER) {
                     $attacks_per_round = AttacksPerRound::One;
                 } else if ($weapon_proficiency_id == DOKYU) {
@@ -335,26 +275,158 @@
                     $attacks_per_round = AttacksPerRound::One;
                 } else if ($weapon_proficiency_id == UCHI_NE) {
                     $attacks_per_round = AttacksPerRound::One;
-                } else if ($weapon_proficiency_id == LIGHT_CROSSBOW || $weapon_proficiency_id == HAND_CROSSBOW || $weapon_proficiency_id == PISTOL_GRIP_CROSSBOW) {
-                    if ($has_rapid_reload) {
-                        $attacks_per_round = AttacksPerRound::One;
-                    } else {
-                        $attacks_per_round = AttacksPerRound::OneEvery2;
-                    }
-                } else if ($weapon_proficiency_id == HEAVY_CROSSBOW) {
-                    if ($has_rapid_reload) {
-                        $attacks_per_round = AttacksPerRound::OneEvery2;
-                    } else {
-                        $attacks_per_round = AttacksPerRound::OneEvery3;
-                    }
-                } else if ($weapon_proficiency_id == GREAT_CROSSBOW) {
-                    if ($has_rapid_reload) {
-                        $attacks_per_round = AttacksPerRound::OneEvery3;
-                    } else {
-                        $attacks_per_round = AttacksPerRound::OneEvery3;
-                    }
                 }
             }
+
+            return $attacks_per_round;
+        }
+
+        /* Having rapid reload will double the number of attacks for non specialized characters */
+        private function calculateNonSpecializedCrossbowAttacks($weapon_proficiency_id) {
+
+            $has_rapid_reload = $this->getPlayerCharacterSkillSet()->getAllSkillInstances(RAPID_RELOAD);
+            switch($weapon_proficiency_id) {
+                    case LIGHT_CROSSBOW:
+                    case PISTOL_GRIP_CROSSBOW:
+                        if ($has_rapid_reload) {
+                            $attacks_per_round = AttacksPerRound::Two;
+                        } else {
+                            $attacks_per_round = AttacksPerRound::One;
+                        }
+                        break;
+                    case GREAT_CROSSBOW:
+                        if ($has_rapid_reload) {
+                            $attacks_per_round = AttacksPerRound::OneEvery2;
+                        } else {
+                            $attacks_per_round = AttacksPerRound::OneEvery3;
+                        }
+                        break;
+                        if ($has_rapid_reload) {
+                        } else {
+
+                        }
+                        break;
+                    case HEAVY_CROSSBOW:
+                        $attacks_per_round = AttacksPerRound::OneEvery2;
+                        break;
+                    case HAND_CROSSBOW:
+                        $attacks_per_round = AttacksPerRound::One;
+                        break;
+                    case DOKYU:
+                        $attacks_per_round = AttacksPerRound::Two;
+                        break;
+                    default:
+                        $attacks_per_round = AttacksPerRound::One;
+                }
+
+            return $attacks_per_round;
+        }
+
+        /* DM ruling in email dated 5/20/2026
+        UA also has a table for attacks per round based on the weapon. Having rapid reload will bump the number of attacks up by one click as patterned in the table. 
+        So for each category the PC climbs they will gain 1/2 attack per round so as follows :
+
+            Level    Att/Round    Weapon Speeds
+            1-6      2/1          2/8
+            7-12     5/2          2/8/(EOR)    PC gets 3 shots every other round
+            13+      3/1          2/8/EOR
+
+        This is a bit of a misnomer ... Rapid Reload gives the character 2 attacks per round WITHOUT specialization. 
+        With Specialization the rate goes up 1 'click' (i.e. 1/2 more attack per round).
+        */
+        private function calculateSpecializedCrossbowAttacksLevel1UpTo7($weapon_proficiency_id) {
+
+            $has_rapid_reload = $this->getPlayerCharacterSkillSet()->getAllSkillInstances(RAPID_RELOAD);
+            switch($weapon_proficiency_id) {
+                    case LIGHT_CROSSBOW:
+                    case PISTOL_GRIP_CROSSBOW:
+                        if ($has_rapid_reload) {
+                            $attacks_per_round = AttacksPerRound::FiveEvery2;
+                        } else {
+                            $attacks_per_round = AttacksPerRound::One;
+                        }
+                        break;
+                    case GREAT_CROSSBOW:
+                        if ($has_rapid_reload) {
+                            $attacks_per_round = AttacksPerRound::One;
+                        } else {
+                            $attacks_per_round = AttacksPerRound::OneEvery2;
+                        }
+                        break;
+                    case HEAVY_CROSSBOW:
+                        $attacks_per_round = AttacksPerRound::OneEvery2;
+                        break;
+                    case HAND_CROSSBOW:
+                        $attacks_per_round = AttacksPerRound::ThreeEvery2;
+                        break;
+                    case Dokyu:
+                        $attacks_per_round = AttacksPerRound::Two;
+                        break;
+                    default:
+                        $attacks_per_round = AttacksPerRound::One;
+                }
+
+            return $attacks_per_round;
+        }
+
+        private function calculateSpecializedCrossbowAttacksLevel7UpTo13($weapon_proficiency_id) {
+
+            $has_rapid_reload = $this->getPlayerCharacterSkillSet()->getAllSkillInstances(RAPID_RELOAD);
+            switch($weapon_proficiency_id) {
+                    case LIGHT_CROSSBOW:
+                    case PISTOL_GRIP_CROSSBOW:
+                        if ($has_rapid_reload) {
+                            $attacks_per_round = AttacksPerRound::Three;
+                        } else {
+                            $attacks_per_round = AttacksPerRound::ThreeEvery2;
+                        }
+                        break;
+                    case GREAT_CROSSBOW:
+                        $attacks_per_round = AttacksPerRound::One;
+                        break;
+                    case HEAVY_CROSSBOW:
+                        $attacks_per_round = AttacksPerRound::One;
+                        break;
+                    case HAND_CROSSBOW:
+                        $attacks_per_round = AttacksPerRound::Two;
+                        break;
+                    case Dokyu:
+                        $attacks_per_round = AttacksPerRound::Two;
+                        break;
+                    default:
+                        $attacks_per_round = AttacksPerRound::One;
+                }
+
+            return $attacks_per_round;
+        }
+
+        private function calculateSpecializedCrossbowAttacksLevel13AndOver($weapon_proficiency_id) {
+
+            $has_rapid_reload = $this->getPlayerCharacterSkillSet()->getAllSkillInstances(RAPID_RELOAD);
+            switch($weapon_proficiency_id) {
+                    case LIGHT_CROSSBOW:
+                    case PISTOL_GRIP_CROSSBOW:
+                        if ($has_rapid_reload) {
+                            $attacks_per_round = AttacksPerRound::SevenEvery2;
+                        } else {
+                            $attacks_per_round = AttacksPerRound::Three;
+                        }
+                        break;
+                    case GREAT_CROSSBOW:
+                        $attacks_per_round = AttacksPerRound::One;
+                        break;
+                    case HEAVY_CROSSBOW:
+                        $attacks_per_round = AttacksPerRound::ThreeEvery2;
+                        break;
+                    case HAND_CROSSBOW:
+                        $attacks_per_round = AttacksPerRound::FiveEvery2;
+                        break;
+                    case Dokyu:
+                        $attacks_per_round = AttacksPerRound::Two;
+                        break;
+                    default:
+                        $attacks_per_round = AttacksPerRound::One;
+                }
 
             return $attacks_per_round;
         }
@@ -404,6 +476,10 @@
 
                 $level_index++;
             } while (true);
+        }
+
+        private function isRapidReloadCrossbowType($weapon_proficiency_id) {
+            return $weapon_proficiency_id == LIGHT_CROSSBOW || $weapon_proficiency_id == GREAT_CROSSBOW || $weapon_proficiency_id == PISTOL_GRIP_CROSSBOW;
         }
     }
 ?>
