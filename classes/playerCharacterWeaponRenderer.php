@@ -198,10 +198,7 @@ abstract class PlayerCharacterWeaponRenderer {
                 break;
 
             case AttacksPerRound::ThreeEvery2:
-                if ($physical_weapon_style_1_attack) {
-                    $weapon_speed_final = $weapon_speed . '/(EoR)';
-                }
-
+                $weapon_speed_final = $weapon_speed . '/(EoR)';
                 break;
 
             case AttacksPerRound::Two:
