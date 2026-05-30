@@ -13,6 +13,7 @@
     require_once __DIR__ . '/../../dbio/constants/weaponType.php';
     require_once __DIR__ . '/../../dbio/constants/weaponSubtype.php';
     require_once __DIR__ . '/../../dbio/constants/characterRaces.php';
+    require_once __DIR__ . '/../../dbio/constants/characterClasses.php';
     require_once __DIR__ . '/../../webio/craftStatus.php';
 
     class MissileShortRangeDamageRmCollectionCalculator extends RmCollectionCalculator {
@@ -157,7 +158,7 @@
 
         private function getHurledWeaponBonus(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
             $is_hurled_weapon = isWeaponHurled($player_character_weapon->getWeaponProficiencyId());
-            $is_not_arcane_spellcaster = !$character_details->isArcaneSpellcaster();
+            $is_not_arcane_spellcaster = !$this->isOnlyArcaneSpellcaster($character_details);
             $is_proficient = $player_character_weapon->getIsProficient();
 
             // Note : if the character has Power Throw, strength as ALREADY been applied to Damage
@@ -183,6 +184,15 @@
             }
 
             return $rm_composite_bow;
+        }
+
+        private function isOnlyArcaneSpellcaster(CharacterDetails $character_details) {
+            $is_only_spell_caster = false;
+            $class_count = $character_details->classCount();
+            $primary_class_id = $character_details->getPrimaryClass();
+
+            $is_only_spell_caster = ($class_count == 1 && ($primary_class_id == MAGIC_USER || $primary_class_id == ILLUSIONIST || $primary_class_id == WU_JEN || $primary_class_id == GREATER_MAGE));
+            return $is_only_spell_caster;
         }
     }
 ?>

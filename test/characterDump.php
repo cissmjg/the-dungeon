@@ -1,5 +1,6 @@
 <?php
     require_once __DIR__ . '/../classes/characterDetails.php';
+    require_once __DIR__ . '/../classes/characterSummaryRenderer.php';
     require_once __DIR__ . '/../classes/playerCharacterSkill.php';
     require_once __DIR__ . '/../classes/playerCharacterSkillSet.php';
     require_once __DIR__ . '/../classes/PlayerCharacterWeapon.php';
@@ -78,4 +79,9 @@
             echo '           Long:    [' . $player_character_weapon->getMissileLongRange() . ']' . PHP_EOL;
         }
     }
+
+    $character_summary_renderer = new CharacterSummaryRenderer($character_name);
+    $character_stats = $character_summary_renderer->renderCharacterDetails($character_details);
+
+    echo $character_stats;
 ?>

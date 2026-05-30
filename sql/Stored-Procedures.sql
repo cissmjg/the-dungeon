@@ -1071,6 +1071,7 @@ BEGIN
 		player_character.intelligence AS player_character_intelligence,
 		player_character.name AS player_character_name,
 		player_character.strength AS player_character_strength,
+		player_character.super_charisma AS player_character_super_charisma,
 		player_character.super_dexterity AS player_character_super_dexterity,
 		player_character.super_intelligence AS player_character_super_intelligence,
 		player_character.super_constitution AS player_character_super_constitution,
@@ -1133,7 +1134,7 @@ CREATE PROCEDURE getCharacterSummary
 BEGIN
 	SELECT strength, super_strength, intelligence, super_intelligence,
            wisdom, super_wisdom, dexterity, super_dexterity,
-           constitution, super_constitution, charisma, comeliness, armor_class, hit_points, spell_points
+           constitution, super_constitution, charisma, super_charisma, comeliness, armor_class, hit_points, spell_points
 	FROM player_character
 	JOIN player ON player.id = player_character.player_id
 	WHERE player_character.name = characterName
@@ -2265,6 +2266,58 @@ BEGIN
             wisdom = characterWisdom, super_wisdom = characterSuperWisdom, dexterity = characterDexterity, super_dexterity = characterSuperDexterity,
 			constitution = characterConstitution, super_constitution = characterSuperConstitution, charisma = characterCharisma, comeliness = characterComeliness, 
 			race_id = raceId, armor_class = armorClass, armor_bulk_factor = armorBulkFactor, hit_points = hitPoints, gender = genderIn
+	WHERE player_id = playerId AND name = characterName; 
+END
+
+CREATE PROCEDURE updateBaseCharacter2
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64),
+ IN characterStrength INT,
+ IN characterSuperStrength INT,
+ IN characterIntelligence INT,
+ IN characterSuperIntelligence INT,
+ IN characterWisdom INT,
+ IN characterSuperWisdom INT,
+ IN characterDexterity INT,
+ IN characterSuperDexterity INT,
+ IN characterConstitution INT,
+ IN characterSuperConstitution INT,
+ IN characterCharisma INT,
+ IN characterSuperCharisma INT,
+ IN characterComeliness INT,
+ IN raceId INT,
+ IN armorClass INT,
+ IN armorBulkFactor INT,
+ IN hitPoints INT,
+ IN genderIn CHAR(1))
+BEGIN
+	DECLARE playerId INT DEFAULT 0;
+	
+	SELECT id
+	INTO playerId
+	FROM player
+	WHERE player.name = playerName;
+	
+	UPDATE player_character
+		SET 
+			strength = characterStrength, 
+			super_strength = characterSuperStrength, 
+			intelligence = characterIntelligence, 
+			super_intelligence = characterSuperIntelligence, 
+            wisdom = characterWisdom, 
+			super_wisdom = characterSuperWisdom, 
+			dexterity = characterDexterity, 
+			super_dexterity = characterSuperDexterity,
+			constitution = characterConstitution, 
+			super_constitution = characterSuperConstitution, 
+			charisma = characterCharisma, 
+			super_charisma = characterSuperCharisma,
+			comeliness = characterComeliness,
+			race_id = raceId, 
+			armor_class = armorClass, 
+			armor_bulk_factor = 
+			armorBulkFactor, hit_points = hitPoints, 
+			gender = genderIn
 	WHERE player_id = playerId AND name = characterName; 
 END
 

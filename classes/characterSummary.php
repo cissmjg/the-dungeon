@@ -13,6 +13,7 @@ class CharacterSummary implements JsonSerializable
 	private $constitution;
 	private $super_constitution;
 	private $charisma;
+	private $super_charisma;
 	private $comeliness;
 	private $armor_class;
 	private $hit_points;
@@ -38,6 +39,7 @@ class CharacterSummary implements JsonSerializable
 		$this->constitution = $character_stats['constitution'];
 		$this->super_constitution = $character_stats['super_constitution'];
 		$this->charisma = $character_stats['charisma'];
+		$this->super_charisma = $character_stats['super_charisma'];
 		$this->comeliness = $character_stats['comeliness'];
 		$this->armor_class = $character_stats['armor_class'];
 		$this->hit_points = $character_stats['hit_points'];
@@ -161,6 +163,10 @@ class CharacterSummary implements JsonSerializable
 		return $this->charisma;
 	}
 
+	public function getSuperCharisma() {
+		return $this->super_charisma;
+	}
+
 	public function getComeliness() {
 		return $this->comeliness;
 	}
@@ -244,6 +250,19 @@ class CharacterSummary implements JsonSerializable
 				$output .= '/00';
 			} else {
 				$output .= '/' . sprintf("%02d", $this->getSuperConstitution());
+			}
+		}
+
+		return $output;
+	}
+
+	public function formatCharisma() {
+		$output = $this->getCharisma();
+		if ($this->getSuperCharisma() != null) {
+			if ($this->getSuperCharisma() == 100) {
+				$output .= '/00';
+			} else {
+				$output .= '/' . sprintf("%02d", $this->getSuperCharisma());
 			}
 		}
 
