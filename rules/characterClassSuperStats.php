@@ -18,6 +18,7 @@ $character_super_stats[PALADIN] = [];
 $character_super_stats[PALADIN][] = CHARACTER_STRENGTH;
 $character_super_stats[PALADIN][] = CHARACTER_DEXTERITY;
 $character_super_stats[PALADIN][] = CHARACTER_CONSTITUTION;
+$character_super_stats[PALADIN][] = CHARACTER_CHARISMA;
 
 $character_super_stats[RANGER] = [];
 $character_super_stats[RANGER][] = CHARACTER_STRENGTH;

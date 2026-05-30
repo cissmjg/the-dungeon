@@ -32,7 +32,7 @@ class CharacterSummaryRenderer
         $output_html .= '</strong>';
 
         $output_html .= ' | <strong>';
-        $output_html .= 'Ch: ' . $character_summary->getCharisma();
+        $output_html .= 'Ch: ' . $character_summary->formatCharisma();
         $output_html .= '</strong>';
 
         $output_html .= ' | <strong>';
@@ -68,7 +68,7 @@ class CharacterSummaryRenderer
         $output_html .= '</strong>';
 
         $output_html .= ' | <strong>';
-        $output_html .= 'Ch: ' . $character_details->getCharacterCharisma();
+        $output_html .= 'Ch: ' . $character_details->formatCharisma();
         $output_html .= '</strong>';
 
         $output_html .= ' | <strong>';

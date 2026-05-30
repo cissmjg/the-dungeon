@@ -21,6 +21,7 @@ class CharacterDetails implements JsonSerializable
 	private $characterConstitution;
 	private $characterSuperConstitution;
 	private $characterCharisma;
+	private $characterSuperCharisma;
 	private $characterComeliness;
 	private $armorClass;
 	private $armorBulkFactor;
@@ -99,6 +100,7 @@ class CharacterDetails implements JsonSerializable
 		$this->characterConstitution = $character_details_json->characterConstitution;
 		$this->characterSuperConstitution = $character_details_json->characterSuperConstitution;
 		$this->characterCharisma = $character_details_json->characterCharisma;
+		$this->characterSuperCharisma = $character_details_json->characterSuperCharisma;
 		$this->characterComeliness = $character_details_json->characterComeliness;
 		$this->armorClass = $character_details_json->armorClass;
 		$this->armorBulkFactor = $character_details_json->armorBulkFactor;
@@ -188,6 +190,7 @@ class CharacterDetails implements JsonSerializable
 		$this->characterConstitution = $character_stats_class['player_character_constitution'];
 		$this->characterSuperConstitution = $character_stats_class['player_character_super_constitution'];
 		$this->characterCharisma = $character_stats_class['player_character_charisma'];
+		$this->characterSuperCharisma = $character_stats_class['player_character_super_charisma'];
 		$this->characterComeliness = $character_stats_class['player_character_comeliness'];
 		$this->armorClass = $character_stats_class['player_character_armor_class'];
 		$this->armorBulkFactor = $character_stats_class['player_character_armor_bulk_factor'];
@@ -335,6 +338,23 @@ class CharacterDetails implements JsonSerializable
 
 	public function getCharacterCharisma() {
 		return $this->characterCharisma;
+	}
+
+	public function getCharacterSuperCharisma() {
+		return $this->characterSuperCharisma;
+	}
+
+	public function formatCharisma() {
+		$output = $this->getCharacterCharisma();
+		if ($this->getCharacterSuperCharisma() != null) {
+			if ($this->getCharacterSuperCharisma() == 100) {
+				$output .= '/00';
+			} else {
+				$output .= '/' . sprintf("%02d", $this->getCharacterSuperCharisma());
+			}
+		}
+
+		return $output;
 	}
 
 	public function getCharacterComeliness() {

@@ -135,7 +135,7 @@ function getClassID($class_name) {
 }
 
 function isArcaneSpellcaster($class_id) {
-    return ($class_id == MAGIC_USER || $class_id == ILLUSIONIST || $class_id == WU_JEN || $class_id == ARCHER || $class_id == GREATER_MAGE || $class_id == GREATER_MAGE || $class_id == HEALER || $class_id == NEW_BARD || $class_id == ARCHER_RANGER);
+    return ($class_id == MAGIC_USER || $class_id == ILLUSIONIST || $class_id == WU_JEN || $class_id == ARCHER || $class_id == RANGER || $class_id == GREATER_MAGE || $class_id == HEALER || $class_id == NEW_BARD || $class_id == ARCHER_RANGER);
 }
 
 function isDivineSpellcaster($class_id) {

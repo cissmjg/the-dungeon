@@ -31,6 +31,7 @@ filterAndSanitizeSuperDexterity($input, $errors);
 filterAndSanitizeConstitution($input, $errors);
 filterAndSanitizeSuperConstitution($input, $errors);
 filterAndSanitizeCharisma($input, $errors);
+filterAndSanitizeSuperCharisma($input, $errors);
 filterAndSanitizeComeliness($input, $errors);
 filterAndSanitizeArmorClass($input, $errors);
 filterAndSanitizeArmorBulkFactor($input, $errors);
@@ -100,7 +101,7 @@ exit;
 function updateBaseCharacter(\PDO $pdo, $input, &$errors) {
 
 	$null_value = NULL;
-	$sql_exec = "CALL updateBaseCharacter(:playerName, :characterName, :characterStrength, :characterSuperStrength, :characterIntelligence, :characterSuperIntelligence, :characterWisdom, :characterSuperWisdom, :characterDexterity, :characterSuperDexterity, :characterConstitution, :characterSuperConstitution, :characterCharisma, :characterComeliness, :raceId, :armorClass, :armorBulkFactor, :hitPoints, :genderIn)";
+	$sql_exec = "CALL updateBaseCharacter(:playerName, :characterName, :characterStrength, :characterSuperStrength, :characterIntelligence, :characterSuperIntelligence, :characterWisdom, :characterSuperWisdom, :characterDexterity, :characterSuperDexterity, :characterConstitution, :characterSuperConstitution, :characterCharisma, :characterSuperCharisma, :characterComeliness, :raceId, :armorClass, :armorBulkFactor, :hitPoints, :genderIn)";
 
 	$statement = $pdo->prepare($sql_exec);
 	$statement->bindParam(':playerName', $input[PLAYER_NAME], PDO::PARAM_STR);
@@ -136,6 +137,11 @@ function updateBaseCharacter(\PDO $pdo, $input, &$errors) {
 		$statement->bindParam(':characterSuperConstitution', $null_value, PDO::PARAM_NULL);
 	}
 	$statement->bindParam(':characterCharisma', $input[CHARACTER_CHARISMA], PDO::PARAM_INT);
+	if (!empty($input[CHARACTER_SUPER_CHARISMA])) {
+		$statement->bindParam(':characterSuperCharisma', $input[CHARACTER_SUPER_CHARISMA], PDO::PARAM_INT);
+	} else {
+		$statement->bindParam(':characterSuperCharisma', $null_value, PDO::PARAM_NULL);
+	}
 	$statement->bindParam(':characterComeliness', $input[CHARACTER_COMELINESS], PDO::PARAM_INT);
 	$statement->bindParam(':raceId', $input[CHARACTER_RACE_ID], PDO::PARAM_INT);
 	$statement->bindParam(':armorClass', $input[CHARACTER_ARMOR_CLASS], PDO::PARAM_INT);
@@ -336,6 +342,10 @@ function filterAndSanitizeSuperConstitution(&$input, $errors) {
 
 function filterAndSanitizeCharisma(&$input, &$errors) {
 	filterAndSantizeIntegerFormField($input, $errors, CHARACTER_CHARISMA);
+}
+
+function filterAndSanitizeSuperCharisma(&$input, &$errors) {
+	filterAndSantizeOptionalIntegerFormField($input, $errors, CHARACTER_SUPER_CHARISMA);
 }
 
 function filterAndSanitizeComeliness(&$input, &$errors) {

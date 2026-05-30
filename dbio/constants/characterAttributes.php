@@ -15,6 +15,7 @@
     const CHARACTER_CONSTITUTION_RAW = 'characterConstitutionRaw';
     const CHARACTER_SUPER_CONSTITUTION = 'characterSuperConstitution';
     const CHARACTER_CHARISMA = 'characterCharisma';
+    const CHARACTER_SUPER_CHARISMA = 'characterSuperCharisma';
     const CHARACTER_CHARISMA_RAW = 'characterCharismaRaw';
     const CHARACTER_COMELINESS = 'characterComeliness';
     const CHARACTER_COMELINESS_RAW = 'characterComelinessRaw';
