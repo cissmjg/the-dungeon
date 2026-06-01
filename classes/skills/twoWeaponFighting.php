@@ -35,7 +35,7 @@
             $base_qualified = parent::isCharacterQualified($character_details, $player_character_skill_set);
 
             $weapon_melee_satisfied = ($this->weapon_detail->getMeleeWeaponType() == WEAPON_TYPE_MELEE);
-            $weapon_hands_satisfied = ($this->weapon_detail->getMeleeWeaponNumberOfHands() == 1);
+            $weapon_hands_satisfied = ($this->weapon_detail->getMeleeWeaponNumberOfHands() == '1' || $this->weapon_detail->getMeleeWeaponNumberOfHands() == '1/2');
             $this->weapon_qualification_satisfied = $weapon_melee_satisfied && $weapon_hands_satisfied;
 
             return $base_qualified && $this->weapon_qualification_satisfied;

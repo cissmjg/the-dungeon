@@ -39,17 +39,8 @@ $player_character_weapon2->init($pdo, $input[PLAYER_CHARACTER_WEAPON2_ID], $play
 
 $weapon1_melee_speed = 100;
 $weapon2_melee_speed = 100;
-if ($player_character_weapon1->getWeaponProficiencyId() == BATTLE_AXE) {
-    $weapon1_melee_speed = 7;
-} else {
-    $weapon1_melee_speed = $player_character_weapon1->getMeleeWeaponSpeed();
-}
-
-if ($player_character_weapon2->getWeaponProficiencyId() == BATTLE_AXE) {
-    $weapon2_melee_speed = 7;
-} else {
-    $weapon2_melee_speed = $player_character_weapon2->getMeleeWeaponSpeed();
-}
+$weapon1_melee_speed = $player_character_weapon1->extractOneHandWeaponSpeedForDualSpeedWeapon();
+$weapon2_melee_speed = $player_character_weapon2->extractOneHandWeaponSpeedForDualSpeedWeapon();
 
 $main_hand_weapon_id = 0;
 $off_hand_weapon_id = 0;

@@ -95,8 +95,8 @@ function adjustForHalfOrc(&$input, &$errors) {
     $input[CHARACTER_WISDOM] = $input[CHARACTER_WISDOM_RAW];
     $input[CHARACTER_DEXTERITY] = $input[CHARACTER_DEXTERITY_RAW];
     $input[CHARACTER_CONSTITUTION] = $input[CHARACTER_CONSTITUTION_RAW] + 1;
-    $input[CHARACTER_CHARISMA] = $input[CHARACTER_CHARISMA_RAW];
-    $input[CHARACTER_COMELINESS] = $input[CHARACTER_COMELINESS_RAW] - 2;
+    $input[CHARACTER_CHARISMA] = $input[CHARACTER_CHARISMA_RAW] -2;
+    $input[CHARACTER_COMELINESS] = $input[CHARACTER_COMELINESS_RAW];
 }
 
 function adjustForHalfling(&$input, &$errors) {
