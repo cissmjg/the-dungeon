@@ -1904,7 +1904,7 @@ SELECT
     weapon_proficiency.id AS weapon_proficiency_id
 FROM weapon_proficiency
 JOIN weapon_catalog ON weapon_catalog.weapon_proficiency_id = weapon_proficiency.id
-WHERE weapon_catalog.number_of_hands = 1 AND weapon_catalog.type = 1 AND weapon_proficiency.id IN
+WHERE (weapon_catalog.number_of_hands = '1' OR weapon_catalog.number_of_hands = '1/2') AND weapon_catalog.type = 1 AND weapon_proficiency.id IN
 (
 	SELECT 
     	player_character_skill.weapon_proficiency_id
@@ -2234,42 +2234,6 @@ BEGIN
 END
 
 CREATE PROCEDURE updateBaseCharacter
-(IN playerName VARCHAR(32),
- IN characterName VARCHAR(64),
- IN characterStrength INT,
- IN characterSuperStrength INT,
- IN characterIntelligence INT,
- IN characterSuperIntelligence INT,
- IN characterWisdom INT,
- IN characterSuperWisdom INT,
- IN characterDexterity INT,
- IN characterSuperDexterity INT,
- IN characterConstitution INT,
- IN characterSuperConstitution INT,
- IN characterCharisma INT,
- IN characterComeliness INT,
- IN raceId INT,
- IN armorClass INT,
- IN armorBulkFactor INT,
- IN hitPoints INT,
- IN genderIn CHAR(1))
-BEGIN
-	DECLARE playerId INT DEFAULT 0;
-	
-	SELECT id
-	INTO playerId
-	FROM player
-	WHERE player.name = playerName;
-	
-	UPDATE player_character
-		SET strength = characterStrength, super_strength = characterSuperStrength, intelligence = characterIntelligence, super_intelligence = characterSuperIntelligence, 
-            wisdom = characterWisdom, super_wisdom = characterSuperWisdom, dexterity = characterDexterity, super_dexterity = characterSuperDexterity,
-			constitution = characterConstitution, super_constitution = characterSuperConstitution, charisma = characterCharisma, comeliness = characterComeliness, 
-			race_id = raceId, armor_class = armorClass, armor_bulk_factor = armorBulkFactor, hit_points = hitPoints, gender = genderIn
-	WHERE player_id = playerId AND name = characterName; 
-END
-
-CREATE PROCEDURE updateBaseCharacter2
 (IN playerName VARCHAR(32),
  IN characterName VARCHAR(64),
  IN characterStrength INT,

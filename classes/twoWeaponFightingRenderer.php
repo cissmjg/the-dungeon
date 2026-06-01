@@ -120,10 +120,12 @@ class TwoWeaponFightingRenderer extends PlayerCharacterWeaponRenderer {
         $hit_dmg_adj = $hit_adj . '/' . $dmg_adj;
 
         $weapon_speed_base = 200;
+        $main_hand_speed = $this->main_hand_weapon->extractOneHandWeaponSpeedForDualSpeedWeapon();
+        $off_hand_speed = $this->off_hand_weapon->extractOneHandWeaponSpeedForDualSpeedWeapon();
         if ($two_weapon_fighting_hand == TWO_WEAPON_FIGHTING_OFF_HAND) {
-            $weapon_speed_base = $this->main_hand_weapon->getMeleeWeaponSpeed() + $this->off_hand_weapon->getMeleeWeaponSpeed();
+            $weapon_speed_base = $main_hand_speed + $off_hand_speed;
         } else {
-            $weapon_speed_base = $player_character_weapon->getMeleeWeaponSpeed();
+            $weapon_speed_base = $main_hand_speed;
         }
 
         $weapon_desc  = $this->buildRmChevronClickIcon($weapon_panel_name, $weapon_panel_icon_name, $weapon_panel_icon_name);

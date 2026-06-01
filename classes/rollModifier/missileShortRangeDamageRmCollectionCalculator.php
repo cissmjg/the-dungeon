@@ -189,7 +189,7 @@
         private function isOnlyArcaneSpellcaster(CharacterDetails $character_details) {
             $is_only_spell_caster = false;
             $class_count = $character_details->classCount();
-            $primary_class_id = $character_details->getPrimaryClass();
+            $primary_class_id = $character_details->getPrimaryClass()->getClassId();
 
             $is_only_spell_caster = ($class_count == 1 && ($primary_class_id == MAGIC_USER || $primary_class_id == ILLUSIONIST || $primary_class_id == WU_JEN || $primary_class_id == GREATER_MAGE));
             return $is_only_spell_caster;

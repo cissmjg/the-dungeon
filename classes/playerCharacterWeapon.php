@@ -275,6 +275,17 @@ class PlayerCharacterWeapon implements JsonSerializable {
         return $this->weaponDescription == $circle_kick_name || $this->weaponDescription == $mantis_leap_name;
     }
 
+    public function extractOneHandWeaponSpeedForDualSpeedWeapon() {
+        $delimiter = '/';
+        $one_hand_speed = $this->getMeleeWeaponSpeed();
+        if (str_contains($this->getMeleeNumberOfHands(), $delimiter)) {
+            $dual_weapon_speeds = explode($delimiter, $this->getMeleeWeaponSpeed());
+            $one_hand_speed = $dual_weapon_speeds[0];
+        } 
+
+        return $one_hand_speed;
+    }
+
 	// function called when encoded with json_encode
     public function jsonSerialize(): mixed
     {
