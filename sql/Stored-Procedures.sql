@@ -904,6 +904,21 @@ BEGIN
 	DELETE FROM player_character_two_weapon_fighting WHERE id = playerCharacterTwoWeaponConfigId;
 END
 
+CREATE PROCEDURE deleteTwoWeaponConfigurationForPlayerCharacter
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64))
+BEGIN
+	DECLARE playerCharacterId INT DEFAULT 0;
+	
+	SELECT player_character.id 
+	INTO playerCharacterId
+	FROM player_character
+	JOIN player ON player.id = player_character.player_id
+	WHERE player.name = playerName AND player_character.name = characterName;
+
+	DELETE FROM player_character_two_weapon_fighting WHERE player_character_id = playerCharacterId;
+END
+
 CREATE PROCEDURE deleteWeaponForPlayerCharacter
 (IN characterWeaponId INT)
 BEGIN
@@ -1383,6 +1398,12 @@ BEGIN
 	FROM player_cred
 	JOIN player ON player.id = player_cred.player_id
 	WHERE player.name = playerName AND player_cred.session_ticket = sessionTicket 
+END
+
+CREATE PROCEDURE getSkillCatalogIdFromPlayerCharacterSkillId
+(IN playerCharacterSkillId INT)
+BEGIN
+	SELECT skill_catalog_id FROM player_character_skill WHERE id = playerCharacterSkillId;
 END
 
 CREATE PROCEDURE getSkillListForPlayerCharacter
@@ -2017,8 +2038,10 @@ BEGIN
 		player_character_weapon.id AS player_character_weapon_id,
 		player_character_weapon.description AS player_character_weapon_description,
 		player_character_weapon.location AS player_character_weapon_location,
-		player_character_weapon.craft_status AS player_character_weapon_craft_status
-	FROM player_character_weapon 
+		player_character_weapon.craft_status AS player_character_weapon_craft_status,
+		weapon_proficiency.name AS weapon_proficiency_name
+	FROM player_character_weapon
+	JOIN weapon_proficiency ON weapon_proficiency.id = player_character_weapon.weapon_proficiency_id
 	WHERE 
 		player_character_weapon.player_character_id = playerCharacterId AND
 		player_character_weapon.weapon_proficiency_id = weaponProficiencyId;

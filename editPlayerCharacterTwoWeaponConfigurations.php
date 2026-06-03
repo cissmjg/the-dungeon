@@ -143,7 +143,14 @@ function buildWeaponListOptions(\PDO $pdo, $player_name, $chracter_name, $weapon
         die(json_encode($errors));
     }
 
-    $weapon_list_options = '<option value="0">' . SELECT_WEAPON_PROMPT . '</option>' . PHP_EOL;
+    $weapon_list_options = '';
+    if (count($weapon_list) > 0) {
+        $first_weapon = $weapon_list[0];
+        $weapon_proficiency_name = $first_weapon['weapon_proficiency_name'];
+        $weapon_list_options .= '<optgroup label="' . $weapon_proficiency_name . '">' . PHP_EOL;
+    }
+
+    $weapon_list_options .= '<option value="0">' . SELECT_WEAPON_PROMPT . '</option>' . PHP_EOL;
     foreach($weapon_list AS $weapon) {
         $desc = $weapon['player_character_weapon_description'];
         if (!empty($weapon['player_character_weapon_location'])) {
@@ -159,6 +166,7 @@ function buildWeaponListOptions(\PDO $pdo, $player_name, $chracter_name, $weapon
         $weapon_list_options .= '<option value="' . $weapon['player_character_weapon_id'] . '">' . $desc . '</option>' . PHP_EOL;
     }
 
+    $weapon_list_options .= '</optgroup>' . PHP_EOL;
     return $weapon_list_options;
 }
 

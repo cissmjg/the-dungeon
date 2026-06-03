@@ -208,16 +208,26 @@ $action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
             $improved_critical->setWeaponDetail($weapon_detail);
             echo $improved_critical->render($character_details, $player_character_skill_set);
 
+            $cleric_preferred_weapon = new ClericsPreferredWeapon($the_skill_catalog, $form_id_lookup);
+            $cleric_preferred_weapon->setWeaponProficiencyValue($current_weapon_proficiency_id);
+            $cleric_preferred_weapon->setClericsPreferredWeapon($clerics_preferred_weapons);
+            echo $cleric_preferred_weapon->render($character_details, $player_character_skill_set);
+
             $two_weapon_fighting = new TwoWeaponFighting($the_skill_catalog, $form_id_lookup);
             $two_weapon_fighting->setWeaponProficiencyValue($current_weapon_proficiency_id);
             $two_weapon_fighting->setWeaponDetail($weapon_detail);
             $two_weapon_fighting->setOneHandedWeapons($one_handed_weapon_proficiencies);
             echo $two_weapon_fighting->render($character_details, $player_character_skill_set);
 
-            $cleric_preferred_weapon = new ClericsPreferredWeapon($the_skill_catalog, $form_id_lookup);
-            $cleric_preferred_weapon->setWeaponProficiencyValue($current_weapon_proficiency_id);
-            $cleric_preferred_weapon->setClericsPreferredWeapon($clerics_preferred_weapons);
-            echo $cleric_preferred_weapon->render($character_details, $player_character_skill_set);
+            if (count($player_character_skill_set->getAllSkillInstances(TWO_WEAPON_FIGHTING)) > 0) {
+                echo '<div>&nbsp;</div>' . PHP_EOL;
+                $url = CurlHelper::buildUrl('editPlayerCharacterTwoWeaponConfigurations');
+                $url = CurlHelper::addParameter($url, PLAYER_NAME, $input[PLAYER_NAME]);
+                $url = CurlHelper::addParameter($url, CHARACTER_NAME, $input[CHARACTER_NAME]);
+                echo '<div>' . PHP_EOL;
+                echo '    <a style="padding-left: 5px;" href="' . $url . '"><span class="fa-solid fa-gear" style="cursor: pointer; color: SeaGreen;"></span> Set up two weapon fighting configurations</a>' . PHP_EOL; 
+                echo '</div>' . PHP_EOL;
+            }
 
             if ($debug_skills) {
                 $debug_output .= $quick_draw->dump();
