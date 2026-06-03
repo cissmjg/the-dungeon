@@ -10,6 +10,7 @@ require_once __DIR__ . '/helper/CurlHelper.php';
 require_once __DIR__ . '/helper/RestHeaderHelper.php';
 require_once __DIR__ . '/helper/WebParameterHelper.php';
 require_once __DIR__ . '/characterActionRoutes.php';
+require_once __DIR__ . '/dbio/constants/skills.php';
 
 require_once __DIR__ . '/webio/requiredParameter.php';
 
@@ -1099,7 +1100,11 @@ switch($character_action) {
 		$raw_result = CurlHelper::performGetRequest($url_add_talent, $params_add_talent);
 		$result = json_decode($raw_result);
 		if (str_starts_with($result[0], "SUCCESS|")) {
-			$location_header = buildEditWeaponTalentsRedirect($input);
+			if ($input[SKILL_CATALOG_ID] == TWO_WEAPON_FIGHTING) {
+				$location_header = buildEditTwoWeaponConfigurations($input);
+			} else {
+				$location_header = buildEditWeaponTalentsRedirect($input);
+			}
 			header($location_header);
 			exit;
 		} else {
@@ -1728,6 +1733,7 @@ function buildAddSkillParams($input) {
 function buildDeleteWeaponTalentParams($input) {
 	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
+	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[PLAYER_CHARACTER_SKILL_ID] = $input[PLAYER_CHARACTER_SKILL_ID];
 	
 	return $params;
