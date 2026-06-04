@@ -274,5 +274,17 @@
         "is_preferred_cavalier_level5": null,
         "is_preferred_elven_cavalier_level4": null,
         "is_preferred_elven_cavalier_level6": null
+    },
+    {
+        "id": 678,
+        "skill_catalog_id": 158,
+        "player_character_skill_name": "Throw Anything",
+        "is_skill_focus": 0,
+        "weapon_proficiency_id": 118,
+        "weapon2_proficiency_id": null,
+        "is_preferred_cavalier_level3": null,
+        "is_preferred_cavalier_level5": null,
+        "is_preferred_elven_cavalier_level4": null,
+        "is_preferred_elven_cavalier_level6": null
     }
 ]

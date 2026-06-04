@@ -260,7 +260,7 @@ class PlayerCharacterWeapon implements JsonSerializable {
         if ($this->weaponProficiencyId == FIST) {
             $count_fist_of_iron = count($player_character_skill_set->getAllSkillInstances(FIST_OF_IRON));
             if ($count_fist_of_iron > 0) {
-                // Fist of Iron does not apply to Mantis Leap or Circle Kick
+                // Fist of Iron does not apply to Mantis Leap or Circle Kick or Throw Anything
                 if(!$this->isMartialSkillWeapon()) {
                     $this->meleeWeaponDamage .= ' ' . FistOfIron::formatFistOfIronDamage($count_fist_of_iron);
                 }
@@ -271,8 +271,9 @@ class PlayerCharacterWeapon implements JsonSerializable {
     public function isMartialSkillWeapon() {
         $circle_kick_name = getSkillDescriptionFromSkillId(CIRCLE_KICK);
         $mantis_leap_name = getSkillDescriptionFromSkillId(MANTIS_LEAP);
+        $throw_anything_name = getSkillDescriptionFromSkillId(THROW_ANYTHING);
 
-        return $this->weaponDescription == $circle_kick_name || $this->weaponDescription == $mantis_leap_name;
+        return $this->weaponDescription == $circle_kick_name || $this->weaponDescription == $mantis_leap_name || $this->weaponDescription == $throw_anything_name;
     }
 
     public function extractOneHandWeaponSpeedForDualSpeedWeapon() {

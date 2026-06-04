@@ -13,6 +13,7 @@ class WeaponSkillHelper {
 
         // Circle Kick will be 1 more than the maximum weapon weaponId
         // Mantis Leap will be 2 more than the maximum weapon weaponId
+        // Throw Anything will be 3 more than the maximum weaponId
         $max_weapon_id = WeaponSkillHelper::getMaxWeaponId($player_character_weapon_set);
         $circle_kick_name = getSkillDescriptionFromSkillId(CIRCLE_KICK);
 
@@ -44,6 +45,7 @@ class WeaponSkillHelper {
 
         // Circle Kick will be 1 more than the maximum weapon weaponId
         // Mantis Leap will be 2 more than the maximum weapon weaponId
+        // Throw Anything will be 3 more than the maximum weaponId
         $max_weapon_id = WeaponSkillHelper::getMaxWeaponId($player_character_weapon_set);
         $mantis_leap_name = getSkillDescriptionFromSkillId(MANTIS_LEAP);
 
@@ -65,6 +67,41 @@ class WeaponSkillHelper {
         $weapon_detail['player_character_weapon_attacks_per_round'] = 1;
         $weapon_detail['player_character_weapon_number_of_hands'] = 1;
         $weapon_detail['player_character_weapon_additional_text'] = '';
+
+        WeaponSkillHelper::buildNonMagicalProperties($weapon_detail);
+
+        return $weapon_detail;
+    }
+
+    public static function buildThrowAnythingWeapon(PlayerCharacterWeaponSet $player_character_weapon_set) {
+
+        // Circle Kick will be 1 more than the maximum weapon weaponId
+        // Mantis Leap will be 2 more than the maximum weapon weaponId
+        // Throw Anything will be 3 more than the maximum weaponId
+        $max_weapon_id = WeaponSkillHelper::getMaxWeaponId($player_character_weapon_set);
+        $throw_anything_name = getSkillDescriptionFromSkillId(THROW_ANYTHING);
+
+        $weapon_detail = [];
+        $weapon_detail['player_character_weapon_type'] = WEAPON_TYPE_MISSILE;
+        $weapon_detail['player_character_weapon_subtype'] = WEAPON_SUBTYPE_MISC_MISSILE;
+        $weapon_detail['player_character_weapon_id'] = $max_weapon_id + 3;
+        $weapon_detail['player_character_weapon_proficiency_id'] = FIST;
+        $weapon_detail['player_character_weapon_craft_status'] = CRAFT_STATUS_ARTISAN;
+        $weapon_detail['player_character_weapon_description'] = $throw_anything_name;
+        $weapon_detail['player_character_weapon_is_ready'] = false;
+        $weapon_detail['player_character_weapon_location'] = 'Hand';
+        $weapon_detail['player_character_weapon_player_note1'] = '';
+        $weapon_detail['player_character_weapon_player_note2'] = '';
+        $weapon_detail['player_character_weapon_player_note3'] = '';
+        $weapon_detail['player_character_weapon_strength_bonus_available'] = '';
+        $weapon_detail['player_character_weapon_speed'] = '???';
+        $weapon_detail['player_character_weapon_damage'] = '???';
+        $weapon_detail['player_character_weapon_attacks_per_round'] = 1;
+        $weapon_detail['player_character_weapon_number_of_hands'] = 1;
+        $weapon_detail['player_character_weapon_additional_text'] = 'Speed/Damage at DM discretion';
+        $weapon_detail['player_character_weapon_short_range'] = 2;
+        $weapon_detail['player_character_weapon_medium_range'] = 4;
+        $weapon_detail['player_character_weapon_long_range'] = 6;
 
         WeaponSkillHelper::buildNonMagicalProperties($weapon_detail);
 

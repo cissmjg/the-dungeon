@@ -98,7 +98,7 @@
                 $rm_attribute_desc = 'Zen Archery';
                 $rm_attribute_modifier = $attribute_metadata->getMagicalAttackAdjustment();
             // If the character has Brutal Throw, then apply strength hit bonus for hurled weapons
-            } else if ($has_brutal_throw && isWeaponHurled($player_character_weapon->getWeaponProficiencyId())) {
+            } else if ($has_brutal_throw && $this->doesHurledStrengthApply($player_character_weapon)) {
                 $rm_attribute_desc = 'Brutal Throw';
                 $rm_attribute_modifier = $attribute_metadata->getStrengthHitAdjustment();
             // Use dexterity Reaction/Missile adjustment
@@ -239,7 +239,7 @@
         }
 
         private function getHurledWeaponBonus(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
-            $is_hurled_weapon = isWeaponHurled($player_character_weapon->getWeaponProficiencyId());
+            $does_hurled_strength_apply = $this->doesHurledStrengthApply($player_character_weapon);
             $is_not_arcane_spellcaster = !$character_details->isArcaneSpellcaster();
             $is_proficient = $player_character_weapon->getIsProficient();
 
@@ -247,7 +247,7 @@
             $does_not_have_brutal_throw = empty($player_character_skill_set->getAllSkillInstances(BRUTAL_THROW));
 
             $rm_hurled_weapon = null;
-            if ($is_hurled_weapon && $is_proficient && $is_not_arcane_spellcaster && $does_not_have_brutal_throw) {
+            if ($does_hurled_strength_apply && $is_proficient && $is_not_arcane_spellcaster && $does_not_have_brutal_throw) {
                 $rm_hurled_weapon_desc = "Hurled Strength";
                 $rm_hurled_weapon_modifier = $attribute_metadata->getStrengthHitAdjustment();
 
@@ -266,6 +266,12 @@
             }
 
             return $rm_composite_bow;
+        }
+
+        private function doesHurledStrengthApply(PlayerCharacterWeapon $player_character_weapon) {
+            $weapon_description = $player_character_weapon->getWeaponDescription();
+            $throw_anything_name = getSkillDescriptionFromSkillId(THROW_ANYTHING);
+            return isWeaponHurled($player_character_weapon->getWeaponProficiencyId()) || ($weapon_description == $throw_anything_name);
         }
     }
 ?>

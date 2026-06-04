@@ -70,7 +70,7 @@
             $rm_attribute_modifier = 0;
 
             // If the character has Power Throw, then apply strength damage bonus for hurled weapons
-            if ($has_power_throw && isWeaponHurled($player_character_weapon->getWeaponProficiencyId())) {
+            if ($has_power_throw && $this->doesHurledStrengthApply($player_character_weapon)) {
                 $rm_attribute_desc = 'Power Throw';
                 $rm_attribute_modifier = $attribute_metadata->getStrengthDamageAdjustment();
                 $rm_attribute_damage = new RmFactor($rm_attribute_desc, $rm_attribute_modifier);
@@ -157,7 +157,7 @@
         }
 
         private function getHurledWeaponBonus(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
-            $is_hurled_weapon = isWeaponHurled($player_character_weapon->getWeaponProficiencyId());
+            $is_hurled_weapon = $this->doesHurledStrengthApply($player_character_weapon);
             $is_not_arcane_spellcaster = !$this->isOnlyArcaneSpellcaster($character_details);
             $is_proficient = $player_character_weapon->getIsProficient();
 
@@ -194,5 +194,12 @@
             $is_only_spell_caster = ($class_count == 1 && ($primary_class_id == MAGIC_USER || $primary_class_id == ILLUSIONIST || $primary_class_id == WU_JEN || $primary_class_id == GREATER_MAGE));
             return $is_only_spell_caster;
         }
+        
+        private function doesHurledStrengthApply(PlayerCharacterWeapon $player_character_weapon) {
+            $weapon_description = $player_character_weapon->getWeaponDescription();
+            $throw_anything_name = getSkillDescriptionFromSkillId(THROW_ANYTHING);
+            return isWeaponHurled($player_character_weapon->getWeaponProficiencyId()) || ($weapon_description == $throw_anything_name);
+        }
+
     }
 ?>
