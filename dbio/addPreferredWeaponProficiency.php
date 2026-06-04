@@ -31,7 +31,7 @@ getWeaponProficiencyId($errors, $input);
 
 $character_level = $input[CHARACTER_LEVEL];
 
-if ($input[CHARACTER_CLASS_ID] == CAVALIER) {
+if ($input[CHARACTER_CLASS_ID] == CAVALIER || $input[CHARACTER_CLASS_ID] == PALADIN) {
     if ($character_level == 3 || $character_level == 5) {
         addPreferredWeaponForCavalier($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $character_level, $input[WEAPON_PROFICIENCY_ID], $errors);
         if (count($errors) > 0) {

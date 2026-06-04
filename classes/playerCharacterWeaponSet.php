@@ -81,6 +81,14 @@ class playerCharacterWeaponSet implements IteratorAggregate, JsonSerializable {
             $player_character_weapon->populate($player_character_weapon_properties, $player_character_skill_set);
             $this->add($player_character_weapon);
         }
+
+        $has_throw_anything = count($player_character_skill_set->getAllSkillInstances(THROW_ANYTHING)) > 0;
+        if ($has_throw_anything) {
+            $player_character_weapon_properties = WeaponSkillHelper::buildThrowAnythingWeapon($this);
+            $player_character_weapon = New PlayerCharacterWeapon();
+            $player_character_weapon->populate($player_character_weapon_properties, $player_character_skill_set);
+            $this->add($player_character_weapon);
+        }
     }
 
     public function jsonSerialize(): mixed {

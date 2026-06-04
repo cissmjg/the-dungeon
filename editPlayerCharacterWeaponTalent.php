@@ -51,6 +51,7 @@ require_once __DIR__ . '/classes/skills/weaponFocusGreaterTechnique.php';
 require_once __DIR__ . '/classes/skills/weaponSpecialization.php';
 require_once __DIR__ . '/classes/skills/weaponDoubleSpecialization.php';
 require_once __DIR__ . '/classes/skills/quickDraw.php';
+require_once __DIR__ . '/classes/skills/throwAnything.php';
 require_once __DIR__ . '/classes/skills/twoWeaponFighting.php';
 
 // Populate player and character names in $input
@@ -156,16 +157,21 @@ $action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
             $circle_kick = new CircleKick($the_skill_catalog, $form_id_lookup);
             $circle_kick->setWeaponProficiencyValue($current_weapon_proficiency_id);
 
+            $throw_anything = new ThrowAnything($the_skill_catalog, $form_id_lookup);
+            $throw_anything->setWeaponProficiencyValue($current_weapon_proficiency_id);
+
             echo $dirty_fighting->render($character_details, $player_character_skill_set);
             echo $fist_of_iron->render($character_details, $player_character_skill_set);
             echo $mantis_leap->render($character_details, $player_character_skill_set);
             echo $circle_kick->render($character_details, $player_character_skill_set);
+            echo $throw_anything->render($character_details, $player_character_skill_set);
 
             if ($debug_skills) {
                 $debug_output .= $dirty_fighting->dump();
                 $debug_output .= $fist_of_iron->dump();
                 $debug_output .= $mantis_leap->dump();
                 $debug_output .= $circle_kick->dump();
+                $debug_output .= $throw_anything->dump();
             }
         } else {
 
@@ -264,8 +270,7 @@ $action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
     <div class="togglePanelContent tableHeader">
     <pre>
         <?php 
-            $debug_output .= PHP_EOL . 'Count 1 handed proficiencies : ' . count($one_handed_weapon_proficiencies) . PHP_EOL;
-echo $debug_output 
+            echo $debug_output 
         ?>
 
     </pre>
