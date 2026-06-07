@@ -7306,7 +7306,7 @@ VALUES (2, 2, '4', 'd4/d6', '2', '1', NULL, NULL, '2 hex indoors', 0);
 
 -- 'Bastard Sword'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (1, 17, '7', '2d4/2d8', '2', NULL, NULL, NULL, 'Treated as a Long Sword when used one-handed', 94);
+VALUES (1, 17, '6', '2d4/2d8', '2', NULL, NULL, NULL, 'Treated as a Long Sword when used one-handed', 94);
 
 -- 'Broad Sword'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)

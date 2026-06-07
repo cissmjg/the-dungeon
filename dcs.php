@@ -88,7 +88,7 @@ echo $html_header;
 		<td class="titleAttributeValue"><?= formatClasses($character_details) ?></td>
 		<td class="titleAttributeLiteral">Level</td>
 		<td class="titleAttributeValue"><?= formatLevels($character_details, $nf) ?></td>
-		<td class="titleAttributeLiteral">Level</td>
+		<td class="titleAttributeLiteral">Race</td>
 		<td class="titleAttributeValue"><?= $character_details->getRace() ?></td>
 	</tr>
 </table>
@@ -206,8 +206,8 @@ echo $html_header;
 				<td class="attributeValue"><?= $character_details->getAdjustedCharacterComeliness() ?></td>
 				<td class="attributeLabel">&nbsp;</td>
 				<td class="attributeValue">&nbsp;</td>
-				<td class="attributeLabel">&nbsp;</td>
-				<td class="attributeValue">&nbsp;</td>
+				<td class="attributeLabel">Parents<br>Married</td>
+				<td class="attributeValue"><?php echo empty($character_details->getParentsMarried()) ? "No" : "Yes" ?></td>
 			</tr>
 		</table>
 		<div>&nbsp;</div>

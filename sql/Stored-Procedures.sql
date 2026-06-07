@@ -419,7 +419,7 @@ BEGIN
 		playerName,					-- playerName
  		characterName,				-- characterName
 		fistWeaponProficiencyId,	-- weaponProficiencyId
-		'FIST',						-- weaponDescription
+		'Fist',						-- weaponDescription
 		NULL,						-- weaponLocation
 		TRUE,						-- isProficient
 		FALSE,						-- isReady
@@ -2186,7 +2186,7 @@ BEGIN
 	DELETE FROM player_character_two_weapon_fighting WHERE player_character_two_weapon_fighting.player_character_id = playerCharacterId;
 	UPDATE player_character_class SET character_level = 0 WHERE player_character_class.id IN (SELECT id FROM ids);
 
-	-- Reinsert FIST proficiency
+	-- Reinsert Fist proficiency
 	SELECT id
 	INTO fistWeaponProficiencyId
 	FROM weapon_proficiency
