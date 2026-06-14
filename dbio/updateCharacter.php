@@ -12,6 +12,13 @@ require_once __DIR__ . '/../webio/playerName.php';
 require_once __DIR__ . '/../webio/characterName.php';
 require_once __DIR__ . '/constants/characterAttributes.php';
 require_once __DIR__ . '/constants/armorBulkFactor.php';
+require_once __DIR__ . '/constants/spellTypes.php';
+
+require_once __DIR__ . '/../classes/characterDetails.php';
+require_once __DIR__ . '/../classes/attributeMetadata.php';
+require_once __DIR__ . '/../classes/accountClassSummary.php';
+require_once __DIR__ . '/../classes/baseSlotCount.php';
+require_once __DIR__ . '/../classes/characterSpellInfo.php';
 
 $errors = [];
 $input = [];
@@ -24,10 +31,12 @@ filterAndSanitizeStrength($input, $errors);
 filterAndSanitizeSuperStrength($input, $errors);
 filterAndSanitizeIntelligence($input, $errors);
 filterAndSanitizeSuperIntelligence($input, $errors);
+filterAndSanitize18StarIntelligence($input, $errors);
 filterAndSanitizeWisdom($input, $errors);
 filterAndSanitizeSuperWisdom($input, $errors);
 filterAndSanitizeDexterity($input, $errors);
 filterAndSanitizeSuperDexterity($input, $errors);
+filterAndSanitize18StarDexterity($input, $errors);
 filterAndSanitizeConstitution($input, $errors);
 filterAndSanitizeSuperConstitution($input, $errors);
 filterAndSanitizeCharisma($input, $errors);
@@ -60,20 +69,45 @@ filterAndSanitizeEyes($input, $errors);
 filterAndSanitizeSiblings($input, $errors);
 filterAndSanitizeParentsMarried($input, $errors);
 
+$player_name = $input[PLAYER_NAME];
+$character_name = $input[CHARACTER_NAME];
+
+$upgrade_to_19_dexterity = ($input[CHARACTER_DEXTERITY] == 19 && strcasecmp($input[CHARACTER_HAS_18_STAR_DEXTERITY], "yes") == 0);
+$upgrade_to_19_intelligence = ($input[CHARACTER_INTELLIGENCE] == 19 && strcasecmp($input[CHARACTER_HAS_18_STAR_INTELLIGENCE], "yes") == 0);
+
+$prev_character_details = new CharacterDetails();
+$prev_character_details->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+
+$prev_attribute_metadata = new AttributeMetadata($prev_character_details);
+
 updateBaseCharacter($pdo, $input, $errors);
 if (count($errors) > 0) {
 	$errors[] = "Database Error|";
 	$errors[] = __FILE__ . "|";
 	$errors[] = 'Failure on updateBaseCharacter';
+	error_log(implode(' ', $errors));
 	RestHeaderHelper::emitRestHeaders();
 	die(json_encode($errors));
 }
-	
+
+$current_character_details = new CharacterDetails();
+$current_character_details->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+
+$current_attribute_metadata = new AttributeMetadata($current_character_details);
+
+$slot_max_count_diff = $current_attribute_metadata->getMaxNumberMUSpellSlots() - $prev_attribute_metadata->getMaxNumberMUSpellSlots();
+if ($upgrade_to_19_intelligence && $slot_max_count_diff > 0) {
+	$log_output = "Player Name: $player_name Character Name: $character_name Spell diff : $slot_max_count_diff";
+	error_log($log_output);
+	createNewSlotsFor19Intelligence($pdo, $player_name, $character_name, $current_character_details, $slot_max_count_diff, $errors);
+}
+
 updateCharacterClasses($pdo, $input, $errors);
 if (count($errors) > 0) {
 	$errors[] = "Database Error|";
 	$errors[] = __FILE__ . "|";
 	$errors[] = 'Failure on updateCharacterClasses';
+	error_log(implode(' ', $errors));
 	RestHeaderHelper::emitRestHeaders();
 	die(json_encode($errors));
 }
@@ -83,6 +117,7 @@ if (count($errors) > 0) {
 	$errors[] = "Database Error|";
 	$errors[] = __FILE__ . "|";
 	$errors[] = 'Failure on updateOptionalCharacterData';
+	error_log(implode(' ', $errors));
 	RestHeaderHelper::emitRestHeaders();
 	die(json_encode($errors));
 }
@@ -101,7 +136,9 @@ exit;
 function updateBaseCharacter(\PDO $pdo, $input, &$errors) {
 
 	$null_value = NULL;
-	$sql_exec = "CALL updateBaseCharacter(:playerName, :characterName, :characterStrength, :characterSuperStrength, :characterIntelligence, :characterSuperIntelligence, :characterWisdom, :characterSuperWisdom, :characterDexterity, :characterSuperDexterity, :characterConstitution, :characterSuperConstitution, :characterCharisma, :characterSuperCharisma, :characterComeliness, :raceId, :armorClass, :armorBulkFactor, :hitPoints, :genderIn)";
+	$true_value = true;
+	$false_value = false;
+	$sql_exec = "CALL updateBaseCharacter(:playerName, :characterName, :characterStrength, :characterSuperStrength, :characterIntelligence, :characterSuperIntelligence, :characterHas18StarIntelligence, :characterWisdom, :characterSuperWisdom, :characterDexterity, :characterSuperDexterity, :characterHas18StarDexterity, :characterConstitution, :characterSuperConstitution, :characterCharisma, :characterSuperCharisma, :characterComeliness, :raceId, :armorClass, :armorBulkFactor, :hitPoints, :genderIn)";
 
 	$statement = $pdo->prepare($sql_exec);
 	$statement->bindParam(':playerName', $input[PLAYER_NAME], PDO::PARAM_STR);
@@ -118,6 +155,18 @@ function updateBaseCharacter(\PDO $pdo, $input, &$errors) {
 	} else {
 		$statement->bindParam(':characterSuperIntelligence', $null_value, PDO::PARAM_NULL);
 	}
+
+	$has_18_star_intelligence = (strcasecmp($input[CHARACTER_HAS_18_STAR_INTELLIGENCE], "yes") == 0);
+	if ($input[CHARACTER_INTELLIGENCE] == 19 && $has_18_star_intelligence) {
+		$statement->bindParam(':characterHas18StarIntelligence', $false_value, PDO::PARAM_BOOL);
+	} else {
+		if ($has_18_star_intelligence) {
+			$statement->bindParam(':characterHas18StarIntelligence', $true_value, PDO::PARAM_BOOL);
+		} else {
+			$statement->bindParam(':characterHas18StarIntelligence', $false_value, PDO::PARAM_BOOL);
+		}
+	}
+
 	$statement->bindParam(':characterWisdom', $input[CHARACTER_WISDOM], PDO::PARAM_INT);
 	if (!empty($input[CHARACTER_SUPER_WISDOM])) {
 		$statement->bindParam(':characterSuperWisdom', $input[CHARACTER_SUPER_WISDOM], PDO::PARAM_INT);
@@ -130,6 +179,18 @@ function updateBaseCharacter(\PDO $pdo, $input, &$errors) {
 	} else {
 		$statement->bindParam(':characterSuperDexterity', $null_value, PDO::PARAM_NULL);
 	}
+
+	$has_18_star_dexterity = (strcasecmp($input[CHARACTER_HAS_18_STAR_DEXTERITY], "yes") == 0);
+	if ($input[CHARACTER_DEXTERITY] == 19 && $has_18_star_dexterity){
+		$statement->bindParam(':characterHas18StarDexterity', $false_value, PDO::PARAM_BOOL);
+	} else {
+		if ($has_18_star_dexterity) {
+			$statement->bindParam(':characterHas18StarDexterity', $true_value, PDO::PARAM_BOOL);
+		} else {
+			$statement->bindParam(':characterHas18StarDexterity', $false_value, PDO::PARAM_BOOL);
+		}
+	}
+
 	$statement->bindParam(':characterConstitution', $input[CHARACTER_CONSTITUTION], PDO::PARAM_INT);
 	if (!empty($input[CHARACTER_SUPER_CONSTITUTION])) {
 		$statement->bindParam(':characterSuperConstitution', $input[CHARACTER_SUPER_CONSTITUTION], PDO::PARAM_INT);
@@ -300,6 +361,85 @@ function updateOptionalCharacterData(\PDO $pdo, $input, &$errors) {
 	}
 }
 
+function createNewSlotsFor19Intelligence(PDO $pdo, $player_name, $character_name, CharacterDetails $character_details, $slot_max_count_diff, &$errors) {
+	foreach($character_details->getCharacterClasses() AS $character_class) {
+		$spell_type_id_1 = 0;
+		$spell_type_id_2 = 0;
+		
+		if (!empty($character_class->getSpellcasterType1())) {
+			$spell_type_id_1 = $character_class->getSpellcasterType1()->getSpellTypeId();
+		}
+
+		if (!empty($character_class->getSpellcasterType2())) {
+			$spell_type_id_2 = $character_class->getSpellcasterType2()->getSpellTypeId();
+		}
+
+		$has_arcane_spell_book = hasArcaneSpellBook($spell_type_id_1, $spell_type_id_2);
+		$log_output = "Spell Type 1: [$spell_type_id_1] Spell Type 2: [$spell_type_id_2] Arcane Spellbook: [" . var_export($has_arcane_spell_book, true) . ']';
+		error_log($log_output);
+
+		if ($has_arcane_spell_book) {
+			$class_name = $character_class->getClassName();
+			$log_output = "Class name: [$class_name] Spell Type 1: [$spell_type_id_1] Spell Type 2: [$spell_type_id_2]";
+			error_log($log_output);
+			checkClassForArcaneSpellSlots($pdo, $player_name, $character_name, $character_class, $slot_max_count_diff, $spell_type_id_1, $spell_type_id_2, $errors);
+		}
+	}
+}
+
+function checkClassForArcaneSpellSlots(PDO $pdo, $player_name, $character_name, AccountClassSummary $character_class, $slot_max_count_diff, $spell_type_id_1, $spell_type_id_2, &$errors) {
+	$log = [];
+	$character_spell_info = new CharacterSpellInfo($player_name, $character_name, $character_class->getClassName(), $spell_type_id_1, $spell_type_id_2);
+    $character_spell_info->init($pdo, $errors, $log);
+    foreach($character_spell_info->getBaseSlotCounts() AS $spell_type_id => $base_slot_count) {
+		if ($spell_type_id == SPELL_TYPE_MAGIC_USER || $spell_type_id == SPELL_TYPE_ILLUSIONIST || $spell_type_id == SPELL_TYPE_WU_JEN || $spell_type_id == SPELL_TYPE_HEALER) {
+			$class_id = $character_class->getClassId();
+			$log_output = "Class ID: $class_id Spell Type: $spell_type_id Base Slot Count: $base_slot_count";
+			error_log($log_output);
+			allocate19IntelligenceMUSpellSlots($pdo, $character_class, $base_slot_count, $slot_max_count_diff, $errors);
+		}
+	}
+}
+
+function allocate19IntelligenceMUSpellSlots(PDO $pdo, AccountClassSummary $character_class, BaseSlotCount $base_slot_count, $slot_max_count_diff, &$errors) {
+	for ($slot_level = 1; $slot_level <= 9; $slot_level++) {
+		$spell_slot_19_int = $base_slot_count->getBaseSlotCount($slot_level);
+		if ($spell_slot_19_int > 0) {
+			$player_character_class_id = $character_class->getPlayerCharacterClassId();
+			$log_output = "Player Character Class ID: $player_character_class_id Slot Level: $slot_level Count: $slot_max_count_diff";
+			error_log($log_output);
+			allocateNewArcaneSpellPoolSlot($pdo, $player_character_class_id, $slot_level, $slot_max_count_diff, $errors);
+			if (count($errors) > 0) {
+				die(json_encode($errors));
+			}
+		}
+	}
+}
+
+function allocateNewArcaneSpellPoolSlot(\PDO $pdo, $player_character_class_id, $spell_level, $number_of_slots, &$errors) {
+	$sql_exec = "CALL allocateMUPoolSlots (:playerCharacterClassId, :spellLevel, :numberOfSlots)";
+
+	$statement = $pdo->prepare($sql_exec);
+	$statement->bindParam(':playerCharacterClassId', $player_character_class_id, PDO::PARAM_INT);
+	$statement->bindParam(':spellLevel', $spell_level, PDO::PARAM_INT);
+	$statement->bindParam(':numberOfSlots', $number_of_slots);
+	try {
+		$statement->execute();
+	} catch(Exception $e) {
+		$errors[] = "Exception in allocateNewMUSpellPoolSlot : " . $e->getMessage();
+	}
+	
+	return $statement->fetch(PDO::FETCH_ASSOC);
+}
+
+function hasArcaneSpellBook($spell_type_1, $spell_type_2) {
+	
+	$spell_type_1_arcane = ($spell_type_1 == SPELL_TYPE_MAGIC_USER || $spell_type_1 == SPELL_TYPE_ILLUSIONIST || $spell_type_1 == SPELL_TYPE_WU_JEN || $spell_type_1 == SPELL_TYPE_HEALER);
+	$spell_type_2_arcane = ($spell_type_2 == SPELL_TYPE_MAGIC_USER || $spell_type_2 == SPELL_TYPE_ILLUSIONIST || $spell_type_2 == SPELL_TYPE_WU_JEN || $spell_type_2 == SPELL_TYPE_HEALER);
+	
+	return $spell_type_1_arcane || $spell_type_2_arcane;
+}
+
 function filterAndSanitizeStrength(&$input, &$errors) {
 	filterAndSantizeIntegerFormField($input, $errors, CHARACTER_STRENGTH);
 }
@@ -316,6 +456,10 @@ function filterAndSanitizeSuperIntelligence(&$input, &$errors) {
 	filterAndSantizeOptionalIntegerFormField($input, $errors, CHARACTER_SUPER_INTELLIGENCE);
 }
 
+function filterAndSanitize18StarIntelligence(&$input, &$errors) {
+	filterAndSantizeStringFormField($input, $errors, CHARACTER_HAS_18_STAR_INTELLIGENCE);
+}
+
 function filterAndSanitizeWisdom(&$input, &$errors) {
 	filterAndSantizeIntegerFormField($input, $errors, CHARACTER_WISDOM);
 }
@@ -330,6 +474,10 @@ function filterAndSanitizeDexterity(&$input, &$errors) {
 
 function filterAndSanitizeSuperDexterity(&$input, &$errors) {
 	filterAndSantizeOptionalIntegerFormField($input, $errors, CHARACTER_SUPER_DEXTERITY);
+}
+
+function filterAndSanitize18StarDexterity(&$input, &$errors) {
+	filterAndSantizeStringFormField($input, $errors, CHARACTER_HAS_18_STAR_DEXTERITY);
 }
 
 function filterAndSanitizeConstitution(&$input, &$errors) {

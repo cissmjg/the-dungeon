@@ -5,10 +5,12 @@
     "characterSuperStrength": null,
     "characterIntelligence": 12,
     "characterSuperIntelligence": null,
+    "star18Intelligence": null,
     "characterWisdom": 18,
     "characterSuperWisdom": 92,
     "characterDexterity": 18,
     "characterSuperDexterity": null,
+    "star18Dexterity": null,
     "characterConstitution": 15,
     "characterSuperConstitution": null,
     "characterCharisma": 13,
@@ -43,7 +45,12 @@
             "spell_classes": [
                 "Cleric"
             ],
-            "class_icon_file_location": null
+            "class_icon_file_location": null,
+            "spell_type_1": {
+                "spell_type_id": 1,
+                "spell_type_name": "Cleric"
+            },
+            "spell_type_2": null
         }
     }
 }

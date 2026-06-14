@@ -189,7 +189,6 @@ echo $html_header;
 			} else {
 				echo $input['race'];
 				echo HtmlHelper::buildHiddenTag('characterRace', $input['race']) . PHP_EOL;
-				// echo '<input type="hidden" id="characterRace" name="characterRace" value="' . $input['race'] . '"' . $read_only . '>' . PHP_EOL;
 			}
 		?>
 		</td>
@@ -214,7 +213,6 @@ echo $html_header;
 				$gender = $input[CHARACTER_GENDER] == 'M' ? "Male" : "Female";
 				echo $gender . PHP_EOL;
 				echo HtmlHelper::buildHiddenTag(CHARACTER_GENDER, $input[CHARACTER_GENDER]) . PHP_EOL;
-				// echo '<input type="hidden" id="' . CHARACTER_GENDER . '" name="' . CHARACTER_GENDER . '" value="' . $input[CHARACTER_GENDER] . '">' . PHP_EOL;
 			}
         ?>
 		</td>
@@ -239,7 +237,6 @@ echo $html_header;
 				if ($super_strength_applies && !empty($input[CHARACTER_SUPER_STRENGTH])) {
 					$character_strength .= '/' . $input[CHARACTER_SUPER_STRENGTH];
 					echo HtmlHelper::buildHiddenTag(CHARACTER_SUPER_STRENGTH, $character_super_strength) . PHP_EOL;
-					// echo '<input type="hidden"' . '" id="' . CHARACTER_SUPER_STRENGTH . '" name="' . CHARACTER_SUPER_STRENGTH . '" value="' . $character_super_strength . '">';
 				}
 				echo $character_strength;
 			}
@@ -262,14 +259,19 @@ echo $html_header;
 		<td>
 		<?php 
 			if ($page_action == PAGE_UPDATE) {
+				$has_18_star_intelligence = "no";
 				$character_intelligence = $input[CHARACTER_INTELLIGENCE] ?? '';
-				echo '<input type="number" style="text-align: center;" class="' . $input_class . '" id="' . CHARACTER_INTELLIGENCE . '" name="' . CHARACTER_INTELLIGENCE .'" min="3" max="25" value="' . $character_intelligence .'" required>';
+				echo '<input type="number" style="text-align: center;" class="' . $input_class . '" id="' . CHARACTER_INTELLIGENCE . '" name="' . CHARACTER_INTELLIGENCE .'" min="3" max="25" value="' . $character_intelligence .'" required>' . PHP_EOL;
 				$super_intelligence_applies = doesSuperIntelligenceApply($input, $character_super_stats);
-				if ($super_intelligence_applies) {
+				if (!empty($input[CHARACTER_HAS_18_STAR_INTELLIGENCE])) {
+					echo '&nbsp;<strong>*</strong>' . PHP_EOL;
+					$has_18_star_intelligence = "yes";
+				} else if ($super_intelligence_applies) {
 					echo '/&nbsp;';
 					$character_super_intelligence = $input[CHARACTER_SUPER_INTELLIGENCE] ?? '';
-					echo '<input type="number" style="text-align: center;" class="' . $input_class . '" id="' . CHARACTER_SUPER_INTELLIGENCE . '" name="' . CHARACTER_SUPER_INTELLIGENCE . '" min="0" max="100" value="' . $character_super_intelligence . '"' . $read_only . ' required>';
+					echo '<input type="number" style="text-align: center;" class="' . $input_class . '" id="' . CHARACTER_SUPER_INTELLIGENCE . '" name="' . CHARACTER_SUPER_INTELLIGENCE . '" min="0" max="100" value="' . $character_super_intelligence . '"' . $read_only . ' required>' . PHP_EOL;
 				}
+				echo HtmlHelper::buildHiddenTag(CHARACTER_HAS_18_STAR_INTELLIGENCE, $has_18_star_intelligence) . PHP_EOL;
 			} else {
 				$character_intelligence = $input[CHARACTER_INTELLIGENCE];
 				$character_super_intelligence = $input[CHARACTER_SUPER_INTELLIGENCE] ?? '';
@@ -277,7 +279,6 @@ echo $html_header;
 				if ($super_intelligence_applies && !empty($input[CHARACTER_SUPER_INTELLIGENCE])) {
 					$character_intelligence .= '/' . $input[CHARACTER_SUPER_INTELLIGENCE];
 					echo HtmlHelper::buildHiddenTag(CHARACTER_SUPER_INTELLIGENCE, $character_super_intelligence) . PHP_EOL;;
-					// echo '<input type="hidden"' . '" id="' . CHARACTER_SUPER_INTELLIGENCE . '" name="' . CHARACTER_SUPER_INTELLIGENCE . '" value="' . $character_super_intelligence . '">';
 				}
 				echo $character_intelligence;
 			}
@@ -315,7 +316,6 @@ echo $html_header;
 				if ($super_wisdom_applies && !empty($input[CHARACTER_SUPER_WISDOM])) {
 					$character_wisdom .= '/' . $input[CHARACTER_SUPER_WISDOM];
 					echo HtmlHelper::buildHiddenTag(CHARACTER_SUPER_WISDOM, $character_super_wisdom) . PHP_EOL;
-					// echo '<input type="hidden"' . '" id="' . CHARACTER_SUPER_WISDOM . '" name="' . CHARACTER_SUPER_WISDOM . '" value="' . $character_super_wisdom . '">';
 				}
 				echo $character_wisdom;
 			}
@@ -338,14 +338,19 @@ echo $html_header;
 		<td>
 		<?php
 			if ($page_action == PAGE_UPDATE) {
+				$has_18_star_dexterity = "no";
 				$character_dexterity = $input[CHARACTER_DEXTERITY] ?? '';
-				echo '<input type="number" style="text-align: center;" class="' . $input_class . '" id="' . CHARACTER_DEXTERITY .'" name="' . CHARACTER_DEXTERITY . '" min="3" max="25" value="' . $character_dexterity . '" required>';
+				echo '<input type="number" style="text-align: center;" class="' . $input_class . '" id="' . CHARACTER_DEXTERITY .'" name="' . CHARACTER_DEXTERITY . '" min="3" max="25" value="' . $character_dexterity . '" required>' . PHP_EOL;
 				$super_dexterity_applies = doesSuperDexterityApply($input, $character_super_stats);
-				if ($super_dexterity_applies) {
+				if (!empty($input[CHARACTER_HAS_18_STAR_DEXTERITY])) {
+					echo '&nbsp;<strong>*</strong>' . PHP_EOL;
+					$has_18_star_dexterity = "yes";
+				} else if ($super_dexterity_applies) {
 					echo '/&nbsp;';
 					$character_super_dexterity = $input[CHARACTER_SUPER_DEXTERITY] ?? '';
-					echo '<input type="number" style="text-align: center;" class="' . $input_class . '" id="' . CHARACTER_SUPER_DEXTERITY .'" name="' . CHARACTER_SUPER_DEXTERITY . '" min="0" max="100" value="' . $character_super_dexterity . '"' . $read_only . ' required>';
+					echo '<input type="number" style="text-align: center;" class="' . $input_class . '" id="' . CHARACTER_SUPER_DEXTERITY .'" name="' . CHARACTER_SUPER_DEXTERITY . '" min="0" max="100" value="' . $character_super_dexterity . '"' . $read_only . ' required>' . PHP_EOL;
 				}
+				echo HtmlHelper::buildHiddenTag(CHARACTER_HAS_18_STAR_DEXTERITY, $has_18_star_dexterity) . PHP_EOL;
 			} else {
 				$character_dexterity = $input[CHARACTER_DEXTERITY];
 				$character_super_dexterity = $input[CHARACTER_SUPER_DEXTERITY] ?? '';
@@ -353,7 +358,6 @@ echo $html_header;
 				if ($super_dexterity_applies && !empty($input[CHARACTER_SUPER_DEXTERITY])) {
 					$character_dexterity .= '/' . $input[CHARACTER_SUPER_DEXTERITY];
 					echo HtmlHelper::buildHiddenTag(CHARACTER_SUPER_DEXTERITY, $character_super_dexterity) . PHP_EOL;
-					// echo '<input type="hidden"' . '" id="' . CHARACTER_SUPER_DEXTERITY . '" name="' . CHARACTER_SUPER_DEXTERITY . '" value="' . $character_super_dexterity . '">';
 				}
 				echo $character_dexterity;
 			}
@@ -391,7 +395,6 @@ echo $html_header;
 				if ($super_constitution_applies && !empty($input[CHARACTER_SUPER_CONSTITUTION])) {
 					$character_constitution .= '/' . $input[CHARACTER_SUPER_CONSTITUTION];
 					echo HtmlHelper::buildHiddenTag(CHARACTER_SUPER_CONSTITUTION, $character_super_constitution) . PHP_EOL;
-					// echo '<input type="hidden"' . '" id="' . CHARACTER_SUPER_CONSTITUTION . '" name="' . CHARACTER_SUPER_CONSTITUTION . '" value="' . $character_super_constitution . '">';
 				}
 				echo $character_constitution;
 			}
@@ -431,7 +434,6 @@ echo $html_header;
 					echo HtmlHelper::buildHiddenTag(CHARACTER_SUPER_CHARISMA, $character_super_charisma) . PHP_EOL;
 				}
 				echo HtmlHelper::buildHiddenTag(CHARACTER_CHARISMA, $character_charisma) . PHP_EOL;
-				// echo '<input type="hidden"'  . '" id="' . CHARACTER_CHARISMA .'" name="' . CHARACTER_CHARISMA .'" value="'. $character_charisma .'">';
 				echo $character_charisma . '</span>';
 			}
 		?>
@@ -458,7 +460,6 @@ echo $html_header;
 			} else {
 				$character_comeliness = $input[CHARACTER_COMELINESS];
 				echo HtmlHelper::buildHiddenTag(CHARACTER_COMELINESS, $character_comeliness) . PHP_EOL;
-				// echo '<input type="hidden"'  . '" id="' . CHARACTER_COMELINESS .'" name="' . CHARACTER_COMELINESS .'" value="'. $character_comeliness .'">';
 				echo '<span>' . $character_comeliness;
 			}
 		?>

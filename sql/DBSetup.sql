@@ -7038,7 +7038,7 @@ VALUES (1, 17, '9', 'd10/d12', '2', NULL, NULL, NULL, NULL, 36);
 
 -- 'Elven Lightblade'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
-VALUES (1, 10, '2', 'd4+1/d3+1', '1', NULL, NULL, NULL, NULL, 37);
+VALUES (1, 10, '2', 'd6/d8', '1', NULL, NULL, NULL, NULL, 37);
 
 -- 'Elven Thin Blade'
 INSERT INTO weapon_catalog (type, subtype, speed, damage, number_of_hands, short_range, medium_range, long_range, additional_text, weapon_proficiency_id)
