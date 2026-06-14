@@ -31,7 +31,7 @@ export function unhideOtherElements(all_occupied_slots, submit_icon_id, cancel_i
     // Show the other spells for this level
     let otherSlots = all_occupied_slots.split(",");
     otherSlots.forEach(function (otherslot, index) {
-        let otherSlotElement = $('#' + other_slot);
+        let otherSlotElement = $('#' + otherslot);
         otherSlotElement.css("opacity", "1.0");
     });
 
