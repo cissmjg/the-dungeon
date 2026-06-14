@@ -29,6 +29,13 @@
         echo '    Class XP:    [' . $character_class->getNumberOfExperiencePoints() . ']' . PHP_EOL;
         echo '    Class ID:    [' . $character_class->getClassId() . ']' . PHP_EOL;
         echo '    Spell Classes : [' . print_r($character_class->getSpellClasses(), true) . ']' . PHP_EOL;
+        if (!empty($character_class->getSpellcasterType1())) {
+            echo '    Spellcaster TypeID 1: [' . $character_class->getSpellcasterType1()->getSpellTypeId() . '] Name: [' . $character_class->getSpellcasterType1()->getSpellTypeName() . ']' . PHP_EOL;
+        }
+
+        if (!empty($character_class->getSpellcasterType2())) {
+            echo '    Spellcaster TypeID 2: [' . $character_class->getSpellcasterType2()->getSpellTypeId() . '] Name: [' . $character_class->getSpellcasterType2()->getSpellTypeName() . ']' . PHP_EOL;
+        }
     }
 
     // PlayerCharacterSkillSet

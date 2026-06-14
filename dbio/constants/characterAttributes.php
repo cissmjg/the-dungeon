@@ -5,12 +5,14 @@
     const CHARACTER_INTELLIGENCE = 'characterIntelligence';
     const CHARACTER_INTELLIGENCE_RAW = 'characterIntelligenceRaw';
     const CHARACTER_SUPER_INTELLIGENCE = 'characterSuperIntelligence';
+    const CHARACTER_HAS_18_STAR_INTELLIGENCE = 'star18Intelligence';
     const CHARACTER_WISDOM = 'characterWisdom';
     const CHARACTER_WISDOM_RAW = 'characterWisdomRaw';
     const CHARACTER_SUPER_WISDOM = 'characterSuperWisdom';
     const CHARACTER_DEXTERITY = 'characterDexterity';
     const CHARACTER_DEXTERITY_RAW = 'characterDexterityRaw';
     const CHARACTER_SUPER_DEXTERITY = 'characterSuperDexterity';
+    const CHARACTER_HAS_18_STAR_DEXTERITY = 'star18Dexterity';
     const CHARACTER_CONSTITUTION = 'characterConstitution';
     const CHARACTER_CONSTITUTION_RAW = 'characterConstitutionRaw';
     const CHARACTER_SUPER_CONSTITUTION = 'characterSuperConstitution';

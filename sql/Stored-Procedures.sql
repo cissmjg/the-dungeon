@@ -717,10 +717,12 @@ CREATE PROCEDURE createBaseCharacter
  IN characterSuperStrength INT,
  IN characterIntelligence INT,
  IN characterSuperIntelligence INT,
+ IN characterHas18StarIntelligence BOOLEAN,
  IN characterWisdom INT,
  IN characterSuperWisdom INT,
  IN characterDexterity INT,
  IN characterSuperDexterity INT,
+ IN characterHas18StarDexterity BOOLEAN,
  IN characterConstitution INT,
  IN characterSuperConstitution INT,
  IN characterCharisma INT,
@@ -753,17 +755,20 @@ BEGIN
 		super_strength, 
 		intelligence, 
 		super_intelligence, 
+		has_18_star_intelligence,
 		wisdom, 
 		super_wisdom, 
 		dexterity, 
 		super_dexterity, 
+		has_18_star_dexterity,
 		constitution, 
 		super_constitution, 
 		charisma, 
 		comeliness, 
 		race_id, 
 		armor_class, 
-		hit_points, gender
+		hit_points, 
+		gender
 	)
 	VALUES (
 		playerID, 
@@ -772,10 +777,12 @@ BEGIN
 		characterSuperStrength, 
 		characterIntelligence, 
 		characterSuperIntelligence, 
+		characterHas18StarIntelligence,
 		characterWisdom, 
 		characterSuperWisdom, 
 		characterDexterity, 
 		characterSuperDexterity, 
+		characterHas18StarDexterity,
 		characterConstitution, 
 		characterSuperConstitution, 
 		characterCharisma, 
@@ -1084,10 +1091,12 @@ BEGIN
 		player_character.Gender AS player_character_gender,
 		player_character.hit_points AS player_character_hit_points,
 		player_character.intelligence AS player_character_intelligence,
+		player_character.has_18_star_intelligence AS player_character_has_18_star_intelligence,
 		player_character.name AS player_character_name,
 		player_character.strength AS player_character_strength,
 		player_character.super_charisma AS player_character_super_charisma,
 		player_character.super_dexterity AS player_character_super_dexterity,
+		player_character.has_18_star_dexterity AS player_character_has_18_star_dexterity,
 		player_character.super_intelligence AS player_character_super_intelligence,
 		player_character.super_constitution AS player_character_super_constitution,
 		player_character.super_strength AS player_character_super_strength,
@@ -1112,6 +1121,7 @@ BEGIN
 		character_race.name AS player_character_race,
 		player_character_class.character_level AS player_character_class_level,
 		player_character_class.number_of_experience_points AS player_character_class_experience_points,
+		player_character_class.id AS player_character_class_id,
 		character_class.id AS character_class_Id,
 		character_class.name AS player_character_class_name
 	FROM player_character
@@ -1619,10 +1629,12 @@ CREATE PROCEDURE getSpellClassesForCharacterClass
  IN characterClassName VARCHAR(32))
 BEGIN
 	DECLARE spellClass1 VARCHAR(32);
+	DECLARE spellTypeId1 INT;
     DECLARE spellClass2 VARCHAR(32);
+	DECLARE spellTypeId2 INT;
 
-	SELECT spell_type.name
-    INTO spellClass1
+	SELECT spell_type.name, spell_type.id
+    INTO spellClass1, spellTypeId1
     FROM character_class
 	JOIN spell_type ON spell_type.id = character_class.spell_type_1
     JOIN player_character_class ON player_character_class.character_class_id = character_class.id
@@ -1630,8 +1642,8 @@ BEGIN
     JOIN player ON player.id = player_character.player_id
 	WHERE player.name = playerName AND player_character.name = characterName AND character_class.NAME = characterClassName; 
 
-	SELECT spell_type.name
-    INTO spellClass2
+	SELECT spell_type.name, spell_type.id
+    INTO spellClass2, spellTypeId2
     FROM character_class
 	JOIN spell_type ON spell_type.id = character_class.spell_type_2
     JOIN player_character_class ON player_character_class.character_class_id = character_class.id
@@ -1639,7 +1651,7 @@ BEGIN
     JOIN player ON player.id = player_character.player_id
 	WHERE player.name = playerName AND player_character.name = characterName AND character_class.NAME = characterClassName; 
 	
-	SELECT spellClass1, spellClass2;
+	SELECT spellClass1, spellTypeId1, spellClass2, spellTypeId2;
 END
 
 CREATE PROCEDURE getSpellPoolForPlayerCharacter
@@ -2263,10 +2275,12 @@ CREATE PROCEDURE updateBaseCharacter
  IN characterSuperStrength INT,
  IN characterIntelligence INT,
  IN characterSuperIntelligence INT,
+ IN characterHas18StarIntelligence BOOLEAN,
  IN characterWisdom INT,
  IN characterSuperWisdom INT,
  IN characterDexterity INT,
  IN characterSuperDexterity INT,
+ IN characterHas18StarDexterity BOOLEAN,
  IN characterConstitution INT,
  IN characterSuperConstitution INT,
  IN characterCharisma INT,
@@ -2278,12 +2292,13 @@ CREATE PROCEDURE updateBaseCharacter
  IN hitPoints INT,
  IN genderIn CHAR(1))
 BEGIN
-	DECLARE playerId INT DEFAULT 0;
+	DECLARE playerCharacterId INT DEFAULT 0;
 	
-	SELECT id
-	INTO playerId
-	FROM player
-	WHERE player.name = playerName;
+	SELECT player_character.id
+	INTO playerCharacterId
+	FROM player_character
+	JOIN player ON player.id = player_character.player_id
+	WHERE player.name = playerName AND player_character.name = characterName;
 	
 	UPDATE player_character
 		SET 
@@ -2291,10 +2306,12 @@ BEGIN
 			super_strength = characterSuperStrength, 
 			intelligence = characterIntelligence, 
 			super_intelligence = characterSuperIntelligence, 
+			has_18_star_intelligence = characterHas18StarIntelligence,
             wisdom = characterWisdom, 
 			super_wisdom = characterSuperWisdom, 
 			dexterity = characterDexterity, 
 			super_dexterity = characterSuperDexterity,
+			has_18_star_dexterity = characterHas18StarDexterity,
 			constitution = characterConstitution, 
 			super_constitution = characterSuperConstitution, 
 			charisma = characterCharisma, 
@@ -2305,7 +2322,7 @@ BEGIN
 			armor_bulk_factor = 
 			armorBulkFactor, hit_points = hitPoints, 
 			gender = genderIn
-	WHERE player_id = playerId AND name = characterName; 
+	WHERE id = playerCharacterId; 
 END
 
 CREATE PROCEDURE updateCharacterPortrait

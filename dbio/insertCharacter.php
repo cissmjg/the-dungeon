@@ -73,7 +73,9 @@ exit;
 function insertBaseCharacter(\PDO $pdo, $input, &$errors) {
 
 	$null_value = NULL;
-	$sql_exec = "CALL createBaseCharacter(:playerName, :characterName, :characterStrength, :characterSuperStrength, :characterIntelligence, :characterSuperIntelligence, :characterWisdom, :characterSuperWisdom, :characterDexterity, :characterSuperDexterity, :characterConstitution, :characterSuperConstitution, :characterCharisma, :characterComeliness, :raceId, :armorClass, :hitPoints, :genderIn)";
+	$true_value = true;
+	$false_value = false;
+	$sql_exec = "CALL createBaseCharacter(:playerName, :characterName, :characterStrength, :characterSuperStrength, :characterIntelligence, :characterSuperIntelligence, :characterHas18StarIntelligence, :characterWisdom, :characterSuperWisdom, :characterDexterity, :characterSuperDexterity, :characterHas18StarDexterity, :characterConstitution, :characterSuperConstitution, :characterCharisma, :characterComeliness, :raceId, :armorClass, :hitPoints, :genderIn)";
 
 	$statement = $pdo->prepare($sql_exec);
 	$statement->bindParam(':playerName', $input[PLAYER_NAME], PDO::PARAM_STR);
@@ -82,10 +84,28 @@ function insertBaseCharacter(\PDO $pdo, $input, &$errors) {
 	$statement->bindParam(':characterSuperStrength', $null_value, PDO::PARAM_NULL);
 	$statement->bindParam(':characterIntelligence', $input[CHARACTER_INTELLIGENCE], PDO::PARAM_INT);
 	$statement->bindParam(':characterSuperIntelligence', $null_value, PDO::PARAM_NULL);
+
+	if ($input[CHARACTER_INTELLIGENCE] == 19) {
+		$input[CHARACTER_INTELLIGENCE] = 18;
+		$input[CHARACTER_HAS_18_STAR_INTELLIGENCE] = $true_value;
+	} else {
+		$input[CHARACTER_HAS_18_STAR_INTELLIGENCE] = $false_value;
+	}
+
+	$statement->bindParam(':characterHas18StarIntelligence', $input[CHARACTER_HAS_18_STAR_INTELLIGENCE], PDO::PARAM_BOOL);
 	$statement->bindParam(':characterWisdom', $input[CHARACTER_WISDOM], PDO::PARAM_INT);
 	$statement->bindParam(':characterSuperWisdom', $null_value, PDO::PARAM_NULL);
 	$statement->bindParam(':characterDexterity', $input[CHARACTER_DEXTERITY], PDO::PARAM_INT);
 	$statement->bindParam(':characterSuperDexterity', $null_value, PDO::PARAM_NULL);
+
+	if ($input[CHARACTER_DEXTERITY] == 19) {
+		$input[CHARACTER_DEXTERITY] = 18;
+		$input[CHARACTER_HAS_18_STAR_DEXTERITY] = $true_value;
+	} else {
+		$input[CHARACTER_HAS_18_STAR_DEXTERITY] = $false_value;
+	}
+
+	$statement->bindParam(':characterHas18StarDexterity', $input[CHARACTER_HAS_18_STAR_DEXTERITY], PDO::PARAM_BOOL);
 	$statement->bindParam(':characterConstitution', $input[CHARACTER_CONSTITUTION], PDO::PARAM_INT);
 	$statement->bindParam(':characterSuperConstitution', $null_value, PDO::PARAM_NULL);
 	$statement->bindParam(':characterCharisma', $input[CHARACTER_CHARISMA], PDO::PARAM_INT);

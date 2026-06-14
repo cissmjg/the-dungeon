@@ -1,6 +1,7 @@
 <?php
 
-require_once __DIR__ .  '/accountClassSummary.php';
+require_once __DIR__ . '/accountClassSummary.php';
+require_once __DIR__ . '/spellType.php';
 require_once __DIR__ . '/../dbio/constants/characterAttributes.php';
 require_once __DIR__ . '/../dbio/constants/characterRaces.php';
 require_once __DIR__ . '/../dbio/constants/characterClasses.php';
@@ -14,10 +15,12 @@ class CharacterDetails implements JsonSerializable
 	private $characterSuperStrength;
 	private $characterIntelligence;
 	private $characterSuperIntelligence;
+	private $star18Intelligence;
 	private $characterWisdom;
 	private $characterSuperWisdom;
 	private $characterDexterity;
 	private $characterSuperDexterity;
+	private $star18Dexterity;
 	private $characterConstitution;
 	private $characterSuperConstitution;
 	private $characterCharisma;
@@ -65,17 +68,31 @@ class CharacterDetails implements JsonSerializable
 				die(json_encode($errors));
 			}
 
-			if ($spell_casting_classes['spellClass1'] != null) {
+			$spell_type_1 = null;
+			$spell_type_2 = null;
+			if (!empty($spell_casting_classes['spellClass1'])) {
 				$spell_classes[] = $spell_casting_classes['spellClass1'];
+				$spell_type_1 = new SpellType($spell_casting_classes['spellTypeId1'], $spell_casting_classes['spellClass1']);
 			}
 
-			if ($spell_casting_classes['spellClass2'] != null) {
+			if (!empty($spell_casting_classes['spellClass2'])) {
 				$spell_classes[] = $spell_casting_classes['spellClass2'];
+				$spell_type_2 = new SpellType($spell_casting_classes['spellTypeId2'], $spell_casting_classes['spellClass2']);
 			}
 
             $account_class_summary = new AccountClassSummary($character_stats_class['player_character_class_name'], $character_stats_class['player_character_class_level'], $spell_classes);
             $account_class_summary->setNumberOfExperiencePoints($character_stats_class['player_character_class_experience_points']);
 			$account_class_summary->setClassId($character_stats_class['character_class_Id']);
+			$account_class_summary->setPlayerCharacterClassId($character_stats_class['player_character_class_id']);
+									
+			if (!empty($spell_type_1)) {
+				$account_class_summary->setSpellcasterType1($spell_type_1);
+			}
+
+			if (!empty($spell_type_2)) {
+				$account_class_summary->setSpellcasterType2($spell_type_2);
+			}
+
 			if ($i == 1) {
 				$this->character_classes[CHARACTER_PRIMARY_CLASS] = $account_class_summary;
 			} else if ($i == 2) {
@@ -93,10 +110,12 @@ class CharacterDetails implements JsonSerializable
 		$this->characterSuperStrength = $character_details_json->characterSuperStrength;
 		$this->characterIntelligence = $character_details_json->characterIntelligence;
 		$this->characterSuperIntelligence = $character_details_json->characterSuperIntelligence;
+		$this->star18Intelligence = empty($character_details_json->star18Intelligence);
 		$this->characterWisdom = $character_details_json->characterWisdom;
 		$this->characterSuperWisdom = $character_details_json->characterSuperWisdom;
 		$this->characterDexterity = $character_details_json->characterDexterity;
 		$this->characterSuperDexterity = $character_details_json->characterSuperDexterity;
+		$this->star18Dexterity = empty($character_details_json->star18Dexterity);
 		$this->characterConstitution = $character_details_json->characterConstitution;
 		$this->characterSuperConstitution = $character_details_json->characterSuperConstitution;
 		$this->characterCharisma = $character_details_json->characterCharisma;
@@ -129,9 +148,28 @@ class CharacterDetails implements JsonSerializable
 				$current_spell_classes[] = $spell_class;
 			}
 
+			$spell_type_1 = null;
+			$spell_type_2 = null;
+			if (!empty($character_class->spell_type_1)) {
+				$spell_type_1 = new SpellType($character_class->spell_type_1->spell_type_id, $character_class->spell_type_1->spell_type_name);
+			}
+
+			if (!empty($character_class->spell_type_2)) {
+				$spell_type_2 = new SpellType($character_class->spell_type_2->spell_type_id, $character_class->spell_type_2->spell_type_name);
+			}
+
 			$account_class_summary = new AccountClassSummary($character_class->class_name, $character_class->class_level, $current_spell_classes);
 			$account_class_summary->setNumberOfExperiencePoints($character_class->number_of_experience_points);
 			$account_class_summary->setClassId($character_class->class_id);
+
+			if (!empty($spell_type_1)) {
+				$account_class_summary->setSpellcasterType1($spell_type_1);
+			}
+
+			if (!empty($spell_type_2)) {
+				$account_class_summary->setSpellcasterType2($spell_type_2);
+			}
+
 			if ($i == 1) {
 				$this->character_classes[CHARACTER_PRIMARY_CLASS] = $account_class_summary;
 			} else if ($i == 2) {
@@ -183,10 +221,12 @@ class CharacterDetails implements JsonSerializable
 		$this->characterSuperStrength = $character_stats_class['player_character_super_strength'];
 		$this->characterIntelligence = $character_stats_class['player_character_intelligence'];
 		$this->characterSuperIntelligence = $character_stats_class['player_character_super_intelligence'];
+		$this->star18Intelligence = $character_stats_class['player_character_has_18_star_intelligence'];
 		$this->characterWisdom = $character_stats_class['player_character_wisdom'];
 		$this->characterSuperWisdom = $character_stats_class['player_character_super_wisdom'];
 		$this->characterDexterity = $character_stats_class['player_character_dexterity'];
 		$this->characterSuperDexterity = $character_stats_class['player_character_super_dexterity'];
+		$this->star18Dexterity = $character_stats_class['player_character_has_18_star_dexterity'];
 		$this->characterConstitution = $character_stats_class['player_character_constitution'];
 		$this->characterSuperConstitution = $character_stats_class['player_character_super_constitution'];
 		$this->characterCharisma = $character_stats_class['player_character_charisma'];
@@ -260,6 +300,10 @@ class CharacterDetails implements JsonSerializable
 		return $this->characterSuperIntelligence;
 	}
 
+	public function has18StarIntelligence() {
+		return $this->star18Intelligence;
+	}
+
     public function formatIntelligence() {
 		$output = $this->getCharacterIntelligence();
 		if ($this->getCharacterSuperIntelligence() != null) {
@@ -268,6 +312,8 @@ class CharacterDetails implements JsonSerializable
 			} else {
 				$output .= '/' . sprintf("%02d", $this->getCharacterSuperIntelligence());
 			}
+		} else if ($this->has18StarIntelligence()) {
+			$output .= '*';
 		}
 
         return $output;
@@ -310,9 +356,15 @@ class CharacterDetails implements JsonSerializable
 			} else {
 				$output .= '/' . sprintf("%02d", $this->getCharacterSuperDexterity());
 			}
+		} else if ($this->has18StarDexterity()) {
+			$output .= '*';
 		}
 
         return $output;
+	}
+
+	public function has18StarDexterity() {
+		return $this->star18Dexterity;
 	}
 
 	public function getCharacterConstitution() {
