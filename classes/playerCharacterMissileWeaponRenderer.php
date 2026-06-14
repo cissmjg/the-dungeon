@@ -261,18 +261,31 @@ class PlayerCharacterMissileWeaponRenderer extends PlayerCharacterWeaponRenderer
     }
 
     private function usesPointBlankRange(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon) {
-        $uses_point_blank_range = false;
-        $specialized_in_weapon = count($player_character_skill_set->getAllSkillInstancesForWeapon(SPECIALIZATION, $player_character_weapon->getWeaponProficiencyId())) > 0;
-
-        $character_class_id = $character_details->getFighterTypeClassId();
-        $is_archer = $this->isArcher($character_details);
-        if ($is_archer && $player_character_weapon->getMissileWeaponSubtype() == WEAPON_SUBTYPE_BOW) {
-            $uses_point_blank_range = true;
-        } else if ($character_class_id != 0 && $specialized_in_weapon) {
-            $uses_point_blank_range = true;
+        if (!$character_details->isFighterType()) {
+            return false;
         }
 
-        return $uses_point_blank_range;
+        $character_class_id = $character_details->getFighterTypeClassId();
+
+        // Barbarians cannot specialize
+        if ($character_class_id == BARBARIAN) {
+            return false;
+        }
+
+        if ($character_class_id == ARCHER || $character_class_id == ARCHER_RANGER) {
+            // Archers do not get point blank with a short Bow
+            if ($player_character_weapon->getMissileWeaponSubtype() == WEAPON_SUBTYPE_BOW && $player_character_weapon->getWeaponProficiencyId() != SHORT_BOW) {
+                return true;
+            }
+        } else {
+            // Fighter can specialize in ANY kind of Bow or Crossbow
+            if ($player_character_weapon->getMissileWeaponSubtype() == WEAPON_SUBTYPE_BOW || $player_character_weapon->getMissileWeaponSubtype() == WEAPON_SUBTYPE_CROSSBOW) {
+                $has_specialization = count($player_character_skill_set->getAllSkillInstancesForWeapon(SPECIALIZATION, $player_character_weapon->getWeaponProficiencyId())) > 0;
+                return $has_specialization;
+            }
+        }
+
+        return false;
     }
 
     private function usesShortRange(PlayerCharacterWeapon $player_character_weapon) {

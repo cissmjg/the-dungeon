@@ -29,12 +29,6 @@
         }
 
         public function gather(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
-
-            // Only Archers wielding a bow (that is not a short bow) and Fighters that specialize in a Bow or Crossbow are entitled to Point Blank range
-            $point_blank_available = $this->isEntitledToPointBlank($character_details, $player_character_weapon, $player_character_skill_set);
-            if (!$point_blank_available) {
-                return;
-            }
             
             // Point Blank penalty
             $rm_point_blank = $this->getRmPointBlankPenalty();
@@ -74,34 +68,6 @@
             if (!empty($rm_weapon)) {
                 $this->rm_pb_collection->add($rm_weapon);
             }
-        }
-
-        private function isEntitledToPointBlank(CharacterDetails $character_details, PlayerCharacterWeapon $player_character_weapon, PlayerCharacterSkillSet $player_character_skill_set) {
-            if (!$character_details->isFighterType()) {
-                return false;
-            }
-
-            $character_class_id = $character_details->getFighterTypeClassId();
-
-            // Barbarians cannot specialize
-            if ($character_class_id == BARBARIAN) {
-                return false;
-            }
-
-            if ($character_class_id == ARCHER || $character_class_id == ARCHER_RANGER) {
-                // Archers do not get point blank with a short Bow
-                if ($player_character_weapon->getMissileWeaponSubtype() == WEAPON_SUBTYPE_BOW && $player_character_weapon->getWeaponProficiencyId() != SHORT_BOW) {
-                    return true;
-                }
-            } else {
-                // Fighter can specialize in ANY kind of Bow or Crossbow
-                if ($player_character_weapon->getMissileWeaponSubtype() == WEAPON_SUBTYPE_BOW || $player_character_weapon->getMissileWeaponSubtype() == WEAPON_SUBTYPE_CROSSBOW) {
-                    $has_specialization = count($player_character_skill_set->getAllSkillInstancesForWeapon(SPECIALIZATION, $player_character_weapon->getWeaponProficiencyId())) > 0;
-                    return $has_specialization;
-                }
-            }
-
-            return false;
         }
         
         private function getRmPointBlankPenalty() {
