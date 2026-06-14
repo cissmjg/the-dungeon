@@ -83,6 +83,23 @@
             return $specific_skill_list;
         }
 
+        public function getAllSkillsForWeapon($weapon_id) {
+            $skill_list = [];
+            foreach($this->player_character_skills AS $player_character_skill) {
+                if ($player_character_skill->getWeaponProficiencyId() == $weapon_id || $player_character_skill->getWeapon2ProficiencyId() == $weapon_id) {
+                    if ($player_character_skill->getSkillCatalogId() == WEAPON_PROFICIENCY) {
+                        continue;
+                    }
+
+                    if (!array_key_exists($player_character_skill->getSkillCatalogId(), $skill_list)) {
+                        $skill_list[$player_character_skill->getSkillCatalogId()] = $player_character_skill;
+                    }
+                }
+            }
+
+            return array_values($skill_list);
+        }
+
         public function getWeaponProficiencyForWeapon($weapon_proficiency_id) {
             $weapon_proficiencies = $this->getAllSkillInstances(WEAPON_PROFICIENCY);
 

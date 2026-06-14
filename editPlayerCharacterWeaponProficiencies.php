@@ -263,9 +263,9 @@ echo $html_header;
     <?php else: ?>
         <table>
             <?php if ($primary_class->getClassId() == CAVALIER || $primary_class->getClassId() == ELVEN_CAVALIER || $primary_class->getClassId() == PALADIN): ?>
-            <tr><th>&nbsp;</th><th>Description</th><th>Preferred</th></tr>
+            <tr><th>&nbsp;</th><th>Description</th><th>Skills</th><th>Preferred</th></tr>
             <?php else: ?>
-            <tr><th>&nbsp;</th><th>Description</th></tr>
+            <tr><th>&nbsp;</th><th>Description</th><th>Skills</th></tr>
             <?php endif ?>
             <?php
                 foreach($weapon_proficiency_list AS $weapon_proficiency) {
@@ -283,6 +283,7 @@ echo $html_header;
                     $output_row  = '<tr>';
                     $output_row .= '<td>' . buildDeletePlayerCharacterWeaponProficiencyIcon($delete_weapon_proficiency_form_id, $weapon_desc, $weapon_proficiency['player_weapon_proficiency_id']) . '</td>';
                     $output_row .= '<td>' . buildWeaponNameCell($input[PLAYER_NAME], $input[CHARACTER_NAME], $weapon_proficiency) . '</td>';
+                    $output_row .= '<td>' . buildSkillList($player_character_skill_set, $weapon_proficiency['weapon_proficiency_id']) . '</td>';
                     if ($primary_class->getClassId() == CAVALIER || $primary_class->getClassId() == ELVEN_CAVALIER || $primary_class->getClassId() == PALADIN) {
                         $output_row .= '<td>' . $preferred_weapon_text . '</td>';
                     }
@@ -373,6 +374,16 @@ function buildDeletePlayerCharacterWeaponProficiencyIcon($form_id, $weapon_desc,
     $delete_icon->setHoverText('Delete ' . $weapon_desc);
 
     return $delete_icon->build();
+}
+
+function buildSkillList(PlayerCharacterSkillSet $player_character_skill_set, $weapon_proficiency_id) {
+    $output_html = '';
+    $skills_for_weapon = $player_character_skill_set->getAllSkillsForWeapon($weapon_proficiency_id);
+    foreach($skills_for_weapon AS $skill_for_weapon) {
+        $output_html .= $skill_for_weapon->getPlayerCharacterSkillName() . '<br>';
+    }
+
+    return $output_html;
 }
 
 function buildCavalierLevel3PreferredWeaponList($weapon_proficiency_skills) {
