@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . '/../dbio/constants/skills.php';
 require_once __DIR__ . '/../dbio/constants/weapons.php';
 require_once __DIR__ . '/../dbio/constants/weaponType.php';
 require_once __DIR__ . '/../dbio/constants/weaponSubtype.php';
@@ -125,13 +126,126 @@ abstract class PlayerCharacterWeaponRenderer {
     }
 
     protected function calculateHitAdj(RmCollectionCalculator $to_hit_calculator) {
-
         return sprintf("%+d", $to_hit_calculator->aggregate());
     }
 
     protected function calculateDmgAdj(RmCollectionCalculator $damage_calculator) {
-
         return sprintf("%+d", $damage_calculator->aggregate());
+    }
+
+    protected function buildSkillList(PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, $uses_point_blank_range) {
+        if ($player_character_weapon->isMartialSkillWeapon()) {
+            $mantis_leap_name = getSkillDescriptionFromSkillId(MANTIS_LEAP);
+            $circle_kick_name = getSkillDescriptionFromSkillId(CIRCLE_KICK);
+            if ($player_character_weapon->getWeaponDescription() == $mantis_leap_name || $player_character_weapon->getWeaponDescription() == $circle_kick_name) {
+                return '';
+            }
+        }
+
+        $output_html = '';
+        $weapon_proficiency_id = $player_character_weapon->getWeaponProficiencyId();
+        
+        $quickdraw = $player_character_skill_set->getAllSkillInstancesForWeapon(QUICK_DRAW, $weapon_proficiency_id);
+        if (!empty($quickdraw)) {
+            $quickdraw_skill = $quickdraw[0];
+            $output_html .= $quickdraw_skill->getPlayerCharacterSkillName() . '<br>';
+        }
+
+        $improved_critical = $player_character_skill_set->getAllSkillInstancesForWeapon(IMPROVED_CRITICAL, $weapon_proficiency_id);
+        if (!empty($improved_critical)) {
+            $improved_critical_skill = $improved_critical[0];
+            $output_html .= $improved_critical_skill->getPlayerCharacterSkillName() . '<br>';
+        }
+
+        $specialization = $player_character_skill_set->getAllSkillInstancesForWeapon(SPECIALIZATION, $weapon_proficiency_id);
+        if (!empty($specialization) && $uses_point_blank_range) {
+            $output_html .= 'Double damage at PB range<br>';
+        }
+
+        $precise_shot = $player_character_skill_set->getAllSkillInstances(PRECISE_SHOT);
+        if (!empty($precise_shot) && $player_character_weapon->getMissileWeaponType() == WEAPON_TYPE_MISSILE) {
+            $precise_shot_skill = $precise_shot[0];
+            $output_html .= $precise_shot_skill->getPlayerCharacterSkillName() . '<br>';
+        }
+
+        $sharp_shooting = $player_character_skill_set->getAllSkillInstances(SHARP_SHOOTING);
+        if (!empty($sharp_shooting) && $player_character_weapon->getMissileWeaponType() == WEAPON_TYPE_MISSILE) {
+            $sharp_shooting_skill = $sharp_shooting[0];
+            $output_html .= $sharp_shooting_skill->getPlayerCharacterSkillName() . '<br>';
+        }
+
+        $rapid_reload = $player_character_skill_set->getAllSkillInstancesForWeapon(RAPID_RELOAD, $weapon_proficiency_id);
+        if (!empty($rapid_reload)) {
+            if ($weapon_proficiency_id == LIGHT_CROSSBOW || $weapon_proficiency_id == GREAT_CROSSBOW || $weapon_proficiency_id == DOKYU || $weapon_proficiency_id == PISTOL_GRIP_CROSSBOW) {
+                $rapid_reload_skill = $rapid_reload[0];
+                $output_html .= $rapid_reload_skill->getPlayerCharacterSkillName() . '<br>';
+            }
+        }
+
+        if ($weapon_proficiency_id == FIST) {
+            $combat_reflexes = $player_character_skill_set->getAllSkillInstances(COMBAT_REFLEXES);
+            if (!empty($combat_reflexes)) {
+                $count_combat_reflexes = count($combat_reflexes);
+                $combat_reflexes_skill = $combat_reflexes[0];
+                $output_html .= sprintf("%s (%d)<br>", $combat_reflexes_skill->getPlayerCharacterSkillName(), $count_combat_reflexes);
+            }
+
+            $improved_unarmed_strike = $player_character_skill_set->getAllSkillInstances(IMPROVED_UNARMED_STRIKE);
+            if (!empty($improved_unarmed_strike) && !$player_character_weapon->isMartialSkillWeapon()) {
+                $improved_unarmed_strike_skill = $improved_unarmed_strike[0];
+                $output_html .= $improved_unarmed_strike_skill->getPlayerCharacterSkillName() . '<br>';
+            }
+
+            $clever_wrestling = $player_character_skill_set->getAllSkillInstances(CLEVER_WRESTLING);
+            if (!empty($clever_wrestling) && !$player_character_weapon->isMartialSkillWeapon()) {
+                $clever_wrestling_skill = $clever_wrestling[0];
+                $output_html .= $clever_wrestling_skill->getPlayerCharacterSkillName() . '<br>';
+            }
+
+            $close_quarters_fighting = $player_character_skill_set->getAllSkillInstances(CLOSE_QUARTERS_FIGHTING);
+            if (!empty($close_quarters_fighting) && !$player_character_weapon->isMartialSkillWeapon()) {
+                $close_quarters_fighting_skill = $close_quarters_fighting[0];
+                $output_html .= $close_quarters_fighting_skill->getPlayerCharacterSkillName() . '<br>';
+            }
+
+            $eagle_claw = $player_character_skill_set->getAllSkillInstances(EAGLE_CLAW);
+            if (!empty($eagle_claw) && !$player_character_weapon->isMartialSkillWeapon()) {
+                $eagle_claw_skill = $eagle_claw[0];
+                $output_html .= $eagle_claw_skill->getPlayerCharacterSkillName() . '<br>';
+            }
+
+            $dirty_fighting = $player_character_skill_set->getAllSkillInstances(DIRTY_FIGHTING);
+            if (!empty($dirty_fighting) && !$player_character_weapon->isMartialSkillWeapon()) {
+                $dirty_fighting_skill = $dirty_fighting[0];
+                $output_html .= $dirty_fighting_skill->getPlayerCharacterSkillName() . '<br>';
+            }
+        }
+
+        if (!empty($player_character_weapon->getPlayerNote1())) {
+            $output_html .= $player_character_weapon->getPlayerNote1() . '<br>';
+        }
+
+        if (!empty($player_character_weapon->getPlayerNote2())) {
+            $output_html .= $player_character_weapon->getPlayerNote2() . '<br>';
+        }
+
+        if (!empty($player_character_weapon->getPlayerNote3())) {
+            $output_html .= $player_character_weapon->getPlayerNote3() . '<br>';
+        }
+
+        if (!empty($player_character_weapon->getMeleeAdditionalText())) {
+            $output_html .= $player_character_weapon->getMeleeAdditionalText() . '<br>';
+        }
+
+        if (!empty($player_character_weapon->getMissileAdditionalText())) {
+            $output_html .= $player_character_weapon->getMissileAdditionalText() . '<br>';
+        }
+
+        return $output_html;
+    }
+
+    private function hitDmgSkill($skill_id) {
+        return ($skill_id == MANTIS_LEAP || $skill_id == CIRCLE_KICK || $skill_id == THROW_ANYTHING || $skill_id == DIRTY_FIGHTING || $skill_id == FIST_OF_IRON || $skill_id == WEAPON_FOCUS_ACCURACY || $skill_id == WEAPON_FOCUS_GREATER_ACCURACY || $skill_id == WEAPON_FOCUS_TECHNIQUE || $skill_id == WEAPON_FOCUS_GREATER_TECHNIQUE || $skill_id == CLERICS_PREFERRED_WEAPON || $skill_id == TWO_WEAPON_FIGHTING || $skill_id == DOUBLE_SPECIALIZATION);
     }
 
     protected function buildUIHitRmCollection(RmCollectionCalculator $to_hit_calculator) {

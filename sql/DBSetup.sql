@@ -9875,7 +9875,7 @@ COMMIT;
 START TRANSACTION;
 
 INSERT INTO skill_catalog (name, attribute, skill_focus, max_count, required_class, required_race, required_level, minimum_charisma, minimum_dexterity, minimum_intelligence, roll_name, ability_text, attribute_bonus, is_active)
-VALUES('Sharp Shooting','None', False, 1, 4, 0, 3, 0, 0, 0, NULL, 'Halves the penalty for shooting at a target with cover', 0, True);
+VALUES('Sharp Shooting','None', False, 1, 0, 0, 0, 0, 0, 0, NULL, 'Halves the penalty for shooting at a target with cover', 0, True);
 
 -- SELECT skill_catalog.id FROM skill_catalog WHERE name = 'No PreRequisite';
 -- 'No PreRequisite' ID = 1
