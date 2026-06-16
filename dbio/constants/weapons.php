@@ -260,4 +260,15 @@ function isWeaponHurled($weapon_proficiency_id) {
     }
 }
 
+function isArcherFavoredBowType($weapon_proficiency_id) {
+    switch($weapon_proficiency_id) {
+        case LONG_COMPOSITE_BOW:
+        case LONG_BOW:
+        case ELVEN_CRAFT_BOW:
+            return true;
+        default:
+        return false;
+    }
+}
+
 ?>

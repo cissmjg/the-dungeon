@@ -224,7 +224,13 @@ class PlayerCharacterMissileWeaponRenderer extends PlayerCharacterWeaponRenderer
         $range_cell_id = $this->buildRangeCellId($missile_range, $player_character_weapon);
         $weapon_detail_entry .= HtmlHelper::buildDivTagWithId($range_cell_id, 'rmWeaponDetailCenter', $weapon_range);
         $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', $hit_dmg_adj);
-        $weapon_detail_entry .= HtmlHelper::buildDivTag('', '&nbsp;');
+        if ($render_header && $player_character_weapon->getMeleeWeaponType() != WEAPON_TYPE_MELEE) {
+            $output_html = $this->buildSkillList($this->getPlayerCharacterSkillSet(), $player_character_weapon, $this->uses_point_blank_range);
+            $weapon_detail_entry .= HtmlHelper::buildDivTag('', $output_html);
+        } else {
+            $weapon_detail_entry .= HtmlHelper::buildDivTag('', '&nbsp;');
+        }
+
         $weapon_detail_entry .= HtmlHelper::buildDivEndTag() . PHP_EOL;
 
         return $weapon_detail_entry;

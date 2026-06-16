@@ -1,5 +1,4 @@
 
-text/x-generic editPlayerCharacterWeaponProficiencies.php ( PHP script, ASCII text, with CRLF line terminators )
 <?php
 
 $errors = [];
@@ -46,6 +45,7 @@ require_once __DIR__ . '/classes/skills/brutalThrow.php';
 require_once __DIR__ . '/classes/skills/powerAttack.php';
 require_once __DIR__ . '/classes/skills/powerThrow.php';
 require_once __DIR__ . '/classes/skills/rapidReload.php';
+require_once __DIR__ . '/classes/skills/preciseShot.php';
 require_once __DIR__ . '/classes/skills/weaponFinesse.php';
 require_once __DIR__ . '/classes/skills/zenArchery.php';
 
@@ -263,9 +263,9 @@ echo $html_header;
     <?php else: ?>
         <table>
             <?php if ($primary_class->getClassId() == CAVALIER || $primary_class->getClassId() == ELVEN_CAVALIER || $primary_class->getClassId() == PALADIN): ?>
-            <tr><th>&nbsp;</th><th>Description</th><th>Preferred</th></tr>
+            <tr><th>&nbsp;</th><th>Description</th><th>Skills</th><th>Preferred</th></tr>
             <?php else: ?>
-            <tr><th>&nbsp;</th><th>Description</th></tr>
+            <tr><th>&nbsp;</th><th>Description</th><th>Skills</th></tr>
             <?php endif ?>
             <?php
                 foreach($weapon_proficiency_list AS $weapon_proficiency) {
@@ -283,6 +283,7 @@ echo $html_header;
                     $output_row  = '<tr>';
                     $output_row .= '<td>' . buildDeletePlayerCharacterWeaponProficiencyIcon($delete_weapon_proficiency_form_id, $weapon_desc, $weapon_proficiency['player_weapon_proficiency_id']) . '</td>';
                     $output_row .= '<td>' . buildWeaponNameCell($input[PLAYER_NAME], $input[CHARACTER_NAME], $weapon_proficiency) . '</td>';
+                    $output_row .= '<td>' . buildSkillList($player_character_skill_set, $weapon_proficiency['weapon_proficiency_id']) . '</td>';
                     if ($primary_class->getClassId() == CAVALIER || $primary_class->getClassId() == ELVEN_CAVALIER || $primary_class->getClassId() == PALADIN) {
                         $output_row .= '<td>' . $preferred_weapon_text . '</td>';
                     }
@@ -304,6 +305,9 @@ echo $html_header;
     $power_throw = new PowerThrow($the_skill_catalog, $form_id_lookup);
     echo $power_throw->render($character_details, $player_character_skill_set);
 
+    $precise_shot = new PreciseShot($the_skill_catalog, $form_id_lookup);
+    echo $precise_shot->render($character_details, $player_character_skill_set);
+
     $rapid_reload = new RapidReload($the_skill_catalog, $form_id_lookup);
     echo $rapid_reload->render($character_details, $player_character_skill_set);
 
@@ -317,6 +321,7 @@ echo $html_header;
         $debug_output .= $brutal_throw->dump();
         $debug_output .= $power_attack->dump();
         $debug_output .= $power_throw->dump();
+        $debug_output .= $precise_shot->dump();
         $debug_output .= $rapid_reload->dump();
         $debug_output .= $weapon_finesse->dump();
         $debug_output .= $zen_archery->dump();
@@ -373,6 +378,16 @@ function buildDeletePlayerCharacterWeaponProficiencyIcon($form_id, $weapon_desc,
     $delete_icon->setHoverText('Delete ' . $weapon_desc);
 
     return $delete_icon->build();
+}
+
+function buildSkillList(PlayerCharacterSkillSet $player_character_skill_set, $weapon_proficiency_id) {
+    $output_html = '';
+    $skills_for_weapon = $player_character_skill_set->getAllSkillsForWeapon($weapon_proficiency_id);
+    foreach($skills_for_weapon AS $skill_for_weapon) {
+        $output_html .= $skill_for_weapon->getPlayerCharacterSkillName() . '<br>';
+    }
+
+    return $output_html;
 }
 
 function buildCavalierLevel3PreferredWeaponList($weapon_proficiency_skills) {

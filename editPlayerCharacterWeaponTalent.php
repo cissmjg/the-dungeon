@@ -36,7 +36,11 @@ require_once __DIR__ . '/webio/isSkillFocus.php';
 require_once __DIR__ . '/webio/weaponProficiencyId.php';
 require_once __DIR__ . '/webio/weapon2ProficiencyId.php';
 
+require_once __DIR__ . '/classes/skills/combatReflexes.php';
+require_once __DIR__ . '/classes/skills/cleverWrestling.php';
+require_once __DIR__ . '/classes/skills/closeQuartersFighting.php';
 require_once __DIR__ . '/classes/skills/dirtyFighting.php';
+require_once __DIR__ . '/classes/skills/eagleClaw.php';
 require_once __DIR__ . '/classes/skills/fistOfIron.php';
 require_once __DIR__ . '/classes/skills/improvedUnarmedStrike.php';
 require_once __DIR__ . '/classes/skills/jump.php';
@@ -51,6 +55,7 @@ require_once __DIR__ . '/classes/skills/weaponFocusGreaterTechnique.php';
 require_once __DIR__ . '/classes/skills/weaponSpecialization.php';
 require_once __DIR__ . '/classes/skills/weaponDoubleSpecialization.php';
 require_once __DIR__ . '/classes/skills/quickDraw.php';
+require_once __DIR__ . '/classes/skills/sharpShooting.php';
 require_once __DIR__ . '/classes/skills/throwAnything.php';
 require_once __DIR__ . '/classes/skills/twoWeaponFighting.php';
 
@@ -145,11 +150,20 @@ $action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
     <h3>Skills for <?= $weapon_proficiency['weapon_proficiency_name'] ?></h3>
     <?php
         if ($current_weapon_proficiency_id == FIST) {
+            $clever_wrestling = new CleverWrestling($the_skill_catalog, $form_id_lookup);
+            $clever_wrestling->setWeaponProficiencyValue($current_weapon_proficiency_id);
+
+            $close_quarters_fighting = new CloseQuarterFighting($the_skill_catalog, $form_id_lookup);
+            $close_quarters_fighting->setWeaponProficiencyValue($current_weapon_proficiency_id);
+
             $dirty_fighting = new DirtyFighting($the_skill_catalog, $form_id_lookup);
             $dirty_fighting->setWeaponProficiencyValue($current_weapon_proficiency_id);
 
             $fist_of_iron = new FistOfIron($the_skill_catalog, $form_id_lookup);
             $fist_of_iron->setWeaponProficiencyValue($current_weapon_proficiency_id);
+
+            $eagle_claw = new EagleClaw($the_skill_catalog, $form_id_lookup);
+            $eagle_claw->setWeaponProficiencyValue($current_weapon_proficiency_id);
 
             $mantis_leap = new MantisLeap($the_skill_catalog, $form_id_lookup);
             $mantis_leap->setWeaponProficiencyValue($current_weapon_proficiency_id);
@@ -160,21 +174,26 @@ $action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
             $throw_anything = new ThrowAnything($the_skill_catalog, $form_id_lookup);
             $throw_anything->setWeaponProficiencyValue($current_weapon_proficiency_id);
 
+            echo $clever_wrestling->render($character_details, $player_character_skill_set);
+            echo $close_quarters_fighting->render($character_details, $player_character_skill_set);
             echo $dirty_fighting->render($character_details, $player_character_skill_set);
             echo $fist_of_iron->render($character_details, $player_character_skill_set);
+            echo $eagle_claw->render($character_details, $player_character_skill_set);
             echo $mantis_leap->render($character_details, $player_character_skill_set);
             echo $circle_kick->render($character_details, $player_character_skill_set);
             echo $throw_anything->render($character_details, $player_character_skill_set);
 
             if ($debug_skills) {
+                $debug_output .= $clever_wrestling->dump();
+                $debug_output .= $close_quarters_fighting->dump();
                 $debug_output .= $dirty_fighting->dump();
                 $debug_output .= $fist_of_iron->dump();
+                $debug_output .= $eagle_claw->dump();
                 $debug_output .= $mantis_leap->dump();
                 $debug_output .= $circle_kick->dump();
                 $debug_output .= $throw_anything->dump();
             }
         } else {
-
             $quick_draw = new QuickDraw($the_skill_catalog, $form_id_lookup);
             $quick_draw->setWeaponProficiencyValue($current_weapon_proficiency_id);
             echo $quick_draw->render($character_details, $player_character_skill_set);
@@ -214,6 +233,11 @@ $action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
             $improved_critical->setWeaponDetail($weapon_detail);
             echo $improved_critical->render($character_details, $player_character_skill_set);
 
+            $sharp_shooting = new SharpShooting($the_skill_catalog, $form_id_lookup);
+            $sharp_shooting->setWeaponProficiencyValue($current_weapon_proficiency_id);
+            $sharp_shooting->setWeaponDetail($weapon_detail);
+            echo $sharp_shooting->render($character_details, $player_character_skill_set);
+
             $cleric_preferred_weapon = new ClericsPreferredWeapon($the_skill_catalog, $form_id_lookup);
             $cleric_preferred_weapon->setWeaponProficiencyValue($current_weapon_proficiency_id);
             $cleric_preferred_weapon->setClericsPreferredWeapon($clerics_preferred_weapons);
@@ -245,6 +269,7 @@ $action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
                 $debug_output .= $double_weapon_specialization->dump();
                 $debug_output .= $improved_critical->dump();
                 $debug_output .= $two_weapon_fighting->dump();
+                $debug_output .= $sharp_shooting->dump();
                 $debug_output .= $cleric_preferred_weapon->dump();
             }
         }
@@ -252,12 +277,15 @@ $action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
     <?php
         if ($current_weapon_proficiency_id == FIST) {
             echo '<h3>Prerequisite Skills</h3>' . PHP_EOL;
+            $combat_reflexes = new CombatReflexes($the_skill_catalog, $form_id_lookup);
+            echo $combat_reflexes->render($character_details, $player_character_skill_set);
             $improved_unarmed_strike = new ImprovedUnarmedStrike($the_skill_catalog, $form_id_lookup);
             echo $improved_unarmed_strike->render($character_details, $player_character_skill_set);
             $jump = new Jump($the_skill_catalog, $form_id_lookup);
             echo $jump->render($character_details, $player_character_skill_set);
 
             if ($debug_skills) {
+                $debug_output .= $combat_reflexes->dump();
                 $debug_output .= $improved_unarmed_strike->dump();
                 $debug_output .= $jump->dump();
             }
@@ -272,7 +300,6 @@ $action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
         <?php 
             echo $debug_output 
         ?>
-
     </pre>
     </div>
 </div>

@@ -142,7 +142,8 @@ class TwoWeaponFightingRenderer extends PlayerCharacterWeaponRenderer {
         $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', $player_character_weapon->getMeleeWeaponDamage());
         $weapon_detail_entry .= HtmlHelper::buildDivTag('', '&nbsp;');
         $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', $hit_dmg_adj);
-        $weapon_detail_entry .= HtmlHelper::buildDivTag('', '&nbsp;');
+        $output_html = $this->buildSkillList($this->getPlayerCharacterSkillSet(), $player_character_weapon, false);
+        $weapon_detail_entry .= HtmlHelper::buildDivTag('', $output_html);
         $weapon_detail_entry .= HtmlHelper::buildDivEndTag() . PHP_EOL;
 
         return $weapon_detail_entry;
