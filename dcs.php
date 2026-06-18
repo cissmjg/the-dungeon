@@ -18,7 +18,8 @@ require_once __DIR__ . '/classes/characterDetails.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 require_once __DIR__ . '/classes/playerCharacterSkillSet.php';
 require_once __DIR__ . '/classes/playerCharacterWeaponSet.php';
-require_once __DIR__ . '/classes/combatSummaryRenderer.php';
+require_once __DIR__ . '/classes/combatSummaryRendererDefault.php';
+require_once __DIR__ . '/classes/combatSummaryRendererUserDefined.php';
 
 require_once __DIR__ . '/dbio/constants/skills.php';
 require_once __DIR__ . '/dbio/constants/weaponType.php';
@@ -56,6 +57,9 @@ $attribute_metadata = new AttributeMetadata($character_details);
 
 $two_weapon_fighting_configuration_set = new TwoWeaponFightingConfigurationSet();
 $two_weapon_fighting_configuration_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+
+$combat_summary_renderer_default = new CombatSummaryRendererDefault($player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata, $two_weapon_fighting_configuration_set);
+$combat_summary_renderer_user_defined = new CombatSummaryRendererUserDefined($player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata, $two_weapon_fighting_configuration_set);
 
 $action_bar = buildActionBar($player_name, $character_name, $character_details);
 
@@ -95,8 +99,11 @@ echo $html_header;
 <div>&nbsp;</div>
 <span style="font-weight: bold;">Combat Summary</span>
 <?php
-    $combat_summary_renderer = new CombatSummaryRenderer($player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata, $two_weapon_fighting_configuration_set);
-    $combat_summary_renderer->render();
+	if (!$combat_summary_renderer_user_defined->isEmpty()) {
+		$combat_summary_renderer_user_defined->render();
+	} else {
+	    $combat_summary_renderer_default->render();
+	}
 ?>
 <div class="characterSheetContainer">
 	<div class="characterSheetColumn">

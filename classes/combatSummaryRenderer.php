@@ -15,7 +15,7 @@
 
     require_once __DIR__ . '/../helper/HtmlHelper.php';
 
-    class CombatSummaryRenderer {
+    abstract class CombatSummaryRenderer {
 
     protected $player_character_weapon_set;
     public function getPlayerCharacterWeaponSet() {
@@ -42,7 +42,7 @@
         return $this->two_weapon_fighting_configuration_set;
     }
 
-    private $row_class_manager;
+    protected $row_class_manager;
     protected function getRowClassManager() {
         return $this->row_class_manager;
     }
@@ -56,36 +56,16 @@
         $this->row_class_manager = new RowClassManager();
     }
 
-    public function render() {
-        $is_mounted_section_needed = $this->isMountedSectionNeeded($this->getCharacterDetails(), $this->getPlayerCharacterSkillSet());
-        if ($is_mounted_section_needed) {
-            echo $this->renderCollapsibleSectionStart(COMBAT_MODE_MOUNTED);
-            echo $this->renderHeader();
-            echo $this->renderSection(COMBAT_MODE_MOUNTED);
-            echo $this->renderCollapsibleSectionEnd();
-            echo HtmlHelper::buildSpacerDivTag();
-        }
+    abstract protected function render();
 
-        if ($is_mounted_section_needed) {
-            echo $this->renderCollapsibleSectionStart(COMBAT_MODE_UNMOUNTED);
-        }
-
-        echo $this->renderHeader();
-        echo $this->renderSection(COMBAT_MODE_UNMOUNTED);
-        
-        if ($is_mounted_section_needed) {
-            echo $this->renderCollapsibleSectionEnd();
-        }
-    }
-
-    private function isMountedSectionNeeded(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set) {
+    protected function isMountedSectionNeeded(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set) {
         $is_cavalier = $character_details->isCavalierType();
         $mounted_specialist_present = $player_character_skill_set->getAllSkillInstances(MOUNTED_ATTACK_SPECIALIST);
 
         return ($is_cavalier || $mounted_specialist_present);
     }
 
-    private function renderSection($combat_mode) {
+    protected function renderSection($combat_mode) {
         if ($combat_mode == COMBAT_MODE_UNMOUNTED) {
             if (count($this->getPlayerCharacterSkillSet()->getAllSkillInstances(TWO_WEAPON_FIGHTING)) > 0) {
                 foreach($this->getTwoWeaponFightingConfigurationSet() AS $two_weapon_fighting_config) {
@@ -110,7 +90,7 @@
         }
     }
 
-    private function renderCollapsibleSectionStart($combat_mode) {
+    protected function renderCollapsibleSectionStart($combat_mode) {
         $toggle_panel_text = getMountedCombatModeDescription($combat_mode);
 
         $toggle_panel_html  = HtmlHelper::buildDivStartTag('togglePanel') . PHP_EOL;
@@ -121,12 +101,12 @@
         return  $toggle_panel_html;
     }
 
-    private function renderCollapsibleSectionEnd() {
+    protected function renderCollapsibleSectionEnd() {
         echo HtmlHelper::buildDivEndTag() . PHP_EOL;
         echo HtmlHelper::buildDivEndTag() . PHP_EOL;
     }
 
-    private function renderHeader() {
+    protected function renderHeader() {
         $header  = '  <div class="rmWeaponContainer">' . PHP_EOL;
         $header .= '    <div class="rmWeaponHeaderItem">Weapon</div>' . PHP_EOL;
         $header .= '    <div class="rmWeaponHeaderItem">Spd</div>' . PHP_EOL;
