@@ -1175,6 +1175,23 @@ BEGIN
     ORDER BY player_character.name;
 END
 
+CREATE PROCEDURE getCombatSummaryUserDefinedItems
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64))
+BEGIN
+	SELECT
+		id AS combat_summary_user_defined_id,
+		section_name AS combat_summary_user_defined_section_name,
+		display_order AS combat_summary_user_defined_display_order,
+		section_id AS combat_summary_user_defined_section_id,
+		renderer_id AS combat_summary_user_defined_renderer_id
+	FROM player_character_combat_summary_display
+	JOIN player_character ON player_character.id = player_character_combat_summary_display.player_character_id
+	JOIN player ON player.id = player_character.player_id
+	WHERE player.name = playerName AND player_character.name = characterName
+	ORDER BY section_name, display_order;
+END
+
 CREATE PROCEDURE getMaxExtraSlotLevelBySpellType
 (IN playerName VARCHAR(32),
  IN characterName VARCHAR(64),

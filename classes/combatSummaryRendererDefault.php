@@ -26,26 +26,19 @@
         $this->two_weapon_fighting_configuration_set = $two_weapon_fighting_configuration_set;
         $this->row_class_manager = new RowClassManager();
     }
-
-    public function render() {
-        $is_mounted_section_needed = $this->isMountedSectionNeeded($this->getCharacterDetails(), $this->getPlayerCharacterSkillSet());
-        if ($is_mounted_section_needed) {
-            echo $this->renderCollapsibleSectionStart(COMBAT_MODE_MOUNTED);
-            echo $this->renderHeader();
-            echo $this->renderSection(COMBAT_MODE_MOUNTED);
-            echo $this->renderCollapsibleSectionEnd();
-            echo HtmlHelper::buildSpacerDivTag();
+    
+    protected function renderSection($combat_mode) {
+        if ($combat_mode == COMBAT_MODE_UNMOUNTED) {
+            foreach($this->getTwoWeaponFightingConfigurationSet() AS $two_weapon_fighting_config) {
+                $two_weapon_renderer = new TwoWeaponFightingRenderer($two_weapon_fighting_config, $this->getPlayerCharacterWeaponSet(), $this->getPlayerCharacterSkillSet(), $this->getCharacterDetails(), $this->getAttributeMetadata(), $this->getRowClassManager());
+                echo $two_weapon_renderer->render();
+            }
         }
 
-        if ($is_mounted_section_needed) {
-            echo $this->renderCollapsibleSectionStart(COMBAT_MODE_UNMOUNTED);
-        }
-
-        echo $this->renderHeader();
-        echo $this->renderSection(COMBAT_MODE_UNMOUNTED);
-        
-        if ($is_mounted_section_needed) {
-            echo $this->renderCollapsibleSectionEnd();
+        foreach($this->getPlayerCharacterWeaponSet()->getAll() AS $player_character_weapon) {
+            $player_character_weapon_renderer = new PlayerCharacterWeaponRenderer($player_character_weapon, $this->getPlayerCharacterSkillSet(), $this->getCharacterDetails(), $this->getAttributeMetadata(), $this->getRowClassManager());
+            $player_character_weapon_renderer->setCombatMode($combat_mode);
+            echo $player_character_weapon_renderer->render();
         }
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-require_once 'playerCharacterWeaponRenderer.php';
+require_once 'playerCharacterWeaponRendererBase.php';
 require_once 'playerCharacterWeapon.php';
 require_once 'playerCharacterSkillSet.php';
 require_once 'characterDetails.php';
@@ -13,7 +13,12 @@ require_once __DIR__ . '/../dbio/constants/twoWeaponFightingHand.php';
 require_once __DIR__ . '/rollModifier/meleeTwoHandedFightingToHitRmCollectionCalculator.php';
 require_once __DIR__ . '/rollModifier/meleeDamageRmCollectionCalculator.php';
 
-class TwoWeaponFightingRenderer extends PlayerCharacterWeaponRenderer {
+class TwoWeaponFightingRenderer extends PlayerCharacterWeaponRendererBase {
+
+    private $display_id = '';
+    public function getId() {
+        return $this->display_id;
+    }
 
     private $two_weapon_fighting_config;
     public function getTwoWeaponFightingConfig() {
@@ -59,11 +64,12 @@ class TwoWeaponFightingRenderer extends PlayerCharacterWeaponRenderer {
         $off_hand_weapon_id = $this->two_weapon_fighting_config->getWeapon2Id();
         $this->off_hand_weapon = $this->player_character_weapon_set->getWeaponById($off_hand_weapon_id);
 
+        $this->display_id = 'csd-' . $two_weapon_fighting_config->getTwoWeaponConfigurationId() . '-2wf';
+
         parent::__construct($this->main_hand_weapon, $player_character_skill_set, $character_details, $attribute_metadata, $row_class_manager);
     }
 
     public function render() {
-        
         // Main Hand To Hit calculator
         $main_hand_melee_to_hit_calculator = new MeleeTwoWeaponFightingToHitRmCollectionCalculator();
         $main_hand_melee_to_hit_calculator->setTwoWeaponFightingHand(TWO_WEAPON_FIGHTING_MAIN_HAND);
@@ -84,12 +90,14 @@ class TwoWeaponFightingRenderer extends PlayerCharacterWeaponRenderer {
 
         $attacks_per_round_calculator = new AttacksPerRoundCalculator($this->getCharacterDetails(), $this->getPlayerCharacterSkillSet(), $this->getPlayerCharacterWeapon(), $this->getCombatMode());
 
-
         // Main Hand Render
         $weapon_panel_name = 'weapon-' . $this->main_hand_weapon->getWeaponId() . '-2wf';
 		$weapon_panel_icon_name = 'weapon-icon-' . $this->main_hand_weapon->getWeaponId() . '-2wf';
-        
-        $weapon_panel  = $this->buildWeaponDetailEntry($this->main_hand_weapon, $main_hand_melee_to_hit_calculator, $main_hand_melee_rm_dmg_calculator, $attacks_per_round_calculator, $weapon_panel_name, $weapon_panel_icon_name, TWO_WEAPON_FIGHTING_MAIN_HAND);
+
+        $weapon_panel = '';
+        $weapon_panel .= HtmlHelper::buildDivStartTagWithId('', $this->getId(), false) . PHP_EOL;
+
+        $weapon_panel .= $this->buildWeaponDetailEntry($this->main_hand_weapon, $main_hand_melee_to_hit_calculator, $main_hand_melee_rm_dmg_calculator, $attacks_per_round_calculator, $weapon_panel_name, $weapon_panel_icon_name, TWO_WEAPON_FIGHTING_MAIN_HAND);
         $weapon_panel .= $this->buildRmWeaponPanel($main_hand_melee_to_hit_calculator, $main_hand_melee_rm_dmg_calculator, $weapon_panel_name);
 
         // Off Hand Render
@@ -98,6 +106,7 @@ class TwoWeaponFightingRenderer extends PlayerCharacterWeaponRenderer {
 
         $weapon_panel .= $this->buildWeaponDetailEntry($this->off_hand_weapon, $off_hand_melee_to_hit_calculator, $off_hand_melee_rm_dmg_calculator, $attacks_per_round_calculator, $weapon_panel_name, $weapon_panel_icon_name, TWO_WEAPON_FIGHTING_OFF_HAND);
         $weapon_panel .= $this->buildRmWeaponPanel($off_hand_melee_to_hit_calculator, $off_hand_melee_rm_dmg_calculator, $weapon_panel_name);
+        $weapon_panel .= HtmlHelper::buildDivEndTag() . PHP_EOL;
 
         return $weapon_panel;
     }
@@ -135,7 +144,7 @@ class TwoWeaponFightingRenderer extends PlayerCharacterWeaponRenderer {
         $attacks_per_round = $attacks_per_round_calculator->getAttacksPerRound(WEAPON_TYPE_MELEE);
         $weapon_speed = $this->calculateWeaponSpeed($weapon_speed_base, $attacks_per_round, false, $player_character_weapon->getMeleeWeaponSubtype(), $player_character_weapon->getMeleeNumberOfHands(), $player_character_weapon->getWeaponProficiencyId());
 
-        $weapon_detail_entry  = HtmlHelper::buildDivStartTag($this->formatCellStyle(false));
+        $weapon_detail_entry  = HtmlHelper::buildDivStartTag($this->formatCellStyle(false)) . PHP_EOL;
         $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailLeft', $weapon_desc);
         $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', $weapon_speed);
         $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', $attacks_per_round->value);

@@ -1,5 +1,5 @@
 <?php
-require_once 'playerCharacterWeaponRenderer.php';
+require_once 'playerCharacterWeaponRendererBase.php';
 require_once 'playerCharacterWeapon.php';
 require_once 'playerCharacterSkillSet.php';
 require_once 'characterDetails.php';
@@ -12,6 +12,7 @@ require_once __DIR__ . '/../dbio/constants/weaponType.php';
 require_once __DIR__ . '/../dbio/constants/weaponSubtype.php';
 require_once __DIR__ . '/../dbio/constants/missileRanges.php';
 require_once __DIR__ . '/../dbio/constants/skills.php';
+require_once __DIR__ . '/../dbio/constants/mountedCombatMode.php';
 
 require_once __DIR__ . '/rollModifier/meleeToHitRmCollectionCalculator.php';
 require_once __DIR__ . '/rollModifier/meleeElvenCavalierToHitRmCollectionCalculator.php';
@@ -21,7 +22,16 @@ require_once __DIR__ . '/rollModifier/meleeElvenCavalierDamageRmCollectionCalcul
 require_once __DIR__ . '/../helper/HtmlHelper.php';
 require_once __DIR__ . '/../fa/faChevronIcon.php';
 
-class PlayerCharacterMeleeWeaponRenderer extends PlayerCharacterWeaponRenderer {
+class PlayerCharacterMeleeWeaponRenderer extends PlayerCharacterWeaponRendererBase {
+
+    private $display_id = '';
+    public function getId() {
+        if (strlen($this->display_id) == 0) {
+            $this->display_id = 'csd-' . getMountedCombatModeDescription($this->getCombatMode()) . '-' . $this->getPlayerCharacterWeapon()->getWeaponId() . '-melee';
+        }
+
+        return $this->display_id;
+    }
 
     public function __construct(PlayerCharacterWeapon $player_character_weapon, PlayerCharacterSkillSet $player_character_skill_set, CharacterDetails $character_details, AttributeMetadata $attribute_metadata, RowClassManager $row_class_manager){
         parent::__construct($player_character_weapon, $player_character_skill_set, $character_details, $attribute_metadata, $row_class_manager);
@@ -62,7 +72,7 @@ class PlayerCharacterMeleeWeaponRenderer extends PlayerCharacterWeaponRenderer {
         $attacks_per_round = $attacks_per_round_calculator->getAttacksPerRound(WEAPON_TYPE_MELEE);
         $weapon_speed = $this->calculateWeaponSpeed($player_character_weapon->getMeleeWeaponSpeed(), $attacks_per_round, false, $player_character_weapon->getMeleeWeaponSubtype(), $player_character_weapon->getMeleeNumberOfHands(), $player_character_weapon->getWeaponProficiencyId());
 
-        $weapon_detail_entry  = HtmlHelper::buildDivStartTag($this->formatCellStyle(false));
+        $weapon_detail_entry  = HtmlHelper::buildDivStartTag($this->formatCellStyle(false)) . PHP_EOL;
         $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailLeft', $weapon_desc);
         $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', $weapon_speed);
         $weapon_detail_entry .= HtmlHelper::buildDivTag('rmWeaponDetailCenter', $attacks_per_round->value);

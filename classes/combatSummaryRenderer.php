@@ -1,6 +1,5 @@
 <?php
-    require_once 'playerCharacterMeleeWeaponRenderer.php';
-    require_once 'playerCharacterMissileWeaponRenderer.php';
+    require_once 'playerCharacterWeaponRenderer.php';
     require_once 'playerCharacterSkillSet.php';
     require_once 'playerCharacterWeaponSet.php';
     require_once 'twoWeaponFightingConfigurationSet.php';
@@ -55,8 +54,29 @@
         $this->two_weapon_fighting_configuration_set = $two_weapon_fighting_configuration_set;
         $this->row_class_manager = new RowClassManager();
     }
+    
+    public function render() {
+        $is_mounted_section_needed = $this->isMountedSectionNeeded($this->getCharacterDetails(), $this->getPlayerCharacterSkillSet());
+        if ($is_mounted_section_needed) {
+            echo $this->renderCollapsibleSectionStart(COMBAT_MODE_MOUNTED);
+            echo $this->renderHeader();
+            echo $this->renderSection(COMBAT_MODE_MOUNTED);
+            echo $this->renderCollapsibleSectionEnd();
+            echo HtmlHelper::buildSpacerDivTag();
+        }
 
-    abstract protected function render();
+        if ($is_mounted_section_needed) {
+            echo $this->renderCollapsibleSectionStart(COMBAT_MODE_UNMOUNTED);
+        }
+
+        echo $this->renderHeader();
+        echo $this->renderSection(COMBAT_MODE_UNMOUNTED);
+        
+        if ($is_mounted_section_needed) {
+            echo $this->renderCollapsibleSectionEnd();
+        }
+    }
+
 
     protected function isMountedSectionNeeded(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set) {
         $is_cavalier = $character_details->isCavalierType();
@@ -65,30 +85,7 @@
         return ($is_cavalier || $mounted_specialist_present);
     }
 
-    protected function renderSection($combat_mode) {
-        if ($combat_mode == COMBAT_MODE_UNMOUNTED) {
-            if (count($this->getPlayerCharacterSkillSet()->getAllSkillInstances(TWO_WEAPON_FIGHTING)) > 0) {
-                foreach($this->getTwoWeaponFightingConfigurationSet() AS $two_weapon_fighting_config) {
-                    $two_weapon_renderer = new TwoWeaponFightingRenderer($two_weapon_fighting_config, $this->getPlayerCharacterWeaponSet(), $this->getPlayerCharacterSkillSet(), $this->getCharacterDetails(), $this->getAttributeMetadata(), $this->getRowClassManager());
-                    echo $two_weapon_renderer->render();
-                }
-            }
-        }
-
-        foreach($this->getPlayerCharacterWeaponSet()->getAll() AS $player_character_weapon) {
-            if ($player_character_weapon->getMeleeWeaponType() == WEAPON_TYPE_MELEE) {
-                $melee_weapon_renderer = new PlayerCharacterMeleeWeaponRenderer($player_character_weapon, $this->getPlayerCharacterSkillSet(), $this->getCharacterDetails(), $this->getAttributeMetadata(), $this->getRowClassManager());
-                $melee_weapon_renderer->setCombatMode($combat_mode);
-                echo $melee_weapon_renderer->render();
-            }
-
-            if ($player_character_weapon->getMissileWeaponType() == WEAPON_TYPE_MISSILE) {
-                $missile_weapon_renderer = new PlayerCharacterMissileWeaponRenderer($player_character_weapon, $this->getPlayerCharacterSkillSet(), $this->getCharacterDetails(), $this->getAttributeMetadata(), $this->getRowClassManager());
-                $missile_weapon_renderer->setCombatMode($combat_mode);
-                echo $missile_weapon_renderer->render();
-            }
-        }
-    }
+    abstract protected function renderSection($combat_mode);
 
     protected function renderCollapsibleSectionStart($combat_mode) {
         $toggle_panel_text = getMountedCombatModeDescription($combat_mode);

@@ -24,7 +24,7 @@ require_once __DIR__ . '/webio/characterName.php';
 require_once __DIR__ . '/classes/attributeMetadata.php';
 require_once __DIR__ . '/classes/characterDetails.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
-require_once __DIR__ . '/classes/combatSummaryRendererDefault.php';
+require_once __DIR__ . '/classes/combatSummaryRendererUserDefined.php';
 require_once __DIR__ . '/classes/playerCharacterSkillSet.php';
 require_once __DIR__ . '/classes/playerCharacterWeaponSet.php';
 require_once __DIR__ . '/classes/twoWeaponFightingConfigurationSet.php';
@@ -54,6 +54,8 @@ $player_character_weapon_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_N
 $two_weapon_fighting_configuration_set = new TwoWeaponFightingConfigurationSet();
 $two_weapon_fighting_configuration_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
 
+$combat_summary_renderer_user_defined = new CombatSummaryRendererUserDefined($player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata, $two_weapon_fighting_configuration_set);
+
 $action_bar = buildActionBar($player_name, $character_name, $character_details);
 
 $nf = new NumberFormatter('en_US', NumberFormatter::ORDINAL);
@@ -71,26 +73,18 @@ echo $html_header;
 <body>
 <span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span>
 <?php
-    $combat_summary_renderer = new CombatSummaryRendererDefault($player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata, $two_weapon_fighting_configuration_set);
-    $combat_summary_renderer->render();
+    if (!$combat_summary_renderer_user_defined->isEmpty()) {
+        $combat_summary_renderer_user_defined->render();
+    } else {
+
+    }
 ?>
 </body>
 </html>
 
 <?php
 function buildActionBar($player_name, $character_name, \CharacterDetails $character_details) {
-    $output_html = ActionBarHelper::buildUserEditIcon($player_name, $character_name);
-	$output_html .= '&nbsp;';
-
-	if ($character_details->isSpellcaster()) {
-		$isGreaterMage = $character_details->containsClassId(GREATER_MAGE);
-		if ($isGreaterMage) {
-			$output_html .= ActionBarHelper::buildReadyGMSpellsIcon($player_name, $character_name);
-		} else {
-			$output_html .= ActionBarHelper::buildReadySpellsIcon($player_name, $character_name);
-		}
-	}
-	
+    $output_html = ActionBarHelper::buildUserViewIcon($player_name, $character_name);
 	$output_html .= '&nbsp;';
 
     return $output_html;
