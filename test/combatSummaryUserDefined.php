@@ -9,7 +9,7 @@
 
     require_once __DIR__ . '/../classes/playerCharacterMeleeWeaponRenderer.php';
     require_once __DIR__ . '/../classes/playerCharacterMissileWeaponRenderer.php';
-    require_once __DIR__ . '/../classes/combatSummaryRendererDefault.php';
+    require_once __DIR__ . '/../classes/combatSummaryRendererUserDefined.php';
 
     require_once __DIR__ . '/../classes/rollModifier/missileArcherLongRangeToHitRmCollectionCalculator.php';
     require_once __DIR__ . '/../classes/rollModifier/missileArcherLongSwiftwingRangeToHitRmCollectionCalculator.php';
@@ -81,7 +81,12 @@
     // AttributeMetadata
     $attribute_metadata = new AttributeMetadata($character_details);
 
-    $combat_summary_renderer = new CombatSummaryRendererDefault($player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata, $two_weapon_fighting_configuration_set);
+    $combat_weapon_order = new CombatSummaryUserDefinedWeaponOrder();
+    // $combat_weapon_order->init($pdo, $player_name, $character_name, $errors);
+
+    $combat_summary_renderer = new CombatSummaryRendererUserDefined($player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata, $two_weapon_fighting_configuration_set);
+    $combat_summary_renderer->setCombatSummaryUserDefinedWeaponOrder($combat_weapon_order);
+    $combat_summary_renderer->init();
     $combat_summary_renderer->render();
 
     function json_validate($data) {

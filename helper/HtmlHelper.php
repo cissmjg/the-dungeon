@@ -47,12 +47,12 @@ const FONT_AWESOME_LIB = "https://kit.fontawesome.com/4295d6f264.js";
 
     public static function buildDivStartTagWithId($class, $id, $hidden) {
         $div_tag  = '<div';
-        if (!empty($class)) {
-             $div_tag .= ' class="' . $class . '"';
-        }
-
         if (!empty($id)) {
             $div_tag .= ' id="' . $id . '"';
+        }
+
+        if (!empty($class)) {
+             $div_tag .= ' class="' . $class . '"';
         }
 
         if ($hidden) {

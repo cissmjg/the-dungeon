@@ -1,5 +1,5 @@
 <?php
-require_once 'playerCharacterWeaponRenderer.php';
+require_once 'playerCharacterWeaponRendererBase.php';
 require_once 'playerCharacterWeapon.php';
 require_once 'playerCharacterSkillSet.php';
 require_once 'characterDetails.php';
@@ -47,7 +47,16 @@ require_once __DIR__ . '/rollModifier/missileShortRangeDamageRmCollectionCalcula
 
 require_once __DIR__ . '/../helper/HtmlHelper.php';
 
-class PlayerCharacterMissileWeaponRenderer extends PlayerCharacterWeaponRenderer {
+class PlayerCharacterMissileWeaponRenderer extends PlayerCharacterWeaponRendererBase {
+
+    private $display_id = '';
+    public function getId() {
+        if (strlen($this->display_id) == 0) {
+            $this->display_id = 'csd-' . getMountedCombatModeDescription($this->getCombatMode()) . '-' . $this->getPlayerCharacterWeapon()->getWeaponId() . '-missile';
+        }
+        
+        return $this->display_id;
+    }
 
     private $uses_point_blank_range = false;
     private $uses_short_range = false;
@@ -202,9 +211,9 @@ class PlayerCharacterMissileWeaponRenderer extends PlayerCharacterWeaponRenderer
 
         $weapon_detail_entry = '';
         if ($is_hidden) {
-            $weapon_detail_entry .= '<div id="' . $row_id . '" class="' . $cell_style . '" style="display: none;">';
+            $weapon_detail_entry .= '<div id="' . $row_id . '" class="' . $cell_style . '" style="display: none;">' . PHP_EOL;
         } else {
-            $weapon_detail_entry .= HtmlHelper::buildDivStartTagWithId($cell_style, $row_id, false);
+            $weapon_detail_entry .= HtmlHelper::buildDivStartTagWithId($cell_style, $row_id, false) . PHP_EOL;
         }
 
         $has_rapid_reload = count($this->getPlayerCharacterSkillSet()->getAllSkillInstances(RAPID_RELOAD)) > 0;

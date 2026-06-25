@@ -253,4 +253,22 @@ class ActionBarHelper {
 
         return $url;
     }
+
+    static function buildEditCombatSummaryIcon($player_name, $character_name) {
+        $output_html  = '&nbsp;';
+        $url_edit_combat_summary = ActionBarHelper::buildEditCombatSummaryUrl($player_name, $character_name);
+        $icon_edit_combat_summary = '<span class="fa-solid fa-gear style="color: blue; cursor: pointer;" title="Edit Weapon Order"></span>';
+        $output_html .= '<a href="' . $url_edit_combat_summary . '">' . $icon_edit_combat_summary . '</a>';
+        
+        return $output_html;
+    }
+
+    static function buildEditCombatSummaryUrl($player_name, $character_name) {
+        $url = CurlHelper::buildCharacterActionRouterUrl();
+        $url = CurlHelper::addParameter($url, CHARACTER_ACTION, CHARACTER_ACTION_EDIT_COMBAT_SUMMARY);
+        $url = CurlHelper::addParameter($url, PLAYER_NAME, $player_name);
+        $url = CurlHelper::addParameter($url, CHARACTER_NAME, $character_name);
+
+        return $url;
+    }
 }

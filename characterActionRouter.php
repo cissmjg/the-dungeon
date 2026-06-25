@@ -1235,6 +1235,20 @@ switch($character_action) {
 			$errors[] = $result;
 			die(json_encode($errors));
 		}
+	
+	case CHARACTER_ACTION_EDIT_COMBAT_SUMMARY:
+		// Get player name
+		getPlayerName($errors, $input);
+
+		// Get character name	
+		getCharacterName($errors, $input);
+
+		$url_edit_combat_summary = CurlHelper::buildUrl('editCombatSummary.php');
+
+		$location_header = buildEditCombatSummaryRedirect($input);
+		header($location_header);
+
+		break;
 
 	default:
 		RestHeaderHelper::emitRestHeaders();
@@ -1472,6 +1486,14 @@ function buildAddPlayerCharacterWeaponRedirect($input) {
 	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 	$redirect_url = CurlHelper::addParameter($redirect_url, WEAPON_PROFICIENCY_ID, $input[WEAPON_PROFICIENCY_ID]);
+
+	return CurlHelper::buildLocationHeader($redirect_url);
+}
+
+function buildEditCombatSummaryRedirect($input) {
+	$redirect_url = CurlHelper::buildUrl('editCombatSummary');
+	$redirect_url = CurlHelper::addParameter($redirect_url, PLAYER_NAME, $input[PLAYER_NAME]);
+	$redirect_url = CurlHelper::addParameter($redirect_url, CHARACTER_NAME, $input[CHARACTER_NAME]);
 
 	return CurlHelper::buildLocationHeader($redirect_url);
 }
