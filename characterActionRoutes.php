@@ -43,4 +43,5 @@
     const CHARACTER_ACTION_ADD_PREFERRED_WEAPON_PROFICIENCY = 'addPreferredWeaponProficiency';
     const CHARACTER_ACTION_DELETE_TWO_WEAPON_CONFIG = 'deleteTwoWeaponConfig';
     const CHARACTER_ACTION_ADD_TWO_WEAPON_CONFIG = 'addTwoWeaponConfig';
+    const CHARACTER_ACTION_EDIT_COMBAT_SUMMARY = 'editCombatSummary';
 ?>

@@ -15,6 +15,7 @@
     require_once __DIR__ . '/../dbio/constants/characterClasses.php';
 
     require_once __DIR__ . '/../helper/HtmlHelper.php';
+    require_once __DIR__ . '/../helper/CurlHelper.php';
 
     class CombatSummaryRendererUserDefined extends CombatSummaryRenderer {
 
@@ -47,38 +48,31 @@
         $this->is_mounted_section_needed = $this->isMountedSectionNeeded($this->getCharacterDetails(), $this->getPlayerCharacterSkillSet());
     }
 
-    public function render() {
-
-        // Create and categorize all the required renderers. If User Defined Weapon Order is not initialized, fill it up with weapon in 'default' order
+    public function init() {
         $this->populateRenderers($this->getCombatSummaryUserDefinedWeaponOrder()->isInitialized());
-        
-        if ($this->is_mounted_section_needed) {
-            echo $this->renderCollapsibleSectionStart(COMBAT_MODE_MOUNTED);
-            echo $this->renderHeader();
-            echo $this->renderSection(COMBAT_MODE_MOUNTED);
-            echo $this->renderCollapsibleSectionEnd();
-            echo HtmlHelper::buildSpacerDivTag();
-        }
-
-        if ($this->is_mounted_section_needed) {
-            echo $this->renderCollapsibleSectionStart(COMBAT_MODE_UNMOUNTED);
-        }
-
-        echo $this->renderHeader();
-        echo $this->renderSection(COMBAT_MODE_UNMOUNTED);
-        
-        if ($this->is_mounted_section_needed) {
-            echo $this->renderCollapsibleSectionEnd();
-        }
     }
 
     protected function renderSection($combat_mode) {
+        $form_name = 'edit-weapon-order-' . getMountedCombatModeDescription($combat_mode);
+        $output_html  = '<form id="' . $form_name . '" name="' . $form_name . '" method="POST" action="' . CurlHelper::buildCharacterActionRouterUrl() . '">' . PHP_EOL;
+        $output_html .= '<table style="width: 100%;">' . PHP_EOL;
+        $output_html .= '<tr><td style="width: 5%;">&nbsp;</td><td style="width: 95%;">' . $this->formatColumnHeaders() . '</td></tr>' . PHP_EOL;
         $user_defined_item_list = $this->getCombatSummaryUserDefinedWeaponOrder()->getItemsForSection($combat_mode);
         foreach($user_defined_item_list AS $user_defined_item) {
             $renderer_id = $user_defined_item->getRendererId();
+            $output_html .= '<tr>' . PHP_EOL;
+            $output_html .= '<td style="text-align: center;">' . PHP_EOL;
+            $output_html .= '<input type="checkbox" id="cb-' . $renderer_id . '" name="weapons" value="' . $renderer_id . '" onchange="weaponCheckboxChanged(\'' . $form_name . '\');">';
+            $output_html .= '</td>' . PHP_EOL . '<td>';
             $weapon_renderer = $this->renderers[$renderer_id];
-            echo $weapon_renderer->render();
+            $output_html .= $weapon_renderer->render();
+            $output_html .= '</td>';
+            $output_html .= '</tr>' . PHP_EOL;
         }
+        $output_html .= '</table>' . PHP_EOL; 
+        $output_html .= '</form>' . PHP_EOL;
+
+        echo $output_html;
     }
 
     private function populateRenderers($weapon_order_initialized) {
@@ -115,6 +109,11 @@
         }
 
         $this->getCombatSummaryUserDefinedWeaponOrder()->setInitialized(true);
+    }
+
+    // Override the standard render header function so that we can control where the columns appear
+    protected function renderHeader() {
+        return '';
     }
 }
 ?>

@@ -104,6 +104,10 @@
     }
 
     protected function renderHeader() {
+        return $this->formatColumnHeaders();
+    }
+
+    protected function formatColumnHeaders() {
         $header  = '  <div class="rmWeaponContainer">' . PHP_EOL;
         $header .= '    <div class="rmWeaponHeaderItem">Weapon</div>' . PHP_EOL;
         $header .= '    <div class="rmWeaponHeaderItem">Spd</div>' . PHP_EOL;

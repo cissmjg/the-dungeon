@@ -86,6 +86,7 @@
 
     $combat_summary_renderer = new CombatSummaryRendererUserDefined($player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata, $two_weapon_fighting_configuration_set);
     $combat_summary_renderer->setCombatSummaryUserDefinedWeaponOrder($combat_weapon_order);
+    $combat_summary_renderer->init();
     $combat_summary_renderer->render();
 
     function json_validate($data) {

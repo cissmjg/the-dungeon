@@ -332,6 +332,8 @@ function buildActionBar($player_name, $character_name, \CharacterDetails $charac
 		}
 	}
 	
+	$output_html .= ActionBarHelper::buildEditCombatSummaryIcon($player_name, $character_name);
+	
 	$output_html .= '&nbsp;';
 
     return $output_html;
@@ -381,20 +383,6 @@ function formatExperiencePoints(\CharacterDetails $character_details) {
 	}
 
 	return $xp_list;
-}
-function formatCombatSummaryHeader() {
-
-	$output_html  = '  <div class="rmWeaponContainer">' . PHP_EOL;
-	$output_html .= '<div class="rmWeaponHeaderItem">Weapon</div>';
-	$output_html .= '<div class="rmWeaponHeaderItem">Spd</div>';
-	$output_html .= '<div class="rmWeaponHeaderItem">Att</div>';
-	$output_html .= '<div class="rmWeaponHeaderItem">Dmg</div>';
-	$output_html .= '<div class="rmWeaponHeaderItem">Range</div>';
-	$output_html .= '<div class="rmWeaponHeaderItem">Bonus</div>';
-	$output_html .= '<div class="rmWeaponHeaderItem">Notes</div>';
-	$output_html .= '</div>' . PHP_EOL;
-
-	return $output_html;
 }
 ?>
 

@@ -54,7 +54,12 @@ $player_character_weapon_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_N
 $two_weapon_fighting_configuration_set = new TwoWeaponFightingConfigurationSet();
 $two_weapon_fighting_configuration_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
 
+$combat_weapon_order = new CombatSummaryUserDefinedWeaponOrder();
+// $combat_weapon_order->init($pdo, $player_name, $character_name, $errors);
+
 $combat_summary_renderer_user_defined = new CombatSummaryRendererUserDefined($player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata, $two_weapon_fighting_configuration_set);
+$combat_summary_renderer_user_defined->setCombatSummaryUserDefinedWeaponOrder($combat_weapon_order);
+$combat_summary_renderer_user_defined->init();
 
 $action_bar = buildActionBar($player_name, $character_name, $character_details);
 
