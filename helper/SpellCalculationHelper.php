@@ -123,7 +123,7 @@ class SpellCalculationHelper {
     }
 
     public static function getSpellDuration($spell_details, $character_level) {
-        $spell_duration = $spell_details["spell_duration"];
+
         if($spell_details["spell_duration_time_per_level_uom"] == NULL && $spell_details["spell_duration_time_fixed_uom"] == NULL) {
             return $spell_details["spell_duration"];
         }
@@ -156,13 +156,13 @@ class SpellCalculationHelper {
         $per_level_time_duration = $final_character_level * $spell_details["spell_duration_time_per_level"];
 
         $fixed_time_duration = $spell_details["spell_duration_time_fixed"];
-        $normalized_uom_factor = SpellCalculationHelper::getNormalizedUom($per_level_time_duration_uom, $fixed_time_duration_uom);
+        $normalized_uom_factor = SpellCalculationHelper::getNormalizedUom($spell_details["spell_duration_time_per_level_uom"], $spell_details["spell_duration_time_fixed_uom"]);
         $fixed_normalized_duration = $fixed_time_duration * $normalized_uom_factor;
 
         $total_duration = $fixed_normalized_duration + $per_level_time_duration;
         $total_time_duration_uom = SpellCalculationHelper::getTimeUomDesc($spell_details["spell_duration_time_per_level_uom"]);
 
-        return $total_duration . $total_time_duration_uom;
+        return $total_duration . ' ' . $total_time_duration_uom;
     }
 
     public static function adjustLevelBasedOnDurationLevel($character_level, $spell_duration_level_factor) {

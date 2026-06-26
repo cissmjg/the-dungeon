@@ -252,6 +252,7 @@ function isWeaponHurled($weapon_proficiency_id) {
         case HAND_AXE:
         case SPEAR:
         case HAMMER:
+        case KAPAR:
         case DWARVEN_THROWING_HAMMER:
         case JAVELIN:
             return true;
