@@ -1930,10 +1930,10 @@ INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, castin
 VALUES(1,4,"Rael's Cover","http://www.bobsenk.com/rpg/rules/spbk/mu1.php#R Cover","1 round",NULL,1,"5 yards/level",NULL,5,NULL,NULL,3,"1 turn/level",1,3,NULL,NULL,NULL,'Special',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
-VALUES(1,4,"Rael's Disintegrating Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu1.php#R Disintegrating Arrow","1 round",NULL,1,"Touch",NULL,NULL,NULL,NULL,NULL,"Permanent until used",NULL,NULL,NULL,NULL,NULL,'1 arrow / 3 levels',1);
+VALUES(1,4,"Rael's Disintegrating Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu1.php#R Disintegrating Arrow","1 round",NULL,1,"Touch",NULL,NULL,NULL,NULL,NULL,"1 hour/level",1,4,NULL,NULL,NULL,'1 arrow / 3 levels',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
-VALUES(1,4,"Rael's Enlarging Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu1.php#R Enlarging Arrow","1 round",NULL,1,"Touch",NULL,NULL,NULL,NULL,NULL,"Permanent until used",NULL,NULL,NULL,NULL,NULL,'1 arrow / 3 levels',1);
+VALUES(1,4,"Rael's Enlarging Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu1.php#R Enlarging Arrow","1 round",NULL,1,"Touch",NULL,NULL,NULL,NULL,NULL,"1 turn + 1 round/level",1,2,NULL,1,3,'1 arrow / 3 levels',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
 VALUES(1,4,"Rael's Enraging Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu1.php#R Enraging Arrow","1 round",NULL,1,"Touch",NULL,NULL,NULL,NULL,NULL,"1 hour/level",1,4,NULL,NULL,NULL,'1 arrow',1);
@@ -2281,10 +2281,10 @@ INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, castin
 VALUES(2,4,"Pyrotechnics","http://www.bobsenk.com/rpg/rules/spbk/mu2.php#Pyrotechnics","2 segments",4,NULL,"12\"",24,NULL,NULL,NULL,5,"Special",NULL,NULL,NULL,NULL,NULL,'10 or 100 times the fire source used',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
-VALUES(2,4,"Rael's Armorpiercing Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu2.php#R Armorpiercing Arrow","1 turn",NULL,10,"Touch",NULL,NULL,NULL,NULL,NULL,"Permanent until used",NULL,NULL,NULL,NULL,NULL,'1 arrow / 3 levels',1);
+VALUES(2,4,"Rael's Armorpiercing Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu2.php#R Armorpiercing Arrow","1 turn",NULL,10,"Touch",NULL,NULL,NULL,NULL,NULL,"1 turn + 1 round/level",1,2,NULL,1,3,'1 arrow / 3 levels',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
-VALUES(2,4,"Rael's Acid Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu2.php#R Acid Arrow","2 segments plus bow speed factor",NULL,NULL,"Touch",NULL,NULL,NULL,NULL,NULL,"Instantaneous",NULL,NULL,NULL,NULL,NULL,'1 arrow',1);
+VALUES(2,4,"Rael's Acid Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu2.php#R Acid Arrow","2 segments plus bow speed factor",NULL,NULL,"Touch",NULL,NULL,NULL,NULL,NULL,"1 turn + 1 round/level",1,2,NULL,1,3,'1 arrow',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
 VALUES(2,4,"Rael's Arrow of Angling","http://www.bobsenk.com/rpg/rules/spbk/mu2.php#R Arrow of Angling","1 round",NULL,1,"Touch",NULL,NULL,NULL,NULL,NULL,"1 hour/level",1,4,NULL,NULL,NULL,'1 arrow, 10\' radius',1);
@@ -2293,22 +2293,22 @@ INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, castin
 VALUES(2,4,"Rael's Blinding Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu2.php#R Blinding Arrow","2 segments",4,NULL,"Touch",NULL,NULL,NULL,NULL,NULL,"1 hour/level",1,4,NULL,NULL,NULL,'1 arrow',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
-VALUES(2,4,"Rael's Draining Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu2.php#R Draining Arrow","1 round",NULL,1,"Touch",NULL,NULL,NULL,NULL,NULL,"Permanent until used",NULL,NULL,NULL,NULL,NULL,'1 arrow',1);
+VALUES(2,4,"Rael's Draining Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu2.php#R Draining Arrow","1 round",NULL,1,"Touch",NULL,NULL,NULL,NULL,NULL,"1 hour/level",1,4,NULL,NULL,NULL,'1 arrow',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
-VALUES(2,4,"Rael's Enchanted Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu2.php#R Enchanted Arrow","5 segments",10,NULL,"Touch",NULL,NULL,NULL,NULL,NULL,"Permanent until used, Special",NULL,NULL,NULL,NULL,NULL,'1 arrow',1);
+VALUES(2,4,"Rael's Enchanted Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu2.php#R Enchanted Arrow","5 segments",10,NULL,"Touch",NULL,NULL,NULL,NULL,NULL,"1 turn + 1 round/level",1,2,NULL,1,2,'1 arrow',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
 VALUES(2,4,"Rael's Enfeeblementing Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu2.php#R Enfeeblementing Arrow","5 segments",10,NULL,"Touch",NULL,NULL,NULL,NULL,NULL,"Permanent until used, Special",NULL,NULL,NULL,NULL,NULL,'1 arrow',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
-VALUES(2,4,"Rael's Ice Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu2.php#R Ice Arrow","1 round / arrow",NULL,NULL,"Touch",NULL,NULL,NULL,NULL,NULL,"Permanent until used, Special",NULL,NULL,NULL,NULL,NULL,'1 arrow / 3 levels',1);
+VALUES(2,4,"Rael's Ice Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu2.php#R Ice Arrow","1 round / arrow",NULL,NULL,"Touch",NULL,NULL,NULL,NULL,NULL,"1 turn + 1 round/level",1,2,NULL,1,3,'1 arrow / 3 levels',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
 VALUES(2,4,"Rael's Illusionary Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu2.php#R Illusionary Arrow","1 round / arrow",NULL,NULL,"Touch",NULL,NULL,NULL,NULL,NULL,"1 hour/level",1,4,NULL,NULL,NULL,'1 arrow / 2 levels',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
-VALUES(2,4,"Rael's Silent Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu2.php#R Silent Arrow","2 segments",4,NULL,"Touch",NULL,NULL,NULL,NULL,NULL,"Permanent until used",NULL,NULL,NULL,NULL,NULL,'1 arrow',1);
+VALUES(2,4,"Rael's Silent Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu2.php#R Silent Arrow","2 segments",4,NULL,"Touch",NULL,NULL,NULL,NULL,NULL,"1 hour/level",1,4,NULL,NULL,NULL,'1 arrow',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
 VALUES(2,4,"Rainfire","http://www.bobsenk.com/rpg/rules/spbk/mu2.php#Rainfire","5 segments",10,NULL,"10 yards",NULL,NULL,NULL,NULL,3,"1 turn/level",1,3,NULL,NULL,NULL,'1\' radius',1);
@@ -2628,16 +2628,16 @@ INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, castin
 VALUES(3,4,"Rael's Charming Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu3.php#R Charming Arrow","1 round",NULL,1,"Touch",NULL,NULL,NULL,NULL,NULL,"1 hour/level",1,4,NULL,NULL,NULL,'1 arrow, 1 creature',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
-VALUES(3,4,"Rael's Arrow of Distance","http://www.bobsenk.com/rpg/rules/spbk/mu3.php#R Arrow of Distance","1 turn",NULL,10,"Touch",NULL,NULL,NULL,NULL,NULL,"Permanent until used",NULL,NULL,NULL,NULL,NULL,'1 arrow',1);
+VALUES(3,4,"Rael's Arrow of Distance","http://www.bobsenk.com/rpg/rules/spbk/mu3.php#R Arrow of Distance","1 turn",NULL,10,"Touch",NULL,NULL,NULL,NULL,NULL,"1 hour/level",1,4,NULL,NULL,NULL,'1 arrow',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
-VALUES(3,4,"Rael's Dispelling Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu3.php#R Dispelling Arrow","1 turn",NULL,10,"Touch",NULL,NULL,NULL,NULL,NULL,"Permanent until used",NULL,NULL,NULL,NULL,NULL,'1 arrow',1);
+VALUES(3,4,"Rael's Dispelling Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu3.php#R Dispelling Arrow","1 turn",NULL,10,"Touch",NULL,NULL,NULL,NULL,NULL,"1 hour/level",1,4,NULL,NULL,NULL,'1 arrow',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
-VALUES(3,4,"Rael's Explosive Arrowhead","http://www.bobsenk.com/rpg/rules/spbk/mu3.php#R Explosive Arrowhead","1 round",NULL,1,"Touch",NULL,NULL,NULL,NULL,NULL,"Permanent until used",NULL,NULL,NULL,NULL,NULL,'1 arrowhead',1);
+VALUES(3,4,"Rael's Explosive Arrowhead","http://www.bobsenk.com/rpg/rules/spbk/mu3.php#R Explosive Arrowhead","1 round",NULL,1,"Touch",NULL,NULL,NULL,NULL,NULL,"1 turn + 1 round/level",1,2,NULL,1,3,'1 arrowhead',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
-VALUES(3,4,"Rael's Immovable Arrowhead","http://www.bobsenk.com/rpg/rules/spbk/mu3.php#R Immovable Arrowhead","1 round",NULL,1,"Touch",NULL,NULL,NULL,NULL,NULL,"Permanent until used",NULL,NULL,NULL,NULL,NULL,'1 arrowhead',1);
+VALUES(3,4,"Rael's Immovable Arrowhead","http://www.bobsenk.com/rpg/rules/spbk/mu3.php#R Immovable Arrowhead","1 round",NULL,1,"Touch",NULL,NULL,NULL,NULL,NULL,"1 hour/level",1,4,NULL,NULL,NULL,'1 arrowhead',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
 VALUES(3,4,"Rael's Multiplying Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu3.php#R Multiplying Arrow","1 round",NULL,1,"Touch",NULL,NULL,NULL,NULL,NULL,"1 hour/level",1,4,NULL,NULL,NULL,'1 arrow',1);
@@ -2646,7 +2646,7 @@ INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, castin
 VALUES(3,4,"Rael's Numbing Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu3.php#R Numbing Arrow","1 round",NULL,1,"Touch",NULL,NULL,NULL,NULL,NULL,"1 turn/level",1,3,NULL,NULL,NULL,'1 arrow per 3 levels',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
-VALUES(3,4,"Rael's Silencing Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu3.php#R Silencing Arrow","2 segments",4,NULL,"Touch",NULL,NULL,NULL,NULL,NULL,"Permanent until used",NULL,NULL,NULL,NULL,NULL,'1 arrow, 10\' radius',1);
+VALUES(3,4,"Rael's Silencing Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu3.php#R Silencing Arrow","2 segments",4,NULL,"Touch",NULL,NULL,NULL,NULL,NULL,"1 hour/level",1,4,NULL,NULL,NULL,'1 arrow, 10\' radius',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
 VALUES(3,4,"Robust Construction","http://www.bobsenk.com/rpg/rules/spbk/mu3.php#Robust Construction","1 turn",NULL,10,"Touch",NULL,NULL,NULL,NULL,NULL,"Special",NULL,NULL,NULL,NULL,NULL,'one target up to 1,000 cubic feet/level',1);
@@ -2909,10 +2909,10 @@ INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, castin
 VALUES(4,4,"Rael's Polymorphed Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu4.php#R Polymorphed Arrow","1 turn",NULL,10,"Touch",NULL,NULL,NULL,NULL,NULL,"Permanent until used",NULL,NULL,NULL,NULL,NULL,'1 arrow',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
-VALUES(4,4,"Rael's Rusting Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu4.php#R Rusting Arrow","1 turn",NULL,10,"Touch",NULL,NULL,NULL,NULL,NULL,"Permanent until used",NULL,NULL,NULL,NULL,NULL,'1 arrow',1);
+VALUES(4,4,"Rael's Rusting Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu4.php#R Rusting Arrow","1 turn",NULL,10,"Touch",NULL,NULL,NULL,NULL,NULL,"1 hour/level",1,4,NULL,NULL,NULL,'1 arrow',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
-VALUES(4,4,"Rael's Stoneskin Piercing Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu4.php#R Stoneskin Piercing Arrow","1 turn",NULL,10,"Touch",NULL,NULL,NULL,NULL,NULL,"Permanent until used",NULL,NULL,NULL,NULL,NULL,'1 arrow',1);
+VALUES(4,4,"Rael's Stoneskin Piercing Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu4.php#R Stoneskin Piercing Arrow","1 turn",NULL,10,"Touch",NULL,NULL,NULL,NULL,NULL,"1 turn + 1 round/level",1,2,NULL,1,3,'1 arrow',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
 VALUES(4,4,"Rael's Stirge Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu4.php#R Stirge Arrow","1 turn",NULL,10,"Touch",NULL,NULL,NULL,NULL,NULL,"Permanent until used",NULL,NULL,NULL,NULL,NULL,'1 arrow',1);
@@ -3142,7 +3142,7 @@ INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, castin
 VALUES(5,4,"Passwall","http://www.bobsenk.com/rpg/rules/spbk/mu5.php#Passwall","5 segments",10,NULL,"3\"",6,NULL,NULL,NULL,5,"6 turns + 1 turn/level",1,3,NULL,6,3,'Special',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
-VALUES(5,4,"Rael's Cursed Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu5.php#R Cursed Arrow","1 turn",NULL,10,"Touch",NULL,NULL,NULL,NULL,NULL,"Permanent until used",NULL,NULL,NULL,NULL,NULL,'1 arrow',1);
+VALUES(5,4,"Rael's Cursed Arrow","http://www.bobsenk.com/rpg/rules/spbk/mu5.php#R Cursed Arrow","1 turn",NULL,10,"Touch",NULL,NULL,NULL,NULL,NULL,"1 hour/level",1,4,NULL,NULL,NULL,'1 arrow',1);
 
 INSERT INTO spell_catalog(level, spell_type_id, name, link, casting_time, casting_time_speed, casting_time_in_rounds, spell_range, range_hex_distance, range_distance_per_level, range_level_factor, range_fixed, range_uom, duration, duration_time_per_level, duration_time_per_level_uom, duration_level_factor, duration_time_fixed, duration_time_fixed_uom, area_of_effect, racial_restriction)
 VALUES(5,4,"Rip","http://www.bobsenk.com/rpg/rules/spbk/mu5.php#Rip","5 segments",10,NULL,"20 yards + 10 yards/level",NULL,10,NULL,20,3,"1 round/level",1,2,NULL,NULL,NULL,'1 creature or object',1);
