@@ -11,6 +11,8 @@ CREATE PROCEDURE addCombatSummaryWeaponOrderItem
  IN characterName VARCHAR(64),
  IN sectionName VARCHAR(32),
  IN rendererId VARCHAR(64),
+ IN playerCharacterWeaponId INT,
+ IN playerCharacterWeapon2Id INT,
  IN displayOrder INT)
  BEGIN
 	DECLARE playerCharacterId INT DEFAULT 0;
@@ -22,9 +24,9 @@ CREATE PROCEDURE addCombatSummaryWeaponOrderItem
 	WHERE player.name = playerName AND player_character.name = characterName;
 
 	INSERT INTO player_character_combat_summary_display
-		(player_character_id, section_name, renderer_id, display_order)
+		(player_character_id, section_name, renderer_id, player_character_weapon_id, player_character_weapon2_id, display_order)
 	VALUES
-		(playerCharacterId, sectionName, rendererId, displayOrder);
+		(playerCharacterId, sectionName, rendererId, playerCharacterWeaponId, playerCharacterWeapon2Id, displayOrder);
  END
 
 CREATE PROCEDURE addPreferredWeaponForCavalier
@@ -974,6 +976,9 @@ BEGIN
 		DELETE FROM player_character_two_weapon_fighting 
 			WHERE player_character_two_weapon_fighting.player_character_weapon1_id = characterWeaponId OR 
 			      player_character_two_weapon_fighting.player_character_weapon2_id = characterWeaponId;
+		DELETE FROM player_character_combat_summary_display
+			WHERE player_character_combat_summary_display.player_character_weapon_id = characterWeaponId OR
+				  player_character_combat_summary_display.player_character_weapon2_id = characterWeaponId;
 	COMMIT;
 END
 
@@ -1218,16 +1223,23 @@ CREATE PROCEDURE getCombatSummaryUserDefinedItems
 (IN playerName VARCHAR(32),
  IN characterName VARCHAR(64))
 BEGIN
+	DECLARE playerCharacterId INT DEFAULT 0;
+	
+	SELECT player_character.id 
+	INTO playerCharacterId
+	FROM player_character
+	JOIN player ON player.id = player_character.player_id
+	WHERE player.name = playerName AND player_character.name = characterName;
+
 	SELECT
 		id AS combat_summary_user_defined_id,
 		section_name AS combat_summary_user_defined_section_name,
 		display_order AS combat_summary_user_defined_display_order,
-		section_id AS combat_summary_user_defined_section_id,
+		player_character_weapon_id AS combat_summary_user_defined_player_character_weapon_id,
+		player_character_weapon2_id AS combat_summary_user_defined_player_character_weapon2_id,
 		renderer_id AS combat_summary_user_defined_renderer_id
 	FROM player_character_combat_summary_display
-	JOIN player_character ON player_character.id = player_character_combat_summary_display.player_character_id
-	JOIN player ON player.id = player_character.player_id
-	WHERE player.name = playerName AND player_character.name = characterName
+	WHERE player_character_combat_summary_display.player_character_id = playerCharacterId
 	ORDER BY section_name, display_order;
 END
 

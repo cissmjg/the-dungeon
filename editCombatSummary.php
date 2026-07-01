@@ -25,6 +25,7 @@ require_once __DIR__ . '/classes/attributeMetadata.php';
 require_once __DIR__ . '/classes/characterDetails.php';
 require_once __DIR__ . '/classes/characterSummaryRenderer.php';
 require_once __DIR__ . '/classes/combatSummaryRendererUserDefined.php';
+require_once __DIR__ . '/classes/combatSummaryRendererEditWeaponOrder.php';
 require_once __DIR__ . '/classes/playerCharacterSkillSet.php';
 require_once __DIR__ . '/classes/playerCharacterWeaponSet.php';
 require_once __DIR__ . '/classes/twoWeaponFightingConfigurationSet.php';

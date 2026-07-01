@@ -25,7 +25,7 @@ class CombatSummaryUserDefinedWeaponOrder implements JsonSerializable {
             $current_combat_summary_item = new CombatSummaryUserDefinedItem();
             $current_combat_summary_item->init($combat_summary_item);
 
-            $this->addForSection($combat_summary_item, $current_combat_summary_item->getSectionName());
+            $this->addForSection($current_combat_summary_item, $current_combat_summary_item->getSectionName());
         }
     }
 
