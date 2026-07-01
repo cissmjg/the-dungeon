@@ -6,6 +6,27 @@ BEGIN
 	VALUES (playerCharacterId, characterClassId, 0, 0);
 END
 
+CREATE PROCEDURE addCombatSummaryWeaponOrderItem
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64),
+ IN sectionName VARCHAR(32),
+ IN rendererId VARCHAR(64),
+ IN displayOrder INT)
+ BEGIN
+	DECLARE playerCharacterId INT DEFAULT 0;
+
+	SELECT player_character.id 
+	INTO playerCharacterId
+	FROM player_character
+	JOIN player ON player.id = player_character.player_id
+	WHERE player.name = playerName AND player_character.name = characterName;
+
+	INSERT INTO player_character_combat_summary_display
+		(player_character_id, section_name, renderer_id, display_order)
+	VALUES
+		(playerCharacterId, sectionName, rendererId, displayOrder);
+ END
+
 CREATE PROCEDURE addPreferredWeaponForCavalier
 (IN playerName VARCHAR(32),
  IN characterName VARCHAR(64),
@@ -840,6 +861,23 @@ BEGIN
 	COMMIT;
 END
 
+CREATE PROCEDURE deleteCombatSummaryItemsForSection
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64),
+ IN sectionName VARCHAR(32))
+BEGIN
+	DECLARE playerCharacterId INT DEFAULT 0;
+	
+	SELECT player_character.id
+	INTO playerCharacterId
+	FROM player_character
+	JOIN player ON player.id = player_character.player_id
+	WHERE player.name = playerName AND player_character.name = characterName;
+
+	DELETE FROM player_character_combat_summary_display
+	WHERE player_character_id = playerCharacterId AND section_name = sectionName;
+END
+
 CREATE PROCEDURE deallocateExtraSlot
 (IN extraSlotId INT)
 BEGIN
@@ -880,6 +918,7 @@ BEGIN
 		DELETE FROM player_character_weapon WHERE player_character_weapon.player_character_id = playerCharacterId;
 		DELETE FROM player_character_weapon_mode WHERE player_character_weapon_mode.id IN (SELECT id FROM playerCharacterWeaponModeIds);
 		DELETE FROM player_character_two_weapon_fighting WHERE player_character_two_weapon_fighting.player_character_id = playerCharacterId;
+		DELETE FROM player_character_combat_summary_display WHERE player_character_combat_summary_display.player_character_id = playerCharacterId;
 
 		DELETE FROM player_character_class WHERE player_character_class.id IN (SELECT id FROM ids);
 		DELETE FROM player_character WHERE player_character.name = characterName;
@@ -2213,6 +2252,7 @@ BEGIN
 	DELETE FROM player_character_weapon WHERE player_character_weapon.player_character_id = playerCharacterId;
 	DELETE FROM player_character_weapon_mode WHERE player_character_weapon_mode.id IN (SELECT id FROM playerCharacterWeaponModeIds);
 	DELETE FROM player_character_two_weapon_fighting WHERE player_character_two_weapon_fighting.player_character_id = playerCharacterId;
+	DELETE FROM player_character_combat_summary_display WHERE player_character_combat_summary_display.player_character_id = playerCharacterId;
 	UPDATE player_character_class SET character_level = 0 WHERE player_character_class.id IN (SELECT id FROM ids);
 
 	-- Reinsert Fist proficiency
@@ -2341,6 +2381,41 @@ BEGIN
 			gender = genderIn
 	WHERE id = playerCharacterId; 
 END
+
+CREATE PROCEDURE updateWeaponOrderForRenderers
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64),
+ IN sectionName VARCHAR(32),
+ IN rendererId1 VARCHAR(64),
+ IN weaponOrder1 INT,
+ IN rendererId2 VARCHAR(64),
+ IN weaponOrder2 INT)
+BEGIN
+	DECLARE playerCharacterId INT DEFAULT 0;
+	
+	SELECT player_character.id
+	INTO playerCharacterId
+	FROM player_character
+	JOIN player ON player.id = player_character.player_id
+	WHERE player.name = playerName AND player_character.name = characterName;
+
+	START TRANSACTION;
+
+		-- The purpose of this procedure is to 'swap' display orders for the 2 renderers
+		UPDATE player_character_combat_summary_display 
+			SET display_order = weaponOrder2
+			WHERE	player_character_id = playerCharacterId AND
+					section_name = sectionName AND
+					renderer_id = rendererId1;
+
+		UPDATE player_character_combat_summary_display 
+			SET display_order = weaponOrder1
+			WHERE	player_character_id = playerCharacterId AND
+					section_name = sectionName AND
+					renderer_id = rendererId2;
+
+	COMMIT;
+END 
 
 CREATE PROCEDURE updateCharacterPortrait
 (IN playerName VARCHAR(32),

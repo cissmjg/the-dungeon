@@ -38,8 +38,6 @@ $character_name = $input[CHARACTER_NAME];
 $character_details = new CharacterDetails();
 $character_details->init($pdo, $player_name, $character_name, $errors);
 
-$primary_class = $character_details->getPrimaryClass();
-
 $attribute_metadata = new AttributeMetadata($character_details);
 
 $character_summary_renderer = new CharacterSummaryRenderer($character_name);
@@ -54,12 +52,8 @@ $player_character_weapon_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_N
 $two_weapon_fighting_configuration_set = new TwoWeaponFightingConfigurationSet();
 $two_weapon_fighting_configuration_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
 
-$combat_weapon_order = new CombatSummaryUserDefinedWeaponOrder();
-// $combat_weapon_order->init($pdo, $player_name, $character_name, $errors);
-
-$combat_summary_renderer_user_defined = new CombatSummaryRendererUserDefined($player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata, $two_weapon_fighting_configuration_set);
-$combat_summary_renderer_user_defined->setCombatSummaryUserDefinedWeaponOrder($combat_weapon_order);
-$combat_summary_renderer_user_defined->init();
+$combat_summary_renderer_edit_weapon_order = new CombatSummaryRendererEditWeaponOrder($player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata, $two_weapon_fighting_configuration_set);
+$combat_summary_renderer_edit_weapon_order->init($pdo, $player_name, $character_name, $errors);
 
 $action_bar = buildActionBar($player_name, $character_name, $character_details);
 
@@ -78,11 +72,7 @@ echo $html_header;
 <body>
 <span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span>
 <?php
-    if (!$combat_summary_renderer_user_defined->isEmpty()) {
-        $combat_summary_renderer_user_defined->render();
-    } else {
-
-    }
+        $combat_summary_renderer_edit_weapon_order->render();
 ?>
 </body>
 </html>

@@ -1250,6 +1250,14 @@ switch($character_action) {
 
 		break;
 
+	case CHARACTER_ACTION_UPDATE_COMBAT_SUMMARY_WEAPON_ORDER:
+		// Get player name
+		getPlayerName($errors, $input);
+
+		// Get character name	
+		getCharacterName($errors, $input);
+
+
 	default:
 		RestHeaderHelper::emitRestHeaders();
 		$errors[] = "Input Error|";

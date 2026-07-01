@@ -28,6 +28,9 @@ export function weaponCheckboxChanged(form_id) {
     const div2ID = checkedCheckboxes[1].value;
     divSwap(div1ID, div2ID);
 
+    const jqForm = $(jqFormId);
+    jqForm.submit();
+
     // Clear the checkboxes
     $(jqCheckboxSelector).prop("checked", false);
 }

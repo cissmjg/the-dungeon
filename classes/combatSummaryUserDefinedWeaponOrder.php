@@ -6,20 +6,10 @@ require_once __DIR__ . '/../dbio/constants/mountedCombatMode.php';
 
 class CombatSummaryUserDefinedWeaponOrder implements JsonSerializable {
 
-    private $is_initialized = false;
-    public function isInitialized() {
-        return $this->is_initialized;
+    private $is_empty = true;
+    public function isEmpty() {
+        return $this->is_empty;
     }
-
-    public function setInitialized($is_initialized) {
-        if ($this->is_initialized) {
-            return;
-        }
-
-        $this->is_initialized = $is_initialized;
-    }
-
-    private $next_display_order = 1;
 
     /** @var CombatSummaryUserDefinedItem[] */
     private array $combatSummarySections = [];
@@ -31,25 +21,12 @@ class CombatSummaryUserDefinedWeaponOrder implements JsonSerializable {
         }
 
         foreach($combat_summary_items AS $combat_summary_item) {
+            $this->is_empty = false;
             $current_combat_summary_item = new CombatSummaryUserDefinedItem();
             $current_combat_summary_item->init($combat_summary_item);
 
             $this->addForSection($combat_summary_item, $current_combat_summary_item->getSectionName());
         }
-
-        $this->is_initialized = true;
-    }
-
-    public function newUserDefinedItemFromRenderer($renderer_id, $combat_mode) {
-
-        $combat_summary_item = new CombatSummaryUserDefinedItem();
-        $combat_section = getMountedCombatModeDescription($combat_mode);
-
-        // Use $this->next_display_order as a temporary ID
-        $combat_summary_item->initFromRenderer($renderer_id, $this->next_display_order, $this->next_display_order, $combat_section);
-        $this->addForSection($combat_summary_item, $combat_section);
-
-        $this->next_display_order++;
     }
 
     /** @return CombatSummaryUserDefinedItem[] */

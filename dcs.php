@@ -58,8 +58,12 @@ $attribute_metadata = new AttributeMetadata($character_details);
 $two_weapon_fighting_configuration_set = new TwoWeaponFightingConfigurationSet();
 $two_weapon_fighting_configuration_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
 
-$combat_summary_renderer_default = new CombatSummaryRendererDefault($player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata, $two_weapon_fighting_configuration_set);
-$combat_summary_renderer_user_defined = new CombatSummaryRendererUserDefined($player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata, $two_weapon_fighting_configuration_set);
+$combat_summary_renderer = new CombatSummaryRendererUserDefined($player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata, $two_weapon_fighting_configuration_set);
+$combat_summary_renderer->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
+
+if ($combat_summary_renderer->isEmpty()) {
+	$combat_summary_renderer = new CombatSummaryRendererDefault($player_character_weapon_set, $player_character_skill_set, $character_details, $attribute_metadata, $two_weapon_fighting_configuration_set);
+}
 
 $action_bar = buildActionBar($player_name, $character_name, $character_details);
 
@@ -99,11 +103,7 @@ echo $html_header;
 <div>&nbsp;</div>
 <span style="font-weight: bold;">Combat Summary</span>
 <?php
-	if (!$combat_summary_renderer_user_defined->isEmpty()) {
-		$combat_summary_renderer_user_defined->render();
-	} else {
-	    $combat_summary_renderer_default->render();
-	}
+	$combat_summary_renderer->render();
 ?>
 <div class="characterSheetContainer">
 	<div class="characterSheetColumn">

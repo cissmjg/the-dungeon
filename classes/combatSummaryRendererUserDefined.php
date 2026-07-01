@@ -14,6 +14,10 @@
     require_once __DIR__ . '/../dbio/constants/mountedCombatMode.php';
     require_once __DIR__ . '/../dbio/constants/characterClasses.php';
 
+    require_once __DIR__ . '/../webio/playerName.php';
+    require_once __DIR__ . '/../webio/characterName.php';
+    require_once __DIR__ . '/../webio/displayCount.php';
+
     require_once __DIR__ . '/../helper/HtmlHelper.php';
     require_once __DIR__ . '/../helper/CurlHelper.php';
 
@@ -24,14 +28,16 @@
         return $this->is_empty;
     }
 
-    private $combat_summary_user_defined_weapon_order;
-    public function getCombatSummaryUserDefinedWeaponOrder() {
-        return $this->combat_summary_user_defined_weapon_order;
+    private $player_name;
+    public function getPlayerName() {
+        return $this->player_name;
     }
 
-    public function setCombatSummaryUserDefinedWeaponOrder($combat_summary_user_defined_weapon_order) {
-        $this->combat_summary_user_defined_weapon_order = $combat_summary_user_defined_weapon_order;
+    public function setPlayerName($player_name) {
+        $this->player_name = $player_name;
     }
+
+    private $combat_summary_user_defined_weapon_order;
 
     private $is_mounted_section_needed = false;
 
@@ -48,72 +54,59 @@
         $this->is_mounted_section_needed = $this->isMountedSectionNeeded($this->getCharacterDetails(), $this->getPlayerCharacterSkillSet());
     }
 
-    public function init() {
-        $this->populateRenderers($this->getCombatSummaryUserDefinedWeaponOrder()->isInitialized());
+    public function init(PDO $pdo, $player_name, $character_name, &$errors) {
+        $this->combat_summary_user_defined_weapon_order = new CombatSummaryUserDefinedWeaponOrder();
+        $this->combat_summary_user_defined_weapon_order->init($pdo, $player_name, $character_name, $errors);
+
+        // If the User Defined Weapon Order is empty, then this renderer is considered 'empty'
+        $this->is_empty = $this->combat_summary_user_defined_weapon_order->isEmpty();
+
+        // If the renderer is NOT empty, then initialize the renderers
+        if (!$this->is_empty) {
+            $this->populateRenderers();
+        }
     }
 
     protected function renderSection($combat_mode) {
-        $form_name = 'edit-weapon-order-' . getMountedCombatModeDescription($combat_mode);
-        $output_html  = '<form id="' . $form_name . '" name="' . $form_name . '" method="POST" action="' . CurlHelper::buildCharacterActionRouterUrl() . '">' . PHP_EOL;
-        $output_html .= '<table style="width: 100%;">' . PHP_EOL;
-        $output_html .= '<tr><td style="width: 5%;">&nbsp;</td><td style="width: 95%;">' . $this->formatColumnHeaders() . '</td></tr>' . PHP_EOL;
-        $user_defined_item_list = $this->getCombatSummaryUserDefinedWeaponOrder()->getItemsForSection($combat_mode);
+        $output_html  = '';
+        $user_defined_item_list = $this->combat_summary_user_defined_weapon_order->getItemsForSection($combat_mode);
         foreach($user_defined_item_list AS $user_defined_item) {
             $renderer_id = $user_defined_item->getRendererId();
-            $output_html .= '<tr>' . PHP_EOL;
-            $output_html .= '<td style="text-align: center;">' . PHP_EOL;
-            $output_html .= '<input type="checkbox" id="cb-' . $renderer_id . '" name="weapons" value="' . $renderer_id . '" onchange="weaponCheckboxChanged(\'' . $form_name . '\');">';
-            $output_html .= '</td>' . PHP_EOL . '<td>';
-            $weapon_renderer = $this->renderers[$renderer_id];
-            $output_html .= $weapon_renderer->render();
-            $output_html .= '</td>';
-            $output_html .= '</tr>' . PHP_EOL;
+
+            // Check to make sure the weapon for this renderer is still available
+            if (array_key_exists($renderer_id, $this->renderers)) {
+                $weapon_renderer = $this->renderers[$renderer_id];
+                $output_html .= $weapon_renderer->render();
+            } else {
+                $section_name = $user_defined_item->getSectionName();
+                $display_order = $user_defined_item->getDisplayOrder();
+                $error_output = "CombatSummaryRendererUserDefined missing renderer ID: [$renderer_id] in section: [$section_name] with display order: [$display_order]";
+                error_log($error_output);
+            }
         }
-        $output_html .= '</table>' . PHP_EOL; 
-        $output_html .= '</form>' . PHP_EOL;
 
         echo $output_html;
     }
 
-    private function populateRenderers($weapon_order_initialized) {
+    private function populateRenderers() {
 
         foreach($this->getTwoWeaponFightingConfigurationSet() AS $two_weapon_config) {
-            $this->is_empty = false;
             $two_weapon_renderer = new TwoWeaponFightingRenderer($two_weapon_config, $this->getPlayerCharacterWeaponSet(), $this->getPlayerCharacterSkillSet(), $this->getCharacterDetails(), $this->getAttributeMetadata(), $this->getRowClassManager());
             $this->renderers[$two_weapon_renderer->getId()] = $two_weapon_renderer;
-
-            if (!$weapon_order_initialized) {
-                $this->getCombatSummaryUserDefinedWeaponOrder()->newUserDefinedItemFromRenderer($two_weapon_renderer->getId(), COMBAT_MODE_UNMOUNTED);
-            }
         }
 
         foreach($this->getPlayerCharacterWeaponSet() AS $player_character_weapon) {
-            $this->is_empty = false;
             $player_character_weapon_renderer = new PlayerCharacterWeaponRenderer($player_character_weapon, $this->getPlayerCharacterSkillSet(), $this->getCharacterDetails(), $this->getAttributeMetadata(), $this->getRowClassManager());
             $player_character_weapon_renderer->setCombatMode(COMBAT_MODE_UNMOUNTED);
             $this->renderers[$player_character_weapon_renderer->getId()] = $player_character_weapon_renderer;
-
-            if (!$weapon_order_initialized) {
-                $this->getCombatSummaryUserDefinedWeaponOrder()->newUserDefinedItemFromRenderer($player_character_weapon_renderer->getId(), COMBAT_MODE_UNMOUNTED);
-            }
 
             if ($this->is_mounted_section_needed) {
                 $player_character_weapon_renderer = new PlayerCharacterWeaponRenderer($player_character_weapon, $this->getPlayerCharacterSkillSet(), $this->getCharacterDetails(), $this->getAttributeMetadata(), $this->getRowClassManager());
                 $player_character_weapon_renderer->setCombatMode(getMountedCombatModeDescription(COMBAT_MODE_MOUNTED));
                 $this->renderers[$player_character_weapon_renderer->getId()] = $player_character_weapon_renderer;
-                
-                if (!$weapon_order_initialized) {
-                    $this->getCombatSummaryUserDefinedWeaponOrder()->newUserDefinedItemFromRenderer($player_character_weapon_renderer->getId(), COMBAT_MODE_MOUNTED);
-                }
             }
         }
-
-        $this->getCombatSummaryUserDefinedWeaponOrder()->setInitialized(true);
-    }
-
-    // Override the standard render header function so that we can control where the columns appear
-    protected function renderHeader() {
-        return '';
     }
 }
+
 ?>
