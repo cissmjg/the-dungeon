@@ -17,10 +17,13 @@ require_once __DIR__ . '/../dbio/constants/mountedCombatMode.php';
 require_once __DIR__ . '/../helper/HtmlHelper.php';
 require_once __DIR__ . '/../helper/WebParameterHelper.php';
 
+require_once __DIR__ . '/../webio/characterAction.php';
 require_once __DIR__ . '/../webio/playerName.php';
 require_once __DIR__ . '/../webio/characterName.php';
 require_once __DIR__ . '/../webio/displayCount.php';
 require_once __DIR__ . '/../webio/sectionName.php';
+
+require_once __DIR__ . '/../characterActionRoutes.php';
 
 class CombatSummaryRendererEditWeaponOrder extends CombatSummaryRenderer {
 
@@ -65,7 +68,8 @@ class CombatSummaryRendererEditWeaponOrder extends CombatSummaryRenderer {
         $section_name = getMountedCombatModeDescription($combat_mode);
 
         $form_name = 'edit-weapon-order-' . $section_name;
-        $output_html  = '<form id="' . $form_name . '" name="' . $form_name . '" method="POST" action="' . CurlHelper::buildUrlDbioDirectory('updateCombatSummaryWeaponOrder') . '">' . PHP_EOL;
+        $output_html  = '<form id="' . $form_name . '" name="' . $form_name . '" method="POST" action="' . CurlHelper::buildCharacterActionRouterUrl() . '">' . PHP_EOL;
+        $output_html .= HtmlHelper::buildHiddenTag(CHARACTER_ACTION, CHARACTER_ACTION_UPDATE_COMBAT_SUMMARY_WEAPON_ORDER);
         $output_html .= HtmlHelper::buildHiddenTag(PLAYER_NAME, $this->getPlayerName());
         $output_html .= HtmlHelper::buildHiddenTag(CHARACTER_NAME, $this->getCharacterDetails()->getCharacterName());
         $output_html .= HtmlHelper::buildHiddenTag(SECTION_NAME, $section_name);
