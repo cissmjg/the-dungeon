@@ -14,6 +14,7 @@ function divSwap(source_div_id, target_div_id) {
 export function weaponCheckboxChanged(form_id) {
     const jqFormId = '#' + form_id;
     const jqCheckboxSelector = jqFormId + " input[type='checkbox']";
+    const jqCheckboxNotCheckedSelector = $("input[type='checkbox']:not(:checked)");
 
     let checkboxes = $(jqCheckboxSelector);
     let checkedCheckboxes = checkboxes.filter(":checked");
@@ -24,15 +25,17 @@ export function weaponCheckboxChanged(form_id) {
     }
 
     // Two DIVs to swap
-    const div1ID = checkedCheckboxes[0].value;
-    const div2ID = checkedCheckboxes[1].value;
-    divSwap(div1ID, div2ID);
+    // const div1ID = checkedCheckboxes[0].value;
+    // const div2ID = checkedCheckboxes[1].value;
+    // divSwap(div1ID, div2ID);
 
     const jqForm = $(jqFormId);
+    jqCheckboxNotCheckedSelector.attr("disabled", true);
+
     jqForm.submit();
 
     // Clear the checkboxes
-    $(jqCheckboxSelector).prop("checked", false);
+    // $(jqCheckboxSelector).prop("checked", false);
 }
 
 window.weaponCheckboxChanged = weaponCheckboxChanged;

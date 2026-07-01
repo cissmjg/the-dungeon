@@ -57,15 +57,10 @@ foreach ($renderers_to_swap as $display_order => $renderer_id) {
     }
 }
 
-$log_output = "Player: [$player_name]  Character: [$character_name]  Weapon Count: [$display_count]  Section: [$section_name]  Renderer1: [$renderer_id_1]  Display Position1: [$display_order_1]  Renderer2: [$renderer_id_2]  Display Position2: [$display_order_2]";
-error_log($log_output);
-
-/*
 updateWeaponOrderForRenderers($pdo, $player_name, $character_name, $section_name, $renderer_id_1, $display_order_1, $renderer_id_2, $display_order_2, $errors);
 if (count($errors) > 0) {
     die(json_encode($errors));
 }
-*/
 
 $log[] = "SUCCESS|";
 
