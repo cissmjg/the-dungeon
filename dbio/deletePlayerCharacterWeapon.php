@@ -10,11 +10,12 @@ $pdo = require_once __DIR__ . '/DBConnection.php';
 validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/../helper/RestHeaderHelper.php';
+require_once __DIR__ . '/../helper/WeaponIOHelper.php';
 require_once __DIR__ . '/../webio/playerCharacterWeaponId.php';
 
 getPlayerCharacterWeaponId($errors, $input);
 
-deleteWeaponForPlayerCharacter($pdo, $input[PLAYER_CHARACTER_WEAPON_ID], $errors);
+WeaponIOHelper::deleteWeaponForPlayerCharacter($pdo, $input[PLAYER_CHARACTER_WEAPON_ID], $errors);
 
 RestHeaderHelper::emitRestHeaders();
 if(count($errors) > 0) {
@@ -25,17 +26,4 @@ if(count($errors) > 0) {
     $log[] = "playerCharacterWeaponId: " . $input[PLAYER_CHARACTER_WEAPON_ID];
 
     echo json_encode($log);
-}
-
-function deleteWeaponForPlayerCharacter(\PDO $pdo, $player_character_weapon_id, &$errors) {
-	$sql_exec = "CALL deleteWeaponForPlayerCharacter(:characterWeaponId)";
-	
-	$statement = $pdo->prepare($sql_exec);
-	$statement->bindParam(':characterWeaponId', $player_character_weapon_id, PDO::PARAM_INT);
-
-    try {
-		$statement->execute();
-	} catch(Exception $e) {
-		$errors[] = "Exception in deleteWeaponForPlayerCharacter : " . $e->getMessage();
-	}
 }

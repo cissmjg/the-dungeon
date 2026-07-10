@@ -13,6 +13,7 @@ CREATE PROCEDURE addCombatSummaryWeaponOrderItem
  IN rendererId VARCHAR(64),
  IN playerCharacterWeaponId INT,
  IN playerCharacterWeapon2Id INT,
+ IN twoWeaponFightingConfigurationId INT,
  IN displayOrder INT)
  BEGIN
 	DECLARE playerCharacterId INT DEFAULT 0;
@@ -24,9 +25,9 @@ CREATE PROCEDURE addCombatSummaryWeaponOrderItem
 	WHERE player.name = playerName AND player_character.name = characterName;
 
 	INSERT INTO player_character_combat_summary_display
-		(player_character_id, section_name, renderer_id, player_character_weapon_id, player_character_weapon2_id, display_order)
+		(player_character_id, section_name, renderer_id, player_character_weapon_id, player_character_weapon2_id, two_weapon_fighting_config_id, display_order)
 	VALUES
-		(playerCharacterId, sectionName, rendererId, playerCharacterWeaponId, playerCharacterWeapon2Id, displayOrder);
+		(playerCharacterId, sectionName, rendererId, playerCharacterWeaponId, playerCharacterWeapon2Id, twoWeaponFightingConfigurationId, displayOrder);
  END
 
 CREATE PROCEDURE addPreferredWeaponForCavalier
@@ -141,6 +142,41 @@ BEGIN
 
 	SELECT LAST_INSERT_ID()
 	INTO playerCharacterSkillId;
+END
+
+CREATE PROCEDURE addSkillMartialWeaponToPlayerCharacter
+(IN playerName VARCHAR(32),
+ IN characterName VARCHAR(64),
+ IN skillCatalogId INT,
+ IN weaponProficiencyId INT,
+ IN playerCharacterWeaponId INT)
+BEGIN
+ 	DECLARE playerCharacterId INT DEFAULT 0;
+	
+	SELECT player_character.id 
+	INTO playerCharacterId
+	FROM player_character
+	JOIN player ON player.id = player_character.player_id
+	WHERE player.name = playerName AND player_character.name = characterName;
+
+	INSERT INTO player_character_skill(
+		player_character_id, 
+		skill_catalog_id, 
+		player_character_skill_name, 
+		is_skill_focus, 
+		weapon_proficiency_id, 
+		weapon2_proficiency_id,
+		player_character_weapon_id)
+	VALUES(
+		playerCharacterId, 
+		skillCatalogId, 
+		NULL, 
+		FALSE, 
+		weaponProficiencyId, 
+		NULL, 
+		playerCharacterWeaponId);
+
+	SELECT LAST_INSERT_ID();
 END
 
 CREATE PROCEDURE addTwoWeaponConfiguration
@@ -863,6 +899,12 @@ BEGIN
 	COMMIT;
 END
 
+CREATE PROCEDURE deallocateExtraSlot
+(IN extraSlotId INT)
+BEGIN
+	DELETE FROM player_spell_slot WHERE id = extraSlotId;
+END
+
 CREATE PROCEDURE deleteCombatSummaryItemsForSection
 (IN playerName VARCHAR(32),
  IN characterName VARCHAR(64),
@@ -878,12 +920,6 @@ BEGIN
 
 	DELETE FROM player_character_combat_summary_display
 	WHERE player_character_id = playerCharacterId AND section_name = sectionName;
-END
-
-CREATE PROCEDURE deallocateExtraSlot
-(IN extraSlotId INT)
-BEGIN
-	DELETE FROM player_spell_slot WHERE id = extraSlotId;
 END
 
 CREATE PROCEDURE deletePlayerCharacter
@@ -949,7 +985,11 @@ END
 CREATE PROCEDURE deleteTwoWeaponConfiguration
 (IN playerCharacterTwoWeaponConfigId INT)
 BEGIN
-	DELETE FROM player_character_two_weapon_fighting WHERE id = playerCharacterTwoWeaponConfigId;
+	START TRANSACTION;
+		DELETE FROM player_character_combat_summary_display
+			WHERE	player_character_combat_summary_display.two_weapon_fighting_config_id = playerCharacterTwoWeaponConfigId;
+		DELETE FROM player_character_two_weapon_fighting WHERE id = playerCharacterTwoWeaponConfigId;
+	COMMIT;
 END
 
 CREATE PROCEDURE deleteTwoWeaponConfigurationForPlayerCharacter
@@ -964,7 +1004,12 @@ BEGIN
 	JOIN player ON player.id = player_character.player_id
 	WHERE player.name = playerName AND player_character.name = characterName;
 
-	DELETE FROM player_character_two_weapon_fighting WHERE player_character_id = playerCharacterId;
+	START TRANSACTION;
+		DELETE FROM player_character_combat_summary_display
+			WHERE	player_character_combat_summary_display.player_character_id = playerCharacterId AND
+					player_character_combat_summary_display.two_weapon_fighting_config_id IS NOT NULL;
+		DELETE FROM player_character_two_weapon_fighting WHERE player_character_id = playerCharacterId;
+	COMMIT;
 END
 
 CREATE PROCEDURE deleteWeaponForPlayerCharacter
@@ -1484,6 +1529,25 @@ BEGIN
 	SELECT skill_catalog_id FROM player_character_skill WHERE id = playerCharacterSkillId;
 END
 
+CREATE PROCEDURE getSkill
+(IN playerCharacterSkillId INT)
+BEGIN
+	SELECT
+		player_character_skill.id AS player_character_skill_id,
+		player_character_skill.skill_catalog_id AS skill_catalog_id,
+		IFNULL(player_character_skill.player_character_skill_name,skill_catalog.name) AS skill_name,
+		player_character_skill.is_skill_focus AS player_character_skill_is_skill_focus,
+		player_character_skill.weapon_proficiency_id AS player_character_weapon_proficiency_id,
+		player_character_skill.weapon2_proficiency_id AS player_character_weapon2_proficiency_id,
+		is_preferred_cavalier_level3 AS player_character_cavalier_level3_preferred,
+		is_preferred_cavalier_level5 AS player_character_cavalier_level5_preferred,
+		is_preferred_elven_cavalier_level4 AS player_character_elven_cavalier_level4_preferred,
+		is_preferred_elven_cavalier_level6 AS player_character_elven_cavalier_level6_preferred,
+		player_character_weapon_id AS player_character_skill_weapon_id
+	FROM player_character_skill
+	WHERE player_character_skill.id = playerCharacterSkillId;
+END
+
 CREATE PROCEDURE getSkillListForPlayerCharacter
 (IN playerName VARCHAR(32),
  IN characterName VARCHAR(64))
@@ -1567,7 +1631,8 @@ BEGIN
 		is_preferred_cavalier_level3 AS player_character_cavalier_level3_preferred,
 		is_preferred_cavalier_level5 AS player_character_cavalier_level5_preferred,
 		is_preferred_elven_cavalier_level4 AS player_character_elven_cavalier_level4_preferred,
-		is_preferred_elven_cavalier_level6 AS player_character_elven_cavalier_level6_preferred
+		is_preferred_elven_cavalier_level6 AS player_character_elven_cavalier_level6_preferred,
+		player_character_weapon_id AS player_character_skill_weapon_id
 	FROM player_character_skill
 	JOIN skill_catalog ON skill_catalog.id = player_character_skill.skill_catalog_id
 	JOIN player_character ON player_character.id = player_character_skill.player_character_id

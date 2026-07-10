@@ -9,6 +9,7 @@ class CombatSummaryUserDefinedItem implements JsonSerializable {
     private $renderer_id = '';
     private $player_character_weapon_id;
     private $player_character_weapon2_id;
+    private $two_weapon_fighting_config_id;
 
     public function init($combat_summary_user_defined_item) {
         $this->id = $combat_summary_user_defined_item['combat_summary_user_defined_id'];
@@ -17,6 +18,7 @@ class CombatSummaryUserDefinedItem implements JsonSerializable {
         $this->renderer_id = $combat_summary_user_defined_item['combat_summary_user_defined_renderer_id'];
         $this->player_character_weapon_id = $combat_summary_user_defined_item['combat_summary_user_defined_player_character_weapon_id'];
         $this->player_character_weapon2_id = $combat_summary_user_defined_item['combat_summary_user_defined_player_character_weapon2_id'];
+        $this->two_weapon_fighting_config_id = $combat_summary_user_defined_item['two_weapon_fighting_config_id'];
     }
 
     public function initFromRenderer($renderer_id, $display_order, $temp_id, $section_name) {
@@ -53,6 +55,10 @@ class CombatSummaryUserDefinedItem implements JsonSerializable {
 
     public function getPlayerCharacterWeapon2Id() {
         return $this->player_character_weapon2_id;
+    }
+
+    public function getTwoWeaponFightingConfigId() {
+        return $this->two_weapon_fighting_config_id;
     }
 }
 ?>

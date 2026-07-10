@@ -103,7 +103,7 @@ echo $html_header;
                     $weapon_proficiency_id = $weapon->getWeaponProficiencyId();
                     $is_proficient = $weapon->getIsProficient() ? "Yes" : "No";
                     $output_row  = '<tr>';
-                    if ($weapon->getWeaponProficiencyId() == FIST) {
+                    if ($weapon->getWeaponProficiencyId() == FIST || $weapon->isMartialSkillWeapon()) {
                         $output_row .= '<td>&nbsp;</td>';
                     } else {
                         $output_row .= '<td>' . buildDeletePlayerCharacterWeaponIcon($form_id, $weapon_desc, $weapon->getWeaponId()) . '</td>';

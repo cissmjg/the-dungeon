@@ -9,7 +9,10 @@ validateSessionCredentials($pdo);
 require_once __DIR__ . '/../helper/RestHeaderHelper.php';
 require_once __DIR__ . '/../helper/WebParameterHelper.php';
 require_once __DIR__ . '/../helper/CurlHelper.php';
+require_once __DIR__ . '/../helper/WeaponIOHelper.php';
+require_once __DIR__ . '/../helper/WeaponSkillHelper.php';
 require_once __DIR__ . '/../characterActionRoutes.php';
+require_once __DIR__ . '/../dbio/constants/skills.php';
 
 require_once __DIR__ . '/../webio/playerName.php';
 require_once __DIR__ . '/../webio/characterName.php';
@@ -38,7 +41,35 @@ if (count($errors) > 0) {
     exit;
 }
 
-$player_character_weapon_skill_id = addSkillToPlayerCharacter($pdo, $input, $errors);
+$skill_catalog_id = $input[SKILL_CATALOG_ID];
+$player_character_weapon_id = OPTIONAL_INTEGER_PARAMETER;
+
+if ($skill_catalog_id == CIRCLE_KICK) {
+    $player_character_weapon = WeaponSkillHelper::buildCircleKickWeapon($input[PLAYER_NAME], $input[CHARACTER_NAME]);
+    $player_character_weapon_id = WeaponIOHelper::addWeaponToPlayerCharacter($pdo, $player_character_weapon, $errors);
+    if (count($errors) > 0) {
+        die(json_encode($errors));
+    }
+} else if ($skill_catalog_id == MANTIS_LEAP) {
+    $player_character_weapon = WeaponSkillHelper::buildMantisLeapWeapon($input[PLAYER_NAME], $input[CHARACTER_NAME]);
+    $player_character_weapon_id = WeaponIOHelper::addWeaponToPlayerCharacter($pdo, $player_character_weapon, $errors);
+    if (count($errors) > 0) {
+        die(json_encode($errors));
+    }
+} else if ($skill_catalog_id == THROW_ANYTHING) {
+    $player_character_weapon = WeaponSkillHelper::buildThrowAnythingWeapon($input[PLAYER_NAME], $input[CHARACTER_NAME]);
+    $player_character_weapon_id = WeaponIOHelper::addWeaponToPlayerCharacter($pdo, $player_character_weapon, $errors);
+    if (count($errors) > 0) {
+        die(json_encode($errors));
+    }
+}
+
+// Non 'Martial Weapon' skill
+if ($player_character_weapon_id == OPTIONAL_INTEGER_PARAMETER) {
+    $player_character_skill_id = addSkillToPlayerCharacter($pdo, $input, $errors);
+} else {
+    $player_character_skill_id = addSkillMartialWeaponToPlayerCharacter($pdo, $input, $player_character_weapon_id, $errors);
+}
 
 RestHeaderHelper::emitRestHeaders();
 if(count($errors) > 0) {
@@ -46,7 +77,7 @@ if(count($errors) > 0) {
 } else {
     $log[] = "SUCCESS|";
     $log[] = "Character Skill Add|";
-    $log[] = "playerCharacterSkillId: " . $player_character_weapon_skill_id;
+    $log[] = "playerCharacterSkillId: " . $player_character_skill_id;
 
     echo json_encode($log);
 }
@@ -95,6 +126,26 @@ function addSkillToPlayerCharacter(\PDO $pdo, $input, &$errors) {
 		$statement->execute();
 	} catch(Exception $e) {
 		$errors[] = "Exception in addSkillToPlayerCharacter : " . $e->getMessage();
+	}
+
+    return $statement->fetch(PDO::FETCH_ASSOC);
+}
+
+function addSkillMartialWeaponToPlayerCharacter($pdo, $input, $player_character_weapon_id, &$errors) {
+	$sql_exec = "CALL addSkillMartialWeaponToPlayerCharacter(:playerName, :characterName, :skillCatalogId, :weaponProficiencyId, :playerCharacterWeaponId)";
+
+    $statement = $pdo->prepare($sql_exec);
+
+    $statement->bindParam(':playerName', $input[PLAYER_NAME], PDO::PARAM_STR);
+    $statement->bindParam(':characterName', $input[CHARACTER_NAME], PDO::PARAM_STR);
+    $statement->bindParam(':skillCatalogId', $input[SKILL_CATALOG_ID], PDO::PARAM_INT);
+    $statement->bindParam(':weaponProficiencyId', $input[WEAPON_PROFICIENCY_ID], PDO::PARAM_INT);
+    $statement->bindParam(':playerCharacterWeaponId', $player_character_weapon_id, PDO::PARAM_INT);
+
+    try {
+		$statement->execute();
+	} catch(Exception $e) {
+		$errors[] = "Exception in addSkillMartialWeaponToPlayerCharacter : " . $e->getMessage();
 	}
 
     return $statement->fetch(PDO::FETCH_ASSOC);

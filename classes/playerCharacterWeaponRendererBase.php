@@ -27,6 +27,7 @@ require_once 'rowClassManager.php';
 abstract class PlayerCharacterWeaponRendererBase {
 
     abstract public function getId();
+    abstract public function getType();
 
     protected $combat_mode = COMBAT_MODE_UNMOUNTED;
     public function getCombatMode() {
@@ -90,6 +91,15 @@ abstract class PlayerCharacterWeaponRendererBase {
     protected $row_class_manager;
     public function getRowClassManager() {
         return $this->row_class_manager;
+    }
+
+    private $has_rendered = false;
+    public function hasRendered() {
+        $this->has_rendered;
+    }
+
+    public function setHasRendered($has_rendered) {
+        $this->has_rendered = $has_rendered;
     }
 
     public function __construct(PlayerCharacterWeapon $player_character_weapon, PlayerCharacterSkillSet $player_character_skill_set, CharacterDetails $character_details, AttributeMetadata $attribute_metadata, RowClassManager $row_class_manager) {
