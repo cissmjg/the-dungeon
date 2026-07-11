@@ -9,6 +9,7 @@
     require_once 'rowClassManager.php';
 
     require_once __DIR__ . '/../dbio/constants/mountedCombatMode.php';
+    require_once __DIR__ . '/../dbio/constants/rendererType.php';
     require_once __DIR__ . '/../helper/HtmlHelper.php';
 
     class PlayerCharacterWeaponRenderer extends PlayerCharacterWeaponRendererBase {
@@ -19,6 +20,10 @@
             }
 
             return $this->display_id;
+        }
+
+        public function getType() {
+            return RendererType::weapon;
         }
         
         public function __construct(PlayerCharacterWeapon $player_character_weapon, PlayerCharacterSkillSet $player_character_skill_set, CharacterDetails $character_details, AttributeMetadata $attribute_metadata, RowClassManager $row_class_manager) {

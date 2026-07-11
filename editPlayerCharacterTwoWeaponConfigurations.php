@@ -214,6 +214,8 @@ function buildActionBar($player_name, $character_name) {
     $output_html .= '&nbsp;';
     $output_html .= ActionBarHelper::buildEditWeaponsIcon($player_name, $character_name);
     $output_html .= '&nbsp;';
+	$output_html .= ActionBarHelper::buildEditCombatSummaryIcon($player_name, $character_name);	
+	$output_html .= '&nbsp;';
 
     return $output_html;
 }

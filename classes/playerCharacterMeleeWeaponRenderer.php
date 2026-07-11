@@ -8,6 +8,7 @@ require_once 'attacksPerRoundCalculator.php';
 require_once 'rowClassManager.php';
 
 require_once __DIR__ . '/../dbio/constants/attacksPerRound.php';
+require_once __DIR__ . '/../dbio/constants/rendererType.php';
 require_once __DIR__ . '/../dbio/constants/weaponType.php';
 require_once __DIR__ . '/../dbio/constants/weaponSubtype.php';
 require_once __DIR__ . '/../dbio/constants/missileRanges.php';
@@ -31,6 +32,10 @@ class PlayerCharacterMeleeWeaponRenderer extends PlayerCharacterWeaponRendererBa
         }
 
         return $this->display_id;
+    }
+
+    public function getType() {
+        return RendererType::other;
     }
 
     public function __construct(PlayerCharacterWeapon $player_character_weapon, PlayerCharacterSkillSet $player_character_skill_set, CharacterDetails $character_details, AttributeMetadata $attribute_metadata, RowClassManager $row_class_manager){

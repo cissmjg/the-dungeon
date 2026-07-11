@@ -45,6 +45,8 @@ require_once __DIR__ . '/webio/isSkillFocus.php';
 require_once __DIR__ . '/webio/weapon2ProficiencyId.php';
 require_once __DIR__ . '/webio/twoWeaponConfigurationId.php';
 require_once __DIR__ . '/webio/playerCharacterWeapon2Id.php';
+require_once __DIR__ . '/webio/displayCount.php';
+require_once __DIR__ . '/webio/sectionName.php';
 
 require_once __DIR__ . '/webio/weaponProficiencyId.php';
 require_once __DIR__ . '/webio/weaponDescription.php';
@@ -1249,6 +1251,49 @@ switch($character_action) {
 		header($location_header);
 
 		break;
+
+	case CHARACTER_ACTION_UPDATE_COMBAT_SUMMARY_WEAPON_ORDER:
+		// Get player name
+		getPlayerName($errors, $input);
+
+		// Get character name	
+		getCharacterName($errors, $input);
+
+		// Get the total number of weapons available
+		getDisplayCount($errors, $input);
+
+		// Get the section name (i.e., 'Mounted' or 'Unmounted')
+		getSectionName($errors, $input);
+
+		$prefix = 'display-order-';
+		$renderers_to_swap = extractParametersForPrefix($errors, $prefix, $input[DISPLAY_COUNT]);
+		if (count($renderers_to_swap) < 2) {
+			$errors[] = "Insufficient number of renderers";
+			$errors[] = __FILE__;
+			die(json_encode($errors));
+		}
+
+		// $renderers_to_swap .. keys are the display positions, values are the renderer IDs
+		// Update $input using the display positions for keys and renderer IDs as values
+		foreach($renderers_to_swap AS $display_position => $renderer_id) {
+			$input[$display_position] = $renderer_id;
+		}
+
+		$url_update_weapon_order = CurlHelper::buildUrlDbioDirectory('updateCombatSummaryWeaponOrder');
+		$raw_result = CurlHelper::performGetRequest($url_update_weapon_order, $input);
+		$result = json_decode($raw_result);
+		if (str_starts_with($result[0], "SUCCESS|")) {
+			$location_header = buildEditCombatSummaryRedirect($input);
+			header($location_header);
+			exit;
+		} else {
+			RestHeaderHelper::emitRestHeaders();
+			$errors[] = "Execution Error|";
+			$errors[] = $character_action . "|";
+			$errors[] = __FILE__ . "|";
+			$errors[] = $result;
+			die(json_encode($errors));
+		}
 
 	default:
 		RestHeaderHelper::emitRestHeaders();

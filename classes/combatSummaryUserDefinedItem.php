@@ -7,12 +7,18 @@ class CombatSummaryUserDefinedItem implements JsonSerializable {
     private $section_name;
     private $display_order;
     private $renderer_id = '';
+    private $player_character_weapon_id;
+    private $player_character_weapon2_id;
+    private $two_weapon_fighting_config_id;
 
     public function init($combat_summary_user_defined_item) {
         $this->id = $combat_summary_user_defined_item['combat_summary_user_defined_id'];
         $this->section_name = $combat_summary_user_defined_item['combat_summary_user_defined_section_name'];
         $this->display_order = $combat_summary_user_defined_item['combat_summary_user_defined_display_order'];
         $this->renderer_id = $combat_summary_user_defined_item['combat_summary_user_defined_renderer_id'];
+        $this->player_character_weapon_id = $combat_summary_user_defined_item['combat_summary_user_defined_player_character_weapon_id'];
+        $this->player_character_weapon2_id = $combat_summary_user_defined_item['combat_summary_user_defined_player_character_weapon2_id'];
+        $this->two_weapon_fighting_config_id = $combat_summary_user_defined_item['two_weapon_fighting_config_id'];
     }
 
     public function initFromRenderer($renderer_id, $display_order, $temp_id, $section_name) {
@@ -41,6 +47,18 @@ class CombatSummaryUserDefinedItem implements JsonSerializable {
 
     public function getRendererId() {
         return $this->renderer_id;
+    }
+
+    public function getPlayerCharacterWeaponId() {
+        return $this->player_character_weapon_id;
+    }
+
+    public function getPlayerCharacterWeapon2Id() {
+        return $this->player_character_weapon2_id;
+    }
+
+    public function getTwoWeaponFightingConfigId() {
+        return $this->two_weapon_fighting_config_id;
     }
 }
 ?>

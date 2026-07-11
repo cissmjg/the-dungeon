@@ -11,6 +11,9 @@ validateSessionCredentials($pdo);
 
 require_once __DIR__ . '/constants/skills.php';
 require_once __DIR__ . '/../helper/RestHeaderHelper.php';
+require_once __DIR__ . '/../helper/WeaponIOHelper.php';
+
+require_once __DIR__ . '/../classes/playerCharacterSkill.php';
 
 require_once __DIR__ . '/../webio/playerName.php';
 require_once __DIR__ . '/../webio/characterName.php';
@@ -24,13 +27,28 @@ $player_name = $input[PLAYER_NAME];
 $character_name = $input[CHARACTER_NAME];
 $player_character_skill_id = $input[PLAYER_CHARACTER_SKILL_ID];
 
-$result = getSkillCatalogIdFromPlayerCharacterSkillId($pdo, $player_character_skill_id, $errors);
-$skill_catalog_id = $result['skill_catalog_id'];
-error_log($player_name . ' ' . $character_name);
-error_log('player_character_skill_id: ' . $skill_catalog_id);
+$skill = getSkill($pdo, $player_character_skill_id, $errors);
+if (count($errors) > 0) {
+	die(json_encode($errors));
+}
 
+$player_character_skill = new PlayerCharacterSkill();
+$player_character_skill->init($skill);
+
+$skill_catalog_id = $player_character_skill->getSkillCatalogId();
+
+// If Two Weapon Fighting is being deleted, remove all Two Weapon Configurations
 if ($skill_catalog_id == TWO_WEAPON_FIGHTING) {
 	deleteTwoWeaponConfigurationsForPlayerCharacter($pdo, $player_name, $character_name, $errors);
+	if (count($errors) > 0) {
+		die(json_encode($errors));
+	}
+}
+
+// If the skill has a Weapon associated with it, delete the weapon.
+// This means the skill is one of the 'Martial' skills (Circle Kick, Mantis Leap, Throw Anything).
+if (!empty($player_character_skill->getPlayerCharacterWeaponId())) {
+	WeaponIOHelper::deleteWeaponForPlayerCharacter($pdo, $player_character_skill->getPlayerCharacterWeaponId(), $errors);
 	if (count($errors) > 0) {
 		die(json_encode($errors));
 	}
@@ -62,8 +80,8 @@ function deleteSkillForPlayerCharacter(\PDO $pdo, $player_character_skill_id, &$
 	}
 }
 
-function getSkillCatalogIdFromPlayerCharacterSkillId(PDO $pdo, $player_character_skill_id, &$errors) {
-	$sql_exec = "CALL getSkillCatalogIdFromPlayerCharacterSkillId(:playerCharacterSkillId)";
+function getSkill(PDO $pdo, $player_character_skill_id, &$errors) {
+	$sql_exec = "CALL getSkill(:playerCharacterSkillId)";
 
 	$statement = $pdo->prepare($sql_exec);
 	$statement->bindParam(':playerCharacterSkillId', $player_character_skill_id, PDO::PARAM_INT);
@@ -72,8 +90,10 @@ function getSkillCatalogIdFromPlayerCharacterSkillId(PDO $pdo, $player_character
 		$statement->execute();
 		return $statement->fetch(PDO::FETCH_ASSOC);
 	} catch(Exception $e) {
-		$errors[] = "Exception in getSkillCatalogIdFromPlayerCharacterSkillId : " . $e->getMessage();
-	}	
+		$errors[] = "Exception in getSkill : " . $e->getMessage();
+	}
+	
+	return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function deleteTwoWeaponConfigurationsForPlayerCharacter(PDO $pdo, $player_name, $character_name, &$errors) {

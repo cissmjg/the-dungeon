@@ -14,6 +14,7 @@ require_once __DIR__ . '/../dbio/constants/missileRanges.php';
 require_once __DIR__ . '/../dbio/constants/arrowTypes.php';
 require_once __DIR__ . '/../dbio/constants/characterClasses.php';
 require_once __DIR__ . '/../dbio/constants/mountedCombatMode.php';
+require_once __DIR__ . '/../dbio/constants/rendererType.php';
 require_once __DIR__ . '/../dbio/constants/weapons.php';
 require_once __DIR__ . '/../dbio/constants/weaponType.php';
 require_once __DIR__ . '/../dbio/constants/weaponSubtype.php';
@@ -56,6 +57,10 @@ class PlayerCharacterMissileWeaponRenderer extends PlayerCharacterWeaponRenderer
         }
         
         return $this->display_id;
+    }
+
+    public function getType() {
+        return RendererType::other;
     }
 
     private $uses_point_blank_range = false;

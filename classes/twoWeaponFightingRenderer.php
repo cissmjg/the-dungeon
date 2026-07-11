@@ -20,6 +20,10 @@ class TwoWeaponFightingRenderer extends PlayerCharacterWeaponRendererBase {
         return $this->display_id;
     }
 
+    public function getType() {
+        return RendererType::twoWeapon;
+    }
+
     private $two_weapon_fighting_config;
     public function getTwoWeaponFightingConfig() {
         return $this->two_weapon_fighting_config;
