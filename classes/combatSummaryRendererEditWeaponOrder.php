@@ -286,7 +286,7 @@ class CombatSummaryRendererEditWeaponOrder extends CombatSummaryRenderer {
     }
 
     private function addTwoWeaponCombatSummaryItem(PDO $pdo, $player_name, $character_name, $section_name, $renderer_id, $player_character_weapon_id, $player_character_weapon2_id, $two_weapon_fighting_configuration_id, $display_order, &$errors) {
-        $sql_exec = "CALL addCombatSummaryWeaponOrderItem(:playerName, :characterName, :sectionName, :rendererId, :playerCharacterWeaponId, :playerCharacterWeapon2Id, :displayOrder)";
+        $sql_exec = "CALL addCombatSummaryWeaponOrderItem(:playerName, :characterName, :sectionName, :rendererId, :playerCharacterWeaponId, :playerCharacterWeapon2Id, :twoWeaponFightingConfigurationId, :displayOrder)";
 
         $statement = $pdo->prepare($sql_exec);
         $statement->bindParam(':playerName', $player_name, PDO::PARAM_STR);
