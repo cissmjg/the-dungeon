@@ -42,7 +42,7 @@ $character_summary->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $err
 $character_summary_renderer = new CharacterSummaryRenderer($input[CHARACTER_NAME]);
 $character_summary_stats = $character_summary_renderer->render($character_summary);
 
-$action_bar = ActionBarHelper::buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
+$action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
 
 $player_character_skill_set = new PlayerCharacterSkillSet();
 $player_character_skill_set->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $errors);
@@ -159,6 +159,16 @@ function buildDeletePlayerCharacterWeaponIcon($form_id, $weapon_desc, $player_ch
     $delete_icon->setHoverText('Delete ' . $weapon_desc);
 
     return $delete_icon->build();
+}
+
+function buildActionBar($player_name, $character_name) {
+    $output_html = ActionBarHelper::buildUserViewIcon($player_name, $character_name);
+	$output_html .= '&nbsp;';
+
+	$output_html .= ActionBarHelper::buildEditCombatSummaryIcon($player_name, $character_name);	
+	$output_html .= '&nbsp;';
+
+    return $output_html;
 }
 
 ?>
