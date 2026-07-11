@@ -1282,6 +1282,7 @@ BEGIN
 		display_order AS combat_summary_user_defined_display_order,
 		player_character_weapon_id AS combat_summary_user_defined_player_character_weapon_id,
 		player_character_weapon2_id AS combat_summary_user_defined_player_character_weapon2_id,
+		two_weapon_fighting_config_id AS two_weapon_fighting_config_id,
 		renderer_id AS combat_summary_user_defined_renderer_id
 	FROM player_character_combat_summary_display
 	WHERE player_character_combat_summary_display.player_character_id = playerCharacterId
