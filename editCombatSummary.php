@@ -64,7 +64,7 @@ $page_title = $input[CHARACTER_NAME] . ' weapon order';
 $site_css_file = 'dnd-default.css';
 $page_specific_js = 'editCombatSummary.js';
 $page_specific_css = 'editCombatSummary.css';
-$enable_toggle_panels = false;
+$enable_toggle_panels = true;
 
 $html_header = HtmlHelper::formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels);
 echo $html_header;
