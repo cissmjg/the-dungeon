@@ -12,7 +12,7 @@
             case COMBAT_MODE_UNKNOWN:
                 return "Unknown";
             default:
-                return "Unknown";
+                return "Invalid[$combat_mode]";
         }
     }
 ?>

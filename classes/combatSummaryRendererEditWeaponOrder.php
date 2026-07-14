@@ -107,8 +107,11 @@ class CombatSummaryRendererEditWeaponOrder extends CombatSummaryRenderer {
 
             $output_html .= '</tr>' . PHP_EOL;
         }
-
         foreach($this->renderers AS $renderer_id_key => $renderer) {
+
+            if ($renderer->getCombatMode() != $combat_mode) {
+                continue;
+            }
 
             $max_display_order++;
 
@@ -143,14 +146,14 @@ class CombatSummaryRendererEditWeaponOrder extends CombatSummaryRenderer {
         }
 
         foreach($this->getPlayerCharacterWeaponSet() AS $player_character_weapon) {
-            $player_character_weapon_renderer = new PlayerCharacterWeaponRenderer($player_character_weapon, $this->getPlayerCharacterSkillSet(), $this->getCharacterDetails(), $this->getAttributeMetadata(), $this->getRowClassManager());
-            $player_character_weapon_renderer->setCombatMode(COMBAT_MODE_UNMOUNTED);
-            $this->renderers[$player_character_weapon_renderer->getId()] = $player_character_weapon_renderer;
+            $player_character_weapon_renderer_unmounted = new PlayerCharacterWeaponRenderer($player_character_weapon, $this->getPlayerCharacterSkillSet(), $this->getCharacterDetails(), $this->getAttributeMetadata(), $this->getRowClassManager());
+            $player_character_weapon_renderer_unmounted->setCombatMode(COMBAT_MODE_UNMOUNTED);
+            $this->renderers[$player_character_weapon_renderer_unmounted->getId()] = $player_character_weapon_renderer_unmounted;
 
             if ($this->is_mounted_section_needed) {
-                $player_character_weapon_renderer = new PlayerCharacterWeaponRenderer($player_character_weapon, $this->getPlayerCharacterSkillSet(), $this->getCharacterDetails(), $this->getAttributeMetadata(), $this->getRowClassManager());
-                $player_character_weapon_renderer->setCombatMode(getMountedCombatModeDescription(COMBAT_MODE_MOUNTED));
-                $this->renderers[$player_character_weapon_renderer->getId()] = $player_character_weapon_renderer;
+                $player_character_weapon_renderer_mounted = new PlayerCharacterWeaponRenderer($player_character_weapon, $this->getPlayerCharacterSkillSet(), $this->getCharacterDetails(), $this->getAttributeMetadata(), $this->getRowClassManager());
+                $player_character_weapon_renderer_mounted->setCombatMode(COMBAT_MODE_MOUNTED);
+                $this->renderers[$player_character_weapon_renderer_mounted->getId()] = $player_character_weapon_renderer_mounted;
             }
         }
     }
@@ -163,14 +166,14 @@ class CombatSummaryRendererEditWeaponOrder extends CombatSummaryRenderer {
         $renderer_index = 1;
         foreach($this->renderers AS $renderer_id_key => $renderer) {
             if ($renderer->getType() == RendererType::weapon) {
-                $this->addOneWeaponCombatSummaryItem($pdo, $player_name, $character_name, getMountedCombatModeDescription(COMBAT_MODE_UNMOUNTED), $renderer->getId(), $renderer->getPlayerCharacterWeapon()->getWeaponId(), $renderer_index, $errors);
+                $this->addOneWeaponCombatSummaryItem($pdo, $player_name, $character_name, $renderer->getCombatMode(), $renderer->getId(), $renderer->getPlayerCharacterWeapon()->getWeaponId(), $renderer_index, $errors);
                 if (count($errors) > 0) {
                     die(json_encode($errors));
                 }
             }
 
             if ($renderer->getType() == RendererType::twoWeapon) {
-                $this->addTwoWeaponCombatSummaryItem($pdo, $player_name, $character_name, getMountedCombatModeDescription(COMBAT_MODE_UNMOUNTED), $renderer->getId(), $renderer->getMainHandWeapon()->getWeaponId(), $renderer->getOffHandWeapon()->getWeaponId(), $renderer->getTwoWeaponFightingConfig()->getTwoWeaponConfigurationId(), $renderer_index, $errors);
+                $this->addTwoWeaponCombatSummaryItem($pdo, $player_name, $character_name, $renderer->getCombatMode(), $renderer->getId(), $renderer->getMainHandWeapon()->getWeaponId(), $renderer->getOffHandWeapon()->getWeaponId(), $renderer->getTwoWeaponFightingConfig()->getTwoWeaponConfigurationId(), $renderer_index, $errors);
                 if (count($errors) > 0) {
                     die(json_encode($errors));
                 }
@@ -182,7 +185,7 @@ class CombatSummaryRendererEditWeaponOrder extends CombatSummaryRenderer {
 
     private function populateDefaultCombatSummaryItem($renderer, $combat_mode, $max_display_order, &$errors) {
         if ($renderer->getType() == RendererType::weapon) {
-            $this->addOneWeaponCombatSummaryItem($this->getPdo(), $this->getPlayerName(), $this->getCharacterName(), getMountedCombatModeDescription($combat_mode), $renderer->getId(), $renderer->getPlayerCharacterWeapon()->getWeaponId(), $max_display_order, $errors);
+            $this->addOneWeaponCombatSummaryItem($this->getPdo(), $this->getPlayerName(), $this->getCharacterName(), $combat_mode, $renderer->getId(), $renderer->getPlayerCharacterWeapon()->getWeaponId(), $max_display_order, $errors);
             if (count($errors) > 0) {
                 die(json_encode($errors));
             }
@@ -190,7 +193,7 @@ class CombatSummaryRendererEditWeaponOrder extends CombatSummaryRenderer {
 
         // Insert Combat Summary Item for a two weapon config
         if ($renderer->getType() == RendererType::twoWeapon) {
-            $this->addTwoWeaponCombatSummaryItem($this->getPdo(), $this->getPlayerName(), $this->getCharacterName(), getMountedCombatModeDescription($combat_mode), $renderer->getId(), $renderer->getMainHandWeapon()->getWeaponId(), $renderer->getOffHandWeapon()->getWeaponId(), $renderer->getTwoWeaponFightingConfig()->getTwoWeaponConfigurationId(), $max_display_order, $errors);
+            $this->addTwoWeaponCombatSummaryItem($this->getPdo(), $this->getPlayerName(), $this->getCharacterName(), $combat_mode, $renderer->getId(), $renderer->getMainHandWeapon()->getWeaponId(), $renderer->getOffHandWeapon()->getWeaponId(), $renderer->getTwoWeaponFightingConfig()->getTwoWeaponConfigurationId(), $max_display_order, $errors);
             if (count($errors) > 0) {
                 die(json_encode($errors));
             }
@@ -240,8 +243,10 @@ class CombatSummaryRendererEditWeaponOrder extends CombatSummaryRenderer {
         error_log($log_text);
     }
 
-    private function addOneWeaponCombatSummaryItem(PDO $pdo, $player_name, $character_name, $section_name, $renderer_id, $player_character_weapon_id, $display_order, &$errors) {
+    private function addOneWeaponCombatSummaryItem(PDO $pdo, $player_name, $character_name, $combat_mode, $renderer_id, $player_character_weapon_id, $display_order, &$errors) {
         $sql_exec = "CALL addCombatSummaryWeaponOrderItem(:playerName, :characterName, :sectionName, :rendererId, :playerCharacterWeaponId, :playerCharacterWeapon2Id, :twoWeaponFightingConfigurationId, :displayOrder)";
+
+        $section_name = getMountedCombatModeDescription($combat_mode);
 
         $null_value = NULL;
         $statement = $pdo->prepare($sql_exec);
@@ -261,8 +266,10 @@ class CombatSummaryRendererEditWeaponOrder extends CombatSummaryRenderer {
         }
     }
 
-    private function addTwoWeaponCombatSummaryItem(PDO $pdo, $player_name, $character_name, $section_name, $renderer_id, $player_character_weapon_id, $player_character_weapon2_id, $two_weapon_fighting_configuration_id, $display_order, &$errors) {
+    private function addTwoWeaponCombatSummaryItem(PDO $pdo, $player_name, $character_name, $combat_mode, $renderer_id, $player_character_weapon_id, $player_character_weapon2_id, $two_weapon_fighting_configuration_id, $display_order, &$errors) {
         $sql_exec = "CALL addCombatSummaryWeaponOrderItem(:playerName, :characterName, :sectionName, :rendererId, :playerCharacterWeaponId, :playerCharacterWeapon2Id, :twoWeaponFightingConfigurationId, :displayOrder)";
+
+        $section_name = getMountedCombatModeDescription($combat_mode);
 
         $statement = $pdo->prepare($sql_exec);
         $statement->bindParam(':playerName', $player_name, PDO::PARAM_STR);

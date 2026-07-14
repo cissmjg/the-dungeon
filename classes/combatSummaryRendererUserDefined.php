@@ -102,7 +102,7 @@
 
             if ($this->is_mounted_section_needed) {
                 $player_character_weapon_renderer = new PlayerCharacterWeaponRenderer($player_character_weapon, $this->getPlayerCharacterSkillSet(), $this->getCharacterDetails(), $this->getAttributeMetadata(), $this->getRowClassManager());
-                $player_character_weapon_renderer->setCombatMode(getMountedCombatModeDescription(COMBAT_MODE_MOUNTED));
+                $player_character_weapon_renderer->setCombatMode(COMBAT_MODE_MOUNTED);
                 $this->renderers[$player_character_weapon_renderer->getId()] = $player_character_weapon_renderer;
             }
         }
