@@ -81,8 +81,8 @@ class PlayerCharacterMissileWeaponRenderer extends PlayerCharacterWeaponRenderer
             return '';
         }
 
-        // The only missile weapon available while mounted is short bow
-        if ($this->getCombatMode() == COMBAT_MODE_MOUNTED && $this->getPlayerCharacterWeapon()->getWeaponProficiencyId() != SHORT_BOW) {
+        $is_mounted_missile = $this->isMountedMissile();
+        if ($this->getCombatMode() == COMBAT_MODE_MOUNTED && !$is_mounted_missile) {
             return '';
         }
         
@@ -248,6 +248,28 @@ class PlayerCharacterMissileWeaponRenderer extends PlayerCharacterWeaponRenderer
         $weapon_detail_entry .= HtmlHelper::buildDivEndTag() . PHP_EOL;
 
         return $weapon_detail_entry;
+    }
+
+    private function isMountedMissile() {
+        $weapon_proficiency_id = $this->getPlayerCharacterWeapon()->getWeaponProficiencyId();
+        switch($weapon_proficiency_id) {
+            case HAND_AXE:
+            case SHORT_BOW:
+            case SHORT_COMPOSITE_BOW:
+            case BOLA:
+            case BOOMERANG:
+            case CHAKRAM:
+            case DAGGER:
+            case KAPAR:
+            case KNIFE:
+            case KUNAI:
+            case LASSO:
+            case SHURIKEN:
+            case THROWING_KNIFE:
+                return true;
+            default:
+                return false;
+        }
     }
 
     private function getPointBlankToHitCalculator(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon) {
