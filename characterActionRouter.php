@@ -1705,6 +1705,7 @@ function buildEditSkillsParams($input) {
 function buildDeleteCharacterSkillsParams($input) {
 	$params = [];
 	$params[PLAYER_NAME] = $input[PLAYER_NAME];
+	$params[CHARACTER_NAME] = $input[CHARACTER_NAME];
 	$params[PLAYER_CHARACTER_SKILL_ID] = $input[PLAYER_CHARACTER_SKILL_ID];
 	$params[SESSION_COOKIE_NAME] = $_COOKIE[SESSION_COOKIE_NAME];
 	
