@@ -1546,6 +1546,7 @@ BEGIN
 		is_preferred_elven_cavalier_level6 AS player_character_elven_cavalier_level6_preferred,
 		player_character_weapon_id AS player_character_skill_weapon_id
 	FROM player_character_skill
+	JOIN skill_catalog ON skill_catalog.id = player_character_skill.skill_catalog_id
 	WHERE player_character_skill.id = playerCharacterSkillId;
 END
 
