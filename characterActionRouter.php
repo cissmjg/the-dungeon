@@ -47,6 +47,7 @@ require_once __DIR__ . '/webio/twoWeaponConfigurationId.php';
 require_once __DIR__ . '/webio/playerCharacterWeapon2Id.php';
 require_once __DIR__ . '/webio/displayCount.php';
 require_once __DIR__ . '/webio/sectionName.php';
+require_once __DIR__ . '/webio/weaponSpecializationTypeId.php';
 
 require_once __DIR__ . '/webio/weaponProficiencyId.php';
 require_once __DIR__ . '/webio/weaponDescription.php';

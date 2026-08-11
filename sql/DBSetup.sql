@@ -6698,6 +6698,11 @@ INSERT INTO weapon_subtype(name) VALUES('Needle');				-- 16
 INSERT INTO weapon_subtype(name) VALUES('Two handed sword');	-- 17
 INSERT INTO weapon_subtype(name) VALUES('[TALENT]');			-- 18
 
+-- Weapon Specialization Type
+INSERT INTO weapon_specialization_type(name) VALUES('None');
+INSERT INTO weapon_specialization_type(name) VALUES('Melee');
+INSERT INTO weapon_specialization_type(name) VALUES('Missile');
+
 -- Weapon Proficiencies
 INSERT INTO weapon_proficiency (name) VALUES ('Aklys');
 INSERT INTO weapon_proficiency (name) VALUES ('Atlatl');

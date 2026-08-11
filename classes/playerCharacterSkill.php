@@ -1,5 +1,7 @@
 <?php
 
+    require_once __DIR__ . '/../dbio/constants/weaponSpecializationType.php';
+
     class PlayerCharacterSkill implements JsonSerializable
     {
         private $id;
@@ -8,6 +10,7 @@
         private $is_skill_focus;
         private $weapon_proficiency_id;
         private $weapon2_proficiency_id;
+        private $weapon_specialization_type_id;
         private $is_preferred_cavalier_level3;
 		private $is_preferred_cavalier_level5;
 		private $is_preferred_elven_cavalier_level4;
@@ -21,6 +24,7 @@
             $this->is_skill_focus = $skill['player_character_skill_is_skill_focus'];
             $this->weapon_proficiency_id = $skill['player_character_weapon_proficiency_id'];
             $this->weapon2_proficiency_id = $skill['player_character_weapon2_proficiency_id'];
+            $this->weapon_specialization_type_id = $skill['player_character_weapon_specialization_type_id'];
 
             $this->is_preferred_cavalier_level3 = $skill['player_character_cavalier_level3_preferred'];
             $this->is_preferred_cavalier_level5 = $skill['player_character_cavalier_level5_preferred'];
@@ -36,6 +40,7 @@
             $this->is_skill_focus = $skill_json->is_skill_focus;
             $this->weapon_proficiency_id = $skill_json->weapon_proficiency_id;
             $this->weapon2_proficiency_id = $skill_json->weapon2_proficiency_id;
+            $this->weapon_specialization_type_id = $skill_json->weapon_specialization_type_id;
             $this->is_preferred_cavalier_level3 = $skill_json->is_preferred_cavalier_level3;
             $this->is_preferred_cavalier_level5 = $skill_json->is_preferred_cavalier_level5;
             $this->is_preferred_elven_cavalier_level4 = $skill_json->is_preferred_elven_cavalier_level4;
@@ -69,6 +74,19 @@
 
         public function getWeapon2ProficiencyId() {
             return $this->weapon2_proficiency_id;
+        }
+
+        public function getWeaponSpecializationType() {
+            switch($this->weapon_specialization_type_id) {
+                case 1:
+                    return WeaponSpecializationType::None;
+                case 2:
+                    return WeaponSpecializationType::Melee;
+                case 3:
+                    return WeaponSpecializationType::Missile;
+                default:
+                    return WeaponSpecializationType::None;
+            }
         }
 
         public function getIsPreferredCavalierLevel3() {
