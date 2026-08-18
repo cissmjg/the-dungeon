@@ -80,7 +80,7 @@ if(count($errors) > 0) {
 } else {
     $log[] = "SUCCESS|";
     $log[] = "Character Skill Add|";
-    $log[] = "playerCharacterSkillId: " . $player_character_skill_id;
+    $log[] = "playerCharacterSkillId: " . $player_character_skill_id[0];
 
     echo json_encode($log);
 }

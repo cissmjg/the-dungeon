@@ -2,6 +2,8 @@
     require_once __DIR__ . '/../../dbio/constants/skills.php';
     require_once __DIR__ . '/../../dbio/constants/characterClasses.php';
     require_once __DIR__ . '/../../dbio/constants/weaponType.php';
+    require_once __DIR__ . '/../../dbio/constants/weaponSpecializationType.php';
+
     require_once 'candidateWeaponSkill.php';
 
     class WeaponSpecialization extends CandidateWeaponSkill {
@@ -64,6 +66,65 @@
 
             return $this->skill_count_satisfied && $this->skill_prereq_satisfied;
          }
+
+         public function renderNewSkillFields($skill_name, \CharacterDetails $character_details) {
+            if ($this->getWeaponDetail()->isCombinationWeapon()) {
+                return $this->buildUpdateWeaponSpecializationTypeDropdown($skill_name);
+            } else {
+                $skill_specialization = '';
+                if ($this->weapon_detail->getMeleeWeaponType() == WEAPON_TYPE_MELEE) {
+                    $skill_specialization = WeaponSpecializationType::Melee->getDescription();
+                } else if ($this->getWeaponDetail()->getMissileWeaponType() == WEAPON_TYPE_MISSILE) {
+                    $skill_specialization = WeaponSpecializationType::Missile->getDescription();
+                }
+                
+                return sprintf("%s: %s", $skill_name, $skill_specialization);
+            }
+         }
+
+         private function buildUpdateWeaponSpecializationTypeDropdown($skill_name) {
+            $output_html  = $skill_name . '&nbsp;';
+            $weapon_specialization_type_element_id = "'" . $this->formIdLookup->getAddWeaponSpecializationTypeElementId() . "'";
+            $weapon_specialization_type_select_element = 'this';
+
+            $output_html .= '<select id="updateWeaponSpecializationType" onchange="updateWeaponSpecializationTypeId(' . $weapon_specialization_type_select_element . ', ' . $weapon_specialization_type_element_id . ', ' . WeaponSpecializationType::None->value . ');">' . PHP_EOL;
+            $output_html .= '<option value="' . WeaponSpecializationType::None->value . '">[Select a Specialization Type]</option>' . PHP_EOL;
+            $output_html .= '<option value="' . WeaponSpecializationType::Melee->value . '">' . WeaponSpecializationType::Melee->getDescription() . '</option>' . PHP_EOL;
+            $output_html .= '<option value="' . WeaponSpecializationType::Missile->value . '">' . WeaponSpecializationType::Missile->getDescription() . '</option>' . PHP_EOL;
+            $output_html .= '</select>' . PHP_EOL;
+
+            return $output_html;
+         }
+
+         protected function renderExistingSkillFields(\PlayerCharacterSkill $skill_instance, \CharacterDetails $character_details) {
+            $skill_name = $skill_instance->getPlayerCharacterSkillName();
+            $skill_specialization = $skill_instance->getWeaponSpecializationType()->getDescription();
+
+            return sprintf("%s: %s", $skill_name, $skill_specialization);
+         }
+
+        protected function buildAddPlayerCharacterWeaponTalentIcon($add_form_id, $skill_catalog_element_id, $skill_catalog_value, $weapon2_element_id) {
+            if ($this->weapon_detail->isCombinationWeapon()) {
+                $new_icon = new FaNewIcon();
+                $weapon_specialization_type_select_element = 'this';
+                $weapon_specialization_type_element_id = $this->formIdLookup->getAddWeaponSpecializationTypeElementId();
+                $weapon_specialization_type_none = WeaponSpecializationType::None->value;
+
+                $new_icon->setOnClickJsFunction('addWeaponSpecializationSkill');
+                $new_icon->addOnclickJsParameter($add_form_id);
+                $new_icon->addOnclickJsParameter($skill_catalog_element_id);
+                $new_icon->addOnclickJsParameter($skill_catalog_value);
+                $new_icon->addOnclickJsParameter($weapon2_element_id);
+                $new_icon->addUnquotedOnclickJsParameter($weapon_specialization_type_select_element);
+                $new_icon->addOnclickJsParameter($weapon_specialization_type_element_id);
+                $new_icon->addOnclickJsParameter($weapon_specialization_type_none);
+                $new_icon->addStyle("padding-right: 10px;");
+                $new_icon->addStyle("padding-left: 5px;");
+                return $new_icon->build();
+            } else {
+                return parent::buildAddPlayerCharacterWeaponTalentIcon($add_form_id, $skill_catalog_element_id, $skill_catalog_value, $weapon2_element_id);
+            }
+        }
 
          public function dump() {
             $output  = parent::dump();

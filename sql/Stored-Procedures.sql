@@ -1548,6 +1548,7 @@ BEGIN
 		player_character_skill.is_skill_focus AS player_character_skill_is_skill_focus,
 		player_character_skill.weapon_proficiency_id AS player_character_weapon_proficiency_id,
 		player_character_skill.weapon2_proficiency_id AS player_character_weapon2_proficiency_id,
+		player_character_skill.weapon_specialization_type_id AS player_character_weapon_specialization_type_id,
 		is_preferred_cavalier_level3 AS player_character_cavalier_level3_preferred,
 		is_preferred_cavalier_level5 AS player_character_cavalier_level5_preferred,
 		is_preferred_elven_cavalier_level4 AS player_character_elven_cavalier_level4_preferred,

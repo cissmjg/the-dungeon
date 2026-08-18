@@ -25,6 +25,7 @@ require_once __DIR__ . '/classes/weaponDetail.php';
 
 require_once __DIR__ . '/webio/characterAction.php';
 require_once __DIR__ . '/dbio/constants/weapons.php';
+require_once __DIR__ . '/dbio/constants/weaponSpecializationType.php';
 
 require_once __DIR__ . '/webio/playerName.php';
 require_once __DIR__ . '/webio/characterName.php';
@@ -35,6 +36,7 @@ require_once __DIR__ . '/webio/skillCatalogId.php';
 require_once __DIR__ . '/webio/isSkillFocus.php';
 require_once __DIR__ . '/webio/weaponProficiencyId.php';
 require_once __DIR__ . '/webio/weapon2ProficiencyId.php';
+require_once __DIR__ . '/webio/weaponSpecializationTypeId.php';
 
 require_once __DIR__ . '/classes/skills/combatReflexes.php';
 require_once __DIR__ . '/classes/skills/cleverWrestling.php';
@@ -74,7 +76,7 @@ $delete_weapon_talent_id = $delete_form_id . '-' . PLAYER_CHARACTER_WEAPON_SKILL
 $add_form_id = 'addWeaponTalent';
 $add_weapon_talent_form_id = $add_form_id . '-' . PLAYER_CHARACTER_WEAPON_SKILL_ID;
 
-$form_id_lookup = new FormIdLookup($delete_form_id, $delete_weapon_talent_id, $add_form_id, $add_weapon_talent_form_id, WEAPON_PROFICIENCY_ID, WEAPON2_PROFICIENCY_ID);
+$form_id_lookup = new FormIdLookup($delete_form_id, $delete_weapon_talent_id, $add_form_id, $add_weapon_talent_form_id, WEAPON_PROFICIENCY_ID, WEAPON2_PROFICIENCY_ID, WEAPON_SPECIALIZATION_TYPE_ID);
 
 $weapon_proficiency = getWeaponProficiencyName($pdo, $input[PLAYER_CHARACTER_WEAPON_SKILL_ID], $errors);
 if (count($errors) > 0) {
@@ -113,6 +115,23 @@ if (count($errors) > 0) {
 $weapon_detail = new WeaponDetail();
 $weapon_detail->init($pdo, $input[PLAYER_NAME], $input[CHARACTER_NAME], $current_weapon_proficiency_id, $errors);
 
+// Assume no specialization
+$weapon_specialization_type_id = WeaponSpecializationType::None->value;
+
+// Check for the SPECIALIZATION skill. If it is present, put the weapon specialization type in the form field.
+// This is for the DOUBLE_SPECIALIZATION skill
+$existing_weapon_specialization_skills = $player_character_skill_set->getAllSkillInstances(SPECIALIZATION);
+if (count($existing_weapon_specialization_skills) > 0) {
+    $existing_weapon_specialization_skill = $existing_weapon_specialization_skills[0];
+    $weapon_specialization_type_id = $existing_weapon_specialization_skill->getWeaponSpecializationType()->value;
+} else if (!$weapon_detail->isCombinationWeapon()) {
+    if ($weapon_detail->getMeleeWeaponType() == WEAPON_TYPE_MELEE) {
+        $weapon_specialization_type_id = WeaponSpecializationType::Melee->value;
+    } else if ($weapon_detail->getMissileWeaponType() == WEAPON_TYPE_MISSILE) {
+        $weapon_specialization_type_id = WeaponSpecializationType::Missile->value;
+    }
+}
+
 $character_summary_renderer = new CharacterSummaryRenderer($input[CHARACTER_NAME]);
 $character_summary_stats = $character_summary_renderer->renderCharacterDetails($character_details);
 
@@ -145,6 +164,7 @@ $action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
         <input type="hidden" name="<?= IS_SKILL_FOCUS ?>" id="<?= IS_SKILL_FOCUS ?>" value="No">
         <input type="hidden" name="<?= WEAPON_PROFICIENCY_ID ?>" id="<?= WEAPON_PROFICIENCY_ID ?>" value="<?= $current_weapon_proficiency_id ?>">
         <input type="hidden" name="<?= WEAPON2_PROFICIENCY_ID ?>" id="<?= WEAPON2_PROFICIENCY_ID ?>" value="<?= $offhand_weapon_id ?>">
+        <input type="hidden" name="<?= WEAPON_SPECIALIZATION_TYPE_ID ?>" id="<?= WEAPON_SPECIALIZATION_TYPE_ID ?>" value="<?= $weapon_specialization_type_id ?>">
     </form>
     <div style="width: 100%; margin-bottom: 3px;"><span class="character_summary"><?= $character_summary_stats ?></span><span class="action_bar"><?= $action_bar ?></span></div>
     <h3>Skills for <?= $weapon_proficiency['weapon_proficiency_name'] ?></h3>

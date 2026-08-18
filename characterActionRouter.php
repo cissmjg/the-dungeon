@@ -1098,6 +1098,9 @@ switch($character_action) {
 		// Get the (optional) weapon proficiency ID for the 2nd weapon
 		getOptionalWeapon2ProficiencyId($errors, $input);
 
+		// Get the (optional) weapon specialization Type ID
+		getOptionalWeaponSpecializationTypeId($errors, $input);
+
 		$url_add_talent = CurlHelper::buildUrlDbioDirectory('addSkillToPlayerCharacter');
 		$params_add_talent = buildAddWeaponTalentParams($input);
 		$raw_result = CurlHelper::performGetRequest($url_add_talent, $params_add_talent);
@@ -1782,6 +1785,7 @@ function buildAddWeaponTalentParams($input) {
 	$params[IS_SKILL_FOCUS] = $input[IS_SKILL_FOCUS];
 	$params[WEAPON_PROFICIENCY_ID] = $input[WEAPON_PROFICIENCY_ID];
 	$params[WEAPON2_PROFICIENCY_ID] = $input[WEAPON2_PROFICIENCY_ID];
+	$params[WEAPON_SPECIALIZATION_TYPE_ID] = $input[WEAPON_SPECIALIZATION_TYPE_ID];
 
 	return $params;
 }

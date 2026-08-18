@@ -3,6 +3,7 @@
     require_once 'candidateWeaponSkill.php';
     require_once __DIR__ . '/../../dbio/constants/weaponType.php';
     require_once __DIR__ . '/../../dbio/constants/weaponSubtype.php';
+    require_once __DIR__ . '/../../dbio/constants/weaponSpecializationType.php';
 
     class WeaponDoubleSpecialization extends CandidateWeaponSkill {
         protected function getSkillId() {
@@ -69,6 +70,30 @@
             return $this->skill_count_satisfied && $this->skill_prereq_satisfied && $this->weapon_type_satisfied && $this->weapon_subtype_satisfied;
         }
 
+        protected function renderNewSkillFields($skill_name, \CharacterDetails $character_details) {
+            $weapon_specialization_desc = $this->getWeaponSpecializationDescription();
+
+            return sprintf("%s: %s", $skill_name, $weapon_specialization_desc);
+        }
+
+        protected function renderExistingSkillFields(\PlayerCharacterSkill $skill_instance, \CharacterDetails $character_details) {
+            $skill_name = $skill_instance->getPlayerCharacterSkillName();
+            $weapon_specialization_desc = $this->getWeaponSpecializationDescription();
+
+            return sprintf("%s: %s", $skill_name, $weapon_specialization_desc);
+        }
+
+        private function getWeaponSpecializationDescription() {
+            $weapon_specialization_desc = WeaponSpecializationType::None->getDescription();
+            $weapon_specialization_skills = $this->player_character_skill_set->getAllSkillInstances(SPECIALIZATION);
+            if (count($weapon_specialization_skills) > 0) {
+                $weapon_specialization = $weapon_specialization_skills[0];
+                $weapon_specialization_desc = $weapon_specialization->getWeaponSpecializationType()->getDescription();
+            }
+
+            return $weapon_specialization_desc;
+        }
+
         public function dump() {
             $output  = parent::dump();
             $output .= 'Weapon Type (Melee) : ' . getWeaponTypeDescription($this->weapon_detail->getMeleeWeaponType()) . PHP_EOL;
@@ -84,3 +109,4 @@
         }
     }
 ?>
+
