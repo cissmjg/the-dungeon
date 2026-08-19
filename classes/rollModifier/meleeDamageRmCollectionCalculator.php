@@ -12,6 +12,7 @@
     require_once __DIR__ . '/../../dbio/constants/skills.php';
     require_once __DIR__ . '/../../dbio/constants/weapons.php';
     require_once __DIR__ . '/../../dbio/constants/mountedCombatMode.php';
+    require_once __DIR__ . '/../../dbio/constants/weaponSpecializationType.php';
 
     class MeleeDamageRmCollectionCalculator extends RmCollectionCalculator {
 
@@ -137,7 +138,7 @@
             $has_weapon_specialization = count($existing_weapon_specialization) > 0;
             if ($has_weapon_specialization) {
                 $first_weapon_specialization = $existing_weapon_specialization[0];
-                if ($first_weapon_specialization->getWeaponProficiencyId() == $player_character_weapon->getWeaponProficiencyId()) {
+                if ($first_weapon_specialization->getWeaponProficiencyId() == $player_character_weapon->getWeaponProficiencyId() && $first_weapon_specialization->getWeaponSpecializationType() == WeaponSpecializationType::Melee) {
                     $rm_weapon_specialization_desc = "Specialization";
                     $rm_weapon_specialization_modifier = 2;
                     $rm_weapon_specialization = new RmFactor($rm_weapon_specialization_desc, $rm_weapon_specialization_modifier);
@@ -153,7 +154,7 @@
             $has_weapon_double_specialization = count($exising_weapon_double_specialization) > 0;
             if ($has_weapon_double_specialization) {
                 $first_weapon_double_specialization = $exising_weapon_double_specialization[0];
-                if ($first_weapon_double_specialization->getWeaponProficiencyId() == $player_character_weapon->getWeaponProficiencyId()) {
+                if ($first_weapon_double_specialization->getWeaponProficiencyId() == $player_character_weapon->getWeaponProficiencyId() && $first_weapon_double_specialization->getWeaponSpecializationType() == WeaponSpecializationType::Melee) {
                     $rm_weapon_double_specialization_desc = "Double Specialization";
                     $rm_weapon_double_specialization_modifier = 3;
                     $rm_weapon_double_specialization = new RmFactor($rm_weapon_double_specialization_desc, $rm_weapon_double_specialization_modifier);

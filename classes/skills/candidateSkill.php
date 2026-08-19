@@ -23,7 +23,7 @@
 
         private $log = [];
 
-        private $player_character_skill_set;
+        protected $player_character_skill_set;
 
         public function __construct(\SkillCatalog $skill_catalog, \FormIdLookup $formIdLookup) {
             $skill_id = $this->getSkillId();

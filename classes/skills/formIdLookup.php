@@ -7,18 +7,20 @@
         private $add_skill_catalog_element_id;
         private $add_weapon_proficiency_element_id;
         private $add_weapon2_proficiency_element_id;
+        private $add_weapon_specialization_type_element_id;
 
-        public function __construct($delete_form_id, $delete_skill_element_id, $add_form_id, $add_skill_catalog_element_id, $add_weapon_proficiency_element_id, $add_weapon2_proficiency_element_id) {
+        public function __construct($delete_form_id, $delete_skill_element_id, $add_form_id, $add_skill_catalog_element_id, $add_weapon_proficiency_element_id, $add_weapon2_proficiency_element_id, $add_weapon_specialization_type_element_id) {
             $this->delete_form_id = $delete_form_id;
             $this->delete_skill_element_id = $delete_skill_element_id;
             $this->add_form_id = $add_form_id;
             $this->add_skill_catalog_element_id = $add_skill_catalog_element_id;
             $this->add_weapon_proficiency_element_id = $add_weapon_proficiency_element_id;
             $this->add_weapon2_proficiency_element_id = $add_weapon2_proficiency_element_id;
+            $this->add_weapon_specialization_type_element_id = $add_weapon_specialization_type_element_id;
         }
 
         public static function createEmpty() {
-            return new FormIdLookup('', '', '', '', '', '');
+            return new FormIdLookup('', '', '', '', '', '', '');
         }
 
         // function called when encoded with json_encode
@@ -49,6 +51,10 @@
 
         public function getAddWeapon2ProficiencyElementId() {
             return $this->add_weapon2_proficiency_element_id;
+        }
+
+        public function getAddWeaponSpecializationTypeElementId() {
+            return $this->add_weapon_specialization_type_element_id;
         }
     }
 

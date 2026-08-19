@@ -111,11 +111,12 @@ CREATE PROCEDURE addSkill
  IN playerSkillName VARCHAR(64),
  IN isSkillFocus BOOLEAN,
  IN weaponProficiencyId INT,
- IN weapon2ProficiencyId INT)
+ IN weapon2ProficiencyId INT,
+ IN weaponSpecializationTypeId INT)
  BEGIN
 	DECLARE playerCharacterSkillId INT DEFAULT 0;
 	
-	CALL addSkillToPlayerCharacter(playerName, characterName, skillCatalogId, playerSkillName, isSkillFocus, weaponProficiencyId, weapon2ProficiencyId, playerCharacterSkillId);
+	CALL addSkillToPlayerCharacter(playerName, characterName, skillCatalogId, playerSkillName, isSkillFocus, weaponProficiencyId, weapon2ProficiencyId, weaponSpecializationTypeId, playerCharacterSkillId);
 	SELECT playerCharacterSkillId as player_character_skill_id;
  END
 
@@ -127,6 +128,7 @@ CREATE PROCEDURE addSkillToPlayerCharacter
  IN isSkillFocus BOOLEAN,
  IN weaponProficiencyId INT,
  IN weapon2ProficiencyId INT,
+ IN weaponSpecializationTypeId INT,
  OUT playerCharacterSkillId INT)
 BEGIN
 	DECLARE playerCharacterId INT DEFAULT 0;
@@ -137,8 +139,8 @@ BEGIN
 	JOIN player ON player.id = player_character.player_id
 	WHERE player.name = playerName AND player_character.name = characterName;
 	
-	INSERT INTO player_character_skill(player_character_id, skill_catalog_id, player_character_skill_name, is_skill_focus, weapon_proficiency_id, weapon2_proficiency_id)
-	VALUES(playerCharacterId, skillCatalogId, playerSkillName, isSkillFocus, weaponProficiencyId, weapon2ProficiencyId);
+	INSERT INTO player_character_skill(player_character_id, skill_catalog_id, player_character_skill_name, is_skill_focus, weapon_proficiency_id, weapon2_proficiency_id, weapon_specialization_type_id)
+	VALUES(playerCharacterId, skillCatalogId, playerSkillName, isSkillFocus, weaponProficiencyId, weapon2ProficiencyId, weaponSpecializationTypeId);
 
 	SELECT LAST_INSERT_ID()
 	INTO playerCharacterSkillId;
@@ -205,13 +207,19 @@ CREATE PROCEDURE addWeaponProficiencyToPlayerCharacter
  BEGIN
 	
 	DECLARE weaponProficiencySkillId INT DEFAULT 179;
+	DECLARE weaponSpecializationTypeId INT DEFAULT 1;
 
 	SELECT id
 	INTO weaponProficiencySkillId
 	FROM skill_catalog
 	WHERE name = 'Weapon Proficiency';
 
-	CALL addSkillToPlayerCharacter(playerName, characterName, weaponProficiencySkillId, NULL, false, weaponProficiencyId, NULL, playerCharacterWeaponProficiencyId);
+	SELECT id
+	INTO weaponSpecializationTypeId
+	FROM WEapon_specialization_type
+	WHERE name = 'None';
+
+	CALL addSkillToPlayerCharacter(playerName, characterName, weaponProficiencySkillId, NULL, false, weaponProficiencyId, NULL, weaponSpecializationTypeId, playerCharacterWeaponProficiencyId);
  END
 
 CREATE PROCEDURE addWeaponProficiency
@@ -1540,6 +1548,7 @@ BEGIN
 		player_character_skill.is_skill_focus AS player_character_skill_is_skill_focus,
 		player_character_skill.weapon_proficiency_id AS player_character_weapon_proficiency_id,
 		player_character_skill.weapon2_proficiency_id AS player_character_weapon2_proficiency_id,
+		player_character_skill.weapon_specialization_type_id AS player_character_weapon_specialization_type_id,
 		is_preferred_cavalier_level3 AS player_character_cavalier_level3_preferred,
 		is_preferred_cavalier_level5 AS player_character_cavalier_level5_preferred,
 		is_preferred_elven_cavalier_level4 AS player_character_elven_cavalier_level4_preferred,
@@ -1630,6 +1639,7 @@ BEGIN
 		player_character_skill.is_skill_focus AS player_character_skill_is_skill_focus,
 		player_character_skill.weapon_proficiency_id AS player_character_weapon_proficiency_id,
 		player_character_skill.weapon2_proficiency_id AS player_character_weapon2_proficiency_id,
+		player_character_skill.weapon_specialization_type_id AS player_character_weapon_specialization_type_id,
 		is_preferred_cavalier_level3 AS player_character_cavalier_level3_preferred,
 		is_preferred_cavalier_level5 AS player_character_cavalier_level5_preferred,
 		is_preferred_elven_cavalier_level4 AS player_character_elven_cavalier_level4_preferred,

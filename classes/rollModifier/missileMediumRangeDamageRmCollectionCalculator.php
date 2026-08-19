@@ -83,7 +83,7 @@
             $has_weapon_specialization = count($existing_weapon_specialization) > 0;
             if ($has_weapon_specialization) {
                 $first_weapon_specialization = $existing_weapon_specialization[0];
-                if ($first_weapon_specialization->getWeaponProficiencyId() == $player_character_weapon->getWeaponProficiencyId()) {
+                if ($first_weapon_specialization->getWeaponProficiencyId() == $player_character_weapon->getWeaponProficiencyId() && $first_weapon_specialization->getWeaponSpecializationType() == WeaponSpecializationType::Missile) {
                     $rm_weapon_specialization_desc = "Specialization";
                     $rm_weapon_specialization_modifier = $this->getWeaponSpecializationModifier($player_character_weapon);
                     $rm_weapon_specialization = new RmFactor($rm_weapon_specialization_desc, $rm_weapon_specialization_modifier);

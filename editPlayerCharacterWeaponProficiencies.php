@@ -23,6 +23,7 @@ require_once __DIR__ . '/webio/skillCatalogId.php';
 require_once __DIR__ . '/webio/isSkillFocus.php';
 require_once __DIR__ . '/webio/weaponProficiencyId.php';
 require_once __DIR__ . '/webio/weapon2ProficiencyId.php';
+require_once __DIR__ . '/webio/weaponSpecializationTypeId.php';
 require_once __DIR__ . '/dbio/constants/characterClasses.php';
 require_once __DIR__ . '/dbio/constants/skills.php';
 require_once __DIR__ . '/dbio/constants/weapons.php';
@@ -88,7 +89,7 @@ $add_attribute_weapon_skill_element_id = $add_attribute_weapon_skill_form_id . '
 $preferred_weapon_proficiency_form_id = 'addPreferredWeaponProficiency';
 $preferred_weapon_proficiency_element_id = $preferred_weapon_proficiency_form_id . WEAPON_PROFICIENCY_ID;
 
-$form_id_lookup = new FormIdLookup($delete_attribute_weapon_skill_form_id, $delete_attribute_weapon_skill_id, $add_attribute_weapon_skill_form_id, $add_attribute_weapon_skill_element_id, WEAPON_PROFICIENCY_ID, WEAPON2_PROFICIENCY_ID);
+$form_id_lookup = new FormIdLookup($delete_attribute_weapon_skill_form_id, $delete_attribute_weapon_skill_id, $add_attribute_weapon_skill_form_id, $add_attribute_weapon_skill_element_id, WEAPON_PROFICIENCY_ID, WEAPON2_PROFICIENCY_ID, WEAPON_SPECIALIZATION_TYPE_ID);
 
 $the_skill_catalog = new SkillCatalog();
 $the_skill_catalog->init($pdo, $errors);

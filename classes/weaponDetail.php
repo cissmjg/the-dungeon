@@ -176,4 +176,8 @@ class WeaponDetail implements JsonSerializable
 	public function getMissileWeaponSpeed() {
         return $this->weapon_missile_speed;
     }
+
+    public function isCombinationWeapon() {
+        return ($this->getMeleeWeaponType() == WEAPON_TYPE_MELEE && $this->getMissileWeaponType() == WEAPON_TYPE_MISSILE);
+    }
 }

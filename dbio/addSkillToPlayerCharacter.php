@@ -13,6 +13,7 @@ require_once __DIR__ . '/../helper/WeaponIOHelper.php';
 require_once __DIR__ . '/../helper/WeaponSkillHelper.php';
 require_once __DIR__ . '/../characterActionRoutes.php';
 require_once __DIR__ . '/../dbio/constants/skills.php';
+require_once __DIR__ . '/../dbio/constants/weaponSpecializationType.php';
 
 require_once __DIR__ . '/../webio/playerName.php';
 require_once __DIR__ . '/../webio/characterName.php';
@@ -21,6 +22,7 @@ require_once __DIR__ . '/../webio/playerCharacterSkillName.php';
 require_once __DIR__ . '/../webio/isSkillFocus.php';
 require_once __DIR__ . '/../webio/weaponProficiencyId.php';
 require_once __DIR__ . '/../webio/weapon2ProficiencyId.php';
+require_once __DIR__ . '/../webio/weaponSpecializationTypeId.php';
 
 $input = [];
 $log = [];
@@ -34,6 +36,7 @@ getOptionalPlayerCharacterSkillName($errors, $input);
 getIsSkillFocus($errors, $input);
 getOptionalWeaponProficiencyId($errors, $input);
 getOptionalWeapon2ProficiencyId($errors, $input);
+getOptionalWeaponSpecializationTypeId($errors, $input);
 
 if (count($errors) > 0) {
     RestHeaderHelper::emitRestHeaders();
@@ -77,13 +80,13 @@ if(count($errors) > 0) {
 } else {
     $log[] = "SUCCESS|";
     $log[] = "Character Skill Add|";
-    $log[] = "playerCharacterSkillId: " . $player_character_skill_id;
+    $log[] = "playerCharacterSkillId: " . $player_character_skill_id[0];
 
     echo json_encode($log);
 }
 
 function addSkillToPlayerCharacter(\PDO $pdo, $input, &$errors) {
-	$sql_exec = "CALL addSkill(:playerName, :characterName, :skillCatalogId, :playerSkillName, :isSkillFocus, :weaponProficiencyId, :weapon2ProficiencyId)";
+	$sql_exec = "CALL addSkill(:playerName, :characterName, :skillCatalogId, :playerSkillName, :isSkillFocus, :weaponProficiencyId, :weapon2ProficiencyId, :weaponSpecializationTypeId)";
 
     $null_value = NULL;
     $true_value = true;
@@ -122,6 +125,13 @@ function addSkillToPlayerCharacter(\PDO $pdo, $input, &$errors) {
         $statement->bindParam(':weapon2ProficiencyId', $input[WEAPON2_PROFICIENCY_ID], PDO::PARAM_INT);
     }
 
+    $weapon_specialization_type_id = WeaponSpecializationType::None->value;
+    if ($input[WEAPON_SPECIALIZATION_TYPE_ID] != OPTIONAL_INTEGER_PARAMETER) {
+        $weapon_specialization_type_id = $input[WEAPON_SPECIALIZATION_TYPE_ID];
+    }
+    
+    $statement->bindParam(':weaponSpecializationTypeId', $weapon_specialization_type_id, PDO::PARAM_INT);
+    
     try {
 		$statement->execute();
 	} catch(Exception $e) {
