@@ -9,7 +9,9 @@ require_once __DIR__ . '/../classes/playerCharacterWeaponSet.php';
 require_once __DIR__ . '/../webio/playerName.php';
 require_once __DIR__ . '/../webio/characterName.php';
 require_once __DIR__ . '/../webio/weaponProficiencyId.php';
+require_once __DIR__ . '/../webio/martialWeaponSkillId.php';
 require_once __DIR__ . '/../webio/weaponDescription.php';
+require_once __DIR__ . '/../webio/weaponLocation.php';
 require_once __DIR__ . '/../webio/isProficient.php';
 require_once __DIR__ . '/../webio/isReady.php';
 require_once __DIR__ . '/../webio/craftStatus.php';
@@ -70,6 +72,7 @@ class WeaponSkillHelper {
         $input[PLAYER_NAME] = $player_name;
         $input[CHARACTER_NAME] = $character_name;
         $input[WEAPON_PROFICIENCY_ID] = FIST;
+        $input[MARTIAL_WEAPON_SKILL_ID] = CIRCLE_KICK;
         $input[WEAPON_DESCRIPTION] = $circle_kick_name;
         $input[WEAPON_LOCATION] = 'Foot';
         $input[IS_PROFICIENT] = 'YES';
@@ -104,6 +107,7 @@ class WeaponSkillHelper {
         $input[PLAYER_NAME] = $player_name;
         $input[CHARACTER_NAME] = $character_name;
         $input[WEAPON_PROFICIENCY_ID] = FIST;
+        $input[MARTIAL_WEAPON_SKILL_ID] = MANTIS_LEAP;
         $input[WEAPON_DESCRIPTION] = $mantis_leap_name;
         $input[WEAPON_LOCATION] = 'Foot';
         $input[IS_PROFICIENT] = 'YES';
@@ -138,6 +142,7 @@ class WeaponSkillHelper {
         $input[PLAYER_NAME] = $player_name;
         $input[CHARACTER_NAME] = $character_name;
         $input[WEAPON_PROFICIENCY_ID] = FIST;
+        $input[MARTIAL_WEAPON_SKILL_ID] = THROW_ANYTHING;
         $input[WEAPON_DESCRIPTION] = $throw_anything_name;
         $input[WEAPON_LOCATION] = 'Hand';
         $input[IS_PROFICIENT] = 'YES';
@@ -169,6 +174,43 @@ class WeaponSkillHelper {
         $input[MISSILE_SHORT_RANGE] = 2;
         $input[MISSILE_MEDIUM_RANGE] = 4;
         $input[MISSILE_LONG_RANGE] = 6;
+
+        // Missile only weapon
+        $input[MELEE_WEAPON_TYPE] == OPTIONAL_INTEGER_PARAMETER;
+
+        return $input;
+    }
+
+    public static function buildMartialArtsWeapon($player_name, $character_name) {
+        $martial_arts_name = getSkillDescriptionFromSkillId(MARTIAL_ARTS);
+
+        $input = [];
+        $input[PLAYER_NAME] = $player_name;
+        $input[CHARACTER_NAME] = $character_name;
+        $input[WEAPON_PROFICIENCY_ID] = FIST;
+        $input[MARTIAL_WEAPON_SKILL_ID] = MARTIAL_ARTS;
+        $input[WEAPON_DESCRIPTION] = $martial_arts_name;
+        $input[WEAPON_LOCATION] = 'Hand/Foot';
+        $input[IS_PROFICIENT] = 'YES';
+        $input[IS_READY] = 'No';
+        $input[CRAFT_STATUS] = CRAFT_STATUS_ARTISAN;
+        $input[STRENGTH_BONUS_AVAILABLE] = 'No';
+        $input[PLAYER_NOTE1] = '';
+        $input[PLAYER_NOTE2] = '';
+        $input[PLAYER_NOTE3] = '';
+        $input[MASTERCRAFT_HIT_DESCRIPTION] = OPTIONAL_STRING_PARAMETER;
+        $input[MASTERCRAFT_DAMAGE_DESCRIPTION] = OPTIONAL_STRING_PARAMETER;
+        $input[MELEE_WEAPON_TYPE] = WEAPON_TYPE_MELEE;
+        $input[MELEE_WEAPON_SUBTYPE] = WEAPON_SUBTYPE_MISC_MELEE;
+        $input[MELEE_WEAPON_SPEED] = '1';
+        $input[MELEE_WEAPON_DAMAGE] = 'd4/d4';
+        $input[MELEE_ATTACKS_PER_ROUND] = 1;
+        $input[MELEE_NUMBER_OF_HANDS] = 1;
+        $input[MELEE_ADDITIONAL_TEXT] = '';
+        WeaponSkillHelper::buildNonMagicalMeleeProperties($input);
+
+        // Melee only weapon
+        $input[MISSILE_WEAPON_TYPE] == OPTIONAL_INTEGER_PARAMETER;
 
         return $input;
     }

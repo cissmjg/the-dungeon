@@ -65,6 +65,12 @@ if ($skill_catalog_id == CIRCLE_KICK) {
     if (count($errors) > 0) {
         die(json_encode($errors));
     }
+} else if ($skill_catalog_id == MARTIAL_ARTS) {
+    $player_character_weapon = WeaponSkillHelper::buildMartialArtsWeapon($input[PLAYER_NAME], $input[CHARACTER_NAME]);
+    $player_character_weapon_id = WeaponIOHelper::addWeaponToPlayerCharacter($pdo, $player_character_weapon, $errors);
+    if (count($errors) > 0) {
+        die(json_encode($errors));
+    }
 }
 
 // Non 'Martial Weapon' skill

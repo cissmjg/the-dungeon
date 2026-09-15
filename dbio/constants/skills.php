@@ -171,6 +171,7 @@
     const CLERICS_PREFERRED_WEAPON = 177;	
     const BLINDSIGHT_5_RADIUS = 178;	
     const WEAPON_PROFICIENCY = 179;	
+    const MARTIAL_ARTS = 180;
 
     function getSkillDescriptionFromSkillId($skill_id) {
         switch($skill_id) {
@@ -346,6 +347,7 @@
             case CLERICS_PREFERRED_WEAPON: { return "Cleric's Preferred Weapon"; }	
             case BLINDSIGHT_5_RADIUS: { return "Blindsight 5' radius"; }	
             case WEAPON_PROFICIENCY: { return "Weapon Proficiency"; }	
+            case MARTIAL_ARTS: { return "Martial Arts"; }	
             default : return "UNKNOWN";
         }
     }

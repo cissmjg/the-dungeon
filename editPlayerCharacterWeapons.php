@@ -137,7 +137,7 @@ function buildWeaponNameCell($player_name, $character_name, PlayerCharacterWeapo
     $weapon_desc = $weapon->getWeaponDescription();
     $player_character_weapon_id = $weapon->getWeaponId();
     $output_html  = $weapon_desc;
-    if ($weapon->getWeaponProficiencyId() == FIST) {
+    if ($weapon->getWeaponProficiencyId() == FIST && $weapon->getMartialWeaponSkillId() != MARTIAL_ARTS) {
         $output_html .= '&nbsp;';
     }
     else {

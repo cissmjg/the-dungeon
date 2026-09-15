@@ -47,6 +47,7 @@ require_once __DIR__ . '/classes/skills/fistOfIron.php';
 require_once __DIR__ . '/classes/skills/improvedUnarmedStrike.php';
 require_once __DIR__ . '/classes/skills/jump.php';
 require_once __DIR__ . '/classes/skills/mantisLeap.php';
+require_once __DIR__ . '/classes/skills/martialArts.php';
 require_once __DIR__ . '/classes/skills/circleKick.php';
 require_once __DIR__ . '/classes/skills/clericsPreferredWeapon.php';
 require_once __DIR__ . '/classes/skills/improvedCritical.php';
@@ -194,12 +195,16 @@ $action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
             $throw_anything = new ThrowAnything($the_skill_catalog, $form_id_lookup);
             $throw_anything->setWeaponProficiencyValue($current_weapon_proficiency_id);
 
+            $martial_arts = new MartialArts($the_skill_catalog, $form_id_lookup);
+            $martial_arts->setWeaponProficiencyValue($current_weapon_proficiency_id);
+
             echo $clever_wrestling->render($character_details, $player_character_skill_set);
             echo $close_quarters_fighting->render($character_details, $player_character_skill_set);
             echo $dirty_fighting->render($character_details, $player_character_skill_set);
             echo $fist_of_iron->render($character_details, $player_character_skill_set);
             echo $eagle_claw->render($character_details, $player_character_skill_set);
             echo $mantis_leap->render($character_details, $player_character_skill_set);
+            echo $martial_arts->render($character_details, $player_character_skill_set);
             echo $circle_kick->render($character_details, $player_character_skill_set);
             echo $throw_anything->render($character_details, $player_character_skill_set);
 
@@ -210,6 +215,7 @@ $action_bar = buildActionBar($input[PLAYER_NAME], $input[CHARACTER_NAME]);
                 $debug_output .= $fist_of_iron->dump();
                 $debug_output .= $eagle_claw->dump();
                 $debug_output .= $mantis_leap->dump();
+                $debug_output .= $martial_arts->dump();
                 $debug_output .= $circle_kick->dump();
                 $debug_output .= $throw_anything->dump();
             }

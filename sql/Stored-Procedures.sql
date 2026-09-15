@@ -216,7 +216,7 @@ CREATE PROCEDURE addWeaponProficiencyToPlayerCharacter
 
 	SELECT id
 	INTO weaponSpecializationTypeId
-	FROM WEapon_specialization_type
+	FROM weapon_specialization_type
 	WHERE name = 'None';
 
 	CALL addSkillToPlayerCharacter(playerName, characterName, weaponProficiencySkillId, NULL, false, weaponProficiencyId, NULL, weaponSpecializationTypeId, playerCharacterWeaponProficiencyId);
@@ -237,6 +237,7 @@ CREATE PROCEDURE addWeaponToPlayerCharacter
 (IN playerName VARCHAR(32),
  IN characterName VARCHAR(64),
  IN weaponProficiencyId INT,
+ IN martialWeaponSkillId INT,
  IN weaponDescription VARCHAR(32),
  IN weaponLocation VARCHAR(32),
  IN isProficient BOOLEAN,
@@ -330,6 +331,7 @@ BEGIN
 		INSERT INTO player_character_weapon(
 			player_character_id,
 			weapon_proficiency_id,
+			martial_weapon_skill_id,
 			player_character_skill_id,
 			description,
 			location,
@@ -342,6 +344,7 @@ BEGIN
 		VALUES(
 			playerCharacterId,
 			weaponProficiencyId,
+			martialWeaponSkillId,
 			playerCharacterSkillId,
 			weaponDescription,
 			weaponLocation,
@@ -475,6 +478,7 @@ BEGIN
 	DECLARE weaponSpeed VARCHAR(32) DEFAULT '1';
 	DECLARE weaponDamage VARCHAR(32) DEFAULT ' ';
 	DECLARE weaponNumberOfHands VARCHAR(32) DEFAULT ' ';
+	DECLARE martialWeaponSkillId INT DEFAULT 0;
 
 	SELECT weapon_proficiency.id, weapon_catalog.type, weapon_catalog.subtype, weapon_catalog.speed, weapon_catalog.damage, weapon_catalog.number_of_hands
 	INTO fistWeaponProficiencyId, weaponType, weaponSubtype, weaponSpeed, weaponDamage, weaponNumberOfHands
@@ -486,6 +490,7 @@ BEGIN
 		playerName,					-- playerName
  		characterName,				-- characterName
 		fistWeaponProficiencyId,	-- weaponProficiencyId
+		martialWeaponSkillId,       -- martialWeaponSkillId
 		'Fist',						-- weaponDescription
 		NULL,						-- weaponLocation
 		TRUE,						-- isProficient
@@ -1415,7 +1420,8 @@ BEGIN
 		player_character_weapon_mode.weapon_type AS player_character_weapon_type,
 		player_character_weapon_mode.weapon_subtype  AS player_character_weapon_subtype,
 		player_character_weapon.craft_status AS player_character_weapon_craft_status,
-		player_character_weapon.weapon_proficiency_id AS player_character_weapon_proficiency_id, 
+		player_character_weapon.weapon_proficiency_id AS player_character_weapon_proficiency_id,
+		player_character_weapon.martial_weapon_skill_id AS player_character_weapon_martial_weapon_skill_id,
 		player_character_weapon.description AS player_character_weapon_description,
 		player_character_weapon.is_ready AS player_character_weapon_is_ready,
 		player_character_weapon.location AS player_character_weapon_location,
