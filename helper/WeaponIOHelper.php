@@ -1,14 +1,69 @@
 <?php
+require_once __DIR__ . '/../webio/playerName.php';
+require_once __DIR__ . '/../webio/characterName.php';
+require_once __DIR__ . '/../webio/weaponProficiencyId.php';
+require_once __DIR__ . '/../webio/martialWeaponSkillId.php';
+require_once __DIR__ . '/../webio/weaponDescription.php';
+require_once __DIR__ . '/../webio/weaponLocation.php';
+require_once __DIR__ . '/../webio/isProficient.php';
+require_once __DIR__ . '/../webio/isReady.php';
+require_once __DIR__ . '/../webio/craftStatus.php';
+require_once __DIR__ . '/../webio/strengthBonusAvailable.php';
+require_once __DIR__ . '/../webio/playerNote1.php';
+require_once __DIR__ . '/../webio/playerNote2.php';
+require_once __DIR__ . '/../webio/playerNote3.php';
+require_once __DIR__ . '/../webio/mastercraftHitDescription.php';
+require_once __DIR__ . '/../webio/mastercraftDamageDescription.php';
+require_once __DIR__ . '/../webio/meleeWeaponType.php';
+require_once __DIR__ . '/../webio/meleeWeaponSubtype.php';
+require_once __DIR__ . '/../webio/meleeWeaponSpeed.php';
+require_once __DIR__ . '/../webio/meleeWeaponDamage.php';
+require_once __DIR__ . '/../webio/meleeAttacksPerRound.php';
+require_once __DIR__ . '/../webio/meleeNumberOfHands.php';
+require_once __DIR__ . '/../webio/meleeAdditionalText.php';
+require_once __DIR__ . '/../webio/meleeHitBonus.php';
+require_once __DIR__ . '/../webio/meleeDamageBonus.php';
+require_once __DIR__ . '/../webio/meleeSpec1HitBonus.php';
+require_once __DIR__ . '/../webio/meleeSpec1DamageBonus.php';
+require_once __DIR__ . '/../webio/meleeSpec1Description.php';
+require_once __DIR__ . '/../webio/meleeSpec2HitBonus.php';
+require_once __DIR__ . '/../webio/meleeSpec2DamageBonus.php';
+require_once __DIR__ . '/../webio/meleeSpec2Description.php';
+require_once __DIR__ . '/../webio/meleeSpec3HitBonus.php';
+require_once __DIR__ . '/../webio/meleeSpec3DamageBonus.php';
+require_once __DIR__ . '/../webio/meleeSpec3Description.php';
+require_once __DIR__ . '/../webio/missileWeaponType.php';
+require_once __DIR__ . '/../webio/missileWeaponSubtype.php';
+require_once __DIR__ . '/../webio/missileWeaponSpeed.php';
+require_once __DIR__ . '/../webio/missileWeaponDamage.php';
+require_once __DIR__ . '/../webio/missileAttacksPerRound.php';
+require_once __DIR__ . '/../webio/missileAdditionalText.php';
+require_once __DIR__ . '/../webio/missileSpec1HitBonus.php';
+require_once __DIR__ . '/../webio/missileSpec1DamageBonus.php';
+require_once __DIR__ . '/../webio/missileSpec1Description.php';
+require_once __DIR__ . '/../webio/missileSpec2HitBonus.php';
+require_once __DIR__ . '/../webio/missileSpec2DamageBonus.php';
+require_once __DIR__ . '/../webio/missileSpec2Description.php';
+require_once __DIR__ . '/../webio/missileSpec3HitBonus.php';
+require_once __DIR__ . '/../webio/missileSpec3DamageBonus.php';
+require_once __DIR__ . '/../webio/missileSpec3Description.php';
+require_once __DIR__ . '/../webio/missileShortRange.php';
+require_once __DIR__ . '/../webio/missileMediumRange.php';
+require_once __DIR__ . '/../webio/missileLongRange.php';
+require_once __DIR__ . '/../webio/missileHitBonus.php';
+require_once __DIR__ . '/../webio/missileDamageBonus.php';
+
 class WeaponIOHelper {
 
     static function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
-        $sql_exec = "CALL addWeaponToPlayerCharacter(:playerName, :characterName, :weaponProficiencyId, :weaponDescription, :weaponLocation, :isProficient, :isReady, :craftStatus, :strengthBonusAvailable, :playerNote1, :playerNote2, :playerNote3, :mastercraftHitDescription, :mastercraftDamageDescription, :meleeWeaponType, :meleeWeaponSubtype, :meleeWeaponSpeed, :meleeWeaponDamage, :meleeAttacksPerRound, :meleeNumberOfHands, :meleeAdditionalText, :meleeHitBonus, :meleeDamageBonus, :meleeSpec1HitBonus, :meleeSpec1DamageBonus, :meleeSpec1Description, :meleeSpec2HitBonus, :meleeSpec2DamageBonus, :meleeSpec2Description, :meleeSpec3HitBonus, :meleeSpec3DamageBonus, :meleeSpec3Description, :missileWeaponType, :missileWeaponSubtype, :missileWeaponSpeed, :missileWeaponDamage, :missileAttacksPerRound, :missileAdditionalText, :missileHitBonus, :missileDamageBonus, :missileSpec1HitBonus, :missileSpec1DamageBonus, :missileSpec1Description, :missileSpec2HitBonus, :missileSpec2DamageBonus, :missileSpec2Description, :missileSpec3HitBonus, :missileSpec3DamageBonus, :missileSpec3Description, :missileShortRange, :missileMediumRange, :missileLongRange)";
+        $sql_exec = "CALL addWeaponToPlayerCharacter(:playerName, :characterName, :weaponProficiencyId, :martialWeaponSkillId, :weaponDescription, :weaponLocation, :isProficient, :isReady, :craftStatus, :strengthBonusAvailable, :playerNote1, :playerNote2, :playerNote3, :mastercraftHitDescription, :mastercraftDamageDescription, :meleeWeaponType, :meleeWeaponSubtype, :meleeWeaponSpeed, :meleeWeaponDamage, :meleeAttacksPerRound, :meleeNumberOfHands, :meleeAdditionalText, :meleeHitBonus, :meleeDamageBonus, :meleeSpec1HitBonus, :meleeSpec1DamageBonus, :meleeSpec1Description, :meleeSpec2HitBonus, :meleeSpec2DamageBonus, :meleeSpec2Description, :meleeSpec3HitBonus, :meleeSpec3DamageBonus, :meleeSpec3Description, :missileWeaponType, :missileWeaponSubtype, :missileWeaponSpeed, :missileWeaponDamage, :missileAttacksPerRound, :missileAdditionalText, :missileHitBonus, :missileDamageBonus, :missileSpec1HitBonus, :missileSpec1DamageBonus, :missileSpec1Description, :missileSpec2HitBonus, :missileSpec2DamageBonus, :missileSpec2Description, :missileSpec3HitBonus, :missileSpec3DamageBonus, :missileSpec3Description, :missileShortRange, :missileMediumRange, :missileLongRange)";
 
         $null_value = NULL;
         $true_value = true;
         $false_value = false;
         $zero_value = 0;
         $optional_string_parameter = OPTIONAL_STRING_PARAMETER;
+        $optional_integer_parameter = OPTIONAL_INTEGER_PARAMETER;
 
         $statement = $pdo->prepare($sql_exec);
 
@@ -17,6 +72,12 @@ class WeaponIOHelper {
         $statement->bindParam(':characterName', $input[CHARACTER_NAME], PDO::PARAM_STR);
 
         $statement->bindParam(':weaponProficiencyId', $input[WEAPON_PROFICIENCY_ID], PDO::PARAM_INT);
+
+        $martialWeaponSkillId = $optional_integer_parameter;
+        if (!empty($input[MARTIAL_WEAPON_SKILL_ID])) {
+            $martialWeaponSkillId = $input[MARTIAL_WEAPON_SKILL_ID];
+        }
+        $statement->bindParam(':martialWeaponSkillId', $martialWeaponSkillId, PDO::PARAM_INT);
 
         $statement->bindParam(':weaponDescription', $input[WEAPON_DESCRIPTION], PDO::PARAM_STR);
 

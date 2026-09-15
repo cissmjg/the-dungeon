@@ -14,6 +14,7 @@ class PlayerCharacterWeapon implements JsonSerializable {
 
     private $weaponId;
     private $weaponProficiencyId;
+    private $martialWeaponSkillId;
     private $weaponDescription;
     private $weaponLocation;
     private $isReady;
@@ -83,6 +84,7 @@ class PlayerCharacterWeapon implements JsonSerializable {
             $this->meleeWeaponSubtype           = $weapon_detail['player_character_weapon_subtype'];
             $this->weaponId                     = $weapon_detail['player_character_weapon_id'];
             $this->weaponProficiencyId          = $weapon_detail['player_character_weapon_proficiency_id'];
+            $this->martialWeaponSkillId         = $weapon_detail['player_character_weapon_martial_weapon_skill_id'];
             $this->craftStatus                  = $weapon_detail['player_character_weapon_craft_status'];
             $this->weaponDescription            = $weapon_detail['player_character_weapon_description'];
             $this->isReady                      = $weapon_detail['player_character_weapon_is_ready'];
@@ -170,6 +172,7 @@ class PlayerCharacterWeapon implements JsonSerializable {
             $this->meleeWeaponSubtype           = $weapon_detail_json->meleeWeaponSubtype;
             $this->weaponId                     = $weapon_detail_json->weaponId;
             $this->weaponProficiencyId          = $weapon_detail_json->weaponProficiencyId;
+            $this->martialWeaponSkillId         = $weapon_detail_json->martialWeaponSkillId;
             $this->craftStatus                  = $weapon_detail_json->craftStatus;
             $this->weaponDescription            = $weapon_detail_json->weaponDescription;
             $this->isReady                      = $weapon_detail_json->isReady;
@@ -269,11 +272,7 @@ class PlayerCharacterWeapon implements JsonSerializable {
     }
 
     public function isMartialSkillWeapon() {
-        $circle_kick_name = getSkillDescriptionFromSkillId(CIRCLE_KICK);
-        $mantis_leap_name = getSkillDescriptionFromSkillId(MANTIS_LEAP);
-        $throw_anything_name = getSkillDescriptionFromSkillId(THROW_ANYTHING);
-
-        return $this->weaponDescription == $circle_kick_name || $this->weaponDescription == $mantis_leap_name || $this->weaponDescription == $throw_anything_name;
+        return !empty($this->getMartialWeaponSkillId());
     }
 
     public function isCombinationWeapon() {
@@ -307,6 +306,10 @@ class PlayerCharacterWeapon implements JsonSerializable {
 
     public function getWeaponProficiencyId() {
         return $this->weaponProficiencyId;
+    }
+
+    public function getMartialWeaponSkillId() {
+        return $this->martialWeaponSkillId;
     }
 
     public function getWeaponDescription() {
