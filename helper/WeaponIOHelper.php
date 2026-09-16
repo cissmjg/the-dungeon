@@ -58,18 +58,6 @@ class WeaponIOHelper {
     static function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
         $sql_exec = "CALL addWeaponToPlayerCharacter(:playerName, :characterName, :weaponProficiencyId, :martialWeaponSkillId, :weaponDescription, :weaponLocation, :isProficient, :isReady, :craftStatus, :strengthBonusAvailable, :playerNote1, :playerNote2, :playerNote3, :mastercraftHitDescription, :mastercraftDamageDescription, :meleeWeaponType, :meleeWeaponSubtype, :meleeWeaponSpeed, :meleeWeaponDamage, :meleeAttacksPerRound, :meleeNumberOfHands, :meleeAdditionalText, :meleeHitBonus, :meleeDamageBonus, :meleeSpec1HitBonus, :meleeSpec1DamageBonus, :meleeSpec1Description, :meleeSpec2HitBonus, :meleeSpec2DamageBonus, :meleeSpec2Description, :meleeSpec3HitBonus, :meleeSpec3DamageBonus, :meleeSpec3Description, :missileWeaponType, :missileWeaponSubtype, :missileWeaponSpeed, :missileWeaponDamage, :missileAttacksPerRound, :missileAdditionalText, :missileHitBonus, :missileDamageBonus, :missileSpec1HitBonus, :missileSpec1DamageBonus, :missileSpec1Description, :missileSpec2HitBonus, :missileSpec2DamageBonus, :missileSpec2Description, :missileSpec3HitBonus, :missileSpec3DamageBonus, :missileSpec3Description, :missileShortRange, :missileMediumRange, :missileLongRange)";
 
-        $melee_weapon_type = "UNK";
-        if(!empty($input[MELEE_WEAPON_TYPE])) {
-            $melee_weapon_type = $input[MELEE_WEAPON_TYPE];
-        }
-        error_log('Melee Weapon Type: ' . $melee_weapon_type);
-
-        $missile_weapon_type = "UNK";
-        if(!empty($input[MISSILE_WEAPON_TYPE])) {
-            $missile_weapon_type = $input[MISSILE_WEAPON_TYPE];
-        }
-        error_log('Missile Weapon Type: ' . $missile_weapon_type);
-
         $null_value = NULL;
         $true_value = true;
         $false_value = false;
