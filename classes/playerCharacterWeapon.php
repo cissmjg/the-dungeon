@@ -84,7 +84,11 @@ class PlayerCharacterWeapon implements JsonSerializable {
             $this->meleeWeaponSubtype           = $weapon_detail['player_character_weapon_subtype'];
             $this->weaponId                     = $weapon_detail['player_character_weapon_id'];
             $this->weaponProficiencyId          = $weapon_detail['player_character_weapon_proficiency_id'];
-            $this->martialWeaponSkillId         = $weapon_detail['player_character_weapon_martial_weapon_skill_id'];
+            if(!empty($weapon_detail['player_character_weapon_martial_weapon_skill_id'])) {
+                $this->martialWeaponSkillId         = $weapon_detail['player_character_weapon_martial_weapon_skill_id'];
+            } else {
+                $this->martialWeaponSkillId         = 0;
+            }
             $this->craftStatus                  = $weapon_detail['player_character_weapon_craft_status'];
             $this->weaponDescription            = $weapon_detail['player_character_weapon_description'];
             $this->isReady                      = $weapon_detail['player_character_weapon_is_ready'];
