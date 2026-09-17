@@ -209,8 +209,6 @@ class WeaponSkillHelper {
         $input[MELEE_ADDITIONAL_TEXT] = '';
         WeaponSkillHelper::buildNonMagicalMeleeProperties($input);
 
-        // Melee only weapon
-        $input[MISSILE_WEAPON_TYPE] == OPTIONAL_INTEGER_PARAMETER;
 
         return $input;
     }

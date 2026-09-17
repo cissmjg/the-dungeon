@@ -23,6 +23,7 @@ require_once __DIR__ . '/../webio/isSkillFocus.php';
 require_once __DIR__ . '/../webio/weaponProficiencyId.php';
 require_once __DIR__ . '/../webio/weapon2ProficiencyId.php';
 require_once __DIR__ . '/../webio/weaponSpecializationTypeId.php';
+require_once __DIR__ . '/../webio/playerCharacterWeaponId.php';
 
 $input = [];
 $log = [];
@@ -46,6 +47,7 @@ if (count($errors) > 0) {
 
 $skill_catalog_id = $input[SKILL_CATALOG_ID];
 $player_character_weapon_id = OPTIONAL_INTEGER_PARAMETER;
+error_log("Before Weapon ID: $player_character_weapon_id");
 
 if ($skill_catalog_id == CIRCLE_KICK) {
     $player_character_weapon = WeaponSkillHelper::buildCircleKickWeapon($input[PLAYER_NAME], $input[CHARACTER_NAME]);
@@ -73,10 +75,17 @@ if ($skill_catalog_id == CIRCLE_KICK) {
     }
 }
 
+if (!empty($player_character_weapon_id)) {
+    $player_character_weapon_id = $player_character_weapon_id[PLAYER_CHARACTER_WEAPON_ID];
+}
+error_log("After Weapon ID: " . print_r($player_character_weapon_id, true));
+
 // Non 'Martial Weapon' skill
 if ($player_character_weapon_id == OPTIONAL_INTEGER_PARAMETER) {
+    error_log("Calling addSkillToPlayerCharacter");
     $player_character_skill_id = addSkillToPlayerCharacter($pdo, $input, $errors);
 } else {
+    error_log("Calling addSkillMartialWeaponToPlayerCharacter");
     $player_character_skill_id = addSkillMartialWeaponToPlayerCharacter($pdo, $input, $player_character_weapon_id, $errors);
 }
 
@@ -86,7 +95,6 @@ if(count($errors) > 0) {
 } else {
     $log[] = "SUCCESS|";
     $log[] = "Character Skill Add|";
-    $log[] = "playerCharacterSkillId: " . $player_character_skill_id[0];
 
     echo json_encode($log);
 }

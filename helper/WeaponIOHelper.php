@@ -58,6 +58,18 @@ class WeaponIOHelper {
     static function addWeaponToPlayerCharacter(\PDO $pdo, $input, &$errors) {
         $sql_exec = "CALL addWeaponToPlayerCharacter(:playerName, :characterName, :weaponProficiencyId, :martialWeaponSkillId, :weaponDescription, :weaponLocation, :isProficient, :isReady, :craftStatus, :strengthBonusAvailable, :playerNote1, :playerNote2, :playerNote3, :mastercraftHitDescription, :mastercraftDamageDescription, :meleeWeaponType, :meleeWeaponSubtype, :meleeWeaponSpeed, :meleeWeaponDamage, :meleeAttacksPerRound, :meleeNumberOfHands, :meleeAdditionalText, :meleeHitBonus, :meleeDamageBonus, :meleeSpec1HitBonus, :meleeSpec1DamageBonus, :meleeSpec1Description, :meleeSpec2HitBonus, :meleeSpec2DamageBonus, :meleeSpec2Description, :meleeSpec3HitBonus, :meleeSpec3DamageBonus, :meleeSpec3Description, :missileWeaponType, :missileWeaponSubtype, :missileWeaponSpeed, :missileWeaponDamage, :missileAttacksPerRound, :missileAdditionalText, :missileHitBonus, :missileDamageBonus, :missileSpec1HitBonus, :missileSpec1DamageBonus, :missileSpec1Description, :missileSpec2HitBonus, :missileSpec2DamageBonus, :missileSpec2Description, :missileSpec3HitBonus, :missileSpec3DamageBonus, :missileSpec3Description, :missileShortRange, :missileMediumRange, :missileLongRange)";
 
+        $melee_weapon_type = "UNK";
+        if(!empty($input[MELEE_WEAPON_TYPE])) {
+            $melee_weapon_type = $input[MELEE_WEAPON_TYPE];
+        }
+        error_log('Melee Weapon Type: ' . $melee_weapon_type);
+
+        $missile_weapon_type = "UNK";
+        if(!empty($input[MISSILE_WEAPON_TYPE])) {
+            $missile_weapon_type = $input[MISSILE_WEAPON_TYPE];
+        }
+        error_log('Missile Weapon Type: ' . $missile_weapon_type);
+
         $null_value = NULL;
         $true_value = true;
         $false_value = false;
@@ -138,7 +150,7 @@ class WeaponIOHelper {
             $statement->bindParam(':mastercraftDamageDescription', $input[MASTERCRAFT_DAMAGE_DESCRIPTION], PDO::PARAM_STR);
         }
 
-        if ($input[MELEE_WEAPON_TYPE] == OPTIONAL_INTEGER_PARAMETER) {
+        if (empty($input[MELEE_WEAPON_TYPE])) {
             $statement->bindParam(':meleeWeaponType', $zero_value, PDO::PARAM_INT);
 
             $statement->bindParam(':meleeWeaponSubtype', $zero_value, PDO::PARAM_INT);
@@ -193,25 +205,25 @@ class WeaponIOHelper {
                 $statement->bindParam(':meleeAdditionalText', $input[MELEE_ADDITIONAL_TEXT], PDO::PARAM_STR);
             }
 
-            if ($input[MELEE_HIT_BONUS] == OPTIONAL_INTEGER_PARAMETER) {
+            if (empty($input[MELEE_HIT_BONUS])) {
                 $statement->bindParam(':meleeHitBonus', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':meleeHitBonus',  $input[MELEE_HIT_BONUS], PDO::PARAM_INT);
             }
 
-            if ($input[MELEE_DAMAGE_BONUS] == OPTIONAL_INTEGER_PARAMETER) {
+            if (empty($input[MELEE_DAMAGE_BONUS])) {
                 $statement->bindParam(':meleeDamageBonus', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':meleeDamageBonus',  $input[MELEE_DAMAGE_BONUS], PDO::PARAM_INT);
             }
 
-            if ($input[MELEE_SPEC1_HIT_BONUS] == OPTIONAL_INTEGER_PARAMETER) {
+            if (empty($input[MELEE_SPEC1_HIT_BONUS])) {
                 $statement->bindParam(':meleeSpec1HitBonus', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':meleeSpec1HitBonus',  $input[MELEE_SPEC1_HIT_BONUS], PDO::PARAM_INT);
             }
 
-            if ($input[MELEE_SPEC1_DAMAGE_BONUS] == OPTIONAL_INTEGER_PARAMETER) {
+            if (empty($input[MELEE_SPEC1_DAMAGE_BONUS])) {
                 $statement->bindParam(':meleeSpec1DamageBonus', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':meleeSpec1DamageBonus',  $input[MELEE_SPEC1_DAMAGE_BONUS], PDO::PARAM_INT);
@@ -223,13 +235,13 @@ class WeaponIOHelper {
                 $statement->bindParam(':meleeSpec1Description', $input[MELEE_SPEC1_DESCRIPTION], PDO::PARAM_STR);
             }
 
-            if ($input[MELEE_SPEC2_HIT_BONUS] == OPTIONAL_INTEGER_PARAMETER) {
+            if (empty($input[MELEE_SPEC2_HIT_BONUS])) {
                 $statement->bindParam(':meleeSpec2HitBonus', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':meleeSpec2HitBonus',  $input[MELEE_SPEC2_HIT_BONUS], PDO::PARAM_INT);
             }
 
-            if ($input[MELEE_SPEC2_DAMAGE_BONUS] == OPTIONAL_INTEGER_PARAMETER) {
+            if (empty($input[MELEE_SPEC2_DAMAGE_BONUS])) {
                 $statement->bindParam(':meleeSpec2DamageBonus', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':meleeSpec2DamageBonus',  $input[MELEE_SPEC2_DAMAGE_BONUS], PDO::PARAM_INT);
@@ -241,13 +253,13 @@ class WeaponIOHelper {
                 $statement->bindParam(':meleeSpec2Description', $input[MELEE_SPEC2_DESCRIPTION], PDO::PARAM_STR);
             }
 
-            if ($input[MELEE_SPEC3_HIT_BONUS] == OPTIONAL_INTEGER_PARAMETER) {
+            if (empty($input[MELEE_SPEC3_HIT_BONUS])) {
                 $statement->bindParam(':meleeSpec3HitBonus', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':meleeSpec3HitBonus',  $input[MELEE_SPEC3_HIT_BONUS], PDO::PARAM_INT);
             }
 
-            if ($input[MELEE_SPEC3_DAMAGE_BONUS] == OPTIONAL_INTEGER_PARAMETER) {
+            if (empty($input[MELEE_SPEC3_DAMAGE_BONUS])) {
                 $statement->bindParam(':meleeSpec3DamageBonus', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':meleeSpec3DamageBonus',  $input[MELEE_SPEC3_DAMAGE_BONUS], PDO::PARAM_INT);
@@ -260,7 +272,7 @@ class WeaponIOHelper {
             }
         }
 
-        if ($input[MISSILE_WEAPON_TYPE] == OPTIONAL_INTEGER_PARAMETER) {
+        if (empty($input[MISSILE_WEAPON_TYPE])) {
             $statement->bindParam(':missileWeaponType', $zero_value, PDO::PARAM_INT);
 
             $statement->bindParam(':missileWeaponSubtype', $zero_value, PDO::PARAM_INT);
@@ -308,91 +320,91 @@ class WeaponIOHelper {
             $statement->bindParam(':missileWeaponDamage', $input[MISSILE_WEAPON_DAMAGE], PDO::PARAM_STR);
             $statement->bindParam(':missileAttacksPerRound', $input[MISSILE_ATTACKS_PER_ROUND], PDO::PARAM_STR);
 
-            if ($input[MISSILE_HIT_BONUS] == OPTIONAL_INTEGER_PARAMETER) {
+            if (empty($input[MISSILE_HIT_BONUS])) {
                 $statement->bindParam(':missileHitBonus', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':missileHitBonus', $input[MISSILE_HIT_BONUS], PDO::PARAM_INT);
             }
 
-            if ($input[MISSILE_DAMAGE_BONUS] == OPTIONAL_INTEGER_PARAMETER) {
+            if (empty($input[MISSILE_DAMAGE_BONUS])) {
                 $statement->bindParam(':missileDamageBonus', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':missileDamageBonus', $input[MISSILE_DAMAGE_BONUS], PDO::PARAM_INT);
             }
 
-            if ($input[MISSILE_SPEC1_HIT_BONUS] == OPTIONAL_INTEGER_PARAMETER) {
+            if (empty($input[MISSILE_SPEC1_HIT_BONUS])) {
                 $statement->bindParam(':missileSpec1HitBonus', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':missileSpec1HitBonus', $input[MISSILE_SPEC1_HIT_BONUS], PDO::PARAM_INT);
             }
 
-            if ($input[MISSILE_SPEC1_DAMAGE_BONUS] == OPTIONAL_INTEGER_PARAMETER) {
+            if (empty($input[MISSILE_SPEC1_DAMAGE_BONUS])) {
                 $statement->bindParam(':missileSpec1DamageBonus', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':missileSpec1DamageBonus', $input[MISSILE_SPEC1_DAMAGE_BONUS], PDO::PARAM_INT);
             }
 
-            if ($input[MISSILE_SPEC1_DESCRIPTION] == OPTIONAL_STRING_PARAMETER) {
+            if (empty($input[MISSILE_SPEC1_DESCRIPTION])) {
                 $statement->bindParam(':missileSpec1Description', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':missileSpec1Description', $input[MISSILE_SPEC1_DESCRIPTION], PDO::PARAM_STR);
             }
 
-            if ($input[MISSILE_SPEC2_HIT_BONUS] == OPTIONAL_INTEGER_PARAMETER) {
+            if (empty($input[MISSILE_SPEC2_HIT_BONUS])) {
                 $statement->bindParam(':missileSpec2HitBonus', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':missileSpec2HitBonus', $input[MISSILE_SPEC2_HIT_BONUS], PDO::PARAM_INT);
             }
 
-            if ($input[MISSILE_SPEC2_DAMAGE_BONUS] == OPTIONAL_INTEGER_PARAMETER) {
+            if (empty($input[MISSILE_SPEC2_DAMAGE_BONUS])) {
                 $statement->bindParam(':missileSpec2DamageBonus', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':missileSpec2DamageBonus', $input[MISSILE_SPEC2_DAMAGE_BONUS], PDO::PARAM_INT);
             }
 
-            if ($input[MISSILE_SPEC2_DESCRIPTION] == OPTIONAL_STRING_PARAMETER) {
+            if (empty($input[MISSILE_SPEC2_DESCRIPTION])) {
                 $statement->bindParam(':missileSpec2Description', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':missileSpec2Description', $input[MISSILE_SPEC2_DESCRIPTION], PDO::PARAM_STR);
             }
 
-            if ($input[MISSILE_SPEC3_HIT_BONUS] == OPTIONAL_INTEGER_PARAMETER) {
+            if (empty($input[MISSILE_SPEC3_HIT_BONUS])) {
                 $statement->bindParam(':missileSpec3HitBonus', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':missileSpec3HitBonus', $input[MISSILE_SPEC3_HIT_BONUS], PDO::PARAM_INT);
             }
 
-            if ($input[MISSILE_SPEC3_DAMAGE_BONUS] == OPTIONAL_INTEGER_PARAMETER) {
+            if (empty($input[MISSILE_SPEC3_DAMAGE_BONUS])) {
                 $statement->bindParam(':missileSpec3DamageBonus', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':missileSpec3DamageBonus', $input[MISSILE_SPEC3_DAMAGE_BONUS], PDO::PARAM_INT);
             }
 
-            if ($input[MISSILE_SPEC3_DESCRIPTION] == OPTIONAL_STRING_PARAMETER) {
+            if (empty($input[MISSILE_SPEC3_DESCRIPTION])) {
                 $statement->bindParam(':missileSpec3Description', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':missileSpec3Description', $input[MISSILE_SPEC3_DESCRIPTION], PDO::PARAM_STR);
             }
 
-            if ($input[MISSILE_SHORT_RANGE] == OPTIONAL_STRING_PARAMETER) {
+            if (empty($input[MISSILE_SHORT_RANGE])) {
                 $statement->bindParam(':missileShortRange', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':missileShortRange', $input[MISSILE_SHORT_RANGE], PDO::PARAM_STR);
             }
 
-            if ($input[MISSILE_MEDIUM_RANGE] == OPTIONAL_STRING_PARAMETER) {
+            if (empty($input[MISSILE_MEDIUM_RANGE])) {
                 $statement->bindParam(':missileMediumRange', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':missileMediumRange', $input[MISSILE_MEDIUM_RANGE], PDO::PARAM_STR);
             }
 
-            if ($input[MISSILE_LONG_RANGE] == OPTIONAL_STRING_PARAMETER) {
+            if (empty($input[MISSILE_LONG_RANGE])) {
                 $statement->bindParam(':missileLongRange', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':missileLongRange', $input[MISSILE_LONG_RANGE], PDO::PARAM_STR);
             }
 
-            if ($input[MISSILE_ADDITIONAL_TEXT] == OPTIONAL_STRING_PARAMETER) {
+            if (empty($input[MISSILE_ADDITIONAL_TEXT])) {
                 $statement->bindParam(':missileAdditionalText', $null_value, PDO::PARAM_NULL);
             } else {
                 $statement->bindParam(':missileAdditionalText', $input[MISSILE_ADDITIONAL_TEXT], PDO::PARAM_STR);
