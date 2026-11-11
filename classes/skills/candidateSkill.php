@@ -24,6 +24,7 @@
         private $log = [];
 
         protected $player_character_skill_set;
+        protected $character_details;
 
         public function __construct(\SkillCatalog $skill_catalog, \FormIdLookup $formIdLookup) {
             $skill_id = $this->getSkillId();
@@ -34,6 +35,7 @@
         
         protected function isCharacterQualified(\CharacterDetails $character_details, \PlayerCharacterSkillSet $player_character_skill_set) {
             $this->player_character_skill_set = $player_character_skill_set;
+            $this->character_details = $character_details;
             $base_attributes_satisfied = $this->baseAttributesQualified($character_details, $player_character_skill_set, $this->skill);
             $prerequisite_skills_satisfied = $this->prerequisiteSkillsSatisfied($player_character_skill_set, $this->skill);
             
@@ -111,6 +113,13 @@
         }
         
         protected function isSubset(array $subset, array $superset): bool {
+            if (count($subset) == 0) {
+                return true;
+            }
+            print_r(count($subset));
+            print_r($subset);
+            print_r($superset);
+            array_diff($subset, $superset);
             // array_diff returns elements in $subset not found in $superset
             return empty(array_diff($subset, $superset));
         }

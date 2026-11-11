@@ -540,6 +540,18 @@ class CharacterDetails implements JsonSerializable
 		return $this->character_classes;
 	}
 
+	public function getCharacterClass($class_id) {
+		if ($this->containsClassId($class_id)) {
+			foreach($this->character_classes AS $character_class) {
+				if (getClassID($character_class->getClassName()) == $class_id) {
+					return $character_class;
+				}
+			}
+		} else {
+			return null;
+		}
+	}
+
 	public function containsClassId($character_class_id) {
 		foreach($this->character_classes AS $character_class) {
 			if (getClassID($character_class->getClassName()) == $character_class_id) {

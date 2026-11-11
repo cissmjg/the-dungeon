@@ -14,6 +14,7 @@
         private $roll_name;
         private $ability_text;
         private $attribute_bonus;
+        private $skill_prerequisite_ids = [];
 
         public function init($skill) {
             $this->id = $skill['skill_catalog_id'];
@@ -32,8 +33,30 @@
             $this->attribute_bonus = $skill['skill_catalog_attribute_bonus'];
         }
 
-        private $skill_prerequisite_ids = [];
-        public function jsonSerialize() {
+        public function fromJSON($skill) {
+            $this->id = $skill->id;
+            $this->name = $skill->name;
+            $this->attribute = $skill->attribute;
+            $this->is_skill_focus = $skill->is_skill_focus;
+            $this->max_count = $skill->max_count;
+
+            $this->required_class_value = empty($skill->required_class_value) ? 0 : $skill->required_class_value;
+            $this->required_race_value = empty($skill->required_race_value) ? 0 : $skill->required_race_value;
+            $this->required_level = empty($skill->required_level) ? 0 : $skill->required_level;
+            $this->minimum_charisma = empty($skill->minimum_charisma) ? 0 : $skill->minimum_charisma;
+            $this->minimum_dexterity = empty($skill->minimum_dexterity) ? 0 : $skill->minimum_dexterity;
+            $this->minimum_intelligence = empty($skill->minimum_intelligence) ? 0 : $skill->minimum_intelligence;
+
+            $this->roll_name = $skill->roll_name;
+            $this->ability_text = $skill->ability_text;
+            $this->attribute_bonus = $skill->attribute_bonus;
+            foreach($skill->skill_prerequisite_ids AS $skill_prerequisite_id) {
+                $this->skill_prerequisite_ids[] = $skill_prerequisite_id;
+            }
+        }
+
+
+        public function jsonSerialize():mixed {
             return get_object_vars($this);
         }
 

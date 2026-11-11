@@ -72,6 +72,30 @@ const FONT_AWESOME_LIB = "https://kit.fontawesome.com/4295d6f264.js";
         return HtmlHelper::buildDivTag('', '&nbsp;');
     }
 
+    public static function buildSpanStartTag($class) {
+        $span_tag = "<span";
+
+        if (!empty($class)) {
+            $span_tag .= ' class="' . $class . "'";
+        }
+
+        $span_tag .= '>';
+
+        return $span_tag;
+    }
+
+    public static function buildSpanEndTag() {
+        return "</span>";
+    }
+
+    public static function buildSpanTagWithText($class, $text) {
+        $span_tag  = HtmlHelper::buildSpanStartTag($class);
+        $span_tag .= $text;
+        $span_tag .= HtmlHelper::buildSpanEndTag();
+        
+        return $span_tag;
+    }
+
     public static function formatHtmlHeader($page_title, $site_css_file, $page_specific_js, $page_specific_css, $enable_toggle_panels) {
         $output_html  = '<!DOCTYPE html>' . PHP_EOL;
         $output_html .= '<html lang="en">' . PHP_EOL;

@@ -31,6 +31,15 @@
             }
         }
 
+        public function fromJSON($skill_catalog_json) {
+            $skill_catalog_map = $skill_catalog_json->all_skills;
+            foreach($skill_catalog_map AS $skill_catalog_id => $skill_json) {
+                $skill = new SkillDetail();
+                $skill->fromJSON($skill_json);
+                $this->all_skills[$skill_catalog_id] = $skill;
+            }
+        }
+
         private function getAllSkillsWithPrerequisites(\PDO $pdo, &$errors) {
             $sql_exec = "CALL getAllSkillsWithPrerequisites()";
 
@@ -45,7 +54,7 @@
             return $statement->fetchAll(PDO::FETCH_ASSOC);
         } 
 
-        public function jsonSerialize() {
+        public function jsonSerialize():mixed {
             return get_object_vars($this);
         }
 

@@ -247,14 +247,18 @@ function getWeaponDescriptionFromProficiencyId($weapon_proficiency_id) {
 
 function isWeaponHurled($weapon_proficiency_id) {
     switch($weapon_proficiency_id) {
+        case BOOMERANG:
+        case CHAKRAM:
         case DAGGER:
         case BATTLE_AXE:
         case HAND_AXE:
         case SPEAR:
         case HAMMER:
+        case HARPOON:
         case KAPAR:
         case DWARVEN_THROWING_HAMMER:
         case JAVELIN:
+        case UCHI_NE:
             return true;
         default:
             return false;

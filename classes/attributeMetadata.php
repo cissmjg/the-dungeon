@@ -14,6 +14,10 @@ class AttributeMetadata {
 
     private $super_strength_metadata = [];
 
+    private $strength_high_jump_adjustment = [];
+    private $strength_broad_jump_standing_adjustment = [];
+    private $strength_broad_jump_running_adjustment = [];
+
     private $intelligence_additional_languages = [];
     private $super_intelligence_additional_languages = [];
     private $intelligence_spell_to_know_percent = [];
@@ -22,6 +26,26 @@ class AttributeMetadata {
 
     private $dexterity_reaction_missile_adjustment = [];
     private $dexterity_armor_class_adjustment = [];
+    private $dexterity_pick_pockets_adjustment = [];
+    private $dexterity_open_locks_adjustment = [];
+    private $dexterity_find_remove_traps_adjustment = [];
+    private $dexterity_move_silently_adjustment = [];
+    private $dexterity_hide_in_shadows_adjustment = [];
+    private $super_dexterity_pick_pockets_adjustment = [];
+    private $super_dexterity_open_locks_adjustment = [];
+    private $super_dexterity_find_remove_traps_adjustment = [];
+    private $super_dexterity_move_silently_adjustment = [];
+    private $super_dexterity_hide_in_shadows_adjustment = [];
+    private $dexterity_tightrope_walking_adjustment = [];
+    private $dexterity_pole_vaulting_adjustment = [];
+    private $dexterity_tumbling_maneuvers_attack_adjustment = [];
+    private $dexterity_tumbling_maneuvers_evasion_adjustment = [];
+    private $dexterity_tumbling_maneuvers_falling_adjustment = [];
+    private $super_dexterity_tightrope_walking_adjustment = [];
+    private $super_dexterity_pole_vaulting_adjustment = [];
+    private $super_dexterity_tumbling_maneuvers_attack_adjustment = [];
+    private $super_dexterity_tumbling_maneuvers_evasion_adjustment = [];
+    private $super_dexterity_tumbling_maneuvers_falling_adjustment = [];
 
     private $constitution_ss_rs = [];
     private $constitution_hp_adjustment = [];
@@ -113,6 +137,57 @@ class AttributeMetadata {
         $this->super_strength_metadata[99]  = 'Doors: 4/6 Bend Bars: 35%';
         $this->super_strength_metadata[100] = 'Doors: 5/6 Bend Bars: 40%';
 
+        $this->strength_high_jump_adjustment[3] = 0;
+        $this->strength_high_jump_adjustment[4] = 0;
+        $this->strength_high_jump_adjustment[5] = 0;
+        $this->strength_high_jump_adjustment[6] = 0;
+        $this->strength_high_jump_adjustment[7] = 0;
+        $this->strength_high_jump_adjustment[8] = 0;
+        $this->strength_high_jump_adjustment[9] = 0;
+        $this->strength_high_jump_adjustment[10] = 0;
+        $this->strength_high_jump_adjustment[11] = 0;
+        $this->strength_high_jump_adjustment[12] = 0;
+        $this->strength_high_jump_adjustment[13] = 0;
+        $this->strength_high_jump_adjustment[14] = 0;
+        $this->strength_high_jump_adjustment[15] = 0;
+        $this->strength_high_jump_adjustment[16] = 0;
+        $this->strength_high_jump_adjustment[17] = 0.25;    // In feet
+        $this->strength_high_jump_adjustment[18] = 0.25;    // In feet
+
+        $this->strength_broad_jump_standing_adjustment[3] = 0;
+        $this->strength_broad_jump_standing_adjustment[4] = 0;
+        $this->strength_broad_jump_standing_adjustment[5] = 0;
+        $this->strength_broad_jump_standing_adjustment[6] = 0;
+        $this->strength_broad_jump_standing_adjustment[7] = 0;
+        $this->strength_broad_jump_standing_adjustment[8] = 0;
+        $this->strength_broad_jump_standing_adjustment[9] = 0;
+        $this->strength_broad_jump_standing_adjustment[10] = 0;
+        $this->strength_broad_jump_standing_adjustment[11] = 0;
+        $this->strength_broad_jump_standing_adjustment[12] = 0;
+        $this->strength_broad_jump_standing_adjustment[13] = 0;
+        $this->strength_broad_jump_standing_adjustment[14] = 0;
+        $this->strength_broad_jump_standing_adjustment[15] = 0;
+        $this->strength_broad_jump_standing_adjustment[16] = 0;
+        $this->strength_broad_jump_standing_adjustment[17] = 0.25;  // In feet
+        $this->strength_broad_jump_standing_adjustment[18] = 0.5;   // In feet
+
+        $this->strength_broad_jump_running_adjustment[3] = 0;
+        $this->strength_broad_jump_running_adjustment[4] = 0;
+        $this->strength_broad_jump_running_adjustment[5] = 0;
+        $this->strength_broad_jump_running_adjustment[6] = 0;
+        $this->strength_broad_jump_running_adjustment[7] = 0;
+        $this->strength_broad_jump_running_adjustment[8] = 0;
+        $this->strength_broad_jump_running_adjustment[9] = 0;
+        $this->strength_broad_jump_running_adjustment[10] = 0;
+        $this->strength_broad_jump_running_adjustment[11] = 0;
+        $this->strength_broad_jump_running_adjustment[12] = 0;
+        $this->strength_broad_jump_running_adjustment[13] = 0;
+        $this->strength_broad_jump_running_adjustment[14] = 0;
+        $this->strength_broad_jump_running_adjustment[15] = 0;
+        $this->strength_broad_jump_running_adjustment[16] = 0.5;    // In feet
+        $this->strength_broad_jump_running_adjustment[17] = 1;      // In feet
+        $this->strength_broad_jump_running_adjustment[18] = 2;      // In feet
+
         $this->intelligence_additional_languages[3] = 0;
         $this->intelligence_additional_languages[4] = 0;
         $this->intelligence_additional_languages[5] = 0;
@@ -198,6 +273,248 @@ class AttributeMetadata {
         $this->dexterity_armor_class_adjustment[17] = -3;
         $this->dexterity_armor_class_adjustment[18] = -4;
         $this->dexterity_armor_class_adjustment[19] = -5;
+    
+        $this->dexterity_pick_pockets_adjustment[3] = -15;
+        $this->dexterity_pick_pockets_adjustment[4] = -15;
+        $this->dexterity_pick_pockets_adjustment[5] = -15;
+        $this->dexterity_pick_pockets_adjustment[6] = -15;
+        $this->dexterity_pick_pockets_adjustment[7] = -15;
+        $this->dexterity_pick_pockets_adjustment[8] = -15;
+        $this->dexterity_pick_pockets_adjustment[9] = -15;
+        $this->dexterity_pick_pockets_adjustment[10] = -10;
+        $this->dexterity_pick_pockets_adjustment[11] = -5;
+        $this->dexterity_pick_pockets_adjustment[12] = 0;
+        $this->dexterity_pick_pockets_adjustment[13] = 0;
+        $this->dexterity_pick_pockets_adjustment[14] = 0;
+        $this->dexterity_pick_pockets_adjustment[15] = 0;
+        $this->dexterity_pick_pockets_adjustment[16] = 0;
+        $this->dexterity_pick_pockets_adjustment[17] = 5;
+        $this->dexterity_pick_pockets_adjustment[18] = 10;
+        $this->dexterity_pick_pockets_adjustment[19] = 15;
+        
+        $this->dexterity_open_locks_adjustment[3] = -10;
+        $this->dexterity_open_locks_adjustment[4] = -10;
+        $this->dexterity_open_locks_adjustment[5] = -10;
+        $this->dexterity_open_locks_adjustment[6] = -10;
+        $this->dexterity_open_locks_adjustment[7] = -10;
+        $this->dexterity_open_locks_adjustment[8] = -10;
+        $this->dexterity_open_locks_adjustment[9] = -10;
+        $this->dexterity_open_locks_adjustment[10] = -5;
+        $this->dexterity_open_locks_adjustment[11] = 0;
+        $this->dexterity_open_locks_adjustment[12] = 0;
+        $this->dexterity_open_locks_adjustment[13] = 0;
+        $this->dexterity_open_locks_adjustment[14] = 0;
+        $this->dexterity_open_locks_adjustment[15] = 0;
+        $this->dexterity_open_locks_adjustment[16] = 5;
+        $this->dexterity_open_locks_adjustment[17] = 10;
+        $this->dexterity_open_locks_adjustment[18] = 15;
+        $this->dexterity_open_locks_adjustment[19] = 20;
+        
+        $this->dexterity_find_remove_traps_adjustment[3] = -10;
+        $this->dexterity_find_remove_traps_adjustment[4] = -10;
+        $this->dexterity_find_remove_traps_adjustment[5] = -10;
+        $this->dexterity_find_remove_traps_adjustment[6] = -10;
+        $this->dexterity_find_remove_traps_adjustment[7] = -10;
+        $this->dexterity_find_remove_traps_adjustment[8] = -10;
+        $this->dexterity_find_remove_traps_adjustment[9] = -10;
+        $this->dexterity_find_remove_traps_adjustment[10] = -10;
+        $this->dexterity_find_remove_traps_adjustment[11] = -5;
+        $this->dexterity_find_remove_traps_adjustment[12] = 0;
+        $this->dexterity_find_remove_traps_adjustment[13] = 0;
+        $this->dexterity_find_remove_traps_adjustment[14] = 0;
+        $this->dexterity_find_remove_traps_adjustment[15] = 0;
+        $this->dexterity_find_remove_traps_adjustment[16] = 0;
+        $this->dexterity_find_remove_traps_adjustment[17] = 0;
+        $this->dexterity_find_remove_traps_adjustment[18] = 5;
+        $this->dexterity_find_remove_traps_adjustment[19] = 10;
+        
+        $this->dexterity_move_silently_adjustment[3] = -20;
+        $this->dexterity_move_silently_adjustment[4] = -20;
+        $this->dexterity_move_silently_adjustment[5] = -20;
+        $this->dexterity_move_silently_adjustment[6] = -20;
+        $this->dexterity_move_silently_adjustment[7] = -20;
+        $this->dexterity_move_silently_adjustment[8] = -20;
+        $this->dexterity_move_silently_adjustment[9] = -20;
+        $this->dexterity_move_silently_adjustment[10] = -15;
+        $this->dexterity_move_silently_adjustment[11] = -10;
+        $this->dexterity_move_silently_adjustment[12] = -5;
+        $this->dexterity_move_silently_adjustment[13] = 0;
+        $this->dexterity_move_silently_adjustment[14] = 0;
+        $this->dexterity_move_silently_adjustment[15] = 0;
+        $this->dexterity_move_silently_adjustment[16] = 0;
+        $this->dexterity_move_silently_adjustment[17] = 5;
+        $this->dexterity_move_silently_adjustment[18] = 10;
+        $this->dexterity_move_silently_adjustment[19] = 12;
+        
+        $this->dexterity_hide_in_shadows_adjustment[3] = -10;
+        $this->dexterity_hide_in_shadows_adjustment[4] = -10;
+        $this->dexterity_hide_in_shadows_adjustment[5] = -10;
+        $this->dexterity_hide_in_shadows_adjustment[6] = -10;
+        $this->dexterity_hide_in_shadows_adjustment[7] = -10;
+        $this->dexterity_hide_in_shadows_adjustment[8] = -10;
+        $this->dexterity_hide_in_shadows_adjustment[9] = -10;
+        $this->dexterity_hide_in_shadows_adjustment[10] = -5;
+        $this->dexterity_hide_in_shadows_adjustment[11] = 0;
+        $this->dexterity_hide_in_shadows_adjustment[12] = 0;
+        $this->dexterity_hide_in_shadows_adjustment[13] = 0;
+        $this->dexterity_hide_in_shadows_adjustment[14] = 0;
+        $this->dexterity_hide_in_shadows_adjustment[15] = 0;
+        $this->dexterity_hide_in_shadows_adjustment[16] = 0;
+        $this->dexterity_hide_in_shadows_adjustment[17] = 5;
+        $this->dexterity_hide_in_shadows_adjustment[18] = 10;
+        $this->dexterity_hide_in_shadows_adjustment[19] = 12;
+        
+        $this->super_dexterity_pick_pockets_adjustment[20] = 11;
+        $this->super_dexterity_pick_pockets_adjustment[40] = 12;
+        $this->super_dexterity_pick_pockets_adjustment[60] = 13;
+        $this->super_dexterity_pick_pockets_adjustment[80] = 14;
+        $this->super_dexterity_pick_pockets_adjustment[100] = 15;
+        
+        $this->super_dexterity_open_locks_adjustment[20] = 16;
+        $this->super_dexterity_open_locks_adjustment[40] = 17;
+        $this->super_dexterity_open_locks_adjustment[60] = 18;
+        $this->super_dexterity_open_locks_adjustment[80] = 19;
+        $this->super_dexterity_open_locks_adjustment[100] = 20;
+        
+        $this->super_dexterity_find_remove_traps_adjustment[20] = 6;
+        $this->super_dexterity_find_remove_traps_adjustment[40] = 7;
+        $this->super_dexterity_find_remove_traps_adjustment[60] = 8;
+        $this->super_dexterity_find_remove_traps_adjustment[70] = 9;
+        $this->super_dexterity_find_remove_traps_adjustment[100] = 10;
+        
+        $this->super_dexterity_move_silently_adjustment[20] = 10;
+        $this->super_dexterity_move_silently_adjustment[40] = 11;
+        $this->super_dexterity_move_silently_adjustment[60] = 11;
+        $this->super_dexterity_move_silently_adjustment[80] = 12;
+        $this->super_dexterity_move_silently_adjustment[100] = 12;
+        
+        $this->super_dexterity_hide_in_shadows_adjustment[20] = 10;
+        $this->super_dexterity_hide_in_shadows_adjustment[40] = 11;
+        $this->super_dexterity_hide_in_shadows_adjustment[60] = 11;
+        $this->super_dexterity_hide_in_shadows_adjustment[80] = 12;
+        $this->super_dexterity_hide_in_shadows_adjustment[100] = 12;
+
+        $this->dexterity_tightrope_walking_adjustment[3] = 0;
+        $this->dexterity_tightrope_walking_adjustment[4] = 0;
+        $this->dexterity_tightrope_walking_adjustment[5] = 0;
+        $this->dexterity_tightrope_walking_adjustment[6] = 0;
+        $this->dexterity_tightrope_walking_adjustment[7] = 0;
+        $this->dexterity_tightrope_walking_adjustment[8] = 0;
+        $this->dexterity_tightrope_walking_adjustment[9] = 0;
+        $this->dexterity_tightrope_walking_adjustment[10] = 0;
+        $this->dexterity_tightrope_walking_adjustment[11] = 0;
+        $this->dexterity_tightrope_walking_adjustment[12] = 0;
+        $this->dexterity_tightrope_walking_adjustment[13] = 0;
+        $this->dexterity_tightrope_walking_adjustment[14] = 0;
+        $this->dexterity_tightrope_walking_adjustment[15] = 0;
+        $this->dexterity_tightrope_walking_adjustment[16] = 5;
+        $this->dexterity_tightrope_walking_adjustment[17] = 10;
+        $this->dexterity_tightrope_walking_adjustment[18] = 15;
+        $this->dexterity_tightrope_walking_adjustment[19] = 20;
+
+        $this->super_dexterity_tightrope_walking_adjustment[20] = 15;
+        $this->super_dexterity_tightrope_walking_adjustment[40] = 16;
+        $this->super_dexterity_tightrope_walking_adjustment[60] = 17;
+        $this->super_dexterity_tightrope_walking_adjustment[80] = 18;
+        $this->super_dexterity_tightrope_walking_adjustment[100] = 19;
+
+        // In feet
+        $this->dexterity_pole_vaulting_adjustment[3] = 0;
+        $this->dexterity_pole_vaulting_adjustment[4] = 0;
+        $this->dexterity_pole_vaulting_adjustment[5] = 0;
+        $this->dexterity_pole_vaulting_adjustment[6] = 0;
+        $this->dexterity_pole_vaulting_adjustment[7] = 0;
+        $this->dexterity_pole_vaulting_adjustment[8] = 0;
+        $this->dexterity_pole_vaulting_adjustment[9] = 0;
+        $this->dexterity_pole_vaulting_adjustment[10] = 0;
+        $this->dexterity_pole_vaulting_adjustment[11] = 0;
+        $this->dexterity_pole_vaulting_adjustment[12] = 0;
+        $this->dexterity_pole_vaulting_adjustment[13] = 0;
+        $this->dexterity_pole_vaulting_adjustment[14] = 0;
+        $this->dexterity_pole_vaulting_adjustment[15] = 0;
+        $this->dexterity_pole_vaulting_adjustment[16] = 0;
+        $this->dexterity_pole_vaulting_adjustment[17] = 1;
+        $this->dexterity_pole_vaulting_adjustment[18] = 2;
+        $this->dexterity_pole_vaulting_adjustment[19] = 3;
+
+        // In feet
+        $this->super_dexterity_pole_vaulting_adjustment[20] = 2;
+        $this->super_dexterity_pole_vaulting_adjustment[40] = 2;
+        $this->super_dexterity_pole_vaulting_adjustment[60] = 2;
+        $this->super_dexterity_pole_vaulting_adjustment[80] = 3;
+        $this->super_dexterity_pole_vaulting_adjustment[100] = 3;
+
+        $this->dexterity_tumbling_maneuvers_attack_adjustment[3] = 0;
+        $this->dexterity_tumbling_maneuvers_attack_adjustment[4] = 0;
+        $this->dexterity_tumbling_maneuvers_attack_adjustment[5] = 0;
+        $this->dexterity_tumbling_maneuvers_attack_adjustment[6] = 0;
+        $this->dexterity_tumbling_maneuvers_attack_adjustment[7] = 0;
+        $this->dexterity_tumbling_maneuvers_attack_adjustment[8] = 0;
+        $this->dexterity_tumbling_maneuvers_attack_adjustment[9] = 0;
+        $this->dexterity_tumbling_maneuvers_attack_adjustment[10] = 0;
+        $this->dexterity_tumbling_maneuvers_attack_adjustment[11] = 0;
+        $this->dexterity_tumbling_maneuvers_attack_adjustment[12] = 0;
+        $this->dexterity_tumbling_maneuvers_attack_adjustment[13] = 0;
+        $this->dexterity_tumbling_maneuvers_attack_adjustment[14] = 0;
+        $this->dexterity_tumbling_maneuvers_attack_adjustment[15] = 0;
+        $this->dexterity_tumbling_maneuvers_attack_adjustment[16] = 1;
+        $this->dexterity_tumbling_maneuvers_attack_adjustment[17] = 2;
+        $this->dexterity_tumbling_maneuvers_attack_adjustment[18] = 3;
+        $this->dexterity_tumbling_maneuvers_attack_adjustment[19] = 4;
+
+        $this->super_dexterity_tumbling_maneuvers_attack_adjustment[20] = 3;
+        $this->super_dexterity_tumbling_maneuvers_attack_adjustment[40] = 3;
+        $this->super_dexterity_tumbling_maneuvers_attack_adjustment[60] = 3;
+        $this->super_dexterity_tumbling_maneuvers_attack_adjustment[80] = 4;
+        $this->super_dexterity_tumbling_maneuvers_attack_adjustment[100] = 4;
+
+        $this->dexterity_tumbling_maneuvers_evasion_adjustment[3] = 0;
+        $this->dexterity_tumbling_maneuvers_evasion_adjustment[4] = 0;
+        $this->dexterity_tumbling_maneuvers_evasion_adjustment[5] = 0;
+        $this->dexterity_tumbling_maneuvers_evasion_adjustment[6] = 0;
+        $this->dexterity_tumbling_maneuvers_evasion_adjustment[7] = 0;
+        $this->dexterity_tumbling_maneuvers_evasion_adjustment[8] = 0;
+        $this->dexterity_tumbling_maneuvers_evasion_adjustment[9] = 0;
+        $this->dexterity_tumbling_maneuvers_evasion_adjustment[10] = 0;
+        $this->dexterity_tumbling_maneuvers_evasion_adjustment[11] = 0;
+        $this->dexterity_tumbling_maneuvers_evasion_adjustment[12] = 0;
+        $this->dexterity_tumbling_maneuvers_evasion_adjustment[13] = 0;
+        $this->dexterity_tumbling_maneuvers_evasion_adjustment[14] = 0;
+        $this->dexterity_tumbling_maneuvers_evasion_adjustment[15] = 0;
+        $this->dexterity_tumbling_maneuvers_evasion_adjustment[16] = 2;
+        $this->dexterity_tumbling_maneuvers_evasion_adjustment[17] = 3;
+        $this->dexterity_tumbling_maneuvers_evasion_adjustment[18] = 5;
+        $this->dexterity_tumbling_maneuvers_evasion_adjustment[19] = 8;
+
+        $this->super_dexterity_tumbling_maneuvers_evasion_adjustment[20] = 5;
+        $this->super_dexterity_tumbling_maneuvers_evasion_adjustment[40] = 6;
+        $this->super_dexterity_tumbling_maneuvers_evasion_adjustment[60] = 6;
+        $this->super_dexterity_tumbling_maneuvers_evasion_adjustment[80] = 7;
+        $this->super_dexterity_tumbling_maneuvers_evasion_adjustment[100] = 8;
+
+        $this->dexterity_tumbling_maneuvers_falling_adjustment[3] = 0;
+        $this->dexterity_tumbling_maneuvers_falling_adjustment[4] = 0;
+        $this->dexterity_tumbling_maneuvers_falling_adjustment[5] = 0;
+        $this->dexterity_tumbling_maneuvers_falling_adjustment[6] = 0;
+        $this->dexterity_tumbling_maneuvers_falling_adjustment[7] = 0;
+        $this->dexterity_tumbling_maneuvers_falling_adjustment[8] = 0;
+        $this->dexterity_tumbling_maneuvers_falling_adjustment[9] = 0;
+        $this->dexterity_tumbling_maneuvers_falling_adjustment[10] = 0;
+        $this->dexterity_tumbling_maneuvers_falling_adjustment[11] = 0;
+        $this->dexterity_tumbling_maneuvers_falling_adjustment[12] = 0;
+        $this->dexterity_tumbling_maneuvers_falling_adjustment[13] = 0;
+        $this->dexterity_tumbling_maneuvers_falling_adjustment[14] = 0;
+        $this->dexterity_tumbling_maneuvers_falling_adjustment[15] = 0;
+        $this->dexterity_tumbling_maneuvers_falling_adjustment[16] = 0;
+        $this->dexterity_tumbling_maneuvers_falling_adjustment[17] = 0;
+        $this->dexterity_tumbling_maneuvers_falling_adjustment[18] = 5;
+        $this->dexterity_tumbling_maneuvers_falling_adjustment[19] = 10;
+
+        $this->super_dexterity_tumbling_maneuvers_falling_adjustment[20] = 5;
+        $this->super_dexterity_tumbling_maneuvers_falling_adjustment[40] = 6;
+        $this->super_dexterity_tumbling_maneuvers_falling_adjustment[60] = 7;
+        $this->super_dexterity_tumbling_maneuvers_falling_adjustment[80] = 8;
+        $this->super_dexterity_tumbling_maneuvers_falling_adjustment[100] = 9;
 
         $this->constitution_hp_adjustment[3] = -2;
         $this->constitution_hp_adjustment[4] = -1;
@@ -286,6 +603,21 @@ class AttributeMetadata {
         } else {
             return $this->strength_damage_adjustment[$this->character_details->getCharacterStrength()];
         }
+    }
+
+    public function getStrengthHighJumpAdjusment() {
+        // There is no code for super strength as only Thief-Acrobats will use this funcion
+        return $this->strength_high_jump_adjustment[$this->character_details->getCharacterStrength()];
+    }
+
+    public function getStrengthBroadJumpStandingAdjustment() {
+        // There is no code for super strength as only Thief-Acrobats will use this funcion
+        return $this->strength_broad_jump_standing_adjustment[$this->character_details->getCharacterStrength()];
+    }
+
+    public function getStrengthBroadJumpRunningAdjustment() {
+        // There is no code for super strength as only Thief-Acrobats will use this funcion
+        return $this->strength_broad_jump_running_adjustment[$this->character_details->getCharacterStrength()];
     }
 
     private function getDoorKickBendBars() {
@@ -661,6 +993,150 @@ class AttributeMetadata {
 
         if ($this->character_details->getCharacterDexterity() == 17) {
             return -3;
+        }
+    }
+
+    public function getPickPocketDexterityAdjustment() {
+        if (!empty($this->character_details->getCharacterSuperDexterity()) && $this->character_details->getCharacterDexterity() == 18) {
+            return $this->lookupPickPocketSuperDexterity($this->character_details->getCharacterSuperDexterity());
+        } else {
+            return $this->dexterity_pick_pockets_adjustment[$this->character_details->getCharacterDexterity()];
+        }
+    }
+
+    private function lookupPickPocketSuperDexterity($super_dexterity) {
+        $super_dexterity_index = $this->getSuperDexterityIndex($super_dexterity);
+        return $this->super_dexterity_pick_pockets_adjustment[$super_dexterity_index];
+    }
+
+    public function getOpenLocksDexterityAdjustment() {
+        if (!empty($this->character_details->getCharacterSuperDexterity()) && $this->character_details->getCharacterDexterity() == 18) {
+            return $this->lookupOpenLockSuperDexterity($this->character_details->getCharacterSuperDexterity());
+        } else {
+            return $this->dexterity_open_locks_adjustment[$this->character_details->getCharacterDexterity()];
+        }
+    }
+
+    private function lookupOpenLockSuperDexterity($super_dexterity) {
+        $super_dexterity_index = $this->getSuperDexterityIndex($super_dexterity);
+        return $this->super_dexterity_open_locks_adjustment[$super_dexterity_index];
+    }
+
+    public function getFindRemoveTrapsDexterityAdjustment() {
+        if (!empty($this->character_details->getCharacterSuperDexterity()) && $this->character_details->getCharacterDexterity() == 18) {
+            return $this->lookupFindRemoveTrapsSuperDexterity($this->character_details->getCharacterSuperDexterity());
+        } else {
+            return $this->dexterity_find_remove_traps_adjustment[$this->character_details->getCharacterDexterity()];
+        }
+    }
+
+    private function lookupFindRemoveTrapsSuperDexterity($super_dexterity) {
+        $super_dexterity_index = $this->getSuperDexterityIndex($super_dexterity);
+        return $this->super_dexterity_find_remove_traps_adjustment[$super_dexterity_index];
+    }
+
+    public function getMoveSilentlyDexterityAdjustment() {
+        if (!empty($this->character_details->getCharacterSuperDexterity()) && $this->character_details->getCharacterDexterity() == 18) {
+            return $this->getMoveSilentlySuperDexterity($this->character_details->getCharacterSuperDexterity());
+        } else {
+            return $this->dexterity_move_silently_adjustment[$this->character_details->getCharacterDexterity()]; 
+        }
+    }
+
+    private function getMoveSilentlySuperDexterity($super_dexterity) {
+        $super_dexterity_index = $this->getSuperDexterityIndex($super_dexterity);
+        return $this->super_dexterity_move_silently_adjustment[$super_dexterity_index];
+    }
+
+    public function getHideInShadowsDexterityAdjustment() {
+        if (!empty($this->character_details->getCharacterSuperDexterity()) && $this->character_details->getCharacterDexterity() == 18) {
+            return $this->lookupHideInShadowsSuperDexerity($this->character_details->getCharacterSuperDexterity());
+        } else {
+            return $this->dexterity_hide_in_shadows_adjustment[$this->character_details->getCharacterDexterity()];
+        }
+    }
+
+    private function lookupHideInShadowsSuperDexerity($super_dexterity) {
+        $super_dexterity_index = $this->getSuperDexterityIndex($super_dexterity);
+        return $this->super_dexterity_hide_in_shadows_adjustment[$super_dexterity_index];
+    }
+
+    public function getTightropeWalkingDexterityAdjustment() {
+        if (!empty($this->character_details->getCharacterSuperDexterity()) && $this->character_details->getCharacterDexterity() == 18) {
+            return $this->lookupTightropeWalkingSuperDexterity($this->character_details->getCharacterSuperDexterity());
+        } else {
+            return $this->dexterity_tightrope_walking_adjustment[$this->character_details->getCharacterDexterity()];
+        }
+    }
+
+    private function lookupTightropeWalkingSuperDexterity($super_dexterity) {
+        $super_dexterity_index = $this->getSuperDexterityIndex($super_dexterity);
+        return $this->super_dexterity_tightrope_walking_adjustment[$super_dexterity_index];
+    }
+
+    public function getPoleVaultingDexterityAdjustment() {
+        if (!empty($this->character_details->getCharacterSuperDexterity()) && $this->character_details->getCharacterDexterity() == 18) {
+            return $this->lookupPoleVaultingSuperDexterity($this->character_details->getCharacterSuperDexterity());
+        } else {
+            return $this->dexterity_pole_vaulting_adjustment[$this->character_details->getCharacterDexterity()];
+        }
+    }
+
+    private function lookupPoleVaultingSuperDexterity($super_dexterity) {
+        $super_dexterity_index = $this->getSuperDexterityIndex($super_dexterity);
+        return $this->super_dexterity_pole_vaulting_adjustment[$super_dexterity_index];
+    }
+
+    public function getTumblingAttacksDexterityAdjustment() {
+        if (!empty($this->character_details->getCharacterSuperDexterity()) && $this->character_details->getCharacterDexterity() == 18) {
+            return $this->lookupTumblingAttacksSuperDexterity($this->character_details->getCharacterSuperDexterity());
+        } else {
+            return $this->dexterity_tumbling_maneuvers_attack_adjustment[$this->character_details->getCharacterDexterity()];
+        }
+    }
+
+    private function lookupTumblingAttacksSuperDexterity($super_dexterity) {
+        $super_dexterity_index = $this->getSuperDexterityIndex($super_dexterity);
+        return $this->super_dexterity_tumbling_maneuvers_attack_adjustment[$super_dexterity_index];
+    }
+
+    public function getTumblingEvasionDexterityAdjustment() {
+        if (!empty($this->character_details->getCharacterSuperDexterity()) && $this->character_details->getCharacterDexterity() == 18) {
+            return $this->lookupTumblingEvasionSuperDexterity($this->character_details->getCharacterSuperDexterity());
+        } else {
+            return $this->dexterity_tumbling_maneuvers_evasion_adjustment[$this->character_details->getCharacterDexterity()];
+        }
+    }
+
+    private function lookupTumblingEvasionSuperDexterity($super_dexterity) {
+        $super_dexterity_index = $this->getSuperDexterityIndex($super_dexterity);
+        return $this->super_dexterity_tumbling_maneuvers_evasion_adjustment[$super_dexterity_index];
+    }
+
+    public function getTumblingFallingDistanceDexterityAdjustment() {
+        if (!empty($this->character_details->getCharacterSuperDexterity()) && $this->character_details->getCharacterDexterity() == 18) {
+            return $this->lookupTumblingFallingDistanceSuperDexterity($this->character_details->getCharacterSuperDexterity());
+        } else {
+            return $this->dexterity_tumbling_maneuvers_falling_adjustment[$this->character_details->getCharacterDexterity()];
+        }
+    }
+
+    private function lookupTumblingFallingDistanceSuperDexterity($super_dexterity) {
+        $super_dexterity_index = $this->getSuperDexterityIndex($super_dexterity);
+        return $this->super_dexterity_tumbling_maneuvers_falling_adjustment[$super_dexterity_index];
+    }
+
+    private function getSuperDexterityIndex($super_dexterity) {
+        if ($super_dexterity <= 20) {
+            return 20;
+        } else if ($super_dexterity >= 21 && $super_dexterity <= 40) {
+            return 40;
+        } else if ($super_dexterity >= 41 && $super_dexterity <= 60) {
+            return 60;
+        } else if ($super_dexterity >= 61 && $super_dexterity <= 80) {
+            return  80;
+        } else if ($super_dexterity >= 81 && $super_dexterity <= 100) {
+            return 100;
         }
     }
 
