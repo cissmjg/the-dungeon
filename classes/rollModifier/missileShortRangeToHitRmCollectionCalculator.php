@@ -240,7 +240,7 @@
 
         private function getHurledWeaponBonus(CharacterDetails $character_details, PlayerCharacterSkillSet $player_character_skill_set, PlayerCharacterWeapon $player_character_weapon, AttributeMetadata $attribute_metadata) {
             $does_hurled_strength_apply = $this->doesHurledStrengthApply($player_character_weapon);
-            $is_not_arcane_spellcaster = !$character_details->isArcaneSpellcaster();
+            $is_not_arcane_spellcaster = !($character_details->isArcaneSpellcaster() && $character_details->classCount() == 1);
             $is_proficient = $player_character_weapon->getIsProficient();
 
             // Note : if the character has Brutal Throw, strength as ALREADY been applied to Hit
